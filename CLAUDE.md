@@ -1,0 +1,161 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Project Overview
+
+This is a Spanish-language plant and flower encyclopedia website migrated from WordPress to **Astro with Vue.js**. The project is designed for static site generation and deployment on Vercel, focusing on SEO-friendly educational content about plants, flowers, herbs, and gardening techniques.
+
+## Architecture
+
+### Astro + Vue.js Stack
+- **Astro 4+** - Static site generator with island architecture
+- **Vue 3** - Component framework for interactive elements
+- **Content Collections** - Type-safe content management with markdown + frontmatter
+- **Static Generation** - All pages pre-rendered for optimal performance
+- **Vercel Ready** - Configured for seamless deployment
+
+### URL Structure
+- **Homepage**: `/` - Hero section + popular categories + recent articles
+- **Category Pages**: `/{category}/` - All plants in a specific category (e.g., `/rosa/`, `/tomate/`)
+- **Plant Articles**: `/{category}/{plant-slug}/` - Individual plant pages (e.g., `/rosa/princesa-de-monaco/`)
+- **All Plants**: `/plantas/` - Complete plant archive
+
+### Content Architecture
+
+#### Content Collections (src/content/)
+- **`plants/`** - 113+ plant articles as markdown files with frontmatter
+- **`categories/`** - 24 category definitions as JSON data files
+- **`config.ts`** - Zod schemas for type safety
+
+#### Data Processing Pipeline
+1. **Migration Script** (`scripts/process-content.js`) - Converts WordPress JSON to Astro content collections
+2. **Original Scripts** (`_scripts/`) - WordPress scraping and processing tools (legacy)
+
+### Component System
+
+**Modular Vue Components** (`src/components/`):
+- `PlantCard.vue` - Reusable plant preview cards with hover effects
+- `PlantGrid.vue` - Responsive grid layout for plant collections
+
+**Astro Layouts** (`src/layouts/`):
+- `BaseLayout.astro` - SEO-optimized base template with meta tags, Open Graph, Schema.org
+
+**Page Templates** (`src/pages/`):
+- `index.astro` - Homepage with hero + categories + recent plants
+- `[category]/index.astro` - Dynamic category listing pages
+- `[category]/[plant].astro` - Dynamic plant article pages
+- `plantas/index.astro` - Complete plant archive
+- `sitemap.xml.js` - Dynamic XML sitemap generation
+
+## Development Commands
+
+### Basic Workflow
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run preview      # Preview production build
+```
+
+### Content Management
+```bash
+# Process WordPress data into Astro collections
+node scripts/process-content.js
+
+# Legacy content processing (if updating from WordPress)
+cd _scripts
+node scrapper.js     # Fetch from WordPress API
+node format.js       # Clean and process HTML
+node scripts/process-content.js  # Convert to Astro format
+```
+
+### Deployment
+```bash
+npm run build        # Generate static files
+# Deploy /dist to Vercel (automatic via GitHub integration)
+```
+
+## SEO Implementation
+
+### Technical SEO
+- **Meta Tags**: Title, description, canonical URLs
+- **Open Graph**: Social media previews with images
+- **Twitter Cards**: Optimized social sharing
+- **Schema.org**: Structured data for articles and website
+- **Sitemap**: Dynamic XML sitemap at `/sitemap.xml`
+- **Robots.txt**: Search engine directives
+
+### Performance Optimization
+- **Static Generation**: All pages pre-rendered
+- **Image Optimization**: WebP conversion and responsive loading
+- **Client-Side Hydration**: Vue components load only when needed (`client:load`)
+- **CSS**: Scoped styles with minimal global CSS
+
+### Content Structure
+- **Semantic HTML**: Proper heading hierarchy and article structure
+- **Internal Linking**: Category breadcrumbs and cross-references
+- **URL Structure**: Clean, descriptive URLs with category hierarchy
+
+## Image Management
+
+### Organization
+- **Location**: `/public/images/2017/`, `/public/images/2018/`, etc.
+- **Format**: Original WordPress directory structure preserved
+- **Processing**: Vue components automatically convert WordPress URLs to local paths
+
+### Usage in Components
+```javascript
+// PlantCard.vue automatically converts:
+// 'https://plantasyflores.online/wp-content/uploads/2017/07/image.jpg'
+// to: '/images/2017/07/image.jpg'
+```
+
+## Content Categories (24 total)
+
+**Most Popular** (by article count):
+- Rosa (14), Hibiscus (13), Lirios (9), Amapola (8), Tomate (8)
+- Albahaca (6), Hortensias (6), Fresa (6), Chili (6), Margarita (5)
+
+**Complete List**: pensamiento, albahaca, rosa, lirios, hibiscus, cosmos, margarita, amapola, patata, manzanilla, piña, hortensias, fresa, plantas-comestibles, azalea, tomate, tomillo, lavanda, tulipán, chili, orquídea, plátano, col, mango
+
+## File Structure
+```
+src/
+├── components/       # Vue.js components
+├── content/         # Content collections
+│   ├── plants/      # 113 markdown files
+│   ├── categories/  # 24 JSON files
+│   └── config.ts    # Collection schemas
+├── layouts/         # Astro layouts
+└── pages/          # Route definitions
+    ├── [category]/  # Dynamic category routes
+    └── plantas/     # Static archive page
+
+public/
+├── images/         # Migrated WordPress images
+├── robots.txt      # SEO directives
+└── favicon.svg     # Site icon
+
+data/
+└── pages.json      # Original WordPress export
+
+scripts/
+└── process-content.js  # Content migration script
+```
+
+## Deployment Notes
+
+### Vercel Configuration
+- **Framework**: Astro
+- **Build Command**: `npm run build`
+- **Output Directory**: `dist`
+- **Node.js Version**: 18+
+
+### Environment Variables
+- No environment variables required for static generation
+- All content embedded at build time
+
+### Performance Targets
+- **Lighthouse Score**: 95+ across all metrics
+- **Core Web Vitals**: Optimized for LCP, FID, CLS
+- **Bundle Size**: Minimal JavaScript footprint with island architecture

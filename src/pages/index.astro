@@ -1,0 +1,215 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PlantGrid from '../components/PlantGrid.vue';
+import { getCollection } from 'astro:content';
+
+// Obtener todas las plantas y ordenarlas por fecha
+const plants = await getCollection('plants');
+const sortedPlants = plants
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 12); // Mostrar las 12 más recientes
+
+// Obtener categorías populares
+const categories = await getCollection('categories');
+const popularCategories = categories
+  .sort((a, b) => b.data.posts_count - a.data.posts_count)
+  .slice(0, 6);
+
+const plantsData = sortedPlants.map(plant => ({
+  id: plant.data.id,
+  slug: plant.slug,
+  title: plant.data.title,
+  excerpt: plant.data.excerpt,
+  date: plant.data.date,
+  featured_image: plant.data.featured_image,
+  categories: plant.data.categories
+}));
+---
+
+<BaseLayout 
+  title="Plantas y Flores - Guía completa de jardinería y cultivo"
+  description="Descubre todo sobre plantas, flores y jardinería. Guías de cultivo, cuidados y consejos para tu jardín. La mejor información sobre botánica y horticultura."
+>
+  <div class="homepage">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero__content">
+        <h1 class="hero__title">Plantas y Flores</h1>
+        <p class="hero__subtitle">
+          Tu guía completa para el mundo de la jardinería y el cultivo
+        </p>
+        <p class="hero__description">
+          Descubre información detallada sobre cientos de especies de plantas y flores, 
+          aprende técnicas de cultivo y mantén tu jardín siempre floreciente.
+        </p>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section">
+      <h2 class="section-title">Categorías Populares</h2>
+      <div class="categories-grid">
+        {popularCategories.map(category => (
+          <a href={`/${category.id}/`} class="category-card">
+            <h3 class="category-card__title">{category.data.name}</h3>
+            <p class="category-card__count">
+              {category.data.posts_count} {category.data.posts_count === 1 ? 'artículo' : 'artículos'}
+            </p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Recent Plants Section -->
+    <section class="recent-section">
+      <PlantGrid 
+        client:load
+        plants={plantsData}
+        title="Artículos Recientes"
+        description="Los últimos artículos sobre plantas y flores añadidos a nuestra colección"
+      />
+      
+      <div class="view-all">
+        <a href="/plantas/" class="view-all__link">Ver todos los artículos</a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+.hero {
+  background: linear-gradient(135deg, #4a7c23 0%, #2d5016 100%);
+  color: white;
+  padding: 4rem 2rem;
+  border-radius: 16px;
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.hero__title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  line-height: 1.1;
+}
+
+.hero__subtitle {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin: 0 0 1.5rem 0;
+  opacity: 0.9;
+}
+
+.hero__description {
+  font-size: 1.125rem;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2d5016;
+  text-align: center;
+  margin: 0 0 2rem 0;
+}
+
+.categories-section {
+  margin-bottom: 4rem;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.category-card {
+  background: white;
+  padding: 2rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.category-card__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2d5016;
+  margin: 0 0 0.5rem 0;
+}
+
+.category-card__count {
+  color: #666;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.recent-section {
+  margin-bottom: 3rem;
+}
+
+.view-all {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.view-all__link {
+  display: inline-block;
+  background: #4a7c23;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.view-all__link:hover {
+  background: #2d5016;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 3rem 1.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  .hero__title {
+    font-size: 2.5rem;
+  }
+  
+  .hero__subtitle {
+    font-size: 1.25rem;
+  }
+  
+  .categories-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+  
+  .category-card {
+    padding: 1.5rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__title {
+    font-size: 2rem;
+  }
+  
+  .categories-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

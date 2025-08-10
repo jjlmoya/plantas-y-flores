@@ -1,0 +1,193 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PlantGrid from '../../components/PlantGrid.vue';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const categories = await getCollection('categories');
+  const plants = await getCollection('plants');
+  
+  return categories.map(category => {
+    const categoryPlants = plants.filter(plant => 
+      plant.data.categories.some(cat => cat.slug === category.id)
+    );
+    
+    return {
+      params: { category: category.id },
+      props: {
+        category: category.data,
+        plants: categoryPlants.map(plant => ({
+          id: plant.data.id,
+          slug: plant.slug,
+          title: plant.data.title,
+          excerpt: plant.data.excerpt,
+          date: plant.data.date,
+          featured_image: plant.data.featured_image,
+          categories: plant.data.categories
+        }))
+      }
+    };
+  });
+}
+
+const { category, plants } = Astro.props;
+const sortedPlants = plants.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+const title = `${category.name} - Plantas y Flores`;
+const description = `Descubre todo sobre ${category.name.toLowerCase()}. Guías completas de cultivo, cuidados y consejos para ${category.name.toLowerCase()}. ${category.posts_count} artículos disponibles.`;
+---
+
+<BaseLayout 
+  title={title}
+  description={description}
+  canonical={`https://plantasyflores.com/${Astro.params.category}/`}
+>
+  <div class="category-page">
+    <!-- Category Header -->
+    <header class="category-header">
+      <div class="category-header__content">
+        <nav class="breadcrumb">
+          <a href="/">Inicio</a>
+          <span class="breadcrumb__separator">›</span>
+          <span class="breadcrumb__current">{category.name}</span>
+        </nav>
+        
+        <h1 class="category-header__title">{category.name}</h1>
+        <p class="category-header__description">
+          {category.description}
+        </p>
+        <div class="category-header__meta">
+          {category.posts_count} {category.posts_count === 1 ? 'artículo' : 'artículos'}
+        </div>
+      </div>
+    </header>
+
+    <!-- Plants Grid -->
+    <section class="category-content">
+      <PlantGrid 
+        client:load
+        plants={sortedPlants}
+      />
+      
+      {sortedPlants.length === 0 && (
+        <div class="no-plants">
+          <p>Pronto añadiremos más contenido sobre {category.name.toLowerCase()}.</p>
+          <a href="/" class="back-home">Volver al inicio</a>
+        </div>
+      )}
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+.category-header {
+  background: linear-gradient(135deg, #4a7c23 0%, #2d5016 100%);
+  color: white;
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  margin-bottom: 3rem;
+}
+
+.breadcrumb {
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  opacity: 0.9;
+}
+
+.breadcrumb a {
+  color: white;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.breadcrumb a:hover {
+  opacity: 0.8;
+}
+
+.breadcrumb__separator {
+  margin: 0 0.5rem;
+}
+
+.breadcrumb__current {
+  opacity: 0.7;
+}
+
+.category-header__title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  line-height: 1.2;
+}
+
+.category-header__description {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin: 0 0 1rem 0;
+  opacity: 0.9;
+  max-width: 600px;
+}
+
+.category-header__meta {
+  font-size: 0.875rem;
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+.category-content {
+  margin-bottom: 3rem;
+}
+
+.no-plants {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.no-plants p {
+  font-size: 1.125rem;
+  color: #666;
+  margin: 0 0 2rem 0;
+}
+
+.back-home {
+  display: inline-block;
+  background: #4a7c23;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.back-home:hover {
+  background: #2d5016;
+}
+
+@media (max-width: 768px) {
+  .category-header {
+    padding: 2rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .category-header__title {
+    font-size: 2rem;
+  }
+  
+  .breadcrumb {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-header__title {
+    font-size: 1.75rem;
+  }
+  
+  .category-header {
+    padding: 1.5rem 1rem;
+  }
+}
+</style>

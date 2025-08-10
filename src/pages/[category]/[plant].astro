@@ -1,0 +1,378 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const plants = await getCollection('plants');
+  
+  return plants.map(plant => {
+    const category = plant.data.categories[0]?.slug || 'plantas';
+    
+    return {
+      params: { 
+        category: category,
+        plant: plant.slug 
+      },
+      props: { plant }
+    };
+  });
+}
+
+const { plant } = Astro.props;
+const { Content } = await plant.render();
+
+const category = plant.data.categories[0];
+const title = `${plant.data.title} - ${category?.name || 'Plantas'} - Plantas y Flores`;
+const description = plant.data.excerpt.replace(/<[^>]*>/g, '').substring(0, 160) + '...';
+const imageUrl = plant.data.featured_image 
+  ? plant.data.featured_image.replace('https://plantasyflores.online/wp-content/uploads/', '/images/')
+  : null;
+
+const formatDate = (dateString) => {
+  return new Date(dateString).toLocaleDateString('es-ES', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+};
+
+// Schema.org estructurado
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": plant.data.title,
+  "description": description,
+  "image": imageUrl ? `https://plantasyflores.com${imageUrl}` : null,
+  "datePublished": plant.data.date,
+  "dateModified": plant.data.date,
+  "author": {
+    "@type": "Organization",
+    "name": "Plantas y Flores"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Plantas y Flores",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://plantasyflores.com/logo.png"
+    }
+  }
+};
+---
+
+<BaseLayout 
+  title={title}
+  description={description}
+  image={imageUrl ? `https://plantasyflores.com${imageUrl}` : null}
+  canonical={`https://plantasyflores.com/${category?.slug || 'plantas'}/${plant.slug}/`}
+>
+  <!-- Schema.org estructurado -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
+  
+  <article class="plant-article">
+    <!-- Article Header -->
+    <header class="plant-article__header">
+      <nav class="breadcrumb">
+        <a href="/">Inicio</a>
+        <span class="breadcrumb__separator">›</span>
+        <a href={`/${category?.slug || 'plantas'}/`}>{category?.name || 'Plantas'}</a>
+        <span class="breadcrumb__separator">›</span>
+        <span class="breadcrumb__current">{plant.data.title}</span>
+      </nav>
+      
+      <h1 class="plant-article__title">{plant.data.title}</h1>
+      
+      <div class="plant-article__meta">
+        <time datetime={plant.data.date} class="plant-article__date">
+          {formatDate(plant.data.date)}
+        </time>
+        
+        <div class="plant-article__categories">
+          {plant.data.categories.map(cat => (
+            <a href={`/${cat.slug}/`} class="plant-article__category">
+              {cat.name}
+            </a>
+          ))}
+        </div>
+      </div>
+    </header>
+
+    <!-- Featured Image -->
+    {imageUrl && (
+      <div class="plant-article__image">
+        <img 
+          src={imageUrl} 
+          alt={plant.data.title}
+          class="plant-article__featured-image"
+        />
+      </div>
+    )}
+
+    <!-- Article Content -->
+    <div class="plant-article__content">
+      <div set:html={plant.data.seo_html}></div>
+    </div>
+
+    <!-- Tags -->
+    {plant.data.tags && plant.data.tags.length > 0 && (
+      <footer class="plant-article__footer">
+        <div class="plant-article__tags">
+          <span class="plant-article__tags-label">Etiquetas:</span>
+          {plant.data.tags.map(tag => (
+            <span class="plant-article__tag">{tag.name}</span>
+          ))}
+        </div>
+      </footer>
+    )}
+
+    <!-- Navigation -->
+    <div class="plant-article__navigation">
+      <a href={`/${category?.slug || 'plantas'}/`} class="plant-article__back">
+        ← Volver a {category?.name || 'Plantas'}
+      </a>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+.plant-article {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.plant-article__header {
+  margin-bottom: 2rem;
+}
+
+.breadcrumb {
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.breadcrumb a {
+  color: #4a7c23;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.breadcrumb a:hover {
+  color: #2d5016;
+}
+
+.breadcrumb__separator {
+  margin: 0 0.5rem;
+}
+
+.breadcrumb__current {
+  color: #999;
+}
+
+.plant-article__title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #2d5016;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.2;
+}
+
+.plant-article__meta {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.plant-article__date {
+  color: #666;
+  font-size: 0.875rem;
+}
+
+.plant-article__categories {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.plant-article__category {
+  background: #e8f5e8;
+  color: #2d5016;
+  padding: 0.25rem 0.75rem;
+  border-radius: 16px;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.plant-article__category:hover {
+  background: #d1e7dd;
+}
+
+.plant-article__image {
+  margin: 2rem 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.plant-article__featured-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.plant-article__content {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 2rem 0;
+  line-height: 1.7;
+  font-size: 1.0625rem;
+}
+
+.plant-article__content :global(h1),
+.plant-article__content :global(h2),
+.plant-article__content :global(h3),
+.plant-article__content :global(h4),
+.plant-article__content :global(h5),
+.plant-article__content :global(h6) {
+  color: #2d5016;
+  margin: 2rem 0 1rem 0;
+  font-weight: 700;
+}
+
+.plant-article__content :global(h2) {
+  font-size: 1.75rem;
+  border-bottom: 2px solid #e8f5e8;
+  padding-bottom: 0.5rem;
+}
+
+.plant-article__content :global(h3) {
+  font-size: 1.5rem;
+}
+
+.plant-article__content :global(p) {
+  margin: 0 0 1.25rem 0;
+}
+
+.plant-article__content :global(ul),
+.plant-article__content :global(ol) {
+  margin: 0 0 1.25rem 0;
+  padding-left: 1.5rem;
+}
+
+.plant-article__content :global(li) {
+  margin-bottom: 0.5rem;
+}
+
+.plant-article__content :global(a) {
+  color: #4a7c23;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.plant-article__content :global(a:hover) {
+  color: #2d5016;
+}
+
+.plant-article__content :global(img) {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.plant-article__content :global(blockquote) {
+  background: #f8fdf8;
+  border-left: 4px solid #4a7c23;
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+}
+
+.plant-article__footer {
+  background: white;
+  padding: 1.5rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 2rem 0;
+}
+
+.plant-article__tags {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.plant-article__tags-label {
+  font-weight: 600;
+  color: #2d5016;
+}
+
+.plant-article__tag {
+  background: #f0f8f0;
+  color: #4a7c23;
+  padding: 0.25rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.plant-article__navigation {
+  margin: 3rem 0 2rem 0;
+  text-align: center;
+}
+
+.plant-article__back {
+  display: inline-block;
+  background: #4a7c23;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.plant-article__back:hover {
+  background: #2d5016;
+}
+
+@media (max-width: 768px) {
+  .plant-article__title {
+    font-size: 2rem;
+  }
+  
+  .plant-article__content {
+    padding: 2rem 1.5rem;
+    margin: 1.5rem 0;
+  }
+  
+  .plant-article__meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .plant-article__title {
+    font-size: 1.75rem;
+  }
+  
+  .plant-article__content {
+    padding: 1.5rem 1rem;
+  }
+  
+  .breadcrumb {
+    font-size: 0.8rem;
+  }
+}
+</style>

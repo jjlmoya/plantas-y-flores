@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://plantasyflores.com/sitemap-index.xml
+
+# Block access to development files
+Disallow: /api/
+Disallow: /_astro/
+Disallow: /src/
+
+# SEO optimization
+Crawl-delay: 1
