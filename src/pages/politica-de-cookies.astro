@@ -1,0 +1,441 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navigation from '../components/Navigation.vue';
+---
+
+<BaseLayout 
+  title="Política de Cookies y Privacidad - Plantas y Flores | Información Legal"
+  description="Política de cookies y privacidad de Plantas y Flores. Información completa sobre el uso de cookies, Google Analytics, Google AdSense y protección de datos personales según GDPR."
+  type="website"
+  canonical="https://plantasyflores.online/politica-de-cookies/"
+  keywords="política cookies, privacidad, GDPR, protección datos, cookies, Google Analytics, AdSense, información legal"
+  category="Legal"
+  tags={["política cookies", "privacidad", "GDPR", "legal"]}
+  image="/brand/logo.png"
+>
+  <Navigation client:load />
+  
+  <div class="legal-page">
+    <div class="legal-content">
+      <h1 class="page-title">Política de Cookies y Privacidad</h1>
+      <p class="last-updated">Última actualización: {new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+
+      <!-- Cookies Section -->
+      <section class="legal-section">
+        <h2>¿Qué son las Cookies?</h2>
+        <p>
+          Las cookies son pequeños archivos de datos que se descargan en su dispositivo cuando accede a determinadas páginas web. 
+          Las cookies permiten a una página web, entre otras cosas, almacenar y recuperar información sobre los hábitos de 
+          navegación de un usuario o de su equipo y, dependiendo de la información que contengan y de la forma en que utilice 
+          su equipo, pueden utilizarse para reconocer al usuario.
+        </p>
+        
+        <p>
+          La mayoría de los navegadores aceptan cookies automáticamente, pero el usuario normalmente puede modificar la 
+          configuración de su navegador para declinar las cookies si así lo prefiere. Sin embargo, esto puede afectar 
+          negativamente a la funcionalidad del sitio web.
+        </p>
+      </section>
+
+      <!-- Types of Cookies -->
+      <section class="legal-section">
+        <h2>Tipos de Cookies que Utilizamos</h2>
+        
+        <div class="cookie-type">
+          <h3>1. Cookies Técnicas</h3>
+          <p>
+            Son aquellas que permiten al usuario la navegación a través de la página web y la utilización de las diferentes 
+            opciones o servicios que en ella existen. Estas cookies son necesarias para el funcionamiento básico del sitio web.
+          </p>
+        </div>
+
+        <div class="cookie-type">
+          <h3>2. Cookies de Personalización</h3>
+          <p>
+            Permiten al usuario acceder al servicio con algunas características de carácter general predefinidas en función 
+            de una serie de criterios en el terminal del usuario, como por ejemplo el idioma o el tipo de navegador.
+          </p>
+        </div>
+
+        <div class="cookie-type">
+          <h3>3. Cookies de Análisis (Google Analytics)</h3>
+          <p>
+            <strong>Utilizamos Google Analytics</strong> para analizar el uso de nuestro sitio web. Google Analytics 
+            recopila información de forma anónima sobre cómo los visitantes utilizan nuestro sitio, incluyendo:
+          </p>
+          <ul>
+            <li>Número de visitantes únicos</li>
+            <li>Páginas visitadas y tiempo de permanencia</li>
+            <li>Fuente del tráfico (buscadores, redes sociales, etc.)</li>
+            <li>Información demográfica general</li>
+            <li>Dirección IP (anonimizada)</li>
+          </ul>
+          <p>
+            Esta información nos ayuda a mejorar nuestro sitio web y ofrecer un mejor contenido sobre plantas y jardinería.
+          </p>
+        </div>
+
+        <div class="cookie-type">
+          <h3>4. Cookies Publicitarias (Google AdSense)</h3>
+          <p>
+            <strong>Utilizamos Google AdSense</strong> para mostrar publicidad relevante relacionada con 
+            plantas, jardinería y temas afines. Estas cookies:
+          </p>
+          <ul>
+            <li>Permiten mostrar anuncios personalizados basados en intereses</li>
+            <li>Miden la efectividad de las campañas publicitarias</li>
+            <li>Evitan mostrar anuncios que ya has visto repetidamente</li>
+            <li>Pueden crear un perfil de tus intereses publicitarios</li>
+          </ul>
+        </div>
+
+        <div class="cookie-type">
+          <h3>5. Cookies de Terceros</h3>
+          <p>
+            Nuestro sitio web puede utilizar servicios de terceros que establecen sus propias cookies:
+          </p>
+          <ul>
+            <li><strong>Google Analytics:</strong> Para análisis estadístico</li>
+            <li><strong>Google AdSense:</strong> Para publicidad personalizada</li>
+            <li><strong>Redes Sociales:</strong> Si compartes contenido en redes sociales</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Privacy Policy -->
+      <section class="legal-section">
+        <h2>Política de Privacidad</h2>
+        
+        <h3>Responsable del Tratamiento</h3>
+        <div class="contact-info">
+          <p><strong>Plantas y Flores - jardineraamable</strong></p>
+          <p>Email de contacto: <a href="mailto:contacto@plantasyflores.online">contacto@plantasyflores.online</a></p>
+        </div>
+
+        <h3>¿Qué datos personales recopilamos?</h3>
+        <p>Recopilamos información cuando:</p>
+        <ul>
+          <li>Te suscribes a nuestra newsletter (email)</li>
+          <li>Nos contactas a través del formulario (nombre, email, mensaje)</li>
+          <li>Comentas en nuestras publicaciones (nombre, email si es requerido)</li>
+          <li>Navegas por nuestro sitio web (datos de navegación anónimos)</li>
+        </ul>
+
+        <h3>¿Para qué utilizamos tus datos?</h3>
+        <p>Utilizamos tus datos personales para:</p>
+        <ul>
+          <li>Responder a tus consultas sobre plantas y jardinería</li>
+          <li>Enviarte nuestra newsletter con consejos de jardinería (solo si te suscribes)</li>
+          <li>Mejorar nuestro contenido basándonos en análisis de uso del sitio</li>
+          <li>Cumplir con obligaciones legales</li>
+        </ul>
+
+        <h3>Base legal para el tratamiento</h3>
+        <p>Tratamos tus datos basándonos en:</p>
+        <ul>
+          <li><strong>Consentimiento:</strong> Para newsletter y comunicaciones promocionales</li>
+          <li><strong>Interés legítimo:</strong> Para mejorar nuestro sitio web y contenido</li>
+          <li><strong>Ejecución de contrato:</strong> Para responder a tus consultas</li>
+        </ul>
+
+        <h3>¿Con quién compartimos tus datos?</h3>
+        <p>
+          No vendemos ni compartimos tus datos personales con terceros para fines comerciales. 
+          Únicamente compartimos datos con:
+        </p>
+        <ul>
+          <li><strong>Google Analytics:</strong> Datos de navegación anonimizados</li>
+          <li><strong>Google AdSense:</strong> Para personalización publicitaria (cuando se implemente)</li>
+          <li><strong>Proveedores de email:</strong> Solo para envío de newsletters si te has suscrito</li>
+        </ul>
+
+        <h3>¿Cuánto tiempo conservamos tus datos?</h3>
+        <ul>
+          <li><strong>Newsletter:</strong> Hasta que canceles tu suscripción</li>
+          <li><strong>Consultas:</strong> 3 años desde la última comunicación</li>
+          <li><strong>Datos analíticos:</strong> 26 meses (configuración de Google Analytics)</li>
+        </ul>
+
+        <h3>Tus derechos</h3>
+        <p>Tienes derecho a:</p>
+        <ul>
+          <li><strong>Acceso:</strong> Solicitar qué datos tenemos sobre ti</li>
+          <li><strong>Rectificación:</strong> Corregir datos incorrectos</li>
+          <li><strong>Supresión:</strong> Eliminar tus datos personales</li>
+          <li><strong>Portabilidad:</strong> Obtener tus datos en formato exportable</li>
+          <li><strong>Oposición:</strong> Oponerte al tratamiento de tus datos</li>
+          <li><strong>Limitación:</strong> Limitar el procesamiento de tus datos</li>
+        </ul>
+        <p>
+          Para ejercer estos derechos, contacta con nosotros en: 
+          <a href="mailto:contacto@plantasyflores.online">contacto@plantasyflores.online</a>
+        </p>
+      </section>
+
+      <!-- Cookie Management -->
+      <section class="legal-section">
+        <h2>Gestión de Cookies</h2>
+        
+        <h3>Configuración del navegador</h3>
+        <p>Puedes configurar tu navegador para rechazar cookies:</p>
+        
+        <div class="browser-instructions">
+          <div class="browser-item">
+            <h4>Google Chrome</h4>
+            <p>Configuración → Privacidad y seguridad → Cookies y otros datos del sitio</p>
+          </div>
+          <div class="browser-item">
+            <h4>Mozilla Firefox</h4>
+            <p>Preferencias → Privacidad y seguridad → Cookies y datos del sitio</p>
+          </div>
+          <div class="browser-item">
+            <h4>Safari</h4>
+            <p>Preferencias → Privacidad → Cookies y datos de sitios web</p>
+          </div>
+          <div class="browser-item">
+            <h4>Microsoft Edge</h4>
+            <p>Configuración → Privacidad, búsqueda y servicios → Cookies</p>
+          </div>
+        </div>
+
+        <h3>Opt-out de Google Analytics</h3>
+        <p>
+          Puedes desactivar Google Analytics instalando el complemento de inhabilitación: 
+          <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">
+            Google Analytics Opt-out Browser Add-on
+          </a>
+        </p>
+
+        <h3>Opt-out de Google AdSense</h3>
+        <p>
+          Puedes gestionar tus preferencias de anuncios de Google en: 
+          <a href="https://adssettings.google.com/" target="_blank" rel="noopener noreferrer">
+            Configuración de anuncios de Google
+          </a>
+        </p>
+      </section>
+
+      <!-- Contact Information -->
+      <section class="legal-section">
+        <h2>Contacto</h2>
+        <p>
+          Si tienes preguntas sobre esta política de cookies y privacidad, puedes contactarnos en:
+        </p>
+        <div class="contact-details">
+          <p><strong>Email:</strong> <a href="mailto:contacto@plantasyflores.online">contacto@plantasyflores.online</a></p>
+          <p><strong>Formulario:</strong> <a href="/contacto/">Página de contacto</a></p>
+        </div>
+      </section>
+
+      <!-- Updates -->
+      <section class="legal-section">
+        <h2>Actualizaciones de esta Política</h2>
+        <p>
+          Esta política de cookies y privacidad puede actualizarse ocasionalmente. Te recomendamos revisarla periódicamente 
+          para estar informado sobre cómo protegemos tu información. Los cambios significativos serán comunicados a 
+          través de nuestro sitio web.
+        </p>
+        <p>
+          Al continuar utilizando nuestro sitio web después de las actualizaciones, aceptas los términos revisados.
+        </p>
+      </section>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+.legal-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.legal-content {
+  background: white;
+  padding: 3rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  line-height: 1.7;
+  color: #2c3e50;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2d5016;
+  margin: 0 0 1rem 0;
+  text-align: center;
+}
+
+.last-updated {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  margin: 0 0 3rem 0;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.legal-section {
+  margin-bottom: 3rem;
+}
+
+.legal-section h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2d5016;
+  margin: 0 0 1.5rem 0;
+  border-bottom: 2px solid #4a7c23;
+  padding-bottom: 0.5rem;
+}
+
+.legal-section h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2d5016;
+  margin: 2rem 0 1rem 0;
+}
+
+.legal-section p {
+  margin: 0 0 1rem 0;
+}
+
+.legal-section ul {
+  margin: 1rem 0;
+  padding-left: 2rem;
+}
+
+.legal-section li {
+  margin-bottom: 0.5rem;
+}
+
+.legal-section a {
+  color: #4a7c23;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.legal-section a:hover {
+  text-decoration: underline;
+}
+
+/* Cookie Types */
+.cookie-type {
+  background: linear-gradient(135deg, #f8fffe 0%, #e8f5f0 100%);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin: 2rem 0;
+  border-left: 4px solid #4a7c23;
+}
+
+.cookie-type h3 {
+  color: #2d5016;
+  margin: 0 0 1rem 0;
+  font-size: 1.2rem;
+}
+
+.cookie-type p,
+.cookie-type ul {
+  margin-bottom: 0.75rem;
+}
+
+/* Contact Info */
+.contact-info {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.contact-info p {
+  margin: 0.25rem 0;
+}
+
+/* Browser Instructions */
+.browser-instructions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.browser-item {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e9ecef;
+}
+
+.browser-item h4 {
+  color: #2d5016;
+  margin: 0 0 0.75rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.browser-item p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #666;
+}
+
+/* Contact Details */
+.contact-details {
+  background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin: 1rem 0;
+}
+
+.contact-details p {
+  margin: 0.5rem 0;
+  font-weight: 500;
+}
+
+.contact-details a {
+  color: #5b21b6;
+  font-weight: 600;
+}
+
+.contact-details a:hover {
+  color: #4c1d95;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .legal-page {
+    padding: 1rem;
+  }
+  
+  .legal-content {
+    padding: 2rem 1.5rem;
+  }
+  
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  .legal-section h2 {
+    font-size: 1.5rem;
+  }
+  
+  .browser-instructions {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .legal-content {
+    padding: 1.5rem 1rem;
+  }
+  
+  .page-title {
+    font-size: 1.8rem;
+  }
+  
+  .legal-section {
+    margin-bottom: 2rem;
+  }
+}
+</style>

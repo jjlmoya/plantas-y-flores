@@ -1,0 +1,719 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navigation from '../components/Navigation.vue';
+import PlantGrid from '../components/PlantGrid.vue';
+import AdSenseAd from '../components/AdSenseAd.vue';
+import { getPlants } from '../utils/data.js';
+
+// Filtrar plantas medicinales
+const allPlants = await getPlants();
+const medicinalCategorySlugs = ['manzanilla', 'lavanda']; // Plantas con propiedades medicinales conocidas
+const medicinalPlants = allPlants.filter(plant => 
+  plant.data.categories.some(cat => {
+    const slug = cat.slug || cat;
+    return medicinalCategorySlugs.includes(slug);
+  })
+);
+
+const plantsData = medicinalPlants.map(plant => ({
+  id: plant.data.id,
+  slug: plant.slug,
+  title: plant.data.title,
+  excerpt: plant.data.excerpt,
+  date: plant.data.date,
+  featured_image: plant.data.featured_image,
+  main_image: plant.data.main_image,
+  categories: plant.data.categories
+}));
+
+// Obtener categorías únicas de las plantas filtradas
+const availableCategories = [...new Set(
+  medicinalPlants.flatMap(plant => 
+    plant.data.categories.map(cat => ({
+      slug: cat.slug || cat,
+      name: cat.name || cat
+    }))
+  )
+)].sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<BaseLayout 
+  title="Plantas Medicinales - Remedios Naturales y Medicina Herbal | Plantas y Flores"
+  description="Descubre las plantas medicinales más efectivas: manzanilla, lavanda, aloe vera y más hierbas curativas. Aprende sus propiedades terapéuticas y cómo cultivarlas en casa para crear tu farmacia natural."
+  type="website"
+  canonical="https://plantasyflores.online/plantas-medicinales/"
+  keywords="plantas medicinales, hierbas curativas, remedios naturales, manzanilla, lavanda, aloe vera, medicina herbal, fitoterapia, plantas curativas, jardín medicinal"
+  category="Plantas Medicinales"
+  tags={["plantas medicinales", "hierbas curativas", "remedios naturales", "fitoterapia", "medicina natural"]}
+  image="/brand/logo.png"
+>
+  <Navigation client:load />
+  
+  <div class="category-page">
+    <!-- Hero Section -->
+    <section class="category-hero">
+      <div class="hero-content">
+        <div class="hero-icon">🌿</div>
+        <h1 class="hero-title">Plantas Medicinales</h1>
+        <p class="hero-subtitle">La farmacia natural en tu jardín</p>
+        <p class="hero-description">
+          Descubre el poder curativo de las plantas medicinales. Cultiva tus propios 
+          remedios naturales y aprende sobre las propiedades terapéuticas de hierbas 
+          tradicionales utilizadas durante milenios.
+        </p>
+      </div>
+    </section>
+
+    <!-- Important Notice -->
+    <section class="notice-section">
+      <div class="notice-card">
+        <div class="notice-icon">⚠️</div>
+        <div class="notice-content">
+          <h3>Aviso Importante</h3>
+          <p>
+            La información aquí presentada es con fines educativos únicamente. 
+            Siempre consulta con un profesional de la salud antes de usar plantas 
+            medicinales como tratamiento. No sustituyen el consejo médico profesional.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Banner Ad después del hero -->
+    <AdSenseAd 
+      client:load
+      ad-slot="7632831361"
+      ad-format="horizontal"
+      ad-type="display"
+      class-name="hero-banner-ad"
+      :show-label="true"
+    />
+
+        <!-- Plants Grid -->
+    <section class="plants-section">
+      {plantsData.length > 0 ? (
+        <PlantGrid 
+          client:load
+          plants={plantsData}
+          title={`Plantas Medicinales (${plantsData.length})`}
+          description="Todas nuestras guías para plantas medicinales"
+        />
+      ) : (
+        <div class="no-plants">
+          <h2 class="section-title">Plantas Medicinales</h2>
+          <p class="no-plants-message">
+            Próximamente añadiremos más guías específicas para plantas medicinales. 
+            ¡Mantente atento a las actualizaciones!
+          </p>
+        </div>
+      )}
+    </section>
+    
+    <!-- Ad nativo entre plantas y categorías -->
+    <AdSenseAd 
+      client:load
+      ad-slot="7538264929"
+      ad-type="in-feed"
+      class-name="section-divider-ad"
+      :responsive="true"
+    />
+    
+    <!-- Categories Section -->
+    <section class="medicine-categories">
+      <h2 class="section-title">Categorías de Plantas Medicinales</h2>
+      <div class="categories-grid">
+        <div class="category-card digestive">
+          <div class="category-icon">🫖</div>
+          <h3>Digestivas</h3>
+          <p>Para problemas estomacales, digestión lenta e inflamación gastrointestinal.</p>
+          <ul class="plant-examples">
+            <li>Manzanilla</li>
+            <li>Menta</li>
+            <li>Jengibre</li>
+            <li>Hinojo</li>
+          </ul>
+        </div>
+        
+        <div class="category-card relaxing">
+          <div class="category-icon">😌</div>
+          <h3>Relajantes</h3>
+          <p>Para ansiedad, estrés, insomnio y tensión nerviosa.</p>
+          <ul class="plant-examples">
+            <li>Lavanda</li>
+            <li>Valeriana</li>
+            <li>Melisa</li>
+            <li>Tila</li>
+          </ul>
+        </div>
+        
+        <div class="category-card respiratory">
+          <div class="category-icon">🫁</div>
+          <h3>Respiratorias</h3>
+          <p>Para tos, resfriados, congestión y problemas pulmonares.</p>
+          <ul class="plant-examples">
+            <li>Eucalipto</li>
+            <li>Tomillo</li>
+            <li>Salvia</li>
+            <li>Gordolobo</li>
+          </ul>
+        </div>
+        
+        <div class="category-card healing">
+          <div class="category-icon">🩹</div>
+          <h3>Curativas</h3>
+          <p>Para heridas, quemaduras, irritaciones cutáneas e inflamaciones.</p>
+          <ul class="plant-examples">
+            <li>Aloe Vera</li>
+            <li>Caléndula</li>
+            <li>Plantén</li>
+            <li>Árnica</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sidebar Ad para desktop -->
+    <AdSenseAd 
+      client:load
+      ad-slot="8980721998"
+      ad-format="rectangle"
+      ad-type="display"
+      ad-size="300x250"
+      class-name="sidebar-ad"
+      :responsive="false"
+    />
+
+    <!-- Preparation Methods -->
+    <section class="preparation-methods">
+      <h2 class="section-title">Métodos de Preparación</h2>
+      <div class="methods-grid">
+        <div class="method-card">
+          <div class="method-icon">🫖</div>
+          <h4>Infusión</h4>
+          <p><strong>Para:</strong> Hojas y flores</p>
+          <p>Vierte agua hirviendo sobre la planta. Deja reposar 5-10 minutos tapado.</p>
+        </div>
+        
+        <div class="method-card">
+          <div class="method-icon">🔥</div>
+          <h4>Decocción</h4>
+          <p><strong>Para:</strong> Raíces, cortezas</p>
+          <p>Hierve la planta en agua durante 10-20 minutos. Ideal para partes duras.</p>
+        </div>
+        
+        <div class="method-card">
+          <div class="method-icon">🧴</div>
+          <h4>Tintura</h4>
+          <p><strong>Para:</strong> Conservación larga</p>
+          <p>Macera la planta en alcohol durante semanas. Concentración potente.</p>
+        </div>
+        
+        <div class="method-card">
+          <div class="method-icon">🧊</div>
+          <h4>Cataplasma</h4>
+          <p><strong>Para:</strong> Uso externo</p>
+          <p>Aplasta hojas frescas y aplica directamente sobre la piel.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular Medicinal Plants -->
+    <section class="popular-plants">
+      <h2 class="section-title">Plantas Medicinales Populares</h2>
+      <div class="plants-showcase">
+        <div class="showcase-card manzanilla">
+          <div class="showcase-image">🌼</div>
+          <div class="showcase-content">
+            <h3>Manzanilla</h3>
+            <p class="latin-name"><em>Matricaria chamomilla</em></p>
+            <p class="properties">
+              <strong>Propiedades:</strong> Antiinflamatoria, calmante, digestiva
+            </p>
+            <p class="uses">
+              <strong>Usos:</strong> Insomnio, ansiedad, problemas digestivos, irritaciones cutáneas
+            </p>
+          </div>
+        </div>
+        
+        <div class="showcase-card lavanda">
+          <div class="showcase-image">💜</div>
+          <div class="showcase-content">
+            <h3>Lavanda</h3>
+            <p class="latin-name"><em>Lavandula angustifolia</em></p>
+            <p class="properties">
+              <strong>Propiedades:</strong> Relajante, antiséptica, analgésica
+            </p>
+            <p class="uses">
+              <strong>Usos:</strong> Estrés, insomnio, dolores de cabeza, quemaduras leves
+            </p>
+          </div>
+        </div>
+        
+        <div class="showcase-card aloe">
+          <div class="showcase-image">🌱</div>
+          <div class="showcase-content">
+            <h3>Aloe Vera</h3>
+            <p class="latin-name"><em>Aloe barbadensis</em></p>
+            <p class="properties">
+              <strong>Propiedades:</strong> Cicatrizante, hidratante, antiinflamatoria
+            </p>
+            <p class="uses">
+              <strong>Usos:</strong> Quemaduras, heridas, irritaciones, cuidado de la piel
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- In-article Ad antes de consejos -->
+    <AdSenseAd 
+      client:load
+      ad-slot="4567890123"
+      ad-type="in-article"
+      class-name="in-article-ad"
+      :show-label="false"
+    />
+
+    <!-- Cultivation Tips -->
+    <section class="cultivation-tips">
+      <div class="tips-content">
+        <h2 class="section-title">Consejos de Cultivo</h2>
+        <div class="tips-grid">
+          <div class="tip-item">
+            <span class="tip-icon">🌱</span>
+            <h4>Suelo Drenante</h4>
+            <p>Evita encharcamientos. La mayoría prefieren suelos bien drenados y ligeramente alcalinos.</p>
+          </div>
+          <div class="tip-item">
+            <span class="tip-icon">☀️</span>
+            <h4>Exposición Solar</h4>
+            <p>Muchas plantas medicinales concentran más principios activos con abundante sol.</p>
+          </div>
+          <div class="tip-item">
+            <span class="tip-icon">✂️</span>
+            <h4>Cosecha Oportuna</h4>
+            <p>Recolecta en las primeras horas del día, cuando la concentración de aceites es mayor.</p>
+          </div>
+          <div class="tip-item">
+            <span class="tip-icon">🏺</span>
+            <h4>Secado Adecuado</h4>
+            <p>Seca en lugares ventilados, oscuros y secos para preservar las propiedades.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="cta-content">
+        <h2 class="cta-title">¡Cultiva tu Farmacia Natural!</h2>
+        <p class="cta-description">
+          Empieza con plantas medicinales básicas y aprende gradualmente sobre sus usos 
+          y propiedades. La medicina natural ha acompañado a la humanidad durante milenios.
+        </p>
+        <div class="cta-buttons">
+          <a href="/tienda-de-semillas/" class="cta-button primary">Ver Semillas</a>
+          <a href="/contacto/" class="cta-button secondary">Consultar</a>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+.category-hero {
+  background: linear-gradient(135deg, #55a3ff 0%, #3742fa 100%);
+  color: white;
+  padding: 4rem 2rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  border-radius: 16px;
+}
+
+.hero-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  line-height: 1.1;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin: 0 0 1.5rem 0;
+  opacity: 0.9;
+}
+
+.hero-description {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2d5016;
+  text-align: center;
+  margin: 0 0 3rem 0;
+}
+
+/* Notice Section */
+.notice-section {
+  margin-bottom: 4rem;
+}
+
+.notice-card {
+  background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+  padding: 2rem;
+  border-radius: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  border-left: 4px solid #e17055;
+}
+
+.notice-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.notice-content h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #2d3436;
+  margin: 0 0 0.75rem 0;
+}
+
+.notice-content p {
+  color: #2d3436;
+  line-height: 1.6;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Medicine Categories */
+.medicine-categories {
+  margin-bottom: 4rem;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.category-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+}
+
+.category-card.digestive { border-top: 4px solid #00b894; }
+.category-card.relaxing { border-top: 4px solid #a29bfe; }
+.category-card.respiratory { border-top: 4px solid #74b9ff; }
+.category-card.healing { border-top: 4px solid #fd79a8; }
+
+.category-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.category-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #2d5016;
+  margin: 0 0 1rem 0;
+}
+
+.category-card p {
+  color: #666;
+  line-height: 1.6;
+  margin: 0 0 1.5rem 0;
+}
+
+.plant-examples {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.plant-examples li {
+  padding: 0.5rem 0;
+  color: #4a7c23;
+  font-weight: 500;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 0.9rem;
+}
+
+.plant-examples li:last-child {
+  border-bottom: none;
+}
+
+/* Preparation Methods */
+.preparation-methods {
+  background: linear-gradient(135deg, #f8fffe 0%, #e8f5f0 100%);
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  margin-bottom: 4rem;
+}
+
+.methods-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.method-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.method-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.method-card h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2d5016;
+  margin: 0 0 1rem 0;
+}
+
+.method-card p {
+  color: #666;
+  line-height: 1.6;
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+/* Popular Plants */
+.popular-plants {
+  margin-bottom: 4rem;
+}
+
+.plants-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.showcase-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.showcase-card:hover {
+  transform: translateY(-4px);
+}
+
+.showcase-image {
+  background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%);
+  padding: 3rem;
+  text-align: center;
+  font-size: 4rem;
+}
+
+.showcase-content {
+  padding: 2rem;
+}
+
+.showcase-content h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2d5016;
+  margin: 0 0 0.5rem 0;
+}
+
+.latin-name {
+  color: #666;
+  font-style: italic;
+  margin: 0 0 1rem 0;
+  font-size: 0.95rem;
+}
+
+.properties,
+.uses {
+  color: #2c3e50;
+  line-height: 1.6;
+  margin: 0 0 0.75rem 0;
+  font-size: 0.95rem;
+}
+
+/* Cultivation Tips */
+.cultivation-tips {
+  margin-bottom: 4rem;
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.tip-item {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.tip-item:hover {
+  transform: translateY(-4px);
+}
+
+.tip-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.tip-item h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2d5016;
+  margin: 0 0 1rem 0;
+}
+
+.tip-item p {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Plants Section */
+.plants-section {
+  margin-bottom: 4rem;
+}
+
+.no-plants {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.no-plants-message {
+  font-size: 1.2rem;
+  color: #666;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* CTA Section */
+.cta-section {
+  background: linear-gradient(135deg, #2d5016 0%, #4a7c23 100%);
+  color: white;
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.cta-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 1.5rem 0;
+}
+
+.cta-description {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto 2.5rem auto;
+  opacity: 0.9;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1.25rem 2.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.cta-button.primary {
+  background: white;
+  color: #2d5016;
+}
+
+.cta-button.primary:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+.cta-button.secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.cta-button.secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .categories-grid,
+  .methods-grid,
+  .plants-showcase,
+  .tips-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .notice-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cta-button {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+</style>

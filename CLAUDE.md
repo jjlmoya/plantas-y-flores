@@ -23,20 +23,20 @@ This is a Spanish-language plant and flower encyclopedia website migrated from W
 
 ### Content Architecture
 
-#### Content Collections (src/content/)
-- **`plants/`** - 113+ plant articles as markdown files with frontmatter
-- **`categories/`** - 24 category definitions as JSON data files
-- **`config.ts`** - Zod schemas for type safety
+#### Data Source
+- **`data/pages.json`** - Main content database with 113+ plant articles and category information
 
 #### Data Processing Pipeline
-1. **Migration Script** (`scripts/process-content.js`) - Converts WordPress JSON to Astro content collections
-2. **Original Scripts** (`_scripts/`) - WordPress scraping and processing tools (legacy)
+1. **Data Utilities** (`src/utils/data.js`) - Functions to read and process pages.json directly
+2. **Image Extraction** (`scripts/extract-main-images.js`) - Extracts main images from article HTML  
+3. **Content Cleaning** (`scripts/clean-related-articles.js`) - Removes hardcoded related articles from HTML
 
 ### Component System
 
 **Modular Vue Components** (`src/components/`):
-- `PlantCard.vue` - Reusable plant preview cards with hover effects
-- `PlantGrid.vue` - Responsive grid layout for plant collections
+- `PlantCard.vue` - Reusable plant preview cards with hover effects and image optimization
+- `PlantGrid.vue` - Responsive grid layout for plant collections  
+- `RelatedPlants.vue` - Dynamic related plants component with intelligent matching
 
 **Astro Layouts** (`src/layouts/`):
 - `BaseLayout.astro` - SEO-optimized base template with meta tags, Open Graph, Schema.org
@@ -59,14 +59,20 @@ npm run preview      # Preview production build
 
 ### Content Management
 ```bash
-# Process WordPress data into Astro collections
-node scripts/process-content.js
+# Extract and add main images to articles
+node scripts/extract-main-images.js
 
-# Legacy content processing (if updating from WordPress)
-cd _scripts
-node scrapper.js     # Fetch from WordPress API
-node format.js       # Clean and process HTML
-node scripts/process-content.js  # Convert to Astro format
+# Clean hardcoded related articles from HTML
+node scripts/clean-related-articles.js
+```
+
+### Testing
+```bash
+# Run Playwright tests
+npx playwright test
+
+# Start simple development server for testing
+node simple-server.js
 ```
 
 ### Deployment
@@ -99,7 +105,7 @@ npm run build        # Generate static files
 ## Image Management
 
 ### Organization
-- **Location**: `/public/images/2017/`, `/public/images/2018/`, etc.
+- **Location**: `/public/wp-content/uploads/2017/`, `/public/wp-content/uploads/2018/`, etc.
 - **Format**: Original WordPress directory structure preserved
 - **Processing**: Vue components automatically convert WordPress URLs to local paths
 
@@ -107,7 +113,7 @@ npm run build        # Generate static files
 ```javascript
 // PlantCard.vue automatically converts:
 // 'https://plantasyflores.online/wp-content/uploads/2017/07/image.jpg'
-// to: '/images/2017/07/image.jpg'
+// to: '/wp-content/uploads/2017/07/image.jpg'
 ```
 
 ## Content Categories (24 total)

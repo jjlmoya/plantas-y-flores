@@ -1,0 +1,621 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navigation from '../components/Navigation.vue';
+---
+
+<BaseLayout 
+  title="Tienda de Semillas - Plantas y Flores | Próximamente"
+  description="Cambia tu mundo y planta una semilla. Próximamente nuestra tienda online con las mejores semillas de plantas comestibles, aromáticas, medicinales y ornamentales. Semillas de calidad garantizada con guías de cultivo."
+  type="website"
+  canonical="https://plantasyflores.online/tienda-de-semillas/"
+  keywords="tienda semillas, semillas plantas, semillas online, semillas comestibles, semillas aromáticas, semillas medicinales, semillas flores, venta semillas"
+  category="Tienda"
+  tags={["tienda semillas", "semillas online", "venta semillas", "semillas plantas"]}
+  image="/brand/logo.png"
+>
+  <Navigation client:load />
+  
+  <div class="store-page">
+    <!-- Hero Section -->
+    <section class="store-hero">
+      <div class="hero-content">
+        <div class="hero-icon">🌱</div>
+        <h1 class="hero-title">Tienda de Semillas</h1>
+        <p class="hero-subtitle">Cambia tu mundo y planta una semilla</p>
+        <p class="hero-description">
+          Próximamente abriremos nuestra tienda online con una cuidadosa selección 
+          de semillas de alta calidad para tu jardín y huerta.
+        </p>
+      </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section class="coming-soon">
+      <div class="coming-soon-content">
+        <h2 class="section-title">¡Próximamente!</h2>
+        <p class="coming-soon-text">
+          Estamos preparando una experiencia de compra excepcional para traerte 
+          las mejores semillas seleccionadas especialmente para jardineros amateurs 
+          y expertos.
+        </p>
+        
+        <div class="features-preview">
+          <div class="feature-item">
+            <div class="feature-icon">✅</div>
+            <h4>Calidad Garantizada</h4>
+            <p>Semillas probadas con altas tasas de germinación</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🚚</div>
+            <h4>Envío Rápido</h4>
+            <p>Entrega en 24-48 horas en península</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">📚</div>
+            <h4>Guías Incluidas</h4>
+            <p>Instrucciones detalladas de siembra y cuidado</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">💬</div>
+            <h4>Soporte Experto</h4>
+            <p>Asesoramiento personalizado por jardineraamable</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Preview -->
+    <section class="categories-preview">
+      <h2 class="section-title">Categorías Disponibles</h2>
+      <div class="categories-grid">
+        <div class="category-preview edibles">
+          <div class="category-image">🥕</div>
+          <h3>Semillas Comestibles</h3>
+          <p>Tomates, lechugas, zanahorias, fresas y todo lo necesario para tu huerta casera.</p>
+          <ul class="seed-examples">
+            <li>Tomates cherry y beef</li>
+            <li>Lechugas y espinacas</li>
+            <li>Zanahorias y rábanos</li>
+            <li>Fresas y frambuesas</li>
+            <li>Calabacines y pepinos</li>
+          </ul>
+        </div>
+        
+        <div class="category-preview aromatics">
+          <div class="category-image">🌿</div>
+          <h3>Semillas Aromáticas</h3>
+          <p>Hierbas culinarias y plantas aromáticas para cocina y medicina natural.</p>
+          <ul class="seed-examples">
+            <li>Albahaca y orégano</li>
+            <li>Tomillo y romero</li>
+            <li>Lavanda y menta</li>
+            <li>Perejil y cilantro</li>
+            <li>Salvia y melisa</li>
+          </ul>
+        </div>
+        
+        <div class="category-preview flowers">
+          <div class="category-image">🌸</div>
+          <h3>Semillas de Flores</h3>
+          <p>Flores ornamentales para crear jardines coloridos y atraer polinizadores.</p>
+          <ul class="seed-examples">
+            <li>Girasoles y cosmos</li>
+            <li>Caléndulas y margaritas</li>
+            <li>Zinnias y petunias</li>
+            <li>Amapolas y tulipanes</li>
+            <li>Lavandas y rosas</li>
+          </ul>
+        </div>
+        
+        <div class="category-preview medicinal">
+          <div class="category-image">🌿</div>
+          <h3>Semillas Medicinales</h3>
+          <p>Plantas con propiedades terapéuticas para tu farmacia natural.</p>
+          <ul class="seed-examples">
+            <li>Manzanilla y tila</li>
+            <li>Equinácea y valeriana</li>
+            <li>Caléndula y malva</li>
+            <li>Hinojo y anís</li>
+            <li>Diente de león</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="newsletter-section">
+      <div class="newsletter-content">
+        <h2 class="newsletter-title">¡Sé el Primero en Saberlo!</h2>
+        <p class="newsletter-description">
+          Regístrate para recibir una notificación cuando abramos la tienda y 
+          obtén un descuento especial en tu primera compra.
+        </p>
+        
+        <form class="newsletter-form" action="#" method="POST">
+          <div class="form-group">
+            <input 
+              type="email" 
+              class="email-input" 
+              placeholder="Tu dirección de email"
+              required
+            >
+            <button type="submit" class="subscribe-btn">
+              Notificarme
+            </button>
+          </div>
+          <p class="form-note">
+            Te enviaremos máximo 1 email al mes con novedades y ofertas especiales.
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Contact Info -->
+    <section class="contact-info">
+      <div class="contact-content">
+        <h2 class="section-title">¿Tienes Preguntas?</h2>
+        <p class="contact-text">
+          Si necesitas semillas específicas o tienes consultas sobre disponibilidad, 
+          no dudes en contactarme directamente.
+        </p>
+        
+        <div class="contact-options">
+          <a href="mailto:contacto@plantasyflores.online" class="contact-option email">
+            <div class="option-icon">📧</div>
+            <div class="option-content">
+              <h4>Email Directo</h4>
+              <p>contacto@plantasyflores.online</p>
+            </div>
+          </a>
+          
+          <a href="/contacto/" class="contact-option form">
+            <div class="option-icon">📝</div>
+            <div class="option-content">
+              <h4>Formulario</h4>
+              <p>Página de contacto completa</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Current Recommendations -->
+    <section class="recommendations">
+      <div class="recommendations-content">
+        <h2 class="section-title">Mientras Tanto...</h2>
+        <p class="recommendations-text">
+          Puedes explorar nuestras guías de plantas para decidir qué semillas 
+          te gustaría cultivar cuando abramos la tienda.
+        </p>
+        
+        <div class="recommendation-links">
+          <a href="/plantas-comestibles/" class="rec-link">
+            <span class="rec-icon">🥕</span>
+            Plantas Comestibles
+          </a>
+          <a href="/plantas-aromaticas/" class="rec-link">
+            <span class="rec-icon">🌿</span>
+            Plantas Aromáticas
+          </a>
+          <a href="/plantas-medicinales/" class="rec-link">
+            <span class="rec-icon">🌱</span>
+            Plantas Medicinales
+          </a>
+          <a href="/plantas/" class="rec-link">
+            <span class="rec-icon">🌸</span>
+            Todas las Plantas
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+/* Store Hero */
+.store-hero {
+  background: linear-gradient(135deg, #26de81 0%, #20bf6b 100%);
+  color: white;
+  padding: 4rem 2rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  border-radius: 16px;
+}
+
+.hero-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  line-height: 1.1;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin: 0 0 1.5rem 0;
+  opacity: 0.9;
+  font-style: italic;
+}
+
+.hero-description {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2d5016;
+  text-align: center;
+  margin: 0 0 3rem 0;
+}
+
+/* Coming Soon */
+.coming-soon {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.coming-soon-text {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #2c3e50;
+  max-width: 700px;
+  margin: 0 auto 3rem auto;
+}
+
+.features-preview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.feature-item {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-4px);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.feature-item h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2d5016;
+  margin: 0 0 0.75rem 0;
+}
+
+.feature-item p {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Categories Preview */
+.categories-preview {
+  margin-bottom: 4rem;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.category-preview {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.category-preview:hover {
+  transform: translateY(-4px);
+}
+
+.category-preview.edibles {
+  border-top: 4px solid #ff6b6b;
+}
+
+.category-preview.aromatics {
+  border-top: 4px solid #4a7c23;
+}
+
+.category-preview.flowers {
+  border-top: 4px solid #fd79a8;
+}
+
+.category-preview.medicinal {
+  border-top: 4px solid #74b9ff;
+}
+
+.category-image {
+  background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%);
+  padding: 3rem;
+  text-align: center;
+  font-size: 4rem;
+}
+
+.category-preview h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2d5016;
+  margin: 0;
+  padding: 1.5rem 2rem 1rem 2rem;
+}
+
+.category-preview p {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0 2rem 1.5rem 2rem;
+}
+
+.seed-examples {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.seed-examples li {
+  padding: 0.5rem 2rem;
+  color: #4a7c23;
+  font-weight: 500;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 0.9rem;
+}
+
+.seed-examples li:last-child {
+  border-bottom: none;
+  padding-bottom: 2rem;
+}
+
+/* Newsletter */
+.newsletter-section {
+  background: linear-gradient(135deg, #f8fffe 0%, #e8f5f0 100%);
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.newsletter-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2d5016;
+  margin: 0 0 1rem 0;
+}
+
+.newsletter-description {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+}
+
+.newsletter-form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.form-group {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.email-input {
+  flex: 1;
+  padding: 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.email-input:focus {
+  border-color: #4a7c23;
+}
+
+.subscribe-btn {
+  background: #4a7c23;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.subscribe-btn:hover {
+  background: #2d5016;
+}
+
+.form-note {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0;
+}
+
+/* Contact Info */
+.contact-info {
+  margin-bottom: 4rem;
+}
+
+.contact-text {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #2c3e50;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+}
+
+.contact-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-option {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.contact-option:hover {
+  transform: translateY(-4px);
+}
+
+.option-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.option-content h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2d5016;
+  margin: 0 0 0.25rem 0;
+}
+
+.option-content p {
+  color: #666;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Recommendations */
+.recommendations {
+  background: linear-gradient(135deg, #2d5016 0%, #4a7c23 100%);
+  color: white;
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.recommendations .section-title {
+  color: white;
+}
+
+.recommendations-text {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+  opacity: 0.9;
+}
+
+.recommendation-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.rec-link {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  text-decoration: none;
+  padding: 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.rec-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.rec-icon {
+  font-size: 1.5rem;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .features-preview,
+  .categories-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-group {
+    flex-direction: column;
+  }
+  
+  .contact-options {
+    grid-template-columns: 1fr;
+  }
+  
+  .recommendation-links {
+    grid-template-columns: 1fr;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .store-hero {
+    padding: 3rem 1.5rem;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .newsletter-section {
+    padding: 2rem 1.5rem;
+  }
+  
+  .recommendations {
+    padding: 2rem 1.5rem;
+  }
+}
+</style>

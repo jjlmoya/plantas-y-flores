@@ -1,32 +1,54 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
+import RelatedPlants from '../../components/RelatedPlants.vue';
+import { generatePlantPaths, getPlants } from '../../utils/data.js';
 
 export async function getStaticPaths() {
-  const plants = await getCollection('plants');
-  
-  return plants.map(plant => {
-    const category = plant.data.categories[0]?.slug || 'plantas';
-    
-    return {
-      params: { 
-        category: category,
-        plant: plant.slug 
-      },
-      props: { plant }
-    };
-  });
+  return await generatePlantPaths();
 }
 
 const { plant } = Astro.props;
-const { Content } = await plant.render();
+const allPlants = await getPlants();
+
+// Preparar datos para RelatedPlants
+const currentPlantData = {
+  slug: plant.slug,
+  title: plant.data.title,
+  categories: plant.data.categories,
+  tags: plant.data.tags || []
+};
+
+const allPlantsData = allPlants.map(p => ({
+  slug: p.slug,
+  title: p.data.title,
+  excerpt: p.data.excerpt,
+  categories: p.data.categories,
+  tags: p.data.tags || [],
+  main_image: p.data.main_image,
+  featured_image: p.data.featured_image
+}));
 
 const category = plant.data.categories[0];
 const title = `${plant.data.title} - ${category?.name || 'Plantas'} - Plantas y Flores`;
 const description = plant.data.excerpt.replace(/<[^>]*>/g, '').substring(0, 160) + '...';
-const imageUrl = plant.data.featured_image 
-  ? plant.data.featured_image.replace('https://plantasyflores.online/wp-content/uploads/', '/images/')
-  : null;
+const getImagePath = (imageUrl) => {
+  if (!imageUrl) return null;
+  
+  // Si ya es una ruta local, devolverla tal como está
+  if (imageUrl.startsWith('/wp-content/uploads/')) {
+    return imageUrl;
+  }
+  
+  // Convertir URLs de WordPress a rutas locales
+  if (imageUrl.includes('plantasyflores.online/wp-content/uploads/')) {
+    return imageUrl.replace(/https?:\/\/[^/]*\/wp-content\/uploads\//, '/wp-content/uploads/');
+  }
+  
+  // Si no es una URL de WordPress, devolver tal como está
+  return imageUrl;
+};
+
+const imageUrl = getImagePath(plant.data.main_image || plant.data.featured_image);
 
 const formatDate = (dateString) => {
   return new Date(dateString).toLocaleDateString('es-ES', {
@@ -125,6 +147,14 @@ const structuredData = {
       </footer>
     )}
 
+    <!-- Related Plants -->
+    <RelatedPlants 
+      client:load
+      currentPlant={currentPlantData}
+      allPlants={allPlantsData}
+      maxResults={6}
+    />
+
     <!-- Navigation -->
     <div class="plant-article__navigation">
       <a href={`/${category?.slug || 'plantas'}/`} class="plant-article__back">
@@ -136,8 +166,9 @@ const structuredData = {
 
 <style>
 .plant-article {
-  max-width: 800px;
+  max-width: 850px;
   margin: 0 auto;
+  position: relative;
 }
 
 .plant-article__header {
@@ -169,11 +200,13 @@ const structuredData = {
 }
 
 .plant-article__title {
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: #2d5016;
-  margin: 0 0 1.5rem 0;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: #1a5511;
+  margin: 0 0 2rem 0;
   line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 4px rgba(26, 85, 17, 0.1);
 }
 
 .plant-article__meta {
@@ -212,26 +245,38 @@ const structuredData = {
 }
 
 .plant-article__image {
-  margin: 2rem 0;
-  border-radius: 12px;
+  margin: 3rem 0;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  position: relative;
+  background: linear-gradient(45deg, #f8f9fa, #e9ecef);
 }
 
 .plant-article__featured-image {
   width: 100%;
   height: auto;
   display: block;
+  object-fit: cover;
+  max-height: 500px;
+  transition: transform 0.3s ease;
+}
+
+.plant-article__image:hover .plant-article__featured-image {
+  transform: scale(1.02);
 }
 
 .plant-article__content {
-  background: white;
-  padding: 2.5rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  margin: 2rem 0;
-  line-height: 1.7;
-  font-size: 1.0625rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 3.5rem 3rem;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin: 3rem 0;
+  line-height: 1.8;
+  font-size: clamp(1rem, 2.5vw, 1.125rem);
+  position: relative;
 }
 
 .plant-article__content :global(h1),
@@ -246,17 +291,27 @@ const structuredData = {
 }
 
 .plant-article__content :global(h2) {
-  font-size: 1.75rem;
-  border-bottom: 2px solid #e8f5e8;
-  padding-bottom: 0.5rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  border-bottom: 3px solid #dcfce7;
+  padding-bottom: 0.8rem;
+  margin-top: 3rem;
+  position: relative;
+}
+
+.plant-article__content :global(h2):first-child {
+  margin-top: 0;
 }
 
 .plant-article__content :global(h3) {
-  font-size: 1.5rem;
+  font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+  margin-top: 2.5rem;
+  color: #166534;
 }
 
 .plant-article__content :global(p) {
-  margin: 0 0 1.25rem 0;
+  margin: 0 0 1.5rem 0;
+  text-align: justify;
+  hyphens: auto;
 }
 
 .plant-article__content :global(ul),
@@ -282,18 +337,27 @@ const structuredData = {
 .plant-article__content :global(img) {
   max-width: 100%;
   height: auto;
-  border-radius: 8px;
-  margin: 1rem 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  margin: 2rem auto;
+  display: block;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plant-article__content :global(img):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
 }
 
 .plant-article__content :global(blockquote) {
-  background: #f8fdf8;
-  border-left: 4px solid #4a7c23;
-  margin: 1.5rem 0;
-  padding: 1rem 1.5rem;
-  border-radius: 0 8px 8px 0;
+  background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+  border-left: 5px solid #22c55e;
+  margin: 2rem 0;
+  padding: 1.5rem 2rem;
+  border-radius: 0 16px 16px 0;
   font-style: italic;
+  position: relative;
+  box-shadow: 0 4px 16px rgba(34, 197, 94, 0.1);
 }
 
 .plant-article__footer {
@@ -346,13 +410,15 @@ const structuredData = {
 }
 
 @media (max-width: 768px) {
-  .plant-article__title {
-    font-size: 2rem;
+  .plant-article__image {
+    margin: 2rem 0;
+    border-radius: 16px;
   }
   
   .plant-article__content {
-    padding: 2rem 1.5rem;
-    margin: 1.5rem 0;
+    padding: 2.5rem 2rem;
+    margin: 2rem 0;
+    border-radius: 20px;
   }
   
   .plant-article__meta {
@@ -360,19 +426,58 @@ const structuredData = {
     align-items: flex-start;
     gap: 1rem;
   }
+  
+  .plant-article__content :global(h2) {
+    margin-top: 2rem;
+    padding-bottom: 0.6rem;
+  }
+  
+  .plant-article__content :global(img) {
+    margin: 1.5rem auto;
+    border-radius: 12px;
+  }
+  
+  .plant-article__content :global(blockquote) {
+    margin: 1.5rem 0;
+    padding: 1.2rem 1.5rem;
+    border-radius: 0 12px 12px 0;
+  }
 }
 
 @media (max-width: 480px) {
-  .plant-article__title {
-    font-size: 1.75rem;
+  .plant-article__image {
+    margin: 1.5rem 0;
+    border-radius: 12px;
   }
   
   .plant-article__content {
-    padding: 1.5rem 1rem;
+    padding: 2rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 16px;
   }
   
   .breadcrumb {
     font-size: 0.8rem;
+  }
+  
+  .plant-article__content :global(h2) {
+    margin-top: 1.5rem;
+  }
+  
+  .plant-article__content :global(h3) {
+    margin-top: 1.2rem;
+  }
+  
+  .plant-article__content :global(p) {
+    text-align: left;
+    margin-bottom: 1.2rem;
+  }
+  
+  .plant-article__content :global(blockquote) {
+    margin: 1rem 0;
+    padding: 1rem 1.2rem;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.95rem;
   }
 }
 </style>

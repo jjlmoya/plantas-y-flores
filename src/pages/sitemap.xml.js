@@ -1,8 +1,8 @@
-import { getCollection } from 'astro:content';
+import { getPlants, getCategories } from '../utils/data.js';
 
 export async function GET() {
-  const plants = await getCollection('plants');
-  const categories = await getCollection('categories');
+  const plants = await getPlants();
+  const categories = await getCategories();
 
   const sitemapEntries = [
     // Homepage
@@ -15,7 +15,7 @@ export async function GET() {
     
     // Category pages
     ...categories.map(category => ({
-      url: `https://plantasyflores.com/${category.id}/`,
+      url: `https://plantasyflores.com/${category.data.slug}/`,
       lastmod: new Date().toISOString(),
       changefreq: 'weekly',
       priority: 0.8

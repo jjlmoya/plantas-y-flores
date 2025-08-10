@@ -1,0 +1,433 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navigation from '../components/Navigation.vue';
+import PlantGrid from '../components/PlantGrid.vue';
+import { getPlants } from '../utils/data.js';
+
+// Filtrar plantas comestibles
+const allPlants = await getPlants();
+const edibleCategorySlugs = ['plantas-comestibles', 'tomate', 'fresa', 'patata', 'col', 'mango', 'platano', 'pina'];
+const ediblePlants = allPlants.filter(plant => 
+  plant.data.categories.some(cat => {
+    const slug = cat.slug || cat;
+    return edibleCategorySlugs.includes(slug);
+  })
+);
+
+const plantsData = ediblePlants.map(plant => ({
+  id: plant.data.id,
+  slug: plant.slug,
+  title: plant.data.title,
+  excerpt: plant.data.excerpt,
+  date: plant.data.date,
+  featured_image: plant.data.featured_image,
+  main_image: plant.data.main_image,
+  categories: plant.data.categories
+}));
+
+// Obtener categorías únicas de las plantas filtradas
+const availableCategories = [...new Set(
+  ediblePlants.flatMap(plant => 
+    plant.data.categories.map(cat => ({
+      slug: cat.slug || cat,
+      name: cat.name || cat
+    }))
+  )
+)].sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<BaseLayout 
+  title="Plantas Comestibles - Guía de Cultivo de Frutas y Verduras | Plantas y Flores"
+  description="Aprende a cultivar tus propias plantas comestibles en casa. Guías completas de frutas, verduras y hortalizas: tomates, fresas, patatas, coles, mangos y más. Cultivo orgánico paso a paso para tu huerta casera."
+  type="website"
+  canonical="https://plantasyflores.online/plantas-comestibles/"
+  keywords="plantas comestibles, huerta casera, cultivo orgánico, tomates, fresas, patatas, verduras, frutas, hortalizas, agricultura urbana, jardín comestible"
+  category="Plantas Comestibles"
+  tags={["plantas comestibles", "huerta casera", "cultivo orgánico", "verduras", "frutas", "agricultura urbana"]}
+  image="/brand/logo.png"
+>
+  <Navigation client:load />
+  
+  <div class="category-page">
+    <!-- Hero Section -->
+    <section class="category-hero">
+      <div class="hero-content">
+        <div class="hero-icon">🥕</div>
+        <h1 class="hero-title">Plantas Comestibles</h1>
+        <p class="hero-subtitle">Cultiva tu propia comida fresca y saludable</p>
+        <p class="hero-description">
+          Descubre el placer de cultivar tus propias frutas, verduras y hortalizas. 
+          Desde tomates jugosos hasta fresas dulces, aprende todo lo que necesitas 
+          para tener una huerta productiva en casa.
+        </p>
+      </div>
+    </section>
+
+    <!-- Plants Grid -->
+    <section class="plants-section">
+      <PlantGrid 
+        client:load
+        plants={plantsData}
+        title={`Plantas Comestibles (${plantsData.length})`}
+        description={plantsData.length > 0 ? "Todas nuestras guías de cultivo para plantas comestibles" : "Próximamente añadiremos más guías de plantas comestibles"}
+      />
+    </section>
+
+    {plantsData.length > 0 && (
+      <section class="cta-section">
+        <div class="cta-content">
+          <h2 class="cta-title">¿Listo para Empezar tu Huerta?</h2>
+          <p class="cta-description">
+            Explora nuestras guías detalladas de cultivo y empieza a cultivar 
+            tus propias plantas comestibles en casa.
+          </p>
+          <div class="cta-buttons">
+            <a href="/tienda-de-semillas/" class="cta-button primary">Ver Semillas</a>
+            <a href="/contacto/" class="cta-button secondary">Pedir Consejos</a>
+          </div>
+        </div>
+      </section>
+    )}
+  </div>
+</BaseLayout>
+
+<style>
+/* Hero Section */
+.category-hero {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+  color: white;
+  padding: 4rem 2rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  border-radius: 16px;
+}
+
+.hero-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  line-height: 1.1;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin: 0 0 1.5rem 0;
+  opacity: 0.9;
+}
+
+.hero-description {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+/* Benefits Section */
+.benefits-section {
+  margin-bottom: 4rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2d5016;
+  text-align: center;
+  margin: 0 0 3rem 0;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.benefit-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-4px);
+}
+
+.benefit-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.benefit-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2d5016;
+  margin: 0 0 1rem 0;
+}
+
+.benefit-card p {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Subcategories Section */
+.subcategories-section {
+  margin-bottom: 4rem;
+}
+
+.subcategories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.subcategory-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.subcategory-card:hover {
+  transform: translateY(-4px);
+}
+
+.subcategory-card.fruits {
+  border-top: 4px solid #ff6b6b;
+}
+
+.subcategory-card.vegetables {
+  border-top: 4px solid #26de81;
+}
+
+.subcategory-card.herbs {
+  border-top: 4px solid #4a7c23;
+}
+
+.subcategory-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.subcategory-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2d5016;
+  margin: 0 0 1rem 0;
+}
+
+.subcategory-card p {
+  color: #666;
+  line-height: 1.6;
+  margin: 0 0 1.5rem 0;
+}
+
+.plant-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.plant-list li {
+  padding: 0.5rem 0;
+  color: #4a7c23;
+  font-weight: 500;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.plant-list li:last-child {
+  border-bottom: none;
+}
+
+/* Tips Section */
+.tips-section {
+  background: linear-gradient(135deg, #f8fffe 0%, #e8f5f0 100%);
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  margin-bottom: 4rem;
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.tip-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.tip-number {
+  background: #4a7c23;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+.tip-content h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2d5016;
+  margin: 0 0 0.5rem 0;
+}
+
+.tip-content p {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* Plants Section */
+.plants-section {
+  margin-bottom: 4rem;
+}
+
+.no-plants {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.no-plants-message {
+  font-size: 1.2rem;
+  color: #666;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* CTA Section */
+.cta-section {
+  background: linear-gradient(135deg, #2d5016 0%, #4a7c23 100%);
+  color: white;
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.cta-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 1.5rem 0;
+}
+
+.cta-description {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto 2.5rem auto;
+  opacity: 0.9;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1.25rem 2.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.cta-button.primary {
+  background: white;
+  color: #2d5016;
+}
+
+.cta-button.primary:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+.cta-button.secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.cta-button.secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem;
+  }
+  
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .subcategories-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .tips-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cta-button {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-hero {
+    padding: 3rem 1.5rem;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .tips-section {
+    padding: 2rem 1.5rem;
+  }
+  
+  .cta-section {
+    padding: 2rem 1.5rem;
+  }
+}
+</style>

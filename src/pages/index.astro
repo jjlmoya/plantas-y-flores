@@ -1,19 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Navigation from '../components/Navigation.vue';
 import PlantGrid from '../components/PlantGrid.vue';
-import { getCollection } from 'astro:content';
+import AdSenseAd from '../components/AdSenseAd.vue';
+import { getPlants, getCategories } from '../utils/data.js';
 
 // Obtener todas las plantas y ordenarlas por fecha
-const plants = await getCollection('plants');
+const plants = await getPlants();
 const sortedPlants = plants
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
-  .slice(0, 12); // Mostrar las 12 más recientes
+  .slice(0, 8); // Mostrar las 8 más recientes
 
 // Obtener categorías populares
-const categories = await getCollection('categories');
+const categories = await getCategories();
 const popularCategories = categories
   .sort((a, b) => b.data.posts_count - a.data.posts_count)
-  .slice(0, 6);
+  .slice(0, 5);
 
 const plantsData = sortedPlants.map(plant => ({
   id: plant.data.id,
@@ -22,37 +24,123 @@ const plantsData = sortedPlants.map(plant => ({
   excerpt: plant.data.excerpt,
   date: plant.data.date,
   featured_image: plant.data.featured_image,
+  main_image: plant.data.main_image,
   categories: plant.data.categories
 }));
 ---
 
 <BaseLayout 
-  title="Plantas y Flores - Guía completa de jardinería y cultivo"
-  description="Descubre todo sobre plantas, flores y jardinería. Guías de cultivo, cuidados y consejos para tu jardín. La mejor información sobre botánica y horticultura."
+  title="Plantas y Flores - Guía de jardinería, cultivo y cuidado de plantas"
+  description="Bienvenido a Plantas y Flores, tu guía personal para el mundo de la jardinería. Descubre plantas medicinales, aromáticas, comestibles, de interior y exterior. Información completa sobre cultivo, cuidados, historia y propiedades de cada planta."
+  type="website"
+  canonical="https://plantasyflores.online/"
+  keywords="plantas, flores, jardinería, cultivo, plantas medicinales, plantas aromáticas, plantas comestibles, jardineraamable, guía de plantas, cuidado de plantas"
+  publishedDate="2024-01-01T00:00:00.000Z"
+  modifiedDate={new Date().toISOString()}
+  image="/brand/logo.png"
 >
+  <Navigation client:load />
+  
   <div class="homepage">
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero__content">
-        <h1 class="hero__title">Plantas y Flores</h1>
-        <p class="hero__subtitle">
-          Tu guía completa para el mundo de la jardinería y el cultivo
-        </p>
-        <p class="hero__description">
-          Descubre información detallada sobre cientos de especies de plantas y flores, 
-          aprende técnicas de cultivo y mantén tu jardín siempre floreciente.
-        </p>
+    <!-- Welcome Section -->
+    <section class="welcome">
+      <div class="welcome-header">
+        <div class="logo-container">
+          <img src="/brand/logo.png" alt="Plantas y Flores" class="main-logo">
+        </div>
+        <h1 class="site-title">Plantas y Flores</h1>
+        <p class="site-tagline">Una guía personal para el mundo de las plantas</p>
+      </div>
+      
+      <div class="welcome-content">
+        <div class="intro-text">
+          <p class="greeting">¡Hola! Soy <strong>jardineraamable</strong> y te doy la bienvenida a mi colección personal de información sobre plantas y flores.</p>
+          
+          <p>Durante años he recopilado información sobre diferentes especies de plantas, desde las más comunes hasta las más exóticas. En este sitio comparto contigo todo lo que he aprendido sobre:</p>
+          
+          <ul class="features-list">
+            <li>🌿 <strong>Plantas medicinales</strong> - Propiedades curativas y usos tradicionales</li>
+            <li>🌳 <strong>Plantas de exterior</strong> - Para jardines, patios y espacios abiertos</li>
+            <li>🏠 <strong>Plantas de interior</strong> - Perfectas para decorar tu hogar</li>
+            <li>🌱 <strong>Plantas aromáticas</strong> - Hierbas y especias para la cocina</li>
+            <li>🥕 <strong>Plantas comestibles</strong> - Frutas, verduras y hortalizas</li>
+          </ul>
+          
+          <div class="commitment">
+            <p>Mi compromiso es brindarte información detallada sobre cada planta que encontrarás aquí:</p>
+            <div class="info-grid">
+              <div class="info-item">🏡 <strong>Hábitat natural</strong></div>
+              <div class="info-item">🌱 <strong>Técnicas de cultivo</strong></div>
+              <div class="info-item">📚 <strong>Historia y origen</strong></div>
+              <div class="info-item">💫 <strong>Significado simbólico</strong></div>
+              <div class="info-item">🔬 <strong>Propiedades nutricionales</strong></div>
+              <div class="info-item">💚 <strong>Cuidados específicos</strong></div>
+            </div>
+          </div>
+          
+          <p class="invitation">Te invito a explorar, aprender y cultivar. Si tienes alguna pregunta o sugerencia, no dudes en contactarme. ¡Juntos haremos crecer este jardín de conocimiento!</p>
+        </div>
       </div>
     </section>
 
-    <!-- Categories Section -->
-    <section class="categories-section">
-      <h2 class="section-title">Categorías Populares</h2>
+    <!-- Plant Categories Section -->
+    <section class="plant-categories">
+      <h2 class="section-title">Explora por Categorías</h2>
       <div class="categories-grid">
+        <div class="category-card medicinal">
+          <div class="category-icon">🌿</div>
+          <h3 class="category-title">Plantas Medicinales</h3>
+          <p class="category-description">Descubre las propiedades curativas de plantas tradicionales y aprende sobre sus usos terapéuticos.</p>
+          <a href="/plantas-medicinales/" class="category-link">Ver plantas medicinales</a>
+        </div>
+        
+        <div class="category-card outdoor">
+          <div class="category-icon">🌳</div>
+          <h3 class="category-title">Plantas de Exterior</h3>
+          <p class="category-description">Todo lo que necesitas saber para cultivar un hermoso jardín exterior lleno de vida y color.</p>
+          <a href="/plantas-exterior/" class="category-link">Ver plantas exteriores</a>
+        </div>
+        
+        <div class="category-card indoor">
+          <div class="category-icon">🏠</div>
+          <h3 class="category-title">Plantas de Interior</h3>
+          <p class="category-description">Transforma tu hogar con plantas que purifican el aire y alegran cualquier espacio interior.</p>
+          <a href="/plantas-interior/" class="category-link">Ver plantas interiores</a>
+        </div>
+        
+        <div class="category-card aromatic">
+          <div class="category-icon">🌱</div>
+          <h3 class="category-title">Plantas Aromáticas</h3>
+          <p class="category-description">Cultiva tu propio jardín de hierbas aromáticas para cocinar y disfrutar de sus fragancias.</p>
+          <a href="/plantas-aromaticas/" class="category-link">Ver plantas aromáticas</a>
+        </div>
+        
+        <div class="category-card edible">
+          <div class="category-icon">🥕</div>
+          <h3 class="category-title">Plantas Comestibles</h3>
+          <p class="category-description">Aprende a cultivar tus propias frutas, verduras y hortalizas en casa de forma natural.</p>
+          <a href="/plantas-comestibles/" class="category-link">Ver plantas comestibles</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Native Ad entre categorías -->
+    <AdSenseAd 
+      client:load
+      ad-slot="7025476649"
+      ad-type="in-feed"
+      class-name="category-native-ad"
+      :responsive="true"
+    />
+
+    <!-- Popular Categories Section -->
+    <section class="popular-section">
+      <h2 class="section-title">Categorías más Visitadas</h2>
+      <div class="popular-grid">
         {popularCategories.map(category => (
-          <a href={`/${category.id}/`} class="category-card">
-            <h3 class="category-card__title">{category.data.name}</h3>
-            <p class="category-card__count">
+          <a href={`/${category.data.slug}/`} class="popular-card">
+            <h3 class="popular-card__title">{category.data.name}</h3>
+            <p class="popular-card__count">
               {category.data.posts_count} {category.data.posts_count === 1 ? 'artículo' : 'artículos'}
             </p>
           </a>
@@ -65,98 +153,256 @@ const plantsData = sortedPlants.map(plant => ({
       <PlantGrid 
         client:load
         plants={plantsData}
-        title="Artículos Recientes"
-        description="Los últimos artículos sobre plantas y flores añadidos a nuestra colección"
+        title="Últimos Artículos Publicados"
+        description="Los artículos más recientes sobre plantas y flores añadidos a nuestra colección"
       />
       
       <div class="view-all">
         <a href="/plantas/" class="view-all__link">Ver todos los artículos</a>
       </div>
     </section>
+
   </div>
 </BaseLayout>
 
 <style>
-.hero {
-  background: linear-gradient(135deg, #4a7c23 0%, #2d5016 100%);
-  color: white;
-  padding: 4rem 2rem;
+/* Welcome Section */
+.welcome {
+  background: linear-gradient(135deg, #f8fffe 0%, #e8f5f0 100%);
   border-radius: 16px;
-  margin-bottom: 4rem;
+  padding: 3rem 2rem;
+  margin-bottom: 3rem;
   text-align: center;
+  border: 1px solid rgba(74, 124, 35, 0.1);
 }
 
-.hero__title {
+.welcome-header {
+  margin-bottom: 2.5rem;
+}
+
+.logo-container {
+  margin-bottom: 1.5rem;
+}
+
+.main-logo {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  display: block;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+.site-title {
   font-size: 3rem;
   font-weight: 800;
-  margin: 0 0 1rem 0;
+  color: #2d5016;
+  margin: 0 0 0.5rem 0;
   line-height: 1.1;
 }
 
-.hero__subtitle {
-  font-size: 1.5rem;
-  font-weight: 300;
-  margin: 0 0 1.5rem 0;
-  opacity: 0.9;
+.site-tagline {
+  font-size: 1.25rem;
+  color: #4a7c23;
+  font-weight: 500;
+  margin: 0;
+  font-style: italic;
 }
 
-.hero__description {
-  font-size: 1.125rem;
-  max-width: 600px;
+.welcome-content {
+  max-width: 900px;
   margin: 0 auto;
-  line-height: 1.6;
-  opacity: 0.85;
+  text-align: left;
+}
+
+.intro-text {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: #2c3e50;
+}
+
+.greeting {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #2d5016;
+}
+
+.features-list {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  margin: 2rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid #4a7c23;
+}
+
+.features-list li {
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.features-list li:last-child {
+  margin-bottom: 0;
+}
+
+.commitment {
+  background: rgba(74, 124, 35, 0.05);
+  padding: 2rem;
+  border-radius: 12px;
+  margin: 2rem 0;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.info-item {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.invitation {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(74, 124, 35, 0.1);
+  border-radius: 12px;
+  color: #2d5016;
+  font-weight: 500;
+}
+
+/* Plant Categories Section */
+.plant-categories {
+  margin-bottom: 4rem;
 }
 
 .section-title {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 700;
   color: #2d5016;
   text-align: center;
-  margin: 0 0 2rem 0;
-}
-
-.categories-section {
-  margin-bottom: 4rem;
+  margin: 0 0 3rem 0;
 }
 
 .categories-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
 }
 
 .category-card {
   background: white;
-  padding: 2rem 1.5rem;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.category-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 30px rgba(74, 124, 35, 0.15);
+}
+
+.category-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #4a7c23, #2d5016);
+}
+
+.category-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.category-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2d5016;
+  margin: 0 0 1rem 0;
+}
+
+.category-description {
+  color: #666;
+  line-height: 1.6;
+  margin: 0 0 1.5rem 0;
+}
+
+.category-link {
+  display: inline-block;
+  background: #4a7c23;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.category-link:hover {
+  background: #2d5016;
+}
+
+/* Popular Categories Section */
+.popular-section {
+  margin-bottom: 4rem;
+}
+
+.popular-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+
+.popular-card {
+  background: white;
+  padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   text-decoration: none;
   color: inherit;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 4px solid #4a7c23;
 }
 
-.category-card:hover {
+.popular-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
-.category-card__title {
+.popular-card__title {
   font-size: 1.25rem;
   font-weight: 600;
   color: #2d5016;
   margin: 0 0 0.5rem 0;
+  text-transform: capitalize;
 }
 
-.category-card__count {
+.popular-card__count {
   color: #666;
   font-size: 0.875rem;
   margin: 0;
 }
 
+/* Recent Section */
 .recent-section {
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
 }
 
 .view-all {
@@ -168,47 +414,125 @@ const plantsData = sortedPlants.map(plant => ({
   display: inline-block;
   background: #4a7c23;
   color: white;
-  padding: 1rem 2rem;
-  border-radius: 8px;
+  padding: 1.25rem 2.5rem;
+  border-radius: 12px;
   text-decoration: none;
   font-weight: 600;
-  transition: background-color 0.3s ease;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
 }
 
 .view-all__link:hover {
   background: #2d5016;
+  transform: translateY(-2px);
 }
 
+/* Social Section */
+.social-section {
+  background: linear-gradient(135deg, #2d5016 0%, #4a7c23 100%);
+  color: white;
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.social-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+}
+
+.social-description {
+  font-size: 1.125rem;
+  margin: 0 0 2rem 0;
+  opacity: 0.9;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.feedback-text {
+  font-size: 1rem;
+  opacity: 0.85;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Mobile Styles */
 @media (max-width: 768px) {
-  .hero {
-    padding: 3rem 1.5rem;
-    margin-bottom: 3rem;
+  .main-logo {
+    width: 80px;
+    height: 80px;
   }
   
-  .hero__title {
+  .site-title {
     font-size: 2.5rem;
   }
   
-  .hero__subtitle {
-    font-size: 1.25rem;
+  .welcome {
+    padding: 2rem 1.5rem;
   }
   
   .categories-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1rem;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
   
   .category-card {
-    padding: 1.5rem 1rem;
+    padding: 2rem 1.5rem;
+  }
+  
+  .popular-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .social-links {
+    flex-wrap: wrap;
   }
 }
 
 @media (max-width: 480px) {
-  .hero__title {
+  .site-title {
     font-size: 2rem;
   }
   
-  .categories-grid {
+  .welcome-content {
+    text-align: center;
+  }
+  
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .popular-grid {
     grid-template-columns: 1fr;
   }
 }

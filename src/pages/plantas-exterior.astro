@@ -1,0 +1,290 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navigation from '../components/Navigation.vue';
+import PlantGrid from '../components/PlantGrid.vue';
+import { getPlants } from '../utils/data.js';
+
+// Filtrar plantas de exterior
+const allPlants = await getPlants();
+const outdoorCategorySlugs = ['rosa', 'hibiscus', 'azalea', 'hortensias', 'tulipan', 'amapola', 'cosmos', 'margarita', 'lirios'];
+const outdoorPlants = allPlants.filter(plant => 
+  plant.data.categories.some(cat => {
+    const slug = cat.slug || cat;
+    return outdoorCategorySlugs.includes(slug);
+  })
+);
+
+const plantsData = outdoorPlants.map(plant => ({
+  id: plant.data.id,
+  slug: plant.slug,
+  title: plant.data.title,
+  excerpt: plant.data.excerpt,
+  date: plant.data.date,
+  featured_image: plant.data.featured_image,
+  main_image: plant.data.main_image,
+  categories: plant.data.categories
+}));
+
+// Obtener categorías únicas de las plantas filtradas
+const availableCategories = [...new Set(
+  outdoorPlants.flatMap(plant => 
+    plant.data.categories.map(cat => ({
+      slug: cat.slug || cat,
+      name: cat.name || cat
+    }))
+  )
+)].sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<BaseLayout 
+  title="Plantas de Exterior - Guía para Jardines y Espacios Abiertos | Plantas y Flores"
+  description="Cultiva hermosas plantas de exterior: rosas, hibiscus, azaleas, hortensias y más flores de jardín. Guías completas para crear jardines espectaculares con plantas resistentes al aire libre."
+  type="website"
+  canonical="https://plantasyflores.online/plantas-exterior/"
+  keywords="plantas de exterior, plantas para jardín, flores de jardín, rosas, hibiscus, azaleas, hortensias, jardinería exterior, plantas resistentes, jardín al aire libre"
+  category="Plantas de Exterior"
+  tags={["plantas exteriores", "flores de jardín", "jardinería", "plantas resistentes", "jardín al aire libre"]}
+  image="/brand/logo.png"
+>
+  <Navigation client:load />
+  
+  <div class="category-page">
+    <!-- Hero Section -->
+    <section class="category-hero">
+      <div class="hero-content">
+        <div class="hero-icon">🌳</div>
+        <h1 class="hero-title">Plantas de Exterior</h1>
+        <p class="hero-subtitle">Crea jardines espectaculares al aire libre</p>
+        <p class="hero-description">
+          Descubre las mejores plantas para jardines, terrazas y balcones. 
+          Desde rosales clásicos hasta arbustos floridos, aprende a crear 
+          espacios exteriores llenos de color y vida durante todo el año.
+        </p>
+      </div>
+    </section>
+
+      <!-- Plants Grid -->
+    <section class="plants-section">
+      <PlantGrid 
+        client:load
+        plants={plantsData}
+        title={`Plantas de Exterior (${plantsData.length})`}
+        description={plantsData.length > 0 ? "Todas nuestras guías para plantas de exterior" : "Próximamente añadiremos más guías específicas para plantas de exterior"}
+      />
+    </section>
+    
+    <!-- Categories Available -->
+    {availableCategories.length > 0 && (
+      <section class="categories-section">
+        <h2 class="section-title">Categorías Disponibles</h2>
+        <div class="categories-grid">
+          {availableCategories.map(category => (
+            <a href={`/${category.slug}/`} class="category-card">
+              <h3 class="category-title">{category.name}</h3>
+              <p class="category-count">
+                {outdoorPlants.filter(plant => 
+                  plant.data.categories.some(cat => (cat.slug || cat) === category.slug)
+                ).length} {outdoorPlants.filter(plant => 
+                  plant.data.categories.some(cat => (cat.slug || cat) === category.slug)
+                ).length === 1 ? 'artículo' : 'artículos'}
+              </p>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+  
+
+    {plantsData.length > 0 && (
+      <section class="cta-section">
+        <div class="cta-content">
+          <h2 class="cta-title">¡Crea tu Jardín Perfecto!</h2>
+          <p class="cta-description">
+            Cada estación trae nuevas oportunidades para embellecer tu espacio exterior. 
+            Empieza con plantas resistentes y ve experimentando con especies más delicadas.
+          </p>
+          <div class="cta-buttons">
+            <a href="/tienda-de-semillas/" class="cta-button primary">Ver Semillas</a>
+            <a href="/contacto/" class="cta-button secondary">Consultar Experto</a>
+          </div>
+        </div>
+      </section>
+    )}
+  </div>
+</BaseLayout>
+
+<style>
+.category-hero {
+  background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+  color: white;
+  padding: 4rem 2rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  border-radius: 16px;
+}
+
+.hero-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  line-height: 1.1;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin: 0 0 1.5rem 0;
+  opacity: 0.9;
+}
+
+.hero-description {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2d5016;
+  text-align: center;
+  margin: 0 0 3rem 0;
+}
+
+.categories-section {
+  margin-bottom: 4rem;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.category-card {
+  background: white;
+  padding: 2rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-top: 4px solid #00b894;
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.category-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2d5016;
+  margin: 0 0 0.5rem 0;
+  text-transform: capitalize;
+}
+
+.category-count {
+  color: #666;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.plants-section {
+  margin-bottom: 4rem;
+}
+
+.cta-section {
+  background: linear-gradient(135deg, #2d5016 0%, #4a7c23 100%);
+  color: white;
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.cta-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 1.5rem 0;
+}
+
+.cta-description {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto 2.5rem auto;
+  opacity: 0.9;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1.25rem 2.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.cta-button.primary {
+  background: white;
+  color: #2d5016;
+}
+
+.cta-button.primary:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+.cta-button.secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.cta-button.secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .categories-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cta-button {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+</style>

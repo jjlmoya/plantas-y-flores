@@ -1,0 +1,611 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navigation from '../components/Navigation.vue';
+import PlantGrid from '../components/PlantGrid.vue';
+import { getPlants } from '../utils/data.js';
+
+// Filtrar plantas de interior
+const allPlants = await getPlants();
+const indoorCategorySlugs = ['orquidea', 'pensamiento']; // Categorías más adecuadas para interior
+const indoorPlants = allPlants.filter(plant => 
+  plant.data.categories.some(cat => {
+    const slug = cat.slug || cat;
+    return indoorCategorySlugs.includes(slug);
+  })
+);
+
+const plantsData = indoorPlants.map(plant => ({
+  id: plant.data.id,
+  slug: plant.slug,
+  title: plant.data.title,
+  excerpt: plant.data.excerpt,
+  date: plant.data.date,
+  featured_image: plant.data.featured_image,
+  main_image: plant.data.main_image,
+  categories: plant.data.categories
+}));
+
+// Obtener categorías únicas de las plantas filtradas
+const availableCategories = [...new Set(
+  indoorPlants.flatMap(plant => 
+    plant.data.categories.map(cat => ({
+      slug: cat.slug || cat,
+      name: cat.name || cat
+    }))
+  )
+)].sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<BaseLayout 
+  title="Plantas de Interior - Guía Completa para Decorar tu Hogar | Plantas y Flores"
+  description="Descubre las mejores plantas de interior para tu hogar. Guías completas de cuidado, riego y ubicación perfecta. Orquídeas, plantas purificadoras de aire y más especies ideales para interiores."
+  type="website"
+  canonical="https://plantasyflores.online/plantas-interior/"
+  keywords="plantas de interior, plantas para casa, orquídeas, plantas purificadoras, decoración con plantas, cuidado plantas interior, plantas bajo techo, jardinería interior"
+  category="Plantas de Interior"
+  tags={["plantas de interior", "plantas casa", "decoración plantas", "plantas purificadoras", "jardinería interior"]}
+  image="/brand/logo.png"
+>
+  <Navigation client:load />
+  
+  <div class="category-page">
+    <!-- Hero Section -->
+    <section class="category-hero">
+      <div class="hero-content">
+        <div class="hero-icon">🏠</div>
+        <h1 class="hero-title">Plantas de Interior</h1>
+        <p class="hero-subtitle">Transforma tu hogar en un oasis verde</p>
+        <p class="hero-description">
+          Descubre cómo llenar tu hogar de vida y belleza con plantas de interior. 
+          Desde especies fáciles de cuidar hasta exóticas orquídeas, encuentra 
+          la planta perfecta para cada espacio de tu casa.
+        </p>
+      </div>
+    </section>
+
+        <!-- Care Tips */
+    <section class="care-tips">
+      <h2 class="section-title">Consejos de Cuidado Esenciales</h2>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <div class="tip-icon">💧</div>
+          <h4>Riego Inteligente</h4>
+          <p>Más plantas mueren por exceso que por falta de agua. Verifica siempre la humedad del sustrato antes de regar.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">🌱</div>
+          <h4>Sustrato de Calidad</h4>
+          <p>Usa sustratos específicos para plantas de interior con buen drenaje. Evita la tierra de jardín común.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">🔄</div>
+          <h4>Rotación Regular</h4>
+          <p>Gira las macetas ocasionalmente para que todas las partes de la planta reciban luz uniformemente.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">✂️</div>
+          <h4>Poda y Limpieza</h4>
+          <p>Retira hojas amarillas o muertas regularmente y limpia las hojas para mantener la fotosíntesis óptima.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Plants Grid -->
+    <section class="plants-section">
+      {plantsData.length > 0 ? (
+        <PlantGrid 
+          client:load
+          plants={plantsData}
+          title={`Plantas de Interior (${plantsData.length})`}
+          description="Todas nuestras guías para plantas de interior"
+        />
+      ) : (
+        <div class="no-plants">
+          <h2 class="section-title">Plantas de Interior</h2>
+          <p class="no-plants-message">
+            Próximamente añadiremos más guías específicas para plantas de interior. 
+            ¡Mantente atento a las actualizaciones!
+          </p>
+        </div>
+      )}
+    </section>
+    
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+      <h2 class="section-title">Beneficios de las Plantas de Interior</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">💨</div>
+          <h3>Purifican el Aire</h3>
+          <p>Filtran toxinas y producen oxígeno, mejorando significativamente la calidad del aire interior.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">😌</div>
+          <h3>Reducen el Estrés</h3>
+          <p>Los espacios verdes reducen la ansiedad y crean un ambiente más relajante y acogedor.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">💧</div>
+          <h3>Aumentan la Humedad</h3>
+          <p>Liberan vapor de agua, creando un microclima más saludable para tu piel y vías respiratorias.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🎨</div>
+          <h3>Decoración Natural</h3>
+          <p>Añaden color, textura y vida a cualquier espacio, siendo elementos decorativos únicos.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Room Guide Section -->
+    <section class="room-guide-section">
+      <h2 class="section-title">Plantas Ideales por Habitación</h2>
+      <div class="room-grid">
+        <div class="room-card living-room">
+          <div class="room-icon">🛋️</div>
+          <h3>Sala de Estar</h3>
+          <p>Plantas llamativas y de gran tamaño que se conviertan en el centro de atención.</p>
+          <ul class="plant-suggestions">
+            <li>Ficus lyrata (Hoja de violín)</li>
+            <li>Monstera deliciosa</li>
+            <li>Strelitzia (Ave del paraíso)</li>
+            <li>Palmeras de interior</li>
+          </ul>
+        </div>
+        
+        <div class="room-card bedroom">
+          <div class="room-icon">🛏️</div>
+          <h3>Dormitorio</h3>
+          <p>Plantas que purifican el aire durante la noche y crean un ambiente relajante.</p>
+          <ul class="plant-suggestions">
+            <li>Sansevieria (Lengua de suegra)</li>
+            <li>Aloe vera</li>
+            <li>Lavanda</li>
+            <li>Pothos</li>
+          </ul>
+        </div>
+        
+        <div class="room-card bathroom">
+          <div class="room-icon">🚿</div>
+          <h3>Baño</h3>
+          <p>Plantas que prosperan en ambientes húmedos y con poca luz.</p>
+          <ul class="plant-suggestions">
+            <li>Helechos</li>
+            <li>Orquídeas</li>
+            <li>Bambú de la suerte</li>
+            <li>Tillandsia (Plantas del aire)</li>
+          </ul>
+        </div>
+        
+        <div class="room-card kitchen">
+          <div class="room-icon">👨‍🍳</div>
+          <h3>Cocina</h3>
+          <p>Plantas comestibles y aromáticas que además decorarán tu espacio culinario.</p>
+          <ul class="plant-suggestions">
+            <li>Hierbas aromáticas</li>
+            <li>Plantas de tomate cherry</li>
+            <li>Lechugas de hoja</li>
+            <li>Microgreens</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Light Requirements -->
+    <section class="light-guide">
+      <div class="light-content">
+        <h2 class="section-title">Guía de Iluminación</h2>
+        <div class="light-grid">
+          <div class="light-item bright">
+            <div class="light-icon">☀️</div>
+            <h4>Luz Brillante</h4>
+            <p><strong>Ventanas sur:</strong> Plantas que aman el sol directo como cactus, suculentas y algunas palmeras.</p>
+          </div>
+          <div class="light-item medium">
+            <div class="light-icon">⛅</div>
+            <h4>Luz Moderada</h4>
+            <p><strong>Ventanas este/oeste:</strong> Perfecta para ficus, dracenas y la mayoría de plantas tropicales.</p>
+          </div>
+          <div class="light-item low">
+            <div class="light-icon">🌙</div>
+            <h4>Luz Baja</h4>
+            <p><strong>Ventanas norte:</strong> Ideales para pothos, sansevierias y plantas de hojas oscuras.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="cta-content">
+        <h2 class="cta-title">¿Listo para Verdear tu Hogar?</h2>
+        <p class="cta-description">
+          Empieza con plantas fáciles de cuidar y ve aumentando tu colección gradualmente. 
+          Cada planta añadirá vida y belleza a tu espacio personal.
+        </p>
+        <div class="cta-buttons">
+          <a href="/plantas/" class="cta-button primary">Ver Todas las Plantas</a>
+          <a href="/contacto/" class="cta-button secondary">Pedir Consejos</a>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+/* Hero Section */
+.category-hero {
+  background: linear-gradient(135deg, #6c5ce7 0%, #5f4dc5 100%);
+  color: white;
+  padding: 4rem 2rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  border-radius: 16px;
+}
+
+.hero-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  line-height: 1.1;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin: 0 0 1.5rem 0;
+  opacity: 0.9;
+}
+
+.hero-description {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+/* Benefits Section */
+.benefits-section {
+  margin-bottom: 4rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2d5016;
+  text-align: center;
+  margin: 0 0 3rem 0;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.benefit-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-4px);
+}
+
+.benefit-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.benefit-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2d5016;
+  margin: 0 0 1rem 0;
+}
+
+.benefit-card p {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Room Guide Section */
+.room-guide-section {
+  margin-bottom: 4rem;
+}
+
+.room-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.room-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.room-card:hover {
+  transform: translateY(-4px);
+}
+
+.room-card.living-room {
+  border-top: 4px solid #6c5ce7;
+}
+
+.room-card.bedroom {
+  border-top: 4px solid #a29bfe;
+}
+
+.room-card.bathroom {
+  border-top: 4px solid #74b9ff;
+}
+
+.room-card.kitchen {
+  border-top: 4px solid #00b894;
+}
+
+.room-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.room-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #2d5016;
+  margin: 0 0 1rem 0;
+}
+
+.room-card p {
+  color: #666;
+  line-height: 1.6;
+  margin: 0 0 1.5rem 0;
+}
+
+.plant-suggestions {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.plant-suggestions li {
+  padding: 0.5rem 0;
+  color: #4a7c23;
+  font-weight: 500;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 0.9rem;
+}
+
+.plant-suggestions li:last-child {
+  border-bottom: none;
+}
+
+/* Light Guide */
+.light-guide {
+  background: linear-gradient(135deg, #f8fffe 0%, #e8f5f0 100%);
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  margin-bottom: 4rem;
+}
+
+.light-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.light-item {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.light-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.light-item h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2d5016;
+  margin: 0 0 1rem 0;
+}
+
+.light-item p {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Care Tips */
+.care-tips {
+  margin-bottom: 4rem;
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.tip-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.tip-card:hover {
+  transform: translateY(-4px);
+}
+
+.tip-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.tip-card h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2d5016;
+  margin: 0 0 1rem 0;
+}
+
+.tip-card p {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Plants Section */
+.plants-section {
+  margin-bottom: 4rem;
+}
+
+.no-plants {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.no-plants-message {
+  font-size: 1.2rem;
+  color: #666;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* CTA Section */
+.cta-section {
+  background: linear-gradient(135deg, #2d5016 0%, #4a7c23 100%);
+  color: white;
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.cta-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 1.5rem 0;
+}
+
+.cta-description {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto 2.5rem auto;
+  opacity: 0.9;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1.25rem 2.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.cta-button.primary {
+  background: white;
+  color: #2d5016;
+}
+
+.cta-button.primary:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+.cta-button.secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.cta-button.secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem;
+  }
+  
+  .benefits-grid,
+  .room-grid,
+  .light-grid,
+  .tips-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cta-button {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-hero {
+    padding: 3rem 1.5rem;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .light-guide {
+    padding: 2rem 1.5rem;
+  }
+  
+  .cta-section {
+    padding: 2rem 1.5rem;
+  }
+}
+</style>

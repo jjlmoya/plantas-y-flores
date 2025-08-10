@@ -1,21 +1,18 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PlantGrid from '../../components/PlantGrid.vue';
-import { getCollection } from 'astro:content';
+import { generateCategoryPaths, getPlantsByCategory } from '../../utils/data.js';
 
 export async function getStaticPaths() {
-  const categories = await getCollection('categories');
-  const plants = await getCollection('plants');
+  const categoryPaths = await generateCategoryPaths();
   
-  return categories.map(category => {
-    const categoryPlants = plants.filter(plant => 
-      plant.data.categories.some(cat => cat.slug === category.id)
-    );
+  const paths = await Promise.all(categoryPaths.map(async (categoryPath) => {
+    const categoryPlants = await getPlantsByCategory(categoryPath.props.categorySlug);
     
     return {
-      params: { category: category.id },
+      params: categoryPath.params,
       props: {
-        category: category.data,
+        category: categoryPath.props.category,
         plants: categoryPlants.map(plant => ({
           id: plant.data.id,
           slug: plant.slug,
@@ -23,11 +20,14 @@ export async function getStaticPaths() {
           excerpt: plant.data.excerpt,
           date: plant.data.date,
           featured_image: plant.data.featured_image,
+          main_image: plant.data.main_image,
           categories: plant.data.categories
         }))
       }
     };
-  });
+  }));
+  
+  return paths;
 }
 
 const { category, plants } = Astro.props;
