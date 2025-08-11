@@ -18,7 +18,7 @@ function extractFirstImage(htmlContent) {
     
     // Convertir URLs de WordPress a rutas locales
     if (imageSrc.includes('plantasyflores.online/wp-content/uploads/')) {
-      imageSrc = imageSrc.replace('https://plantasyflores.online/wp-content/uploads/', '/wp-content/uploads/');
+      imageSrc = imageSrc.replace('/wp-content/uploads/', '/wp-content/uploads/');
     }
     
     return imageSrc;
@@ -45,7 +45,7 @@ async function addMainImageField() {
       
       // Si ya tiene featured_image, usarla como main_image
       if (page.featured_image) {
-        page.main_image = page.featured_image.replace('https://plantasyflores.online/wp-content/uploads/', '/wp-content/uploads/');
+        page.main_image = page.featured_image.replace('/wp-content/uploads/', '/wp-content/uploads/');
         imagesFound++;
         return page;
       }

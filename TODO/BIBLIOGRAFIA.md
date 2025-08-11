@@ -11,136 +11,136 @@
 - **Otros:** 0
 
 ## 🌱 Enlaces Internos (Plantas y Flores)
-1. [https://plantasyflores.online/pensamiento/](https://plantasyflores.online/pensamiento/)
-2. [https://plantasyflores.online/tomate/](https://plantasyflores.online/tomate/)
-3. [https://plantasyflores.online/albahaca/albahaca-de-clavo/](https://plantasyflores.online/albahaca/albahaca-de-clavo/)
-4. [https://plantasyflores.online/lirios/alstroemeria/](https://plantasyflores.online/lirios/alstroemeria/)
-5. [https://plantasyflores.online/albahaca/anis/](https://plantasyflores.online/albahaca/anis/)
-6. [https://plantasyflores.online/hibiscus/arnottianus/](https://plantasyflores.online/hibiscus/arnottianus/)
-7. [https://plantasyflores.online/rosa/banksiae/](https://plantasyflores.online/rosa/banksiae/)
-8. [https://plantasyflores.online/rosa/centifolia/](https://plantasyflores.online/rosa/centifolia/)
-9. [https://plantasyflores.online/lirios/del-valle/](https://plantasyflores.online/lirios/del-valle/)
-10. [https://plantasyflores.online/rosa/gallica/](https://plantasyflores.online/rosa/gallica/)
-11. [https://plantasyflores.online/rosa/lolita-lempicka/](https://plantasyflores.online/rosa/lolita-lempicka/)
-12. [https://plantasyflores.online/chili/malagueta/](https://plantasyflores.online/chili/malagueta/)
-13. [https://plantasyflores.online/rosa/pitimini/](https://plantasyflores.online/rosa/pitimini/)
-14. [https://plantasyflores.online/rosa/polyantha/](https://plantasyflores.online/rosa/polyantha/)
-15. [https://plantasyflores.online/rosa/princesa-de-monaco/](https://plantasyflores.online/rosa/princesa-de-monaco/)
-16. [https://plantasyflores.online/albahaca/tulsi/](https://plantasyflores.online/albahaca/tulsi/)
+1. [/pensamiento/](/pensamiento/)
+2. [/tomate/](/tomate/)
+3. [/albahaca/albahaca-de-clavo/](/albahaca/albahaca-de-clavo/)
+4. [/lirios/alstroemeria/](/lirios/alstroemeria/)
+5. [/albahaca/anis/](/albahaca/anis/)
+6. [/hibiscus/arnottianus/](/hibiscus/arnottianus/)
+7. [/rosa/banksiae/](/rosa/banksiae/)
+8. [/rosa/centifolia/](/rosa/centifolia/)
+9. [/lirios/del-valle/](/lirios/del-valle/)
+10. [/rosa/gallica/](/rosa/gallica/)
+11. [/rosa/lolita-lempicka/](/rosa/lolita-lempicka/)
+12. [/chili/malagueta/](/chili/malagueta/)
+13. [/rosa/pitimini/](/rosa/pitimini/)
+14. [/rosa/polyantha/](/rosa/polyantha/)
+15. [/rosa/princesa-de-monaco/](/rosa/princesa-de-monaco/)
+16. [/albahaca/tulsi/](/albahaca/tulsi/)
 
 ## 📄 Referencias por Página
 
 ### Pensamiento
 - **Archivo:** categoria_pensamiento.html
-- **URL:** [https://plantasyflores.online/pensamiento/](https://plantasyflores.online/pensamiento/)
+- **URL:** [/pensamiento/](/pensamiento/)
 - **Enlaces encontrados:** 1
 
-  1. [https://plantasyflores.online/pensamiento/](https://plantasyflores.online/pensamiento/)
+  1. [/pensamiento/](/pensamiento/)
 
 ### Tomate
 - **Archivo:** categoria_tomate.html
-- **URL:** [https://plantasyflores.online/tomate/](https://plantasyflores.online/tomate/)
+- **URL:** [/tomate/](/tomate/)
 - **Enlaces encontrados:** 1
 
-  1. [https://plantasyflores.online/tomate/](https://plantasyflores.online/tomate/)
+  1. [/tomate/](/tomate/)
 
 ### Albahaca de clavo
 - **Archivo:** planta_albahaca_de_clavo.html
-- **URL:** [https://plantasyflores.online/albahaca/albahaca-de-clavo/](https://plantasyflores.online/albahaca/albahaca-de-clavo/)
+- **URL:** [/albahaca/albahaca-de-clavo/](/albahaca/albahaca-de-clavo/)
 - **Enlaces encontrados:** 1
 
-  1. [https://plantasyflores.online/albahaca/albahaca-de-clavo/](https://plantasyflores.online/albahaca/albahaca-de-clavo/)
+  1. [/albahaca/albahaca-de-clavo/](/albahaca/albahaca-de-clavo/)
 
 ### Alstroemeria
 - **Archivo:** planta_alstroemeria.html
-- **URL:** [https://plantasyflores.online/lirios/alstroemeria/](https://plantasyflores.online/lirios/alstroemeria/)
+- **URL:** [/lirios/alstroemeria/](/lirios/alstroemeria/)
 - **Enlaces encontrados:** 1
 
-  1. [https://plantasyflores.online/lirios/alstroemeria/](https://plantasyflores.online/lirios/alstroemeria/)
+  1. [/lirios/alstroemeria/](/lirios/alstroemeria/)
 
 ### Albahaca Anís
 - **Archivo:** planta_anis.html
-- **URL:** [https://plantasyflores.online/albahaca/anis/](https://plantasyflores.online/albahaca/anis/)
+- **URL:** [/albahaca/anis/](/albahaca/anis/)
 - **Enlaces encontrados:** 1
 
-  1. [https://plantasyflores.online/albahaca/anis/](https://plantasyflores.online/albahaca/anis/)
+  1. [/albahaca/anis/](/albahaca/anis/)
 
 ### Arnottianus
 - **Archivo:** planta_arnottianus.html
-- **URL:** [https://plantasyflores.online/hibiscus/arnottianus/](https://plantasyflores.online/hibiscus/arnottianus/)
+- **URL:** [/hibiscus/arnottianus/](/hibiscus/arnottianus/)
 - **Enlaces encontrados:** 1
 
-  1. [https://plantasyflores.online/hibiscus/arnottianus/](https://plantasyflores.online/hibiscus/arnottianus/)
+  1. [/hibiscus/arnottianus/](/hibiscus/arnottianus/)
 
 ### Banksiae
 - **Archivo:** planta_banksiae.html
-- **URL:** [https://plantasyflores.online/rosa/banksiae/](https://plantasyflores.online/rosa/banksiae/)
+- **URL:** [/rosa/banksiae/](/rosa/banksiae/)
 - **Enlaces encontrados:** 1
 
-  1. [https://plantasyflores.online/rosa/banksiae/](https://plantasyflores.online/rosa/banksiae/)
+  1. [/rosa/banksiae/](/rosa/banksiae/)
 
 ### Centifolia
 - **Archivo:** planta_centifolia.html
-- **URL:** [https://plantasyflores.online/rosa/centifolia/](https://plantasyflores.online/rosa/centifolia/)
+- **URL:** [/rosa/centifolia/](/rosa/centifolia/)
 - **Enlaces encontrados:** 1
 
-  1. [https://plantasyflores.online/rosa/centifolia/](https://plantasyflores.online/rosa/centifolia/)
+  1. [/rosa/centifolia/](/rosa/centifolia/)
 
 ### Lirio del Valle
 - **Archivo:** planta_del_valle.html
-- **URL:** [https://plantasyflores.online/lirios/del-valle/](https://plantasyflores.online/lirios/del-valle/)
+- **URL:** [/lirios/del-valle/](/lirios/del-valle/)
 - **Enlaces encontrados:** 1
 
-  1. [https://plantasyflores.online/lirios/del-valle/](https://plantasyflores.online/lirios/del-valle/)
+  1. [/lirios/del-valle/](/lirios/del-valle/)
 
 ### Gallica
 - **Archivo:** planta_gallica.html
-- **URL:** [https://plantasyflores.online/rosa/gallica/](https://plantasyflores.online/rosa/gallica/)
+- **URL:** [/rosa/gallica/](/rosa/gallica/)
 - **Enlaces encontrados:** 1
 
-  1. [https://plantasyflores.online/rosa/gallica/](https://plantasyflores.online/rosa/gallica/)
+  1. [/rosa/gallica/](/rosa/gallica/)
 
 ### Lolita Lempicka
 - **Archivo:** planta_lolita_lempicka.html
-- **URL:** [https://plantasyflores.online/rosa/lolita-lempicka/](https://plantasyflores.online/rosa/lolita-lempicka/)
+- **URL:** [/rosa/lolita-lempicka/](/rosa/lolita-lempicka/)
 - **Enlaces encontrados:** 1
 
-  1. [https://plantasyflores.online/rosa/lolita-lempicka/](https://plantasyflores.online/rosa/lolita-lempicka/)
+  1. [/rosa/lolita-lempicka/](/rosa/lolita-lempicka/)
 
 ### Malagueta
 - **Archivo:** planta_malagueta.html
-- **URL:** [https://plantasyflores.online/chili/malagueta/](https://plantasyflores.online/chili/malagueta/)
+- **URL:** [/chili/malagueta/](/chili/malagueta/)
 - **Enlaces encontrados:** 1
 
-  1. [https://plantasyflores.online/chili/malagueta/](https://plantasyflores.online/chili/malagueta/)
+  1. [/chili/malagueta/](/chili/malagueta/)
 
 ### Pitiminí
 - **Archivo:** planta_pitimini.html
-- **URL:** [https://plantasyflores.online/rosa/pitimini/](https://plantasyflores.online/rosa/pitimini/)
+- **URL:** [/rosa/pitimini/](/rosa/pitimini/)
 - **Enlaces encontrados:** 1
 
-  1. [https://plantasyflores.online/rosa/pitimini/](https://plantasyflores.online/rosa/pitimini/)
+  1. [/rosa/pitimini/](/rosa/pitimini/)
 
 ### Polyantha
 - **Archivo:** planta_polyantha.html
-- **URL:** [https://plantasyflores.online/rosa/polyantha/](https://plantasyflores.online/rosa/polyantha/)
+- **URL:** [/rosa/polyantha/](/rosa/polyantha/)
 - **Enlaces encontrados:** 1
 
-  1. [https://plantasyflores.online/rosa/polyantha/](https://plantasyflores.online/rosa/polyantha/)
+  1. [/rosa/polyantha/](/rosa/polyantha/)
 
 ### Princesa de Mónaco
 - **Archivo:** planta_princesa_de_monaco.html
-- **URL:** [https://plantasyflores.online/rosa/princesa-de-monaco/](https://plantasyflores.online/rosa/princesa-de-monaco/)
+- **URL:** [/rosa/princesa-de-monaco/](/rosa/princesa-de-monaco/)
 - **Enlaces encontrados:** 1
 
-  1. [https://plantasyflores.online/rosa/princesa-de-monaco/](https://plantasyflores.online/rosa/princesa-de-monaco/)
+  1. [/rosa/princesa-de-monaco/](/rosa/princesa-de-monaco/)
 
 ### Tulsi
 - **Archivo:** planta_tulsi.html
-- **URL:** [https://plantasyflores.online/albahaca/tulsi/](https://plantasyflores.online/albahaca/tulsi/)
+- **URL:** [/albahaca/tulsi/](/albahaca/tulsi/)
 - **Enlaces encontrados:** 1
 
-  1. [https://plantasyflores.online/albahaca/tulsi/](https://plantasyflores.online/albahaca/tulsi/)
+  1. [/albahaca/tulsi/](/albahaca/tulsi/)
 
 ---
 

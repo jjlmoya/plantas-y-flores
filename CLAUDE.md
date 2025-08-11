@@ -112,7 +112,7 @@ npm run build        # Generate static files
 ### Usage in Components
 ```javascript
 // PlantCard.vue automatically converts:
-// 'https://plantasyflores.online/wp-content/uploads/2017/07/image.jpg'
+// '/wp-content/uploads/2017/07/image.jpg'
 // to: '/wp-content/uploads/2017/07/image.jpg'
 ```
 
