@@ -1,6 +1,7 @@
 ---
 import Navigation from '../components/Navigation.vue';
 import Footer from '../components/Footer.vue';
+import GDPRConsent from '../components/GDPRConsent.vue';
 
 export interface Props {
   title: string;
@@ -225,43 +226,48 @@ const autoKeywords = keywords || [
       })} />
     )}
     
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M7QSV8YLWK"></script>
+    <!-- Google Analytics 4 - GDPR Compliant -->
     <script is:inline>
+      // Google Analytics will be loaded by GDPR component based on consent
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-M7QSV8YLWK', {
-        page_title: document.title,
-        page_location: window.location.href,
-        custom_map: {
-          'custom_parameter_1': 'plant_category',
-          'custom_parameter_2': 'page_type'
-        }
-      });
       
-      // Configurar eventos personalizados para el sitio de plantas
-      gtag('event', 'page_view', {
-        page_title: document.title,
-        page_location: window.location.href,
-        content_group1: 'Plantas y Flores',
-        content_group2: window.location.pathname.includes('/plantas-') ? 'Category Page' : 'Content Page'
-      });
+      // Set up analytics configuration to be called when consent is given
+      window.initAnalytics = function() {
+        if (!window.gaInitialized) {
+          const script = document.createElement('script');
+          script.async = true;
+          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-M7QSV8YLWK';
+          document.head.appendChild(script);
+          
+          script.onload = function() {
+            gtag('js', new Date());
+            gtag('config', 'G-M7QSV8YLWK', {
+              page_title: document.title,
+              page_location: window.location.href,
+              custom_map: {
+                'custom_parameter_1': 'plant_category',
+                'custom_parameter_2': 'page_type'
+              }
+            });
+            
+            gtag('event', 'page_view', {
+              page_title: document.title,
+              page_location: window.location.href,
+              content_group1: 'Plantas y Flores',
+              content_group2: window.location.pathname.includes('/plantas-') ? 'Category Page' : 'Content Page'
+            });
+          };
+          window.gaInitialized = true;
+        }
+      };
     </script>
     
-    <!-- Google AdSense - Only load in production -->
-    {import.meta.env.PROD && (
-      <>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1623099484223246"
-                crossorigin="anonymous"></script>
-        <script is:inline>
-          (adsbygoogle = window.adsbygoogle || []).push({
-            google_ad_client: "ca-pub-1623099484223246",
-            enable_page_level_ads: true
-          });
-        </script>
-      </>
-    )}
+    <!-- Google AdSense - Loaded conditionally via GDPR component -->
+    <script is:inline>
+      // AdSense will be loaded by GDPRConsent component based on user consent
+      window.adConsentGiven = false;
+    </script>
     
     <!-- AdSense Optimizations CSS -->
     <link rel="stylesheet" href="/src/styles/adsense-optimizations.css">
@@ -272,6 +278,7 @@ const autoKeywords = keywords || [
       <slot />
     </main>
     <Footer client:load />
+    <GDPRConsent client:load />
     
     <style>
       html {
