@@ -238,64 +238,93 @@ const autoKeywords = keywords || [
     
     <!-- Google Analytics 4 - GDPR Compliant -->
     <script is:inline>
-      // Initialize Google Analytics immediately with privacy-focused defaults
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+      // Check if we should load analytics (exclude localhost unless debug mode)
+      const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      const forceAnalytics = localStorage.getItem('force-analytics') === 'true' || window.location.search.includes('debug-analytics=true');
+      const shouldLoadAnalytics = !isLocalhost || forceAnalytics;
       
-      // Set default consent to denied, will be updated by GDPR banner
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'wait_for_update': 2000
-      });
-      
-      // Load Google Analytics script immediately
-      const script = document.createElement('script');
-      script.async = true;
-      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-M7QSV8YLWK';
-      document.head.appendChild(script);
-      
-      script.onload = function() {
-        gtag('js', new Date());
-        gtag('config', 'G-M7QSV8YLWK', {
-          page_title: document.title,
-          page_location: window.location.href,
-          custom_map: {
-            'custom_parameter_1': 'plant_category',
-            'custom_parameter_2': 'page_type'
-          }
-        });
-      };
-      
-      // Function to update consent based on user choice
-      window.updateAnalyticsConsent = function(granted) {
-        gtag('consent', 'update', {
-          'analytics_storage': granted ? 'granted' : 'denied'
+      if (shouldLoadAnalytics) {
+        console.log('🔍 Analytics enabled', isLocalhost ? '(forced debug mode)' : '');
+        
+        // Initialize Google Analytics immediately with privacy-focused defaults
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        
+        // Set default consent to denied, will be updated by GDPR banner
+        gtag('consent', 'default', {
+          'analytics_storage': 'denied',
+          'ad_storage': 'denied',
+          'wait_for_update': 2000
         });
         
-        if (granted) {
-          gtag('event', 'page_view', {
+        // Load Google Analytics script immediately
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-M7QSV8YLWK';
+        document.head.appendChild(script);
+        
+        script.onload = function() {
+          gtag('js', new Date());
+          gtag('config', 'G-M7QSV8YLWK', {
             page_title: document.title,
             page_location: window.location.href,
-            content_group1: 'Plantas y Flores',
-            content_group2: window.location.pathname.includes('/plantas-') ? 'Category Page' : 'Content Page'
+            custom_map: {
+              'custom_parameter_1': 'plant_category',
+              'custom_parameter_2': 'page_type'
+            }
           });
-        }
-      };
+        };
+        
+        // Function to update consent based on user choice
+        window.updateAnalyticsConsent = function(granted) {
+          gtag('consent', 'update', {
+            'analytics_storage': granted ? 'granted' : 'denied'
+          });
+          
+          if (granted) {
+            gtag('event', 'page_view', {
+              page_title: document.title,
+              page_location: window.location.href,
+              content_group1: 'Plantas y Flores',
+              content_group2: window.location.pathname.includes('/plantas-') ? 'Category Page' : 'Content Page'
+            });
+          }
+        };
+        
+        // Auto-grant analytics consent for returning users after 3 seconds if no GDPR banner shown
+        setTimeout(function() {
+          const consent = localStorage.getItem('gdpr-consent');
+          if (!consent) {
+            // No consent saved, but user has been on site for 3 seconds - assume basic analytics OK
+            window.updateAnalyticsConsent(true);
+          }
+        }, 3000);
+        
+      } else {
+        console.log('🚫 Analytics disabled (localhost)');
+        // Provide stub functions so code doesn't break
+        window.updateAnalyticsConsent = function(granted) {
+          console.log('📊 Analytics consent would be:', granted ? 'granted' : 'denied');
+        };
+      }
       
       // Deprecated function for backward compatibility
       window.initAnalytics = function() {
         window.updateAnalyticsConsent(true);
       };
       
-      // Auto-grant analytics consent for returning users after 3 seconds if no GDPR banner shown
-      setTimeout(function() {
-        const consent = localStorage.getItem('gdpr-consent');
-        if (!consent) {
-          // No consent saved, but user has been on site for 3 seconds - assume basic analytics OK
-          window.updateAnalyticsConsent(true);
-        }
-      }, 3000);
+      // Debug functions for localhost
+      if (isLocalhost) {
+        window.enableAnalyticsDebug = function() {
+          localStorage.setItem('force-analytics', 'true');
+          console.log('🔧 Analytics debug enabled! Reload the page to start tracking.');
+        };
+        
+        window.disableAnalyticsDebug = function() {
+          localStorage.removeItem('force-analytics');
+          console.log('🔧 Analytics debug disabled! Reload the page to stop tracking.');
+        };
+      }
     </script>
     
     <!-- Google AdSense - Loaded conditionally via GDPR component -->

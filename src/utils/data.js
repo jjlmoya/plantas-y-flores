@@ -3,14 +3,14 @@ import path from 'path';
 
 // Función para leer páginas de categorías
 export async function getPagesData() {
-  const pagesPath = path.join(process.cwd(), 'data', 'pages.json');
+  const pagesPath = path.join(process.cwd(), 'public', 'data', 'pages.json');
   const rawData = fs.readFileSync(pagesPath, 'utf8');
   return JSON.parse(rawData);
 }
 
 // Función para obtener todas las plantas desde archivos por categoría
 export async function getPlants() {
-  const postsDir = path.join(process.cwd(), 'data', 'posts');
+  const postsDir = path.join(process.cwd(), 'public', 'data', 'posts');
   const allPlants = [];
   
   // Leer todos los archivos JSON en la carpeta posts
@@ -45,7 +45,7 @@ export async function getPlants() {
 
 // Función optimizada para obtener plantas por categoría (directamente desde archivo)
 export async function getPlantsByCategory(categorySlug) {
-  const filePath = path.join(process.cwd(), 'data', 'posts', `${categorySlug}.json`);
+  const filePath = path.join(process.cwd(), 'public', 'data', 'posts', `${categorySlug}.json`);
   
   // Verificar si el archivo existe
   if (!fs.existsSync(filePath)) {
@@ -105,7 +105,7 @@ export async function getCategoryPages() {
 
 // Función para obtener todas las categorías disponibles
 export async function getCategories() {
-  const postsDir = path.join(process.cwd(), 'data', 'posts');
+  const postsDir = path.join(process.cwd(), 'public', 'data', 'posts');
   const categoryPages = await getCategoryPages();
   const categoryMap = new Map();
   
@@ -198,7 +198,7 @@ export async function generateCategoryPaths() {
 
 // Función helper para obtener lista de categorías disponibles
 export async function getAvailableCategories() {
-  const postsDir = path.join(process.cwd(), 'data', 'posts');
+  const postsDir = path.join(process.cwd(), 'public', 'data', 'posts');
   const files = fs.readdirSync(postsDir).filter(file => file.endsWith('.json'));
   return files.map(file => file.replace('.json', ''));
 }

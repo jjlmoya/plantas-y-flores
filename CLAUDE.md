@@ -24,7 +24,7 @@ This is a Spanish-language plant and flower encyclopedia website migrated from W
 ### Content Architecture
 
 #### Data Source
-- **`data/pages.json`** - Main content database with 113+ plant articles and category information
+- **`public/data/pages.json`** - Main content database with 113+ plant articles and category information
 
 #### Data Processing Pipeline
 1. **Data Utilities** (`src/utils/data.js`) - Functions to read and process pages.json directly
@@ -138,12 +138,12 @@ src/
     └── plantas/     # Static archive page
 
 public/
+├── data/
+│   ├── pages.json      # Original WordPress export
+│   └── posts/          # Category JSON files
 ├── images/         # Migrated WordPress images
 ├── robots.txt      # SEO directives
 └── favicon.svg     # Site icon
-
-data/
-└── pages.json      # Original WordPress export
 
 scripts/
 └── process-content.js  # Content migration script

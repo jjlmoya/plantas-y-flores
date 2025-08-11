@@ -197,7 +197,6 @@ const isDropdownActive = () => {
 }
 
 .nav-menu {
-  display: flex;
   order: 3;
 }
 

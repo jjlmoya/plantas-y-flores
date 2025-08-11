@@ -46,7 +46,7 @@ async function cleanRelatedArticles() {
     console.log('🧹 Iniciando limpieza de artículos relacionados hardcodeados...');
     
     // Leer el archivo pages.json
-    const pagesPath = path.join(__dirname, '../data/pages.json');
+    const pagesPath = path.join(__dirname, '../public/data/pages.json');
     const pagesData = JSON.parse(fs.readFileSync(pagesPath, 'utf8'));
     
     let processedCount = 0;

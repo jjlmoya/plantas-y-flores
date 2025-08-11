@@ -4,7 +4,7 @@ import path from 'path';
 console.log('🔄 Separando JSON por tipos y organizando por categorías...');
 
 // Leer el archivo JSON original
-const pagesPath = path.join(process.cwd(), 'data', 'pages.json');
+const pagesPath = path.join(process.cwd(), 'public', 'data', 'pages.json');
 const rawData = fs.readFileSync(pagesPath, 'utf8');
 const data = JSON.parse(rawData);
 
@@ -15,7 +15,7 @@ const pages = data.filter(item => item.type === 'page');
 console.log(`📊 Encontrados: ${posts.length} posts y ${pages.length} pages`);
 
 // Crear directorio data si no existe
-const dataDir = path.join(process.cwd(), 'data');
+const dataDir = path.join(process.cwd(), 'public', 'data');
 if (!fs.existsSync(dataDir)) {
   fs.mkdirSync(dataDir, { recursive: true });
 }
@@ -66,9 +66,9 @@ console.log(`✅ Guardado: ${allPostsFile} con ${posts.length} posts totales`);
 
 console.log('\n🎉 Separación completada!');
 console.log(`📁 Estructura creada:`);
-console.log(`   data/pages.json - ${pages.length} páginas`);
-console.log(`   data/posts.json - ${posts.length} posts`);
-console.log(`   data/posts/ - ${Object.keys(postsByCategory).length} archivos por categoría`);
+console.log(`   public/data/pages.json - ${pages.length} páginas`);
+console.log(`   public/data/posts.json - ${posts.length} posts`);
+console.log(`   public/data/posts/ - ${Object.keys(postsByCategory).length} archivos por categoría`);
 
 // Mostrar estadísticas por categoría
 console.log('\n📈 Posts por categoría:');
