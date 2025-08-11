@@ -1,6 +1,6 @@
 <template>
   <article class="plant-card">
-    <div class="plant-card__image">
+    <a :href="getPlantUrl(plant)" class="plant-card__image" @click="trackPlantClick">
       <template v-if="plant.main_image || plant.featured_image">
         <img 
           :src="getImagePath(plant.main_image || plant.featured_image)" 
@@ -21,7 +21,7 @@
           <span class="plant-card__image-text">{{ plant.title }}</span>
         </div>
       </template>
-    </div>
+    </a>
     
     <div class="plant-card__content">
       <header class="plant-card__header">

@@ -1,0 +1,396 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.vue';
+import { getCategories, getCategoryPages } from '../utils/data.js';
+
+// Obtener todas las categorías
+const categories = await getCategories();
+const sortedCategories = categories.sort((a, b) => b.data.posts_count - a.data.posts_count);
+
+// Obtener páginas de categorías para extraer las imágenes principales
+const categoryPages = await getCategoryPages();
+const pageMap = new Map();
+categoryPages.forEach(page => {
+  pageMap.set(page.slug, page.data);
+});
+
+const title = 'Todas las Categorías - Plantas y Flores';
+const description = 'Explora todas las categorías de plantas y flores disponibles. Desde rosas hasta plantas medicinales, encuentra la categoría que más te interese.';
+
+const breadcrumbs = [
+  { text: 'Inicio', href: '/' },
+  { text: 'Categorías', href: '/categorias/' }
+];
+
+const stats = {
+  number: categories.length,
+  label: 'categorías disponibles'
+};
+---
+
+<BaseLayout 
+  title={title}
+  description={description}
+  canonical="https://plantasyflores.com/categorias/"
+  keywords="categorías plantas, tipos de plantas, clasificación plantas, categorías flores"
+>
+  <PageHeader 
+    client:load
+    title="Todas las Categorías"
+    description="Descubre nuestra colección completa de plantas y flores organizadas por categorías. Desde flores ornamentales hasta plantas comestibles y medicinales."
+    breadcrumbs={breadcrumbs}
+    stats={stats}
+  />
+
+  <div class="categories-page">
+
+    <!-- Categories Grid -->
+    <section class="categories-section">
+      <div class="categories-grid">
+        {sortedCategories.map(category => {
+          const categoryPage = pageMap.get(category.data.slug);
+          const mainImage = categoryPage?.main_image;
+          
+          return (
+            <a href={`/${category.data.slug}/`} class="category-card">
+              {mainImage && (
+                <div class="category-card__image">
+                  <img 
+                    src={mainImage} 
+                    alt={category.data.name}
+                    loading="lazy"
+                  />
+                  <div class="category-card__overlay"></div>
+                </div>
+              )}
+              <div class="category-card__content">
+                <div class="category-card__header">
+                  <h2 class="category-card__title">{category.data.name}</h2>
+                  <div class="category-card__count">
+                    {category.data.posts_count} {category.data.posts_count === 1 ? 'artículo' : 'artículos'}
+                  </div>
+                </div>
+                <div class="category-card__description">
+                  {category.data.description}
+                </div>
+                <div class="category-card__footer">
+                  <span class="category-card__link">Ver todos los artículos →</span>
+                </div>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info-section">
+      <div class="info-content">
+        <h2 class="info-title">¿Qué encontrarás en cada categoría?</h2>
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="info-icon">🌸</div>
+            <h3>Flores Ornamentales</h3>
+            <p>Rosas, hibiscus, cosmos y más flores para embellecer tu jardín</p>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">🌿</div>
+            <h3>Plantas Aromáticas</h3>
+            <p>Albahaca, tomillo, lavanda y hierbas para cocinar y aromatizar</p>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">🥬</div>
+            <h3>Plantas Comestibles</h3>
+            <p>Tomates, patatas, fresas y vegetales para tu huerto casero</p>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">💊</div>
+            <h3>Plantas Medicinales</h3>
+            <p>Manzanilla y plantas con propiedades terapéuticas naturales</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+.categories-page {
+  max-width: none;
+  padding: 0;
+}
+
+/* Página de categorías */
+
+/* Categories Section */
+.categories-section {
+  margin: 3rem 0;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 2.5rem;
+}
+
+.category-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 400px;
+}
+
+.category-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(74, 124, 35, 0.25);
+  border-color: #4a7c23;
+}
+
+.category-card:hover .category-card__image img {
+  transform: scale(1.1);
+}
+
+.category-card:hover .category-card__overlay {
+  opacity: 0.3;
+}
+
+.category-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(74, 124, 35, 0.05) 0%, rgba(45, 80, 22, 0.02) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.category-card:hover::before {
+  opacity: 1;
+}
+
+.category-card__image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  margin: 0;
+}
+
+.category-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.category-card__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(74, 124, 35, 0.8) 0%, rgba(45, 80, 22, 0.9) 100%);
+  opacity: 0.2;
+  transition: opacity 0.3s ease;
+}
+
+.category-card__content {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.category-card__header {
+  margin-bottom: 1.5rem;
+}
+
+.category-card__title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #2d5016;
+  margin: 0 0 0.75rem 0;
+  text-transform: capitalize;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.category-card__count {
+  color: #4a7c23;
+  font-weight: 700;
+  font-size: 0.875rem;
+  background: linear-gradient(135deg, rgba(74, 124, 35, 0.15) 0%, rgba(74, 124, 35, 0.08) 100%);
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  display: inline-block;
+  border: 1px solid rgba(74, 124, 35, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.category-card__description {
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  flex-grow: 1;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.category-card__footer {
+  margin-top: auto;
+}
+
+.category-card__link {
+  color: #4a7c23;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, rgba(74, 124, 35, 0.1) 0%, rgba(74, 124, 35, 0.05) 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(74, 124, 35, 0.2);
+}
+
+.category-card:hover .category-card__link {
+  color: white;
+  background: linear-gradient(135deg, #4a7c23 0%, #2d5016 100%);
+  transform: translateX(4px);
+  border-color: transparent;
+}
+
+/* Info Section */
+.info-section {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border-radius: 24px;
+  padding: 4rem 2rem;
+  margin: 4rem 0;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.info-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.info-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2d5016;
+  margin: 0 0 3rem 0;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.info-item {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.info-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.info-item h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2d5016;
+  margin: 0 0 0.75rem 0;
+}
+
+.info-item p {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .categories-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .category-card {
+    min-height: 350px;
+  }
+  
+  .category-card__image {
+    height: 180px;
+  }
+  
+  .category-card__content {
+    padding: 1.5rem;
+  }
+  
+  .category-card__title {
+    font-size: 1.5rem;
+  }
+  
+  .info-section {
+    padding: 3rem 1.5rem;
+  }
+  
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .categories-grid {
+    gap: 1.5rem;
+  }
+  
+  .category-card {
+    min-height: 320px;
+  }
+  
+  .category-card__image {
+    height: 160px;
+  }
+  
+  .category-card__content {
+    padding: 1.25rem;
+  }
+  
+  .category-card__title {
+    font-size: 1.375rem;
+  }
+  
+  .category-card__description {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .category-card__link {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.9rem;
+  }
+  
+  .info-section {
+    padding: 2.5rem 1rem;
+  }
+}
+</style>

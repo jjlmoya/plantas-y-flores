@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import RelatedPlants from '../../components/RelatedPlants.vue';
+import ArticleContent from '../../components/ads/ArticleContent.vue';
+import SidebarRectangle from '../../components/ads/SidebarRectangle.vue';
 import { generatePlantPaths, getPlants } from '../../utils/data.js';
 
 export async function getStaticPaths() {
@@ -132,7 +134,7 @@ const structuredData = {
 
     <!-- Article Content -->
     <div class="plant-article__content">
-      <div set:html={plant.data.seo_html}></div>
+      <div class="content-with-ads" set:html={plant.data.seo_html}></div>
     </div>
 
     <!-- Tags -->
@@ -162,6 +164,76 @@ const structuredData = {
       </a>
     </div>
   </article>
+
+  <!-- Script para insertar anuncios en el contenido -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const content = document.querySelector('.content-with-ads');
+      if (!content) return;
+
+      const paragraphs = content.querySelectorAll('p');
+      const headings = content.querySelectorAll('h2, h3');
+      
+      // Insertar anuncio después del segundo párrafo o primera sección si existe
+      let insertPoint = null;
+      
+      if (paragraphs.length >= 3) {
+        insertPoint = paragraphs[2];
+      } else if (headings.length > 0) {
+        // Buscar el primer h2 o h3 y insertar después
+        insertPoint = headings[0].nextElementSibling;
+      }
+      
+      if (insertPoint && insertPoint.tagName === 'P') {
+        // Crear el contenedor del anuncio
+        const adContainer = document.createElement('div');
+        adContainer.className = 'content-ad-container';
+        adContainer.innerHTML = `
+          <div class="content-ad-wrapper">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-1623099484223246"
+                 data-ad-slot="6785803497"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+          </div>
+        `;
+        
+        // Insertar después del párrafo objetivo
+        insertPoint.parentNode.insertBefore(adContainer, insertPoint.nextSibling);
+        
+        // Activar AdSense
+        if (window.adsbygoogle) {
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        }
+      }
+
+      // Insertar sidebar ad después de la mitad del contenido
+      const allElements = content.children;
+      const middleIndex = Math.floor(allElements.length / 2);
+      
+      if (allElements.length > 4 && middleIndex > 2) {
+        const sidebarAdContainer = document.createElement('div');
+        sidebarAdContainer.className = 'sidebar-ad-container';
+        sidebarAdContainer.innerHTML = `
+          <div class="sidebar-ad-wrapper">
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:320px;height:250px"
+                 data-ad-client="ca-pub-1623099484223246"
+                 data-ad-slot="8980721998"></ins>
+          </div>
+        `;
+        
+        const targetElement = allElements[middleIndex];
+        targetElement.parentNode.insertBefore(sidebarAdContainer, targetElement);
+        
+        // Activar AdSense
+        if (window.adsbygoogle) {
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        }
+      }
+    });
+  </script>
 </BaseLayout>
 
 <style>
@@ -169,6 +241,52 @@ const structuredData = {
   max-width: 850px;
   margin: 0 auto;
   position: relative;
+}
+
+/* Estilos para anuncios intercalados en el contenido */
+.content-ad-container {
+  margin: 2.5rem 0;
+  text-align: center;
+  padding: 1.5rem 0;
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  background: linear-gradient(135deg, #f8fffe 0%, #f0f8f0 100%);
+}
+
+.content-ad-wrapper {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.sidebar-ad-container {
+  margin: 3rem 0;
+  text-align: center;
+  padding: 2rem 1rem;
+  background: #f9f9f9;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+}
+
+.sidebar-ad-wrapper {
+  display: inline-block;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .content-ad-container {
+    margin: 2rem 0;
+    padding: 1rem 0;
+  }
+  
+  .sidebar-ad-container {
+    margin: 2rem 0;
+    padding: 1.5rem 1rem;
+  }
+  
+  .sidebar-ad-wrapper .adsbygoogle {
+    width: 100% !important;
+    height: auto !important;
+  }
 }
 
 .plant-article__header {

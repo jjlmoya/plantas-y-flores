@@ -15,34 +15,36 @@
       <div class="nav-menu" :class="{ 'nav-menu--open': isMenuOpen }">
         <ul class="nav-list">
           <li class="nav-item">
-            <a href="/" class="nav-link">Inicio</a>
+            <a href="/" class="nav-link" :class="{ 'nav-link--active': isActive('/') }">Inicio</a>
           </li>
           <li class="nav-item nav-item--dropdown" @mouseover="activeDropdown = 'plantas'" @mouseleave="activeDropdown = null">
-            <a href="/plantas/" class="nav-link">Plantas</a>
+            <a href="/plantas/" class="nav-link" :class="{ 'nav-link--active': isDropdownActive() }">Plantas</a>
             <div class="dropdown" :class="{ 'dropdown--active': activeDropdown === 'plantas' }">
               <div class="dropdown-content">
-                <a href="/plantas-medicinales/" class="dropdown-link">Plantas Medicinales</a>
-                <a href="/plantas-exterior/" class="dropdown-link">Plantas de Exterior</a>
-                <a href="/plantas-interior/" class="dropdown-link">Plantas de Interior</a>
-                <a href="/plantas-aromaticas/" class="dropdown-link">Plantas Aromáticas</a>
-                <a href="/plantas-comestibles/" class="dropdown-link">Plantas Comestibles</a>
+                <a href="/categorias/" class="dropdown-link" :class="{ 'dropdown-link--active': isActive('/categorias/') }">Ver todas las categorías</a>
+                <div class="dropdown-divider"></div>
+                <a href="/plantas-medicinales/" class="dropdown-link" :class="{ 'dropdown-link--active': isActive('/plantas-medicinales/') }">Plantas Medicinales</a>
+                <a href="/plantas-exterior/" class="dropdown-link" :class="{ 'dropdown-link--active': isActive('/plantas-exterior/') }">Plantas de Exterior</a>
+                <a href="/plantas-interior/" class="dropdown-link" :class="{ 'dropdown-link--active': isActive('/plantas-interior/') }">Plantas de Interior</a>
+                <a href="/plantas-aromaticas/" class="dropdown-link" :class="{ 'dropdown-link--active': isActive('/plantas-aromaticas/') }">Plantas Aromáticas</a>
+                <a href="/plantas-comestibles/" class="dropdown-link" :class="{ 'dropdown-link--active': isActive('/plantas-comestibles/') }">Plantas Comestibles</a>
               </div>
             </div>
           </li>
           <li class="nav-item">
-            <a href="/rosa/" class="nav-link">Rosas</a>
+            <a href="/rosa/" class="nav-link" :class="{ 'nav-link--active': isActive('/rosa/') }">Rosas</a>
           </li>
           <li class="nav-item">
-            <a href="/hibiscus/" class="nav-link">Hibiscus</a>
+            <a href="/hibiscus/" class="nav-link" :class="{ 'nav-link--active': isActive('/hibiscus/') }">Hibiscus</a>
           </li>
           <li class="nav-item">
-            <a href="/tomate/" class="nav-link">Tomates</a>
+            <a href="/tomate/" class="nav-link" :class="{ 'nav-link--active': isActive('/tomate/') }">Tomates</a>
           </li>
           <li class="nav-item">
-            <a href="/albahaca/" class="nav-link">Albahaca</a>
+            <a href="/albahaca/" class="nav-link" :class="{ 'nav-link--active': isActive('/albahaca/') }">Albahaca</a>
           </li>
           <li class="nav-item">
-            <a href="/contacto/" class="nav-link">Contacto</a>
+            <a href="/contacto/" class="nav-link" :class="{ 'nav-link--active': isActive('/contacto/') }">Contacto</a>
           </li>
         </ul>
       </div>
@@ -51,10 +53,27 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 const isMenuOpen = ref(false)
 const activeDropdown = ref(null)
+const currentPath = ref('')
+
+onMounted(() => {
+  currentPath.value = window.location.pathname
+})
+
+const isActive = (href) => {
+  // Comparación exacta de URL
+  return currentPath.value === href
+}
+
+const isDropdownActive = () => {
+  // Solo activar "Plantas" para URLs específicas relacionadas con plantas
+  return currentPath.value.startsWith('/plantas-') || 
+         currentPath.value === '/categorias/' ||
+         currentPath.value === '/plantas/'
+}
 </script>
 
 <style scoped>
@@ -173,6 +192,12 @@ const activeDropdown = ref(null)
   background: rgba(74, 124, 35, 0.1);
 }
 
+.nav-link--active {
+  color: #4a7c23 !important;
+  background: rgba(74, 124, 35, 0.15) !important;
+  font-weight: 600;
+}
+
 .nav-item--dropdown {
   position: relative;
 }
@@ -214,6 +239,18 @@ const activeDropdown = ref(null)
 .dropdown-link:hover {
   background: rgba(74, 124, 35, 0.1);
   color: #4a7c23;
+}
+
+.dropdown-link--active {
+  background: rgba(74, 124, 35, 0.15) !important;
+  color: #4a7c23 !important;
+  font-weight: 600;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: #e5e7eb;
+  margin: 0.5rem 0;
 }
 
 /* Mobile Styles */

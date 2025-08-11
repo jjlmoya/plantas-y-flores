@@ -1,8 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Navigation from '../components/Navigation.vue';
 import PlantGrid from '../components/PlantGrid.vue';
-import AdSenseAd from '../components/AdSenseAd.vue';
+import HomepageHeroBanner from '../components/ads/HomepageHeroBanner.vue';
+import HomepageCategoryBanner from '../components/ads/HomepageCategoryBanner.vue';
+import SectionDividerNative from '../components/ads/SectionDividerNative.vue';
 import { getPlants, getCategories } from '../utils/data.js';
 
 // Obtener todas las plantas y ordenarlas por fecha
@@ -39,7 +40,8 @@ const plantsData = sortedPlants.map(plant => ({
   modifiedDate={new Date().toISOString()}
   image="/brand/logo.png"
 >
-  <Navigation client:load />
+  <!-- Homepage Hero Ad -->
+  <HomepageHeroBanner client:load />
   
   <div class="homepage">
     <!-- Welcome Section -->
@@ -124,14 +126,8 @@ const plantsData = sortedPlants.map(plant => ({
       </div>
     </section>
 
-    <!-- Native Ad entre categorías -->
-    <AdSenseAd 
-      client:load
-      ad-slot="7025476649"
-      ad-type="in-feed"
-      class-name="category-native-ad"
-      :responsive="true"
-    />
+    <!-- Homepage Category Banner Ad -->
+    <HomepageCategoryBanner client:load />
 
     <!-- Popular Categories Section -->
     <section class="popular-section">
@@ -147,6 +143,9 @@ const plantsData = sortedPlants.map(plant => ({
         ))}
       </div>
     </section>
+
+    <!-- Section Divider Ad -->
+    <SectionDividerNative client:load />
 
     <!-- Recent Plants Section -->
     <section class="recent-section">

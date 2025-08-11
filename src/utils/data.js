@@ -1,20 +1,28 @@
 import fs from 'fs';
 import path from 'path';
 
-// Función para leer y procesar pages.json
+// Función para leer páginas de categorías
 export async function getPagesData() {
   const pagesPath = path.join(process.cwd(), 'data', 'pages.json');
   const rawData = fs.readFileSync(pagesPath, 'utf8');
   return JSON.parse(rawData);
 }
 
-// Función para obtener todas las plantas (equivalente a getCollection('plants'))
+// Función para obtener todas las plantas desde archivos por categoría
 export async function getPlants() {
-  const data = await getPagesData();
+  const postsDir = path.join(process.cwd(), 'data', 'posts');
+  const allPlants = [];
   
-  return data
-    .filter(item => item.type === 'post')
-    .map(plant => ({
+  // Leer todos los archivos JSON en la carpeta posts
+  const files = fs.readdirSync(postsDir).filter(file => file.endsWith('.json'));
+  
+  for (const file of files) {
+    const filePath = path.join(postsDir, file);
+    const rawData = fs.readFileSync(filePath, 'utf8');
+    const categoryPlants = JSON.parse(rawData);
+    
+    // Convertir cada planta al formato esperado
+    const formattedPlants = categoryPlants.map(plant => ({
       slug: plant.slug,
       data: {
         id: plant.id,
@@ -28,48 +36,114 @@ export async function getPlants() {
         seo_html: plant.seo_html
       }
     }));
+    
+    allPlants.push(...formattedPlants);
+  }
+  
+  return allPlants;
 }
 
-// Función para obtener plantas por categoría
+// Función optimizada para obtener plantas por categoría (directamente desde archivo)
 export async function getPlantsByCategory(categorySlug) {
-  const plants = await getPlants();
+  const filePath = path.join(process.cwd(), 'data', 'posts', `${categorySlug}.json`);
   
-  return plants.filter(plant => 
-    plant.data.categories.some(cat => cat.slug === categorySlug)
-  );
+  // Verificar si el archivo existe
+  if (!fs.existsSync(filePath)) {
+    console.warn(`No se encontró archivo para categoría: ${categorySlug}`);
+    return [];
+  }
+  
+  const rawData = fs.readFileSync(filePath, 'utf8');
+  const categoryPlants = JSON.parse(rawData);
+  
+  // Convertir al formato esperado
+  return categoryPlants.map(plant => ({
+    slug: plant.slug,
+    data: {
+      id: plant.id,
+      title: plant.title,
+      date: plant.date,
+      excerpt: plant.excerpt,
+      featured_image: plant.featured_image,
+      main_image: plant.main_image,
+      categories: plant.categories,
+      tags: plant.tags || [],
+      seo_html: plant.seo_html
+    }
+  }));
 }
 
 // Función para obtener una planta específica
 export async function getPlantBySlug(slug, categorySlug = null) {
-  const plants = await getPlants();
-  
-  return plants.find(plant => 
-    plant.slug === slug && 
-    (!categorySlug || plant.data.categories.some(cat => cat.slug === categorySlug))
-  );
+  if (categorySlug) {
+    // Si conocemos la categoría, buscar directamente en su archivo
+    const categoryPlants = await getPlantsByCategory(categorySlug);
+    return categoryPlants.find(plant => plant.slug === slug);
+  } else {
+    // Si no conocemos la categoría, buscar en todas
+    const allPlants = await getPlants();
+    return allPlants.find(plant => plant.slug === slug);
+  }
 }
 
-// Función para obtener todas las categorías (equivalente a getCollection('categories'))
-export async function getCategories() {
-  const plants = await getPlants();
+// Función para obtener páginas de categorías (solo pages.json)
+export async function getCategoryPages() {
+  const pages = await getPagesData();
   
-  // Extraer categorías únicas de las plantas
+  return pages.map(page => ({
+    slug: page.slug,
+    data: {
+      id: page.id,
+      title: page.title,
+      date: page.date,
+      excerpt: page.excerpt,
+      seo_html: page.seo_html,
+      main_image: page.main_image
+    }
+  }));
+}
+
+// Función para obtener todas las categorías disponibles
+export async function getCategories() {
+  const postsDir = path.join(process.cwd(), 'data', 'posts');
+  const categoryPages = await getCategoryPages();
   const categoryMap = new Map();
   
-  plants.forEach(plant => {
-    plant.data.categories.forEach(category => {
-      if (!categoryMap.has(category.slug)) {
-        categoryMap.set(category.slug, {
-          id: category.slug,
-          data: {
-            slug: category.slug,
-            name: category.name,
-            posts_count: 0
-          }
-        });
+  // Obtener categorías desde nombres de archivos
+  const files = fs.readdirSync(postsDir).filter(file => file.endsWith('.json'));
+  
+  for (const file of files) {
+    const categorySlug = file.replace('.json', '');
+    const filePath = path.join(postsDir, file);
+    const rawData = fs.readFileSync(filePath, 'utf8');
+    const categoryPlants = JSON.parse(rawData);
+    
+    // Obtener nombre de categoría del primer post
+    const categoryName = categoryPlants.length > 0 && categoryPlants[0].categories && categoryPlants[0].categories.length > 0
+      ? categoryPlants[0].categories[0].name
+      : categorySlug.charAt(0).toUpperCase() + categorySlug.slice(1);
+    
+    categoryMap.set(categorySlug, {
+      id: categorySlug,
+      data: {
+        slug: categorySlug,
+        name: categoryName,
+        posts_count: categoryPlants.length,
+        description: `Descubre todo sobre ${categoryName.toLowerCase()}. Guías completas de cultivo, cuidados y consejos.`
       }
-      categoryMap.get(category.slug).data.posts_count++;
     });
+  }
+  
+  // Agregar contenido de las páginas de categoría
+  categoryPages.forEach(page => {
+    if (categoryMap.has(page.slug)) {
+      categoryMap.get(page.slug).data.content = page.data.seo_html;
+      // Limpiar HTML del excerpt para usar como descripción
+      const cleanDescription = page.data.excerpt 
+        ? page.data.excerpt.replace(/<[^>]*>/g, '').replace(/&[^;]+;/g, '').trim()
+        : categoryMap.get(page.slug).data.description;
+      categoryMap.get(page.slug).data.description = cleanDescription;
+    }
   });
   
   return Array.from(categoryMap.values());
@@ -88,11 +162,11 @@ export async function getCategoryStats() {
     .sort((a, b) => b.count - a.count);
 }
 
-// Función para generar rutas estáticas (para getStaticPaths)
+// Función para generar rutas estáticas de plantas
 export async function generatePlantPaths() {
-  const plants = await getPlants();
+  const allPlants = await getPlants();
   
-  return plants.map(plant => {
+  return allPlants.map(plant => {
     const category = plant.data.categories[0]?.slug || 'plantas';
     
     return {
@@ -105,6 +179,7 @@ export async function generatePlantPaths() {
   });
 }
 
+// Función para generar rutas estáticas de categorías
 export async function generateCategoryPaths() {
   const categories = await getCategories();
   
@@ -119,4 +194,11 @@ export async function generateCategoryPaths() {
       }
     };
   });
+}
+
+// Función helper para obtener lista de categorías disponibles
+export async function getAvailableCategories() {
+  const postsDir = path.join(process.cwd(), 'data', 'posts');
+  const files = fs.readdirSync(postsDir).filter(file => file.endsWith('.json'));
+  return files.map(file => file.replace('.json', ''));
 }

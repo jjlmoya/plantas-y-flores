@@ -19,7 +19,9 @@
       "Bash(npm:*)",
       "Bash(npx:*)",
       "Bash(taskkill:*)",
-      "WebFetch(domain:plantasyflores.online)"
+      "WebFetch(domain:plantasyflores.online)",
+      "Bash(grep:*)",
+      "Bash(sed:*)"
     ],
     "deny": []
   }

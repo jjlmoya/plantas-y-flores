@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Navigation from '../components/Navigation.vue';
 import PlantGrid from '../components/PlantGrid.vue';
 import AdSenseAd from '../components/AdSenseAd.vue';
 import { getPlants } from '../utils/data.js';
@@ -47,8 +46,6 @@ const availableCategories = [...new Set(
   tags={["plantas medicinales", "hierbas curativas", "remedios naturales", "fitoterapia", "medicina natural"]}
   image="/brand/logo.png"
 >
-  <Navigation client:load />
-  
   <div class="category-page">
     <!-- Hero Section -->
     <section class="category-hero">
