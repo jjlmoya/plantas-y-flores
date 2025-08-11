@@ -71,7 +71,7 @@
         <div class="footer-bottom-content">
           <div class="footer-copyright">
             <p>&copy; {{ new Date().getFullYear() }} Plantas y Flores - jardineraamable. Todos los derechos reservados.</p>
-            <p class="version-info">v{{ version }}</p>
+            <p class="version-info" v-show="mounted">v{{ version }}</p>
           </div>
           <div class="footer-legal">
             <a href="/politica-de-cookies/" class="legal-link">Política de Cookies y Privacidad</a>
@@ -83,9 +83,15 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue';
 import packageJson from '../../package.json';
 
 const version = packageJson.version;
+const mounted = ref(false);
+
+onMounted(() => {
+  mounted.value = true;
+});
 </script>
 
 <style scoped>
