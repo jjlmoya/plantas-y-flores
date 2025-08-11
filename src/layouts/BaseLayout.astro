@@ -402,6 +402,104 @@ const autoKeywords = keywords || [
         console.log('🌸 PWA: Service Workers not supported');
       }
     </script>
+
+    <!-- Analytics Events for Reading Progress and Time Retention -->
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Only initialize analytics events if analytics are enabled
+        if (typeof gtag !== 'function') return;
+
+        let readingProgressSent = {
+          '25': false,
+          '50': false,
+          '75': false,
+          '100': false
+        };
+
+        let timeOnPage = 0;
+        let timeRetentionInterval;
+
+        // Scroll-based reading progress tracking
+        function trackReadingProgress() {
+          const scrollTop = window.scrollY;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const scrollPercent = Math.round((scrollTop / docHeight) * 100);
+
+          // Track reading milestones
+          if (scrollPercent >= 25 && !readingProgressSent['25']) {
+            readingProgressSent['25'] = true;
+            gtag('event', 'scroll', {
+              'event_category': 'Reading Progress',
+              'event_label': 'Page 25% Read',
+              'value': 25
+            });
+          } else if (scrollPercent >= 50 && !readingProgressSent['50']) {
+            readingProgressSent['50'] = true;
+            gtag('event', 'scroll', {
+              'event_category': 'Reading Progress',
+              'event_label': 'Page 50% Read',
+              'value': 50
+            });
+          } else if (scrollPercent >= 75 && !readingProgressSent['75']) {
+            readingProgressSent['75'] = true;
+            gtag('event', 'scroll', {
+              'event_category': 'Reading Progress',
+              'event_label': 'Page 75% Read',
+              'value': 75
+            });
+          } else if (scrollPercent >= 95 && !readingProgressSent['100']) {
+            readingProgressSent['100'] = true;
+            gtag('event', 'scroll', {
+              'event_category': 'Reading Progress',
+              'event_label': 'Page 100% Read',
+              'value': 100
+            });
+          }
+        }
+
+        // Time retention tracking every 10 seconds
+        function trackTimeRetention() {
+          timeOnPage += 10;
+          gtag('event', 'time_on_page', {
+            'event_category': 'Time Retention',
+            'event_label': 'Seconds on Page',
+            'value': timeOnPage
+          });
+        }
+
+        // Start tracking when analytics consent is given
+        function startAnalyticsTracking() {
+          // Add scroll event listener for reading progress
+          window.addEventListener('scroll', trackReadingProgress, { passive: true });
+          
+          // Start time retention interval
+          timeRetentionInterval = setInterval(trackTimeRetention, 10000);
+          
+          // Track initial page view time
+          setTimeout(() => trackTimeRetention(), 10000);
+        }
+
+        // Override the updateAnalyticsConsent function to start tracking
+        const originalUpdateConsent = window.updateAnalyticsConsent;
+        window.updateAnalyticsConsent = function(granted) {
+          originalUpdateConsent(granted);
+          
+          if (granted) {
+            startAnalyticsTracking();
+          } else if (timeRetentionInterval) {
+            clearInterval(timeRetentionInterval);
+            window.removeEventListener('scroll', trackReadingProgress);
+          }
+        };
+
+        // Clean up on page unload
+        window.addEventListener('beforeunload', function() {
+          if (timeRetentionInterval) {
+            clearInterval(timeRetentionInterval);
+          }
+        });
+      });
+    </script>
     
     
     <style>
