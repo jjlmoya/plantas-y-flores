@@ -21,7 +21,8 @@
       "Bash(taskkill:*)",
       "WebFetch(domain:plantasyflores.online)",
       "Bash(grep:*)",
-      "Bash(sed:*)"
+      "Bash(sed:*)",
+      "Bash(powershell.exe:*)"
     ],
     "deny": []
   }
