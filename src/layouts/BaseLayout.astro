@@ -238,39 +238,64 @@ const autoKeywords = keywords || [
     
     <!-- Google Analytics 4 - GDPR Compliant -->
     <script is:inline>
-      // Google Analytics will be loaded by GDPR component based on consent
+      // Initialize Google Analytics immediately with privacy-focused defaults
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       
-      // Set up analytics configuration to be called when consent is given
-      window.initAnalytics = function() {
-        if (!window.gaInitialized) {
-          const script = document.createElement('script');
-          script.async = true;
-          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-M7QSV8YLWK';
-          document.head.appendChild(script);
-          
-          script.onload = function() {
-            gtag('js', new Date());
-            gtag('config', 'G-M7QSV8YLWK', {
-              page_title: document.title,
-              page_location: window.location.href,
-              custom_map: {
-                'custom_parameter_1': 'plant_category',
-                'custom_parameter_2': 'page_type'
-              }
-            });
-            
-            gtag('event', 'page_view', {
-              page_title: document.title,
-              page_location: window.location.href,
-              content_group1: 'Plantas y Flores',
-              content_group2: window.location.pathname.includes('/plantas-') ? 'Category Page' : 'Content Page'
-            });
-          };
-          window.gaInitialized = true;
+      // Set default consent to denied, will be updated by GDPR banner
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'wait_for_update': 2000
+      });
+      
+      // Load Google Analytics script immediately
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-M7QSV8YLWK';
+      document.head.appendChild(script);
+      
+      script.onload = function() {
+        gtag('js', new Date());
+        gtag('config', 'G-M7QSV8YLWK', {
+          page_title: document.title,
+          page_location: window.location.href,
+          custom_map: {
+            'custom_parameter_1': 'plant_category',
+            'custom_parameter_2': 'page_type'
+          }
+        });
+      };
+      
+      // Function to update consent based on user choice
+      window.updateAnalyticsConsent = function(granted) {
+        gtag('consent', 'update', {
+          'analytics_storage': granted ? 'granted' : 'denied'
+        });
+        
+        if (granted) {
+          gtag('event', 'page_view', {
+            page_title: document.title,
+            page_location: window.location.href,
+            content_group1: 'Plantas y Flores',
+            content_group2: window.location.pathname.includes('/plantas-') ? 'Category Page' : 'Content Page'
+          });
         }
       };
+      
+      // Deprecated function for backward compatibility
+      window.initAnalytics = function() {
+        window.updateAnalyticsConsent(true);
+      };
+      
+      // Auto-grant analytics consent for returning users after 3 seconds if no GDPR banner shown
+      setTimeout(function() {
+        const consent = localStorage.getItem('gdpr-consent');
+        if (!consent) {
+          // No consent saved, but user has been on site for 3 seconds - assume basic analytics OK
+          window.updateAnalyticsConsent(true);
+        }
+      }, 3000);
     </script>
     
     <!-- Google AdSense - Loaded conditionally via GDPR component -->
@@ -288,7 +313,7 @@ const autoKeywords = keywords || [
       <slot />
     </main>
     <Footer client:load />
-    <GDPRConsent client:load />
+    <GDPRConsent client:only="vue" />
     
     <!-- PWA Service Worker Registration -->
     <script is:inline>

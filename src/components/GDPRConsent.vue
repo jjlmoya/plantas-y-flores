@@ -151,8 +151,9 @@ export default {
         this.loadAdSense()
       }
       
-      if (this.preferences.analytics) {
-        this.loadGoogleAnalytics()
+      // Always update analytics consent (granted or denied)
+      if (typeof window !== 'undefined' && window.updateAnalyticsConsent) {
+        window.updateAnalyticsConsent(this.preferences.analytics)
       }
     },
     
@@ -167,8 +168,9 @@ export default {
     },
     
     loadGoogleAnalytics() {
-      // Add Google Analytics if you have it
-      // Implementation would go here
+      if (typeof window !== 'undefined' && window.updateAnalyticsConsent) {
+        window.updateAnalyticsConsent(true)
+      }
     }
   }
 }
