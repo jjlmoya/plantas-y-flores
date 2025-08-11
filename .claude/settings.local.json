@@ -29,7 +29,11 @@
       "Bash(curl:*)",
       "Bash(del create-simple-favicon.html)",
       "Bash(timeout 30s npm run dev)",
-      "Bash(del \"C:\\Users\\34677\\Desktop\\plantasyflroes\\src\\components\\SearchBox.test.vue\")"
+      "Bash(del \"C:\\Users\\34677\\Desktop\\plantasyflroes\\src\\components\\SearchBox.test.vue\")",
+      "Bash(find:*)",
+      "Bash(for file in *.json)",
+      "Bash(do sed -i 's|http://plantasyflores\\.online/wp-content/uploads/|/wp-content/uploads/|g' \"$file\")",
+      "Bash(done)"
     ],
     "deny": []
   }
