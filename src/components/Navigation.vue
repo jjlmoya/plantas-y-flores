@@ -1,67 +1,86 @@
 <template>
-  <nav class="navigation">
-    <div class="nav-container">
-      <div class="nav-logo">
-        <a href="/" class="logo-link">
-          <img src="/brand/logo.png" alt="Plantas y Flores" class="logo-image">
-          <span class="logo-text">Plantas y Flores</span>
-        </a>
-      </div>
-      
-      <button class="nav-toggle" @click="isMenuOpen = !isMenuOpen" :aria-expanded="isMenuOpen">
-        <span class="nav-toggle-icon"></span>
-      </button>
-      
-      <div class="nav-menu" :class="{ 'nav-menu--open': isMenuOpen }">
-        <ul class="nav-list">
-          <li class="nav-item">
-            <a href="/" class="nav-link" :class="{ 'nav-link--active': isActive('/') }">Inicio</a>
-          </li>
-          <li class="nav-item nav-item--dropdown" @mouseover="activeDropdown = 'plantas'" @mouseleave="activeDropdown = null">
-            <a href="/plantas/" class="nav-link" :class="{ 'nav-link--active': isDropdownActive() }">Plantas</a>
-            <div class="dropdown" :class="{ 'dropdown--active': activeDropdown === 'plantas' }">
-              <div class="dropdown-content">
-                <a href="/categorias/" class="dropdown-link" :class="{ 'dropdown-link--active': isActive('/categorias/') }">Ver todas las categorías</a>
-                <div class="dropdown-divider"></div>
-                <a href="/plantas-medicinales/" class="dropdown-link" :class="{ 'dropdown-link--active': isActive('/plantas-medicinales/') }">Plantas Medicinales</a>
-                <a href="/plantas-exterior/" class="dropdown-link" :class="{ 'dropdown-link--active': isActive('/plantas-exterior/') }">Plantas de Exterior</a>
-                <a href="/plantas-interior/" class="dropdown-link" :class="{ 'dropdown-link--active': isActive('/plantas-interior/') }">Plantas de Interior</a>
-                <a href="/plantas-aromaticas/" class="dropdown-link" :class="{ 'dropdown-link--active': isActive('/plantas-aromaticas/') }">Plantas Aromáticas</a>
-                <a href="/plantas-comestibles/" class="dropdown-link" :class="{ 'dropdown-link--active': isActive('/plantas-comestibles/') }">Plantas Comestibles</a>
+  <header class="navigation">
+    <!-- Header principal -->
+    <nav class="nav-main">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <a href="/" class="logo-link">
+            <img src="/brand/logo.png" alt="Plantas y Flores" class="logo-image">
+            <span class="logo-text">Plantas y Flores</span>
+          </a>
+        </div>
+        <button class="nav-toggle" @click="toggleMenu" :aria-expanded="isMenuOpen">
+          <span class="nav-toggle-icon"></span>
+        </button>
+        <div class="nav-menu" :class="{ 'nav-menu--open': isMenuOpen }">
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="/" class="nav-link" :class="{ 'nav-link--active': isActive('/') }">Inicio</a>
+            </li>
+            <li class="nav-item nav-item--dropdown" @mouseover="setDropdown('plantas')" @mouseleave="setDropdown(null)">
+              <a href="/plantas/" class="nav-link" :class="{ 'nav-link--active': isDropdownActive() }">Plantas</a>
+              <div class="dropdown" :class="{ 'dropdown--active': activeDropdown === 'plantas' }">
+                <div class="dropdown-content">
+                  <a href="/categorias/" class="dropdown-link" :class="{ 'dropdown-link--active': isActive('/categorias/') }">Ver todas las categorías</a>
+                  <div class="dropdown-divider"></div>
+                  <a href="/plantas-medicinales/" class="dropdown-link" :class="{ 'dropdown-link--active': isActive('/plantas-medicinales/') }">Plantas Medicinales</a>
+                  <a href="/plantas-exterior/" class="dropdown-link" :class="{ 'dropdown-link--active': isActive('/plantas-exterior/') }">Plantas de Exterior</a>
+                  <a href="/plantas-interior/" class="dropdown-link" :class="{ 'dropdown-link--active': isActive('/plantas-interior/') }">Plantas de Interior</a>
+                  <a href="/plantas-aromaticas/" class="dropdown-link" :class="{ 'dropdown-link--active': isActive('/plantas-aromaticas/') }">Plantas Aromáticas</a>
+                  <a href="/plantas-comestibles/" class="dropdown-link" :class="{ 'dropdown-link--active': isActive('/plantas-comestibles/') }">Plantas Comestibles</a>
+                </div>
               </div>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a href="/rosa/" class="nav-link" :class="{ 'nav-link--active': isActive('/rosa/') }">Rosas</a>
-          </li>
-          <li class="nav-item">
-            <a href="/hibiscus/" class="nav-link" :class="{ 'nav-link--active': isActive('/hibiscus/') }">Hibiscus</a>
-          </li>
-          <li class="nav-item">
-            <a href="/tomate/" class="nav-link" :class="{ 'nav-link--active': isActive('/tomate/') }">Tomates</a>
-          </li>
-          <li class="nav-item">
-            <a href="/albahaca/" class="nav-link" :class="{ 'nav-link--active': isActive('/albahaca/') }">Albahaca</a>
-          </li>
-          <li class="nav-item">
-            <a href="/contacto/" class="nav-link" :class="{ 'nav-link--active': isActive('/contacto/') }">Contacto</a>
-          </li>
-        </ul>
+            </li>
+            <li class="nav-item">
+              <a href="/rosa/" class="nav-link" :class="{ 'nav-link--active': isActive('/rosa/') }">Rosas</a>
+            </li>
+            <li class="nav-item">
+              <a href="/hibiscus/" class="nav-link" :class="{ 'nav-link--active': isActive('/hibiscus/') }">Hibiscus</a>
+            </li>
+            <li class="nav-item">
+              <a href="/tomate/" class="nav-link" :class="{ 'nav-link--active': isActive('/tomate/') }">Tomates</a>
+            </li>
+            <li class="nav-item">
+              <a href="/albahaca/" class="nav-link" :class="{ 'nav-link--active': isActive('/albahaca/') }">Albahaca</a>
+            </li>
+            <li class="nav-item">
+              <a href="/contacto/" class="nav-link" :class="{ 'nav-link--active': isActive('/contacto/') }">Contacto</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- Subheader con buscador -->
+    <div class="nav-subheader">
+      <div class="nav-search">
+        <SearchBox />
       </div>
     </div>
-  </nav>
+  </header>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import SearchBox from './SearchBox.vue'
 
 const isMenuOpen = ref(false)
 const activeDropdown = ref(null)
 const currentPath = ref('')
 
 onMounted(() => {
-  currentPath.value = window.location.pathname
+  if (typeof window !== 'undefined') {
+    currentPath.value = window.location.pathname
+  }
 })
+
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value
+}
+
+const setDropdown = (dropdown) => {
+  activeDropdown.value = dropdown
+}
 
 const isActive = (href) => {
   // Comparación exacta de URL
@@ -86,19 +105,24 @@ const isDropdownActive = () => {
   margin-bottom: 2rem;
 }
 
+.nav-main {
+  border-bottom: 1px solid #f3f4f6;
+}
+
 .nav-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   min-height: 70px;
+  gap: 2rem;
 }
 
 .nav-logo {
   display: flex;
   align-items: center;
+  order: 1;
 }
 
 .logo-link {
@@ -120,6 +144,17 @@ const isDropdownActive = () => {
   color: #2d5016;
 }
 
+.nav-subheader {
+  background: #f8f9fa;
+  border-bottom: 1px solid #e5e7eb;
+  height: 50px;
+}
+
+.nav-search {
+  height: 100%;
+  width: 100%;
+}
+
 .nav-toggle {
   display: none;
   background: none;
@@ -129,6 +164,7 @@ const isDropdownActive = () => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  order: 4;
 }
 
 .nav-toggle-icon {
@@ -162,6 +198,7 @@ const isDropdownActive = () => {
 
 .nav-menu {
   display: flex;
+  order: 3;
 }
 
 .nav-list {
@@ -257,10 +294,24 @@ const isDropdownActive = () => {
 @media (max-width: 768px) {
   .nav-container {
     padding: 0 1rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .nav-logo {
+    order: 1;
+    flex: 0 0 auto;
   }
   
   .nav-toggle {
     display: flex;
+    order: 2;
+    flex: 0 0 auto;
+  }
+  
+  .nav-subheader {
+    height: 45px;
   }
   
   .nav-menu {
@@ -274,6 +325,9 @@ const isDropdownActive = () => {
     visibility: hidden;
     transform: translateY(-20px);
     transition: all 0.3s ease;
+    order: 4;
+    width: 100%;
+    z-index: 1000;
   }
   
   .nav-menu--open {
@@ -310,6 +364,7 @@ const isDropdownActive = () => {
     visibility: visible;
     transform: none;
     margin-top: 0;
+    border-radius: 0;
   }
   
   .dropdown-link {
@@ -319,12 +374,24 @@ const isDropdownActive = () => {
 }
 
 @media (max-width: 480px) {
+  .nav-container {
+    gap: 0.5rem;
+    padding: 0 0.75rem;
+  }
+  
   .logo-text {
     display: none;
   }
   
   .logo-image {
     margin-right: 0;
+    width: 32px;
+    height: 32px;
+  }
+  
+  
+  .navigation {
+    margin-bottom: 1.5rem;
   }
 }
 </style>

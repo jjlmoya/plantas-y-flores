@@ -26,7 +26,10 @@
       "Bash(del update_albahaca_anis.js)",
       "Bash(del \"TODO\\Contenidos\\planta_anis.html\")",
       "Bash(nslookup:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(del create-simple-favicon.html)",
+      "Bash(timeout 30s npm run dev)",
+      "Bash(del \"C:\\Users\\34677\\Desktop\\plantasyflroes\\src\\components\\SearchBox.test.vue\")"
     ],
     "deny": []
   }

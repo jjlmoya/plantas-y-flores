@@ -7,7 +7,11 @@ const plants = await getPlants();
 const sortedPlants = plants
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 
-const plantsData = sortedPlants.map(plant => ({
+// Get search query from URL
+const url = new URL(Astro.request.url);
+const searchQuery = url.searchParams.get('search') || '';
+
+let plantsData = sortedPlants.map(plant => ({
   id: plant.data.id,
   slug: plant.slug,
   title: plant.data.title,
@@ -15,8 +19,44 @@ const plantsData = sortedPlants.map(plant => ({
   date: plant.data.date,
   featured_image: plant.data.featured_image,
   main_image: plant.data.main_image,
-  categories: plant.data.categories
+  categories: plant.data.categories,
+  tags: plant.data.tags
 }));
+
+// Filter plants if search query exists
+if (searchQuery.trim()) {
+  const query = searchQuery.toLowerCase().trim();
+  plantsData = plantsData.filter(plant => {
+    const titleMatch = plant.title.toLowerCase().includes(query);
+    const excerptMatch = plant.excerpt && plant.excerpt.toLowerCase().includes(query);
+    const categoryMatch = plant.categories && 
+      plant.categories.some(cat => cat.name.toLowerCase().includes(query));
+    const tagsMatch = plant.tags && 
+      plant.tags.some(tag => tag.name.toLowerCase().includes(query));
+    
+    return titleMatch || excerptMatch || categoryMatch || tagsMatch;
+  })
+  .sort((a, b) => {
+    // Priority scoring for search results
+    const aTitle = a.title.toLowerCase();
+    const bTitle = b.title.toLowerCase();
+    const queryLower = query.toLowerCase();
+    
+    const aStartsWith = aTitle.startsWith(queryLower);
+    const bStartsWith = bTitle.startsWith(queryLower);
+    
+    if (aStartsWith && !bStartsWith) return -1;
+    if (!aStartsWith && bStartsWith) return 1;
+    
+    const aIncludes = aTitle.includes(queryLower);
+    const bIncludes = bTitle.includes(queryLower);
+    
+    if (aIncludes && !bIncludes) return -1;
+    if (!aIncludes && bIncludes) return 1;
+    
+    return a.title.localeCompare(b.title, 'es');
+  });
+}
 ---
 
 <BaseLayout 
@@ -32,13 +72,22 @@ const plantsData = sortedPlants.map(plant => ({
         <span class="breadcrumb__current">Todas las plantas</span>
       </nav>
       
-      <h1 class="plants-header__title">Todas las Plantas</h1>
+      <h1 class="plants-header__title">
+        {searchQuery ? `Resultados para "${searchQuery}"` : 'Todas las Plantas'}
+      </h1>
       <p class="plants-header__description">
-        Explora nuestra completa biblioteca de plantas y flores. Encuentra guías detalladas 
-        sobre cultivo, cuidados y características de más de 100 especies diferentes.
+        {searchQuery 
+          ? `Encontramos ${plantsData.length} plantas que coinciden con tu búsqueda.`
+          : 'Explora nuestra completa biblioteca de plantas y flores. Encuentra guías detalladas sobre cultivo, cuidados y características de más de 100 especies diferentes.'
+        }
       </p>
       <div class="plants-header__meta">
-        {plantsData.length} plantas disponibles
+        {plantsData.length} plantas {searchQuery ? 'encontradas' : 'disponibles'}
+        {searchQuery && (
+          <a href="/plantas/" class="clear-search">
+            <span>×</span> Ver todas las plantas
+          </a>
+        )}
       </div>
     </header>
 
@@ -103,6 +152,37 @@ const plantsData = sortedPlants.map(plant => ({
   font-size: 0.875rem;
   opacity: 0.8;
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.clear-search {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  color: white;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.clear-search:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+.clear-search span {
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1;
 }
 
 .plants-content {
@@ -121,6 +201,12 @@ const plantsData = sortedPlants.map(plant => ({
   
   .breadcrumb {
     margin-bottom: 1rem;
+  }
+  
+  .plants-header__meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
   }
 }
 
