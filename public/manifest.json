@@ -61,58 +61,22 @@
       "purpose": "any maskable"
     }
   ],
-  "screenshots": [
-    {
-      "src": "/screenshots/desktop-1.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "Página principal de Plantas y Flores"
-    },
-    {
-      "src": "/screenshots/mobile-1.png",
-      "sizes": "390x844",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Vista móvil de Plantas y Flores"
-    }
-  ],
+  "screenshots": [],
   "shortcuts": [
     {
       "name": "Buscar Plantas",
       "url": "/plantas/",
-      "description": "Explorar todas las plantas disponibles",
-      "icons": [
-        {
-          "src": "/icons/search-96x96.png",
-          "sizes": "96x96",
-          "type": "image/png"
-        }
-      ]
+      "description": "Explorar todas las plantas disponibles"
     },
     {
       "name": "Rosas",
       "url": "/rosa/",
-      "description": "Ver variedades de rosas",
-      "icons": [
-        {
-          "src": "/icons/rose-96x96.png",
-          "sizes": "96x96",
-          "type": "image/png"
-        }
-      ]
+      "description": "Ver variedades de rosas"
     },
     {
       "name": "Plantas Comestibles",
       "url": "/plantas-comestibles/",
-      "description": "Plantas que puedes cultivar y comer",
-      "icons": [
-        {
-          "src": "/icons/food-96x96.png",
-          "sizes": "96x96",
-          "type": "image/png"
-        }
-      ]
+      "description": "Plantas que puedes cultivar y comer"
     }
   ],
   "prefer_related_applications": false,
