@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Post-commit hook to automatically bump version based on conventional commits
+# This hook runs after each commit and updates the package.json version
+
+echo "🔄 Running automatic version bump..."
+
+# Run the version bump script
+node scripts/version-bump.js
+
+echo "✅ Version bump complete"

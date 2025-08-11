@@ -71,6 +71,7 @@
         <div class="footer-bottom-content">
           <div class="footer-copyright">
             <p>&copy; {{ new Date().getFullYear() }} Plantas y Flores - jardineraamable. Todos los derechos reservados.</p>
+            <p class="version-info">v{{ version }}</p>
           </div>
           <div class="footer-legal">
             <a href="/politica-de-cookies/" class="legal-link">Política de Cookies y Privacidad</a>
@@ -82,7 +83,9 @@
 </template>
 
 <script setup>
-// No JavaScript needed for this component
+import packageJson from '../../package.json';
+
+const version = packageJson.version;
 </script>
 
 <style scoped>
@@ -231,6 +234,13 @@
 
 .footer-copyright p {
   margin: 0;
+}
+
+.version-info {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  font-family: monospace;
 }
 
 .legal-link {
