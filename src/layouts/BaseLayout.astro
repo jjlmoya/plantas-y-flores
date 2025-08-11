@@ -54,6 +54,28 @@ const autoKeywords = keywords || [
     <link rel="apple-touch-icon" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
     
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Plantas y Flores" />
+    
+    <!-- iOS Icons -->
+    <link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png" />
+    <link rel="apple-touch-icon" sizes="128x128" href="/icons/icon-128x128.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png" />
+    <link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png" />
+    <link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png" />
+    
+    <!-- Windows Tiles -->
+    <meta name="msapplication-TileColor" content="#10b981" />
+    <meta name="msapplication-TileImage" content="/icons/icon-144x144.png" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+    
     <!-- Additional SEO Meta Tags -->
     <meta name="author" content="jardineraamable" />
     <meta name="keywords" content={autoKeywords} />
@@ -279,6 +301,65 @@ const autoKeywords = keywords || [
     </main>
     <Footer client:load />
     <GDPRConsent client:load />
+    
+    <!-- PWA Service Worker Registration -->
+    <script is:inline>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', async () => {
+          try {
+            const registration = await navigator.serviceWorker.register('/service-worker.js', {
+              scope: '/'
+            });
+            
+            console.log('🌸 PWA: Service Worker registered successfully', registration.scope);
+            
+            // Handle updates
+            registration.addEventListener('updatefound', () => {
+              const newWorker = registration.installing;
+              if (newWorker) {
+                newWorker.addEventListener('statechange', () => {
+                  if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                    console.log('🌸 PWA: New version available');
+                    // You could show a toast here to notify users of the update
+                  }
+                });
+              }
+            });
+            
+            // Check for app install prompt
+            let deferredPrompt;
+            window.addEventListener('beforeinstallprompt', (e) => {
+              console.log('🌸 PWA: Install prompt available');
+              e.preventDefault();
+              deferredPrompt = e;
+              
+              // You could show a custom install button here
+              // showInstallButton();
+            });
+            
+            // Handle app installation
+            window.addEventListener('appinstalled', () => {
+              console.log('🌸 PWA: App was successfully installed');
+              deferredPrompt = null;
+            });
+            
+          } catch (error) {
+            console.log('🌸 PWA: Service Worker registration failed', error);
+          }
+        });
+        
+        // Handle offline/online status
+        window.addEventListener('online', () => {
+          console.log('🌸 PWA: Back online');
+        });
+        
+        window.addEventListener('offline', () => {
+          console.log('🌸 PWA: Gone offline');
+        });
+      } else {
+        console.log('🌸 PWA: Service Workers not supported');
+      }
+    </script>
     
     <style>
       html {
