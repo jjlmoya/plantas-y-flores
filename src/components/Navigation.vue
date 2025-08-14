@@ -12,7 +12,7 @@
         <button class="nav-toggle" @click="toggleMenu" :aria-expanded="isMenuOpen">
           <span class="nav-toggle-icon"></span>
         </button>
-        <div class="nav-menu" :class="{ 'nav-menu--open': isMenuOpen }" :style="{ pointerEvents: isMenuOpen ? 'auto' : 'none' }">
+        <div class="nav-menu" :class="{ 'nav-menu--open': isMenuOpen }">
           <ul class="nav-list">
             <li class="nav-item">
               <a href="/" class="nav-link" :class="{ 'nav-link--active': isActive('/') }">Inicio</a>
@@ -327,12 +327,14 @@ const isDropdownActive = () => {
     order: 4;
     width: 100%;
     z-index: 1000;
+    pointer-events: none;
   }
   
   .nav-menu--open {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+    pointer-events: auto;
   }
   
   .nav-list {
