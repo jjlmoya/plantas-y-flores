@@ -1,7 +1,7 @@
 {
   "name": "plantasyflores",
   "type": "module",
-  "version": "2.3.2",
+  "version": "2.3.3",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -17,12 +17,13 @@
     "postversion": "git add package.json"
   },
   "dependencies": {
-    "astro": "^4.15.0",
     "@astrojs/vue": "^4.5.1",
+    "astro": "^4.15.0",
     "vue": "^3.4.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.40.0",
-    "@types/node": "^20.0.0"
+    "@types/node": "^20.19.10",
+    "typescript": "^5.9.2"
   }
 }
