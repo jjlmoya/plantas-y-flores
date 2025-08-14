@@ -30,7 +30,6 @@ Disallow: /styles/adsense-optimizations.css
 User-agent: Googlebot
 Allow: /
 Allow: /wp-content/uploads/
-Crawl-delay: 0.5
 
 User-agent: Bingbot
 Allow: /
