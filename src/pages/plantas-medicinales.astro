@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PlantGrid from '../components/PlantGrid.vue';
-import AdSenseAd from '../components/AdSenseAd.vue';
+import AdSenseAd from '../components/ads/AdSenseAd.vue';
 import { getPlants } from '../utils/data.js';
 
 // Filtrar plantas medicinales
@@ -80,10 +80,8 @@ const availableCategories = [...new Set(
     <AdSenseAd 
       client:load
       ad-slot="7632831361"
-      ad-format="horizontal"
-      ad-type="display"
-      class-name="hero-banner-ad"
-      :show-label="true"
+      ad-type="hero"
+      container-class="hero-banner-ad"
     />
 
         <!-- Plants Grid -->
@@ -110,9 +108,8 @@ const availableCategories = [...new Set(
     <AdSenseAd 
       client:load
       ad-slot="7538264929"
-      ad-type="in-feed"
-      class-name="section-divider-ad"
-      :responsive="true"
+      ad-type="native"
+      container-class="section-divider-ad"
     />
     
     <!-- Categories Section -->
@@ -173,11 +170,11 @@ const availableCategories = [...new Set(
     <AdSenseAd 
       client:load
       ad-slot="8980721998"
-      ad-format="rectangle"
-      ad-type="display"
-      ad-size="300x250"
-      class-name="sidebar-ad"
-      :responsive="false"
+      ad-type="sidebar"
+      :width="300"
+      :height="250"
+      is-responsive="false"
+      container-class="sidebar-ad"
     />
 
     <!-- Preparation Methods -->
@@ -265,10 +262,9 @@ const availableCategories = [...new Set(
     <!-- In-article Ad antes de consejos -->
     <AdSenseAd 
       client:load
-      ad-slot="4567890123"
+      ad-slot="6785803497"
       ad-type="in-article"
-      class-name="in-article-ad"
-      :show-label="false"
+      container-class="in-article-ad"
     />
 
     <!-- Cultivation Tips -->

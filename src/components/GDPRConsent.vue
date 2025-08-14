@@ -147,6 +147,19 @@ export default {
       }
       
       cookieConsent.setConsent(autoConsent)
+      
+      // Set global consent for AdSense
+      if (typeof window !== 'undefined') {
+        window.adConsentGiven = true
+        
+        // Dispatch consent events for ad components
+        const consentEvent = new CustomEvent('gdpr-consent-updated', {
+          detail: this.preferences
+        })
+        window.dispatchEvent(consentEvent)
+        document.dispatchEvent(consentEvent)
+      }
+      
       this.loadScripts()
       console.log(`Auto-accepted cookies for ${this.userCountry}`)
     },
@@ -155,6 +168,19 @@ export default {
       const stored = cookieConsent.getConsent()
       if (stored && stored.preferences) {
         this.preferences = stored.preferences
+        
+        // Set global consent for AdSense
+        if (typeof window !== 'undefined') {
+          window.adConsentGiven = this.preferences.advertising
+          
+          // Dispatch consent events for ad components
+          const consentEvent = new CustomEvent('gdpr-consent-updated', {
+            detail: this.preferences
+          })
+          window.dispatchEvent(consentEvent)
+          document.dispatchEvent(consentEvent)
+        }
+        
         this.loadScripts()
       }
     },
@@ -221,6 +247,13 @@ export default {
       // Set global consent for AdSense
       if (typeof window !== 'undefined') {
         window.adConsentGiven = this.preferences.advertising
+        
+        // Dispatch consent events for ad components
+        const consentEvent = new CustomEvent('gdpr-consent-updated', {
+          detail: this.preferences
+        })
+        window.dispatchEvent(consentEvent)
+        document.dispatchEvent(consentEvent)
       }
     },
     
@@ -236,11 +269,28 @@ export default {
     },
     
     loadAdSense() {
-      if (typeof window !== 'undefined' && !window.adsbygoogle) {
+      if (typeof window !== 'undefined' && !window.adsbygoogle && !document.querySelector('script[src*="adsbygoogle"]')) {
         const script = document.createElement('script')
         script.async = true
         script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1623099484223246'
         script.crossOrigin = 'anonymous'
+        
+        // Add error handling for script loading
+        script.onerror = () => {
+          console.warn('AdSense script failed to load')
+          window.adsenseLoadError = true
+        }
+        
+        script.onload = () => {
+          console.log('AdSense script loaded successfully')
+          window.adsenseLoaded = true
+          
+          // Notify all ad components that script is ready
+          const scriptLoadedEvent = new CustomEvent('adsense-script-loaded')
+          window.dispatchEvent(scriptLoadedEvent)
+          document.dispatchEvent(scriptLoadedEvent)
+        }
+        
         document.head.appendChild(script)
       }
     },

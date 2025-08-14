@@ -37,6 +37,7 @@
       "Bash(pkill:*)",
       "Bash(del .\\nul)"
     ],
-    "deny": []
+    "deny": [],
+    "defaultMode": "acceptEdits"
   }
 }

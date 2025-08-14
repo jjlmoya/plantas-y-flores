@@ -29,7 +29,7 @@
 
 <script setup>
 import PlantCard from './PlantCard.vue';
-import AdSenseAd from './AdSenseAd.vue';
+import AdSenseAd from './ads/AdSenseAd.vue';
 import { computed } from 'vue';
 
 const props = defineProps({

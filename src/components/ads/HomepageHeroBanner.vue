@@ -1,30 +1,23 @@
 <template>
-  <div class="ad-container homepage-hero-banner">
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-1623099484223246"
-         data-ad-slot="7632831361"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-  </div>
+  <AdSenseAd 
+    ad-slot="7632831361"
+    ad-type="hero"
+    container-class="homepage-hero-banner"
+  />
 </template>
 
 <script>
+import AdSenseAd from './AdSenseAd.vue'
+
 export default {
   name: 'HomepageHeroBanner',
-  mounted() {
-    if (typeof window !== 'undefined') {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    }
+  components: {
+    AdSenseAd
   }
 }
 </script>
 
 <style scoped>
-.ad-container {
-  margin: 1rem 0;
-}
-
 .homepage-hero-banner {
   text-align: center;
 }

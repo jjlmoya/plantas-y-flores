@@ -1,32 +1,26 @@
 <template>
-  <div class="ad-container homepage-category-banner">
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-1623099484223246"
-         data-ad-slot="7025476649"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-  </div>
+  <AdSenseAd 
+    ad-slot="7025476649"
+    ad-type="display"
+    container-class="homepage-category-banner"
+  />
 </template>
 
 <script>
+import AdSenseAd from './AdSenseAd.vue'
+
 export default {
   name: 'HomepageCategoryBanner',
-  mounted() {
-    if (typeof window !== 'undefined') {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    }
+  components: {
+    AdSenseAd
   }
 }
 </script>
 
 <style scoped>
-.ad-container {
-  margin: 2rem 0;
-}
-
 .homepage-category-banner {
   text-align: center;
   padding: 1rem 0;
+  margin: 2rem 0;
 }
 </style>
