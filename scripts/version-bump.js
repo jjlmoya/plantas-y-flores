@@ -15,12 +15,19 @@
 import { execSync } from 'child_process';
 import { readFileSync, writeFileSync } from 'fs';
 
-function getLastCommitMessage() {
+function getCommitMessage() {
+  // In pre-commit hook, get the staged commit message
+  if (process.env.GIT_COMMIT_MESSAGE) {
+    return process.env.GIT_COMMIT_MESSAGE;
+  }
+  
+  // Try to get from git log if we're in post-commit
   try {
     return execSync('git log -1 --pretty=%B', { encoding: 'utf8' }).trim();
   } catch (error) {
-    console.log('⚠️  No git commits found, skipping version bump');
-    process.exit(0);
+    // If no commits exist, default to patch bump
+    console.log('⚠️  No git commits found, defaulting to patch bump');
+    return 'fix: initial version bump';
   }
 }
 
@@ -62,10 +69,10 @@ function bumpVersion(bumpType) {
 }
 
 function main() {
-  const commitMessage = getLastCommitMessage();
+  const commitMessage = getCommitMessage();
   const currentVersion = getCurrentVersion();
   
-  console.log(`📝 Last commit: ${commitMessage.split('\n')[0]}`);
+  console.log(`📝 Commit message: ${commitMessage.split('\n')[0]}`);
   console.log(`📦 Current version: ${currentVersion}`);
   
   const bumpType = determineVersionBump(commitMessage);
@@ -73,16 +80,7 @@ function main() {
   
   const newVersion = bumpVersion(bumpType);
   
-  // Add the updated package.json to the current commit if we're in a git hook
-  if (process.env.npm_lifecycle_event === 'postcommit') {
-    try {
-      execSync('git add package.json', { stdio: 'inherit' });
-      execSync(`git commit --amend -m "${commitMessage}\n\n🤖 Auto-bumped version to ${newVersion}"`, { stdio: 'inherit' });
-      console.log('📦 Version bump added to commit');
-    } catch (error) {
-      console.log('⚠️  Could not amend commit with version bump');
-    }
-  }
+  console.log(`✅ Version bumped to ${newVersion}`);
 }
 
 main();
