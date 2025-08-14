@@ -35,7 +35,12 @@
       "Bash(do sed -i 's|http://plantasyflores\\.online/wp-content/uploads/|/wp-content/uploads/|g' \"$file\")",
       "Bash(done)",
       "Bash(pkill:*)",
-      "Bash(del .\\nul)"
+      "Bash(del .\\nul)",
+      "WebFetch(domain:pagespeed.web.dev)",
+      "Bash(timeout 30s npm run build)",
+      "Bash(git commit:*)",
+      "Bash(jq:*)",
+      "Bash(python3:*)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"
