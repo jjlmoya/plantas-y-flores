@@ -6,5 +6,9 @@ import vue from '@astrojs/vue';
 export default defineConfig({
   integrations: [vue()],
   output: 'static',
-  site: 'https://plantasyflores.online'
+  site: 'https://plantasyflores.online',
+  server: {
+    port: 4321,
+    host: true
+  }
 });

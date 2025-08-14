@@ -2,6 +2,7 @@
 import Navigation from '../components/Navigation.vue';
 import Footer from '../components/Footer.vue';
 import GDPRConsent from '../components/GDPRConsent.vue';
+import packageJson from '../../package.json';
 
 export interface Props {
   title: string;
@@ -328,10 +329,25 @@ const autoKeywords = keywords || [
     </script>
     
     <!-- Google AdSense - Loaded conditionally via GDPR component -->
-    <script is:inline>
+    <script is:inline set:html={`
       // AdSense will be loaded by GDPRConsent component based on user consent
       window.adConsentGiven = false;
-    </script>
+      
+      // Version info available in console
+      window.getVersion = function() {
+        return '${packageJson.version}';
+      };
+      
+      window.getSiteInfo = function() {
+        return {
+          name: '${packageJson.name}',
+          version: '${packageJson.version}',
+          description: 'Tu guía personal para el mundo de las plantas',
+          url: 'https://plantasyflores.online',
+          author: 'jardineraamable'
+        };
+      };
+    `}></script>
     
     <!-- AdSense Optimizations CSS -->
     <link rel="stylesheet" href="/styles/adsense-optimizations.css">
@@ -342,7 +358,7 @@ const autoKeywords = keywords || [
       <slot />
     </main>
     <Footer client:load />
-    <GDPRConsent client:only="vue" />
+    <GDPRConsent client:load />
     
     <!-- PWA Service Worker Registration -->
     <script is:inline>

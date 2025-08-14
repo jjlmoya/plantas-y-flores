@@ -5,7 +5,7 @@
       <div class="search-wrapper" :class="{ 'search-focused': isFocused, 'search-active': isActive }">
         <div class="search-input-group">
           <input
-            ref="searchInput"
+            :ref="el => searchInput = el"
             v-model="searchQuery"
             @input="onInput"
             @focus="onFocus"
@@ -115,7 +115,7 @@ const isActive = ref(false)
 const selectedIndex = ref(-1)
 const isMobile = ref(false)
 const plants = ref([])
-const searchInput = ref(null)
+let searchInput = null
 
 const popularCategories = ref([
   { name: 'Rosas', slug: 'rosa', emoji: '🌹', count: 14 },
@@ -298,7 +298,7 @@ function onKeydown(event) {
     }
   } else if (event.key === 'Escape') {
     closeResults();
-    searchInput.value.blur();
+    searchInput?.blur();
   }
 }
 
@@ -306,7 +306,7 @@ function handleGlobalKeydown(event) {
   if (event.key === '/' && !isFocused.value && 
       !['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target.tagName)) {
     event.preventDefault();
-    searchInput.value.focus();
+    searchInput?.focus();
   }
 }
 
@@ -314,7 +314,7 @@ function clearSearch() {
   searchQuery.value = '';
   selectedIndex.value = -1;
   showResults.value = true;
-  searchInput.value.focus();
+  searchInput?.focus();
 }
 
 function closeResults() {

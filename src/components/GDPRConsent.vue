@@ -9,13 +9,13 @@
       
       <div class="gdpr-buttons">
         <button @click="acceptAll" class="btn btn-accept">
-          Aceptar
+          {{ texts.acceptButton }}
         </button>
         <button @click="toggleSettings" class="btn btn-configure">
-          Configurar
+          {{ texts.settingsButton }}
         </button>
-        <button @click="rejectAll" class="btn btn-reject">
-          Rechazar
+        <button v-if="isStrictCountry" @click="rejectAll" class="btn btn-reject">
+          {{ texts.rejectButton }}
         </button>
       </div>
     </div>
@@ -69,6 +69,8 @@
 </template>
 
 <script>
+import { detectUserCountry, isGdprRequired, isStrictPrivacyRequired, getPrivacyTexts, cookieConsent } from '../utils/gdpr.js';
+
 export default {
   name: 'GDPRConsent',
   data() {
@@ -76,14 +78,24 @@ export default {
       showBanner: false,
       showSettings: false,
       isMobile: false,
+      userCountry: 'US',
+      isGdprCountry: false,
+      isStrictCountry: false,
+      texts: {
+        title: 'Política de Privacidad y Cookies',
+        message: 'Este sitio web utiliza cookies para mejorar tu experiencia de navegación.',
+        acceptButton: 'Acepto',
+        rejectButton: 'Rechazar',
+        settingsButton: 'Configurar'
+      },
       preferences: {
         analytics: false,
         advertising: false
       }
     }
   },
-  mounted() {
-    this.checkConsentStatus()
+  async mounted() {
+    await this.initializeGdpr()
     this.checkMobile()
     window.addEventListener('resize', this.checkMobile)
   },
@@ -91,6 +103,62 @@ export default {
     window.removeEventListener('resize', this.checkMobile)
   },
   methods: {
+    async initializeGdpr() {
+      try {
+        // Check if consent already exists and is valid
+        if (cookieConsent.hasConsent() && cookieConsent.isConsentValid()) {
+          this.applyStoredConsent()
+          return
+        }
+
+        // Detect user's country
+        this.userCountry = await detectUserCountry()
+        this.isGdprCountry = isGdprRequired(this.userCountry)
+        this.isStrictCountry = isStrictPrivacyRequired(this.userCountry)
+        this.texts = getPrivacyTexts(this.userCountry)
+
+        // Auto-accept for non-GDPR countries (Spanish-speaking countries mainly)
+        if (!this.isGdprCountry && !this.isStrictCountry) {
+          this.autoAccept()
+          return
+        }
+
+        // Show banner for GDPR/strict privacy countries
+        this.showBanner = true
+
+      } catch (error) {
+        console.error('GDPR initialization failed:', error)
+        // Fallback: auto-accept if detection fails
+        this.autoAccept()
+      }
+    },
+
+    autoAccept() {
+      this.preferences.analytics = true
+      this.preferences.advertising = true
+      
+      const autoConsent = {
+        necessary: true,
+        analytics: true,
+        advertising: true,
+        autoAccepted: true,
+        country: this.userCountry,
+        preferences: this.preferences
+      }
+      
+      cookieConsent.setConsent(autoConsent)
+      this.loadScripts()
+      console.log(`Auto-accepted cookies for ${this.userCountry}`)
+    },
+
+    applyStoredConsent() {
+      const stored = cookieConsent.getConsent()
+      if (stored && stored.preferences) {
+        this.preferences = stored.preferences
+        this.loadScripts()
+      }
+    },
+
     checkConsentStatus() {
       const consent = localStorage.getItem('gdpr-consent')
       if (!consent) {
@@ -129,11 +197,21 @@ export default {
     
     saveConsentAndHide() {
       const consentData = {
-        timestamp: Date.now(),
+        necessary: true,
+        analytics: this.preferences.analytics,
+        advertising: this.preferences.advertising,
+        country: this.userCountry,
         preferences: this.preferences
       }
       
-      localStorage.setItem('gdpr-consent', JSON.stringify(consentData))
+      cookieConsent.setConsent(consentData)
+      
+      // Legacy support
+      localStorage.setItem('gdpr-consent', JSON.stringify({
+        timestamp: Date.now(),
+        preferences: this.preferences
+      }))
+      
       this.showBanner = false
       this.loadScripts()
       
