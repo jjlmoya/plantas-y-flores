@@ -66,7 +66,7 @@ const structuredData = {
   "@type": "Article",
   "headline": plant.data.title,
   "description": description,
-  "image": imageUrl ? `https://plantasyflores.com${imageUrl}` : null,
+  "image": imageUrl ? `https://plantasyflores.online${imageUrl}` : null,
   "datePublished": plant.data.date,
   "dateModified": plant.data.date,
   "author": {
@@ -78,7 +78,7 @@ const structuredData = {
     "name": "Plantas y Flores",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://plantasyflores.com/logo.png"
+      "url": "https://plantasyflores.online/logo.png"
     }
   }
 };
@@ -87,8 +87,8 @@ const structuredData = {
 <BaseLayout 
   title={title}
   description={description}
-  image={imageUrl ? `https://plantasyflores.com${imageUrl}` : null}
-  canonical={`https://plantasyflores.com/${category?.slug || 'plantas'}/${plant.slug}/`}
+  image={imageUrl ? `https://plantasyflores.online${imageUrl}` : null}
+  canonical={`https://plantasyflores.online/${category?.slug || 'plantas'}/${plant.slug}/`}
 >
   <!-- Schema.org estructurado -->
   <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>

@@ -1,31 +1,20 @@
-import { getPlants, getCategories } from '../utils/data.js';
+import { getPlants } from '../utils/data.js';
+
+export async function getStaticPaths() {
+  return [
+    { params: {} }
+  ];
+}
 
 export async function GET() {
   const plants = await getPlants();
-  const categories = await getCategories();
 
   const sitemapEntries = [
-    // Homepage
-    {
-      url: 'https://plantasyflores.com/',
-      lastmod: new Date().toISOString(),
-      changefreq: 'daily',
-      priority: 1.0
-    },
-    
-    // Category pages
-    ...categories.map(category => ({
-      url: `https://plantasyflores.com/${category.data.slug}/`,
-      lastmod: new Date().toISOString(),
-      changefreq: 'weekly',
-      priority: 0.8
-    })),
-    
     // Plant pages
     ...plants.map(plant => {
       const category = plant.data.categories[0]?.slug || 'plantas';
       return {
-        url: `https://plantasyflores.com/${category}/${plant.slug}/`,
+        url: `https://plantasyflores.online/${category}/${plant.slug}/`,
         lastmod: new Date(plant.data.date).toISOString(),
         changefreq: 'monthly',
         priority: 0.6

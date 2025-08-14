@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://plantasyflores.com/sitemap-index.xml
+Sitemap: https://plantasyflores.online/sitemap-index.xml
 
 # Block access to development files
 Disallow: /api/
