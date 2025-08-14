@@ -96,12 +96,6 @@
       </div>
     </div>
     
-    <!-- Backdrop -->
-    <div
-      v-if="showResults"
-      class="search-backdrop"
-      @click="closeResults"
-    ></div>
   </div>
 </template>
 
@@ -693,16 +687,6 @@ function showAllResults() {
   line-height: 1.5;
 }
 
-.search-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
-  background: rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(2px);
-}
 
 @keyframes slideDown {
   from {

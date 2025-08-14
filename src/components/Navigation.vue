@@ -12,7 +12,7 @@
         <button class="nav-toggle" @click="toggleMenu" :aria-expanded="isMenuOpen">
           <span class="nav-toggle-icon"></span>
         </button>
-        <div class="nav-menu" :class="{ 'nav-menu--open': isMenuOpen }">
+        <div class="nav-menu" :class="{ 'nav-menu--open': isMenuOpen }" :style="{ pointerEvents: isMenuOpen ? 'auto' : 'none' }">
           <ul class="nav-list">
             <li class="nav-item">
               <a href="/" class="nav-link" :class="{ 'nav-link--active': isActive('/') }">Inicio</a>
