@@ -1,13 +1,75 @@
 User-agent: *
 Allow: /
 
-# Sitemap
 Sitemap: https://plantasyflores.online/sitemap-index.xml
+Sitemap: https://plantasyflores.online/page-sitemap.xml
+Sitemap: https://plantasyflores.online/post-sitemap.xml
 
-# Block access to development files
 Disallow: /api/
 Disallow: /_astro/
 Disallow: /src/
+Disallow: /dist/
+Disallow: /node_modules/
+Disallow: /scripts/
+Disallow: /tests/
+Disallow: /*.json$
+Disallow: /*.js$
+Disallow: /*.mjs$
+Disallow: /*.ts$
+Disallow: /package*.json
+Disallow: /tsconfig.json
+Disallow: /astro.config.mjs
+Disallow: /CLAUDE.md
+Disallow: /README.md
+Disallow: /TODO/
+Disallow: /service-worker.js
+Disallow: /manifest.json
+Disallow: /browserconfig.xml
+Disallow: /styles/adsense-optimizations.css
 
-# SEO optimization
+User-agent: Googlebot
+Allow: /
+Allow: /wp-content/uploads/
+Crawl-delay: 0.5
+
+User-agent: Bingbot
+Allow: /
+Allow: /wp-content/uploads/
 Crawl-delay: 1
+
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Crawl-delay: 10
+
+User-agent: DotBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 5
+
+User-agent: MauiBot
+Disallow: /
+
+User-agent: sistrix
+Crawl-delay: 10
+
+User-agent: facebookexternalhit
+Allow: /
+Crawl-delay: 1
+
+User-agent: Twitterbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: LinkedInBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: ia_archiver
+Allow: /
+Crawl-delay: 2
+
+Crawl-delay: 1
+Host: plantasyflores.online

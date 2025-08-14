@@ -14,7 +14,7 @@ export async function GET() {
     {
       url: 'https://plantasyflores.online/',
       lastmod: new Date().toISOString(),
-      changefreq: 'daily',
+      changefreq: 'monthly',
       priority: 1.0
     },
     
@@ -22,7 +22,7 @@ export async function GET() {
     {
       url: 'https://plantasyflores.online/plantas/',
       lastmod: new Date().toISOString(),
-      changefreq: 'weekly',
+      changefreq: 'monthly',
       priority: 0.9
     },
     
@@ -30,7 +30,7 @@ export async function GET() {
     ...categories.map(category => ({
       url: `https://plantasyflores.online/${category.data.slug}/`,
       lastmod: new Date().toISOString(),
-      changefreq: 'weekly',
+      changefreq: 'monthly',
       priority: 0.8
     }))
   ];

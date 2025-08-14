@@ -16,7 +16,7 @@ export async function GET() {
       return {
         url: `https://plantasyflores.online/${category}/${plant.slug}/`,
         lastmod: new Date(plant.data.date).toISOString(),
-        changefreq: 'monthly',
+        changefreq: 'yearly',
         priority: 0.6
       };
     })
