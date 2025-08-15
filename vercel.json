@@ -1,7 +1,7 @@
 {
   "functions": {
     "dist/pages/random.astro.mjs": {
-      "runtime": "nodejs22.x"
+      "runtime": "@vercel/node@3.0.0"
     }
   }
 }
