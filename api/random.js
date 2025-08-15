@@ -13,7 +13,6 @@ export default async function handler(req, res) {
     const allItems = [
       // Añadir todas las plantas
       ...allPlants.map(plant => ({
-        type: 'plant',
         title: `${(plant.data.categories[0]?.name || '').charAt(0).toUpperCase() + (plant.data.categories[0]?.name || '').slice(1)} ${plant.data.title}`,
         content: plant.data.seo_html,
         excerpt: plant.data.excerpt,
@@ -21,7 +20,6 @@ export default async function handler(req, res) {
       })),
       // Añadir todas las categorías
       ...allCategories.map(category => ({
-        type: 'category', 
         title: category.data.name.charAt(0).toUpperCase() + category.data.name.slice(1),
         content: category.data.content || '',
         excerpt: category.data.description,
