@@ -1,7 +1,7 @@
 {
   "name": "plantasyflores",
   "type": "module",
-  "version": "2.7.0",
+  "version": "2.8.0",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -15,6 +15,9 @@
     "version:bump": "node scripts/version-bump.js",
     "setup-hooks": "git config core.hooksPath .githooks && chmod +x .githooks/*",
     "postversion": "git add package.json"
+  },
+  "engines": {
+    "node": ">=22.0.0"
   },
   "dependencies": {
     "@astrojs/vercel": "^7.8.2",

@@ -48,5 +48,8 @@ coverage/
 # Astro
 .astro/
 
+# Vercel
+.vercel/
+
 # Legacy scripts dependencies (optional - keep for maintenance)
 _scripts/node_modules/
