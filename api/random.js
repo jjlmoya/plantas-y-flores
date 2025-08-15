@@ -14,20 +14,18 @@ export default async function handler(req, res) {
       // Añadir todas las plantas
       ...allPlants.map(plant => ({
         type: 'plant',
-        title: plant.data.title,
-        categoryName: plant.data.categories[0]?.name || '',
+        title: `${(plant.data.categories[0]?.name || '').charAt(0).toUpperCase() + (plant.data.categories[0]?.name || '').slice(1)} ${plant.data.title}`,
         content: plant.data.seo_html,
         excerpt: plant.data.excerpt,
-        originalUrl: `https://plantasyflores.online/${plant.data.categories[0]?.slug || 'plantas'}/${plant.slug}/`
+        URL: `https://plantasyflores.online/${plant.data.categories[0]?.slug || 'plantas'}/${plant.slug}/`
       })),
       // Añadir todas las categorías
       ...allCategories.map(category => ({
         type: 'category', 
-        title: category.data.name,
-        categoryName: '',
+        title: category.data.name.charAt(0).toUpperCase() + category.data.name.slice(1),
         content: category.data.content || '',
         excerpt: category.data.description,
-        originalUrl: `https://plantasyflores.online/${category.data.slug}/`
+        URL: `https://plantasyflores.online/${category.data.slug}/`
       }))
     ];
 
