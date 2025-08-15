@@ -1,6 +1,6 @@
 import { getPlants, getCategories } from '../src/utils/data.js';
 
-export default async function GET({ params, request }) {
+export default async function handler(req, res) {
   // Prevenir indexación SEO
   res.setHeader('X-Robots-Tag', 'noindex, nofollow');
   res.setHeader('Content-Type', 'application/json');
