@@ -43,7 +43,9 @@
       "Bash(python3:*)",
       "Bash(git rm:*)",
       "WebSearch",
-      "WebFetch(domain:vercel.com)"
+      "WebFetch(domain:vercel.com)",
+      "Bash(git restore:*)",
+      "Bash(git checkout:*)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"
