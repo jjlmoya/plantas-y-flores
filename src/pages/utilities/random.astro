@@ -1,84 +1,88 @@
 ---
 import { getPlants, getCategories } from '../../utils/data.js';
 
-// Prevenir indexación SEO
-Astro.response.headers.set('X-Robots-Tag', 'noindex, nofollow');
+export async function GET() {
+  // Prevenir indexación SEO
+  const headers = {
+    'Content-Type': 'text/html; charset=UTF-8',
+    'X-Robots-Tag': 'noindex, nofollow'
+  };
 
-const allPlants = await getPlants();
-const allCategories = await getCategories();
+  const allPlants = await getPlants();
+  const allCategories = await getCategories();
 
-// Combinar plantas y categorías en un solo array
-const allItems = [
-  // Añadir todas las plantas
-  ...allPlants.map(plant => ({
-    type: 'plant',
-    title: plant.data.title,
-    categoryName: plant.data.categories[0]?.name || '',
-    content: plant.data.seo_html,
-    excerpt: plant.data.excerpt,
-    mainImage: plant.data.main_image || plant.data.featured_image,
-    originalUrl: `https://plantasyflores.online/${plant.data.categories[0]?.slug || 'plantas'}/${plant.slug}/`
-  })),
-  // Añadir todas las categorías
-  ...allCategories.map(category => ({
-    type: 'category', 
-    title: category.data.name,
-    categoryName: '',
-    content: category.data.content || '',
-    excerpt: category.data.description,
-    mainImage: null,
-    originalUrl: `https://plantasyflores.online/${category.data.slug}/`
-  }))
-];
+  // Combinar plantas y categorías en un solo array
+  const allItems = [
+    // Añadir todas las plantas
+    ...allPlants.map(plant => ({
+      type: 'plant',
+      title: plant.data.title,
+      categoryName: plant.data.categories[0]?.name || '',
+      content: plant.data.seo_html,
+      excerpt: plant.data.excerpt,
+      mainImage: plant.data.main_image || plant.data.featured_image,
+      originalUrl: `https://plantasyflores.online/${plant.data.categories[0]?.slug || 'plantas'}/${plant.slug}/`
+    })),
+    // Añadir todas las categorías
+    ...allCategories.map(category => ({
+      type: 'category', 
+      title: category.data.name,
+      categoryName: '',
+      content: category.data.content || '',
+      excerpt: category.data.description,
+      mainImage: null,
+      originalUrl: `https://plantasyflores.online/${category.data.slug}/`
+    }))
+  ];
 
-// Seleccionar un elemento aleatorio
-const randomIndex = Math.floor(Math.random() * allItems.length);
-const randomItem = allItems[randomIndex];
+  // Seleccionar un elemento aleatorio EN CADA REQUEST
+  const randomIndex = Math.floor(Math.random() * allItems.length);
+  const randomItem = allItems[randomIndex];
 
-// Limpiar HTML del contenido y decodificar entidades HTML
-const cleanContent = (html) => {
-  if (!html) return '';
-  return html
-    .replace(/<[^>]*>/g, '')
-    .replace(/&aacute;/g, 'á')
-    .replace(/&eacute;/g, 'é')
-    .replace(/&iacute;/g, 'í')
-    .replace(/&oacute;/g, 'ó')
-    .replace(/&uacute;/g, 'ú')
-    .replace(/&ntilde;/g, 'ñ')
-    .replace(/&Aacute;/g, 'Á')
-    .replace(/&Eacute;/g, 'É')
-    .replace(/&Iacute;/g, 'Í')
-    .replace(/&Oacute;/g, 'Ó')
-    .replace(/&Uacute;/g, 'Ú')
-    .replace(/&Ntilde;/g, 'Ñ')
-    .replace(/&nbsp;/g, ' ')
-    .replace(/&amp;/g, '&')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"')
-    .replace(/&#[0-9]+;/g, ' ')
-    .trim();
-};
----
+  // Limpiar HTML del contenido y decodificar entidades HTML
+  const cleanContent = (html) => {
+    if (!html) return '';
+    return html
+      .replace(/<[^>]*>/g, '')
+      .replace(/&aacute;/g, 'á')
+      .replace(/&eacute;/g, 'é')
+      .replace(/&iacute;/g, 'í')
+      .replace(/&oacute;/g, 'ó')
+      .replace(/&uacute;/g, 'ú')
+      .replace(/&ntilde;/g, 'ñ')
+      .replace(/&Aacute;/g, 'Á')
+      .replace(/&Eacute;/g, 'É')
+      .replace(/&Iacute;/g, 'Í')
+      .replace(/&Oacute;/g, 'Ó')
+      .replace(/&Uacute;/g, 'Ú')
+      .replace(/&Ntilde;/g, 'Ñ')
+      .replace(/&nbsp;/g, ' ')
+      .replace(/&amp;/g, '&')
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+      .replace(/&quot;/g, '"')
+      .replace(/&#[0-9]+;/g, ' ')
+      .trim();
+  };
 
+  const html = `<!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-  <title>{randomItem.title}</title>
+  <title>${randomItem.title}</title>
 </head>
 <body>
-  <h1>{randomItem.type === 'plant' && randomItem.categoryName ? `${randomItem.categoryName} ${randomItem.title}` : randomItem.title}</h1>
+  <h1>${randomItem.type === 'plant' && randomItem.categoryName ? `${randomItem.categoryName} ${randomItem.title}` : randomItem.title}</h1>
   
-  <p><strong>URL a compartir:</strong> {randomItem.originalUrl}</p>
+  <p><strong>URL a compartir:</strong> ${randomItem.originalUrl}</p>
   
-  {randomItem.excerpt && (
-    <p>{cleanContent(randomItem.excerpt)}</p>
-  )}
+  ${randomItem.excerpt ? `<p>${cleanContent(randomItem.excerpt)}</p>` : ''}
   
-  {randomItem.content && (
-    <div set:html={cleanContent(randomItem.content)} />
-  )}
+  ${randomItem.content ? `<div>${cleanContent(randomItem.content)}</div>` : ''}
 </body>
-</html>
+</html>`;
+
+  return new Response(html, { headers });
+}
+---
