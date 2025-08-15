@@ -71,10 +71,6 @@ const cleanContent = (html) => {
 <body>
   <h1>{randomItem.type === 'plant' && randomItem.categoryName ? `${randomItem.categoryName} ${randomItem.title}` : randomItem.title}</h1>
   
-  {randomItem.mainImage && (
-    <p><strong>Imagen a compartir:</strong> {randomItem.mainImage}</p>
-  )}
-  
   <p><strong>URL a compartir:</strong> {randomItem.originalUrl}</p>
   
   {randomItem.excerpt && (
