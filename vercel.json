@@ -1,5 +1,7 @@
 {
   "functions": {
-    "runtime": "nodejs22.x"
+    "dist/pages/random.astro.mjs": {
+      "runtime": "nodejs22.x"
+    }
   }
 }
