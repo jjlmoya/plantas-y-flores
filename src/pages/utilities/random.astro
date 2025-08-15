@@ -9,17 +9,25 @@ const allCategories = await getCategories();
 
 // Combinar plantas y categorías en un solo array
 const allItems = [
-  // Añadir todas las plantas con su categoría
+  // Añadir todas las plantas
   ...allPlants.map(plant => ({
     type: 'plant',
-    url: `/${plant.data.categories[0]?.slug || 'plantas'}/${plant.slug}/`,
-    title: plant.data.title
+    title: plant.data.title,
+    categoryName: plant.data.categories[0]?.name || '',
+    content: plant.data.seo_html,
+    excerpt: plant.data.excerpt,
+    mainImage: plant.data.main_image || plant.data.featured_image,
+    originalUrl: `https://plantasyflores.online/${plant.data.categories[0]?.slug || 'plantas'}/${plant.slug}/`
   })),
   // Añadir todas las categorías
   ...allCategories.map(category => ({
     type: 'category', 
-    url: `/${category.data.slug}/`,
-    title: category.data.name
+    title: category.data.name,
+    categoryName: '',
+    content: category.data.content || '',
+    excerpt: category.data.description,
+    mainImage: null,
+    originalUrl: `https://plantasyflores.online/${category.data.slug}/`
   }))
 ];
 
@@ -27,12 +35,54 @@ const allItems = [
 const randomIndex = Math.floor(Math.random() * allItems.length);
 const randomItem = allItems[randomIndex];
 
-// Redirigir al elemento seleccionado
-return Astro.redirect(randomItem.url);
+// Limpiar HTML del contenido y decodificar entidades HTML
+const cleanContent = (html) => {
+  if (!html) return '';
+  return html
+    .replace(/<[^>]*>/g, '')
+    .replace(/&aacute;/g, 'á')
+    .replace(/&eacute;/g, 'é')
+    .replace(/&iacute;/g, 'í')
+    .replace(/&oacute;/g, 'ó')
+    .replace(/&uacute;/g, 'ú')
+    .replace(/&ntilde;/g, 'ñ')
+    .replace(/&Aacute;/g, 'Á')
+    .replace(/&Eacute;/g, 'É')
+    .replace(/&Iacute;/g, 'Í')
+    .replace(/&Oacute;/g, 'Ó')
+    .replace(/&Uacute;/g, 'Ú')
+    .replace(/&Ntilde;/g, 'Ñ')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#[0-9]+;/g, ' ')
+    .trim();
+};
 ---
 
 <html>
 <head>
+  <meta charset="UTF-8">
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <title>{randomItem.title}</title>
 </head>
+<body>
+  <h1>{randomItem.type === 'plant' && randomItem.categoryName ? `${randomItem.categoryName} ${randomItem.title}` : randomItem.title}</h1>
+  
+  {randomItem.mainImage && (
+    <p><strong>Imagen a compartir:</strong> {randomItem.mainImage}</p>
+  )}
+  
+  <p><strong>URL a compartir:</strong> {randomItem.originalUrl}</p>
+  
+  {randomItem.excerpt && (
+    <p>{cleanContent(randomItem.excerpt)}</p>
+  )}
+  
+  {randomItem.content && (
+    <div set:html={cleanContent(randomItem.content)} />
+  )}
+</body>
 </html>
