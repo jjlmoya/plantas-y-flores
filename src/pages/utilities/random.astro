@@ -1,4 +1,6 @@
 ---
+export const prerender = false;
+
 import { getPlants, getCategories } from '../../utils/data.js';
 
 // Prevenir indexación SEO
@@ -29,10 +31,9 @@ const allItems = [
   }))
 ];
 
-// Usar el timestamp del request para generar "aleatoriedad" por tiempo
-const seed = Date.now();
-const randomIndex = Math.floor((Math.sin(seed) * 10000) % allItems.length);
-const randomItem = allItems[Math.abs(randomIndex)];
+// Ahora sí será random en cada request
+const randomIndex = Math.floor(Math.random() * allItems.length);
+const randomItem = allItems[randomIndex];
 
 // Limpiar HTML del contenido y decodificar entidades HTML
 const cleanContent = (html) => {

@@ -5,7 +5,7 @@ import vue from '@astrojs/vue';
 // https://astro.build/config
 export default defineConfig({
   integrations: [vue()],
-  output: 'static',
+  output: 'hybrid',
   site: 'https://plantasyflores.online',
   server: {
     port: 4321,
