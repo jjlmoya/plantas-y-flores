@@ -1,0 +1,38 @@
+---
+import { getPlants, getCategories } from '../../utils/data.js';
+
+// Prevenir indexación SEO
+Astro.response.headers.set('X-Robots-Tag', 'noindex, nofollow');
+
+const allPlants = await getPlants();
+const allCategories = await getCategories();
+
+// Combinar plantas y categorías en un solo array
+const allItems = [
+  // Añadir todas las plantas con su categoría
+  ...allPlants.map(plant => ({
+    type: 'plant',
+    url: `/${plant.data.categories[0]?.slug || 'plantas'}/${plant.slug}/`,
+    title: plant.data.title
+  })),
+  // Añadir todas las categorías
+  ...allCategories.map(category => ({
+    type: 'category', 
+    url: `/${category.data.slug}/`,
+    title: category.data.name
+  }))
+];
+
+// Seleccionar un elemento aleatorio
+const randomIndex = Math.floor(Math.random() * allItems.length);
+const randomItem = allItems[randomIndex];
+
+// Redirigir al elemento seleccionado
+return Astro.redirect(randomItem.url);
+---
+
+<html>
+<head>
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+</head>
+</html>
