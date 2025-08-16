@@ -138,6 +138,7 @@ export async function getCategories() {
   categoryPages.forEach(page => {
     if (categoryMap.has(page.slug)) {
       categoryMap.get(page.slug).data.content = page.data.seo_html;
+      categoryMap.get(page.slug).data.main_image = page.data.main_image;
       // Limpiar HTML del excerpt para usar como descripción
       const cleanDescription = page.data.excerpt 
         ? page.data.excerpt.replace(/<[^>]*>/g, '').replace(/&[^;]+;/g, '').trim()

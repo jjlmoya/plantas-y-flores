@@ -11,6 +11,24 @@ export default defineConfig({
   site: 'https://plantasyflores.online',
   server: {
     port: 4321,
-    host: true
+    host: true,
+    watch: {
+      usePolling: true,
+      interval: 100
+    }
+  },
+  vite: {
+    server: {
+      hmr: {
+        overlay: true
+      },
+      watch: {
+        usePolling: true,
+        interval: 100
+      }
+    },
+    build: {
+      sourcemap: true
+    }
   }
 });

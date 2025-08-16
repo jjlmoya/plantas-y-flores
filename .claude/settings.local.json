@@ -50,7 +50,8 @@
       "Bash(del \"C:\\Users\\34677\\Desktop\\plantasyflroes\\api\\random.js\")",
       "Bash(for file in \"C:\\Users\\34677\\Desktop\\plantasyflroes\\public\\data\\posts\\*.json\")",
       "Bash(do sed -i 's/\"\"type\"\": \"\"[^\"\"]*\"\",//g' \"$file\")",
-      "Bash(nvm install:*)"
+      "Bash(nvm install:*)",
+      "Bash(wmic process where:*)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"
