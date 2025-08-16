@@ -9,7 +9,7 @@
             <span class="logo-text">Plantas y Flores</span>
           </a>
         </div>
-        <button class="nav-toggle" @click="toggleMenu" :aria-expanded="isMenuOpen">
+        <button class="nav-toggle" @click="toggleMenu" :aria-expanded="isMenuOpen" aria-label="Abrir menú de navegación">
           <span class="nav-toggle-icon"></span>
         </button>
         <div class="nav-menu" :class="{ 'nav-menu--open': isMenuOpen }">

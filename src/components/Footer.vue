@@ -14,7 +14,7 @@
         
         <!-- Quick Links -->
         <div class="footer-section">
-          <h4 class="footer-title">Categorías</h4>
+          <h3 class="footer-title">Categorías</h3>
           <ul class="footer-links">
             <li><a href="/plantas-medicinales/" class="footer-link">Plantas Medicinales</a></li>
             <li><a href="/plantas-exterior/" class="footer-link">Plantas de Exterior</a></li>
@@ -26,7 +26,7 @@
         
         <!-- Resources -->
         <div class="footer-section">
-          <h4 class="footer-title">Recursos</h4>
+          <h3 class="footer-title">Recursos</h3>
           <ul class="footer-links">
             <li><a href="/plantas/" class="footer-link">Todas las Plantas</a></li>
             <li><a href="/tienda-de-semillas/" class="footer-link">Tienda de Semillas</a></li>
@@ -36,7 +36,7 @@
         
         <!-- Social Media -->
         <div class="footer-section">
-          <h4 class="footer-title">Síguenos</h4>
+          <h3 class="footer-title">Síguenos</h3>
           <div class="social-links">
             <a href="https://twitter.com/JardineraAmable" target="_blank" rel="noopener noreferrer" class="social-link twitter" title="Twitter">
               <svg viewBox="0 0 24 24" class="social-icon">
