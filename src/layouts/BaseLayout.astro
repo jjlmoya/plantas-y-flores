@@ -30,7 +30,7 @@ const {
   tags = []
 } = Astro.props;
 
-const defaultImage = '/brand/logo.webp';
+const defaultImage = '/brand/logo-200.webp';
 const siteUrl = 'https://plantasyflores.online';
 const currentUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
 const fullImageUrl = image ? new URL(image, siteUrl).href : new URL(defaultImage, siteUrl).href;
@@ -104,10 +104,18 @@ const autoKeywords = keywords || [
         line-height: 1.6; 
         color: #333; 
       }
-      /* Logo loading state */
+      /* Logo loading state - prevent layout shift */
       .main-logo { 
-        max-width: 120px; 
-        height: auto; 
+        width: 120px; 
+        height: 120px; 
+        display: block;
+        margin: 0 auto;
+      }
+      @media (max-width: 768px) {
+        .main-logo { 
+          width: 80px; 
+          height: 80px; 
+        }
       }
     </style>
     
