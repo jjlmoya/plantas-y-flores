@@ -63,11 +63,19 @@ const autoKeywords = keywords || [
     <meta name="apple-mobile-web-app-title" content="Plantas y Flores" />
     <meta name="msapplication-tap-highlight" content="no" />
     
-    <!-- Resource Hints para Performance -->
+    <!-- Advanced Performance Hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
     <link rel="dns-prefetch" href="//pagead2.googlesyndication.com" />
     <link rel="dns-prefetch" href="//www.google-analytics.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+    
+    <!-- Performance Meta Tags -->
+    <meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width, Downlink, RTT, ECT" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    
+    <!-- Critical Resource Hints -->
+    {image && <link rel="preload" as="image" href={fullImageUrl} />}
     
     <!-- Metadatos de Autoridad y Confianza -->
     <meta name="copyright" content="© 2024 Plantas y Flores - jardineraamable" />
@@ -86,11 +94,23 @@ const autoKeywords = keywords || [
     <!-- Windows Tiles -->
     <meta name="msapplication-TileColor" content="#10b981" />
     
-    <!-- Additional SEO Meta Tags -->
+    <!-- Advanced SEO Meta Tags -->
     <meta name="author" content="jardineraamable" />
     <meta name="keywords" content={autoKeywords} />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:160, max-video-preview:30" />
+    <meta name="googlebot" content="index, follow, max-snippet:160, max-image-preview:large" />
+    <meta name="bingbot" content="index, follow" />
     <meta name="language" content="es" />
+    
+    <!-- Article-specific meta tags -->
+    {type === 'article' && (
+      <>
+        <meta name="article:content_tier" content="free" />
+        <meta name="article:opinion" content="false" />
+        <meta name="article:content_warning" content="none" />
+        <meta name="news_keywords" content="jardinería, cultivo, plantas, flores, botánica" />
+      </>
+    )}
     
     <!-- Optimización geográfica para países top 10 -->
     <meta name="geo.region" content="MX;ES;AR;CO;PE;CL;EC;CR;VE;US" />
@@ -212,7 +232,27 @@ const autoKeywords = keywords || [
           "@type": "Audience",
           "audienceType": "jardineros, botánicos, principiantes",
           "geographicArea": ["México", "España", "Argentina", "Colombia", "Perú", "Chile"]
-        }
+        },
+        "learningResourceType": "how-to guide",
+        "educationalLevel": "beginner",
+        "educationalUse": "instruction",
+        "interactivityType": "mixed",
+        "typicalAgeRange": "18-65",
+        "timeRequired": "PT5M",
+        "speakable": {
+          "@type": "SpeakableSpecification",
+          "cssSelector": [".plant-article__title", ".hero-description", ".section-title"]
+        },
+        "hasPart": [
+          {
+            "@type": "FAQPage",
+            "@id": `${currentUrl}#faq`
+          },
+          {
+            "@type": "HowTo",
+            "@id": `${currentUrl}#howto`
+          }
+        ]
       } : {
         "@context": "https://schema.org",
         "@type": "WebSite",
