@@ -30,7 +30,7 @@ const {
   tags = []
 } = Astro.props;
 
-const defaultImage = '/brand/logo.png';
+const defaultImage = '/brand/logo.webp';
 const siteUrl = 'https://plantasyflores.online';
 const currentUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
 const fullImageUrl = image ? new URL(image, siteUrl).href : new URL(defaultImage, siteUrl).href;
@@ -284,10 +284,7 @@ const autoKeywords = keywords || [
       }
     )} />
     
-    
-      })} />
-    )}
-    
+
     <!-- Google Analytics 4 - GDPR Compliant -->
     <script is:inline>
       // Check if we should load analytics (exclude localhost unless debug mode)

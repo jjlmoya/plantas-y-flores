@@ -5,7 +5,7 @@
         <!-- Logo and Brand -->
         <div class="footer-brand">
           <div class="footer-logo">
-            <img src="/brand/logo.png" alt="Plantas y Flores" class="footer-logo-img">
+            <img src="/brand/logo-64.webp" alt="Plantas y Flores" class="footer-logo-img">
             <span class="footer-brand-name">Plantas y Flores</span>
           </div>
           <p class="footer-tagline">Tu guía personal para el mundo de las plantas</p>

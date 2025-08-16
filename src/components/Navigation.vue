@@ -5,7 +5,7 @@
       <div class="nav-container">
         <div class="nav-logo">
           <a href="/" class="logo-link">
-            <img src="/brand/logo.png" alt="Plantas y Flores" class="logo-image">
+            <img src="/brand/logo-64.webp" alt="Plantas y Flores" class="logo-image">
             <span class="logo-text">Plantas y Flores</span>
           </a>
         </div>
