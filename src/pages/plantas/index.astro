@@ -64,6 +64,25 @@ if (searchQuery.trim()) {
   description="Descubre nuestra colección completa de plantas y flores. Más de 100 artículos sobre jardinería, cultivo y cuidado de plantas."
   canonical="https://plantasyflores.online/plantas/"
 >
+  <!-- Breadcrumbs Schema para página de todas las plantas -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://plantasyflores.online/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Todas las plantas",
+        "item": "https://plantasyflores.online/plantas/"
+      }
+    ]
+  })}></script>
   <div class="plants-page">
     <header class="plants-header">
       <nav class="breadcrumb">

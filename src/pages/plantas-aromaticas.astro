@@ -45,6 +45,25 @@ const availableCategories = [...new Set(
   tags={["plantas aromáticas", "hierbas aromáticas", "especias culinarias", "jardín de hierbas", "hierbas frescas"]}
   image="/brand/logo.png"
 >
+  <!-- Breadcrumbs Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://plantasyflores.online/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Plantas Aromáticas",
+        "item": "https://plantasyflores.online/plantas-aromaticas/"
+      }
+    ]
+  })}></script>
   <div class="category-page">
     <!-- Hero Section -->
     <section class="category-hero">

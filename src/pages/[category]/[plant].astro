@@ -93,6 +93,32 @@ const structuredData = {
   <!-- Schema.org estructurado -->
   <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
   
+  <!-- Breadcrumbs Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://plantasyflores.online/"
+      },
+      {
+        "@type": "ListItem", 
+        "position": 2,
+        "name": category?.name || "Plantas",
+        "item": `https://plantasyflores.online/${category?.slug || 'plantas'}/`
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": plant.data.title,
+        "item": `https://plantasyflores.online/${category?.slug || 'plantas'}/${plant.slug}/`
+      }
+    ]
+  })}></script>
+  
   <article class="plant-article">
     <!-- Article Header -->
     <header class="plant-article__header">
