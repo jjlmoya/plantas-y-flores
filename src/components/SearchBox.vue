@@ -388,6 +388,26 @@ function showAllResults() {
   
   window.location.href = `/plantas/?search=${queryParam}`;
 }
+
+// Method to focus input - used for lazy loading
+function focusInput() {
+  if (searchInput.value) {
+    searchInput.value.focus();
+  }
+}
+
+// Method to activate search and show dropdown
+function activateSearch() {
+  isActive.value = true;
+  showResults.value = true;
+  isFocused.value = true;
+}
+
+// Expose methods for parent component
+defineExpose({
+  focusInput,
+  activateSearch
+})
 </script>
 
 <style scoped>

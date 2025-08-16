@@ -51,22 +51,55 @@
       </div>
     </nav>
     
-    <!-- Subheader con buscador -->
+    <!-- Subheader con buscador lazy -->
     <div class="nav-subheader">
       <div class="nav-search">
-        <SearchBox />
+        <!-- Fake SearchBox - maintains visual design -->
+        <div v-if="!isSearchActive" class="search-section">
+          <div class="search-container">
+            <div class="search-wrapper">
+              <div class="search-input-group">
+                <input
+                  @focus="activateSearch"
+                  @click="activateSearch" 
+                  @mousedown.prevent="activateSearch"
+                  type="text"
+                  placeholder="Buscar plantas, flores, categorías..."
+                  class="search-input"
+                  aria-label="Buscar plantas y flores"
+                  autocomplete="off"
+                  readonly
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Real SearchBox - lazy loaded -->
+        <component :is="SearchBoxComponent" v-if="isSearchActive && SearchBoxComponent" ref="searchBoxRef" />
       </div>
     </div>
   </header>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import SearchBox from './SearchBox.vue'
+import { ref, onMounted, nextTick } from 'vue'
 
 const isMenuOpen = ref(false)
 const activeDropdown = ref(null)
 const currentPath = ref('')
+const isSearchActive = ref(false)
+const searchBoxRef = ref(null)
+const SearchBoxComponent = ref(null)
+
+// Lazy import SearchBox
+const loadSearchBox = async () => {
+  if (!SearchBoxComponent.value) {
+    const module = await import('./SearchBox.vue')
+    SearchBoxComponent.value = module.default
+  }
+  return SearchBoxComponent.value
+}
 
 onMounted(() => {
   if (typeof window !== 'undefined') {
@@ -80,6 +113,25 @@ const toggleMenu = () => {
 
 const setDropdown = (dropdown) => {
   activeDropdown.value = dropdown
+}
+
+const activateSearch = async () => {
+  // Load SearchBox component dynamically
+  await loadSearchBox()
+  isSearchActive.value = true
+  
+  // Focus on search input and trigger activation after component mounts
+  await nextTick()
+  
+  // Use setTimeout to ensure the component is fully mounted
+  setTimeout(() => {
+    if (searchBoxRef.value?.focusInput) {
+      searchBoxRef.value.focusInput()
+    }
+    if (searchBoxRef.value?.activateSearch) {
+      searchBoxRef.value.activateSearch()
+    }
+  }, 10)
 }
 
 const isActive = (href) => {
@@ -394,5 +446,64 @@ const isDropdownActive = () => {
   .navigation {
     margin-bottom: 1.5rem;
   }
+}
+
+/* Fake SearchBox styles - matches real SearchBox exactly */
+.search-section {
+  position: relative;
+  z-index: 1000;
+  height: 100%;
+  width: 100%;
+}
+
+.search-container {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.search-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  transition: all 0.3s ease;
+  margin: 0;
+}
+
+.search-input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  height: 100%;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 400;
+  color: #2d5016;
+  height: 100%;
+  cursor: pointer;
+}
+
+.search-input::placeholder {
+  color: #6b7280;
+  font-weight: 400;
+}
+
+/* Make readonly input look interactive */
+.search-input[readonly] {
+  cursor: pointer;
 }
 </style>

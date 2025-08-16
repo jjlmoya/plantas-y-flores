@@ -75,8 +75,41 @@ const autoKeywords = keywords || [
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     
     <!-- Critical Resource Hints -->
-    {image && <link rel="preload" as="image" href={fullImageUrl} />}
+    {image && <link rel="preload" as="image" href={fullImageUrl} fetchpriority="high" />}
     
+    <!-- Critical CSS inline for better LCP -->
+    <style>
+      /* Critical navigation styles to prevent layout shift */
+      .navigation { 
+        background: white; 
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+        margin-bottom: 2rem; 
+        position: sticky; 
+        top: 0; 
+        z-index: 1000; 
+      }
+      .nav-main { 
+        background: white; 
+        padding: 0; 
+        border-bottom: 1px solid #e5e7eb; 
+      }
+      .nav-subheader { 
+        background: #f8f9fa; 
+        padding: 1rem 0; 
+      }
+      /* Prevent flash of unstyled content */
+      body { 
+        margin: 0; 
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
+        line-height: 1.6; 
+        color: #333; 
+      }
+      /* Logo loading state */
+      .main-logo { 
+        max-width: 120px; 
+        height: auto; 
+      }
+    </style>
     
     <!-- Windows Tiles -->
     <meta name="msapplication-TileColor" content="#10b981" />
@@ -397,11 +430,12 @@ const autoKeywords = keywords || [
       };
     `}></script>
     
-    <!-- AdSense Optimizations CSS -->
-    <link rel="stylesheet" href="/styles/adsense-optimizations.css">
+    <!-- AdSense Optimizations CSS - Non-blocking load -->
+    <link rel="preload" href="/styles/adsense-optimizations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/styles/adsense-optimizations.css"></noscript>
   </head>
   <body>
-    <Navigation client:only="vue" />
+    <Navigation client:idle />
     <main>
       <slot />
     </main>

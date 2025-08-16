@@ -28,7 +28,15 @@ export default defineConfig({
       }
     },
     build: {
-      sourcemap: true
+      sourcemap: true,
+      cssCodeSplit: true,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'search-chunk': ['./src/components/SearchBox.vue']
+          }
+        }
+      }
     }
   }
 });
