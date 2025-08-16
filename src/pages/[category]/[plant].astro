@@ -153,6 +153,10 @@ const structuredData = {
         <img 
           src={imageUrl} 
           alt={plant.data.title}
+          width="800"
+          height="500"
+          loading="eager"
+          fetchpriority="high"
           class="plant-article__featured-image"
         />
       </div>
@@ -177,7 +181,7 @@ const structuredData = {
 
     <!-- Related Plants -->
     <RelatedPlants 
-      client:load
+      client:visible
       currentPlant={currentPlantData}
       allPlants={allPlantsData}
       maxResults={6}
@@ -262,12 +266,56 @@ const structuredData = {
   </script>
 </BaseLayout>
 
-<style>
+<style is:inline>
+/* Estilos críticos para above the fold */
 .plant-article {
   max-width: 850px;
   margin: 0 auto;
   position: relative;
 }
+
+.plant-article__header {
+  margin-bottom: 2rem;
+}
+
+.plant-article__title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: #1a5511;
+  margin: 0 0 2rem 0;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 4px rgba(26, 85, 17, 0.1);
+}
+
+.breadcrumb {
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.breadcrumb a {
+  color: #4a7c23;
+  text-decoration: none;
+}
+
+.plant-article__image {
+  margin: 3rem 0;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+.plant-article__featured-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  max-height: 500px;
+}
+</style>
+
+<style>
 
 /* Estilos para anuncios intercalados en el contenido */
 .content-ad-container {

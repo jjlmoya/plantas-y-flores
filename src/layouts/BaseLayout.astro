@@ -66,6 +66,7 @@ const autoKeywords = keywords || [
     <!-- Advanced Performance Hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    <link rel="preconnect" href="https://ipapi.co" crossorigin />
     <link rel="dns-prefetch" href="//pagead2.googlesyndication.com" />
     <link rel="dns-prefetch" href="//www.google-analytics.com" />
     <link rel="dns-prefetch" href="//fonts.gstatic.com" />
@@ -443,7 +444,7 @@ const autoKeywords = keywords || [
     <noscript><link rel="stylesheet" href="/styles/adsense-optimizations.css"></noscript>
   </head>
   <body>
-    <Navigation client:idle />
+    <Navigation client:visible />
     <main>
       <slot />
     </main>
