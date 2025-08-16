@@ -77,19 +77,6 @@ const autoKeywords = keywords || [
     <!-- Critical Resource Hints -->
     {image && <link rel="preload" as="image" href={fullImageUrl} />}
     
-    <!-- Metadatos de Autoridad y Confianza -->
-    <meta name="copyright" content="© 2024 Plantas y Flores - jardineraamable" />
-    <meta name="designer" content="jardineraamable" />
-    <meta name="reply-to" content="jardineraamable@gmail.com" />
-    <meta name="owner" content="jardineraamable" />
-    <meta name="url" content="https://plantasyflores.online" />
-    <meta name="identifier-URL" content="https://plantasyflores.online" />
-    <meta name="coverage" content="Worldwide" />
-    <meta name="directory" content="submission" />
-    <meta name="category" content="Jardín y Hogar, Educación, Naturaleza" />
-    <meta name="target" content="all" />
-    <meta name="HandheldFriendly" content="True" />
-    <meta name="MobileOptimized" content="320" />
     
     <!-- Windows Tiles -->
     <meta name="msapplication-TileColor" content="#10b981" />
@@ -228,31 +215,6 @@ const autoKeywords = keywords || [
         "inLanguage": "es-419",
         "isAccessibleForFree": true,
         "url": currentUrl,
-        "audience": {
-          "@type": "Audience",
-          "audienceType": "jardineros, botánicos, principiantes",
-          "geographicArea": ["México", "España", "Argentina", "Colombia", "Perú", "Chile"]
-        },
-        "learningResourceType": "how-to guide",
-        "educationalLevel": "beginner",
-        "educationalUse": "instruction",
-        "interactivityType": "mixed",
-        "typicalAgeRange": "18-65",
-        "timeRequired": "PT5M",
-        "speakable": {
-          "@type": "SpeakableSpecification",
-          "cssSelector": [".plant-article__title", ".hero-description", ".section-title"]
-        },
-        "hasPart": [
-          {
-            "@type": "FAQPage",
-            "@id": `${currentUrl}#faq`
-          },
-          {
-            "@type": "HowTo",
-            "@id": `${currentUrl}#howto`
-          }
-        ]
       } : {
         "@context": "https://schema.org",
         "@type": "WebSite",
@@ -322,93 +284,7 @@ const autoKeywords = keywords || [
       }
     )} />
     
-    <!-- Rich Snippets específicos -->
-    {type === 'article' && category && (
-      <script type="application/ld+json" set:html={JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "HowTo",
-        "name": `Cómo cultivar ${title.split(' - ')[0]}`,
-        "description": description,
-        "image": fullImageUrl,
-        "author": {
-          "@type": "Person",
-          "name": "jardineraamable",
-          "jobTitle": "Especialista en Jardinería"
-        },
-        "datePublished": publishedDate || new Date().toISOString(),
-        "inLanguage": "es-419",
-        "about": {
-          "@type": "Thing",
-          "name": category,
-          "sameAs": `https://plantasyflores.online/${category}/`
-        },
-        "step": [
-          {
-            "@type": "HowToStep",
-            "name": "Preparación del suelo",
-            "text": "Prepara el suelo con buen drenaje y nutrientes adecuados"
-          },
-          {
-            "@type": "HowToStep", 
-            "name": "Plantación",
-            "text": "Planta en la época adecuada según tu región"
-          },
-          {
-            "@type": "HowToStep",
-            "name": "Cuidados",
-            "text": "Mantén riego regular y protege de plagas"
-          }
-        ],
-        "supply": [
-          {
-            "@type": "HowToSupply",
-            "name": "Semillas o plántulas"
-          },
-          {
-            "@type": "HowToSupply",
-            "name": "Tierra de calidad"
-          },
-          {
-            "@type": "HowToSupply",
-            "name": "Herramientas de jardinería"
-          }
-        ],
-        "totalTime": "P90D",
-        "yield": "1 planta saludable"
-      })} />
-    )}
     
-    <!-- FAQ Schema -->
-    {type === 'article' && (
-      <script type="application/ld+json" set:html={JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": `¿Cómo cultivar ${title.split(' - ')[0]} en México?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": `${title.split(' - ')[0]} se puede cultivar exitosamente en México siguiendo las recomendaciones de riego, suelo y exposición solar adecuadas para el clima tropical y subtropical.`
-            }
-          },
-          {
-            "@type": "Question",
-            "name": `¿Cuándo plantar ${title.split(' - ')[0]}?`,
-            "acceptedAnswer": {
-              "@type": "Answer", 
-              "text": "La mejor época para plantar depende de tu zona climática. En general, primavera y otoño son las estaciones más favorables."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": `¿Qué cuidados necesita ${title.split(' - ')[0]}?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Requiere riego regular, buen drenaje, fertilización adecuada y protección contra plagas comunes."
-            }
-          }
-        ]
       })} />
     )}
     
