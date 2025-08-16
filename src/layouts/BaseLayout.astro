@@ -59,8 +59,29 @@ const autoKeywords = keywords || [
     <link rel="manifest" href="/manifest.json" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Plantas y Flores" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    
+    <!-- Resource Hints para Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    <link rel="dns-prefetch" href="//pagead2.googlesyndication.com" />
+    <link rel="dns-prefetch" href="//www.google-analytics.com" />
+    
+    <!-- Metadatos de Autoridad y Confianza -->
+    <meta name="copyright" content="© 2024 Plantas y Flores - jardineraamable" />
+    <meta name="designer" content="jardineraamable" />
+    <meta name="reply-to" content="jardineraamable@gmail.com" />
+    <meta name="owner" content="jardineraamable" />
+    <meta name="url" content="https://plantasyflores.online" />
+    <meta name="identifier-URL" content="https://plantasyflores.online" />
+    <meta name="coverage" content="Worldwide" />
+    <meta name="directory" content="submission" />
+    <meta name="category" content="Jardín y Hogar, Educación, Naturaleza" />
+    <meta name="target" content="all" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
     
     <!-- Windows Tiles -->
     <meta name="msapplication-TileColor" content="#10b981" />
@@ -70,8 +91,26 @@ const autoKeywords = keywords || [
     <meta name="keywords" content={autoKeywords} />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="language" content="es" />
-    <meta name="geo.region" content="ES" />
-    <meta name="geo.country" content="Spain" />
+    
+    <!-- Optimización geográfica para países top 10 -->
+    <meta name="geo.region" content="MX;ES;AR;CO;PE;CL;EC;CR;VE;US" />
+    <meta name="geo.country" content="Mexico;Spain;Argentina;Colombia;Peru;Chile;Ecuador;Costa Rica;Venezuela;United States" />
+    <meta name="geo.placename" content="México, España, Argentina, Colombia, Perú, Chile, Ecuador, Costa Rica, Venezuela" />
+    
+    <!-- Performance y Core Web Vitals -->
+    <meta name="theme-color" content="#10b981" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#065f46" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="format-detection" content="telephone=no" />
+    
+    <!-- Contenido especializado -->
+    <meta name="content-language" content="es-419" />
+    <meta name="audience" content="jardineros, botánicos, principiantes, aficionados plantas" />
+    <meta name="subject" content="Plantas, flores, jardinería, cultivo, botánica" />
+    <meta name="classification" content="Educación, Jardinería, Botánica" />
+    
     <meta name="revisit-after" content="7 days" />
     <meta name="rating" content="general" />
     <meta name="distribution" content="global" />
@@ -96,7 +135,12 @@ const autoKeywords = keywords || [
     <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="Plantas y Flores" />
     <meta property="og:locale" content="es_ES" />
-    <meta property="og:locale:alternate" content="es" />
+    <meta property="og:locale:alternate" content="es_MX" />
+    <meta property="og:locale:alternate" content="es_AR" />
+    <meta property="og:locale:alternate" content="es_CO" />
+    <meta property="og:locale:alternate" content="es_PE" />
+    <meta property="og:locale:alternate" content="es_CL" />
+    <meta property="og:locale:alternate" content="es_419" />
     {publishedDate && <meta property="article:published_time" content={publishedDate} />}
     {modifiedDate && <meta property="article:modified_time" content={modifiedDate} />}
     {category && <meta property="article:section" content={category} />}
@@ -124,16 +168,26 @@ const autoKeywords = keywords || [
         "author": {
           "@type": "Person",
           "name": "jardineraamable",
-          "url": "https://plantasyflores.online/contacto/"
+          "url": "https://plantasyflores.online/contacto/",
+          "knowsAbout": ["jardinería", "botánica", "plantas medicinales", "cultivo"],
+          "jobTitle": "Especialista en Jardinería"
         },
         "publisher": {
-          "@type": "Person",
-          "name": "jardineraamable",
+          "@type": "Organization",
+          "name": "Plantas y Flores",
+          "url": "https://plantasyflores.online",
           "logo": {
             "@type": "ImageObject",
             "url": new URL(defaultImage, siteUrl).href,
             "width": 400,
             "height": 400
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer service",
+            "email": "jardineraamable@gmail.com",
+            "areaServed": ["MX", "ES", "AR", "CO", "PE", "CL", "EC", "CR", "VE"],
+            "availableLanguage": "Spanish"
           }
         },
         "datePublished": publishedDate || new Date().toISOString(),
@@ -142,11 +196,23 @@ const autoKeywords = keywords || [
           "@type": "WebPage",
           "@id": currentUrl
         },
-        ...(category && { "articleSection": category }),
+        ...(category && { 
+          "articleSection": category,
+          "about": {
+            "@type": "Thing",
+            "name": category,
+            "description": `Información sobre ${category} y su cultivo`
+          }
+        }),
         ...(tags.length > 0 && { "keywords": tags.join(', ') }),
-        "inLanguage": "es-ES",
+        "inLanguage": "es-419",
         "isAccessibleForFree": true,
-        "url": currentUrl
+        "url": currentUrl,
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "jardineros, botánicos, principiantes",
+          "geographicArea": ["México", "España", "Argentina", "Colombia", "Perú", "Chile"]
+        }
       } : {
         "@context": "https://schema.org",
         "@type": "WebSite",
@@ -216,24 +282,93 @@ const autoKeywords = keywords || [
       }
     )} />
     
-    <!-- Additional article-specific structured data -->
+    <!-- Rich Snippets específicos -->
     {type === 'article' && category && (
       <script type="application/ld+json" set:html={JSON.stringify({
         "@context": "https://schema.org",
         "@type": "HowTo",
-        "name": title,
+        "name": `Cómo cultivar ${title.split(' - ')[0]}`,
         "description": description,
         "image": fullImageUrl,
         "author": {
           "@type": "Person",
-          "name": "jardineraamable"
+          "name": "jardineraamable",
+          "jobTitle": "Especialista en Jardinería"
         },
         "datePublished": publishedDate || new Date().toISOString(),
-        "inLanguage": "es-ES",
+        "inLanguage": "es-419",
         "about": {
           "@type": "Thing",
-          "name": category
-        }
+          "name": category,
+          "sameAs": `https://plantasyflores.online/${category}/`
+        },
+        "step": [
+          {
+            "@type": "HowToStep",
+            "name": "Preparación del suelo",
+            "text": "Prepara el suelo con buen drenaje y nutrientes adecuados"
+          },
+          {
+            "@type": "HowToStep", 
+            "name": "Plantación",
+            "text": "Planta en la época adecuada según tu región"
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Cuidados",
+            "text": "Mantén riego regular y protege de plagas"
+          }
+        ],
+        "supply": [
+          {
+            "@type": "HowToSupply",
+            "name": "Semillas o plántulas"
+          },
+          {
+            "@type": "HowToSupply",
+            "name": "Tierra de calidad"
+          },
+          {
+            "@type": "HowToSupply",
+            "name": "Herramientas de jardinería"
+          }
+        ],
+        "totalTime": "P90D",
+        "yield": "1 planta saludable"
+      })} />
+    )}
+    
+    <!-- FAQ Schema -->
+    {type === 'article' && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": `¿Cómo cultivar ${title.split(' - ')[0]} en México?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `${title.split(' - ')[0]} se puede cultivar exitosamente en México siguiendo las recomendaciones de riego, suelo y exposición solar adecuadas para el clima tropical y subtropical.`
+            }
+          },
+          {
+            "@type": "Question",
+            "name": `¿Cuándo plantar ${title.split(' - ')[0]}?`,
+            "acceptedAnswer": {
+              "@type": "Answer", 
+              "text": "La mejor época para plantar depende de tu zona climática. En general, primavera y otoño son las estaciones más favorables."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": `¿Qué cuidados necesita ${title.split(' - ')[0]}?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Requiere riego regular, buen drenaje, fertilización adecuada y protección contra plagas comunes."
+            }
+          }
+        ]
       })} />
     )}
     

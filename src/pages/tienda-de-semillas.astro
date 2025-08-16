@@ -12,6 +12,102 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   tags={["tienda semillas", "semillas online", "venta semillas", "semillas plantas"]}
   image="/brand/logo.png"
 >
+  <!-- Schema.org para Store/LocalBusiness -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "Tienda de Semillas - Plantas y Flores",
+    "description": "Tienda online de semillas de plantas comestibles, aromáticas, medicinales y ornamentales con envío a México, España, Argentina y toda Latinoamérica",
+    "url": "https://plantasyflores.online/tienda-de-semillas/",
+    "image": "https://plantasyflores.online/brand/logo.png",
+    "areaServed": ["MX", "ES", "AR", "CO", "PE", "CL", "EC", "CR", "VE"],
+    "currenciesAccepted": "EUR, USD, MXN",
+    "paymentAccepted": ["Credit Card", "PayPal", "Bank Transfer"],
+    "priceRange": "€-€€",
+    "openingHours": "Mo-Su 00:00-23:59",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "ES",
+      "addressRegion": "España"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "email": "jardineraamable@gmail.com",
+      "areaServed": ["MX", "ES", "AR", "CO", "PE", "CL", "EC", "CR", "VE"],
+      "availableLanguage": "Spanish"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Catálogo de Semillas",
+      "itemListElement": [
+        {
+          "@type": "OfferCatalog",
+          "name": "Semillas Comestibles",
+          "description": "Semillas de plantas comestibles para huerta casera"
+        },
+        {
+          "@type": "OfferCatalog", 
+          "name": "Semillas Aromáticas",
+          "description": "Semillas de hierbas culinarias y plantas aromáticas"
+        },
+        {
+          "@type": "OfferCatalog",
+          "name": "Semillas de Flores",
+          "description": "Semillas de flores ornamentales y para polinizadores"
+        },
+        {
+          "@type": "OfferCatalog",
+          "name": "Semillas Medicinales", 
+          "description": "Semillas de plantas con propiedades terapéuticas"
+        }
+      ]
+    },
+    "potentialAction": {
+      "@type": "BuyAction",
+      "target": "https://plantasyflores.online/tienda-de-semillas/"
+    }
+  })}></script>
+  
+  <!-- FAQ Schema para la tienda -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cuándo abre la tienda de semillas?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Próximamente abriremos nuestra tienda online. Mantente atento a las actualizaciones en nuestra página principal y sección de contacto."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Envían semillas a México y Latinoamérica?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí, realizaremos envíos a México, España, Argentina, Colombia, Perú, Chile, Ecuador, Costa Rica y Venezuela con las mejores condiciones de envío."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué tipos de semillas venderán?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ofreceremos semillas comestibles (tomates, lechugas, fresas), aromáticas (albahaca, lavanda, tomillo), flores ornamentales (girasoles, cosmos) y plantas medicinales (manzanilla, equinácea)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Las semillas incluyen guías de cultivo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí, todas las semillas incluirán instrucciones detalladas de siembra, cuidado y cultivo específicas para cada planta, además de soporte experto de jardineraamable."
+        }
+      }
+    ]
+  })}></script>
   <div class="store-page">
     <!-- Hero Section -->
     <section class="store-hero">
@@ -119,31 +215,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </section>
 
-    <!-- Newsletter Signup -->
+    <!-- Coming Soon Info -->
     <section class="newsletter-section">
       <div class="newsletter-content">
-        <h2 class="newsletter-title">¡Sé el Primero en Saberlo!</h2>
+        <h2 class="newsletter-title">¡Mantente Informado!</h2>
         <p class="newsletter-description">
-          Regístrate para recibir una notificación cuando abramos la tienda y 
-          obtén un descuento especial en tu primera compra.
+          La tienda abrirá próximamente. Visita regularmente nuestra página 
+          o contáctanos directamente para consultas sobre disponibilidad.
         </p>
         
-        <form class="newsletter-form" action="#" method="POST">
-          <div class="form-group">
-            <input 
-              type="email" 
-              class="email-input" 
-              placeholder="Tu dirección de email"
-              required
-            >
-            <button type="submit" class="subscribe-btn">
-              Notificarme
-            </button>
-          </div>
-          <p class="form-note">
-            Te enviaremos máximo 1 email al mes con novedades y ofertas especiales.
-          </p>
-        </form>
+        <div class="info-actions">
+          <a href="/contacto/" class="info-btn primary">
+            Contactar Directamente
+          </a>
+          <a href="/plantas/" class="info-btn secondary">
+            Ver Guías de Plantas
+          </a>
+        </div>
       </div>
     </section>
 
@@ -157,11 +245,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </p>
         
         <div class="contact-options">
-          <a href="mailto:contacto@plantasyflores.online" class="contact-option email">
+          <a href="mailto:jardineraamable@gmail.com" class="contact-option email">
             <div class="option-icon">📧</div>
             <div class="option-content">
               <h4>Email Directo</h4>
-              <p>contacto@plantasyflores.online</p>
+              <p>jardineraamable@gmail.com</p>
             </div>
           </a>
           
@@ -412,52 +500,47 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   margin: 0 auto 2rem auto;
 }
 
-.newsletter-form {
+.info-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
   max-width: 400px;
   margin: 0 auto;
+  flex-wrap: wrap;
 }
 
-.form-group {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.email-input {
-  flex: 1;
-  padding: 1rem;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  font-size: 1rem;
-  outline: none;
-  transition: border-color 0.3s ease;
-}
-
-.email-input:focus {
-  border-color: #4a7c23;
-}
-
-.subscribe-btn {
-  background: #4a7c23;
-  color: white;
-  border: none;
+.info-btn {
   padding: 1rem 2rem;
   border-radius: 8px;
   font-size: 1rem;
   font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  white-space: nowrap;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  text-align: center;
+  flex: 1;
+  min-width: 180px;
 }
 
-.subscribe-btn:hover {
+.info-btn.primary {
+  background: #4a7c23;
+  color: white;
+}
+
+.info-btn.primary:hover {
   background: #2d5016;
+  transform: translateY(-2px);
 }
 
-.form-note {
-  font-size: 0.85rem;
-  color: #666;
-  margin: 0;
+.info-btn.secondary {
+  background: transparent;
+  color: #4a7c23;
+  border: 2px solid #4a7c23;
+}
+
+.info-btn.secondary:hover {
+  background: #4a7c23;
+  color: white;
+  transform: translateY(-2px);
 }
 
 /* Contact Info */
@@ -581,7 +664,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     grid-template-columns: 1fr;
   }
   
-  .form-group {
+  .info-actions {
     flex-direction: column;
   }
   
