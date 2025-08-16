@@ -112,8 +112,8 @@ npm run build        # Generate static files
 ### Usage in Components
 ```javascript
 // PlantCard.vue automatically converts:
-// '/wp-content/uploads/2017/07/image.jpg'
-// to: '/wp-content/uploads/2017/07/image.jpg'
+// '/wp-content/uploads/2017/07/image.webp'
+// to: '/wp-content/uploads/2017/07/image.webp'
 ```
 
 ## Content Categories (24 total)

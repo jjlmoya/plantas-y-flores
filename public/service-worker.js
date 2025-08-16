@@ -6,10 +6,10 @@ const STATIC_CACHE_NAME = 'plantas-static-v1';
 const CORE_FILES = [
   '/',
   '/manifest.json',
-  '/favicon.png',
+  '/favicon.webp',
   '/styles/adsense-optimizations.css',
-  '/icons/icon-192x192.png',
-  '/icons/icon-512x512.png'
+  '/icons/icon-192x192.webp',
+  '/icons/icon-512x512.webp'
 ];
 
 // Install event - cache core resources
@@ -144,15 +144,15 @@ self.addEventListener('push', (event) => {
   
   const options = {
     body: event.data ? event.data.text() : 'Nueva información sobre plantas disponible!',
-    icon: '/icons/icon-192x192.png',
-    badge: '/icons/icon-72x72.png',
+    icon: '/icons/icon-192x192.webp',
+    badge: '/icons/icon-72x72.webp',
     tag: 'plantas-notification',
     requireInteraction: false,
     actions: [
       {
         action: 'view',
         title: 'Ver',
-        icon: '/icons/icon-96x96.png'
+        icon: '/icons/icon-96x96.webp'
       },
       {
         action: 'close',

@@ -74,7 +74,7 @@ export default {
     },
     
     getImageUrl(imagePath) {
-      if (!imagePath) return '/wp-content/uploads/2017/07/watering-can-1506750_1280-300x169.jpg';
+      if (!imagePath) return '/wp-content/uploads/2017/07/watering-can-1506750_1280-300x169.webp';
       if (imagePath.startsWith('http')) {
         return imagePath.replace('https://plantasyflores.online', '').replace('https://www.plantasyflores.online', '');
       }
@@ -82,7 +82,7 @@ export default {
     },
     
     handleImageError(event) {
-      event.target.src = '/wp-content/uploads/2017/07/watering-can-1506750_1280-300x169.jpg';
+      event.target.src = '/wp-content/uploads/2017/07/watering-can-1506750_1280-300x169.webp';
     },
     
     getCleanExcerpt(excerpt) {

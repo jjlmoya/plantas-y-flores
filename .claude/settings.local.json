@@ -51,7 +51,10 @@
       "Bash(for file in \"C:\\Users\\34677\\Desktop\\plantasyflroes\\public\\data\\posts\\*.json\")",
       "Bash(do sed -i 's/\"\"type\"\": \"\"[^\"\"]*\"\",//g' \"$file\")",
       "Bash(nvm install:*)",
-      "Bash(wmic process where:*)"
+      "Bash(wmic process where:*)",
+      "Bash(for file in C:Users34677Desktopplantasyflroespublicdataposts*.json)",
+      "Bash(do sed -i 's/\\.png/.webp/g; s/\\.jpg/.webp/g; s/\\.jpeg/.webp/g' \"$file\")",
+      "Bash(del \"C:\\Users\\34677\\Desktop\\plantasyflroes\\update-image-extensions.cjs\")"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"
