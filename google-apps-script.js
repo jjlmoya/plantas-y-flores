@@ -6,6 +6,7 @@ const SPREADSHEET_ID = '11h0m1IKNRo37ttLXBwQ4DaUl0eKBSA6XyvOBKRSkjQo';
 const SHEET_NAME = 'Colaboraciones';
 
 function doPost(e) {
+  console.log('Script ejecutado con datos:', e);
   try {
     // Permitir CORS
     const headers = {
@@ -14,25 +15,25 @@ function doPost(e) {
       'Access-Control-Allow-Headers': 'Content-Type',
     };
     
-    // Parsear los datos recibidos (FormData o JSON)
-    let data;
-    try {
-      // Intentar como JSON primero
-      data = JSON.parse(e.postData.contents);
-    } catch {
-      // Si falla, parsear como FormData
-      data = {};
-      if (e.postData && e.postData.contents) {
+    // Obtener datos desde parámetros (más directo)
+    let data = e.parameter || {};
+    
+    // Si no hay parámetros, intentar parsear el body
+    if (Object.keys(data).length === 0 && e.postData) {
+      try {
+        // Intentar JSON
+        data = JSON.parse(e.postData.contents);
+      } catch {
+        // Intentar URL-encoded
         const params = new URLSearchParams(e.postData.contents);
+        data = {};
         for (const [key, value] of params) {
           data[key] = value;
         }
       }
-      // Si tampoco, usar los parámetros directamente
-      if (Object.keys(data).length === 0 && e.parameter) {
-        data = e.parameter;
-      }
     }
+    
+    console.log('Datos parseados:', data);
     
     // Abrir el spreadsheet
     const spreadsheet = SpreadsheetApp.openById(SPREADSHEET_ID);

@@ -1475,19 +1475,24 @@ document.addEventListener('DOMContentLoaded', function() {
     try {
       console.log('Enviando a:', GOOGLE_SCRIPT_URL);
       
-      // Usar FormData en lugar de JSON para evitar preflight CORS
-      const formData = new FormData();
+      // Intentar con URL params (método más compatible)
+      const params = new URLSearchParams();
       Object.keys(data).forEach(key => {
-        formData.append(key, data[key]);
+        params.append(key, data[key]);
       });
+
+      console.log('Parámetros a enviar:', params.toString());
 
       const response = await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
-        body: formData,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: params.toString(),
         mode: 'no-cors'
       });
       
-      console.log('Enviado con mode: no-cors');
+      console.log('Enviado con URLSearchParams');
       
       // Con no-cors no podemos leer la respuesta, asumimos éxito
       showSuccess('¡Gracias! Tu propuesta de colaboración ha sido enviada correctamente. Te contactaremos pronto.');
