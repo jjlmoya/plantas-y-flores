@@ -14,8 +14,25 @@ function doPost(e) {
       'Access-Control-Allow-Headers': 'Content-Type',
     };
     
-    // Parsear los datos recibidos
-    const data = JSON.parse(e.postData.contents);
+    // Parsear los datos recibidos (FormData o JSON)
+    let data;
+    try {
+      // Intentar como JSON primero
+      data = JSON.parse(e.postData.contents);
+    } catch {
+      // Si falla, parsear como FormData
+      data = {};
+      if (e.postData && e.postData.contents) {
+        const params = new URLSearchParams(e.postData.contents);
+        for (const [key, value] of params) {
+          data[key] = value;
+        }
+      }
+      // Si tampoco, usar los parámetros directamente
+      if (Object.keys(data).length === 0 && e.parameter) {
+        data = e.parameter;
+      }
+    }
     
     // Abrir el spreadsheet
     const spreadsheet = SpreadsheetApp.openById(SPREADSHEET_ID);

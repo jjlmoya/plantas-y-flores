@@ -1475,27 +1475,23 @@ document.addEventListener('DOMContentLoaded', function() {
     try {
       console.log('Enviando a:', GOOGLE_SCRIPT_URL);
       
+      // Usar FormData en lugar de JSON para evitar preflight CORS
+      const formData = new FormData();
+      Object.keys(data).forEach(key => {
+        formData.append(key, data[key]);
+      });
+
       const response = await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        mode: 'cors'
+        body: formData,
+        mode: 'no-cors'
       });
       
-      console.log('Respuesta recibida:', response.status, response.statusText);
+      console.log('Enviado con mode: no-cors');
       
-      if (response.ok) {
-        const result = await response.text();
-        console.log('Resultado:', result);
-        showSuccess('¡Gracias! Tu propuesta de colaboración ha sido enviada correctamente. Te contactaremos pronto.');
-        form.reset();
-      } else {
-        const errorText = await response.text();
-        console.error('Error del servidor:', errorText);
-        throw new Error(`Error del servidor: ${response.status}`);
-      }
+      // Con no-cors no podemos leer la respuesta, asumimos éxito
+      showSuccess('¡Gracias! Tu propuesta de colaboración ha sido enviada correctamente. Te contactaremos pronto.');
+      form.reset();
     } catch (error) {
       console.error('Error completo:', error);
       showError('Hubo un problema al enviar tu mensaje. Error: ' + error.message + '. Por favor, inténtalo de nuevo.');

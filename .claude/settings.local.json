@@ -55,7 +55,8 @@
       "Bash(for file in C:Users34677Desktopplantasyflroespublicdataposts*.json)",
       "Bash(do sed -i 's/\\.png/.webp/g; s/\\.jpg/.webp/g; s/\\.jpeg/.webp/g' \"$file\")",
       "Bash(del \"C:\\Users\\34677\\Desktop\\plantasyflroes\\update-image-extensions.cjs\")",
-      "Bash(del update-logo-refs.cjs)"
+      "Bash(del update-logo-refs.cjs)",
+      "Bash(magick identify:*)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"
