@@ -1,0 +1,53 @@
+{
+  "plant_info": {
+    "category": "rosa",
+    "scientific_name": "Rosa",
+    "family": "Rosaceae", 
+    "type": "perennial",
+    "difficulty": "intermediate"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 10, 11],
+      "alternative_months": [2, 5, 9, 12]
+    },
+    "flowering": {
+      "best_months": [5, 6, 7, 8, 9, 10],
+      "peak_months": [6, 7]
+    },
+    "pruning": {
+      "main_pruning": [2, 3],
+      "deadheading": [5, 6, 7, 8, 9],
+      "light_pruning": [11]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "2": ["prune_main"],
+        "3": ["fertilize", "mulching"],
+        "4": ["moderate_watering"],
+        "5": ["pest_monitoring", "fertilize"],
+        "6": ["moderate_watering", "deadheading"],
+        "7": ["moderate_watering", "deadheading"],
+        "8": ["moderate_watering", "deadheading"],
+        "9": ["moderate_watering", "deadheading"],
+        "10": ["moderate_watering"],
+        "11": ["prune_shoots", "mulching"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_ph": [6.0, 7.0],
+    "soil_type": "well_drained_fertile",
+    "companion_plants": ["lavanda", "albahaca"],
+    "avoid_plants": [],
+    "spacing": {
+      "plant_distance": 60,
+      "row_distance": 80
+    }
+  },
+  "flower_data": {
+    "fragrance": "moderate"
+  }
+}

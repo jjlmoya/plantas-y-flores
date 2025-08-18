@@ -1,0 +1,614 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getMonthlyTasksWithUI, findPlantsByMonth, getGlobalCalendarConfig } from '../../../utils/calendar-inheritance.js';
+
+// Generate static paths for all months
+export async function getStaticPaths() {
+  const paths = [];
+  
+  for (let month = 1; month <= 12; month++) {
+    paths.push({
+      params: { month: month.toString() }
+    });
+  }
+  
+  return paths;
+}
+
+const { month } = Astro.params;
+const monthNumber = parseInt(month);
+
+// Validate month
+if (isNaN(monthNumber) || monthNumber < 1 || monthNumber > 12) {
+  return Astro.redirect('/calendario/');
+}
+
+// Get dynamic data with UI helpers
+const monthlyData = await getMonthlyTasksWithUI(monthNumber);
+const globalConfig = await getGlobalCalendarConfig();
+const { tasks: monthlyTasks, ui, monthName, seasonalTips } = monthlyData;
+
+const prevMonth = monthNumber === 1 ? 12 : monthNumber - 1;
+const nextMonth = monthNumber === 12 ? 1 : monthNumber + 1;
+const prevMonthName = ui.getMonthName(prevMonth);
+const nextMonthName = ui.getMonthName(nextMonth);
+
+// Get calendar data for this month
+const sowingPlants = await findPlantsByMonth(monthNumber, 'sowing');
+const harvestingPlants = await findPlantsByMonth(monthNumber, 'harvesting');
+const transplantingPlants = await findPlantsByMonth(monthNumber, 'transplanting');
+
+// Generate calendar grid for the month
+const currentYear = new Date().getFullYear();
+const firstDay = new Date(currentYear, monthNumber - 1, 1).getDay(); // 0 = Sunday
+const daysInMonth = new Date(currentYear, monthNumber, 0).getDate();
+
+// Adjust firstDay to start on Monday (0 = Monday)
+const adjustedFirstDay = firstDay === 0 ? 6 : firstDay - 1;
+
+// Generate calendar days
+const calendarDays = [];
+// Empty cells for days before month starts
+for (let i = 0; i < adjustedFirstDay; i++) {
+  calendarDays.push(null);
+}
+// Days of the month
+for (let day = 1; day <= daysInMonth; day++) {
+  calendarDays.push(day);
+}
+
+// Group activities by type
+const activities = {
+  sowing: sowingPlants.length,
+  harvesting: harvestingPlants.length,
+  transplanting: transplantingPlants.length,
+  tasks: Object.keys(monthlyTasks).length
+};
+---
+
+<BaseLayout 
+  title={`Calendario ${monthName} | Qué Plantar en ${monthName}`}
+  description={`Guía completa de plantación para ${monthName}. Descubre qué sembrar, trasplantar y cosechar este mes.`}
+>
+  <div class="month-view">
+    <!-- Header with navigation -->
+    <header class="month-header">
+      <div class="container">
+        <nav class="month-nav">
+          <a href={`/calendario/mes/${prevMonth}/`} class="nav-button prev">
+            ← {prevMonthName}
+          </a>
+          
+          <div class="month-title">
+            <h1>{monthName} {currentYear}</h1>
+            <div class="activities-summary">
+              {activities.sowing > 0 && <span class="activity-tag sowing">{activities.sowing} para sembrar</span>}
+              {activities.transplanting > 0 && <span class="activity-tag transplanting">{activities.transplanting} para trasplantar</span>}
+              {activities.harvesting > 0 && <span class="activity-tag harvesting">{activities.harvesting} para cosechar</span>}
+              {activities.tasks > 0 && <span class="activity-tag tasks">{activities.tasks} con tareas</span>}
+            </div>
+          </div>
+          
+          <a href={`/calendario/mes/${nextMonth}/`} class="nav-button next">
+            {nextMonthName} →
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container">
+      <!-- Calendar Grid -->
+      <section class="calendar-section">
+        <h2>📅 Calendario de {monthName}</h2>
+        
+        <div class="calendar-grid">
+          <!-- Day headers -->
+          <div class="day-header">Lun</div>
+          <div class="day-header">Mar</div>
+          <div class="day-header">Mié</div>
+          <div class="day-header">Jue</div>
+          <div class="day-header">Vie</div>
+          <div class="day-header">Sáb</div>
+          <div class="day-header">Dom</div>
+
+          <!-- Calendar days -->
+          {calendarDays.map((day) => (
+            day ? (
+              <div class="calendar-day" key={day}>
+                <span class="day-number">{day}</span>
+                {/* Add activity indicators based on date ranges */}
+                <div class="day-activities">
+                  {/* This could be enhanced to show specific activities for date ranges */}
+                  {day <= 15 && sowingPlants.length > 0 && (
+                    <span class="activity-dot sowing" title="Época de siembra"></span>
+                  )}
+                  {day >= 10 && harvestingPlants.length > 0 && (
+                    <span class="activity-dot harvesting" title="Época de cosecha"></span>
+                  )}
+                </div>
+              </div>
+            ) : (
+              <div class="calendar-day empty" key={`empty-${calendarDays.indexOf(day)}`}></div>
+            )
+          ))}
+        </div>
+      </section>
+
+      <!-- Activities List -->
+      <div class="activities-grid">
+        <!-- Sowing -->
+        {sowingPlants.length > 0 && (
+          <section class="activity-section">
+            <h3>🌱 Para Sembrar</h3>
+            <div class="plants-list">
+              {sowingPlants.map(plant => (
+                <div class="plant-card sowing" key={`${plant.category}-${plant.slug}`}>
+                  <div class="plant-info">
+                    <h4>
+                      <span class="plant-icon">{ui.getCategoryIcon(plant.category)}</span>
+                      {ui.formatPlantName(plant.slug)}
+                    </h4>
+                    <p class="plant-category">{ui.formatCategoryName(plant.category)}</p>
+                    {plant.calendar._article_links?.resolved_link && (
+                      <a href={plant.calendar._article_links.resolved_link} class="plant-link">
+                        Ver más información →
+                      </a>
+                    )}
+                  </div>
+                  <div class="plant-details">
+                    {plant.calendar.calendar_data?.sowing?.indoor && (
+                      <div class="detail">
+                        <strong>Interior:</strong> {plant.calendar.calendar_data.sowing.indoor.temperature_range?.[0]}°C - {plant.calendar.calendar_data.sowing.indoor.temperature_range?.[1]}°C
+                      </div>
+                    )}
+                    {plant.calendar.calendar_data?.sowing?.outdoor && (
+                      <div class="detail">
+                        <strong>Exterior:</strong> {plant.calendar.calendar_data.sowing.outdoor.temperature_range?.[0]}°C - {plant.calendar.calendar_data.sowing.outdoor.temperature_range?.[1]}°C
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <!-- Transplanting -->
+        {transplantingPlants.length > 0 && (
+          <section class="activity-section">
+            <h3>🌿 Para Trasplantar</h3>
+            <div class="plants-list">
+              {transplantingPlants.map(plant => (
+                <div class="plant-card transplanting" key={`${plant.category}-${plant.slug}`}>
+                  <div class="plant-info">
+                    <h4>
+                      <span class="plant-icon">{ui.getCategoryIcon(plant.category)}</span>
+                      {ui.formatPlantName(plant.slug)}
+                    </h4>
+                    <p class="plant-category">{ui.formatCategoryName(plant.category)}</p>
+                    {plant.calendar._article_links?.resolved_link && (
+                      <a href={plant.calendar._article_links.resolved_link} class="plant-link">
+                        Ver más información →
+                      </a>
+                    )}
+                  </div>
+                  <div class="plant-details">
+                    {plant.calendar.calendar_data?.transplanting?.soil_temperature_min && (
+                      <div class="detail">
+                        <strong>Temp. suelo mín:</strong> {plant.calendar.calendar_data.transplanting.soil_temperature_min}°C
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <!-- Harvesting -->
+        {harvestingPlants.length > 0 && (
+          <section class="activity-section">
+            <h3>🌾 Para Cosechar</h3>
+            <div class="plants-list">
+              {harvestingPlants.map(plant => (
+                <div class="plant-card harvesting" key={`${plant.category}-${plant.slug}`}>
+                  <div class="plant-info">
+                    <h4>
+                      <span class="plant-icon">{ui.getCategoryIcon(plant.category)}</span>
+                      {ui.formatPlantName(plant.slug)}
+                    </h4>
+                    <p class="plant-category">{ui.formatCategoryName(plant.category)}</p>
+                    {plant.calendar._article_links?.resolved_link && (
+                      <a href={plant.calendar._article_links.resolved_link} class="plant-link">
+                        Ver más información →
+                      </a>
+                    )}
+                  </div>
+                  <div class="plant-details">
+                    {plant.calendar.harvest_data?.storage_life && (
+                      <div class="detail">
+                        <strong>Conservación:</strong> {plant.calendar.harvest_data.storage_life} días
+                      </div>
+                    )}
+                    {plant.calendar.calendar_data?.harvesting?.days_to_harvest && (
+                      <div class="detail">
+                        <strong>Días hasta cosecha:</strong> {plant.calendar.calendar_data.harvesting.days_to_harvest[0]}-{plant.calendar.calendar_data.harvesting.days_to_harvest[1]}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <!-- Monthly Tasks -->
+        {Object.keys(monthlyTasks).length > 0 && (
+          <section class="activity-section">
+            <h3>📋 Tareas del Mes</h3>
+            {Object.entries(monthlyTasks).map(([category, plants]) => (
+              <div class="category-tasks" key={category}>
+                <h4>
+                  <span class="category-icon">{ui.getCategoryIcon(category)}</span>
+                  {ui.formatCategoryName(category)}
+                </h4>
+                {Object.entries(plants).map(([plantSlug, tasks]) => (
+                  <div class="plant-tasks" key={plantSlug}>
+                    <strong>{ui.formatPlantName(plantSlug)}</strong>
+                    <ul class="tasks-list">
+                      {tasks.map(task => (
+                        <li key={task} class={`task-priority-${ui.getTaskPriority(task)}`}>
+                          <span class="task-icon">{ui.getTaskIcon(task)}</span>
+                          {ui.formatTaskName(task)}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </section>
+        )}
+      </div>
+
+      <!-- Back to dashboard -->
+      <div class="back-to-dashboard">
+        <a href="/calendario/" class="dashboard-link">
+          ← Volver al Dashboard
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .month-view {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  }
+
+  .month-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .month-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .nav-button {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .nav-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .month-title {
+    text-align: center;
+    flex-grow: 1;
+  }
+
+  .month-title h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+
+  .activities-summary {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .activity-tag {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .activity-tag.sowing { border-left: 3px solid #48bb78; }
+  .activity-tag.transplanting { border-left: 3px solid #4299e1; }
+  .activity-tag.harvesting { border-left: 3px solid #ed8936; }
+  .activity-tag.tasks { border-left: 3px solid #9f7aea; }
+
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background: #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+  }
+
+  .day-header {
+    background: #4a5568;
+    color: white;
+    padding: 1rem 0.5rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .calendar-day {
+    background: white;
+    min-height: 80px;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .calendar-day.empty {
+    background: #f7fafc;
+  }
+
+  .day-number {
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 0.25rem;
+  }
+
+  .day-activities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    margin-top: auto;
+  }
+
+  .activity-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: block;
+  }
+
+  .activity-dot.sowing { background: #48bb78; }
+  .activity-dot.harvesting { background: #ed8936; }
+
+  .activities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .activity-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #2d3748;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+  }
+
+  .plants-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .plant-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid;
+  }
+
+  .plant-card.sowing { border-left-color: #48bb78; }
+  .plant-card.transplanting { border-left-color: #4299e1; }
+  .plant-card.harvesting { border-left-color: #ed8936; }
+
+  .plant-info h4 {
+    font-size: 1.2rem;
+    color: #2d3748;
+    margin-bottom: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .plant-icon {
+    font-size: 1.1rem;
+  }
+
+  .plant-category {
+    color: #718096;
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    text-transform: capitalize;
+  }
+
+  .plant-link {
+    color: #667eea;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .plant-link:hover {
+    text-decoration: underline;
+  }
+
+  .plant-details {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  .detail {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #4a5568;
+  }
+
+  .detail strong {
+    color: #2d3748;
+  }
+
+  .category-tasks {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .category-tasks h4 {
+    color: #2d3748;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .category-icon {
+    font-size: 1.2rem;
+  }
+
+  .plant-tasks {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .plant-tasks:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .plant-tasks strong {
+    color: #4a5568;
+    display: block;
+    margin-bottom: 0.5rem;
+    text-transform: capitalize;
+  }
+
+  .tasks-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .tasks-list li {
+    padding: 0.25rem 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .task-icon {
+    width: 20px;
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  .task-priority-high {
+    color: #c53030;
+    font-weight: 600;
+  }
+
+  .task-priority-medium {
+    color: #d69e2e;
+    font-weight: 500;
+  }
+
+  .task-priority-low {
+    color: #718096;
+  }
+
+  .task-priority-normal {
+    color: #4a5568;
+  }
+
+  .back-to-dashboard {
+    text-align: center;
+    padding: 2rem 0;
+  }
+
+  .dashboard-link {
+    background: #667eea;
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s ease;
+  }
+
+  .dashboard-link:hover {
+    background: #5a67d8;
+  }
+
+  @media (max-width: 768px) {
+    .month-nav {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .month-title h1 {
+      font-size: 2rem;
+    }
+
+    .nav-button {
+      padding: 0.5rem 1rem;
+    }
+
+    .activities-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .calendar-day {
+      min-height: 60px;
+    }
+
+    .activities-summary {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>

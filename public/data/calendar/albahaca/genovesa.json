@@ -1,0 +1,24 @@
+{
+  "plant_info": {
+    "scientific_name": "Ocimum basilicum 'Genovese'",
+    "common_names": ["Genovese basil", "Albahaca genovesa"],
+    "origin": "it-IT"
+  },
+  "calendar_data": {
+    "harvesting": {
+      "peak_months": [7, 8],
+      "harvest_indicators": ["aroma", "full_bloom"]
+    }
+  },
+  "growing_conditions": {
+    "special_purposes": ["companion_benefit"]
+  },
+  "harvest_data": {
+    "storage_life": 10,
+    "preservation_methods": ["oil_infusion", "drying", "freezing"]
+  },
+  "culinary_data": {
+    "primary_use": "pesto",
+    "flavor_profile": "sweet"
+  }
+}

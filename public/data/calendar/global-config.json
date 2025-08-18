@@ -1,0 +1,384 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "last_updated": "2025-01-20"
+  },
+  "climate_zones": [
+    "6a", "6b", "7a", "7b", "8a", "8b", "9a", "9b", "10a", "10b", "11a", "11b"
+  ],
+  "task_definitions": [
+    "prepare_seedbeds",
+    "transplant", 
+    "install_supports",
+    "moderate_watering",
+    "heavy_watering",
+    "light_watering",
+    "mulching",
+    "prune_shoots",
+    "prune_main",
+    "deadheading",
+    "fertilize",
+    "pest_monitoring",
+    "harvest_early",
+    "harvest_main",
+    "harvest_late",
+    "plant_cleanup",
+    "seed_collection",
+    "water_restriction",
+    "thinning",
+    "pinching",
+    "staking",
+    "weeding",
+    "soil_preparation"
+  ],
+  "soil_types": [
+    "well_drained",
+    "well_drained_fertile", 
+    "sandy",
+    "sandy_loam",
+    "clay",
+    "clay_loam",
+    "organic_rich",
+    "acidic",
+    "alkaline",
+    "neutral",
+    "poor",
+    "rocky",
+    "moist",
+    "dry"
+  ],
+  "sun_requirements": [
+    "full_sun",
+    "partial_sun", 
+    "partial_shade",
+    "full_shade",
+    "morning_sun",
+    "afternoon_shade"
+  ],
+  "water_needs": [
+    "very_low",
+    "low",
+    "moderate",
+    "moderate_to_high", 
+    "high",
+    "very_high"
+  ],
+  "difficulty_levels": [
+    "beginner",
+    "intermediate",
+    "advanced",
+    "expert"
+  ],
+  "plant_types": [
+    "annual",
+    "biennial", 
+    "perennial",
+    "shrub",
+    "tree",
+    "bulb",
+    "tuber",
+    "vine",
+    "succulent",
+    "herb",
+    "vegetable",
+    "flower",
+    "fruit"
+  ],
+  "growth_habits": [
+    "determinate",
+    "indeterminate",
+    "bushy",
+    "trailing",
+    "climbing",
+    "spreading",
+    "upright",
+    "compact",
+    "rosette",
+    "cascading"
+  ],
+  "harvest_indicators": [
+    "color_change",
+    "firmness",
+    "size",
+    "dark_color",
+    "light_color",
+    "aroma",
+    "flower_fade",
+    "seed_rattle",
+    "stem_dry",
+    "leaf_yellow",
+    "full_bloom",
+    "bud_formation"
+  ],
+  "preservation_methods": [
+    "fresh",
+    "drying",
+    "freezing",
+    "oil_infusion",
+    "vinegar_infusion",
+    "canning",
+    "dehydrating",
+    "root_cellar",
+    "pressing",
+    "fermentation"
+  ],
+  "origins": [
+    "es-ES",
+    "en-US", 
+    "en-GB",
+    "fr-FR",
+    "it-IT",
+    "de-DE",
+    "pt-PT",
+    "pt-BR",
+    "zh-CN",
+    "zh-TW",
+    "ja-JP",
+    "ko-KR",
+    "ru-RU",
+    "ar-SA",
+    "hi-IN",
+    "tr-TR",
+    "el-GR",
+    "nl-NL",
+    "sv-SE",
+    "no-NO",
+    "da-DK",
+    "fi-FI",
+    "pl-PL",
+    "cs-CZ",
+    "hu-HU",
+    "ro-RO",
+    "bg-BG",
+    "hr-HR",
+    "sk-SK",
+    "sl-SI",
+    "et-EE",
+    "lv-LV",
+    "lt-LT",
+    "mt-MT",
+    "cy-GB"
+  ],
+  "families": [
+    "Solanaceae",
+    "Rosaceae",
+    "Lamiaceae", 
+    "Brassicaceae",
+    "Cucurbitaceae",
+    "Leguminosae",
+    "Asteraceae",
+    "Liliaceae",
+    "Amaryllidaceae",
+    "Orchidaceae",
+    "Malvaceae",
+    "Apiaceae",
+    "Caryophyllaceae",
+    "Ranunculaceae",
+    "Papaveraceae"
+  ],
+  "special_purposes": [
+    "flavor_intensification",
+    "color_enhancement",
+    "pest_deterrent",
+    "companion_benefit",
+    "nitrogen_fixing",
+    "ground_cover",
+    "windbreak",
+    "privacy_screen",
+    "attracts_pollinators",
+    "repels_insects"
+  ],
+  "nutritional_properties": [
+    "low_calorie",
+    "high_vitamin_c",
+    "high_vitamin_a",
+    "antioxidant_rich",
+    "low_acidity",
+    "high_acidity",
+    "fiber_rich",
+    "protein_rich",
+    "mineral_rich",
+    "iron_rich",
+    "calcium_rich",
+    "potassium_rich"
+  ],
+  "flower_colors": [
+    "white",
+    "red",
+    "pink",
+    "yellow",
+    "orange",
+    "purple",
+    "blue",
+    "green",
+    "black",
+    "multicolor",
+    "variegated",
+    "cream",
+    "salmon",
+    "magenta",
+    "burgundy"
+  ],
+  "fragrance_levels": [
+    "none",
+    "mild",
+    "moderate",
+    "strong",
+    "very_strong"
+  ],
+  "hemispheres": {
+    "northern": {
+      "month_offset": 0
+    },
+    "southern": {
+      "month_offset": 6
+    }
+  },
+  "months": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+  "month_names": {
+    "es": ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
+  },
+  "temperature_units": "celsius",
+  "distance_units": "centimeters", 
+  "time_units": "days",
+  "ui_config": {
+    "category_icons": {
+      "tomate": "🍅",
+      "rosa": "🌹", 
+      "albahaca": "🌿",
+      "lirios": "🏵️",
+      "hibiscus": "🌺",
+      "amapola": "🌸",
+      "patata": "🥔",
+      "fresa": "🍓",
+      "chili": "🌶️",
+      "lavanda": "💜",
+      "cosmos": "🌼",
+      "margarita": "🌻",
+      "hortensias": "💙",
+      "azalea": "🌺",
+      "tomillo": "🌿",
+      "tulipan": "🌷",
+      "orquidea": "🌺",
+      "platano": "🍌",
+      "col": "🥬",
+      "mango": "🥭",
+      "pensamiento": "💜",
+      "peonia": "🌸",
+      "pina": "🍍",
+      "plantas-comestibles": "🥗",
+      "manzanilla": "🌼",
+      "default": "🌱"
+    },
+    "task_icons": {
+      "prepare_seedbeds": "🌱",
+      "transplant": "🌿", 
+      "install_supports": "🎋",
+      "moderate_watering": "💧",
+      "heavy_watering": "🚿",
+      "light_watering": "💦",
+      "mulching": "🍂",
+      "prune_shoots": "✂️",
+      "prune_main": "🔪",
+      "deadheading": "🥀",
+      "fertilize": "🌱",
+      "pest_monitoring": "🔍",
+      "harvest_early": "🌾",
+      "harvest_main": "🌾",
+      "harvest_late": "🌾",
+      "plant_cleanup": "🧹",
+      "seed_collection": "🌰",
+      "water_restriction": "🚱",
+      "thinning": "✂️",
+      "pinching": "👌",
+      "staking": "🎋",
+      "weeding": "🌿",
+      "soil_preparation": "🏔️",
+      "default": "•"
+    },
+    "task_priorities": {
+      "harvest_main": "high",
+      "harvest_early": "high", 
+      "transplant": "high",
+      "pest_monitoring": "medium",
+      "fertilize": "medium",
+      "moderate_watering": "medium",
+      "heavy_watering": "medium",
+      "prepare_seedbeds": "low",
+      "mulching": "low",
+      "plant_cleanup": "low",
+      "seed_collection": "low"
+    },
+    "activity_colors": {
+      "sowing": "#48bb78",
+      "transplanting": "#4299e1", 
+      "harvesting": "#ed8936",
+      "flowering": "#d53f8c",
+      "pruning": "#805ad5",
+      "planting": "#38b2ac",
+      "care": "#9f7aea"
+    }
+  },
+  "seasonal_tips": {
+    "1": {
+      "temperature": "Protege las plantas de las heladas invernales",
+      "watering": "Riego mínimo, la mayoría de plantas están en reposo",
+      "sunlight": "Aprovecha las horas de sol disponibles para tareas de jardín"
+    },
+    "2": {
+      "temperature": "Vigila las heladas tardías, prepárate para proteger plantas tiernas",
+      "watering": "Riego moderado, evita encharcamientos en suelo frío",
+      "sunlight": "Aumentan las horas de luz, planifica siembras de interior"
+    },
+    "3": {
+      "temperature": "Época de transición, temperatura variable día/noche",
+      "watering": "Aumenta gradualmente el riego con el incremento de actividad",
+      "sunlight": "Excelente época para empezar semilleros en interior"
+    },
+    "4": {
+      "temperature": "Temperaturas más cálidas, cuidado con heladas tardías",
+      "watering": "Riego regular, mantén humedad constante en semilleros",
+      "sunlight": "Aprovecha días soleados para trasplantes al exterior"
+    },
+    "5": {
+      "temperature": "Clima ideal para la mayoría de cultivos",
+      "watering": "Aumenta frecuencia de riego con el calor",
+      "sunlight": "Protege plantas jóvenes del sol intenso del mediodía"
+    },
+    "6": {
+      "temperature": "Inicio del calor fuerte, protege plantas sensibles",
+      "watering": "Riego abundante en las primeras horas del día",
+      "sunlight": "Proporciona sombra parcial en las horas más calurosas"
+    },
+    "7": {
+      "temperature": "Calor intenso, vigila signos de estrés en las plantas",
+      "watering": "Riego profundo y frecuente, preferiblemente al amanecer",
+      "sunlight": "Sombra esencial para plantas delicadas"
+    },
+    "8": {
+      "temperature": "Pico de calor veraniego",
+      "watering": "Riego abundante diario, mulching para conservar humedad",
+      "sunlight": "Evita trabajar en jardín durante horas centrales del día"
+    },
+    "9": {
+      "temperature": "Descenso gradual de temperaturas",
+      "watering": "Reduce gradualmente la frecuencia de riego",
+      "sunlight": "Aprovecha luz suave para trabajos de jardinería"
+    },
+    "10": {
+      "temperature": "Temperaturas frescas, época ideal para muchos trabajos",
+      "watering": "Riego moderado según necesidades específicas",
+      "sunlight": "Máximo aprovechamiento de luz otoñal disponible"
+    },
+    "11": {
+      "temperature": "Preparación para el invierno, protege plantas sensibles",
+      "watering": "Reduce riego, prepara plantas para reposo invernal",
+      "sunlight": "Aprovecha días soleados para tareas de limpieza y poda"
+    },
+    "12": {
+      "temperature": "Frío invernal, protección de heladas obligatoria",
+      "watering": "Riego mínimo, solo para plantas de interior activas",
+      "sunlight": "Planifica y prepara para la próxima temporada"
+    }
+  }
+}

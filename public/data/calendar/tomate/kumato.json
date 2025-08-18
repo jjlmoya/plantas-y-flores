@@ -1,0 +1,49 @@
+{
+  "key": "kumato",
+  "plant_info": {
+    "scientific_name": "Solanum lycopersicum var. kumato",
+    "common_names": ["Black tomato", "Kumato"],
+    "origin": "es-ES",
+    "is_heirloom": true
+  },
+  "calendar_data": {
+    "harvesting": {
+      "best_months": [7, 8, 9, 10, 11],
+      "peak_months": [8, 9, 10],
+      "days_to_harvest": [80, 90],
+      "harvest_indicators": ["color_change", "firmness", "dark_color"]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "8": ["harvest_early", "water_restriction"],
+        "9": ["harvest_main", "water_restriction"],
+        "10": ["harvest_late"],
+        "11": ["harvest_late", "plant_cleanup"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "water_needs": "moderate",
+    "special_care": {
+      "water_restriction": {
+        "months": [8, 9],
+        "purpose": "flavor_intensification"
+      }
+    }
+  },
+  "harvest_data": {
+    "weight_range": [60, 150],
+    "storage_life": 14,
+    "can_harvest_unripe": true
+  },
+  "nutritional_data": {
+    "calories_per_100g": 20,
+    "properties": ["low_acidity", "antioxidant_rich"]
+  },
+  "article_reference": {
+    "has_article": true,
+    "article_id": 2519,
+    "category_slug": "tomate",
+    "plant_slug": "kumato"
+  }
+}

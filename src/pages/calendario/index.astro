@@ -1,0 +1,411 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getMonthlyTasksWithUI, getAvailableCalendarCategories, getGlobalCalendarConfig } from '../../utils/calendar-inheritance.js';
+
+// Get current month data with UI helpers
+const currentMonth = new Date().getMonth() + 1; // 1-12
+const monthlyData = await getMonthlyTasksWithUI(currentMonth);
+const categories = await getAvailableCalendarCategories();
+const globalConfig = await getGlobalCalendarConfig();
+
+const { tasks: monthlyTasks, ui, monthName: currentMonthName, seasonalTips } = monthlyData;
+
+const nextMonth = currentMonth === 12 ? 1 : currentMonth + 1;
+const nextMonthName = ui.getMonthName(nextMonth);
+
+// Generate quick navigation months using dynamic month names
+const quickNavMonths = Array.from({length: 12}, (_, i) => ({
+  number: i + 1,
+  name: ui.getMonthName(i + 1),
+  isCurrent: i + 1 === currentMonth
+}));
+---
+
+<BaseLayout 
+  title="Calendario de Plantación | Guía Completa de Cultivo"
+  description={`Calendario de plantación para ${currentMonthName}. Descubre qué plantar, cuándo sembrar y cómo cuidar tus plantas mes a mes.`}
+>
+  <div class="calendar-dashboard">
+    <!-- Header -->
+    <header class="dashboard-header">
+      <div class="container">
+        <h1>📅 Calendario de Plantación</h1>
+        <p>Planifica tu jardín y huerto siguiendo el calendario natural</p>
+      </div>
+    </header>
+
+    <div class="container">
+      <!-- Current Month Section -->
+      <section class="current-month-section">
+        <h2>🌱 Este Mes: {currentMonthName}</h2>
+        
+        <div class="month-grid">
+          <!-- Tasks Widget -->
+          <div class="tasks-widget">
+            <h3>⚡ Tareas Urgentes</h3>
+            {Object.keys(monthlyTasks).length > 0 ? (
+              <div class="tasks-list">
+                {Object.entries(monthlyTasks).map(([category, plants]) => (
+                  <div class="category-tasks" key={category}>
+                    <h4>
+                      <span class="category-icon">{ui.getCategoryIcon(category)}</span>
+                      {ui.formatCategoryName(category)}
+                    </h4>
+                    {Object.entries(plants).map(([plantSlug, tasks]) => (
+                      <div class="plant-tasks" key={plantSlug}>
+                        <strong>{ui.formatPlantName(plantSlug)}</strong>
+                        <ul>
+                          {tasks.map(task => (
+                            <li key={task} class={`task-priority-${ui.getTaskPriority(task)}`}>
+                              <span class="task-icon">{ui.getTaskIcon(task)}</span>
+                              {ui.formatTaskName(task)}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p class="no-tasks">No hay tareas específicas este mes</p>
+            )}
+          </div>
+
+          <!-- Next Month Preview -->
+          <div class="preview-widget">
+            <h3>🗓️ Próximamente: {nextMonthName}</h3>
+            <div class="coming-up">
+              <a href={`/calendario/mes/${nextMonth}/`} class="preview-link">
+                Ver tareas de {nextMonthName} →
+              </a>
+            </div>
+          </div>
+
+          <!-- Categories Overview -->
+          <div class="categories-widget">
+            <h3>🌿 Categorías Disponibles</h3>
+            <div class="categories-grid">
+              {categories.map(category => (
+                <a href={`/calendario/categoria/${category}/`} class="category-card" key={category}>
+                  <span class="category-icon">{ui.getCategoryIcon(category)}</span>
+                  <span class="category-name">{ui.formatCategoryName(category)}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Navigation -->
+      <section class="quick-nav-section">
+        <h2>🗓️ Navegar por Meses</h2>
+        <div class="months-grid">
+          {quickNavMonths.map(month => (
+            <a 
+              href={`/calendario/mes/${month.number}/`} 
+              class={`month-link ${month.isCurrent ? 'current' : ''}`}
+              key={month.number}
+            >
+              <span class="month-number">{month.number}</span>
+              <span class="month-name">{month.name}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <!-- Tips Section -->
+      <section class="tips-section">
+        <h2>💡 Consejos de {currentMonthName}</h2>
+        <div class="tips-grid">
+          {seasonalTips.temperature && (
+            <div class="tip-card">
+              <h3>🌡️ Temperatura</h3>
+              <p>{seasonalTips.temperature}</p>
+            </div>
+          )}
+          
+          {seasonalTips.watering && (
+            <div class="tip-card">
+              <h3>💧 Riego</h3>
+              <p>{seasonalTips.watering}</p>
+            </div>
+          )}
+
+          {seasonalTips.sunlight && (
+            <div class="tip-card">
+              <h3>☀️ Sol</h3>
+              <p>{seasonalTips.sunlight}</p>
+            </div>
+          )}
+        </div>
+      </section>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .calendar-dashboard {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  }
+
+  .dashboard-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+    padding: 3rem 0;
+    margin-bottom: 2rem;
+  }
+
+  .dashboard-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+
+  .dashboard-header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .current-month-section {
+    margin-bottom: 3rem;
+  }
+
+  .current-month-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #2d3748;
+  }
+
+  .month-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .tasks-widget, .preview-widget, .categories-widget {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .tasks-widget h3, .preview-widget h3, .categories-widget h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #2d3748;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+  }
+
+  .category-tasks {
+    margin-bottom: 1rem;
+  }
+
+  .category-tasks h4 {
+    color: #4a5568;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .plant-tasks {
+    margin-bottom: 0.75rem;
+    padding: 0.75rem;
+    background: #f7fafc;
+    border-radius: 6px;
+  }
+
+  .plant-tasks strong {
+    color: #2d3748;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .plant-tasks ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .plant-tasks li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+    color: #4a5568;
+  }
+
+  .task-icon {
+    margin-right: 0.5rem;
+    font-weight: bold;
+    width: 20px;
+    text-align: center;
+  }
+
+  .task-priority-high {
+    color: #c53030;
+    font-weight: 600;
+  }
+
+  .task-priority-medium {
+    color: #d69e2e;
+    font-weight: 500;
+  }
+
+  .task-priority-low {
+    color: #718096;
+  }
+
+  .category-icon {
+    margin-right: 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  .no-tasks {
+    color: #718096;
+    font-style: italic;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .preview-link {
+    display: inline-block;
+    background: #667eea;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+  }
+
+  .preview-link:hover {
+    background: #5a67d8;
+  }
+
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .category-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    background: #f7fafc;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #2d3748;
+    transition: all 0.3s ease;
+    border: 1px solid #e2e8f0;
+  }
+
+  .category-card:hover {
+    background: #edf2f7;
+    transform: translateY(-2px);
+  }
+
+  .category-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .category-name {
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+
+  .months-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .month-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #2d3748;
+    transition: all 0.3s ease;
+    border: 1px solid #e2e8f0;
+  }
+
+  .month-link:hover {
+    background: #f7fafc;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .month-link.current {
+    background: #667eea;
+    color: white;
+    border-color: #667eea;
+  }
+
+  .month-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .month-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+
+  .tip-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #48bb78;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .tip-card h3 {
+    margin-bottom: 0.75rem;
+    color: #2d3748;
+    font-size: 1.1rem;
+  }
+
+  .tip-card p {
+    color: #4a5568;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .dashboard-header h1 {
+      font-size: 2rem;
+    }
+    
+    .month-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .months-grid {
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+  }
+</style>

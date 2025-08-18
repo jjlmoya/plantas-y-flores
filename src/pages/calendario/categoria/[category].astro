@@ -1,0 +1,666 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCategoryPlantsWithCalendar, getGlobalCalendarConfig, getUIHelpers, getAvailableCalendarCategories } from '../../../utils/calendar-inheritance.js';
+
+// Generate static paths for all categories
+export async function getStaticPaths() {
+  const categories = await getAvailableCalendarCategories();
+  
+  return categories.map(category => ({
+    params: { category }
+  }));
+}
+
+const { category } = Astro.params;
+
+if (!category) {
+  return Astro.redirect('/calendario/');
+}
+
+// Get calendar data for this category
+const categoryPlants = await getCategoryPlantsWithCalendar(category);
+const globalConfig = await getGlobalCalendarConfig();
+const ui = getUIHelpers(globalConfig);
+
+if (categoryPlants.length === 0) {
+  return Astro.redirect('/calendario/');
+}
+
+const categoryName = ui.formatCategoryName(category);
+const categoryIcon = ui.getCategoryIcon(category);
+
+// Group plants by activities across all months
+const plantActivities = {};
+categoryPlants.forEach(plant => {
+  const calendar = plant.calendar;
+  
+  // Collect all activities for this plant
+  const activities = {
+    sowing: [],
+    transplanting: [],
+    harvesting: [],
+    flowering: [],
+    pruning: [],
+    planting: []
+  };
+
+  // Extract sowing months
+  if (calendar.calendar_data?.sowing) {
+    if (calendar.calendar_data.sowing.indoor?.best_months) {
+      activities.sowing.push(...calendar.calendar_data.sowing.indoor.best_months.map(m => ({month: m, type: 'indoor'})));
+    }
+    if (calendar.calendar_data.sowing.outdoor?.best_months) {
+      activities.sowing.push(...calendar.calendar_data.sowing.outdoor.best_months.map(m => ({month: m, type: 'outdoor'})));
+    }
+  }
+
+  // Extract other activities
+  if (calendar.calendar_data?.transplanting?.best_months) {
+    activities.transplanting = calendar.calendar_data.transplanting.best_months.map(m => ({month: m}));
+  }
+  
+  if (calendar.calendar_data?.harvesting?.best_months) {
+    activities.harvesting = calendar.calendar_data.harvesting.best_months.map(m => ({month: m}));
+  }
+
+  if (calendar.calendar_data?.flowering?.best_months) {
+    activities.flowering = calendar.calendar_data.flowering.best_months.map(m => ({month: m}));
+  }
+
+  if (calendar.calendar_data?.planting?.best_months) {
+    activities.planting = calendar.calendar_data.planting.best_months.map(m => ({month: m}));
+  }
+
+  plantActivities[plant.slug] = {
+    ...plant,
+    activities
+  };
+});
+
+// Generate timeline data for visualization
+const timelineData = Object.entries(plantActivities).map(([slug, data]) => {
+  const monthsData = Array.from({length: 12}, (_, i) => {
+    const month = i + 1;
+    const activities = [];
+    
+    Object.entries(data.activities).forEach(([activityType, activityData]) => {
+      if (activityData.some(item => item.month === month)) {
+        activities.push(activityType);
+      }
+    });
+    
+    return {
+      month,
+      activities,
+      hasActivity: activities.length > 0
+    };
+  });
+  
+  return {
+    slug,
+    plantName: ui.formatPlantName(slug),
+    calendar: data.calendar,
+    monthsData
+  };
+});
+---
+
+<BaseLayout 
+  title={`${categoryName} - Calendario de Cultivo | Cuándo Plantar ${categoryName}`}
+  description={`Calendario completo de cultivo para ${categoryName.toLowerCase()}. Descubre cuándo sembrar, trasplantar y cosechar todas las variedades de ${categoryName.toLowerCase()}.`}
+>
+  <div class="category-view">
+    <!-- Header -->
+    <header class="category-header">
+      <div class="container">
+        <div class="category-title">
+          <h1>
+            <span class="category-icon">{categoryIcon}</span>
+            Calendario de {categoryName}
+          </h1>
+          <p>Guía completa de cultivo para todas las variedades de {categoryName.toLowerCase()}</p>
+        </div>
+        
+        <div class="category-stats">
+          <div class="stat">
+            <span class="stat-number">{categoryPlants.length}</span>
+            <span class="stat-label">variedades</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+      <!-- Timeline Overview -->
+      <section class="timeline-section">
+        <h2>📅 Vista Temporal de {categoryName}</h2>
+        
+        <div class="timeline-container">
+          <div class="timeline-header">
+            <div class="plant-label">Planta</div>
+            {Array.from({length: 12}, (_, i) => (
+              <div class="month-label" key={i + 1}>
+                {ui.getMonthName(i + 1).slice(0, 3)}
+              </div>
+            ))}
+          </div>
+
+          <div class="timeline-body">
+            {timelineData.map(plant => (
+              <div class="timeline-row" key={plant.slug}>
+                <div class="plant-name">
+                  <a href={`/calendario/planta/${category}/${plant.slug}/`}>
+                    {plant.plantName}
+                  </a>
+                  {plant.calendar._article_links?.resolved_link && (
+                    <a href={plant.calendar._article_links.resolved_link} class="article-link" title="Ver artículo completo">
+                      📖
+                    </a>
+                  )}
+                </div>
+                
+                {plant.monthsData.map(monthData => (
+                  <div 
+                    class={`month-cell ${monthData.hasActivity ? 'has-activity' : ''}`}
+                    key={monthData.month}
+                    title={monthData.activities.length > 0 ? 
+                      `${ui.getMonthName(monthData.month)}: ${monthData.activities.map(a => ui.formatTaskName(a)).join(', ')}` : 
+                      ui.getMonthName(monthData.month)
+                    }
+                  >
+                    <div class="activity-indicators">
+                      {monthData.activities.includes('sowing') && (
+                        <span class="activity-dot sowing" style={`background-color: ${ui.getActivityColor('sowing')}`}></span>
+                      )}
+                      {monthData.activities.includes('transplanting') && (
+                        <span class="activity-dot transplanting" style={`background-color: ${ui.getActivityColor('transplanting')}`}></span>
+                      )}
+                      {monthData.activities.includes('harvesting') && (
+                        <span class="activity-dot harvesting" style={`background-color: ${ui.getActivityColor('harvesting')}`}></span>
+                      )}
+                      {monthData.activities.includes('flowering') && (
+                        <span class="activity-dot flowering" style={`background-color: ${ui.getActivityColor('flowering')}`}></span>
+                      )}
+                      {monthData.activities.includes('planting') && (
+                        <span class="activity-dot planting" style={`background-color: ${ui.getActivityColor('planting')}`}></span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Legend -->
+      <section class="legend-section">
+        <h3>📋 Leyenda de Actividades</h3>
+        <div class="legend-grid">
+          <div class="legend-item">
+            <span class="legend-dot" style={`background-color: ${ui.getActivityColor('sowing')}`}></span>
+            <span>Siembra</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot" style={`background-color: ${ui.getActivityColor('transplanting')}`}></span>
+            <span>Trasplante</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot" style={`background-color: ${ui.getActivityColor('harvesting')}`}></span>
+            <span>Cosecha</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot" style={`background-color: ${ui.getActivityColor('flowering')}`}></span>
+            <span>Floración</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot" style={`background-color: ${ui.getActivityColor('planting')}`}></span>
+            <span>Plantación</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Plants Grid -->
+      <section class="plants-grid-section">
+        <h2>🌱 Todas las Variedades de {categoryName}</h2>
+        
+        <div class="plants-grid">
+          {categoryPlants.map(plant => (
+            <div class="plant-summary-card" key={plant.slug}>
+              <div class="card-header">
+                <h3>
+                  <a href={`/calendario/planta/${category}/${plant.slug}/`}>
+                    {ui.formatPlantName(plant.slug)}
+                  </a>
+                </h3>
+                {plant.calendar._article_links?.resolved_link && (
+                  <a href={plant.calendar._article_links.resolved_link} class="view-article-btn">
+                    Ver Artículo →
+                  </a>
+                )}
+              </div>
+
+              <div class="card-content">
+                {plant.calendar.plant_info?.scientific_name && (
+                  <p class="scientific-name">{plant.calendar.plant_info.scientific_name}</p>
+                )}
+                
+                {plant.calendar.plant_info?.origin && (
+                  <p class="origin">Origen: {plant.calendar.plant_info.origin}</p>
+                )}
+
+                <div class="quick-info">
+                  {plant.calendar.growing_conditions?.difficulty && (
+                    <span class={`difficulty ${plant.calendar.growing_conditions.difficulty}`}>
+                      {ui.formatTaskName(plant.calendar.growing_conditions.difficulty)}
+                    </span>
+                  )}
+                  
+                  {plant.calendar.calendar_data?.harvesting?.days_to_harvest && (
+                    <span class="days-to-harvest">
+                      {plant.calendar.calendar_data.harvesting.days_to_harvest[0]}-{plant.calendar.calendar_data.harvesting.days_to_harvest[1]} días
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Back Navigation -->
+      <div class="back-navigation">
+        <a href="/calendario/" class="back-link">← Volver al Calendario</a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .category-view {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  }
+
+  .category-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 3rem 0;
+    margin-bottom: 2rem;
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .category-title {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .category-title h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .category-icon {
+    font-size: 2.5rem;
+  }
+
+  .category-title p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+  }
+
+  .category-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .stat {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+  }
+
+  .stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-top: 0.25rem;
+  }
+
+  .timeline-section {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+  }
+
+  .timeline-section h2 {
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+  }
+
+  .timeline-container {
+    overflow-x: auto;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+  }
+
+  .timeline-header {
+    display: grid;
+    grid-template-columns: 200px repeat(12, 1fr);
+    background: #f7fafc;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .plant-label {
+    padding: 1rem;
+    font-weight: 600;
+    color: #2d3748;
+    border-right: 1px solid #e2e8f0;
+  }
+
+  .month-label {
+    padding: 1rem 0.5rem;
+    text-align: center;
+    font-weight: 500;
+    color: #4a5568;
+    font-size: 0.9rem;
+  }
+
+  .timeline-body {
+    background: white;
+  }
+
+  .timeline-row {
+    display: grid;
+    grid-template-columns: 200px repeat(12, 1fr);
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .timeline-row:hover {
+    background: #f7fafc;
+  }
+
+  .plant-name {
+    padding: 1rem;
+    border-right: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .plant-name a {
+    color: #2d3748;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .plant-name a:hover {
+    color: #667eea;
+  }
+
+  .article-link {
+    font-size: 0.9rem;
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
+
+  .article-link:hover {
+    opacity: 1;
+  }
+
+  .month-cell {
+    padding: 1rem 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px;
+  }
+
+  .month-cell.has-activity {
+    background: #f7fafc;
+  }
+
+  .activity-indicators {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    justify-content: center;
+  }
+
+  .activity-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: block;
+  }
+
+  .legend-section {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .legend-section h3 {
+    color: #2d3748;
+    margin-bottom: 1rem;
+  }
+
+  .legend-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #4a5568;
+  }
+
+  .legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: block;
+  }
+
+  .plants-grid-section {
+    margin-bottom: 3rem;
+  }
+
+  .plants-grid-section h2 {
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+  }
+
+  .plants-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .plant-summary-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .plant-summary-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  .card-header h3 {
+    margin: 0;
+    flex-grow: 1;
+  }
+
+  .card-header h3 a {
+    color: #2d3748;
+    text-decoration: none;
+  }
+
+  .card-header h3 a:hover {
+    color: #667eea;
+  }
+
+  .view-article-btn {
+    background: #667eea;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    margin-left: 1rem;
+  }
+
+  .view-article-btn:hover {
+    background: #5a67d8;
+  }
+
+  .scientific-name {
+    font-style: italic;
+    color: #718096;
+    margin-bottom: 0.5rem;
+  }
+
+  .origin {
+    color: #718096;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .quick-info {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .difficulty {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+
+  .difficulty.beginner {
+    background: #c6f6d5;
+    color: #22543d;
+  }
+
+  .difficulty.intermediate {
+    background: #feebc8;
+    color: #c05621;
+  }
+
+  .difficulty.advanced {
+    background: #fed7d7;
+    color: #c53030;
+  }
+
+  .days-to-harvest {
+    padding: 0.25rem 0.75rem;
+    background: #e6fffa;
+    color: #234e52;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .back-navigation {
+    text-align: center;
+    padding: 2rem 0;
+  }
+
+  .back-link {
+    background: #667eea;
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s ease;
+  }
+
+  .back-link:hover {
+    background: #5a67d8;
+  }
+
+  @media (max-width: 768px) {
+    .category-title h1 {
+      font-size: 2rem;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .timeline-header {
+      grid-template-columns: 150px repeat(12, 60px);
+    }
+
+    .timeline-row {
+      grid-template-columns: 150px repeat(12, 60px);
+    }
+
+    .plant-label {
+      padding: 0.75rem;
+    }
+
+    .month-label {
+      padding: 0.75rem 0.25rem;
+      font-size: 0.8rem;
+    }
+
+    .plants-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .card-header {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .view-article-btn {
+      margin-left: 0;
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+  }
+</style>

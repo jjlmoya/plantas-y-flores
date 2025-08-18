@@ -1,0 +1,33 @@
+{
+  "key": "cherry",
+  "plant_info": {
+    "scientific_name": "Solanum lycopersicum var. cerasiforme",
+    "common_names": ["Cherry tomato", "Tomate cherry"],
+    "origin": "pt-BR"
+  },
+  "calendar_data": {
+    "harvesting": {
+      "days_to_harvest": [60, 70],
+      "continuous_harvest": true
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "7": ["harvest_early", "moderate_watering"],
+        "8": ["harvest_main", "moderate_watering"],
+        "9": ["harvest_main", "moderate_watering"],
+        "10": ["harvest_late", "plant_cleanup"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "growth_habit": "indeterminate",
+    "spacing": {
+      "plant_distance": 40,
+      "row_distance": 60
+    }
+  },
+  "harvest_data": {
+    "weight_range": [10, 25],
+    "storage_life": 5
+  }
+}
