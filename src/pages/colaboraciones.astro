@@ -1015,14 +1015,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 .process-steps {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  gap: 1.5rem;
   position: relative;
   z-index: 2;
 }
 
 .step {
   text-align: center;
-  padding: 2rem 1rem;
+  padding: 1.5rem 0.75rem;
   position: relative;
   opacity: 0;
   transform: scale(0.8);
@@ -1050,8 +1050,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 }
 
 .step-icon {
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
   display: block;
 }
 
@@ -1510,11 +1510,20 @@ section {
   
   .process-steps {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 0.5rem;
   }
   
   .step::after {
     display: none;
+  }
+  
+  .step {
+    padding: 0.75rem 0.5rem;
+  }
+  
+  .step-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
   }
   
   .contact-content {
