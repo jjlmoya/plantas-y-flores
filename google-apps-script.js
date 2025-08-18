@@ -47,11 +47,8 @@ function doPost(e) {
         'Empresa',
         'Nombre Contacto',
         'Email',
-        'Sitio Web',
-        'Productos/Servicios',
         'Tipo Colaboración',
-        'Valores Sostenibles',
-        'Mensaje Adicional',
+        'Mensaje',
         'Estado'
       ];
       sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
@@ -70,10 +67,7 @@ function doPost(e) {
       data.company || '',
       data.name || '',
       data.email || '',
-      data.website || '',
-      data.products || '',
       data.collaboration || '',
-      data.values || '',
       data.message || '',
       'Nuevo' // Estado inicial
     ];
@@ -95,30 +89,22 @@ function doPost(e) {
     
     // Enviar email de notificación (opcional)
     try {
-      const emailSubject = `Nueva Colaboración: ${data.company}`;
+      const emailSubject = `🌱 Nueva propuesta de colaboración: ${data.company}`;
       const emailBody = `
-        Nueva propuesta de colaboración recibida:
-        
-        📝 Empresa: ${data.company}
-        👤 Contacto: ${data.name}
-        📧 Email: ${data.email}
-        🌐 Web: ${data.website || 'No especificado'}
-        
-        🎯 Tipo de colaboración: ${data.collaboration || 'No especificado'}
-        
-        💚 Valores sostenibles:
-        ${data.values}
-        
-        📋 Productos/Servicios:
-        ${data.products}
-        
-        💬 Mensaje adicional:
-        ${data.message || 'Ninguno'}
-        
-        ⏰ Recibido: ${data.timestamp}
-        
-        ---
-        Ver en Google Sheets: https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}
+         Nueva propuesta de colaboración recibida:
+
+         📝 Empresa: ${data.company || 'No especificado'}
+         👤 Contacto: ${data.name || 'No especificado'}
+         📧 Email: ${data.email || 'No especificado'}
+         🎯 Tipo de colaboración: ${data.collaboration || 'No especificado'}
+
+         💬 Mensaje:
+         ${data.message || 'Ninguno'}
+
+         ⏰ Recibido: ${new Date().toLocaleString('es-ES', {timeZone: 'Europe/Madrid'})}
+         
+         ---
+         Ver en Google Sheets: https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}
       `;
       
       // Cambiar por tu email

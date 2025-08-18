@@ -81,6 +81,24 @@ npm run build        # Generate static files
 # Deploy /dist to Vercel (automatic via GitHub integration)
 ```
 
+## Development Server
+
+**IMPORTANTE**: Durante el desarrollo, el servidor de desarrollo siempre se ejecuta en **localhost:4321** y es lanzado manualmente por el usuario. 
+
+- **NO crear servidores de prueba adicionales**
+- **NO intentar lanzar `npm run dev` automáticamente**
+- **SIEMPRE asumir que localhost:4321 está disponible para testing**
+- Si se necesita el servidor para tests, el usuario lo lanzará manualmente
+
+### Testing
+```bash
+# El usuario lanza manualmente:
+npm run dev          # Servidor disponible en localhost:4321
+
+# Los tests pueden ejecutarse directamente:
+npx playwright test  # Asume que localhost:4321 está activo
+```
+
 ## SEO Implementation
 
 ### Technical SEO
