@@ -39,21 +39,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="container">
         <div class="authority-stats">
           <div class="stat-item">
-            <div class="stat-icon">🌱</div>
+            <img src="/icons/jardinera-amable/estadísticas-positivas.png" alt="5 años de experiencia" class="stat-icon">
             <div class="stat-content">
               <span class="stat-number">5 años</span>
               <span class="stat-label">escribiendo sobre jardinería</span>
             </div>
           </div>
           <div class="stat-item">
-            <div class="stat-icon">📚</div>
+            <img src="/icons/jardinera-amable/escribiendo.png" alt="113 artículos publicados" class="stat-icon">
             <div class="stat-content">
               <span class="stat-number">113 artículos</span>
               <span class="stat-label">publicados</span>
             </div>
           </div>
           <div class="stat-item">
-            <div class="stat-icon">👥</div>
+            <img src="/icons/jardinera-amable/con-corazones.png" alt="Comunidad fiel" class="stat-icon">
             <div class="stat-content">
               <span class="stat-number">Comunidad</span>
               <span class="stat-label">fiel y activa</span>
@@ -69,21 +69,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <h2>Formatos de colaboración</h2>
         <div class="formats-grid">
           <div class="format-card">
-            <div class="format-icon">📝</div>
+            <img src="/icons/jardinera-amable/escribiendo.png" alt="Artículo patrocinado" class="format-icon">
             <h3>Artículo patrocinado</h3>
             <p>Contenido práctico y probado con fotos propias.</p>
             <a href="#contact-form" class="secondary-cta"><span>Solicitar este formato</span></a>
           </div>
 
           <div class="format-card">
-            <div class="format-icon">⭐</div>
+            <img src="/icons/jardinera-amable/rating.png" alt="Reseña en profundidad" class="format-icon">
             <h3>Reseña en profundidad</h3>
             <p>Pros y contras tras uso real del producto.</p>
             <a href="#contact-form" class="secondary-cta"><span>Solicitar este formato</span></a>
           </div>
 
           <div class="format-card">
-            <div class="format-icon">📚</div>
+            <img src="/icons/jardinera-amable/monstrando-planta.png" alt="Guía temática" class="format-icon">
             <h3>Guía temática con integración</h3>
             <p>Artículo educativo con producto integrado naturalmente.</p>
             <a href="#contact-form" class="secondary-cta"><span>Solicitar este formato</span></a>
@@ -133,25 +133,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <h2>Proceso de trabajo</h2>
         <div class="process-steps">
           <div class="step stagger-child">
-            <div class="step-icon">🎯</div>
+            <img src="/icons/jardinera-amable/idea-bombilla.png" alt="Objetivo" class="step-icon">
             <h3>Objetivo</h3>
             <p>Definimos juntos los objetivos y alineamos la colaboración con los valores de la comunidad.</p>
           </div>
           
           <div class="step stagger-child">
-            <div class="step-icon">🧪</div>
+            <img src="/icons/jardinera-amable/lupa.png" alt="Prueba del producto" class="step-icon">
             <h3>Prueba del producto</h3>
             <p>Uso real durante el tiempo necesario para formar una opinión honesta y documentada.</p>
           </div>
           
           <div class="step stagger-child">
-            <div class="step-icon">✍️</div>
+            <img src="/icons/jardinera-amable/escribiendo.png" alt="Borrador" class="step-icon">
             <h3>Borrador</h3>
             <p>Creación de contenido auténtico basado en experiencia práctica, manteniendo total honestidad.</p>
           </div>
           
           <div class="step stagger-child">
-            <div class="step-icon">📢</div>
+            <img src="/icons/jardinera-amable/sorpresa-estrella.png" alt="Publicación y seguimiento" class="step-icon">
             <h3>Publicación y seguimiento</h3>
             <p>Publicación del contenido con seguimiento de resultados y feedback para futuras colaboraciones.</p>
           </div>
@@ -165,7 +165,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <h2>Valores de colaboración</h2>
         <div class="values-grid">
           <div class="value-item stagger-child">
-            <div class="value-icon">✅</div>
+            <img src="/icons/jardinera-amable/lupa.png" alt="Transparencia" class="value-icon">
             <div class="value-content">
               <h3>Transparencia</h3>
               <p>Siempre identifico colaboraciones</p>
@@ -173,7 +173,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
           
           <div class="value-item stagger-child">
-            <div class="value-icon">✅</div>
+            <img src="/icons/jardinera-amable/feliz-approve.png" alt="Honestidad" class="value-icon">
             <div class="value-content">
               <h3>Honestidad</h3>
               <p>No recomiendo lo que no usaría</p>
@@ -181,7 +181,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
           
           <div class="value-item stagger-child">
-            <div class="value-icon">✅</div>
+            <img src="/icons/jardinera-amable/cuidando-planta.png" alt="Responsabilidad" class="value-icon">
             <div class="value-content">
               <h3>Responsabilidad</h3>
               <p>Cuido tanto el contenido como a la audiencia</p>
@@ -578,8 +578,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 }
 
 .stat-icon {
-  font-size: 2.5rem;
+  width: 60px;
+  height: 60px;
   min-width: 60px;
+  object-fit: contain;
   transition: transform 0.3s ease;
 }
 
@@ -680,9 +682,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 }
 
 .format-icon {
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem auto;
   display: block;
+  object-fit: contain;
   transition: transform 0.3s ease;
 }
 
@@ -859,10 +863,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 }
 
 .value-icon {
-  font-size: 1.5rem;
-  color: #4a7c23;
-  min-width: 30px;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
   margin-top: 0.25rem;
+  object-fit: contain;
 }
 
 .value-content h3 {
@@ -1050,9 +1055,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 }
 
 .step-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1rem auto;
   display: block;
+  object-fit: contain;
+  background: white;
+  border-radius: 50%;
+  padding: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .step h3 {
@@ -1522,8 +1533,10 @@ section {
   }
   
   .step-icon {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 0.5rem auto;
+    padding: 6px;
   }
   
   .contact-content {
