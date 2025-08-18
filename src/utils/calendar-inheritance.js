@@ -160,6 +160,7 @@ export async function getCategoryPlantsWithCalendar(category) {
     const plantCalendar = await getPlantCalendarWithInheritance(category, plantSlug);
     plants.push({
       slug: plantSlug,
+      category: category,
       calendar: plantCalendar
     });
   }
@@ -309,10 +310,93 @@ export function getUIHelpers(globalConfig) {
       const monthNames = globalConfig.month_names?.[language] || [];
       return monthNames[monthNumber - 1] || `Month ${monthNumber}`;
     },
+    getMonthNumber: (monthName, language = 'es') => {
+      const monthNames = globalConfig.month_names?.[language] || [];
+      const index = monthNames.findIndex(name => name.toLowerCase() === monthName.toLowerCase());
+      return index !== -1 ? index + 1 : null;
+    },
+    getMonthSlug: (monthNumber, language = 'es') => {
+      const monthNames = globalConfig.month_names?.[language] || [];
+      const monthName = monthNames[monthNumber - 1];
+      return monthName ? monthName.toLowerCase() : null;
+    },
     getSeasonalTips: (monthNumber) => {
       return globalConfig.seasonal_tips?.[monthNumber.toString()] || {};
     },
     formatTaskName: (task) => {
+      // Translations for common activities
+      const translations = {
+        'sowing': 'Siembra',
+        'transplanting': 'Trasplante', 
+        'harvesting': 'Cosecha',
+        'flowering': 'Floración',
+        'planting': 'Plantación',
+        'pruning': 'Poda',
+        'watering': 'Riego',
+        'fertilizing': 'Fertilización',
+        'weeding': 'Deshierbe',
+        'mulching': 'Acolchado',
+        'prepare_seedbeds': 'Preparar Semilleros',
+        'transplant': 'Trasplante',
+        'install_supports': 'Instalar Soportes',
+        'moderate_watering': 'Riego Moderado',
+        'heavy_watering': 'Riego Abundante',
+        'light_watering': 'Riego Ligero',
+        'prune_shoots': 'Podar Brotes',
+        'prune_main': 'Poda Principal',
+        'deadheading': 'Eliminar Flores Marchitas',
+        'fertilize': 'Fertilizar',
+        'pest_monitoring': 'Monitoreo de Plagas',
+        'harvest_early': 'Cosecha Temprana',
+        'harvest_main': 'Cosecha Principal',
+        'harvest_late': 'Cosecha Tardía',
+        'plant_cleanup': 'Limpieza de Plantas',
+        'seed_collection': 'Recolección de Semillas',
+        'water_restriction': 'Restricción de Riego',
+        'thinning': 'Raleo',
+        'pinching': 'Despunte',
+        'staking': 'Entutorado',
+        'soil_preparation': 'Preparación del Suelo',
+        // Plant types
+        'annual': 'Anual',
+        'perennial': 'Perenne',
+        'biennial': 'Bienal',
+        // Difficulty levels
+        'beginner': 'Principiante',
+        'intermediate': 'Intermedio',
+        'advanced': 'Avanzado',
+        // Soil types
+        'well_drained': 'Bien Drenado',
+        'well_drained_fertile': 'Bien Drenado y Fértil',
+        'sandy': 'Arenoso',
+        'sandy_loam': 'Franco Arenoso',
+        'clay': 'Arcilloso',
+        'clay_loam': 'Franco Arcilloso',
+        'organic_rich': 'Rico en Orgánicos',
+        'acidic': 'Ácido',
+        'alkaline': 'Alcalino',
+        'neutral': 'Neutro',
+        'poor': 'Pobre',
+        'rocky': 'Rocoso',
+        'moist': 'Húmedo',
+        'dry': 'Seco',
+        // Sun requirements
+        'full_sun': 'Pleno Sol',
+        'partial_sun': 'Sol Parcial',
+        'partial_shade': 'Sombra Parcial',
+        'full_shade': 'Sombra Completa',
+        // Water needs
+        'low': 'Bajo',
+        'moderate': 'Moderado',
+        'high': 'Alto'
+      };
+      
+      // Return translation if available, otherwise format the original
+      if (translations[task]) {
+        return translations[task];
+      }
+      
+      // Fallback to title case formatting
       return task.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
     },
     formatCategoryName: (category) => {

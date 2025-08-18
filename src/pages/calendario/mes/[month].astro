@@ -1,14 +1,18 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import { getMonthlyTasksWithUI, findPlantsByMonth, getGlobalCalendarConfig } from '../../../utils/calendar-inheritance.js';
+import CalendarExport from '../../../components/CalendarExport.vue';
+import { getMonthlyTasksWithUI, findPlantsByMonth, getGlobalCalendarConfig, getUIHelpers } from '../../../utils/calendar-inheritance.js';
 
-// Generate static paths for all months
+// Generate static paths for all months using month names
 export async function getStaticPaths() {
+  const globalConfig = await getGlobalCalendarConfig();
+  const ui = getUIHelpers(globalConfig);
   const paths = [];
   
   for (let month = 1; month <= 12; month++) {
+    const monthSlug = ui.getMonthSlug(month);
     paths.push({
-      params: { month: month.toString() }
+      params: { month: monthSlug }
     });
   }
   
@@ -16,27 +20,31 @@ export async function getStaticPaths() {
 }
 
 const { month } = Astro.params;
-const monthNumber = parseInt(month);
+const globalConfig = await getGlobalCalendarConfig();
+const ui = getUIHelpers(globalConfig);
+const monthNumber = ui.getMonthNumber(month);
 
 // Validate month
-if (isNaN(monthNumber) || monthNumber < 1 || monthNumber > 12) {
+if (!monthNumber || monthNumber < 1 || monthNumber > 12) {
   return Astro.redirect('/calendario/');
 }
 
 // Get dynamic data with UI helpers
 const monthlyData = await getMonthlyTasksWithUI(monthNumber);
-const globalConfig = await getGlobalCalendarConfig();
-const { tasks: monthlyTasks, ui, monthName, seasonalTips } = monthlyData;
+const { tasks: monthlyTasks, ui: monthlyUI, monthName, seasonalTips } = monthlyData;
 
 const prevMonth = monthNumber === 1 ? 12 : monthNumber - 1;
 const nextMonth = monthNumber === 12 ? 1 : monthNumber + 1;
 const prevMonthName = ui.getMonthName(prevMonth);
 const nextMonthName = ui.getMonthName(nextMonth);
+const prevMonthSlug = ui.getMonthSlug(prevMonth);
+const nextMonthSlug = ui.getMonthSlug(nextMonth);
 
 // Get calendar data for this month
 const sowingPlants = await findPlantsByMonth(monthNumber, 'sowing');
 const harvestingPlants = await findPlantsByMonth(monthNumber, 'harvesting');
 const transplantingPlants = await findPlantsByMonth(monthNumber, 'transplanting');
+
 
 // Generate calendar grid for the month
 const currentYear = new Date().getFullYear();
@@ -64,6 +72,17 @@ const activities = {
   transplanting: transplantingPlants.length,
   tasks: Object.keys(monthlyTasks).length
 };
+
+// Prepare export data
+const exportData = {
+  monthNumber,
+  monthName,
+  activities: {
+    sowing: sowingPlants.map(p => ({ name: ui.formatPlantName(p.slug) })),
+    transplanting: transplantingPlants.map(p => ({ name: ui.formatPlantName(p.slug) })),
+    harvesting: harvestingPlants.map(p => ({ name: ui.formatPlantName(p.slug) }))
+  }
+};
 ---
 
 <BaseLayout 
@@ -75,7 +94,7 @@ const activities = {
     <header class="month-header">
       <div class="container">
         <nav class="month-nav">
-          <a href={`/calendario/mes/${prevMonth}/`} class="nav-button prev">
+          <a href={`/calendario/mes/${prevMonthSlug}/`} class="nav-button prev">
             ← {prevMonthName}
           </a>
           
@@ -89,7 +108,7 @@ const activities = {
             </div>
           </div>
           
-          <a href={`/calendario/mes/${nextMonth}/`} class="nav-button next">
+          <a href={`/calendario/mes/${nextMonthSlug}/`} class="nav-button next">
             {nextMonthName} →
           </a>
         </nav>
@@ -97,6 +116,20 @@ const activities = {
     </header>
 
     <div class="container">
+      <!-- Export Section -->
+      <section class="export-section">
+        <div class="export-wrapper">
+          <h2>📤 Exportar Calendario</h2>
+          <p>Descarga el calendario de {monthName} en PDF o importa los eventos a tu calendario personal</p>
+          <CalendarExport 
+            client:load
+            :exportData={exportData}
+            exportType="month"
+            title={`Calendario ${monthName} ${currentYear}`}
+          />
+        </div>
+      </section>
+
       <!-- Calendar Grid -->
       <section class="calendar-section">
         <h2>📅 Calendario de {monthName}</h2>
@@ -407,6 +440,30 @@ const activities = {
 
   .activity-dot.sowing { background: #48bb78; }
   .activity-dot.harvesting { background: #ed8936; }
+
+  .export-section {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+  }
+
+  .export-wrapper h2 {
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .export-wrapper p {
+    color: #718096;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+  }
+
 
   .activities-grid {
     display: grid;

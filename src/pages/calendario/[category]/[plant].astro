@@ -1,21 +1,32 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CalendarExport from '../../../components/CalendarExport.vue';
 import { getPlantCalendarWithUI, getGlobalCalendarConfig, getUIHelpers, generatePlantPaths } from '../../../utils/calendar-inheritance.js';
 
 // Generate static paths for all plants
 export async function getStaticPaths() {
-  const plantPaths = await generatePlantPaths();
-  
-  return plantPaths.map(({ params, props }) => ({
-    params: { 
-      slug: `${params.category}/${params.plant}` 
-    },
-    props
-  }));
+  try {
+    console.log('Starting getStaticPaths for plants...');
+    const plantPaths = await generatePlantPaths();
+    console.log(`Generated ${plantPaths.length} plant paths`);
+    
+    const result = plantPaths.map(({ params, props }) => ({
+      params: { 
+        category: params.category,
+        plant: params.plant
+      },
+      props
+    }));
+    
+    console.log('Finished mapping plant paths');
+    return result;
+  } catch (error) {
+    console.error('Error in getStaticPaths for plants:', error);
+    return [];
+  }
 }
 
-const { slug } = Astro.params;
-const [category, plantSlug] = slug.split('/');
+const { category, plant: plantSlug } = Astro.params;
 
 if (!category || !plantSlug) {
   return Astro.redirect('/calendario/');
@@ -155,6 +166,12 @@ const nutritionalData = plantCalendar.nutritional_data || {};
 
 // Article link
 const articleLink = plantCalendar._article_links?.resolved_link;
+
+// Prepare export data
+const plantExportData = {
+  plantName,
+  timelineData
+};
 ---
 
 <BaseLayout 
@@ -215,6 +232,20 @@ const articleLink = plantCalendar._article_links?.resolved_link;
     </header>
 
     <div class="container">
+      <!-- Export Section -->
+      <section class="export-section">
+        <div class="export-wrapper">
+          <h2>📤 Exportar Calendario</h2>
+          <p>Descarga el calendario de cultivo de {plantName} en PDF o importa los eventos a tu calendario personal</p>
+          <CalendarExport 
+            client:load
+            :exportData={plantExportData}
+            exportType="plant"
+            title={`Calendario ${plantName}`}
+          />
+        </div>
+      </section>
+
       <!-- Timeline Section -->
       <section class="timeline-section">
         <h2>📅 Calendario Anual de {plantName}</h2>
@@ -656,6 +687,29 @@ const articleLink = plantCalendar._article_links?.resolved_link;
     color: #a0aec0;
     font-style: italic;
     text-align: center;
+  }
+
+  .export-section {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+  }
+
+  .export-wrapper h2 {
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .export-wrapper p {
+    color: #718096;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
   }
 
   .details-grid {

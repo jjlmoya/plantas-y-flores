@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import CalendarFilters from '../../components/CalendarFilters.vue';
 import { getMonthlyTasksWithUI, getAvailableCalendarCategories, getGlobalCalendarConfig, getAvailableActivities, getCategoryPlantsWithCalendar } from '../../utils/calendar-inheritance.js';
 
 // Get current month data with UI helpers
@@ -15,6 +16,15 @@ const { tasks: monthlyTasks, ui, monthName: currentMonthName, seasonalTips } = m
 
 const nextMonth = currentMonth === 12 ? 1 : currentMonth + 1;
 const nextMonthName = ui.getMonthName(nextMonth);
+
+// Get all plants with calendar data for filtering
+const allPlantsWithCalendar = [];
+for (const category of categories) {
+  const categoryPlants = await getCategoryPlantsWithCalendar(category);
+  allPlantsWithCalendar.push(...categoryPlants);
+}
+
+
 
 // Generate quick navigation months using dynamic month names
 const quickNavMonths = Array.from({length: 12}, (_, i) => ({
@@ -36,8 +46,7 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
         <div class="hemisphere-selector">
           <button 
             id="hemisphere-toggle" 
-            class="hemisphere-toggle" 
-            onclick="toggleHemisphere()"
+            class="hemisphere-toggle"
             title="Cambiar hemisferio"
           >
             <span id="hemisphere-icon">🌎</span>
@@ -91,7 +100,7 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
           <div class="preview-widget">
             <h3>🗓️ Próximamente: {nextMonthName}</h3>
             <div class="coming-up">
-              <a href={`/calendario/mes/${nextMonth}/`} class="preview-link">
+              <a href={`/calendario/mes/${ui.getMonthSlug(nextMonth)}/`} class="preview-link">
                 Ver tareas de {nextMonthName} →
               </a>
             </div>
@@ -118,7 +127,7 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
         <div class="months-grid">
           {quickNavMonths.map(month => (
             <a 
-              href={`/calendario/mes/${month.number}/`} 
+              href={`/calendario/mes/${ui.getMonthSlug(month.number)}/`} 
               class={`month-link ${month.isCurrent ? 'current' : ''}`}
               key={month.number}
             >
@@ -126,6 +135,22 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
               <span class="month-name">{month.name}</span>
             </a>
           ))}
+        </div>
+      </section>
+
+      <!-- Filters Section -->
+      <section class="filters-section">
+        <h2>🔍 Explorar y Filtrar Plantas</h2>
+        <p>Encuentra plantas específicas según tus necesidades y experiencia</p>
+        
+        <div class="filters-container">
+          <CalendarFilters 
+            client:load
+            plants={allPlantsWithCalendar}
+            availableCategories={categories}
+            availableActivities={activities}
+            currentMonth={currentMonth}
+          />
         </div>
       </section>
 
@@ -456,6 +481,32 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
     margin: 0;
   }
 
+  /* Filters Section */
+  .filters-section {
+    margin-bottom: 3rem;
+  }
+
+  .filters-section h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #2d3748;
+    text-align: center;
+  }
+
+  .filters-section p {
+    text-align: center;
+    color: #718096;
+    margin-bottom: 2rem;
+  }
+
+  .filters-container {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
   /* Activities Section */
   .activities-section {
     margin-bottom: 3rem;
@@ -642,5 +693,11 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
   // Initialize display on load
   document.addEventListener('DOMContentLoaded', function() {
     updateHemisphereDisplay();
+    
+    // Add click event listener
+    const toggle = document.getElementById('hemisphere-toggle');
+    if (toggle) {
+      toggle.addEventListener('click', toggleHemisphere);
+    }
   });
 </script>

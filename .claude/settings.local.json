@@ -57,7 +57,10 @@
       "Bash(del \"C:\\Users\\34677\\Desktop\\plantasyflroes\\update-image-extensions.cjs\")",
       "Bash(del update-logo-refs.cjs)",
       "Bash(magick identify:*)",
-      "Bash(del test-server.js)"
+      "Bash(del test-server.js)",
+      "WebFetch(domain:localhost)",
+      "Bash(del \"src\\components\\SimpleTest.vue\")",
+      "Bash(timeout 60s npm run build)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"

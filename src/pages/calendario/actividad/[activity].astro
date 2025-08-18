@@ -203,7 +203,7 @@ const mostActiveMonth = monthlyDistribution.reduce((max, current) =>
                   <div class="plant-activity-card" key={plant.slug}>
                     <div class="card-header">
                       <h4>
-                        <a href={`/calendario/planta/${plant.category}/${plant.slug}/`}>
+                        <a href={`/calendario/${plant.category}/${plant.slug}/`}>
                           <span class="plant-icon">{ui.getCategoryIcon(plant.category)}</span>
                           {ui.formatPlantName(plant.slug)}
                         </a>

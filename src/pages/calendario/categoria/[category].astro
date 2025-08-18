@@ -1,29 +1,46 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import { getCategoryPlantsWithCalendar, getGlobalCalendarConfig, getUIHelpers, getAvailableCalendarCategories } from '../../../utils/calendar-inheritance.js';
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import {
+  getCategoryPlantsWithCalendar,
+  getGlobalCalendarConfig,
+  getUIHelpers,
+  getAvailableCalendarCategories,
+  getAvailableActivities,
+} from "../../../utils/calendar-inheritance.js";
 
 // Generate static paths for all categories
 export async function getStaticPaths() {
-  const categories = await getAvailableCalendarCategories();
-  
-  return categories.map(category => ({
-    params: { category }
-  }));
+  try {
+    console.log('Starting getStaticPaths for categories...');
+    const categories = await getAvailableCalendarCategories();
+    console.log(`Generated ${categories.length} category paths:`, categories);
+
+    const result = categories.map((category) => ({
+      params: { category },
+    }));
+    
+    console.log('Finished mapping category paths');
+    return result;
+  } catch (error) {
+    console.error('Error in getStaticPaths for categories:', error);
+    return [];
+  }
 }
 
 const { category } = Astro.params;
 
 if (!category) {
-  return Astro.redirect('/calendario/');
+  return Astro.redirect("/calendario/");
 }
 
 // Get calendar data for this category
 const categoryPlants = await getCategoryPlantsWithCalendar(category);
 const globalConfig = await getGlobalCalendarConfig();
 const ui = getUIHelpers(globalConfig);
+const activities = await getAvailableActivities();
 
 if (categoryPlants.length === 0) {
-  return Astro.redirect('/calendario/');
+  return Astro.redirect("/calendario/");
 }
 
 const categoryName = ui.formatCategoryName(category);
@@ -31,9 +48,9 @@ const categoryIcon = ui.getCategoryIcon(category);
 
 // Group plants by activities across all months
 const plantActivities = {};
-categoryPlants.forEach(plant => {
+categoryPlants.forEach((plant) => {
   const calendar = plant.calendar;
-  
+
   // Collect all activities for this plant
   const activities = {
     sowing: [],
@@ -41,71 +58,90 @@ categoryPlants.forEach(plant => {
     harvesting: [],
     flowering: [],
     pruning: [],
-    planting: []
+    planting: [],
   };
 
   // Extract sowing months
   if (calendar.calendar_data?.sowing) {
     if (calendar.calendar_data.sowing.indoor?.best_months) {
-      activities.sowing.push(...calendar.calendar_data.sowing.indoor.best_months.map(m => ({month: m, type: 'indoor'})));
+      activities.sowing.push(
+        ...calendar.calendar_data.sowing.indoor.best_months.map((m) => ({
+          month: m,
+          type: "indoor",
+        }))
+      );
     }
     if (calendar.calendar_data.sowing.outdoor?.best_months) {
-      activities.sowing.push(...calendar.calendar_data.sowing.outdoor.best_months.map(m => ({month: m, type: 'outdoor'})));
+      activities.sowing.push(
+        ...calendar.calendar_data.sowing.outdoor.best_months.map((m) => ({
+          month: m,
+          type: "outdoor",
+        }))
+      );
     }
   }
 
   // Extract other activities
   if (calendar.calendar_data?.transplanting?.best_months) {
-    activities.transplanting = calendar.calendar_data.transplanting.best_months.map(m => ({month: m}));
+    activities.transplanting =
+      calendar.calendar_data.transplanting.best_months.map((m) => ({
+        month: m,
+      }));
   }
-  
+
   if (calendar.calendar_data?.harvesting?.best_months) {
-    activities.harvesting = calendar.calendar_data.harvesting.best_months.map(m => ({month: m}));
+    activities.harvesting = calendar.calendar_data.harvesting.best_months.map(
+      (m) => ({ month: m })
+    );
   }
 
   if (calendar.calendar_data?.flowering?.best_months) {
-    activities.flowering = calendar.calendar_data.flowering.best_months.map(m => ({month: m}));
+    activities.flowering = calendar.calendar_data.flowering.best_months.map(
+      (m) => ({ month: m })
+    );
   }
 
   if (calendar.calendar_data?.planting?.best_months) {
-    activities.planting = calendar.calendar_data.planting.best_months.map(m => ({month: m}));
+    activities.planting = calendar.calendar_data.planting.best_months.map(
+      (m) => ({ month: m })
+    );
   }
 
   plantActivities[plant.slug] = {
     ...plant,
-    activities
+    activities,
   };
 });
 
 // Generate timeline data for visualization
 const timelineData = Object.entries(plantActivities).map(([slug, data]) => {
-  const monthsData = Array.from({length: 12}, (_, i) => {
+  const monthsData = Array.from({ length: 12 }, (_, i) => {
     const month = i + 1;
     const activities = [];
-    
+
     Object.entries(data.activities).forEach(([activityType, activityData]) => {
-      if (activityData.some(item => item.month === month)) {
+      if (activityData.some((item) => item.month === month)) {
         activities.push(activityType);
       }
     });
-    
+
     return {
       month,
       activities,
-      hasActivity: activities.length > 0
+      hasActivity: activities.length > 0,
     };
   });
-  
+
   return {
     slug,
     plantName: ui.formatPlantName(slug),
     calendar: data.calendar,
-    monthsData
+    monthsData,
   };
 });
 ---
 
-<BaseLayout 
+<BaseLayout
   title={`${categoryName} - Calendario de Cultivo | Cuándo Plantar ${categoryName}`}
   description={`Calendario completo de cultivo para ${categoryName.toLowerCase()}. Descubre cuándo sembrar, trasplantar y cosechar todas las variedades de ${categoryName.toLowerCase()}.`}
 >
@@ -118,9 +154,13 @@ const timelineData = Object.entries(plantActivities).map(([slug, data]) => {
             <span class="category-icon">{categoryIcon}</span>
             Calendario de {categoryName}
           </h1>
-          <p>Guía completa de cultivo para todas las variedades de {categoryName.toLowerCase()}</p>
+          <p>
+            Guía completa de cultivo para todas las variedades de {
+              categoryName.toLowerCase()
+            }
+          </p>
         </div>
-        
+
         <div class="category-stats">
           <div class="stat">
             <span class="stat-number">{categoryPlants.length}</span>
@@ -134,137 +174,196 @@ const timelineData = Object.entries(plantActivities).map(([slug, data]) => {
       <!-- Timeline Overview -->
       <section class="timeline-section">
         <h2>📅 Vista Temporal de {categoryName}</h2>
-        
+
         <div class="timeline-container">
           <div class="timeline-header">
             <div class="plant-label">Planta</div>
-            {Array.from({length: 12}, (_, i) => (
-              <div class="month-label" key={i + 1}>
-                {ui.getMonthName(i + 1).slice(0, 3)}
-              </div>
-            ))}
+            {
+              Array.from({ length: 12 }, (_, i) => (
+                <div class="month-label" key={i + 1}>
+                  {ui.getMonthName(i + 1).slice(0, 3)}
+                </div>
+              ))
+            }
           </div>
 
           <div class="timeline-body">
-            {timelineData.map(plant => (
-              <div class="timeline-row" key={plant.slug}>
-                <div class="plant-name">
-                  <a href={`/calendario/planta/${category}/${plant.slug}/`}>
-                    {plant.plantName}
-                  </a>
-                  {plant.calendar._article_links?.resolved_link && (
-                    <a href={plant.calendar._article_links.resolved_link} class="article-link" title="Ver artículo completo">
-                      📖
+            {
+              timelineData.map((plant) => (
+                <div class="timeline-row" key={plant.slug}>
+                  <div class="plant-name">
+                    <a href={`/calendario/${category}/${plant.slug}/`}>
+                      {plant.plantName}
                     </a>
-                  )}
-                </div>
-                
-                {plant.monthsData.map(monthData => (
-                  <div 
-                    class={`month-cell ${monthData.hasActivity ? 'has-activity' : ''}`}
-                    key={monthData.month}
-                    title={monthData.activities.length > 0 ? 
-                      `${ui.getMonthName(monthData.month)}: ${monthData.activities.map(a => ui.formatTaskName(a)).join(', ')}` : 
-                      ui.getMonthName(monthData.month)
-                    }
-                  >
-                    <div class="activity-indicators">
-                      {monthData.activities.includes('sowing') && (
-                        <span class="activity-dot sowing" style={`background-color: ${ui.getActivityColor('sowing')}`}></span>
-                      )}
-                      {monthData.activities.includes('transplanting') && (
-                        <span class="activity-dot transplanting" style={`background-color: ${ui.getActivityColor('transplanting')}`}></span>
-                      )}
-                      {monthData.activities.includes('harvesting') && (
-                        <span class="activity-dot harvesting" style={`background-color: ${ui.getActivityColor('harvesting')}`}></span>
-                      )}
-                      {monthData.activities.includes('flowering') && (
-                        <span class="activity-dot flowering" style={`background-color: ${ui.getActivityColor('flowering')}`}></span>
-                      )}
-                      {monthData.activities.includes('planting') && (
-                        <span class="activity-dot planting" style={`background-color: ${ui.getActivityColor('planting')}`}></span>
-                      )}
-                    </div>
+                    {plant.calendar._article_links?.resolved_link && (
+                      <a
+                        href={plant.calendar._article_links.resolved_link}
+                        class="article-link"
+                        title="Ver artículo completo"
+                      >
+                        📖
+                      </a>
+                    )}
                   </div>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      <!-- Legend -->
-      <section class="legend-section">
-        <h3>📋 Leyenda de Actividades</h3>
-        <div class="legend-grid">
-          <div class="legend-item">
-            <span class="legend-dot" style={`background-color: ${ui.getActivityColor('sowing')}`}></span>
-            <span>Siembra</span>
-          </div>
-          <div class="legend-item">
-            <span class="legend-dot" style={`background-color: ${ui.getActivityColor('transplanting')}`}></span>
-            <span>Trasplante</span>
-          </div>
-          <div class="legend-item">
-            <span class="legend-dot" style={`background-color: ${ui.getActivityColor('harvesting')}`}></span>
-            <span>Cosecha</span>
-          </div>
-          <div class="legend-item">
-            <span class="legend-dot" style={`background-color: ${ui.getActivityColor('flowering')}`}></span>
-            <span>Floración</span>
-          </div>
-          <div class="legend-item">
-            <span class="legend-dot" style={`background-color: ${ui.getActivityColor('planting')}`}></span>
-            <span>Plantación</span>
+                  {plant.monthsData.map((monthData) => (
+                    <div
+                      class={`month-cell ${monthData.hasActivity ? "has-activity" : ""}`}
+                      key={monthData.month}
+                      title={
+                        monthData.activities.length > 0
+                          ? `${ui.getMonthName(monthData.month)}: ${monthData.activities.map((a) => ui.formatTaskName(a)).join(", ")}`
+                          : ui.getMonthName(monthData.month)
+                      }
+                    >
+                      <div class="activity-indicators">
+                        {monthData.activities.includes("sowing") && (
+                          <span
+                            class="activity-dot sowing"
+                            style={`background-color: ${ui.getActivityColor("sowing")}`}
+                          />
+                        )}
+                        {monthData.activities.includes("transplanting") && (
+                          <span
+                            class="activity-dot transplanting"
+                            style={`background-color: ${ui.getActivityColor("transplanting")}`}
+                          />
+                        )}
+                        {monthData.activities.includes("harvesting") && (
+                          <span
+                            class="activity-dot harvesting"
+                            style={`background-color: ${ui.getActivityColor("harvesting")}`}
+                          />
+                        )}
+                        {monthData.activities.includes("flowering") && (
+                          <span
+                            class="activity-dot flowering"
+                            style={`background-color: ${ui.getActivityColor("flowering")}`}
+                          />
+                        )}
+                        {monthData.activities.includes("planting") && (
+                          <span
+                            class="activity-dot planting"
+                            style={`background-color: ${ui.getActivityColor("planting")}`}
+                          />
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ))
+            }
           </div>
         </div>
+        <section class="legend-section">
+          <div class="legend-grid">
+            <div class="legend-item">
+              <span
+                class="legend-dot"
+                style={`background-color: ${ui.getActivityColor("sowing")}`}
+              ></span>
+              <span>Siembra</span>
+            </div>
+            <div class="legend-item">
+              <span
+                class="legend-dot"
+                style={`background-color: ${ui.getActivityColor("transplanting")}`}
+              ></span>
+              <span>Trasplante</span>
+            </div>
+            <div class="legend-item">
+              <span
+                class="legend-dot"
+                style={`background-color: ${ui.getActivityColor("harvesting")}`}
+              ></span>
+              <span>Cosecha</span>
+            </div>
+            <div class="legend-item">
+              <span
+                class="legend-dot"
+                style={`background-color: ${ui.getActivityColor("flowering")}`}
+              ></span>
+              <span>Floración</span>
+            </div>
+            <div class="legend-item">
+              <span
+                class="legend-dot"
+                style={`background-color: ${ui.getActivityColor("planting")}`}
+              ></span>
+              <span>Plantación</span>
+            </div>
+          </div>
+        </section>
       </section>
 
       <!-- Plants Grid -->
       <section class="plants-grid-section">
         <h2>🌱 Todas las Variedades de {categoryName}</h2>
-        
+
         <div class="plants-grid">
-          {categoryPlants.map(plant => (
-            <div class="plant-summary-card" key={plant.slug}>
-              <div class="card-header">
-                <h3>
-                  <a href={`/calendario/planta/${category}/${plant.slug}/`}>
-                    {ui.formatPlantName(plant.slug)}
-                  </a>
-                </h3>
-                {plant.calendar._article_links?.resolved_link && (
-                  <a href={plant.calendar._article_links.resolved_link} class="view-article-btn">
-                    Ver Artículo →
-                  </a>
-                )}
-              </div>
-
-              <div class="card-content">
-                {plant.calendar.plant_info?.scientific_name && (
-                  <p class="scientific-name">{plant.calendar.plant_info.scientific_name}</p>
-                )}
-                
-                {plant.calendar.plant_info?.origin && (
-                  <p class="origin">Origen: {plant.calendar.plant_info.origin}</p>
-                )}
-
-                <div class="quick-info">
-                  {plant.calendar.growing_conditions?.difficulty && (
-                    <span class={`difficulty ${plant.calendar.growing_conditions.difficulty}`}>
-                      {ui.formatTaskName(plant.calendar.growing_conditions.difficulty)}
-                    </span>
-                  )}
-                  
-                  {plant.calendar.calendar_data?.harvesting?.days_to_harvest && (
-                    <span class="days-to-harvest">
-                      {plant.calendar.calendar_data.harvesting.days_to_harvest[0]}-{plant.calendar.calendar_data.harvesting.days_to_harvest[1]} días
-                    </span>
+          {
+            categoryPlants.map((plant) => (
+              <div class="plant-summary-card" key={plant.slug}>
+                <div class="card-header">
+                  <h3>
+                    <a href={`/calendario/${category}/${plant.slug}/`}>
+                      {ui.formatPlantName(plant.slug)}
+                    </a>
+                  </h3>
+                  {plant.calendar._article_links?.resolved_link && (
+                    <a
+                      href={plant.calendar._article_links.resolved_link}
+                      class="view-article-btn"
+                    >
+                      Ver Artículo →
+                    </a>
                   )}
                 </div>
+
+                <div class="card-content">
+                  {plant.calendar.plant_info?.scientific_name && (
+                    <p class="scientific-name">
+                      {plant.calendar.plant_info.scientific_name}
+                    </p>
+                  )}
+
+                  {plant.calendar.plant_info?.origin && (
+                    <p class="origin">
+                      Origen: {plant.calendar.plant_info.origin}
+                    </p>
+                  )}
+
+                  <div class="quick-info">
+                    {plant.calendar.growing_conditions?.difficulty && (
+                      <span
+                        class={`difficulty ${plant.calendar.growing_conditions.difficulty}`}
+                      >
+                        {ui.formatTaskName(
+                          plant.calendar.growing_conditions.difficulty
+                        )}
+                      </span>
+                    )}
+
+                    {plant.calendar.calendar_data?.harvesting
+                      ?.days_to_harvest && (
+                      <span class="days-to-harvest">
+                        {
+                          plant.calendar.calendar_data.harvesting
+                            .days_to_harvest[0]
+                        }
+                        -
+                        {
+                          plant.calendar.calendar_data.harvesting
+                            .days_to_harvest[1]
+                        }{" "}
+                        días
+                      </span>
+                    )}
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          }
         </div>
       </section>
 
@@ -511,7 +610,9 @@ const timelineData = Object.entries(plantActivities).map(([slug, data]) => {
     border-radius: 8px;
     padding: 1.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
   }
 
   .plant-summary-card:hover {
