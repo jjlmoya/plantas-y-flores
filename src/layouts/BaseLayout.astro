@@ -15,6 +15,7 @@ export interface Props {
   modifiedDate?: string;
   category?: string;
   tags?: string[];
+  noAds?: boolean;
 }
 
 const { 
@@ -27,7 +28,8 @@ const {
   publishedDate,
   modifiedDate,
   category,
-  tags = []
+  tags = [],
+  noAds = false
 } = Astro.props;
 
 const defaultImage = '/brand/logo-200.webp';
@@ -440,8 +442,12 @@ const autoKeywords = keywords || [
     `}></script>
     
     <!-- AdSense Optimizations CSS - Non-blocking load -->
-    <link rel="preload" href="/styles/adsense-optimizations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/styles/adsense-optimizations.css"></noscript>
+    {!noAds && (
+      <>
+        <link rel="preload" href="/styles/adsense-optimizations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/styles/adsense-optimizations.css"></noscript>
+      </>
+    )}
   </head>
   <body>
     <Navigation client:visible />
@@ -449,7 +455,7 @@ const autoKeywords = keywords || [
       <slot />
     </main>
     <Footer client:load />
-    <GDPRConsent client:load />
+    {!noAds && <GDPRConsent client:load />}
     
     <!-- PWA Service Worker Registration -->
     <script is:inline>
