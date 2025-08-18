@@ -71,21 +71,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="format-icon">📝</div>
             <h3>Artículo patrocinado</h3>
             <p>Contenido práctico y probado con fotos propias.</p>
-            <a href="#contact-form" class="secondary-cta">Solicitar este formato</a>
+            <a href="#contact-form" class="secondary-cta"><span>Solicitar este formato</span></a>
           </div>
 
           <div class="format-card">
             <div class="format-icon">⭐</div>
             <h3>Reseña en profundidad</h3>
             <p>Pros y contras tras uso real del producto.</p>
-            <a href="#contact-form" class="secondary-cta">Solicitar este formato</a>
+            <a href="#contact-form" class="secondary-cta"><span>Solicitar este formato</span></a>
           </div>
 
           <div class="format-card">
             <div class="format-icon">📚</div>
             <h3>Guía temática con integración</h3>
             <p>Artículo educativo con producto integrado naturalmente.</p>
-            <a href="#contact-form" class="secondary-cta">Solicitar este formato</a>
+            <a href="#contact-form" class="secondary-cta"><span>Solicitar este formato</span></a>
           </div>
         </div>
       </div>
@@ -96,7 +96,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="container">
         <h2>Ejemplos de nuestro trabajo</h2>
         <div class="examples-grid">
-          <div class="example-card">
+          <div class="example-card stagger-child">
             <img src="/wp-content/uploads/2018/06/rosa-333187_640.webp" alt="Artículo sobre Rosa Princesa de Mónaco" class="example-image" loading="lazy">
             <div class="example-content">
               <h3>Rosa Princesa de Mónaco</h3>
@@ -105,7 +105,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
           </div>
 
-          <div class="example-card">
+          <div class="example-card stagger-child">
             <img src="/wp-content/uploads/2018/01/basil-2541581_1920-325x244.webp" alt="Artículo sobre Albahaca Morada" class="example-image" loading="lazy">
             <div class="example-content">
               <h3>Albahaca Morada</h3>
@@ -114,7 +114,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
           </div>
 
-          <div class="example-card">
+          <div class="example-card stagger-child">
             <img src="/wp-content/uploads/2017/07/cherry-tomatoes-2152341_1280-300x200.webp" alt="Artículo sobre Tomate Cherry" class="example-image" loading="lazy">
             <div class="example-content">
               <h3>Tomate Cherry: De la semilla al fruto</h3>
@@ -131,25 +131,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="container">
         <h2>Proceso de trabajo</h2>
         <div class="process-steps">
-          <div class="step">
+          <div class="step stagger-child">
             <div class="step-icon">🎯</div>
             <h3>Objetivo</h3>
             <p>Definimos juntos los objetivos y alineamos la colaboración con los valores de la comunidad.</p>
           </div>
           
-          <div class="step">
+          <div class="step stagger-child">
             <div class="step-icon">🧪</div>
             <h3>Prueba del producto</h3>
             <p>Uso real durante el tiempo necesario para formar una opinión honesta y documentada.</p>
           </div>
           
-          <div class="step">
+          <div class="step stagger-child">
             <div class="step-icon">✍️</div>
             <h3>Borrador</h3>
             <p>Creación de contenido auténtico basado en experiencia práctica, manteniendo total honestidad.</p>
           </div>
           
-          <div class="step">
+          <div class="step stagger-child">
             <div class="step-icon">📢</div>
             <h3>Publicación y seguimiento</h3>
             <p>Publicación del contenido con seguimiento de resultados y feedback para futuras colaboraciones.</p>
@@ -163,7 +163,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="container">
         <h2>Valores de colaboración</h2>
         <div class="values-grid">
-          <div class="value-item">
+          <div class="value-item stagger-child">
             <div class="value-icon">✅</div>
             <div class="value-content">
               <h3>Transparencia</h3>
@@ -171,7 +171,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
           </div>
           
-          <div class="value-item">
+          <div class="value-item stagger-child">
             <div class="value-icon">✅</div>
             <div class="value-content">
               <h3>Honestidad</h3>
@@ -179,7 +179,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
           </div>
           
-          <div class="value-item">
+          <div class="value-item stagger-child">
             <div class="value-icon">✅</div>
             <div class="value-content">
               <h3>Responsabilidad</h3>
@@ -195,7 +195,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="container">
         <h2>Preguntas frecuentes</h2>
         <div class="faq-list">
-          <div class="faq-item">
+          <div class="faq-item stagger-child">
             <button class="faq-question" aria-expanded="false">
               <span>¿Aceptas guiones cerrados?</span>
               <span class="faq-toggle">+</span>
@@ -205,7 +205,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
           </div>
           
-          <div class="faq-item">
+          <div class="faq-item stagger-child">
             <button class="faq-question" aria-expanded="false">
               <span>¿Puedo revisar antes de publicar?</span>
               <span class="faq-toggle">+</span>
@@ -215,7 +215,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
           </div>
           
-          <div class="faq-item">
+          <div class="faq-item stagger-child">
             <button class="faq-question" aria-expanded="false">
               <span>¿Cuánto tardas?</span>
               <span class="faq-toggle">+</span>
@@ -324,6 +324,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   border-radius: 0;
   position: relative;
   overflow: hidden;
+  opacity: 0;
+  animation: fadeInUp 1.2s ease-out forwards;
 }
 
 .hero::before {
@@ -365,6 +367,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   color: #2d5016;
   margin: 0 0 1.5rem 0;
   line-height: 1.3;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideInUp 1s ease-out 0.3s forwards;
 }
 
 .hero-subtitle {
@@ -373,6 +378,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   margin: 0 0 2.5rem 0;
   font-weight: 400;
   line-height: 1.6;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideInUp 1s ease-out 0.6s forwards;
 }
 
 .primary-cta {
@@ -384,19 +392,39 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   font-weight: 700;
   text-decoration: none;
   border-radius: 12px;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   box-shadow: 0 4px 20px rgba(74, 124, 35, 0.3);
   min-height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
   min-width: 180px;
+  opacity: 0;
+  transform: translateY(20px) scale(0.9);
+  animation: slideInScale 1s ease-out 0.9s forwards;
+  position: relative;
+  overflow: hidden;
+}
+
+.primary-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.primary-cta:hover::before {
+  left: 100%;
 }
 
 .primary-cta:hover {
   background: #2d5016;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(74, 124, 35, 0.4);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 40px rgba(74, 124, 35, 0.5);
 }
 
 .primary-cta:focus {
@@ -414,17 +442,42 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   text-decoration: none;
   border: 2px solid #4a7c23;
   border-radius: 8px;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   text-align: center;
   min-height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.secondary-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #4a7c23;
+  transition: width 0.3s ease;
+  z-index: 0;
+}
+
+.secondary-cta:hover::before {
+  width: 100%;
 }
 
 .secondary-cta:hover {
-  background: #4a7c23;
   color: white;
+  border-color: #4a7c23;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(74, 124, 35, 0.3);
+}
+
+.secondary-cta span {
+  position: relative;
+  z-index: 1;
 }
 
 .secondary-cta:focus {
@@ -448,6 +501,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   background: rgba(255, 255, 255, 0.8);
   padding: 1.5rem;
   margin-bottom: 1rem;
+  opacity: 0;
+  transform: scale(0.8);
+  animation: gentle-bounce 4s ease-in-out infinite, fadeInScale 1s ease-out 0.1s forwards;
 }
 
 @keyframes gentle-bounce {
@@ -460,6 +516,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   background: white;
   padding: 4rem 0;
   margin-bottom: 0;
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 0.5s;
 }
 
 .authority-stats {
@@ -477,18 +536,54 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(74, 124, 35, 0.1);
   border: 1px solid rgba(74, 124, 35, 0.1);
-  transition: transform 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   text-align: left;
+  opacity: 0;
+  transform: translateY(30px);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.8s ease;
+}
+
+.stat-item:hover::before {
+  left: 100%;
 }
 
 .stat-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(74, 124, 35, 0.15);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(74, 124, 35, 0.2);
+}
+
+.stat-item:nth-child(1) {
+  animation: slideInUp 0.8s ease-out 0.7s forwards;
+}
+
+.stat-item:nth-child(2) {
+  animation: slideInUp 0.8s ease-out 0.9s forwards;
+}
+
+.stat-item:nth-child(3) {
+  animation: slideInUp 0.8s ease-out 1.1s forwards;
 }
 
 .stat-icon {
   font-size: 2.5rem;
   min-width: 60px;
+  transition: transform 0.3s ease;
+}
+
+.stat-item:hover .stat-icon {
+  transform: scale(1.1) rotate(5deg);
 }
 
 .stat-content {
@@ -517,6 +612,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   background: linear-gradient(135deg, #fafbfc 0%, #f0f4f7 100%);
   padding: 4rem 0;
   margin-bottom: 0;
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 0.8s;
 }
 
 .formats-section h2 {
@@ -539,10 +637,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   text-align: center;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   border: 1px solid rgba(74, 124, 35, 0.1);
   position: relative;
   overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .format-card::before {
@@ -562,14 +662,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 }
 
 .format-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(74, 124, 35, 0.15);
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 15px 50px rgba(74, 124, 35, 0.2);
+}
+
+.format-card:nth-child(1) {
+  animation: slideInUp 0.8s ease-out 1.2s forwards;
+}
+
+.format-card:nth-child(2) {
+  animation: slideInUp 0.8s ease-out 1.4s forwards;
+}
+
+.format-card:nth-child(3) {
+  animation: slideInUp 0.8s ease-out 1.6s forwards;
 }
 
 .format-icon {
   font-size: 3rem;
   margin-bottom: 1.5rem;
   display: block;
+  transition: transform 0.3s ease;
+}
+
+.format-card:hover .format-icon {
+  transform: scale(1.2) rotate(-10deg);
+  animation: pulse 2s ease-in-out infinite;
 }
 
 .format-card h3 {
@@ -592,6 +710,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   background: white;
   padding: 4rem 0;
   margin-bottom: 0;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease-out;
+}
+
+.examples-section.animate-in {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .examples-section h2 {
@@ -613,13 +739,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   border: 1px solid rgba(74, 124, 35, 0.1);
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.example-card.stagger-child.animate-in {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .example-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(74, 124, 35, 0.15);
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 15px 50px rgba(74, 124, 35, 0.2);
+}
+
+.example-card:hover .example-image {
+  transform: scale(1.05);
 }
 
 .example-image {
@@ -627,6 +764,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   height: 200px;
   object-fit: cover;
   border-bottom: 1px solid #f0f4f7;
+  transition: transform 0.4s ease;
 }
 
 .example-content {
@@ -666,6 +804,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   background: linear-gradient(135deg, #fafbfc 0%, #f0f4f7 100%);
   padding: 4rem 0;
   margin-bottom: 0;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease-out;
+}
+
+.values-section.animate-in {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .values-section h2 {
@@ -691,12 +837,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(74, 124, 35, 0.1);
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.value-item.stagger-child.animate-in {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .value-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(74, 124, 35, 0.15);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(74, 124, 35, 0.2);
+}
+
+.value-item:hover .value-icon {
+  transform: scale(1.2) rotate(360deg);
+  transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .value-icon {
@@ -726,6 +884,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   background: white;
   padding: 4rem 0;
   margin-bottom: 0;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease-out;
+}
+
+.faq-section.animate-in {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .faq-section h2 {
@@ -744,6 +910,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 .faq-item {
   border-bottom: 1px solid #f0f4f7;
   margin-bottom: 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.faq-item.stagger-child.animate-in {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .faq-question {
@@ -808,6 +982,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   margin-bottom: 0;
   position: relative;
   overflow: hidden;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease-out;
+}
+
+.process-section.animate-in {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .process-section::before {
@@ -841,6 +1023,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   text-align: center;
   padding: 2rem 1rem;
   position: relative;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.step.stagger-child.animate-in {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .step::after {
@@ -883,6 +1073,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   background: linear-gradient(135deg, #fafbfc 0%, #f0f4f7 100%);
   padding: 4rem 0;
   margin-bottom: 0;
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 1.2s;
 }
 
 .contact-section h2 {
@@ -951,6 +1144,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   overflow: hidden;
   width: 100%;
   box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideInUp 0.8s ease-out 1.5s forwards;
 }
 
 .contact-form-container::before {
@@ -979,7 +1175,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 .form-group {
   margin-bottom: 2rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideInUp 0.6s ease-out forwards;
 }
+
+.form-group:nth-child(1) { animation-delay: 0.1s; }
+.form-group:nth-child(2) { animation-delay: 0.2s; }
+.form-group:nth-child(3) { animation-delay: 0.3s; }
+.form-group:nth-child(4) { animation-delay: 0.4s; }
+.form-group:nth-child(5) { animation-delay: 0.5s; }
+.form-group:nth-child(6) { animation-delay: 0.6s; }
 
 .form-group label {
   display: block;
@@ -997,10 +1203,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   border: 2px solid #e5e7eb;
   border-radius: 12px;
   font-size: 1rem;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   font-family: inherit;
   background: #fafbfc;
   box-sizing: border-box;
+  position: relative;
 }
 
 .form-group input:focus,
@@ -1009,8 +1216,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   outline: none;
   border-color: #4a7c23;
   background: white;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(74, 124, 35, 0.1);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 30px rgba(74, 124, 35, 0.15), 0 0 0 3px rgba(74, 124, 35, 0.1);
 }
 
 .form-group textarea {
@@ -1051,10 +1258,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   font-size: 1.25rem;
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.4s ease;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   box-shadow: 0 4px 20px rgba(74, 124, 35, 0.3);
   position: relative;
   overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideInUp 0.6s ease-out 0.7s forwards;
 }
 
 .submit-btn::before {
@@ -1072,9 +1282,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   left: 100%;
 }
 
+.submit-btn:active {
+  transform: translateY(-1px) scale(0.98);
+  transition: all 0.1s ease;
+}
+
 .submit-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(74, 124, 35, 0.4);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(74, 124, 35, 0.5);
 }
 
 .submit-btn:focus {
@@ -1124,6 +1339,91 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   margin-left: auto;
   margin-right: auto;
   line-height: 1.6;
+}
+
+/* Animation Keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInScale {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 /* Typography and Spacing */
@@ -1394,6 +1694,32 @@ section {
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwaY_g7hLY9UdKNGa4KAYx3B57frfe8Qq-xtGv15wGcUT4eJFMqYgNweHlwcs-II9d7/exec';
 
 document.addEventListener('DOMContentLoaded', function() {
+  // Intersection Observer for scroll-triggered animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-in');
+        
+        // Add staggered animations for child elements
+        const children = entry.target.querySelectorAll('.stagger-child');
+        children.forEach((child, index) => {
+          setTimeout(() => {
+            child.classList.add('animate-in');
+          }, index * 100);
+        });
+      }
+    });
+  }, observerOptions);
+
+  // Observe sections for scroll-triggered animations
+  const sectionsToObserve = document.querySelectorAll('.examples-section, .values-section, .process-section, .faq-section');
+  sectionsToObserve.forEach(section => observer.observe(section));
+
   // FAQ Accordion functionality
   const faqQuestions = document.querySelectorAll('.faq-question');
   
