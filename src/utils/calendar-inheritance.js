@@ -383,6 +383,114 @@ export async function generatePlantPaths() {
 }
 
 /**
+ * Get all available activity types across all plants
+ */
+export async function getAvailableActivities() {
+  const categories = await getAvailableCalendarCategories();
+  const activities = new Set();
+  
+  for (const category of categories) {
+    const categoryPlants = await getCategoryPlantsWithCalendar(category);
+    
+    for (const plant of categoryPlants) {
+      if (plant.calendar?.calendar_data) {
+        Object.keys(plant.calendar.calendar_data).forEach(activity => {
+          if (['sowing', 'transplanting', 'harvesting', 'flowering', 'planting', 'pruning'].includes(activity)) {
+            activities.add(activity);
+          }
+        });
+      }
+    }
+  }
+  
+  return Array.from(activities);
+}
+
+/**
+ * Find all plants that have a specific activity
+ */
+export async function findPlantsByActivity(activity, hemisphere = 'northern') {
+  const categories = await getAvailableCalendarCategories();
+  const matchingPlants = [];
+  
+  for (const category of categories) {
+    const categoryPlants = await getCategoryPlantsWithCalendar(category);
+    
+    for (const plant of categoryPlants) {
+      if (plant.calendar?.calendar_data?.[activity]) {
+        // Get activity details and timing
+        const activityData = plant.calendar.calendar_data[activity];
+        const plantWithActivity = {
+          category,
+          slug: plant.slug,
+          calendar: plant.calendar,
+          activityDetails: {
+            type: activity,
+            data: activityData,
+            months: getActivityMonths(activityData, hemisphere)
+          }
+        };
+        matchingPlants.push(plantWithActivity);
+      }
+    }
+  }
+  
+  return matchingPlants;
+}
+
+/**
+ * Extract months from activity data considering hemisphere
+ */
+function getActivityMonths(activityData, hemisphere = 'northern') {
+  const months = {
+    best: [],
+    alternative: [],
+    peak: []
+  };
+  
+  const monthOffset = hemisphere === 'southern' ? 6 : 0;
+  
+  // Direct month arrays
+  if (activityData.best_months) {
+    months.best = activityData.best_months.map(m => adjustMonth(m, monthOffset));
+  }
+  if (activityData.alternative_months) {
+    months.alternative = activityData.alternative_months.map(m => adjustMonth(m, monthOffset));
+  }
+  if (activityData.peak_months) {
+    months.peak = activityData.peak_months.map(m => adjustMonth(m, monthOffset));
+  }
+  
+  // Sub-activities (like indoor/outdoor sowing)
+  if (typeof activityData === 'object' && activityData !== null) {
+    Object.entries(activityData).forEach(([subType, subData]) => {
+      if (subData?.best_months && subType !== 'best_months' && subType !== 'alternative_months' && subType !== 'peak_months') {
+        const adjustedMonths = subData.best_months.map(m => adjustMonth(m, monthOffset));
+        months.best.push(...adjustedMonths);
+        // Store subtype info
+        if (!months.subtypes) months.subtypes = {};
+        months.subtypes[subType] = adjustedMonths;
+      }
+    });
+  }
+  
+  // Remove duplicates
+  months.best = [...new Set(months.best)];
+  months.alternative = [...new Set(months.alternative)];
+  months.peak = [...new Set(months.peak)];
+  
+  return months;
+}
+
+/**
+ * Adjust month for hemisphere
+ */
+function adjustMonth(month, offset) {
+  const adjusted = ((month - 1 + offset) % 12) + 1;
+  return adjusted;
+}
+
+/**
  * Validate plant configuration against global config options
  */
 export function validatePlantConfig(plantConfig, globalConfig) {

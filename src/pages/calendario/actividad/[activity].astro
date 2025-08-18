@@ -1,0 +1,925 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { findPlantsByActivity, getGlobalCalendarConfig, getUIHelpers, getAvailableActivities } from '../../../utils/calendar-inheritance.js';
+
+// Generate static paths for all activities
+export async function getStaticPaths() {
+  const activities = await getAvailableActivities();
+  
+  return activities.map(activity => ({
+    params: { activity }
+  }));
+}
+
+const { activity } = Astro.params;
+
+if (!activity) {
+  return Astro.redirect('/calendario/');
+}
+
+// Get plants with this activity
+const plantsWithActivity = await findPlantsByActivity(activity);
+const globalConfig = await getGlobalCalendarConfig();
+const ui = getUIHelpers(globalConfig);
+
+if (plantsWithActivity.length === 0) {
+  return Astro.redirect('/calendario/');
+}
+
+const activityName = ui.formatTaskName(activity);
+const activityIcon = ui.getTaskIcon(activity);
+const activityColor = ui.getActivityColor(activity);
+
+// Group plants by category
+const plantsByCategory = {};
+plantsWithActivity.forEach(plant => {
+  if (!plantsByCategory[plant.category]) {
+    plantsByCategory[plant.category] = [];
+  }
+  plantsByCategory[plant.category].push(plant);
+});
+
+// Generate monthly distribution for the activity
+const monthlyDistribution = Array.from({length: 12}, (_, i) => {
+  const month = i + 1;
+  const monthName = ui.getMonthName(month);
+  const plants = plantsWithActivity.filter(plant => 
+    plant.activityDetails.months.best.includes(month) ||
+    plant.activityDetails.months.alternative.includes(month) ||
+    plant.activityDetails.months.peak.includes(month)
+  );
+  
+  return {
+    month,
+    monthName,
+    plants,
+    count: plants.length,
+    isPeak: plants.some(plant => plant.activityDetails.months.peak.includes(month))
+  };
+});
+
+// Statistics
+const totalPlants = plantsWithActivity.length;
+const categoriesCount = Object.keys(plantsByCategory).length;
+const peakMonths = monthlyDistribution.filter(m => m.isPeak).map(m => m.monthName);
+const mostActiveMonth = monthlyDistribution.reduce((max, current) => 
+  current.count > max.count ? current : max
+);
+---
+
+<BaseLayout 
+  title={`${activityName} - Calendario de Actividades | Cuándo ${activityName}`}
+  description={`Guía completa de ${activityName.toLowerCase()}. Descubre todas las plantas y el mejor momento para ${activityName.toLowerCase()}. ${totalPlants} plantas disponibles.`}
+>
+  <div class="activity-view">
+    <!-- Header -->
+    <header class="activity-header">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="/calendario/">Calendario</a>
+          <span class="separator">→</span>
+          <span class="current">Actividades</span>
+          <span class="separator">→</span>
+          <span class="current">{activityName}</span>
+        </div>
+
+        <div class="activity-title">
+          <h1>
+            <span class="activity-icon" style={`color: ${activityColor}`}>{activityIcon}</span>
+            {activityName}
+          </h1>
+          <p>Todas las plantas para {activityName.toLowerCase()} organizadas por categoría y época</p>
+          
+          <div class="activity-stats">
+            <div class="stat">
+              <span class="stat-number">{totalPlants}</span>
+              <span class="stat-label">plantas</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">{categoriesCount}</span>
+              <span class="stat-label">categorías</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">{mostActiveMonth.count}</span>
+              <span class="stat-label">en {mostActiveMonth.monthName}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+      <!-- Monthly Distribution Chart -->
+      <section class="distribution-section">
+        <h2>📊 Distribución Mensual de {activityName}</h2>
+        
+        <div class="monthly-chart">
+          <div class="chart-header">
+            <div class="chart-label">Mes</div>
+            <div class="chart-label">Plantas</div>
+            <div class="chart-label">Gráfico</div>
+          </div>
+          
+          <div class="chart-body">
+            {monthlyDistribution.map(monthData => (
+              <div class="chart-row" key={monthData.month}>
+                <div class="month-cell">
+                  <div class="month-name">{monthData.monthName}</div>
+                  <div class="month-number">{monthData.month}</div>
+                </div>
+                
+                <div class="count-cell">
+                  <span class="plant-count">{monthData.count}</span>
+                  {monthData.isPeak && (
+                    <span class="peak-indicator" title="Mes óptimo">⭐</span>
+                  )}
+                </div>
+                
+                <div class="bar-cell">
+                  <div class="bar-container">
+                    <div 
+                      class="activity-bar"
+                      style={`
+                        width: ${(monthData.count / totalPlants) * 100}%;
+                        background-color: ${activityColor};
+                        opacity: ${monthData.isPeak ? 1 : 0.7}
+                      `}
+                    ></div>
+                  </div>
+                  <div class="plant-list-preview">
+                    {monthData.plants.slice(0, 3).map(plant => (
+                      <span class="plant-preview" key={plant.slug}>
+                        {ui.getCategoryIcon(plant.category)} {ui.formatPlantName(plant.slug)}
+                      </span>
+                    ))}
+                    {monthData.plants.length > 3 && (
+                      <span class="more-plants">+{monthData.plants.length - 3} más</span>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Best Time Recommendations -->
+      {peakMonths.length > 0 && (
+        <section class="recommendations-section">
+          <h2>⭐ Mejores Épocas para {activityName}</h2>
+          <div class="peak-months">
+            <p>Los meses óptimos para {activityName.toLowerCase()} son:</p>
+            <div class="peak-months-list">
+              {peakMonths.map(month => (
+                <span class="peak-month-tag" key={month}>
+                  {month}
+                </span>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <!-- Plants by Category -->
+      <section class="plants-section">
+        <h2>🌱 Plantas por Categoría</h2>
+        
+        <div class="categories-grid">
+          {Object.entries(plantsByCategory).map(([category, plants]) => (
+            <div class="category-section" key={category}>
+              <div class="category-header">
+                <h3>
+                  <span class="category-icon">{ui.getCategoryIcon(category)}</span>
+                  {ui.formatCategoryName(category)}
+                  <span class="plant-count-badge">{plants.length}</span>
+                </h3>
+                <a href={`/calendario/categoria/${category}/`} class="view-category-btn">
+                  Ver Categoría →
+                </a>
+              </div>
+              
+              <div class="plants-grid">
+                {plants.map(plant => (
+                  <div class="plant-activity-card" key={plant.slug}>
+                    <div class="card-header">
+                      <h4>
+                        <a href={`/calendario/planta/${plant.category}/${plant.slug}/`}>
+                          <span class="plant-icon">{ui.getCategoryIcon(plant.category)}</span>
+                          {ui.formatPlantName(plant.slug)}
+                        </a>
+                      </h4>
+                      
+                      {plant.calendar._article_links?.resolved_link && (
+                        <a href={plant.calendar._article_links.resolved_link} class="article-link" title="Ver artículo completo">
+                          📖
+                        </a>
+                      )}
+                    </div>
+
+                    {plant.calendar.plant_info?.scientific_name && (
+                      <div class="scientific-name">
+                        <em>{plant.calendar.plant_info.scientific_name}</em>
+                      </div>
+                    )}
+
+                    <div class="activity-timing">
+                      <div class="timing-section">
+                        {plant.activityDetails.months.best.length > 0 && (
+                          <div class="timing-group best">
+                            <span class="timing-label">Mejor época:</span>
+                            <div class="months-list">
+                              {plant.activityDetails.months.best.map(month => (
+                                <span class="month-tag" key={month}>
+                                  {ui.getMonthName(month)}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                        
+                        {plant.activityDetails.months.alternative.length > 0 && (
+                          <div class="timing-group alternative">
+                            <span class="timing-label">Época alternativa:</span>
+                            <div class="months-list">
+                              {plant.activityDetails.months.alternative.map(month => (
+                                <span class="month-tag alternative" key={month}>
+                                  {ui.getMonthName(month)}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                        
+                        {plant.activityDetails.months.peak.length > 0 && (
+                          <div class="timing-group peak">
+                            <span class="timing-label">⭐ Época óptima:</span>
+                            <div class="months-list">
+                              {plant.activityDetails.months.peak.map(month => (
+                                <span class="month-tag peak" key={month}>
+                                  {ui.getMonthName(month)}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+
+                      <!-- Activity-specific details -->
+                      {activity === 'sowing' && (
+                        <div class="activity-details">
+                          {plant.activityDetails.data.indoor && (
+                            <div class="detail-item">
+                              <span class="detail-icon">🏠</span>
+                              <span class="detail-text">
+                                Interior: {plant.activityDetails.data.indoor.temperature_range?.[0]}-{plant.activityDetails.data.indoor.temperature_range?.[1]}°C
+                              </span>
+                            </div>
+                          )}
+                          {plant.activityDetails.data.outdoor && (
+                            <div class="detail-item">
+                              <span class="detail-icon">🌤️</span>
+                              <span class="detail-text">
+                                Exterior: {plant.activityDetails.data.outdoor.temperature_range?.[0]}-{plant.activityDetails.data.outdoor.temperature_range?.[1]}°C
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                      
+                      {activity === 'harvesting' && (
+                        <div class="activity-details">
+                          {plant.activityDetails.data.days_to_harvest && (
+                            <div class="detail-item">
+                              <span class="detail-icon">⏱️</span>
+                              <span class="detail-text">
+                                {plant.activityDetails.data.days_to_harvest[0]}-{plant.activityDetails.data.days_to_harvest[1]} días
+                              </span>
+                            </div>
+                          )}
+                          {plant.calendar.harvest_data?.storage_life && (
+                            <div class="detail-item">
+                              <span class="detail-icon">📦</span>
+                              <span class="detail-text">
+                                Conservación: {plant.calendar.harvest_data.storage_life} días
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      {activity === 'transplanting' && (
+                        <div class="activity-details">
+                          {plant.activityDetails.data.soil_temperature_min && (
+                            <div class="detail-item">
+                              <span class="detail-icon">🌡️</span>
+                              <span class="detail-text">
+                                Temp. suelo mín: {plant.activityDetails.data.soil_temperature_min}°C
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+
+                    <!-- Quick Info -->
+                    <div class="quick-info">
+                      {plant.calendar.plant_info?.type && (
+                        <span class={`badge type ${plant.calendar.plant_info.type}`}>
+                          {ui.formatTaskName(plant.calendar.plant_info.type)}
+                        </span>
+                      )}
+                      {plant.calendar.growing_conditions?.difficulty && (
+                        <span class={`badge difficulty ${plant.calendar.growing_conditions.difficulty}`}>
+                          {ui.formatTaskName(plant.calendar.growing_conditions.difficulty)}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Back Navigation -->
+      <div class="back-navigation">
+        <a href="/calendario/" class="back-link">← Volver al Calendario</a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .activity-view {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  }
+
+  .activity-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem 0 3rem 0;
+    margin-bottom: 2rem;
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    opacity: 0.9;
+  }
+
+  .breadcrumb a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover {
+    opacity: 0.8;
+  }
+
+  .breadcrumb .separator {
+    margin: 0 0.75rem;
+    opacity: 0.7;
+  }
+
+  .breadcrumb .current {
+    opacity: 0.7;
+  }
+
+  .activity-title {
+    text-align: center;
+  }
+
+  .activity-title h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .activity-icon {
+    font-size: 3rem;
+  }
+
+  .activity-title p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+
+  .activity-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .stat {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+  }
+
+  .stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-top: 0.25rem;
+  }
+
+  .distribution-section {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+  }
+
+  .distribution-section h2 {
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+  }
+
+  .monthly-chart {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .chart-header {
+    display: grid;
+    grid-template-columns: 120px 80px 1fr;
+    background: #f7fafc;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .chart-label {
+    padding: 1rem;
+    font-weight: 600;
+    color: #2d3748;
+    text-align: center;
+    border-right: 1px solid #e2e8f0;
+  }
+
+  .chart-label:last-child {
+    border-right: none;
+  }
+
+  .chart-body {
+    background: white;
+  }
+
+  .chart-row {
+    display: grid;
+    grid-template-columns: 120px 80px 1fr;
+    border-bottom: 1px solid #f1f5f9;
+    transition: background 0.3s ease;
+  }
+
+  .chart-row:hover {
+    background: #f7fafc;
+  }
+
+  .chart-row:last-child {
+    border-bottom: none;
+  }
+
+  .month-cell {
+    padding: 1rem;
+    text-align: center;
+    border-right: 1px solid #e2e8f0;
+  }
+
+  .month-name {
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 0.25rem;
+  }
+
+  .month-number {
+    font-size: 0.8rem;
+    color: #718096;
+  }
+
+  .count-cell {
+    padding: 1rem;
+    text-align: center;
+    border-right: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .plant-count {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #2d3748;
+  }
+
+  .peak-indicator {
+    font-size: 0.9rem;
+  }
+
+  .bar-cell {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .bar-container {
+    background: #f1f5f9;
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .activity-bar {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.5s ease;
+  }
+
+  .plant-list-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .plant-preview {
+    color: #4a5568;
+  }
+
+  .more-plants {
+    color: #718096;
+    font-style: italic;
+  }
+
+  .recommendations-section {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+  }
+
+  .recommendations-section h2 {
+    color: #2d3748;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .peak-months p {
+    color: #4a5568;
+    margin-bottom: 1rem;
+  }
+
+  .peak-months-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .peak-month-tag {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .plants-section {
+    margin-bottom: 3rem;
+  }
+
+  .plants-section h2 {
+    color: #2d3748;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+  }
+
+  .categories-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .category-section {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .category-header h3 {
+    color: #2d3748;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+  }
+
+  .category-icon {
+    font-size: 1.5rem;
+  }
+
+  .plant-count-badge {
+    background: #e6fffa;
+    color: #234e52;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .view-category-btn {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+  }
+
+  .view-category-btn:hover {
+    background: #f7fafc;
+  }
+
+  .plants-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .plant-activity-card {
+    background: #f7fafc;
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+  }
+
+  .plant-activity-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  .card-header h4 {
+    margin: 0;
+    flex-grow: 1;
+  }
+
+  .card-header h4 a {
+    color: #2d3748;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .card-header h4 a:hover {
+    color: #667eea;
+  }
+
+  .plant-icon {
+    font-size: 1.2rem;
+  }
+
+  .article-link {
+    font-size: 1.1rem;
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
+
+  .article-link:hover {
+    opacity: 1;
+  }
+
+  .scientific-name {
+    font-style: italic;
+    color: #718096;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .activity-timing {
+    margin-bottom: 1rem;
+  }
+
+  .timing-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .timing-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .timing-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #2d3748;
+  }
+
+  .months-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  .month-tag {
+    background: #c6f6d5;
+    color: #22543d;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .month-tag.alternative {
+    background: #feebc8;
+    color: #c05621;
+  }
+
+  .month-tag.peak {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+  }
+
+  .activity-details {
+    background: white;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #e2e8f0;
+  }
+
+  .detail-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #4a5568;
+  }
+
+  .detail-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .detail-icon {
+    font-size: 1rem;
+    width: 20px;
+    text-align: center;
+  }
+
+  .quick-info {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+
+  .badge.type.annual {
+    background: #c6f6d5;
+    color: #22543d;
+  }
+
+  .badge.type.perennial {
+    background: #bee3f8;
+    color: #2c5282;
+  }
+
+  .badge.type.biennial {
+    background: #feebc8;
+    color: #c05621;
+  }
+
+  .badge.difficulty.beginner {
+    background: #c6f6d5;
+    color: #22543d;
+  }
+
+  .badge.difficulty.intermediate {
+    background: #feebc8;
+    color: #c05621;
+  }
+
+  .badge.difficulty.advanced {
+    background: #fed7d7;
+    color: #c53030;
+  }
+
+  .back-navigation {
+    text-align: center;
+    padding: 2rem 0;
+  }
+
+  .back-link {
+    background: #667eea;
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s ease;
+  }
+
+  .back-link:hover {
+    background: #5a67d8;
+  }
+
+  @media (max-width: 768px) {
+    .activity-title h1 {
+      font-size: 2rem;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .activity-icon {
+      font-size: 2rem;
+    }
+
+    .activity-stats {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .chart-header,
+    .chart-row {
+      grid-template-columns: 100px 60px 1fr;
+    }
+
+    .plants-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .category-header {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1rem;
+    }
+
+    .view-category-btn {
+      text-align: center;
+    }
+
+    .breadcrumb {
+      font-size: 0.8rem;
+      flex-wrap: wrap;
+    }
+  }
+</style>

@@ -1,14 +1,17 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getMonthlyTasksWithUI, getAvailableCalendarCategories, getGlobalCalendarConfig } from '../../utils/calendar-inheritance.js';
+import { getMonthlyTasksWithUI, getAvailableCalendarCategories, getGlobalCalendarConfig, getAvailableActivities, getCategoryPlantsWithCalendar } from '../../utils/calendar-inheritance.js';
 
 // Get current month data with UI helpers
 const currentMonth = new Date().getMonth() + 1; // 1-12
 const monthlyData = await getMonthlyTasksWithUI(currentMonth);
 const categories = await getAvailableCalendarCategories();
+const activities = await getAvailableActivities();
 const globalConfig = await getGlobalCalendarConfig();
 
 const { tasks: monthlyTasks, ui, monthName: currentMonthName, seasonalTips } = monthlyData;
+
+// Not using sample plants anymore as per user feedback
 
 const nextMonth = currentMonth === 12 ? 1 : currentMonth + 1;
 const nextMonthName = ui.getMonthName(nextMonth);
@@ -29,6 +32,18 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
     <!-- Header -->
     <header class="dashboard-header">
       <div class="container">
+        <!-- Hemisphere Selector -->
+        <div class="hemisphere-selector">
+          <button 
+            id="hemisphere-toggle" 
+            class="hemisphere-toggle" 
+            onclick="toggleHemisphere()"
+            title="Cambiar hemisferio"
+          >
+            <span id="hemisphere-icon">🌎</span>
+          </button>
+        </div>
+
         <h1>📅 Calendario de Plantación</h1>
         <p>Planifica tu jardín y huerto siguiendo el calendario natural</p>
       </div>
@@ -114,6 +129,24 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
         </div>
       </section>
 
+      <!-- Activities Section -->
+      <section class="activities-section">
+        <h2>📋 Explorar por Actividades</h2>
+        <p>Encuentra todas las plantas organizadas por tipo de actividad de jardinería</p>
+        
+        <div class="activities-grid">
+          {activities.map(activity => (
+            <a href={`/calendario/actividad/${activity}/`} class="activity-card" key={activity}>
+              <div class="activity-header">
+                <span class="activity-icon">{ui.getTaskIcon(activity)}</span>
+                <h3>{ui.formatTaskName(activity)}</h3>
+              </div>
+              <p>Ver todas las plantas para {ui.formatTaskName(activity).toLowerCase()}</p>
+            </a>
+          ))}
+        </div>
+      </section>
+
       <!-- Tips Section -->
       <section class="tips-section">
         <h2>💡 Consejos de {currentMonthName}</h2>
@@ -141,6 +174,7 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
         </div>
       </section>
     </div>
+
   </div>
 </BaseLayout>
 
@@ -156,6 +190,33 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
     text-align: center;
     padding: 3rem 0;
     margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .hemisphere-selector {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .hemisphere-toggle {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .hemisphere-toggle:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
   }
 
   .dashboard-header h1 {
@@ -395,6 +456,71 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
     margin: 0;
   }
 
+  /* Activities Section */
+  .activities-section {
+    margin-bottom: 3rem;
+  }
+
+  .activities-section h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #2d3748;
+    text-align: center;
+  }
+
+  .activities-section p {
+    text-align: center;
+    color: #718096;
+    margin-bottom: 2rem;
+  }
+
+  .activities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .activity-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  .activity-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    color: inherit;
+  }
+
+  .activity-header {
+    margin-bottom: 1rem;
+  }
+
+  .activity-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .activity-card h3 {
+    font-size: 1.3rem;
+    margin: 0 0 1rem 0;
+    color: #2d3748;
+  }
+
+  .activity-card p {
+    color: #718096;
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+
   @media (max-width: 768px) {
     .dashboard-header h1 {
       font-size: 2rem;
@@ -407,5 +533,114 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
     .months-grid {
       grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     }
+
+    .activities-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hemisphere-selector {
+      top: 0.5rem;
+      right: 0.5rem;
+    }
+
+    .hemisphere-toggle {
+      width: 40px;
+      height: 40px;
+      font-size: 1.2rem;
+    }
   }
 </style>
+
+<script>
+  // Hemisphere selector functionality
+  let currentHemisphere = 'northern';
+  
+  // Load saved hemisphere preference
+  if (typeof localStorage !== 'undefined') {
+    const saved = localStorage.getItem('calendar-hemisphere');
+    if (saved && ['northern', 'southern'].includes(saved)) {
+      currentHemisphere = saved;
+      updateHemisphereDisplay();
+    }
+  }
+
+  function toggleHemisphere() {
+    currentHemisphere = currentHemisphere === 'northern' ? 'southern' : 'northern';
+    updateHemisphereDisplay();
+    
+    // Save preference
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('calendar-hemisphere', currentHemisphere);
+    }
+    
+    // Show notification
+    showHemisphereNotification();
+  }
+
+  function updateHemisphereDisplay() {
+    const icon = document.getElementById('hemisphere-icon');
+    const toggle = document.getElementById('hemisphere-toggle');
+    
+    if (currentHemisphere === 'northern') {
+      icon.textContent = '🌎';
+      toggle.title = 'Hemisferio Norte - Cambiar a Sur';
+    } else {
+      icon.textContent = '🌏';
+      toggle.title = 'Hemisferio Sur (+6 meses) - Cambiar a Norte';
+    }
+  }
+
+  function showHemisphereNotification() {
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #667eea;
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      animation: slideIn 0.3s ease;
+    `;
+    
+    const hemisphere = currentHemisphere === 'northern' ? 'Norte' : 'Sur';
+    const adjustment = currentHemisphere === 'southern' ? ' (+6 meses)' : '';
+    notification.innerHTML = `🌍 Hemisferio ${hemisphere}${adjustment}`;
+    
+    document.body.appendChild(notification);
+    
+    // Add animation keyframes
+    if (!document.querySelector('#notification-styles')) {
+      const style = document.createElement('style');
+      style.id = 'notification-styles';
+      style.textContent = `
+        @keyframes slideIn {
+          from { transform: translateX(100%); opacity: 0; }
+          to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideOut {
+          from { transform: translateX(0); opacity: 1; }
+          to { transform: translateX(100%); opacity: 0; }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+    
+    // Remove notification after 3 seconds
+    setTimeout(() => {
+      notification.style.animation = 'slideOut 0.3s ease';
+      setTimeout(() => {
+        if (document.body.contains(notification)) {
+          document.body.removeChild(notification);
+        }
+      }, 300);
+    }, 3000);
+  }
+
+  // Initialize display on load
+  document.addEventListener('DOMContentLoaded', function() {
+    updateHemisphereDisplay();
+  });
+</script>
