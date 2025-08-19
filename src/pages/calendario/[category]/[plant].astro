@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import CalendarExport from '../../../components/CalendarExport.vue';
-import { getPlantCalendarWithUI, getGlobalCalendarConfig, getUIHelpers, generatePlantPaths } from '../../../utils/calendar-inheritance.js';
+import HeaderExport from '../../../components/HeaderExport.vue';
+import { getPlantCalendarWithUI, getGlobalCalendarConfig, getUIHelpers, generatePlantPaths, getOriginFlag } from '../../../utils/calendar-inheritance.js';
 
 // Generate static paths for all plants
 export async function getStaticPaths() {
@@ -168,19 +168,26 @@ const nutritionalData = plantCalendar.nutritional_data || {};
 const articleLink = plantCalendar._article_links?.resolved_link;
 
 // Prepare export data
+console.log('plantName:', plantName);
+console.log('timelineData length:', timelineData.length);
+console.log('timelineData:', JSON.stringify(timelineData));
+
 const plantExportData = {
   plantName,
   timelineData
 };
+
+console.log('plantExportData:', JSON.stringify(plantExportData));
 ---
 
 <BaseLayout 
   title={`${plantName} - Calendario de Cultivo | Cuándo Plantar ${plantName}`}
   description={`Guía completa de cultivo para ${plantName}. Calendario detallado de siembra, cuidados y cosecha. ${plantInfo.scientific_name ? `Nombre científico: ${plantInfo.scientific_name}` : ''}`}
 >
+  <link rel="stylesheet" href="/src/styles/calendar-theme.css">
   <div class="plant-calendar-view">
     <!-- Header -->
-    <header class="plant-header">
+    <header class="page-header">
       <div class="container">
         <div class="breadcrumb">
           <a href="/calendario/">Calendario</a>
@@ -194,13 +201,20 @@ const plantExportData = {
         </div>
 
         <div class="plant-title">
-          <h1>
+          <h1 class="page-title">
             <span class="plant-icon">{categoryIcon}</span>
             {plantName}
           </h1>
           {plantInfo.scientific_name && (
             <p class="scientific-name">{plantInfo.scientific_name}</p>
           )}
+          
+          <HeaderExport 
+            client:load
+            exportData={plantExportData}
+            exportType="plant"
+            title={`Calendario ${plantName}`}
+          />
           
           <div class="plant-meta">
             {plantInfo.type && (
@@ -215,7 +229,7 @@ const plantExportData = {
             )}
             {plantInfo.origin && (
               <span class="origin">
-                📍 {plantInfo.origin}
+                {getOriginFlag(plantInfo.origin)}
               </span>
             )}
           </div>
@@ -232,19 +246,6 @@ const plantExportData = {
     </header>
 
     <div class="container">
-      <!-- Export Section -->
-      <section class="export-section">
-        <div class="export-wrapper">
-          <h2>📤 Exportar Calendario</h2>
-          <p>Descarga el calendario de cultivo de {plantName} en PDF o importa los eventos a tu calendario personal</p>
-          <CalendarExport 
-            client:load
-            :exportData={plantExportData}
-            exportType="plant"
-            title={`Calendario ${plantName}`}
-          />
-        </div>
-      </section>
 
       <!-- Timeline Section -->
       <section class="timeline-section">

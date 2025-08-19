@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CalendarFilters from '../../components/CalendarFilters.vue';
+import StatsCard from '../../components/StatsCard.vue';
+import CategoryGrid from '../../components/CategoryGrid.vue';
 import { getMonthlyTasksWithUI, getAvailableCalendarCategories, getGlobalCalendarConfig, getAvailableActivities, getCategoryPlantsWithCalendar } from '../../utils/calendar-inheritance.js';
 
 // Get current month data with UI helpers
@@ -38,9 +40,10 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
   title="Calendario de Plantación | Guía Completa de Cultivo"
   description={`Calendario de plantación para ${currentMonthName}. Descubre qué plantar, cuándo sembrar y cómo cuidar tus plantas mes a mes.`}
 >
+  <link rel="stylesheet" href="/src/styles/calendar-theme.css">
   <div class="calendar-dashboard">
     <!-- Header -->
-    <header class="dashboard-header">
+    <header class="page-header">
       <div class="container">
         <!-- Hemisphere Selector -->
         <div class="hemisphere-selector">
@@ -53,8 +56,8 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
           </button>
         </div>
 
-        <h1>📅 Calendario de Plantación</h1>
-        <p>Planifica tu jardín y huerto siguiendo el calendario natural</p>
+        <h1 class="page-title">Calendario de Plantación</h1>
+        <p class="page-subtitle">Planifica tu jardín y huerto siguiendo el calendario natural</p>
       </div>
     </header>
 
@@ -63,10 +66,16 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
       <section class="current-month-section">
         <h2>🌱 Este Mes: {currentMonthName}</h2>
         
-        <div class="month-grid">
+        <div class="grid-responsive">
           <!-- Tasks Widget -->
-          <div class="tasks-widget">
-            <h3>⚡ Tareas Urgentes</h3>
+          <StatsCard
+            client:load
+            title="Tareas Urgentes"
+            icon="🛠️"
+            variant="warning"
+            footerLink={`/calendario/mes/${ui.getMonthSlug(currentMonth)}/`}
+            footerText="Ver calendario del mes"
+          >
             {Object.keys(monthlyTasks).length > 0 ? (
               <div class="tasks-list">
                 {Object.entries(monthlyTasks).map(([category, plants]) => (
@@ -94,36 +103,43 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
             ) : (
               <p class="no-tasks">No hay tareas específicas este mes</p>
             )}
-          </div>
+          </StatsCard>
 
           <!-- Next Month Preview -->
-          <div class="preview-widget">
-            <h3>🗓️ Próximamente: {nextMonthName}</h3>
+          <StatsCard
+            client:load
+            title={`Próximamente: ${nextMonthName}`}
+            icon="📅"
+            variant="info"
+            footerLink={`/calendario/mes/${ui.getMonthSlug(nextMonth)}/`}
+            footerText={`Ver tareas de ${nextMonthName}`}
+          >
             <div class="coming-up">
-              <a href={`/calendario/mes/${ui.getMonthSlug(nextMonth)}/`} class="preview-link">
-                Ver tareas de {nextMonthName} →
-              </a>
+              <p>Prepárate para las actividades del próximo mes</p>
             </div>
-          </div>
+          </StatsCard>
 
           <!-- Categories Overview -->
-          <div class="categories-widget">
-            <h3>🌿 Categorías Disponibles</h3>
-            <div class="categories-grid">
-              {categories.map(category => (
-                <a href={`/calendario/categoria/${category}/`} class="category-card" key={category}>
-                  <span class="category-icon">{ui.getCategoryIcon(category)}</span>
-                  <span class="category-name">{ui.formatCategoryName(category)}</span>
-                </a>
-              ))}
-            </div>
-          </div>
+          <StatsCard
+            client:load
+            title="Categorías Disponibles"
+            icon="🌿"
+            variant="success"
+          >
+            <CategoryGrid
+              client:load
+              categories={categories.map(cat => ({ slug: cat, name: cat }))}
+              baseUrl="/calendario/categoria/"
+              columns="3"
+              minWidth="100px"
+            />
+          </StatsCard>
         </div>
       </section>
 
       <!-- Quick Navigation -->
-      <section class="quick-nav-section">
-        <h2>🗓️ Navegar por Meses</h2>
+      <section class="section-spacing">
+        <h2>Navegar por Meses</h2>
         <div class="months-grid">
           {quickNavMonths.map(month => (
             <a 
@@ -139,8 +155,8 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
       </section>
 
       <!-- Filters Section -->
-      <section class="filters-section">
-        <h2>🔍 Explorar y Filtrar Plantas</h2>
+      <section class="section-spacing">
+        <h2>Explorar y Filtrar Plantas</h2>
         <p>Encuentra plantas específicas según tus necesidades y experiencia</p>
         
         <div class="filters-container">
@@ -155,8 +171,8 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
       </section>
 
       <!-- Activities Section -->
-      <section class="activities-section">
-        <h2>📋 Explorar por Actividades</h2>
+      <section class="section-spacing">
+        <h2>Explorar por Actividades</h2>
         <p>Encuentra todas las plantas organizadas por tipo de actividad de jardinería</p>
         
         <div class="activities-grid">
@@ -206,22 +222,13 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
 <style>
   .calendar-dashboard {
     min-height: 100vh;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  }
-
-  .dashboard-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    text-align: center;
-    padding: 3rem 0;
-    margin-bottom: 2rem;
-    position: relative;
+    background: var(--bg-primary-gradient);
   }
 
   .hemisphere-selector {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: var(--space-sm);
+    right: var(--space-sm);
   }
 
   .hemisphere-toggle {
@@ -232,7 +239,7 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
     height: 48px;
     border-radius: 50%;
     cursor: pointer;
-    font-size: 1.5rem;
+    font-size: var(--font-size-xl);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -244,77 +251,48 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
     transform: scale(1.05);
   }
 
-  .dashboard-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-  }
-
-  .dashboard-header p {
-    font-size: 1.2rem;
-    opacity: 0.9;
-  }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-
   .current-month-section {
-    margin-bottom: 3rem;
+    margin-bottom: var(--space-xl);
   }
 
-  .current-month-section h2 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    color: #2d3748;
+  .current-month-section h2,
+  section h2 {
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--space-md);
+    color: var(--color-text-primary);
   }
 
-  .month-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-  }
-
-  .tasks-widget, .preview-widget, .categories-widget {
-    background: white;
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-  }
-
-  .tasks-widget h3, .preview-widget h3, .categories-widget h3 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    color: #2d3748;
-    border-bottom: 2px solid #e2e8f0;
-    padding-bottom: 0.5rem;
+  section p {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-md);
+    font-size: var(--font-size-lg);
   }
 
   .category-tasks {
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-sm);
   }
 
   .category-tasks h4 {
-    color: #4a5568;
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-xs);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
   }
 
   .plant-tasks {
-    margin-bottom: 0.75rem;
-    padding: 0.75rem;
-    background: #f7fafc;
-    border-radius: 6px;
+    margin-bottom: var(--space-sm);
+    padding: var(--space-sm);
+    background: var(--bg-subtle);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--color-primary-light);
   }
 
   .plant-tasks strong {
-    color: #2d3748;
+    color: var(--color-text-primary);
     display: block;
-    margin-bottom: 0.25rem;
+    margin-bottom: calc(var(--space-xs) * 0.5);
   }
 
   .plant-tasks ul {
@@ -326,133 +304,106 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
   .plant-tasks li {
     display: flex;
     align-items: center;
-    margin-bottom: 0.25rem;
-    font-size: 0.9rem;
-    color: #4a5568;
+    margin-bottom: calc(var(--space-xs) * 0.5);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    gap: var(--space-xs);
   }
 
   .task-icon {
-    margin-right: 0.5rem;
     font-weight: bold;
     width: 20px;
     text-align: center;
+    flex-shrink: 0;
   }
 
   .task-priority-high {
-    color: #c53030;
+    color: var(--color-error);
     font-weight: 600;
   }
 
   .task-priority-medium {
-    color: #d69e2e;
+    color: var(--color-warning);
     font-weight: 500;
   }
 
   .task-priority-low {
-    color: #718096;
+    color: var(--color-text-muted);
   }
 
   .category-icon {
-    margin-right: 0.5rem;
-    font-size: 1.1rem;
+    font-size: var(--font-size-lg);
+    flex-shrink: 0;
   }
 
   .no-tasks {
-    color: #718096;
+    color: var(--color-text-muted);
     font-style: italic;
     text-align: center;
-    padding: 2rem;
+    padding: var(--space-lg);
   }
 
   .preview-link {
     display: inline-block;
-    background: #667eea;
+    background: var(--color-primary);
     color: white;
-    padding: 0.75rem 1.5rem;
-    border-radius: 6px;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-sm);
     text-decoration: none;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
+    font-weight: 500;
   }
 
   .preview-link:hover {
-    background: #5a67d8;
+    background: var(--color-primary-light);
+    transform: translateY(-1px);
   }
 
-  .categories-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 0.75rem;
-  }
-
-  .category-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem;
-    background: #f7fafc;
-    border-radius: 8px;
-    text-decoration: none;
-    color: #2d3748;
-    transition: all 0.3s ease;
-    border: 1px solid #e2e8f0;
-  }
-
-  .category-card:hover {
-    background: #edf2f7;
-    transform: translateY(-2px);
-  }
-
-  .category-icon {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .category-name {
-    font-weight: 500;
-    font-size: 0.9rem;
-  }
 
   .months-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 0.75rem;
-    margin-bottom: 2rem;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
   }
 
   .month-link {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem;
-    background: white;
-    border-radius: 8px;
+    padding: var(--space-sm);
+    background: var(--bg-card);
+    border-radius: var(--radius-sm);
     text-decoration: none;
-    color: #2d3748;
+    color: var(--color-text-primary);
     transition: all 0.3s ease;
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--color-border-light);
+    box-shadow: var(--shadow-sm);
   }
 
   .month-link:hover {
-    background: #f7fafc;
+    background: var(--bg-subtle);
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary-light);
   }
 
   .month-link.current {
-    background: #667eea;
+    background: var(--color-primary);
     color: white;
-    border-color: #667eea;
+    border-color: var(--color-primary);
   }
 
   .month-number {
-    font-size: 1.5rem;
+    font-size: var(--font-size-xl);
     font-weight: 700;
-    margin-bottom: 0.25rem;
+    margin-bottom: calc(var(--space-xs) * 0.5);
   }
 
   .month-name {
-    font-size: 0.9rem;
+    font-size: var(--font-size-sm);
     font-weight: 500;
+    text-align: center;
   }
 
   .tips-grid {
@@ -528,15 +479,15 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
   .activities-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
+    gap: var(--space-md);
   }
 
   .activity-card {
-    background: white;
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--color-border);
     text-decoration: none;
     color: inherit;
     transition: all 0.3s ease;
@@ -545,30 +496,31 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
 
   .activity-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-lg);
     color: inherit;
+    border-color: var(--color-primary-light);
   }
 
   .activity-header {
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-sm);
   }
 
   .activity-icon {
-    font-size: 3rem;
+    font-size: var(--font-size-4xl);
     display: block;
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-sm);
   }
 
   .activity-card h3 {
-    font-size: 1.3rem;
-    margin: 0 0 1rem 0;
-    color: #2d3748;
+    font-size: var(--font-size-xl);
+    margin: 0 0 var(--space-sm) 0;
+    color: var(--color-text-primary);
   }
 
   .activity-card p {
-    color: #718096;
+    color: var(--color-text-secondary);
     margin: 0;
-    font-size: 0.9rem;
+    font-size: var(--font-size-sm);
   }
 
 

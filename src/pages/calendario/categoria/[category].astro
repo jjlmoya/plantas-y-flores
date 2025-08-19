@@ -1,5 +1,7 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import StatsCard from "../../../components/StatsCard.vue";
+import FilterPlantCard from "../../../components/FilterPlantCard.vue";
 import {
   getCategoryPlantsWithCalendar,
   getGlobalCalendarConfig,
@@ -139,33 +141,70 @@ const timelineData = Object.entries(plantActivities).map(([slug, data]) => {
     monthsData,
   };
 });
+
+// Format plants for SimpleCalendarCard component
+const formattedCategoryPlants = categoryPlants.map(plant => {
+  const calendar = plant.calendar?.calendar_data;
+  
+  // Extract months for different activities
+  const sowingMonths = [];
+  const transplantingMonths = [];
+  const harvestingMonths = [];
+  
+  if (calendar?.sowing?.indoor?.best_months) {
+    sowingMonths.push(...calendar.sowing.indoor.best_months);
+  }
+  if (calendar?.sowing?.outdoor?.best_months) {
+    sowingMonths.push(...calendar.sowing.outdoor.best_months);
+  }
+  if (calendar?.transplanting?.best_months) {
+    transplantingMonths.push(...calendar.transplanting.best_months);
+  }
+  if (calendar?.harvesting?.best_months) {
+    harvestingMonths.push(...calendar.harvesting.best_months);
+  }
+  
+  return {
+    plantName: ui.formatPlantName(plant.slug),
+    plantSlug: plant.slug,
+    categorySlug: category,
+    sowingMonths: [...new Set(sowingMonths)].sort(),
+    transplantingMonths: [...new Set(transplantingMonths)].sort(),
+    harvestingMonths: [...new Set(harvestingMonths)].sort(),
+    articleLink: plant.calendar._article_links?.resolved_link || ''
+  };
+});
 ---
 
 <BaseLayout
   title={`${categoryName} - Calendario de Cultivo | Cuándo Plantar ${categoryName}`}
   description={`Calendario completo de cultivo para ${categoryName.toLowerCase()}. Descubre cuándo sembrar, trasplantar y cosechar todas las variedades de ${categoryName.toLowerCase()}.`}
 >
+  <link rel="stylesheet" href="/src/styles/calendar-theme.css">
   <div class="category-view">
     <!-- Header -->
-    <header class="category-header">
+    <header class="page-header">
       <div class="container">
-        <div class="category-title">
-          <h1>
-            <span class="category-icon">{categoryIcon}</span>
-            Calendario de {categoryName}
-          </h1>
-          <p>
-            Guía completa de cultivo para todas las variedades de {
-              categoryName.toLowerCase()
-            }
-          </p>
-        </div>
+        <h1 class="page-title">
+          <span class="category-icon">{categoryIcon}</span>
+          Calendario de {categoryName}
+        </h1>
+        <p class="page-subtitle">
+          Guía completa de cultivo para todas las variedades de {
+            categoryName.toLowerCase()
+          }
+        </p>
 
         <div class="category-stats">
-          <div class="stat">
-            <span class="stat-number">{categoryPlants.length}</span>
-            <span class="stat-label">variedades</span>
-          </div>
+          <StatsCard
+            client:load
+            title="Variedades Disponibles"
+            icon={categoryIcon}
+            number={categoryPlants.length}
+            label="variedades"
+            description={`Diferentes tipos de ${categoryName.toLowerCase()} para cultivar`}
+            variant="primary"
+          />
         </div>
       </div>
     </header>
@@ -299,71 +338,15 @@ const timelineData = Object.entries(plantActivities).map(([slug, data]) => {
       <!-- Plants Grid -->
       <section class="plants-grid-section">
         <h2>🌱 Todas las Variedades de {categoryName}</h2>
-
+        
         <div class="plants-grid">
-          {
-            categoryPlants.map((plant) => (
-              <div class="plant-summary-card" key={plant.slug}>
-                <div class="card-header">
-                  <h3>
-                    <a href={`/calendario/${category}/${plant.slug}/`}>
-                      {ui.formatPlantName(plant.slug)}
-                    </a>
-                  </h3>
-                  {plant.calendar._article_links?.resolved_link && (
-                    <a
-                      href={plant.calendar._article_links.resolved_link}
-                      class="view-article-btn"
-                    >
-                      Ver Artículo →
-                    </a>
-                  )}
-                </div>
-
-                <div class="card-content">
-                  {plant.calendar.plant_info?.scientific_name && (
-                    <p class="scientific-name">
-                      {plant.calendar.plant_info.scientific_name}
-                    </p>
-                  )}
-
-                  {plant.calendar.plant_info?.origin && (
-                    <p class="origin">
-                      Origen: {plant.calendar.plant_info.origin}
-                    </p>
-                  )}
-
-                  <div class="quick-info">
-                    {plant.calendar.growing_conditions?.difficulty && (
-                      <span
-                        class={`difficulty ${plant.calendar.growing_conditions.difficulty}`}
-                      >
-                        {ui.formatTaskName(
-                          plant.calendar.growing_conditions.difficulty
-                        )}
-                      </span>
-                    )}
-
-                    {plant.calendar.calendar_data?.harvesting
-                      ?.days_to_harvest && (
-                      <span class="days-to-harvest">
-                        {
-                          plant.calendar.calendar_data.harvesting
-                            .days_to_harvest[0]
-                        }
-                        -
-                        {
-                          plant.calendar.calendar_data.harvesting
-                            .days_to_harvest[1]
-                        }{" "}
-                        días
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))
-          }
+          {categoryPlants.map(plant => (
+            <FilterPlantCard
+              client:load
+              key={`${plant.category}-${plant.slug}`}
+              plant={plant}
+            />
+          ))}
         </div>
       </section>
 
@@ -378,15 +361,9 @@ const timelineData = Object.entries(plantActivities).map(([slug, data]) => {
 <style>
   .category-view {
     min-height: 100vh;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: var(--bg-primary-gradient);
   }
 
-  .category-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 3rem 0;
-    margin-bottom: 2rem;
-  }
 
   .container {
     max-width: 1400px;
@@ -394,29 +371,26 @@ const timelineData = Object.entries(plantActivities).map(([slug, data]) => {
     padding: 0 1rem;
   }
 
-  .category-title {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-
-  .category-title h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-  }
-
   .category-icon {
     font-size: 2.5rem;
   }
 
-  .category-title p {
-    font-size: 1.2rem;
-    opacity: 0.9;
+  .plants-grid-section {
+    margin-bottom: var(--space-xl);
   }
+
+  .plants-grid-section h2 {
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-lg);
+    font-size: var(--font-size-xl);
+  }
+
+  .plants-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+
 
   .category-stats {
     display: flex;
@@ -445,77 +419,77 @@ const timelineData = Object.entries(plantActivities).map(([slug, data]) => {
   }
 
   .timeline-section {
-    background: white;
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 2rem;
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: var(--space-xl);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: var(--space-lg);
   }
 
   .timeline-section h2 {
-    color: #2d3748;
-    margin-bottom: 1.5rem;
-    font-size: 1.5rem;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-md);
+    font-size: var(--font-size-xl);
   }
 
   .timeline-container {
     overflow-x: auto;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
   }
 
   .timeline-header {
     display: grid;
     grid-template-columns: 200px repeat(12, 1fr);
-    background: #f7fafc;
-    border-bottom: 1px solid #e2e8f0;
+    background: var(--bg-subtle);
+    border-bottom: 1px solid var(--color-border);
   }
 
   .plant-label {
-    padding: 1rem;
+    padding: var(--space-md);
     font-weight: 600;
-    color: #2d3748;
-    border-right: 1px solid #e2e8f0;
+    color: var(--color-text-primary);
+    border-right: 1px solid var(--color-border);
   }
 
   .month-label {
-    padding: 1rem 0.5rem;
+    padding: var(--space-md) var(--space-sm);
     text-align: center;
     font-weight: 500;
-    color: #4a5568;
-    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-xs);
   }
 
   .timeline-body {
-    background: white;
+    background: var(--bg-card);
   }
 
   .timeline-row {
     display: grid;
     grid-template-columns: 200px repeat(12, 1fr);
-    border-bottom: 1px solid #f1f5f9;
+    border-bottom: 1px solid var(--color-border-light);
   }
 
   .timeline-row:hover {
-    background: #f7fafc;
+    background: var(--bg-subtle);
   }
 
   .plant-name {
     padding: 1rem;
-    border-right: 1px solid #e2e8f0;
+    border-right: 1px solid var(--color-border);
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
 
   .plant-name a {
-    color: #2d3748;
+    color: var(--color-text-primary);
     text-decoration: none;
     font-weight: 500;
   }
 
   .plant-name a:hover {
-    color: #667eea;
+    color: var(--color-primary);
   }
 
   .article-link {
@@ -538,7 +512,7 @@ const timelineData = Object.entries(plantActivities).map(([slug, data]) => {
   }
 
   .month-cell.has-activity {
-    background: #f7fafc;
+    background: var(--bg-subtle);
   }
 
   .activity-indicators {
@@ -556,16 +530,16 @@ const timelineData = Object.entries(plantActivities).map(([slug, data]) => {
   }
 
   .legend-section {
-    background: white;
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-lg);
+    box-shadow: var(--shadow-sm);
   }
 
   .legend-section h3 {
-    color: #2d3748;
-    margin-bottom: 1rem;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-md);
   }
 
   .legend-grid {
@@ -579,7 +553,7 @@ const timelineData = Object.entries(plantActivities).map(([slug, data]) => {
     align-items: center;
     gap: 0.5rem;
     font-size: 0.9rem;
-    color: #4a5568;
+    color: var(--color-text-secondary);
   }
 
   .legend-dot {
@@ -589,122 +563,7 @@ const timelineData = Object.entries(plantActivities).map(([slug, data]) => {
     display: block;
   }
 
-  .plants-grid-section {
-    margin-bottom: 3rem;
-  }
 
-  .plants-grid-section h2 {
-    color: #2d3748;
-    margin-bottom: 1.5rem;
-    font-size: 1.5rem;
-  }
-
-  .plants-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .plant-summary-card {
-    background: white;
-    border-radius: 8px;
-    padding: 1.5rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition:
-      transform 0.3s ease,
-      box-shadow 0.3s ease;
-  }
-
-  .plant-summary-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  }
-
-  .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 1rem;
-  }
-
-  .card-header h3 {
-    margin: 0;
-    flex-grow: 1;
-  }
-
-  .card-header h3 a {
-    color: #2d3748;
-    text-decoration: none;
-  }
-
-  .card-header h3 a:hover {
-    color: #667eea;
-  }
-
-  .view-article-btn {
-    background: #667eea;
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    text-decoration: none;
-    font-size: 0.9rem;
-    white-space: nowrap;
-    margin-left: 1rem;
-  }
-
-  .view-article-btn:hover {
-    background: #5a67d8;
-  }
-
-  .scientific-name {
-    font-style: italic;
-    color: #718096;
-    margin-bottom: 0.5rem;
-  }
-
-  .origin {
-    color: #718096;
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-  }
-
-  .quick-info {
-    display: flex;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-  }
-
-  .difficulty {
-    padding: 0.25rem 0.75rem;
-    border-radius: 12px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    text-transform: capitalize;
-  }
-
-  .difficulty.beginner {
-    background: #c6f6d5;
-    color: #22543d;
-  }
-
-  .difficulty.intermediate {
-    background: #feebc8;
-    color: #c05621;
-  }
-
-  .difficulty.advanced {
-    background: #fed7d7;
-    color: #c53030;
-  }
-
-  .days-to-harvest {
-    padding: 0.25rem 0.75rem;
-    background: #e6fffa;
-    color: #234e52;
-    border-radius: 12px;
-    font-size: 0.8rem;
-    font-weight: 500;
-  }
 
   .back-navigation {
     text-align: center;

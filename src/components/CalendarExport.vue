@@ -1,23 +1,39 @@
 <template>
-  <div class="calendar-export">
-    <div class="export-buttons">
-      <button @click="exportToPDF" class="export-btn pdf" :disabled="isExporting">
-        <span class="btn-icon">📄</span>
-        <span class="btn-text">Exportar PDF</span>
-        <span v-if="isExporting === 'pdf'" class="loading">...</span>
+  <div class="calendar-export" :class="{ compact: isCompact }">
+    <div v-if="!isCompact" class="export-section">
+      <h3>📤 Exportar Calendario</h3>
+      <p>{{ description }}</p>
+      <div class="export-buttons">
+        <button @click="exportToPDF" class="export-btn pdf" :disabled="isExporting">
+          <span class="btn-icon">📄</span>
+          <span class="btn-text">Exportar PDF</span>
+          <span v-if="isExporting === 'pdf'" class="loading">...</span>
+        </button>
+        
+        <button @click="exportToICS" class="export-btn ics" :disabled="isExporting">
+          <span class="btn-icon">📅</span>
+          <span class="btn-text">Exportar .ics</span>
+          <span v-if="isExporting === 'ics'" class="loading">...</span>
+        </button>
+      </div>
+    </div>
+    
+    <div v-else class="export-icons">
+      <button @click="exportToPDF" class="icon-btn pdf" :disabled="isExporting" title="Exportar PDF">
+        <span class="icon">📄</span>
+        <span v-if="isExporting === 'pdf'" class="loading-dot"></span>
       </button>
       
-      <button @click="exportToICS" class="export-btn ics" :disabled="isExporting">
-        <span class="btn-icon">📅</span>
-        <span class="btn-text">Exportar .ics</span>
-        <span v-if="isExporting === 'ics'" class="loading">...</span>
+      <button @click="exportToICS" class="icon-btn ics" :disabled="isExporting" title="Exportar calendario">
+        <span class="icon">📅</span>
+        <span v-if="isExporting === 'ics'" class="loading-dot"></span>
       </button>
     </div>
   </div>
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 
 export default {
   name: 'CalendarExport',
@@ -34,57 +50,80 @@ export default {
     title: {
       type: String,
       required: true
+    },
+    isCompact: {
+      type: Boolean,
+      default: false
+    },
+    description: {
+      type: String,
+      default: ''
     }
   },
   setup(props) {
     const isExporting = ref(false);
+    
+    // Parse export data if it's a string (from Astro)
+    const exportData = computed(() => {
+      console.log('Raw export data type:', typeof props.exportData);
+      console.log('Raw export data:', props.exportData);
+      
+      if (typeof props.exportData === 'string') {
+        try {
+          const parsed = JSON.parse(props.exportData);
+          console.log('Parsed export data:', parsed);
+          return parsed;
+        } catch (e) {
+          console.error('Error parsing export data:', e);
+          return {};
+        }
+      }
+      
+      const result = props.exportData || {};
+      console.log('Direct export data:', result);
+      return result;
+    });
 
     const exportToPDF = async () => {
       isExporting.value = 'pdf';
       
+      console.log('Export data received:', exportData.value);
+      console.log('Export type:', props.exportType);
+      
       try {
         // Dynamic import for better performance
-        const [{ default: jsPDF }, { default: html2canvas }] = await Promise.all([
-          import('jspdf'),
-          import('html2canvas')
-        ]);
+        const { default: jsPDF } = await import('jspdf');
 
-        // Find the main content area to export
-        const element = document.querySelector('.calendar-export-content') || 
-                       document.querySelector('.month-view') ||
-                       document.querySelector('.plant-calendar-view') ||
-                       document.querySelector('main') ||
-                       document.body;
-
-        // Create canvas from the element
-        const canvas = await html2canvas(element, {
-          scale: 2,
-          useCORS: true,
-          allowTaint: true,
-          backgroundColor: '#ffffff',
-          height: element.scrollHeight,
-          width: element.scrollWidth
-        });
-
-        // Calculate PDF dimensions
-        const imgData = canvas.toDataURL('image/png');
         const pdf = new jsPDF('p', 'mm', 'a4');
+        let yPos = 20;
+        const lineHeight = 6;
+        const pageHeight = pdf.internal.pageSize.height;
+        const margin = 20;
         
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = pdf.internal.pageSize.getHeight();
-        const imgWidth = canvas.width;
-        const imgHeight = canvas.height;
+        // Title
+        pdf.setFontSize(16);
+        pdf.setFont('helvetica', 'bold');
+        const title = props.title || 'Calendario';
+        pdf.text(title, margin, yPos);
+        yPos += lineHeight * 2;
         
-        const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
-        const finalWidth = imgWidth * ratio;
-        const finalHeight = imgHeight * ratio;
+        // Generate minimal text content based on export type
+        pdf.setFontSize(10);
+        pdf.setFont('helvetica', 'normal');
         
-        // Center the image on the page
-        const x = (pdfWidth - finalWidth) / 2;
-        const y = (pdfHeight - finalHeight) / 2;
+        if (props.exportType === 'month') {
+          yPos = generateMonthPDFContent(pdf, exportData.value, yPos, lineHeight, margin, pageHeight);
+        } else if (props.exportType === 'plant') {
+          yPos = generatePlantPDFContent(pdf, exportData.value, yPos, lineHeight, margin, pageHeight);
+        } else if (props.exportType === 'category') {
+          yPos = generateCategoryPDFContent(pdf, exportData.value, yPos, lineHeight, margin, pageHeight);
+        }
 
-        // Add image to PDF
-        pdf.addImage(imgData, 'PNG', x, y, finalWidth, finalHeight);
+        // Footer
+        const currentDate = new Date().toLocaleDateString('es-ES');
+        pdf.setFontSize(8);
+        pdf.setFont('helvetica', 'italic');
+        pdf.text(`Generado el ${currentDate} - plantasyflores.online`, margin, pageHeight - 10);
 
         // Generate filename
         const timestamp = new Date().toISOString().split('T')[0];
@@ -110,11 +149,11 @@ export default {
         
         // Generate events based on export type
         if (props.exportType === 'month') {
-          events = generateMonthEvents(props.exportData, currentYear);
+          events = generateMonthEvents(exportData.value, currentYear);
         } else if (props.exportType === 'plant') {
-          events = generatePlantEvents(props.exportData, currentYear);
+          events = generatePlantEvents(exportData.value, currentYear);
         } else if (props.exportType === 'category') {
-          events = generateCategoryEvents(props.exportData, currentYear);
+          events = generateCategoryEvents(exportData.value, currentYear);
         }
 
         // Generate ICS content
@@ -277,6 +316,137 @@ export default {
       return `${year}${month}${day}`;
     };
 
+    const generateMonthPDFContent = (pdf, exportData, yPos, lineHeight, margin, pageHeight) => {
+      if (!exportData) {
+        pdf.text('No hay datos disponibles para este mes', margin, yPos);
+        return yPos + lineHeight;
+      }
+
+      const monthName = exportData.monthName || 'Mes desconocido';
+      const activities = exportData.activities || {};
+      
+      pdf.setFont('helvetica', 'bold');
+      pdf.text(`Actividades para ${monthName}:`, margin, yPos);
+      yPos += lineHeight;
+      
+      pdf.setFont('helvetica', 'normal');
+      
+      if (activities.sowing && Array.isArray(activities.sowing) && activities.sowing.length > 0) {
+        pdf.text('SIEMBRA:', margin, yPos);
+        yPos += lineHeight;
+        activities.sowing.forEach(plant => {
+          if (yPos > pageHeight - 30) { pdf.addPage(); yPos = 20; }
+          const plantName = plant?.name || plant?.plantName || 'Planta desconocida';
+          pdf.text(`• ${plantName}`, margin + 5, yPos);
+          yPos += lineHeight;
+        });
+        yPos += lineHeight;
+      }
+      
+      if (activities.transplanting && Array.isArray(activities.transplanting) && activities.transplanting.length > 0) {
+        pdf.text('TRASPLANTE:', margin, yPos);
+        yPos += lineHeight;
+        activities.transplanting.forEach(plant => {
+          if (yPos > pageHeight - 30) { pdf.addPage(); yPos = 20; }
+          const plantName = plant?.name || plant?.plantName || 'Planta desconocida';
+          pdf.text(`• ${plantName}`, margin + 5, yPos);
+          yPos += lineHeight;
+        });
+        yPos += lineHeight;
+      }
+      
+      if (activities.harvesting && Array.isArray(activities.harvesting) && activities.harvesting.length > 0) {
+        pdf.text('COSECHA:', margin, yPos);
+        yPos += lineHeight;
+        activities.harvesting.forEach(plant => {
+          if (yPos > pageHeight - 30) { pdf.addPage(); yPos = 20; }
+          const plantName = plant?.name || plant?.plantName || 'Planta desconocida';
+          pdf.text(`• ${plantName}`, margin + 5, yPos);
+          yPos += lineHeight;
+        });
+      }
+      
+      return yPos;
+    };
+
+    const generatePlantPDFContent = (pdf, exportData, yPos, lineHeight, margin, pageHeight) => {
+      if (!exportData) {
+        pdf.text('No hay datos disponibles para esta planta', margin, yPos);
+        return yPos + lineHeight;
+      }
+
+      const plantName = exportData.plantName || exportData.name || 'Planta desconocida';
+      const timelineData = exportData.timelineData || exportData.timeline || [];
+      
+      pdf.setFont('helvetica', 'bold');
+      pdf.text(`Calendario de cultivo para ${plantName}:`, margin, yPos);
+      yPos += lineHeight * 2;
+      
+      pdf.setFont('helvetica', 'normal');
+      
+      if (Array.isArray(timelineData) && timelineData.length > 0) {
+        const monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+                           'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+        
+        timelineData.forEach(monthData => {
+          if (monthData && monthData.activities && Array.isArray(monthData.activities) && monthData.activities.length > 0) {
+            if (yPos > pageHeight - 40) { pdf.addPage(); yPos = 20; }
+            
+            const monthIndex = (monthData.month || 1) - 1;
+            const monthName = monthNames[monthIndex] || `Mes ${monthData.month || '?'}`;
+            
+            pdf.setFont('helvetica', 'bold');
+            pdf.text(`${monthName}:`, margin, yPos);
+            yPos += lineHeight;
+            
+            pdf.setFont('helvetica', 'normal');
+            monthData.activities.forEach(activity => {
+              if (yPos > pageHeight - 30) { pdf.addPage(); yPos = 20; }
+              const activityLabel = activity?.label || activity?.name || activity?.activity || 'Actividad';
+              pdf.text(`• ${activityLabel}`, margin + 5, yPos);
+              yPos += lineHeight;
+            });
+            yPos += lineHeight;
+          }
+        });
+      } else {
+        pdf.text('No hay actividades programadas para esta planta', margin, yPos);
+        yPos += lineHeight;
+      }
+      
+      return yPos;
+    };
+
+    const generateCategoryPDFContent = (pdf, categoryData, yPos, lineHeight, margin, pageHeight) => {
+      if (!categoryData) {
+        pdf.text('No hay datos disponibles para esta categoría', margin, yPos);
+        return yPos + lineHeight;
+      }
+
+      const categoryName = categoryData.categoryName || categoryData.name || 'Categoría desconocida';
+      const plants = categoryData.plants || [];
+      
+      pdf.setFont('helvetica', 'bold');
+      pdf.text(`Plantas de la categoría ${categoryName}:`, margin, yPos);
+      yPos += lineHeight * 2;
+      
+      pdf.setFont('helvetica', 'normal');
+      
+      if (Array.isArray(plants) && plants.length > 0) {
+        plants.forEach(plant => {
+          if (yPos > pageHeight - 30) { pdf.addPage(); yPos = 20; }
+          const plantName = plant?.name || plant?.plantName || 'Planta desconocida';
+          pdf.text(`• ${plantName}`, margin, yPos);
+          yPos += lineHeight;
+        });
+      } else {
+        pdf.text('No hay plantas disponibles en esta categoría', margin, yPos);
+        yPos += lineHeight;
+      }
+      
+      return yPos;
+    };
+
     return {
       isExporting,
       exportToPDF,
@@ -291,10 +461,35 @@ export default {
   margin: 1rem 0;
 }
 
+.calendar-export.compact {
+  margin: 0;
+}
+
+.export-section h3 {
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.export-section p {
+  color: #718096;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
 .export-buttons {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+}
+
+.export-icons {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
 }
 
 .export-btn {

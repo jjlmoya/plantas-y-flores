@@ -60,7 +60,8 @@
       "Bash(del test-server.js)",
       "WebFetch(domain:localhost)",
       "Bash(del \"src\\components\\SimpleTest.vue\")",
-      "Bash(timeout 60s npm run build)"
+      "Bash(timeout 60s npm run build)",
+      "Bash(touch:*)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"

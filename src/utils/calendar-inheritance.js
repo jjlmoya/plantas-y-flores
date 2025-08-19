@@ -388,7 +388,43 @@ export function getUIHelpers(globalConfig) {
         // Water needs
         'low': 'Bajo',
         'moderate': 'Moderado',
-        'high': 'Alto'
+        'high': 'Alto',
+        // Preservation methods
+        'oil_infusion': 'Infusión en Aceite',
+        'drying': 'Secado',
+        'freezing': 'Congelación',
+        'canning': 'Enlatado',
+        'dehydrating': 'Deshidratación',
+        'pickling': 'Encurtido',
+        'fermentation': 'Fermentación',
+        // Harvest indicators
+        'aroma': 'Aroma',
+        'full_bloom': 'Floración Completa',
+        'color_change': 'Cambio de Color',
+        'size': 'Tamaño',
+        'firmness': 'Firmeza',
+        // Special purposes
+        'companion_benefit': 'Beneficio como Planta Compañera',
+        'pest_control': 'Control de Plagas',
+        'soil_improvement': 'Mejora del Suelo',
+        'pollinator_attraction': 'Atracción de Polinizadores',
+        // Origins (common ones)
+        'mediterranean': 'Mediterráneo',
+        'tropical': 'Tropical',
+        'temperate': 'Templado',
+        'subtropical': 'Subtropical',
+        'native': 'Nativo',
+        // Additional terms
+        'acidic': 'Ácido',
+        'alkaline': 'Alcalino',
+        'afternoon_shade': 'Sombra de Tarde',
+        'morning_sun': 'Sol de Mañana',
+        'evening_sun': 'Sol de Tarde',
+        'indoor': 'Interior',
+        'outdoor': 'Exterior',
+        'container': 'Contenedor',
+        'ground': 'Suelo',
+        'greenhouse': 'Invernadero'
       };
       
       // Return translation if available, otherwise format the original
@@ -613,4 +649,51 @@ export function validatePlantConfig(plantConfig, globalConfig) {
   }
   
   return errors;
+}
+
+/**
+ * Convert locale codes (like "es-ES") to flag emojis
+ */
+export function getOriginFlag(localeCode) {
+  if (!localeCode) return '📍';
+  
+  const localeFlags = {
+    'es-ES': '🇪🇸', // España
+    'en-US': '🇺🇸', // Estados Unidos
+    'en-GB': '🇬🇧', // Reino Unido
+    'fr-FR': '🇫🇷', // Francia
+    'it-IT': '🇮🇹', // Italia
+    'de-DE': '🇩🇪', // Alemania
+    'pt-PT': '🇵🇹', // Portugal
+    'pt-BR': '🇧🇷', // Brasil
+    'zh-CN': '🇨🇳', // China
+    'zh-TW': '🇹🇼', // Taiwan
+    'ja-JP': '🇯🇵', // Japón
+    'ko-KR': '🇰🇷', // Corea del Sur
+    'ru-RU': '🇷🇺', // Rusia
+    'ar-SA': '🇸🇦', // Arabia Saudí
+    'hi-IN': '🇮🇳', // India
+    'tr-TR': '🇹🇷', // Turquía
+    'el-GR': '🇬🇷', // Grecia
+    'nl-NL': '🇳🇱', // Países Bajos
+    'sv-SE': '🇸🇪', // Suecia
+    'no-NO': '🇳🇴', // Noruega
+    'da-DK': '🇩🇰', // Dinamarca
+    'fi-FI': '🇫🇮', // Finlandia
+    'pl-PL': '🇵🇱', // Polonia
+    'cs-CZ': '🇨🇿', // República Checa
+    'hu-HU': '🇭🇺', // Hungría
+    'ro-RO': '🇷🇴', // Rumania
+    'bg-BG': '🇧🇬', // Bulgaria
+    'hr-HR': '🇭🇷', // Croacia
+    'sk-SK': '🇸🇰', // Eslovaquia
+    'sl-SI': '🇸🇮', // Eslovenia
+    'et-EE': '🇪🇪', // Estonia
+    'lv-LV': '🇱🇻', // Letonia
+    'lt-LT': '🇱🇹', // Lituania
+    'mt-MT': '🇲🇹', // Malta
+    'cy-GB': '🏴󠁧󠁢󠁷󠁬󠁳󠁿'  // Gales
+  };
+  
+  return localeFlags[localeCode] || '📍';
 }
