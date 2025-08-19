@@ -1,0 +1,28 @@
+{
+  "plant_info": {
+    "category": "lavanda",
+    "type": "perennial",
+    "difficulty": "beginner"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [
+        3,
+        4,
+        9
+      ]
+    },
+    "flowering": {
+      "best_months": [
+        6,
+        7,
+        8
+      ]
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "low",
+    "soil_type": "well_drained"
+  }
+}

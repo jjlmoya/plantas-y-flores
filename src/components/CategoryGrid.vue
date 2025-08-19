@@ -1,5 +1,5 @@
 <template>
-  <div class="category-grid">
+  <div class="category-grid" :class="gridClass" :data-columns="columns">
     <a 
       v-for="category in categories"
       :key="category.slug || category.name"
@@ -16,6 +16,8 @@
 </template>
 
 <script>
+import { computed } from 'vue';
+
 export default {
   name: 'CategoryGrid',
   props: {
@@ -93,10 +95,18 @@ export default {
       return name.charAt(0).toUpperCase() + name.slice(1).replace(/-/g, ' ');
     };
 
+    const gridClass = computed(() => {
+      if (['2', '3', '4', '5', '6'].includes(props.columns)) {
+        return `columns-${props.columns}`;
+      }
+      return '';
+    });
+
     return {
       getCategoryLink,
       getCategoryName, 
-      getCategoryIcon
+      getCategoryIcon,
+      gridClass
     };
   }
 };
@@ -105,7 +115,7 @@ export default {
 <style scoped>
 .category-grid {
   display: grid;
-  grid-template-columns: repeat(v-bind(columns === 'auto-fill' ? 'auto-fill' : columns === 'auto-fit' ? 'auto-fit' : columns), minmax(v-bind(minWidth), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(v-bind(minWidth), 1fr));
   gap: var(--space-sm);
 }
 
@@ -143,6 +153,13 @@ export default {
   font-size: var(--font-size-sm);
   text-align: center;
   line-height: 1.2;
+  word-break: break-word;
+  hyphens: auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-width: 100%;
 }
 
 .category-count {
@@ -161,33 +178,38 @@ export default {
 }
 
 /* Grid variations */
+.category-grid.columns-2,
 .category-grid[data-columns="2"] {
   grid-template-columns: repeat(2, 1fr);
 }
 
+.category-grid.columns-3,
 .category-grid[data-columns="3"] {
   grid-template-columns: repeat(3, 1fr);
 }
 
+.category-grid.columns-4,
 .category-grid[data-columns="4"] {
   grid-template-columns: repeat(4, 1fr);
 }
 
+.category-grid.columns-5,
 .category-grid[data-columns="5"] {
   grid-template-columns: repeat(5, 1fr);
 }
 
+.category-grid.columns-6,
 .category-grid[data-columns="6"] {
   grid-template-columns: repeat(6, 1fr);
 }
 
 /* Mobile responsive */
 @media (max-width: 768px) {
-  .category-grid[data-columns="2"],
-  .category-grid[data-columns="3"],
-  .category-grid[data-columns="4"],
-  .category-grid[data-columns="5"],
-  .category-grid[data-columns="6"] {
+  .category-grid.columns-2, .category-grid[data-columns="2"],
+  .category-grid.columns-3, .category-grid[data-columns="3"],
+  .category-grid.columns-4, .category-grid[data-columns="4"],
+  .category-grid.columns-5, .category-grid[data-columns="5"],
+  .category-grid.columns-6, .category-grid[data-columns="6"] {
     grid-template-columns: repeat(2, 1fr);
   }
   
@@ -198,11 +220,31 @@ export default {
   .category-icon {
     font-size: var(--font-size-2xl);
   }
+  
+  .category-name {
+    font-size: var(--font-size-xs);
+    -webkit-line-clamp: 2;
+  }
 }
 
 @media (max-width: 480px) {
   .category-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: calc(var(--space-sm) * 0.75);
+  }
+  
+  .category-card {
+    padding: calc(var(--space-xs) * 1.5);
+  }
+  
+  .category-name {
+    font-size: calc(var(--font-size-xs) * 0.9);
+    -webkit-line-clamp: 2;
+  }
+  
+  .category-icon {
+    font-size: var(--font-size-xl);
+    margin-bottom: calc(var(--space-xs) * 0.75);
   }
 }
 </style>

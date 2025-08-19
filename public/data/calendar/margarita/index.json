@@ -1,0 +1,30 @@
+{
+  "plant_info": {
+    "category": "margarita",
+    "type": "perennial",
+    "difficulty": "beginner"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [
+        3,
+        4,
+        9
+      ]
+    },
+    "flowering": {
+      "best_months": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate"
+  }
+}

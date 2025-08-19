@@ -1,0 +1,44 @@
+{
+  "key": "corazon-de-buey",
+  "plant_info": {
+    "common_names": [
+      "Corazón de Buey"
+    ],
+    "scientific_name": "Origen del nombre",
+    "origin": "re",
+    "difficulty": "advanced"
+  },
+  "harvest_data": {
+    "weight_range": [
+      300,
+      500
+    ],
+    "storage_life": 7
+  },
+  "calendar_data": {
+    "harvesting": {
+      "best_months": [
+        7,
+        8,
+        9
+      ],
+      "harvest_indicators": [
+        "size",
+        "color_change"
+      ]
+    }
+  },
+  "growing_conditions": {
+    "growth_habit": "indeterminate",
+    "support_required": true,
+    "spacing": {
+      "plant_distance": 60,
+      "row_distance": 100
+    }
+  },
+  "_meta": {
+    "main_image": "/wp-content/uploads/2017/08/tomatoes-2218963_1280-325x217.webp",
+    "article_date": "2017-08-18T19:29:37",
+    "excerpt": "Qué es la variedad Corazón de Buey Es el fruto de una tomatera cuyos frutos son de gran tamaño y de formas irregulares, con multitud de pliegues y/ ondulaciones. Origen del nombre Recibe su nombre de "
+  }
+}

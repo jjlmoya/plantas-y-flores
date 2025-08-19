@@ -1,0 +1,22 @@
+{
+  "key": "rosa",
+  "plant_info": {
+    "common_names": [
+      "Rosa"
+    ],
+    "scientific_name": "Es una variedad",
+    "difficulty": "beginner"
+  },
+  "harvest_data": {
+    "weight_range": [
+      400,
+      1000
+    ],
+    "storage_life": 10
+  },
+  "_meta": {
+    "main_image": "/wp-content/uploads/2017/10/tomatoes-2280676_1920-325x218.webp",
+    "article_date": "2017-10-19T15:51:39",
+    "excerpt": "Qué es el Tomate Rosa Es una variedad de tomate de gran tamaño y muy carnosa, de tono rojizo rosado. Debido a la excesiva carnosidad, tiene menos pulpa albergando menos semillas. Esta variedad puede l"
+  }
+}

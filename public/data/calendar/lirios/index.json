@@ -1,0 +1,81 @@
+{
+  "plant_info": {
+    "category": "lirios",
+    "scientific_name": "Lilium",
+    "family": "Liliaceae",
+    "type": "perennial",
+    "difficulty": "intermediate"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [
+        9,
+        10,
+        11
+      ],
+      "alternative_months": [
+        3,
+        4
+      ]
+    },
+    "flowering": {
+      "best_months": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "peak_months": [
+        6,
+        7
+      ]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": [
+          "fertilize"
+        ],
+        "4": [
+          "moderate_watering"
+        ],
+        "5": [
+          "moderate_watering",
+          "mulching"
+        ],
+        "6": [
+          "moderate_watering"
+        ],
+        "7": [
+          "moderate_watering"
+        ],
+        "8": [
+          "moderate_watering"
+        ],
+        "9": [
+          "planting",
+          "fertilize"
+        ],
+        "10": [
+          "planting"
+        ],
+        "11": [
+          "planting",
+          "mulching"
+        ]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "partial_sun",
+    "water_needs": "moderate",
+    "soil_ph": [
+      6,
+      7
+    ],
+    "soil_type": "well_drained",
+    "spacing": {
+      "plant_distance": 30,
+      "row_distance": 40
+    }
+  }
+}

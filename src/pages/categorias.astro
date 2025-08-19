@@ -225,6 +225,12 @@ const stats = {
   text-transform: capitalize;
   line-height: 1.2;
   letter-spacing: -0.02em;
+  word-break: break-word;
+  hyphens: auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .category-card__count {
@@ -246,6 +252,12 @@ const stats = {
   flex-grow: 1;
   font-size: 1rem;
   font-weight: 400;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .category-card__footer {
@@ -347,6 +359,7 @@ const stats = {
   
   .category-card__title {
     font-size: 1.5rem;
+    -webkit-line-clamp: 2;
   }
   
   .info-section {
@@ -377,11 +390,13 @@ const stats = {
   
   .category-card__title {
     font-size: 1.375rem;
+    -webkit-line-clamp: 2;
   }
   
   .category-card__description {
     font-size: 0.95rem;
     margin-bottom: 1.5rem;
+    -webkit-line-clamp: 3;
   }
   
   .category-card__link {

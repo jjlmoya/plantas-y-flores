@@ -1,0 +1,29 @@
+{
+  "plant_info": {
+    "category": "cosmos",
+    "type": "annual",
+    "difficulty": "beginner"
+  },
+  "calendar_data": {
+    "sowing": {
+      "outdoor": {
+        "best_months": [
+          4,
+          5
+        ]
+      }
+    },
+    "flowering": {
+      "best_months": [
+        7,
+        8,
+        9,
+        10
+      ]
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "low"
+  }
+}

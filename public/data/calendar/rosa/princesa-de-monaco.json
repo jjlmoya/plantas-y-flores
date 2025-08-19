@@ -1,0 +1,32 @@
+{
+  "key": "princesa-de-monaco",
+  "plant_info": {
+    "common_names": [
+      "Princesa de Mónaco"
+    ],
+    "scientific_name": "Rosa de t",
+    "origin": "nc"
+  },
+  "flower_data": {
+    "fragrance": "moderate"
+  },
+  "calendar_data": {
+    "flowering": {
+      "best_months": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "repeat_flowering": true
+    }
+  },
+  "_meta": {
+    "main_image": "/wp-content/uploads/2018/06/rosa-333187_640.webp",
+    "article_date": "2019-01-28T20:00:40",
+    "excerpt": "La Rosa Princesse Charlene de Mónaco es una Rosa de té híbrida de duración perenne y muy resistente. De tonos blancos y rosas que pueden recordar a la bandera de Mónaco. Con gran tamaño, leñosa y arbu"
+  }
+}

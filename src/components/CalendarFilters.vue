@@ -37,7 +37,9 @@
 
       <!-- Quick Action Buttons -->
       <div class="filter-item quick-actions">
-        <button @click="setQuickFilter('current-month')" class="quick-btn">
+        <button @click="setQuickFilter('current-month')" 
+                class="quick-btn" 
+                :class="{ 'active': isCurrentMonthSowingActive }">
           🌱 Qué plantar este mes
         </button>
         <button @click="setQuickFilter('next-month')" class="quick-btn">
@@ -50,21 +52,55 @@
     </div>
 
     <div class="search-row">
-      <input
-        type="text"
-        v-model="searchQuery"
-        @input="debounceSearch"
-        placeholder="🔍 Buscar plantas..."
-        class="search-input"
-      />
+      <div class="search-wrapper">
+        <input
+          type="text"
+          v-model="searchQuery"
+          @input="debounceSearch"
+          placeholder="🔍 Buscar plantas..."
+          class="search-input"
+          :class="{ 'searching': isSearching }"
+        />
+        <div v-if="isSearching" class="search-loading-indicator">
+          <span class="loading-spinner small"></span>
+        </div>
+      </div>
     </div>
 
     <div class="results-summary">
-      <strong>{{ filteredCount }}</strong> plantas encontradas
+      <div v-if="isLoading" class="loading-state">
+        <span class="loading-spinner"></span>
+        {{ loadingMessage }}
+      </div>
+      <div v-else-if="isSearching" class="loading-state">
+        <span class="loading-spinner"></span>
+        Buscando...
+      </div>
+      <div v-else>
+        {{ resultsMessage }}
+      </div>
     </div>
 
     <div class="plants-grid">
+      <!-- Loading skeleton cards -->
+      <div v-if="isLoading || isSearching" v-for="n in 6" :key="`skeleton-${n}`" class="plant-card skeleton-card">
+        <div class="skeleton-header">
+          <div class="skeleton-line skeleton-title"></div>
+        </div>
+        <div class="skeleton-activities">
+          <div class="skeleton-tag"></div>
+          <div class="skeleton-tag"></div>
+          <div class="skeleton-tag"></div>
+        </div>
+        <div class="skeleton-actions">
+          <div class="skeleton-button"></div>
+          <div class="skeleton-button"></div>
+        </div>
+      </div>
+      
+      <!-- Actual plant cards -->
       <div 
+        v-else
         v-for="plant in filteredPlants" 
         :key="`${plant.category}-${plant.slug}`"
         class="plant-card"
@@ -101,8 +137,20 @@
       </div>
     </div>
 
-    <div v-if="filteredPlants.length === 0" class="no-results">
-      🔍 No se encontraron plantas
+    <div v-if="!isLoading && !isSearching && filteredPlants.length === 0" class="no-results">
+      <div class="no-results-content">
+        <span class="no-results-icon">🔍</span>
+        <h3>No se encontraron plantas</h3>
+        <p v-if="hasActiveFilters">
+          Intenta ajustar los filtros o realizar una búsqueda diferente
+        </p>
+        <p v-else>
+          No hay plantas disponibles para mostrar
+        </p>
+        <button v-if="hasActiveFilters" @click="clearAllFilters" class="clear-filters-btn">
+          Limpiar todos los filtros
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -127,11 +175,14 @@ export default {
   data() {
     return {
       selectedCategory: '',
-      selectedActivity: '',
-      selectedMonth: '',
+      selectedActivity: 'sowing', // Pre-select sowing activity
+      selectedMonth: (new Date().getMonth() + 1).toString(), // Pre-select current month
       currentMonth: new Date().getMonth() + 1,
       searchQuery: '',
-      searchDebounceTimer: null
+      searchDebounceTimer: null,
+      isLoading: false,
+      isSearching: false,
+      loadingMessage: ''
     }
   },
   computed: {
@@ -190,11 +241,32 @@ export default {
     },
     filteredCount() {
       return this.filteredPlants.length;
+    },
+    resultsMessage() {
+      if (this.selectedActivity === 'sowing' && this.selectedMonth && !this.selectedCategory && !this.searchQuery.trim()) {
+        const monthName = this.getMonthName(parseInt(this.selectedMonth));
+        return `${this.filteredCount} plantas para sembrar en ${monthName}`;
+      }
+      return `${this.filteredCount} plantas encontradas`;
+    },
+    isCurrentMonthSowingActive() {
+      return this.selectedActivity === 'sowing' && 
+             this.selectedMonth === this.currentMonth.toString() && 
+             !this.selectedCategory && 
+             !this.searchQuery.trim();
     }
   },
   methods: {
     updateFilters() {
-      // Just trigger reactivity
+      this.isLoading = true;
+      this.loadingMessage = 'Aplicando filtros...';
+      
+      // Simulate brief loading for better UX feedback
+      setTimeout(() => {
+        this.isLoading = false;
+        this.loadingMessage = '';
+        // Reactivity will trigger filtered results
+      }, 150);
     },
     clearAllFilters() {
       this.selectedCategory = '';
@@ -203,8 +275,11 @@ export default {
       this.searchQuery = '';
     },
     debounceSearch() {
+      this.isSearching = true;
       clearTimeout(this.searchDebounceTimer);
+      
       this.searchDebounceTimer = setTimeout(() => {
+        this.isSearching = false;
         // Search will trigger through computed property
       }, 300);
     },
@@ -385,6 +460,10 @@ export default {
   margin-bottom: 1rem;
 }
 
+.search-wrapper {
+  position: relative;
+}
+
 .search-input {
   width: 100%;
   padding: 0.75rem;
@@ -397,6 +476,49 @@ export default {
   outline: none;
   border-color: #667eea;
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.search-input.searching {
+  padding-right: 3rem;
+}
+
+.search-loading-indicator {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* Loading spinner styles */
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #e2e8f0;
+  border-left: 2px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 0.5rem;
+}
+
+.loading-spinner.small {
+  width: 16px;
+  height: 16px;
+  border-width: 2px;
+  margin-right: 0;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-state {
+  display: flex;
+  align-items: center;
+  color: #718096;
+  font-style: italic;
 }
 
 .results-summary {
@@ -531,28 +653,229 @@ export default {
   transform: translateY(0);
 }
 
+.quick-btn.active {
+  background: #667eea;
+  color: white;
+  border-color: #5a67d8;
+  box-shadow: 0 2px 4px rgba(102, 126, 234, 0.2);
+}
+
+.quick-btn.active:hover {
+  background: #5a67d8;
+  border-color: #4c51bf;
+}
+
+/* Skeleton loading styles */
+.skeleton-card {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.skeleton-header {
+  margin-bottom: 0.75rem;
+}
+
+.skeleton-line {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+  height: 1rem;
+}
+
+.skeleton-title {
+  width: 80%;
+  height: 1.2rem;
+}
+
+.skeleton-activities {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.skeleton-tag {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  width: 60px;
+  height: 24px;
+  border-radius: 12px;
+}
+
+.skeleton-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.skeleton-button {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  width: 100px;
+  height: 32px;
+  border-radius: 4px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Enhanced no-results styles */
 .no-results {
   text-align: center;
-  padding: 2rem;
+  padding: 3rem 1rem;
+}
+
+.no-results-content {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.no-results-icon {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.no-results h3 {
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.no-results p {
   color: #718096;
-  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.clear-filters-btn {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.clear-filters-btn:hover {
+  background: #5a67d8;
 }
 
 @media (max-width: 768px) {
-  .filters-row {
-    grid-template-columns: 1fr;
+  .calendar-filters {
+    padding: var(--space-md);
   }
   
-  .plants-grid {
+  .filters-header {
+    flex-direction: column;
+    gap: var(--space-sm);
+    text-align: center;
+  }
+  
+  .filters-row {
     grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+  
+  .filter-item select {
+    min-height: 48px; /* Larger touch target */
+    font-size: 16px; /* Prevent zoom on iOS */
+    padding: var(--space-sm) var(--space-md);
+  }
+  
+  .search-input {
+    min-height: 48px;
+    font-size: 16px;
+    padding: var(--space-sm) var(--space-md);
   }
   
   .quick-actions {
     flex-direction: column;
+    gap: var(--space-xs);
   }
   
   .quick-btn {
     width: 100%;
+    min-height: 44px;
+    padding: var(--space-sm);
+    font-size: var(--font-size-base);
+  }
+  
+  .plants-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+  
+  .plant-card {
+    padding: var(--space-sm);
+  }
+  
+  .card-actions {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+  
+  .btn-link {
+    width: 100%;
+    min-height: 44px;
+    text-align: center;
+  }
+  
+  /* Mobile loading states */
+  .loading-spinner {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .skeleton-activities {
+    flex-wrap: wrap;
+  }
+  
+  .skeleton-actions {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+  
+  .skeleton-button {
+    width: 100%;
+  }
+  
+  .no-results {
+    padding: var(--space-xl) var(--space-sm);
+  }
+  
+  .no-results-icon {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-filters {
+    padding: var(--space-sm);
+    margin: var(--space-sm);
+  }
+  
+  .plant-card {
+    padding: var(--space-xs) var(--space-sm);
+  }
+  
+  .plant-info h4 {
+    font-size: var(--font-size-base);
+  }
+  
+  .activity-tag {
+    font-size: 0.7rem;
+    padding: calc(var(--space-xs) * 0.25) calc(var(--space-xs) * 0.5);
   }
 }
 </style>

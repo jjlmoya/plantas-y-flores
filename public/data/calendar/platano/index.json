@@ -1,0 +1,27 @@
+{
+  "plant_info": {
+    "category": "platano",
+    "type": "perennial",
+    "difficulty": "intermediate"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [
+        4,
+        5,
+        6
+      ]
+    },
+    "harvesting": {
+      "best_months": [
+        10,
+        11,
+        12
+      ]
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "high"
+  }
+}

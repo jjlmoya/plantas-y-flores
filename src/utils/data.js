@@ -45,6 +45,11 @@ export async function getPlants() {
 
 // Función optimizada para obtener plantas por categoría (directamente desde archivo)
 export async function getPlantsByCategory(categorySlug) {
+  if (!categorySlug || typeof categorySlug !== 'string') {
+    console.warn('Invalid categorySlug provided:', categorySlug);
+    return [];
+  }
+  
   const filePath = path.join(process.cwd(), 'public', 'data', 'posts', `${categorySlug}.json`);
   
   // Verificar si el archivo existe
@@ -53,24 +58,34 @@ export async function getPlantsByCategory(categorySlug) {
     return [];
   }
   
-  const rawData = fs.readFileSync(filePath, 'utf8');
-  const categoryPlants = JSON.parse(rawData);
-  
-  // Convertir al formato esperado
-  return categoryPlants.map(plant => ({
-    slug: plant.slug,
-    data: {
-      id: plant.id,
-      title: plant.title,
-      date: plant.date,
-      excerpt: plant.excerpt,
-      featured_image: plant.featured_image,
-      main_image: plant.main_image,
-      categories: plant.categories,
-      tags: plant.tags || [],
-      seo_html: plant.seo_html
+  try {
+    const rawData = fs.readFileSync(filePath, 'utf8');
+    const categoryPlants = JSON.parse(rawData);
+    
+    if (!Array.isArray(categoryPlants)) {
+      console.warn(`Category data is not an array for: ${categorySlug}`);
+      return [];
     }
-  }));
+  
+    // Convertir al formato esperado
+    return categoryPlants.map(plant => ({
+      slug: plant.slug,
+      data: {
+        id: plant.id,
+        title: plant.title,
+        date: plant.date,
+        excerpt: plant.excerpt,
+        featured_image: plant.featured_image,
+        main_image: plant.main_image,
+        categories: plant.categories,
+        tags: plant.tags || [],
+        seo_html: plant.seo_html
+      }
+    }));
+  } catch (error) {
+    console.error(`Error parsing category data for ${categorySlug}:`, error.message);
+    return [];
+  }
 }
 
 // Función para obtener una planta específica

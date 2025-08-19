@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import CalendarFilters from '../../components/CalendarFilters.vue';
 import StatsCard from '../../components/StatsCard.vue';
 import CategoryGrid from '../../components/CategoryGrid.vue';
+import LoadingSpinner from '../../components/LoadingSpinner.vue';
 import { getMonthlyTasksWithUI, getAvailableCalendarCategories, getGlobalCalendarConfig, getAvailableActivities, getCategoryPlantsWithCalendar } from '../../utils/calendar-inheritance.js';
 
 // Get current month data with UI helpers
@@ -45,15 +46,20 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
     <!-- Header -->
     <header class="page-header">
       <div class="container">
-        <!-- Hemisphere Selector -->
-        <div class="hemisphere-selector">
-          <button 
-            id="hemisphere-toggle" 
-            class="hemisphere-toggle"
-            title="Cambiar hemisferio"
-          >
-            <span id="hemisphere-icon">🌎</span>
-          </button>
+        <!-- Navigation Header -->
+        <div class="nav-header">
+          <a href="/" class="home-link" title="Volver al inicio">🏠 Inicio</a>
+          
+          <!-- Hemisphere Selector -->
+          <div class="hemisphere-selector">
+            <button 
+              id="hemisphere-toggle" 
+              class="hemisphere-toggle"
+              title="Cambiar hemisferio"
+            >
+              <span id="hemisphere-icon">🌎</span>
+            </button>
+          </div>
         </div>
 
         <h1 class="page-title">Calendario de Plantación</h1>
@@ -67,9 +73,53 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
         <h2>🌱 Este Mes: {currentMonthName}</h2>
         
         <div class="grid-responsive">
+          <!-- Loading Skeleton for Initial Load -->
+          <div class="dashboard-skeleton" id="dashboard-skeleton" style="display: none;">
+            <div class="skeleton-stats-grid">
+              <div class="skeleton-stats-card">
+                <div class="skeleton-card-header">
+                  <div class="skeleton-line skeleton-title"></div>
+                  <div class="skeleton-icon"></div>
+                </div>
+                <div class="skeleton-card-content">
+                  <div class="skeleton-line skeleton-text"></div>
+                  <div class="skeleton-line skeleton-text"></div>
+                  <div class="skeleton-line skeleton-text short"></div>
+                </div>
+              </div>
+              <div class="skeleton-stats-card">
+                <div class="skeleton-card-header">
+                  <div class="skeleton-line skeleton-title"></div>
+                  <div class="skeleton-icon"></div>
+                </div>
+                <div class="skeleton-card-content">
+                  <div class="skeleton-line skeleton-text"></div>
+                  <div class="skeleton-line skeleton-text short"></div>
+                </div>
+              </div>
+              <div class="skeleton-stats-card">
+                <div class="skeleton-card-header">
+                  <div class="skeleton-line skeleton-title"></div>
+                  <div class="skeleton-icon"></div>
+                </div>
+                <div class="skeleton-card-content">
+                  <div class="skeleton-grid">
+                    <div class="skeleton-grid-item"></div>
+                    <div class="skeleton-grid-item"></div>
+                    <div class="skeleton-grid-item"></div>
+                    <div class="skeleton-grid-item"></div>
+                    <div class="skeleton-grid-item"></div>
+                    <div class="skeleton-grid-item"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Actual Content -->
           <!-- Tasks Widget -->
           <StatsCard
-            client:load
+            client:visible
             title="Tareas Urgentes"
             icon="🛠️"
             variant="warning"
@@ -79,24 +129,28 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
             {Object.keys(monthlyTasks).length > 0 ? (
               <div class="tasks-list">
                 {Object.entries(monthlyTasks).map(([category, plants]) => (
-                  <div class="category-tasks" key={category}>
-                    <h4>
+                  <div class="category-tasks collapsible" key={category}>
+                    <h4 class="category-header" onclick={`toggleCategory('${category}')`}>
                       <span class="category-icon">{ui.getCategoryIcon(category)}</span>
-                      {ui.formatCategoryName(category)}
+                      <span class="category-name">{ui.formatCategoryName(category)}</span>
+                      <span class="plants-count">({Object.keys(plants).length} plantas)</span>
+                      <span class="collapse-icon">▼</span>
                     </h4>
-                    {Object.entries(plants).map(([plantSlug, tasks]) => (
-                      <div class="plant-tasks" key={plantSlug}>
-                        <strong>{ui.formatPlantName(plantSlug)}</strong>
-                        <ul>
-                          {tasks.map(task => (
-                            <li key={task} class={`task-priority-${ui.getTaskPriority(task)}`}>
-                              <span class="task-icon">{ui.getTaskIcon(task)}</span>
-                              {ui.formatTaskName(task)}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
+                    <div class="category-content" id={`category-${category}`}>
+                      {Object.entries(plants).map(([plantSlug, tasks]) => (
+                        <div class="plant-tasks" key={plantSlug}>
+                          <strong>{ui.formatPlantName(plantSlug)}</strong>
+                          <ul>
+                            {tasks.map(task => (
+                              <li key={task} class={`task-priority-${ui.getTaskPriority(task)}`}>
+                                <span class="task-icon">{ui.getTaskIcon(task)}</span>
+                                {ui.formatTaskName(task)}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -107,7 +161,7 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
 
           <!-- Next Month Preview -->
           <StatsCard
-            client:load
+            client:visible
             title={`Próximamente: ${nextMonthName}`}
             icon="📅"
             variant="info"
@@ -121,13 +175,13 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
 
           <!-- Categories Overview -->
           <StatsCard
-            client:load
+            client:visible
             title="Categorías Disponibles"
             icon="🌿"
             variant="success"
           >
             <CategoryGrid
-              client:load
+              client:visible
               categories={categories.map(cat => ({ slug: cat, name: cat }))}
               baseUrl="/calendario/categoria/"
               columns="3"
@@ -161,7 +215,7 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
         
         <div class="filters-container">
           <CalendarFilters 
-            client:load
+            client:visible
             plants={allPlantsWithCalendar}
             availableCategories={categories}
             availableActivities={activities}
@@ -225,10 +279,29 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
     background: var(--bg-primary-gradient);
   }
 
+  .nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-lg);
+  }
+
+  .home-link {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+  }
+
+  .home-link:hover {
+    opacity: 0.8;
+  }
+
   .hemisphere-selector {
-    position: absolute;
-    top: var(--space-sm);
-    right: var(--space-sm);
+    position: relative;
   }
 
   .hemisphere-toggle {
@@ -270,15 +343,64 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
 
   .category-tasks {
     margin-bottom: var(--space-sm);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
   }
 
-  .category-tasks h4 {
+  .category-header {
     color: var(--color-text-secondary);
     font-size: var(--font-size-lg);
-    margin-bottom: var(--space-xs);
+    margin: 0;
+    padding: var(--space-sm);
     display: flex;
     align-items: center;
     gap: var(--space-xs);
+    cursor: pointer;
+    background: var(--bg-subtle);
+    border: none;
+    width: 100%;
+    text-align: left;
+    transition: all 0.3s ease;
+    user-select: none;
+    justify-content: space-between;
+  }
+
+  .category-header:hover {
+    background: var(--bg-card);
+    color: var(--color-text-primary);
+  }
+
+  .category-header .category-name {
+    flex: 1;
+  }
+
+  .plants-count {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    font-weight: normal;
+  }
+
+  .collapse-icon {
+    font-size: var(--font-size-sm);
+    transition: transform 0.3s ease;
+    font-weight: bold;
+  }
+
+  .category-tasks.collapsed .collapse-icon {
+    transform: rotate(-90deg);
+  }
+
+  .category-content {
+    max-height: 1000px;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding: 0 var(--space-sm) var(--space-sm);
+  }
+
+  .category-tasks.collapsed .category-content {
+    max-height: 0;
+    padding: 0 var(--space-sm);
   }
 
   .plant-tasks {
@@ -529,6 +651,11 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
       font-size: 2rem;
     }
     
+    .grid-responsive {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+    
     .month-grid {
       grid-template-columns: 1fr;
     }
@@ -551,6 +678,156 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
       height: 40px;
       font-size: 1.2rem;
     }
+    
+    .nav-header {
+      flex-direction: column;
+      gap: var(--space-sm);
+      align-items: stretch;
+    }
+    
+    .home-link {
+      align-self: flex-start;
+    }
+    
+    .hemisphere-selector {
+      align-self: flex-end;
+    }
+    
+    .current-month-section h2,
+    section h2 {
+      font-size: var(--font-size-2xl);
+    }
+  }
+
+  /* Dashboard skeleton styles */
+  .dashboard-skeleton {
+    animation: skeleton-fade-in 0.3s ease-in-out;
+  }
+
+  .skeleton-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .skeleton-stats-card {
+    background: var(--bg-card, white);
+    border-radius: var(--radius-md, 8px);
+    padding: var(--space-lg, 1.5rem);
+    box-shadow: var(--shadow-sm, 0 2px 4px rgba(0, 0, 0, 0.1));
+  }
+
+  .skeleton-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-md, 1rem);
+  }
+
+  .skeleton-line {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+    border-radius: var(--radius-sm, 4px);
+    height: 1rem;
+  }
+
+  .skeleton-title {
+    width: 120px;
+    height: 1.5rem;
+  }
+
+  .skeleton-text {
+    width: 100%;
+    height: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .skeleton-text.short {
+    width: 60%;
+  }
+
+  .skeleton-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+    border-radius: 50%;
+  }
+
+  .skeleton-card-content {
+    min-height: 100px;
+  }
+
+  .skeleton-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+
+  .skeleton-grid-item {
+    height: 2rem;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+    border-radius: var(--radius-sm, 4px);
+  }
+
+  @keyframes skeleton-loading {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  @keyframes skeleton-fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .skeleton-line,
+    .skeleton-icon,
+    .skeleton-grid-item {
+      animation: none;
+      background: #e0e0e0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .skeleton-stats-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .skeleton-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .grid-responsive {
+      gap: var(--space-sm);
+    }
+    
+    .container {
+      padding: 0 var(--space-xs);
+    }
+    
+    .months-grid {
+      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      gap: var(--space-xs);
+    }
+    
+    .skeleton-stats-card {
+      padding: var(--space-md, 1rem);
+    }
   }
 </style>
 
@@ -558,26 +835,67 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
   // Hemisphere selector functionality
   let currentHemisphere = 'northern';
   
-  // Load saved hemisphere preference
-  if (typeof localStorage !== 'undefined') {
+  // Hemisphere utility functions (client-side versions)
+  function getUserHemisphere() {
+    if (typeof localStorage === 'undefined') return 'northern';
+    
+    // Check localStorage first
     const saved = localStorage.getItem('calendar-hemisphere');
     if (saved && ['northern', 'southern'].includes(saved)) {
-      currentHemisphere = saved;
-      updateHemisphereDisplay();
+      return saved;
     }
+    
+    // Try to detect from timezone (rough estimation)
+    try {
+      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      const southernZones = [
+        'Australia/', 'Pacific/Auckland', 'Pacific/Fiji', 
+        'America/Argentina', 'America/Sao_Paulo', 'America/Santiago',
+        'Africa/Johannesburg', 'Indian/Mauritius'
+      ];
+      
+      const isSouthern = southernZones.some(zone => timezone.includes(zone));
+      return isSouthern ? 'southern' : 'northern';
+    } catch (error) {
+      console.warn('Could not detect hemisphere from timezone:', error);
+      return 'northern';
+    }
+  }
+  
+  function setUserHemisphere(hemisphere) {
+    if (typeof localStorage === 'undefined') return;
+    
+    if (!['northern', 'southern'].includes(hemisphere)) {
+      console.warn('Invalid hemisphere:', hemisphere);
+      return;
+    }
+    
+    localStorage.setItem('calendar-hemisphere', hemisphere);
+    
+    // Dispatch custom event for components to listen to
+    window.dispatchEvent(new CustomEvent('hemisphere-changed', {
+      detail: { hemisphere }
+    }));
+  }
+  
+  // Load saved hemisphere preference
+  function initializeHemisphere() {
+    currentHemisphere = getUserHemisphere();
+    updateHemisphereDisplay();
   }
 
   function toggleHemisphere() {
     currentHemisphere = currentHemisphere === 'northern' ? 'southern' : 'northern';
+    setUserHemisphere(currentHemisphere);
     updateHemisphereDisplay();
     
-    // Save preference
-    if (typeof localStorage !== 'undefined') {
-      localStorage.setItem('calendar-hemisphere', currentHemisphere);
-    }
-    
-    // Show notification
+    // Show notification and reload page to apply changes
     showHemisphereNotification();
+    
+    // Reload page after a short delay to apply hemisphere changes
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   }
 
   function updateHemisphereDisplay() {
@@ -642,14 +960,82 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
     }, 3000);
   }
 
+  // Skeleton loading management
+  function showSkeleton() {
+    const skeleton = document.getElementById('dashboard-skeleton');
+    const actualContent = document.querySelector('.grid-responsive > :not(.dashboard-skeleton)');
+    if (skeleton && actualContent) {
+      skeleton.style.display = 'block';
+      actualContent.style.display = 'none';
+    }
+  }
+
+  function hideSkeleton() {
+    const skeleton = document.getElementById('dashboard-skeleton');
+    const actualContent = document.querySelector('.grid-responsive > :not(.dashboard-skeleton)');
+    if (skeleton && actualContent) {
+      skeleton.style.display = 'none';
+      actualContent.style.display = 'block';
+    }
+  }
+
+  // Toggle category collapse/expand functionality
+  function toggleCategory(categorySlug) {
+    const categoryElement = document.querySelector(`.category-tasks[key="${categorySlug}"]`);
+    if (!categoryElement) {
+      // Fallback: find by content id
+      const contentElement = document.getElementById(`category-${categorySlug}`);
+      if (contentElement) {
+        const category = contentElement.closest('.category-tasks');
+        if (category) {
+          category.classList.toggle('collapsed');
+        }
+      }
+      return;
+    }
+    
+    categoryElement.classList.toggle('collapsed');
+  }
+
+  // Make toggle function globally available
+  window.toggleCategory = toggleCategory;
+
+  // Initialize categories as collapsed by default (except first one)
+  function initializeCollapsibleCategories() {
+    const categories = document.querySelectorAll('.category-tasks.collapsible');
+    categories.forEach((category, index) => {
+      // Keep first category expanded, collapse others
+      if (index > 0) {
+        category.classList.add('collapsed');
+      }
+    });
+  }
+
   // Initialize display on load
   document.addEventListener('DOMContentLoaded', function() {
-    updateHemisphereDisplay();
+    initializeHemisphere();
     
     // Add click event listener
     const toggle = document.getElementById('hemisphere-toggle');
     if (toggle) {
       toggle.addEventListener('click', toggleHemisphere);
     }
+
+    // Show skeleton initially
+    showSkeleton();
+    
+    // Hide skeleton after components have likely loaded
+    setTimeout(() => {
+      hideSkeleton();
+      initializeCollapsibleCategories();
+    }, 1500);
+    
+    // Also hide skeleton when all components are loaded
+    window.addEventListener('load', function() {
+      setTimeout(() => {
+        hideSkeleton();
+        initializeCollapsibleCategories();
+      }, 300);
+    });
   });
 </script>

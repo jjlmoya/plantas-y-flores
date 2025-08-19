@@ -1,0 +1,19 @@
+{
+  "key": "grandiflora",
+  "plant_info": {
+    "common_names": [
+      "Grandiflora"
+    ],
+    "scientific_name": "Entre las flores",
+    "origin": "re",
+    "difficulty": "advanced"
+  },
+  "flower_data": {
+    "fragrance": "moderate"
+  },
+  "_meta": {
+    "main_image": "/wp-content/uploads/2018/05/Reina-Isabel-325x216.webp",
+    "article_date": "2018-05-15T17:14:44",
+    "excerpt": "Entre las flores más apreciadas y exigentes del jardín está la Rosa Grandiflora, un grupo de flores híbridas de extrema belleza y delicadeza. Estas flores han sido adaptadas y transformadas para que c"
+  }
+}

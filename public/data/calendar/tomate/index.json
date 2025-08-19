@@ -9,53 +9,99 @@
   "calendar_data": {
     "sowing": {
       "indoor": {
-        "best_months": [1, 2, 3],
-        "alternative_months": [12],
-        "temperature_range": [18, 24]
+        "best_months": [
+          1,
+          2,
+          3
+        ],
+        "temperature_range": [
+          18,
+          24
+        ]
       },
       "outdoor": {
-        "best_months": [4, 5],
-        "alternative_months": [3, 6],
-        "temperature_range": [15, 30]
+        "best_months": [
+          4,
+          5
+        ],
+        "temperature_range": [
+          15,
+          20
+        ]
       }
     },
     "transplanting": {
-      "best_months": [4, 5, 6],
-      "soil_temperature_min": 16
+      "best_months": [
+        4,
+        5,
+        6
+      ]
     },
     "harvesting": {
-      "best_months": [7, 8, 9, 10],
-      "peak_months": [8, 9],
-      "days_to_harvest": [75, 85],
-      "harvest_indicators": ["color_change", "firmness"]
+      "best_months": [
+        7,
+        8,
+        9,
+        10
+      ]
     },
     "care_calendar": {
       "monthly_tasks": {
-        "3": ["prepare_seedbeds"],
-        "4": ["transplant", "install_supports"],
-        "5": ["moderate_watering", "mulching"],
-        "6": ["prune_shoots", "fertilize"],
-        "7": ["moderate_watering", "pest_monitoring"],
-        "8": ["harvest_early"],
-        "9": ["harvest_main", "seed_collection"],
-        "10": ["harvest_late", "plant_cleanup"]
+        "1": [
+          "prepare_seedbeds",
+          "soil_preparation"
+        ],
+        "2": [
+          "sowing_indoor",
+          "fertilize"
+        ],
+        "3": [
+          "sowing_indoor",
+          "prepare_outdoor"
+        ],
+        "4": [
+          "transplant",
+          "install_supports"
+        ],
+        "5": [
+          "transplant",
+          "moderate_watering",
+          "mulching"
+        ],
+        "6": [
+          "moderate_watering",
+          "fertilize"
+        ],
+        "7": [
+          "harvest_early",
+          "moderate_watering"
+        ],
+        "8": [
+          "harvest_main",
+          "moderate_watering"
+        ],
+        "9": [
+          "harvest_main",
+          "moderate_watering"
+        ],
+        "10": [
+          "harvest_late",
+          "plant_cleanup"
+        ]
       }
     }
   },
   "growing_conditions": {
     "sun_requirements": "full_sun",
-    "water_needs": "moderate_to_high",
-    "soil_ph": [6.0, 7.0],
+    "water_needs": "moderate",
+    "soil_ph": [
+      6,
+      7
+    ],
     "soil_type": "well_drained_fertile",
-    "companion_plants": ["albahaca", "chili"],
-    "avoid_plants": ["patata", "col"],
     "spacing": {
       "plant_distance": 50,
-      "row_distance": 70
+      "row_distance": 80
     }
-  },
-  "harvest_data": {
-    "storage_life": 7,
-    "preservation_methods": ["fresh", "canning", "drying"]
   }
 }

@@ -1,0 +1,92 @@
+{
+  "plant_info": {
+    "category": "hibiscus",
+    "scientific_name": "Hibiscus",
+    "family": "Malvaceae",
+    "type": "perennial",
+    "difficulty": "beginner"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [
+        4,
+        5,
+        6
+      ],
+      "alternative_months": [
+        3,
+        7
+      ]
+    },
+    "flowering": {
+      "best_months": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "peak_months": [
+        7,
+        8
+      ]
+    },
+    "pruning": {
+      "main_pruning": [
+        3,
+        4
+      ],
+      "light_pruning": [
+        11
+      ]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": [
+          "prune_main",
+          "fertilize"
+        ],
+        "4": [
+          "planting",
+          "moderate_watering"
+        ],
+        "5": [
+          "planting",
+          "moderate_watering"
+        ],
+        "6": [
+          "moderate_watering",
+          "fertilize"
+        ],
+        "7": [
+          "moderate_watering"
+        ],
+        "8": [
+          "moderate_watering"
+        ],
+        "9": [
+          "moderate_watering"
+        ],
+        "10": [
+          "moderate_watering"
+        ],
+        "11": [
+          "prune_shoots"
+        ]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "high",
+    "soil_ph": [
+      6,
+      7.5
+    ],
+    "soil_type": "well_drained_fertile",
+    "spacing": {
+      "plant_distance": 100,
+      "row_distance": 120
+    }
+  }
+}

@@ -76,11 +76,16 @@ const mostActiveMonth = monthlyDistribution.reduce((max, current) =>
     <header class="activity-header">
       <div class="container">
         <div class="breadcrumb">
-          <a href="/calendario/">Calendario</a>
+          <a href="/">🏠 Inicio</a>
           <span class="separator">→</span>
-          <span class="current">Actividades</span>
+          <a href="/calendario/">📅 Calendario</a>
           <span class="separator">→</span>
-          <span class="current">{activityName}</span>
+          <a href="/calendario/#actividades">Actividades</a>
+          <span class="separator">→</span>
+          <span class="current">
+            <span class="activity-icon-small" style={`color: ${activityColor}`}>{activityIcon}</span>
+            {activityName}
+          </span>
         </div>
 
         <div class="activity-title">
@@ -393,6 +398,13 @@ const mostActiveMonth = monthlyDistribution.reduce((max, current) =>
 
   .breadcrumb .current {
     opacity: 0.7;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .activity-icon-small {
+    font-size: 1rem;
   }
 
   .activity-title {

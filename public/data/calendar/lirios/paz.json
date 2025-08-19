@@ -1,0 +1,22 @@
+{
+  "key": "paz",
+  "plant_info": {
+    "common_names": [
+      "Paz"
+    ],
+    "scientific_name": "Spathiphyllum",
+    "origin": "al",
+    "difficulty": "beginner",
+    "indoor_suitable": true
+  },
+  "flower_data": {},
+  "growing_conditions": {
+    "sun_requirements": "partial_shade",
+    "water_needs": "high"
+  },
+  "_meta": {
+    "main_image": "/wp-content/uploads/2017/12/peace-lily-1240630_1920-217x325.webp",
+    "article_date": "2017-12-21T18:15:08",
+    "excerpt": "El Lirio de la Paz es una planta del trópico que se ha adaptado a la sombra y al interior del hogar y que es un elemento clave para la decoración y la belleza de tu casa. Aprende a cultivar este bella"
+  }
+}

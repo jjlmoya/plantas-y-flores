@@ -1,0 +1,27 @@
+{
+  "key": "stargazer",
+  "plant_info": {
+    "common_names": [
+      "Stargazer"
+    ],
+    "scientific_name": "Una de las",
+    "difficulty": "beginner"
+  },
+  "flower_data": {
+    "fragrance": "strong"
+  },
+  "calendar_data": {
+    "flowering": {
+      "best_months": [
+        7,
+        8
+      ],
+      "flower_form": "upward_facing"
+    }
+  },
+  "_meta": {
+    "main_image": "/wp-content/uploads/2017/10/stargazer-lily-57786_1920-325x325.webp",
+    "article_date": "2017-10-03T17:11:09",
+    "excerpt": "Una de las variedades de Lirio más increíbles y buscadas, Stargazer, Conocido por sus pétalos de curvas imposibles y su espectacular floración Delicado, fuerte, aromático, una elección fantástica y ac"
+  }
+}

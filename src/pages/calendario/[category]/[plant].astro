@@ -190,14 +190,19 @@ console.log('plantExportData:', JSON.stringify(plantExportData));
     <header class="page-header">
       <div class="container">
         <div class="breadcrumb">
-          <a href="/calendario/">Calendario</a>
+          <a href="/">🏠 Inicio</a>
+          <span class="separator">→</span>
+          <a href="/calendario/">📅 Calendario</a>
           <span class="separator">→</span>
           <a href={`/calendario/categoria/${category}/`}>
-            <span class="category-icon">{categoryIcon}</span>
+            <span class="category-icon-small">{categoryIcon}</span>
             {categoryName}
           </a>
           <span class="separator">→</span>
-          <span class="current">{plantName}</span>
+          <span class="current">
+            <span class="plant-icon-small">{categoryIcon}</span>
+            {plantName}
+          </span>
         </div>
 
         <div class="plant-title">
@@ -449,6 +454,45 @@ console.log('plantExportData:', JSON.stringify(plantExportData));
   .plant-calendar-view {
     min-height: 100vh;
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--space-lg);
+    font-size: var(--font-size-sm);
+    opacity: 0.9;
+  }
+
+  .breadcrumb a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    transition: opacity 0.3s ease;
+  }
+
+  .breadcrumb a:hover {
+    opacity: 0.8;
+  }
+
+  .breadcrumb .separator {
+    margin: 0 var(--space-xs);
+    opacity: 0.7;
+  }
+
+  .breadcrumb .current {
+    opacity: 0.7;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .category-icon-small,
+  .plant-icon-small {
+    font-size: 1rem;
   }
 
   .plant-header {
@@ -870,22 +914,68 @@ console.log('plantExportData:', JSON.stringify(plantExportData));
       align-items: center;
     }
 
+    .timeline-section {
+      padding: var(--space-md);
+    }
+    
+    .yearly-timeline {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
     .timeline-months {
-      grid-template-columns: repeat(12, 180px);
+      grid-template-columns: repeat(12, 160px);
+      gap: var(--space-sm);
+    }
+    
+    .timeline-month {
+      min-height: 150px;
+      padding: var(--space-sm);
+    }
+    
+    .month-header h3 {
+      font-size: 0.9rem;
+    }
+    
+    .activity-item {
+      padding: calc(var(--space-xs) * 0.75);
+      font-size: 0.75rem;
+    }
+    
+    .activity-label {
+      font-size: 0.75rem;
+    }
+    
+    .activity-details {
+      font-size: 0.7rem;
+      margin-left: 1rem;
     }
 
     .details-grid {
       grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+    
+    .details-card {
+      padding: var(--space-md);
     }
 
     .back-navigation {
       flex-direction: column;
       align-items: center;
+      gap: var(--space-sm);
+    }
+    
+    .back-link {
+      width: 100%;
+      max-width: 250px;
+      text-align: center;
     }
 
     .breadcrumb {
       font-size: 0.8rem;
       flex-wrap: wrap;
+      gap: calc(var(--space-xs) * 0.5);
     }
   }
 </style>

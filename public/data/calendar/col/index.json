@@ -1,0 +1,31 @@
+{
+  "plant_info": {
+    "category": "col",
+    "type": "annual",
+    "difficulty": "beginner"
+  },
+  "calendar_data": {
+    "sowing": {
+      "outdoor": {
+        "best_months": [
+          3,
+          4,
+          8,
+          9
+        ]
+      }
+    },
+    "harvesting": {
+      "best_months": [
+        6,
+        7,
+        10,
+        11
+      ]
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate"
+  }
+}

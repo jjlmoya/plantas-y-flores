@@ -1,5 +1,5 @@
 <template>
-  <div class="plant-card">
+  <div class="plant-card" role="article" :aria-label="`Información de cultivo para ${plantName}`">
     <div class="card-header">
       <div class="plant-info">
         <h4>{{ plantName }}</h4>
@@ -21,12 +21,14 @@
     <div class="card-actions">
       <a v-if="articleLink" 
          :href="articleLink" 
-         class="btn-link">
+         class="btn-link"
+         :aria-label="`Ver artículo completo de ${plantName}`">
         Ver artículo
       </a>
       <a v-if="plantSlug && categorySlug" 
          :href="`/calendario/${categorySlug}/${plantSlug}/`" 
-         class="btn-link btn-calendar">
+         class="btn-link btn-calendar"
+         :aria-label="`Ver calendario de cultivo de ${plantName}`">
         Ver calendario
       </a>
     </div>

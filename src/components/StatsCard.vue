@@ -135,6 +135,8 @@ export default {
 
 .card-content {
   flex: 1;
+  overflow: hidden;
+  min-height: 0;
 }
 
 .default-content {
@@ -199,5 +201,39 @@ export default {
 
 .stats-card.info .stat-number {
   color: var(--color-info);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .stats-card {
+    margin-bottom: var(--space-md);
+  }
+  
+  .card-content {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  
+  .card-title {
+    font-size: var(--font-size-base);
+  }
+  
+  .card-icon {
+    font-size: var(--font-size-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-card {
+    padding: var(--space-sm);
+  }
+  
+  .card-content {
+    max-height: 250px;
+  }
+  
+  .stat-number {
+    font-size: var(--font-size-3xl);
+  }
 }
 </style>

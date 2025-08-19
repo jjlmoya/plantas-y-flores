@@ -9,53 +9,87 @@
   "calendar_data": {
     "sowing": {
       "indoor": {
-        "best_months": [2, 3, 4],
-        "temperature_range": [20, 25]
+        "best_months": [
+          2,
+          3,
+          4
+        ],
+        "temperature_range": [
+          20,
+          25
+        ]
       },
       "outdoor": {
-        "best_months": [5, 6],
-        "alternative_months": [4, 7],
-        "temperature_range": [18, 30]
+        "best_months": [
+          4,
+          5,
+          6
+        ],
+        "temperature_range": [
+          18,
+          22
+        ]
       }
     },
-    "transplanting": {
-      "best_months": [5, 6],
-      "soil_temperature_min": 15
-    },
     "harvesting": {
-      "best_months": [6, 7, 8, 9, 10],
-      "peak_months": [7, 8, 9],
-      "days_to_harvest": [60, 75],
-      "continuous_harvest": true,
-      "harvest_indicators": ["full_bloom", "leaf_yellow"]
+      "best_months": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
     },
     "care_calendar": {
       "monthly_tasks": {
-        "3": ["prepare_seedbeds"],
-        "4": ["prepare_seedbeds"],
-        "5": ["transplant"],
-        "6": ["moderate_watering", "harvest_early"],
-        "7": ["moderate_watering", "harvest_main", "prune_shoots"],
-        "8": ["moderate_watering", "harvest_main", "prune_shoots"],
-        "9": ["moderate_watering", "harvest_main", "seed_collection"],
-        "10": ["harvest_late", "plant_cleanup"]
+        "2": [
+          "prepare_seedbeds"
+        ],
+        "3": [
+          "sowing_indoor"
+        ],
+        "4": [
+          "sowing_outdoor",
+          "transplant"
+        ],
+        "5": [
+          "transplant",
+          "moderate_watering"
+        ],
+        "6": [
+          "harvest_early",
+          "moderate_watering"
+        ],
+        "7": [
+          "harvest_main",
+          "moderate_watering"
+        ],
+        "8": [
+          "harvest_main",
+          "moderate_watering"
+        ],
+        "9": [
+          "harvest_main",
+          "moderate_watering"
+        ],
+        "10": [
+          "harvest_late",
+          "plant_cleanup"
+        ]
       }
     }
   },
   "growing_conditions": {
     "sun_requirements": "full_sun",
     "water_needs": "moderate",
-    "soil_ph": [6.0, 7.5],
+    "soil_ph": [
+      6,
+      7.5
+    ],
     "soil_type": "well_drained",
-    "companion_plants": ["tomate", "chili"],
-    "avoid_plants": [],
     "spacing": {
       "plant_distance": 20,
       "row_distance": 30
     }
-  },
-  "harvest_data": {
-    "storage_life": 7,
-    "preservation_methods": ["drying", "freezing", "oil_infusion"]
   }
 }

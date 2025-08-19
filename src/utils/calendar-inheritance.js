@@ -36,11 +36,72 @@ export async function getGlobalCalendarConfig() {
   const globalPath = path.join(process.cwd(), 'public', 'data', 'calendar', 'global-config.json');
   
   if (!fs.existsSync(globalPath)) {
-    throw new Error('Global calendar configuration not found');
+    console.warn(`Global calendar configuration not found at: ${globalPath}, using defaults`);
+    return getDefaultGlobalConfig();
   }
   
-  const rawData = fs.readFileSync(globalPath, 'utf8');
-  return JSON.parse(rawData);
+  try {
+    const rawData = fs.readFileSync(globalPath, 'utf8');
+    const config = JSON.parse(rawData);
+    
+    // Validate required fields
+    if (!config.ui_config || !config.month_names || !config.task_definitions) {
+      console.warn('Global config missing required fields, merging with defaults');
+      return { ...getDefaultGlobalConfig(), ...config };
+    }
+    
+    return config;
+  } catch (error) {
+    console.error(`Error parsing global calendar config: ${error.message}, using defaults`);
+    return getDefaultGlobalConfig();
+  }
+}
+
+// Default configuration fallback
+function getDefaultGlobalConfig() {
+  return {
+    metadata: {
+      version: "1.0.0",
+      last_updated: new Date().toISOString().split('T')[0]
+    },
+    month_names: {
+      es: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
+    },
+    month_slugs: {
+      es: ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
+    },
+    task_definitions: [
+      "prepare_seedbeds", "transplant", "moderate_watering", "fertilize", "pest_monitoring", 
+      "harvest_early", "harvest_main", "harvest_late", "plant_cleanup"
+    ],
+    ui_config: {
+      category_icons: {
+        tomate: "🍅", rosa: "🌹", albahaca: "🌿", default: "🌱"
+      },
+      task_icons: {
+        prepare_seedbeds: "🌱", transplant: "🌿", moderate_watering: "💧",
+        fertilize: "🌱", harvest_main: "🌾", default: "•"
+      },
+      task_priorities: {
+        harvest_main: "high", transplant: "high", 
+        fertilize: "medium", moderate_watering: "medium"
+      },
+      activity_colors: {
+        sowing: "#48bb78", transplanting: "#4299e1", harvesting: "#ed8936",
+        flowering: "#d53f8c", pruning: "#805ad5", planting: "#38b2ac", care: "#9f7aea"
+      },
+      translation_strings: {
+        es: {
+          full_sun: "Sol directo", moderate: "Moderado", beginner: "Principiante",
+          sowing: "Siembra", harvesting: "Cosecha", transplanting: "Trasplante"
+        }
+      }
+    },
+    hemispheres: {
+      northern: { month_offset: 0 },
+      southern: { month_offset: 6 }
+    }
+  };
 }
 
 /**
@@ -48,6 +109,11 @@ export async function getGlobalCalendarConfig() {
  * Returns empty object if category base config doesn't exist
  */
 export async function getCategoryCalendarConfig(category) {
+  if (!category || typeof category !== 'string') {
+    console.warn('Invalid category parameter provided:', category);
+    return {};
+  }
+  
   const categoryPath = path.join(process.cwd(), 'public', 'data', 'calendar', category, 'index.json');
   
   if (!fs.existsSync(categoryPath)) {
@@ -55,8 +121,13 @@ export async function getCategoryCalendarConfig(category) {
     return {};
   }
   
-  const rawData = fs.readFileSync(categoryPath, 'utf8');
-  return JSON.parse(rawData);
+  try {
+    const rawData = fs.readFileSync(categoryPath, 'utf8');
+    return JSON.parse(rawData);
+  } catch (error) {
+    console.error(`Error parsing category config for ${category}:`, error.message);
+    return {};
+  }
 }
 
 /**
@@ -72,9 +143,10 @@ async function resolveArticleLinks(category, plantSlug, plantConfig) {
     resolved_link: null
   };
 
-  // Get all available plants and category pages
-  const allPlants = await getPlants();
-  const categoryPages = await getCategoryPages();
+  try {
+    // Get all available plants and category pages
+    const allPlants = await getPlants();
+    const categoryPages = await getCategoryPages();
 
   // 1. Try to find specific plant article using 'key' field
   if (plantConfig.key) {
@@ -98,6 +170,10 @@ async function resolveArticleLinks(category, plantSlug, plantConfig) {
   }
 
   return articleLinks;
+  } catch (error) {
+    console.error(`Error resolving article links for ${category}/${plantSlug}:`, error.message);
+    return articleLinks; // Return empty links on error
+  }
 }
 
 /**
@@ -105,39 +181,73 @@ async function resolveArticleLinks(category, plantSlug, plantConfig) {
  * Global -> Category -> Plant specific + Auto-resolved article links
  */
 export async function getPlantCalendarWithInheritance(category, plantSlug) {
-  // 1. Load global configuration (contains all available options)
-  const globalConfig = await getGlobalCalendarConfig();
-  
-  // 2. Load category base configuration
-  const categoryConfig = await getCategoryCalendarConfig(category);
-  
-  // 3. Load plant-specific configuration
-  const plantPath = path.join(process.cwd(), 'public', 'data', 'calendar', category, `${plantSlug}.json`);
-  
-  let plantConfig = {};
-  if (fs.existsSync(plantPath)) {
-    const rawData = fs.readFileSync(plantPath, 'utf8');
-    plantConfig = JSON.parse(rawData);
+  try {
+    // Validate input parameters
+    if (!category || !plantSlug) {
+      throw new Error(`Invalid parameters: category="${category}", plantSlug="${plantSlug}"`);
+    }
+
+    // 1. Load global configuration (contains all available options)
+    const globalConfig = await getGlobalCalendarConfig();
+    
+    // 2. Load category base configuration
+    const categoryConfig = await getCategoryCalendarConfig(category);
+    
+    // 3. Load plant-specific configuration
+    const plantPath = path.join(process.cwd(), 'public', 'data', 'calendar', category, `${plantSlug}.json`);
+    
+    let plantConfig = {};
+    if (fs.existsSync(plantPath)) {
+      try {
+        const rawData = fs.readFileSync(plantPath, 'utf8');
+        plantConfig = JSON.parse(rawData);
+      } catch (plantError) {
+        console.error(`Error loading plant config for ${category}/${plantSlug}:`, plantError.message);
+        // Continue with empty plant config
+      }
+    } else {
+      console.warn(`No specific configuration found for ${category}/${plantSlug}`);
+    }
+    
+    // 4. Apply inheritance: Category -> Plant (global config is reference only)
+    const inheritedConfig = deepMerge({}, categoryConfig, plantConfig);
+    
+    // 5. Resolve article links automatically
+    const articleLinks = await resolveArticleLinks(category, plantSlug, plantConfig);
+    
+    return {
+      ...inheritedConfig,
+      _inheritance: {
+        has_global: Object.keys(globalConfig).length > 0,
+        has_category: Object.keys(categoryConfig).length > 0,
+        has_plant_specific: Object.keys(plantConfig).length > 0,
+        category: category,
+        plant_slug: plantSlug
+      },
+      _global_config: globalConfig, // Keep reference for validation
+      _article_links: articleLinks // Auto-resolved article links
+    };
+  } catch (error) {
+    console.error(`Error in getPlantCalendarWithInheritance for ${category}/${plantSlug}:`, error.message);
+    
+    // Return minimal fallback configuration
+    return {
+      _inheritance: {
+        has_global: false,
+        has_category: false,
+        has_plant_specific: false,
+        category: category,
+        plant_slug: plantSlug,
+        error: error.message
+      },
+      _global_config: await getGlobalCalendarConfig(),
+      _article_links: {
+        plant_article: null,
+        category_article: null,
+        resolved_link: null
+      }
+    };
   }
-  
-  // 4. Apply inheritance: Category -> Plant (global config is reference only)
-  const inheritedConfig = deepMerge({}, categoryConfig, plantConfig);
-  
-  // 5. Resolve article links automatically
-  const articleLinks = await resolveArticleLinks(category, plantSlug, plantConfig);
-  
-  return {
-    ...inheritedConfig,
-    _inheritance: {
-      has_global: Object.keys(globalConfig).length > 0,
-      has_category: Object.keys(categoryConfig).length > 0,
-      has_plant_specific: Object.keys(plantConfig).length > 0,
-      category: category,
-      plant_slug: plantSlug
-    },
-    _global_config: globalConfig, // Keep reference for validation
-    _article_links: articleLinks // Auto-resolved article links
-  };
 }
 
 /**
@@ -285,6 +395,141 @@ export async function getAvailableCalendarCategories() {
     const dirPath = path.join(calendarDir, dir);
     return fs.statSync(dirPath).isDirectory();
   });
+}
+
+/**
+ * Apply hemisphere offset to month numbers
+ * Northern hemisphere: no change
+ * Southern hemisphere: +6 months (wrapping at 12)
+ */
+function applyHemisphereOffset(months, hemisphere = 'northern') {
+  if (!months || !Array.isArray(months)) return months;
+  
+  if (hemisphere === 'southern') {
+    return months.map(month => {
+      const adjusted = month + 6;
+      return adjusted > 12 ? adjusted - 12 : adjusted;
+    });
+  }
+  
+  return months;
+}
+
+/**
+ * Apply hemisphere offset to calendar data
+ */
+export function applyHemisphereToCalendarData(calendarData, hemisphere = 'northern') {
+  if (!calendarData || hemisphere === 'northern') {
+    return calendarData;
+  }
+  
+  const adjustedData = JSON.parse(JSON.stringify(calendarData)); // Deep clone
+  
+  // Apply hemisphere offset to all month arrays in calendar_data
+  if (adjustedData.calendar_data) {
+    const calendar = adjustedData.calendar_data;
+    
+    // Sowing months
+    if (calendar.sowing?.indoor?.best_months) {
+      calendar.sowing.indoor.best_months = applyHemisphereOffset(
+        calendar.sowing.indoor.best_months, 
+        hemisphere
+      );
+    }
+    if (calendar.sowing?.outdoor?.best_months) {
+      calendar.sowing.outdoor.best_months = applyHemisphereOffset(
+        calendar.sowing.outdoor.best_months, 
+        hemisphere
+      );
+    }
+    
+    // Other activities
+    const activities = ['transplanting', 'harvesting', 'flowering', 'planting', 'pruning'];
+    activities.forEach(activity => {
+      if (calendar[activity]?.best_months) {
+        calendar[activity].best_months = applyHemisphereOffset(
+          calendar[activity].best_months, 
+          hemisphere
+        );
+      }
+      if (calendar[activity]?.peak_months) {
+        calendar[activity].peak_months = applyHemisphereOffset(
+          calendar[activity].peak_months, 
+          hemisphere
+        );
+      }
+      if (calendar[activity]?.alternative_months) {
+        calendar[activity].alternative_months = applyHemisphereOffset(
+          calendar[activity].alternative_months, 
+          hemisphere
+        );
+      }
+    });
+    
+    // Monthly tasks - more complex as keys are month numbers
+    if (calendar.care_calendar?.monthly_tasks) {
+      const originalTasks = calendar.care_calendar.monthly_tasks;
+      const adjustedTasks = {};
+      
+      Object.entries(originalTasks).forEach(([monthStr, tasks]) => {
+        const month = parseInt(monthStr);
+        const adjustedMonth = applyHemisphereOffset([month], hemisphere)[0];
+        adjustedTasks[adjustedMonth.toString()] = tasks;
+      });
+      
+      calendar.care_calendar.monthly_tasks = adjustedTasks;
+    }
+  }
+  
+  return adjustedData;
+}
+
+/**
+ * Get user's hemisphere preference from localStorage or browser
+ */
+export function getUserHemisphere() {
+  if (typeof window === 'undefined') return 'northern';
+  
+  // Check localStorage first
+  const saved = localStorage.getItem('calendar-hemisphere');
+  if (saved && ['northern', 'southern'].includes(saved)) {
+    return saved;
+  }
+  
+  // Try to detect from timezone (rough estimation)
+  try {
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const southernZones = [
+      'Australia/', 'Pacific/Auckland', 'Pacific/Fiji', 
+      'America/Argentina', 'America/Sao_Paulo', 'America/Santiago',
+      'Africa/Johannesburg', 'Indian/Mauritius'
+    ];
+    
+    const isSouthern = southernZones.some(zone => timezone.includes(zone));
+    return isSouthern ? 'southern' : 'northern';
+  } catch (error) {
+    console.warn('Could not detect hemisphere from timezone:', error);
+    return 'northern';
+  }
+}
+
+/**
+ * Save hemisphere preference
+ */
+export function setUserHemisphere(hemisphere) {
+  if (typeof window === 'undefined') return;
+  
+  if (!['northern', 'southern'].includes(hemisphere)) {
+    console.warn('Invalid hemisphere:', hemisphere);
+    return;
+  }
+  
+  localStorage.setItem('calendar-hemisphere', hemisphere);
+  
+  // Dispatch custom event for components to listen to
+  window.dispatchEvent(new CustomEvent('hemisphere-changed', {
+    detail: { hemisphere }
+  }));
 }
 
 /**

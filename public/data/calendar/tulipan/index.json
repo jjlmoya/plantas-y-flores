@@ -1,0 +1,27 @@
+{
+  "plant_info": {
+    "category": "tulipan",
+    "type": "perennial",
+    "difficulty": "beginner"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [
+        10,
+        11,
+        12
+      ]
+    },
+    "flowering": {
+      "best_months": [
+        3,
+        4,
+        5
+      ]
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate"
+  }
+}

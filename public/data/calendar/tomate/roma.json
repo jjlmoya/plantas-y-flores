@@ -1,0 +1,27 @@
+{
+  "key": "roma",
+  "plant_info": {
+    "common_names": [
+      "Roma"
+    ],
+    "scientific_name": "Roma es una",
+    "difficulty": "advanced"
+  },
+  "calendar_data": {
+    "harvesting": {
+      "best_use": "processing",
+      "characteristics": [
+        "thick_flesh",
+        "low_water_content"
+      ]
+    }
+  },
+  "growing_conditions": {
+    "growth_habit": "determinate"
+  },
+  "_meta": {
+    "main_image": "/wp-content/uploads/2017/07/roma-tomatoes-2410500_1280-325x232.webp",
+    "article_date": "2017-07-27T15:32:33",
+    "excerpt": "Qué es el Tomate Roma El Tomate Roma es una variedad con forma alargada llamada también tomates italianos, aunque no son muy conocidos en nuestros mercados. Por qué plantar Esta variedad nos dará unos"
+  }
+}

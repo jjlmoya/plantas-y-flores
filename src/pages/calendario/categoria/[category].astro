@@ -185,6 +185,18 @@ const formattedCategoryPlants = categoryPlants.map(plant => {
     <!-- Header -->
     <header class="page-header">
       <div class="container">
+        <!-- Breadcrumb Navigation -->
+        <div class="breadcrumb">
+          <a href="/">🏠 Inicio</a>
+          <span class="separator">→</span>
+          <a href="/calendario/">📅 Calendario</a>
+          <span class="separator">→</span>
+          <span class="current">
+            <span class="category-icon-small">{categoryIcon}</span>
+            {categoryName}
+          </span>
+        </div>
+
         <h1 class="page-title">
           <span class="category-icon">{categoryIcon}</span>
           Calendario de {categoryName}
@@ -197,7 +209,7 @@ const formattedCategoryPlants = categoryPlants.map(plant => {
 
         <div class="category-stats">
           <StatsCard
-            client:load
+            client:visible
             title="Variedades Disponibles"
             icon={categoryIcon}
             number={categoryPlants.length}
@@ -342,7 +354,7 @@ const formattedCategoryPlants = categoryPlants.map(plant => {
         <div class="plants-grid">
           {categoryPlants.map(plant => (
             <FilterPlantCard
-              client:load
+              client:visible
               key={`${plant.category}-${plant.slug}`}
               plant={plant}
             />
@@ -362,6 +374,41 @@ const formattedCategoryPlants = categoryPlants.map(plant => {
   .category-view {
     min-height: 100vh;
     background: var(--bg-primary-gradient);
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--space-lg);
+    font-size: var(--font-size-sm);
+    opacity: 0.9;
+  }
+
+  .breadcrumb a {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .breadcrumb a:hover {
+    opacity: 0.8;
+  }
+
+  .breadcrumb .separator {
+    margin: 0 var(--space-xs);
+    opacity: 0.7;
+  }
+
+  .breadcrumb .current {
+    opacity: 0.7;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .category-icon-small {
+    font-size: 1rem;
   }
 
 
@@ -591,21 +638,46 @@ const formattedCategoryPlants = categoryPlants.map(plant => {
       gap: 0.5rem;
     }
 
+    .timeline-section {
+      padding: var(--space-md);
+    }
+    
+    .timeline-container {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
     .timeline-header {
-      grid-template-columns: 150px repeat(12, 60px);
+      grid-template-columns: 120px repeat(12, 50px);
     }
 
     .timeline-row {
-      grid-template-columns: 150px repeat(12, 60px);
+      grid-template-columns: 120px repeat(12, 50px);
     }
 
     .plant-label {
-      padding: 0.75rem;
+      padding: 0.5rem;
+      font-size: 0.8rem;
     }
 
     .month-label {
-      padding: 0.75rem 0.25rem;
-      font-size: 0.8rem;
+      padding: 0.5rem 0.2rem;
+      font-size: 0.7rem;
+    }
+    
+    .month-cell {
+      min-height: 40px;
+      padding: 0.5rem 0.25rem;
+    }
+    
+    .activity-dot {
+      width: 6px;
+      height: 6px;
+    }
+    
+    .breadcrumb {
+      flex-wrap: wrap;
+      gap: calc(var(--space-xs) * 0.5);
     }
 
     .plants-grid {
@@ -621,6 +693,42 @@ const formattedCategoryPlants = categoryPlants.map(plant => {
       margin-left: 0;
       margin-top: 0.5rem;
       text-align: center;
+    }
+
+    .category-icon {
+      font-size: 2rem;
+    }
+
+    .container {
+      padding: 0 0.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .timeline-header {
+      grid-template-columns: 120px repeat(12, 45px);
+    }
+
+    .timeline-row {
+      grid-template-columns: 120px repeat(12, 45px);
+    }
+
+    .plant-label {
+      padding: 0.5rem;
+      font-size: 0.8rem;
+    }
+
+    .month-label {
+      padding: 0.5rem 0.1rem;
+      font-size: 0.7rem;
+    }
+
+    .page-title {
+      font-size: var(--font-size-2xl);
+    }
+
+    .page-subtitle {
+      font-size: var(--font-size-base);
     }
   }
 </style>

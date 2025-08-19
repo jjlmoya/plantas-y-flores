@@ -1,0 +1,29 @@
+{
+  "plant_info": {
+    "category": "manzanilla",
+    "type": "annual",
+    "difficulty": "beginner"
+  },
+  "calendar_data": {
+    "sowing": {
+      "outdoor": {
+        "best_months": [
+          3,
+          4,
+          9
+        ]
+      }
+    },
+    "harvesting": {
+      "best_months": [
+        6,
+        7,
+        8
+      ]
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate"
+  }
+}

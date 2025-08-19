@@ -1,0 +1,19 @@
+{
+  "key": "azucena",
+  "plant_info": {
+    "common_names": [
+      "Azucena"
+    ],
+    "scientific_name": "Si te interesan",
+    "difficulty": "beginner"
+  },
+  "flower_data": {
+    "fragrance": "strong",
+    "color": "white"
+  },
+  "_meta": {
+    "main_image": "/wp-content/uploads/2017/10/lily-1159927_1920-325x217.webp",
+    "article_date": "2017-10-17T15:51:55",
+    "excerpt": "La Azucena o Lirio de San Antonio es uno de los lirios más bonitos y aromáticos que existen, de color blanco puro y con multitud de florecimiento es una de las opciones más usadas a la hora de decorar"
+  }
+}

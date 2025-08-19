@@ -1,5 +1,5 @@
 <template>
-  <div class="plant-card">
+  <div class="plant-card" role="article" :aria-label="`Información de cultivo para ${formatCategoryName(plant.category)} ${formatPlantName(plant.slug)}`">
     <div class="card-header">
       <div class="plant-info">
         <h4>{{ formatCategoryName(plant.category) }} {{ formatPlantName(plant.slug) }}</h4>
@@ -21,11 +21,13 @@
     <div class="card-actions">
       <a v-if="plant.calendar?._article_links?.resolved_link" 
          :href="plant.calendar._article_links.resolved_link" 
-         class="btn-link">
+         class="btn-link"
+         :aria-label="`Ver artículo completo de ${formatCategoryName(plant.category)} ${formatPlantName(plant.slug)}`">
         Ver artículo
       </a>
       <a :href="`/calendario/${plant.category}/${plant.slug}/`" 
-         class="btn-link btn-calendar">
+         class="btn-link btn-calendar"
+         :aria-label="`Ver calendario de cultivo de ${formatCategoryName(plant.category)} ${formatPlantName(plant.slug)}`">
         Ver calendario
       </a>
     </div>
@@ -160,11 +162,50 @@ export default {
   background: #5a67d8;
 }
 
+.btn-link:focus,
+.btn-link:focus-visible {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
 .btn-calendar {
   background: #48bb78;
 }
 
 .btn-calendar:hover {
   background: #38a169;
+}
+
+@media (max-width: 768px) {
+  .plant-card {
+    padding: 0.75rem;
+  }
+  
+  .card-actions {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .btn-link {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .plant-info h4 {
+    font-size: 0.9rem;
+    line-height: 1.3;
+  }
+  
+  .activity-tag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.4rem;
+  }
+  
+  .card-activities {
+    gap: 0.25rem;
+    margin-bottom: 0.5rem;
+  }
 }
 </style>

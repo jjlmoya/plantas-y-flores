@@ -238,6 +238,9 @@
   "month_names": {
     "es": ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
   },
+  "month_slugs": {
+    "es": ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
+  },
   "temperature_units": "celsius",
   "distance_units": "centimeters", 
   "time_units": "days",
@@ -317,6 +320,40 @@
       "pruning": "#805ad5",
       "planting": "#38b2ac",
       "care": "#9f7aea"
+    },
+    "translation_strings": {
+      "es": {
+        "full_sun": "Sol directo",
+        "partial_sun": "Sol parcial", 
+        "partial_shade": "Sombra parcial",
+        "full_shade": "Sombra completa",
+        "morning_sun": "Sol matutino",
+        "afternoon_shade": "Sombra vespertina",
+        "well_drained": "Bien drenado",
+        "well_drained_fertile": "Bien drenado y fértil",
+        "sandy": "Arenoso",
+        "clay": "Arcilloso",
+        "organic_rich": "Rico en materia orgánica",
+        "very_low": "Muy bajo",
+        "low": "Bajo",
+        "moderate": "Moderado",
+        "high": "Alto",
+        "very_high": "Muy alto",
+        "beginner": "Principiante",
+        "intermediate": "Intermedio",
+        "advanced": "Avanzado",
+        "expert": "Experto",
+        "annual": "Anual",
+        "biennial": "Bienal",
+        "perennial": "Perenne",
+        "sowing": "Siembra",
+        "transplanting": "Trasplante",
+        "harvesting": "Cosecha",
+        "flowering": "Floración",
+        "planting": "Plantación",
+        "pruning": "Poda",
+        "care": "Cuidados"
+      }
     }
   },
   "seasonal_tips": {

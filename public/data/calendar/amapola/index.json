@@ -1,0 +1,29 @@
+{
+  "plant_info": {
+    "category": "amapola",
+    "type": "annual",
+    "difficulty": "beginner"
+  },
+  "calendar_data": {
+    "sowing": {
+      "outdoor": {
+        "best_months": [
+          3,
+          4,
+          9
+        ]
+      }
+    },
+    "flowering": {
+      "best_months": [
+        5,
+        6,
+        7
+      ]
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "low"
+  }
+}

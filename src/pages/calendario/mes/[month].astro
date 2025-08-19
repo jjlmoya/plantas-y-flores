@@ -117,6 +117,15 @@ const exportData = {
     <!-- Header with navigation -->
     <header class="page-header">
       <div class="container">
+        <!-- Breadcrumb Navigation -->
+        <div class="breadcrumb">
+          <a href="/">🏠 Inicio</a>
+          <span class="separator">→</span>
+          <a href="/calendario/">📅 Calendario</a>
+          <span class="separator">→</span>
+          <span class="current">{monthName}</span>
+        </div>
+
         <nav class="month-nav">
           <a href={`/calendario/mes/${prevMonthSlug}/`} class="nav-button prev">
             ← {prevMonthName}
@@ -163,23 +172,51 @@ const exportData = {
           <div class="day-header">Dom</div>
 
           <!-- Calendar days -->
-          {calendarDays.map((day) => (
+          {calendarDays.map((day, index) => (
             day ? (
               <div class="calendar-day" key={day}>
                 <span class="day-number">{day}</span>
-                {/* Add activity indicators based on date ranges */}
+                {/* Enhanced activity indicators based on actual plant data and timing */}
                 <div class="day-activities">
-                  {/* This could be enhanced to show specific activities for date ranges */}
-                  {day <= 15 && sowingPlants.length > 0 && (
-                    <span class="activity-dot sowing" title="Época de siembra"></span>
+                  {/* Early month activities (1-10) */}
+                  {day <= 10 && (
+                    <>
+                      {sowingPlants.length > 0 && (
+                        <span class="activity-dot sowing" title={`Siembra: ${sowingPlants.length} plantas`}></span>
+                      )}
+                      {transplantingPlants.length > 0 && (
+                        <span class="activity-dot transplanting" title={`Trasplante: ${transplantingPlants.length} plantas`}></span>
+                      )}
+                    </>
                   )}
-                  {day >= 10 && harvestingPlants.length > 0 && (
-                    <span class="activity-dot harvesting" title="Época de cosecha"></span>
+                  
+                  {/* Mid month activities (11-20) */}
+                  {day >= 11 && day <= 20 && (
+                    <>
+                      {transplantingPlants.length > 0 && (
+                        <span class="activity-dot transplanting" title={`Trasplante: ${transplantingPlants.length} plantas`}></span>
+                      )}
+                      {Object.keys(monthlyTasks).length > 0 && (
+                        <span class="activity-dot tasks" title={`Tareas: ${Object.keys(monthlyTasks).length} categorías`}></span>
+                      )}
+                    </>
+                  )}
+                  
+                  {/* Late month activities (21-31) */}
+                  {day >= 21 && (
+                    <>
+                      {harvestingPlants.length > 0 && (
+                        <span class="activity-dot harvesting" title={`Cosecha: ${harvestingPlants.length} plantas`}></span>
+                      )}
+                      {Object.keys(monthlyTasks).length > 0 && (
+                        <span class="activity-dot tasks" title={`Cuidados: ${Object.keys(monthlyTasks).length} categorías`}></span>
+                      )}
+                    </>
                   )}
                 </div>
               </div>
             ) : (
-              <div class="calendar-day empty" key={`empty-${calendarDays.indexOf(day)}`}></div>
+              <div class="calendar-day empty" key={`empty-${index}`}></div>
             )
           ))}
         </div>
@@ -189,7 +226,7 @@ const exportData = {
       <div class="activities-grid">
         <!-- Sowing -->
         <ActivitySection 
-          client:load
+          client:visible
           activityType="sowing"
           plants={formattedSowingPlants}
           customTitle="Para Sembrar"
@@ -198,7 +235,7 @@ const exportData = {
 
         <!-- Transplanting -->
         <ActivitySection 
-          client:load
+          client:visible
           activityType="transplanting"
           plants={formattedTransplantingPlants}
           customTitle="Para Trasplantar"
@@ -207,7 +244,7 @@ const exportData = {
 
         <!-- Harvesting -->
         <ActivitySection 
-          client:load
+          client:visible
           activityType="harvesting"
           plants={formattedHarvestingPlants}
           customTitle="Para Cosechar"
@@ -257,6 +294,34 @@ const exportData = {
   .month-view {
     min-height: 100vh;
     background: var(--bg-primary-gradient);
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--space-lg);
+    font-size: var(--font-size-sm);
+    opacity: 0.9;
+  }
+
+  .breadcrumb a {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .breadcrumb a:hover {
+    opacity: 0.8;
+  }
+
+  .breadcrumb .separator {
+    margin: 0 var(--space-xs);
+    opacity: 0.7;
+  }
+
+  .breadcrumb .current {
+    opacity: 0.7;
+    font-weight: 500;
   }
 
   .month-nav {
@@ -365,10 +430,27 @@ const exportData = {
     display: block;
   }
 
-  .activity-dot.sowing { background: var(--color-sowing); }
-  .activity-dot.transplanting { background: var(--color-transplanting); }
-  .activity-dot.harvesting { background: var(--color-harvesting); }
-  .activity-dot.tasks { background: var(--color-tasks); }
+  .activity-dot.sowing { 
+    background: var(--color-sowing); 
+    box-shadow: 0 0 0 1px rgba(72, 187, 120, 0.3);
+  }
+  .activity-dot.transplanting { 
+    background: var(--color-transplanting); 
+    box-shadow: 0 0 0 1px rgba(237, 137, 54, 0.3);
+  }
+  .activity-dot.harvesting { 
+    background: var(--color-harvesting); 
+    box-shadow: 0 0 0 1px rgba(236, 201, 75, 0.3);
+  }
+  .activity-dot.tasks { 
+    background: var(--color-tasks); 
+    box-shadow: 0 0 0 1px rgba(66, 153, 225, 0.3);
+  }
+  
+  .calendar-day:hover .activity-dot {
+    transform: scale(1.2);
+    transition: transform 0.2s ease;
+  }
 
   .export-section {
     background: white;
@@ -523,6 +605,36 @@ const exportData = {
     .activities-summary {
       flex-direction: column;
       align-items: center;
+    }
+    
+    .breadcrumb {
+      flex-wrap: wrap;
+      gap: calc(var(--space-xs) * 0.5);
+      font-size: 0.8rem;
+    }
+    
+    .calendar-grid {
+      font-size: var(--font-size-xs);
+      gap: 1px;
+    }
+    
+    .day-header {
+      padding: calc(var(--space-xs) * 0.5);
+      font-size: 0.7rem;
+    }
+    
+    .calendar-day {
+      min-height: 50px;
+      padding: calc(var(--space-xs) * 0.5);
+    }
+    
+    .day-number {
+      font-size: var(--font-size-xs);
+    }
+    
+    .activity-dot {
+      width: 6px;
+      height: 6px;
     }
   }
 </style>

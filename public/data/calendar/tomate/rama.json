@@ -1,0 +1,25 @@
+{
+  "key": "rama",
+  "plant_info": {
+    "common_names": [
+      "Rama"
+    ],
+    "scientific_name": "Esta variedad de",
+    "origin": "ci",
+    "difficulty": "beginner"
+  },
+  "harvest_data": {
+    "storage_life": 270
+  },
+  "calendar_data": {
+    "harvesting": {
+      "harvest_method": "cluster",
+      "storage_method": "hanging"
+    }
+  },
+  "_meta": {
+    "main_image": "/wp-content/uploads/2017/10/tomato-1744949_1920-216x325.webp",
+    "article_date": "2017-10-20T17:34:18",
+    "excerpt": "Qué es el Tomate en Rama Esta variedad de tomate es de pequeño tamaño, redondo y de un color anaranjado que se torna rojizo. Son tomates muy regulares tanto en forma, como en tamaño. Su principal cara"
+  }
+}

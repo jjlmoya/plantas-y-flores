@@ -1,0 +1,28 @@
+{
+  "plant_info": {
+    "category": "fresa",
+    "type": "perennial",
+    "difficulty": "beginner"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [
+        3,
+        4,
+        8,
+        9
+      ]
+    },
+    "harvesting": {
+      "best_months": [
+        5,
+        6,
+        7
+      ]
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate"
+  }
+}

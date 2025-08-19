@@ -1,0 +1,31 @@
+{
+  "plant_info": {
+    "category": "azalea",
+    "type": "perennial",
+    "difficulty": "intermediate"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [
+        3,
+        4,
+        10
+      ]
+    },
+    "flowering": {
+      "best_months": [
+        4,
+        5,
+        6
+      ]
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "partial_shade",
+    "water_needs": "high",
+    "soil_ph": [
+      4.5,
+      6
+    ]
+  }
+}

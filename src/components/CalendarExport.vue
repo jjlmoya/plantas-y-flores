@@ -64,14 +64,10 @@ export default {
     const isExporting = ref(false);
     
     // Parse export data if it's a string (from Astro)
-    const exportData = computed(() => {
-      console.log('Raw export data type:', typeof props.exportData);
-      console.log('Raw export data:', props.exportData);
-      
+    const exportData = computed(() => {      
       if (typeof props.exportData === 'string') {
         try {
           const parsed = JSON.parse(props.exportData);
-          console.log('Parsed export data:', parsed);
           return parsed;
         } catch (e) {
           console.error('Error parsing export data:', e);
@@ -79,9 +75,7 @@ export default {
         }
       }
       
-      const result = props.exportData || {};
-      console.log('Direct export data:', result);
-      return result;
+      return props.exportData || {};
     });
 
     const exportToPDF = async () => {
@@ -134,7 +128,11 @@ export default {
 
       } catch (error) {
         console.error('Error generating PDF:', error);
-        alert('Error al generar el PDF. Por favor, inténtalo de nuevo.');
+        // Mostrar error de forma más elegante
+        const errorMsg = error.message?.includes('network') 
+          ? 'Error de conexión al generar PDF. Verifica tu conexión.' 
+          : 'Error al generar el PDF. Por favor, inténtalo de nuevo.';
+        alert(errorMsg);
       } finally {
         isExporting.value = false;
       }
@@ -176,7 +174,10 @@ export default {
 
       } catch (error) {
         console.error('Error generating ICS:', error);
-        alert('Error al generar el archivo de calendario. Por favor, inténtalo de nuevo.');
+        const errorMsg = error.message?.includes('network') 
+          ? 'Error de conexión al generar calendario. Verifica tu conexión.' 
+          : 'Error al generar el archivo de calendario. Por favor, inténtalo de nuevo.';
+        alert(errorMsg);
       } finally {
         isExporting.value = false;
       }

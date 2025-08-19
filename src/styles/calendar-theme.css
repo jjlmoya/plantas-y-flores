@@ -52,6 +52,10 @@
   --color-transplanting: #ed8936;
   --color-harvesting: #ecc94b;
   --color-tasks: #4299e1;
+  --color-flowering: #ed64a6;
+  --color-planting: #38b2ac;
+  --color-care: #9f7aea;
+  --color-pruning: #f6ad55;
   
   /* Estados de prioridad */
   --color-success: #48bb78;
@@ -148,6 +152,38 @@
   .container {
     padding: 0 var(--space-xs);
   }
+  
+  .card {
+    padding: var(--space-sm);
+  }
+  
+  .grid-responsive {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .page-subtitle {
+    font-size: var(--font-size-base);
+  }
+  
+  .page-header {
+    padding: var(--space-lg) 0;
+  }
+  
+  .card-title {
+    font-size: var(--font-size-lg);
+  }
+  
+  .btn {
+    padding: var(--space-sm);
+    font-size: var(--font-size-sm);
+  }
 }
 
 /* Botones estándar */
@@ -163,6 +199,12 @@
   text-decoration: none;
   cursor: pointer;
   transition: all 0.3s ease;
+}
+
+.btn:focus,
+.btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 .btn-primary {
@@ -216,4 +258,132 @@
 .tag.tasks {
   background: rgba(66, 153, 225, 0.1);
   color: var(--color-tasks);
+}
+
+.tag.flowering {
+  background: rgba(237, 100, 166, 0.1);
+  color: var(--color-flowering);
+}
+
+.tag.planting {
+  background: rgba(56, 178, 172, 0.1);
+  color: var(--color-planting);
+}
+
+.tag.care {
+  background: rgba(159, 122, 234, 0.1);
+  color: var(--color-care);
+}
+
+.tag.pruning {
+  background: rgba(246, 173, 85, 0.1);
+  color: var(--color-pruning);
+}
+
+/* Activity section styles */
+.activity-section {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.activity-section h3 {
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-md);
+  font-size: var(--font-size-xl);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+/* Loading states */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xl);
+  color: var(--color-text-muted);
+}
+
+.spinner {
+  border: 2px solid var(--color-border-light);
+  border-top: 2px solid var(--color-primary);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+  margin-right: var(--space-xs);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error states */
+.error-state {
+  background: rgba(245, 101, 101, 0.1);
+  border: 1px solid rgba(245, 101, 101, 0.2);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  text-align: center;
+  color: var(--color-error);
+}
+
+.error-state h3 {
+  margin-bottom: var(--space-sm);
+  color: var(--color-error);
+}
+
+/* Empty states */
+.empty-state {
+  text-align: center;
+  padding: var(--space-xl);
+  color: var(--color-text-muted);
+}
+
+.empty-state h3 {
+  margin-bottom: var(--space-sm);
+  color: var(--color-text-secondary);
+}
+
+/* Calendar specific utilities */
+.calendar-section {
+  margin-bottom: var(--space-xl);
+}
+
+.calendar-section h2 {
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-lg);
+  font-size: var(--font-size-2xl);
+  text-align: center;
+}
+
+/* Focus states for accessibility */
+a:focus-visible,
+button:focus-visible,
+select:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --color-border: #000;
+    --color-text-muted: #000;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

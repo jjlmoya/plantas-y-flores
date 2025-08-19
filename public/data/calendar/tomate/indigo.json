@@ -1,0 +1,28 @@
+{
+  "key": "indigo",
+  "plant_info": {
+    "common_names": [
+      "Índigo"
+    ],
+    "scientific_name": "Es una variedad",
+    "difficulty": "beginner",
+    "special_characteristics": [
+      "high_antioxidants",
+      "blue_pigmentation"
+    ]
+  },
+  "calendar_data": {
+    "harvesting": {
+      "harvest_indicators": [
+        "firmness",
+        "aroma",
+        "partial_color_change"
+      ]
+    }
+  },
+  "_meta": {
+    "main_image": "/wp-content/uploads/2017/10/tomato-2737363_1920-325x312.webp",
+    "article_date": "2017-10-21T14:47:38",
+    "excerpt": "Qué es el Tomate Índigo Es una variedad de pequeño tamaño y de formas muy regulares con pigmentación azul en la piel que le da un tono que puede llamarnos la atención. Este color es obtenido porque se"
+  }
+}

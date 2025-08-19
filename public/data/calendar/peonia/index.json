@@ -1,0 +1,21 @@
+{
+  "plant_info": {
+    "type": "annual",
+    "difficulty": "beginner",
+    "category": "peonia"
+  },
+  "calendar_data": {
+    "sowing": {
+      "outdoor": {
+        "best_months": [
+          4,
+          5
+        ]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate"
+  }
+}
