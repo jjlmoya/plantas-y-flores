@@ -109,8 +109,13 @@ const exportData = {
 ---
 
 <BaseLayout 
-  title={`Calendario ${monthName} | Qué Plantar en ${monthName}`}
-  description={`Guía completa de plantación para ${monthName}. Descubre qué sembrar, trasplantar y cosechar este mes.`}
+  title={`Calendario ${monthName} ${currentYear} | Qué Plantar en ${monthName} - Guía Completa`}
+  description={`📅 Calendario completo de ${monthName} ${currentYear}. ${activities.sowing + activities.transplanting + activities.harvesting} actividades de cultivo: ${activities.sowing} para sembrar, ${activities.transplanting} para trasplantar y ${activities.harvesting} para cosechar.`}
+  keywords={`calendario ${monthName}, plantar ${monthName}, sembrar ${monthName}, trasplantar ${monthName}, cosechar ${monthName}, huerto ${monthName}, jardín`}
+  type="article"
+  canonical={`/calendario/mes/${month}/`}
+  publishedDate={new Date().toISOString()}
+  modifiedDate={new Date().toISOString()}
 >
   <link rel="stylesheet" href="/styles/calendar-theme.css">
   <div class="month-view">

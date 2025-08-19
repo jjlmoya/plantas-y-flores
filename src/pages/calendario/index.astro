@@ -48,10 +48,45 @@ const quickNavMonths = Array.from({ length: 12 }, (_, i) => ({
 ---
 
 <BaseLayout
-  title="Calendario de Plantación | Guía Completa de Cultivo"
-  description={`Calendario de plantación para ${currentMonthName}. Descubre qué plantar, cuándo sembrar y cómo cuidar tus plantas mes a mes.`}
+  title={`Calendario de Plantación ${new Date().getFullYear()} | Guía Completa de Cultivo Mes a Mes`}
+  description={`📅 Calendario completo de plantación para ${currentMonthName} ${new Date().getFullYear()}. Descubre qué plantar cada mes, cuándo sembrar, trasplantar y cosechar. Guía práctica con 24 categorías de plantas y más de 100 variedades.`}
+  keywords="calendario plantación, cuando plantar, sembrar, trasplantar, cosechar, huerto, jardín, agricultura, cultivo"
+  type="website"
+  canonical="/calendario/"
+  image="/brand/calendar-og.webp"
 >
   <link rel="stylesheet" href="/styles/calendar-theme.css" />
+  
+  <!-- Structured Data for Calendar -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Calendario de Plantación",
+      "description": "Calendario completo de plantación para planificar tu huerto y jardín mes a mes",
+      "url": "https://plantasyflores.online/calendario/",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "featureList": [
+        "Calendario mensual de plantación",
+        "Guías de siembra y trasplante",
+        "Cronograma de cosecha",
+        "Consejos de cuidado de plantas",
+        "Filtros por actividad y categoría"
+      ],
+      "publisher": {
+        "@type": "Organization",
+        "name": "Plantas y Flores",
+        "url": "https://plantasyflores.online"
+      }
+    }
+  </script>
+  
   <div class="calendar-dashboard">
     <!-- Header -->
     <header class="page-header">

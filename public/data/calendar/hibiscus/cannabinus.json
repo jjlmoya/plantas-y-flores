@@ -2,13 +2,79 @@
   "key": "cannabinus",
   "plant_info": {
     "common_names": [
-      "Cannabinus"
+      "Kenaf", "Hibisco Cannabino", "Cáñamo de Decán"
     ],
-    "scientific_name": "Su arraigo en",
-    "origin": "ne"
+    "scientific_name": "Hibiscus cannabinus",
+    "origin": "AF",
+    "type": "annual",
+    "difficulty": "intermediate",
+    "family": "Malvaceae"
   },
   "flower_data": {
-    "size": "large"
+    "size": "large",
+    "colors": ["yellow", "red"],
+    "flower_shape": "hibiscus",
+    "bloom_duration": "1_day"
+  },
+  "calendar_data": {
+    "sowing": {
+      "outdoor": {
+        "best_months": [4, 5, 6],
+        "temperature_range": [20, 25],
+        "soil_temperature_min": 18,
+        "germination_days": [7, 14]
+      }
+    },
+    "flowering": {
+      "best_months": [8, 9, 10],
+      "peak_months": [8, 9]
+    },
+    "harvesting": {
+      "fiber_harvest": {
+        "best_months": [9, 10],
+        "days_to_harvest": [120, 150]
+      },
+      "seed_harvest": {
+        "best_months": [10, 11],
+        "days_to_harvest": [150, 180]
+      }
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "4": ["sow_outdoor", "prepare_beds"],
+        "5": ["sow_outdoor", "water_moderately"],
+        "6": ["water_regularly", "thin_seedlings"],
+        "7": ["water_regularly", "fertilize"],
+        "8": ["water_regularly", "deadhead"],
+        "9": ["harvest_fiber", "water_regularly"],
+        "10": ["harvest_fiber", "harvest_seeds"],
+        "11": ["final_seed_harvest", "clear_beds"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.5],
+    "spacing": {
+      "plant_distance": 30,
+      "row_distance": 60
+    },
+    "companion_plants": ["cotton", "maize", "legumes"],
+    "temperature_range": [18, 35],
+    "special_care": "Planta de fibra, cosecha múltiple"
+  },
+  "harvest_data": {
+    "fiber_yield": "high",
+    "seed_yield": "moderate",
+    "uses": ["fiber_production", "ornamental", "seeds"],
+    "fiber_quality": "strong_durable"
+  },
+  "commercial_data": {
+    "primary_use": "fiber_production",
+    "secondary_uses": ["ornamental", "seed_oil"],
+    "harvest_method": "cut_stems_for_fiber"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/04/Tanaman_Kenaf-325x183.webp",

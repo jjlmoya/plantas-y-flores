@@ -2,10 +2,85 @@
   "key": "kale",
   "plant_info": {
     "common_names": [
-      "Kale"
+      "Kale", "Col Rizada", "Col Crespa"
     ],
-    "scientific_name": "Nuez moscada",
-    "origin": "al"
+    "scientific_name": "Brassica oleracea var. acephala",
+    "origin": "EU",
+    "type": "biennial",
+    "difficulty": "beginner",
+    "family": "Brassicaceae"
+  },
+  "calendar_data": {
+    "sowing": {
+      "indoor": {
+        "best_months": [2, 3, 7, 8],
+        "temperature_range": [15, 20],
+        "germination_days": [5, 10]
+      },
+      "outdoor": {
+        "best_months": [3, 4, 8, 9],
+        "temperature_range": [10, 18],
+        "soil_temperature_min": 5
+      }
+    },
+    "transplanting": {
+      "best_months": [4, 5, 9, 10],
+      "soil_temperature_min": 8,
+      "weeks_after_sowing": [4, 6]
+    },
+    "harvesting": {
+      "best_months": [6, 7, 8, 11, 12, 1, 2],
+      "peak_months": [11, 12, 1],
+      "days_to_harvest": [60, 90],
+      "harvest_indicators": "Hojas grandes y tiernas, mejor después de heladas ligeras"
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "2": ["sow_indoor", "harvest_winter"],
+        "3": ["sow_indoor", "sow_outdoor"],
+        "4": ["transplant", "sow_outdoor"],
+        "5": ["transplant", "water_regularly"],
+        "6": ["harvest_early", "water_regularly"],
+        "7": ["sow_indoor", "harvest_summer"],
+        "8": ["sow_indoor", "sow_outdoor"],
+        "9": ["transplant", "sow_outdoor"],
+        "10": ["transplant", "protect_cold"],
+        "11": ["harvest_main", "protect_cold"],
+        "12": ["harvest_winter"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "rich_organic",
+    "soil_ph": [6.0, 7.5],
+    "spacing": {
+      "plant_distance": 40,
+      "row_distance": 60
+    },
+    "companion_plants": ["cebolla", "ajo", "apio"],
+    "avoid_plants": ["tomate", "fresa"],
+    "temperature_range": [-10, 25],
+    "cold_tolerance": "-10°C",
+    "special_care": "Mejora con heladas ligeras, muy resistente al frío"
+  },
+  "harvest_data": {
+    "days_to_harvest": [60, 90],
+    "weight_range": [200, 500],
+    "storage_life": 7,
+    "preservation_methods": ["refrigerate", "blanch_freeze", "dehydrate"],
+    "harvest_tips": "Cosechar hojas externas, el centro sigue creciendo"
+  },
+  "nutritional_data": {
+    "calories_per_100g": 35,
+    "water_content": 84,
+    "properties": ["vitamina_k", "vitamina_c", "vitamina_a", "hierro", "calcio", "antioxidantes", "fibra"]
+  },
+  "culinary_data": {
+    "uses": ["ensaladas", "smoothies", "salteados", "chips", "sopas"],
+    "preparation": "Masajear hojas para suavizar textura",
+    "flavor_profile": "terroso_ligeramente_amargo"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/08/plant-1011492_1920-325x217.webp",

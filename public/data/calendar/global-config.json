@@ -297,7 +297,7 @@
       "staking": "🎋",
       "weeding": "🌿",
       "soil_preparation": "🏔️",
-      "default": "•"
+      "default": ""
     },
     "task_priorities": {
       "harvest_main": "high",

@@ -2,14 +2,75 @@
   "key": "moscheutos",
   "plant_info": {
     "common_names": [
-      "Moscheutos"
+      "Hibisco de los Pantanos", "Rosa Mallow", "Swamp Rose Mallow"
     ],
-    "scientific_name": "Si deseas tener",
-    "origin": "at",
-    "difficulty": "beginner"
+    "scientific_name": "Hibiscus moscheutos",
+    "origin": "US",
+    "type": "perennial",
+    "difficulty": "beginner",
+    "family": "Malvaceae"
   },
   "flower_data": {
-    "size": "large"
+    "size": "extra_large",
+    "colors": ["white", "pink", "red", "purple"],
+    "flower_shape": "hibiscus",
+    "bloom_duration": "1_day",
+    "diameter": "20-25cm",
+    "center_color": "contrasting"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [4, 5, 6],
+      "soil_temperature_min": 15
+    },
+    "flowering": {
+      "best_months": [7, 8, 9, 10],
+      "peak_months": [8, 9]
+    },
+    "dormancy": {
+      "months": [11, 12, 1, 2, 3],
+      "cut_back_month": 11
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["prepare_beds", "compost_application"],
+        "4": ["planting", "fertilize", "mulch"],
+        "5": ["planting", "water_establishment"],
+        "6": ["water_regularly", "first_growth_support"],
+        "7": ["water_regularly", "deadhead", "fertilize"],
+        "8": ["water_regularly", "deadhead", "enjoy_blooms"],
+        "9": ["water_regularly", "deadhead"],
+        "10": ["water_regularly", "deadhead"],
+        "11": ["cut_back_stems", "mulch_for_winter"],
+        "12": ["dormant_protection"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun_partial_shade",
+    "water_needs": "high",
+    "soil_type": "moist_well_drained",
+    "soil_ph": [6.0, 7.5],
+    "moisture_tolerance": "high",
+    "spacing": {
+      "plant_distance": 120,
+      "row_distance": 150
+    },
+    "companion_plants": ["iris", "cattail", "cardinal_flower"],
+    "temperature_range": [10, 35],
+    "special_care": "Tolerante a suelos húmedos, ideal para jardines acuáticos"
+  },
+  "wetland_adaptations": {
+    "moisture_tolerance": "Excelente para suelos húmedos y pantanosos",
+    "drought_tolerance": "Moderada una vez establecida",
+    "wildlife_value": "Atrae mariposas y colibríes",
+    "naturalizing": "Se extiende naturalmente en condiciones húmedas"
+  },
+  "fragrance_data": {
+    "scent_type": "mild_sweet",
+    "intensity": "light",
+    "best_time": "morning",
+    "notes": "Aroma suave y dulce"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/03/hibiscus-1904335_1280-325x182.webp",

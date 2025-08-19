@@ -2,10 +2,76 @@
   "key": "espliego",
   "plant_info": {
     "common_names": [
-      "Espliego"
+      "Espliego", "Lavanda Espliego", "Alhucema"
     ],
-    "scientific_name": "Un bonito campo",
-    "difficulty": "advanced"
+    "scientific_name": "Lavandula angustifolia",
+    "origin": "ES",
+    "type": "perennial",
+    "difficulty": "beginner",
+    "family": "Lamiaceae"
+  },
+  "flower_data": {
+    "fragrance": "strong",
+    "colors": ["purple", "blue"],
+    "flower_shape": "spike",
+    "bloom_duration": "8_weeks"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 5, 9, 10],
+      "soil_temperature_min": 10
+    },
+    "flowering": {
+      "best_months": [6, 7, 8, 9],
+      "peak_months": [7, 8]
+    },
+    "pruning": {
+      "best_months": [3, 9]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["planting", "pruning", "fertilize_light"],
+        "4": ["planting", "water_lightly"],
+        "5": ["water_lightly"],
+        "6": ["harvest_flowers", "deadhead"],
+        "7": ["harvest_peak", "deadhead"],
+        "8": ["harvest_flowers", "deadhead"],
+        "9": ["planting", "pruning", "reduce_watering"],
+        "10": ["planting", "prepare_winter"],
+        "11": ["protect_frost"],
+        "12": ["protect_frost"]
+      }
+    },
+    "harvesting": {
+      "best_months": [6, 7, 8],
+      "peak_months": [7, 8],
+      "harvest_indicators": "Flores en plena floración antes de que se abran completamente"
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "low",
+    "soil_type": "well_drained_sandy",
+    "soil_ph": [6.5, 7.5],
+    "spacing": {
+      "plant_distance": 60,
+      "row_distance": 80
+    },
+    "companion_plants": ["romero", "tomillo", "salvia"],
+    "drainage": "excellent",
+    "temperature_range": [-15, 35],
+    "drought_tolerance": "high",
+    "special_care": "Necesita drenaje excelente, no tolera exceso de humedad"
+  },
+  "harvest_data": {
+    "storage_life": 365,
+    "preservation_methods": ["dry", "oil_distillation", "sachets"],
+    "harvest_tips": "Cortar tallos largos en la mañana después de que se evapore el rocío"
+  },
+  "aromatherapy_data": {
+    "properties": ["relajante", "antiseptico", "antiinflamatorio"],
+    "uses": ["aceites_esenciales", "sachets", "infusiones", "potpourri"],
+    "essential_oil_yield": "1-3%"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/11/lavender-1605423_1920-325x244.webp",

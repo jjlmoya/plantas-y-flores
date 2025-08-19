@@ -2,22 +2,61 @@
   "key": "stargazer",
   "plant_info": {
     "common_names": [
-      "Stargazer"
+      "Stargazer", "Lirio Stargazer"
     ],
-    "scientific_name": "Una de las",
-    "difficulty": "beginner"
+    "scientific_name": "Lilium 'Stargazer'",
+    "origin": "JP",
+    "type": "perennial",
+    "difficulty": "beginner",
+    "family": "Liliaceae"
   },
   "flower_data": {
-    "fragrance": "strong"
+    "fragrance": "strong",
+    "colors": ["pink", "white", "red"],
+    "size": "large",
+    "flower_shape": "star",
+    "flower_form": "upward_facing",
+    "petals": "spotted"
   },
   "calendar_data": {
+    "planting": {
+      "best_months": [9, 10, 11],
+      "soil_temperature_min": 5,
+      "planting_depth": "15-20cm"
+    },
     "flowering": {
-      "best_months": [
-        7,
-        8
-      ],
-      "flower_form": "upward_facing"
+      "best_months": [7, 8],
+      "peak_months": [7, 8],
+      "flower_form": "upward_facing",
+      "bloom_duration": "2_weeks"
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["fertilize", "mulch"],
+        "4": ["water_regularly"],
+        "5": ["water_regularly", "stake_tall_varieties"],
+        "6": ["water_regularly", "deadhead"],
+        "7": ["water_regularly", "deadhead"],
+        "8": ["water_regularly", "deadhead"],
+        "9": ["planting", "reduce_watering"],
+        "10": ["planting", "prepare_winter"],
+        "11": ["planting", "mulch_protection"]
+      }
     }
+  },
+  "growing_conditions": {
+    "sun_requirements": "partial_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.0],
+    "spacing": {
+      "plant_distance": 30,
+      "row_distance": 45
+    },
+    "companion_plants": ["hosta", "astilbe", "helechos"],
+    "drainage": "excellent",
+    "winter_hardiness": "-15°C",
+    "special_care": "Necesita drenaje excelente, plantar bulbos en otoño"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/10/stargazer-lily-57786_1920-325x325.webp",

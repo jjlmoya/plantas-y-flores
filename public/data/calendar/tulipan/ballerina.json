@@ -2,11 +2,66 @@
   "key": "ballerina",
   "plant_info": {
     "common_names": [
-      "Ballerina"
+      "Tulipán Ballerina", "Ballerina"
     ],
-    "scientific_name": "En este art",
-    "origin": "mo",
-    "difficulty": "beginner"
+    "scientific_name": "Tulipa 'Ballerina'",
+    "origin": "NL",
+    "type": "perennial",
+    "difficulty": "beginner",
+    "family": "Liliaceae"
+  },
+  "flower_data": {
+    "fragrance": "mild",
+    "colors": ["orange", "yellow"],
+    "flower_shape": "lily_flowered",
+    "size": "medium",
+    "pointed_petals": true,
+    "bloom_duration": "3_weeks"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [10, 11, 12],
+      "soil_temperature_max": 10,
+      "planting_depth": "15-20cm"
+    },
+    "flowering": {
+      "best_months": [4, 5],
+      "peak_months": [4, 5]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "10": ["planting", "prepare_beds"],
+        "11": ["planting", "mulch_protection"],
+        "12": ["mulch_protection"],
+        "1": ["monitor_growth"],
+        "2": ["monitor_growth"],
+        "3": ["remove_mulch", "fertilize_light"],
+        "4": ["water_moderately", "enjoy_blooms"],
+        "5": ["water_moderately", "deadhead_spent"],
+        "6": ["allow_foliage_yellow", "reduce_watering"],
+        "7": ["lift_bulbs_optional", "store_dry"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.5],
+    "spacing": {
+      "plant_distance": 10,
+      "row_distance": 15
+    },
+    "companion_plants": ["muscari", "narcisos", "crocus"],
+    "temperature_range": [-20, 25],
+    "cold_requirements": "12_weeks_below_10c",
+    "special_care": "Necesita frío invernal, plantar bulbos en otoño"
+  },
+  "bulb_care": {
+    "planting_depth": "3_times_bulb_height",
+    "storage_method": "cool_dry_ventilated",
+    "lifting_time": "after_foliage_yellows",
+    "replanting": "autumn"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/10/tulip-748563_1920-325x218.webp",

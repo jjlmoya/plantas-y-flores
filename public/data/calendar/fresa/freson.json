@@ -2,14 +2,74 @@
   "key": "freson",
   "plant_info": {
     "common_names": [
-      "Fresón"
+      "Fresón", "Fresa Grande"
     ],
-    "scientific_name": "Es la estrella",
-    "difficulty": "beginner"
+    "scientific_name": "Fragaria × ananassa",
+    "origin": "EU",
+    "type": "perennial",
+    "difficulty": "beginner",
+    "family": "Rosaceae"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 5, 9, 10],
+      "soil_temperature_min": 10
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["planting", "prepare_beds", "fertilize"],
+        "4": ["planting", "water_regularly", "mulch"],
+        "5": ["water_regularly", "remove_runners"],
+        "6": ["harvest", "water_regularly", "remove_runners"],
+        "7": ["harvest_peak", "water_regularly"],
+        "8": ["harvest", "reduce_watering"],
+        "9": ["planting", "remove_old_leaves"],
+        "10": ["planting", "prepare_winter", "mulch"],
+        "11": ["protect_frost", "reduce_watering"],
+        "12": ["protect_frost"]
+      }
+    },
+    "harvesting": {
+      "best_months": [6, 7, 8],
+      "peak_months": [6, 7],
+      "days_to_harvest": [60, 90],
+      "harvest_indicators": "Frutos rojos completamente maduros"
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "high",
+    "soil_type": "rich_well_drained",
+    "soil_ph": [5.5, 6.5],
+    "spacing": {
+      "plant_distance": 30,
+      "row_distance": 60
+    },
+    "companion_plants": ["ajo", "cebollino", "albahaca"],
+    "avoid_plants": ["tomate", "col", "brócoli"],
+    "temperature_range": [15, 25],
+    "special_care": "Mulch para conservar humedad, eliminar estolones para mayor producción"
+  },
+  "harvest_data": {
+    "days_to_harvest": [60, 90],
+    "weight_range": [15, 30],
+    "storage_life": 3,
+    "preservation_methods": ["refrigerate", "freeze", "jam"],
+    "harvest_tips": "Cosechar por la mañana cuando están frescos y firmes"
+  },
+  "nutritional_data": {
+    "calories_per_100g": 32,
+    "water_content": 91,
+    "properties": ["vitamina_c", "antioxidantes", "fibra", "folato", "potasio", "manganeso"]
+  },
+  "culinary_data": {
+    "uses": ["fresco", "postres", "mermeladas", "batidos"],
+    "flavor_profile": "dulce_acidulado",
+    "preparation": "Lavar justo antes de consumir"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/10/strawberries-58195_1920-325x244.webp",
     "article_date": "2017-10-02T18:00:13",
-    "excerpt": "El Fresón es una fruta que sustituye normalmente a la fresa en nuestra mesa. Es la estrella oculta de esos postres y bocados. Aprende a plantar, cuidar y cosechar esta planta que está preparada para d"
+    "excerpt": "El Fresón es una fruta que sustituye normalmente a la fresa en nuestra mesa. Es la estrella oculta de esos postres y bocados. Aprende a plantar, cuidar y cosechar esta planta que está preparada para d"
   }
 }

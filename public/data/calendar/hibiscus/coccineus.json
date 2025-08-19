@@ -2,13 +2,74 @@
   "key": "coccineus",
   "plant_info": {
     "common_names": [
-      "Coccineus"
+      "Hibisco Escarlata", "Texas Star Hibiscus", "Scarlet Hibiscus"
     ],
-    "scientific_name": "Si tu jard",
-    "difficulty": "beginner"
+    "scientific_name": "Hibiscus coccineus",
+    "origin": "US",
+    "type": "perennial",
+    "difficulty": "intermediate",
+    "family": "Malvaceae"
   },
   "flower_data": {
-    "size": "large"
+    "size": "large",
+    "colors": ["red", "scarlet"],
+    "flower_shape": "star",
+    "bloom_duration": "1_day",
+    "petal_count": 5,
+    "unique_feature": "Pétalos muy separados en forma de estrella"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [4, 5, 6],
+      "soil_temperature_min": 18
+    },
+    "flowering": {
+      "best_months": [6, 7, 8, 9, 10],
+      "peak_months": [7, 8, 9]
+    },
+    "dormancy": {
+      "months": [11, 12, 1, 2, 3],
+      "cut_back_month": 11
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["prepare_wet_beds", "soil_preparation"],
+        "4": ["planting", "fertilize"],
+        "5": ["planting", "water_establishment"],
+        "6": ["water_regularly", "first_blooms"],
+        "7": ["water_regularly", "deadhead", "fertilize"],
+        "8": ["water_regularly", "deadhead", "peak_blooms"],
+        "9": ["water_regularly", "deadhead"],
+        "10": ["water_regularly", "late_blooms"],
+        "11": ["cut_back_stems", "prepare_dormancy"],
+        "12": ["dormant_protection"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "high",
+    "soil_type": "moist_well_drained",
+    "soil_ph": [6.0, 7.0],
+    "moisture_tolerance": "very_high",
+    "spacing": {
+      "plant_distance": 150,
+      "row_distance": 200
+    },
+    "companion_plants": ["cardinal_flower", "swamp_milkweed", "joe_pye_weed"],
+    "temperature_range": [15, 35],
+    "special_care": "Requiere suelos constantemente húmedos, ideal para jardines acuáticos"
+  },
+  "unique_features": {
+    "flower_shape": "Flores en forma de estrella perfecta",
+    "height": "Puede alcanzar 2-3 metros de altura",
+    "wildlife_attraction": "Muy atractiva para mariposas y colibríes",
+    "water_garden": "Excelente para bordes de estanques y jardines húmedos"
+  },
+  "native_habitat": {
+    "region": "Sureste de Estados Unidos",
+    "environment": "Pantanos y humedales costeros",
+    "conservation": "Especie nativa importante para ecosistemas húmedos"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/03/plant-1707592_640-325x244.webp",

@@ -2,10 +2,70 @@
   "key": "kennebec",
   "plant_info": {
     "common_names": [
-      "Kennebec"
+      "Patata Kennebec", "Kennebec", "Papa Kennebec"
     ],
-    "scientific_name": "Unas patatas muy",
-    "origin": "re"
+    "scientific_name": "Solanum tuberosum 'Kennebec'",
+    "origin": "US",
+    "type": "annual",
+    "difficulty": "beginner",
+    "family": "Solanaceae"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 5],
+      "soil_temperature_min": 10,
+      "planting_depth": "10-15cm"
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["planting", "prepare_soil"],
+        "4": ["planting", "water_moderately"],
+        "5": ["hill_soil", "water_regularly"],
+        "6": ["hill_soil", "water_regularly", "pest_check"],
+        "7": ["water_regularly", "pest_check"],
+        "8": ["harvest_early", "reduce_watering"],
+        "9": ["harvest_main", "cure_potatoes"],
+        "10": ["final_harvest", "store_properly"]
+      }
+    },
+    "harvesting": {
+      "best_months": [8, 9, 10],
+      "peak_months": [9, 10],
+      "days_to_harvest": [90, 120],
+      "harvest_indicators": "Follaje amarillento y seco"
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "loose_well_drained",
+    "soil_ph": [5.5, 6.5],
+    "spacing": {
+      "plant_distance": 30,
+      "row_distance": 75
+    },
+    "companion_plants": ["frijol", "maíz", "caléndula"],
+    "avoid_plants": ["tomate", "pimiento", "berenjena"],
+    "temperature_range": [15, 25],
+    "special_care": "Aporcar tierra regularmente, evitar luz solar directa en tubérculos"
+  },
+  "harvest_data": {
+    "days_to_harvest": [90, 120],
+    "weight_range": [150, 300],
+    "storage_life": 180,
+    "preservation_methods": ["store_cool_dark", "freeze_processed"],
+    "harvest_tips": "Cavar con cuidado, curar al sol 2 horas antes de almacenar"
+  },
+  "nutritional_data": {
+    "calories_per_100g": 77,
+    "water_content": 79,
+    "properties": ["potasio", "vitamina_c", "vitamina_b6", "fibra", "magnesio"]
+  },
+  "culinary_data": {
+    "uses": ["papas_fritas", "pure", "asado", "hervido"],
+    "texture": "harinosa",
+    "flavor_profile": "neutro_versátil",
+    "cooking_notes": "Excelente para freír y hornear"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/01/field-2168030-325x215.webp",

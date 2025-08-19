@@ -2,14 +2,74 @@
   "key": "abelmoschus-moschatus",
   "plant_info": {
     "common_names": [
-      "Abelmoschus moschatus"
+      "Abelmoschus moschatus", "Hibisco Almizclado", "Malva Rosa"
     ],
-    "scientific_name": "Es una planta",
-    "origin": "an",
-    "difficulty": "beginner"
+    "scientific_name": "Abelmoschus moschatus",
+    "origin": "IN",
+    "type": "annual",
+    "difficulty": "beginner",
+    "family": "Malvaceae"
   },
   "flower_data": {
-    "size": "large"
+    "size": "large",
+    "colors": ["pink", "red", "white", "yellow"],
+    "flower_shape": "hibiscus",
+    "fragrance": "strong",
+    "bloom_duration": "1_day"
+  },
+  "calendar_data": {
+    "sowing": {
+      "indoor": {
+        "best_months": [3, 4, 5],
+        "temperature_range": [18, 22],
+        "germination_days": [7, 14]
+      },
+      "outdoor": {
+        "best_months": [5, 6],
+        "temperature_range": [18, 25],
+        "soil_temperature_min": 16
+      }
+    },
+    "transplanting": {
+      "best_months": [5, 6],
+      "soil_temperature_min": 16,
+      "weeks_after_sowing": [4, 6]
+    },
+    "flowering": {
+      "best_months": [7, 8, 9, 10],
+      "peak_months": [8, 9]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["sow_indoor", "prepare_beds"],
+        "4": ["sow_indoor", "fertilize_seedlings"],
+        "5": ["transplant", "sow_outdoor"],
+        "6": ["transplant", "water_regularly"],
+        "7": ["water_regularly", "deadhead"],
+        "8": ["water_regularly", "deadhead", "fertilize"],
+        "9": ["water_regularly", "deadhead"],
+        "10": ["reduce_watering", "collect_seeds"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.5],
+    "spacing": {
+      "plant_distance": 60,
+      "row_distance": 80
+    },
+    "companion_plants": ["marigold", "zinnia", "cosmos"],
+    "temperature_range": [15, 35],
+    "special_care": "Planta aromática, necesita espacio para crecer"
+  },
+  "fragrance_data": {
+    "scent_type": "musky_sweet",
+    "intensity": "strong",
+    "best_time": "evening",
+    "notes": "Aroma almizclado intenso y dulce"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/04/Abelmoschus_moschatus_Malvaceae_29680066960-325x217.webp",

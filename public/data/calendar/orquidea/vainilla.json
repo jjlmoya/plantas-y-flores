@@ -2,11 +2,85 @@
   "key": "vainilla",
   "plant_info": {
     "common_names": [
-      "Vainilla"
+      "Orquídea Vainilla", "Vainilla", "Vanilla"
     ],
-    "scientific_name": "Una de las",
-    "origin": "re",
-    "difficulty": "beginner"
+    "scientific_name": "Vanilla planifolia",
+    "origin": "MX",
+    "type": "perennial",
+    "difficulty": "advanced",
+    "family": "Orchidaceae"
+  },
+  "flower_data": {
+    "colors": ["yellow", "green", "white"],
+    "flower_shape": "orchid",
+    "size": "small",
+    "bloom_duration": "1_day",
+    "fragrance": "mild"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [4, 5, 6],
+      "soil_temperature_min": 20
+    },
+    "flowering": {
+      "best_months": [3, 4, 5],
+      "peak_months": [4, 5],
+      "pollination": "manual_required"
+    },
+    "harvesting": {
+      "best_months": [8, 9, 10],
+      "days_to_harvest": [270, 300],
+      "harvest_indicators": "Vainas amarillentas pero aún verdes"
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["maintain_humidity", "minimal_watering"],
+        "2": ["increase_watering", "check_support"],
+        "3": ["water_regularly", "hand_pollinate"],
+        "4": ["hand_pollinate", "water_regularly"],
+        "5": ["hand_pollinate", "fertilize_orchid"],
+        "6": ["water_regularly", "monitor_pods"],
+        "7": ["water_regularly", "support_pods"],
+        "8": ["harvest_early", "cure_beans"],
+        "9": ["harvest_main", "cure_beans"],
+        "10": ["final_harvest", "cure_beans"],
+        "11": ["reduce_watering"],
+        "12": ["minimal_watering", "maintain_warmth"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "filtered_light",
+    "water_needs": "high",
+    "soil_type": "orchid_bark_mix",
+    "soil_ph": [5.5, 6.5],
+    "spacing": {
+      "plant_distance": 200,
+      "support_required": true
+    },
+    "companion_plants": ["trees_for_support"],
+    "temperature_range": [20, 30],
+    "humidity_needs": "very_high",
+    "special_care": "Necesita soporte alto, polinización manual, humedad constante"
+  },
+  "harvest_data": {
+    "days_to_harvest": [270, 300],
+    "curing_time": 180,
+    "storage_life": 1095,
+    "preservation_methods": ["cure", "dry", "extract"],
+    "harvest_tips": "Cosechar cuando vainas están amarillentas pero firmes"
+  },
+  "culinary_data": {
+    "uses": ["extract", "whole_beans", "flavoring"],
+    "flavor_profile": "sweet_floral_complex",
+    "processing_required": "curing_fermentation",
+    "commercial_value": "very_high"
+  },
+  "pollination_data": {
+    "method": "hand_pollination",
+    "timing": "morning_hours",
+    "success_rate": "low_without_intervention",
+    "tools_needed": ["toothpick", "soft_brush"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/09/vanilla-1998450_1920-325x244.webp",

@@ -24,10 +24,31 @@
                   <a href="/categorias/" class="dropdown-link" :class="{ 'dropdown-link--active': isActive('/categorias/') }">Ver todas las categorías</a>
                   <div class="dropdown-divider"></div>
                   <a href="/plantas-medicinales/" class="dropdown-link" :class="{ 'dropdown-link--active': isActive('/plantas-medicinales/') }">Plantas Medicinales</a>
-                  <a href="/plantas-exterior/" class="dropdown-link" :class="{ 'dropdown-link--active': isActive('/plantas-exterior/') }">Plantas de Exterior</a>
-                  <a href="/plantas-interior/" class="dropdown-link" :class="{ 'dropdown-link--active': isActive('/plantas-interior/') }">Plantas de Interior</a>
                   <a href="/plantas-aromaticas/" class="dropdown-link" :class="{ 'dropdown-link--active': isActive('/plantas-aromaticas/') }">Plantas Aromáticas</a>
                   <a href="/plantas-comestibles/" class="dropdown-link" :class="{ 'dropdown-link--active': isActive('/plantas-comestibles/') }">Plantas Comestibles</a>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item nav-item--dropdown" @mouseover="setDropdown('calendario')" @mouseleave="setDropdown(null)">
+              <a href="/calendario/" class="nav-link calendar-link" :class="{ 'nav-link--active': isCalendarActive() }">
+                <span class="calendar-icon">📅</span>
+                Calendario
+              </a>
+              <div class="dropdown dropdown--calendar" :class="{ 'dropdown--active': activeDropdown === 'calendario' }">
+                <div class="dropdown-content">
+                  <a href="/calendario/" class="dropdown-link" :class="{ 'dropdown-link--active': isActive('/calendario/') }">Dashboard Calendario</a>
+                  <div class="dropdown-divider"></div>
+                  <div class="dropdown-section">
+                    <span class="dropdown-section-title">Por Mes</span>
+                    <div v-html="getCurrentAndNextMonthsHTML()"></div>
+                  </div>
+                  <div class="dropdown-divider"></div>
+                  <div class="dropdown-section">
+                    <span class="dropdown-section-title">Por Actividad</span>
+                    <a href="/calendario/actividad/siembra/" class="dropdown-link small">Siembra</a>
+                    <a href="/calendario/actividad/trasplante/" class="dropdown-link small">Trasplante</a>
+                    <a href="/calendario/actividad/cosecha/" class="dropdown-link small">Cosecha</a>
+                  </div>
                 </div>
               </div>
             </li>
@@ -35,13 +56,7 @@
               <a href="/rosa/" class="nav-link" :class="{ 'nav-link--active': isActive('/rosa/') }">Rosas</a>
             </li>
             <li class="nav-item">
-              <a href="/hibiscus/" class="nav-link" :class="{ 'nav-link--active': isActive('/hibiscus/') }">Hibiscus</a>
-            </li>
-            <li class="nav-item">
               <a href="/tomate/" class="nav-link" :class="{ 'nav-link--active': isActive('/tomate/') }">Tomates</a>
-            </li>
-            <li class="nav-item">
-              <a href="/albahaca/" class="nav-link" :class="{ 'nav-link--active': isActive('/albahaca/') }">Albahaca</a>
             </li>
             <li class="nav-item">
               <a href="/contacto/" class="nav-link" :class="{ 'nav-link--active': isActive('/contacto/') }">Contacto</a>
@@ -144,6 +159,38 @@ const isDropdownActive = () => {
   return currentPath.value.startsWith('/plantas-') || 
          currentPath.value === '/categorias/' ||
          currentPath.value === '/plantas/'
+}
+
+const isCalendarActive = () => {
+  // Activar "Calendario" para todas las URLs relacionadas con calendario
+  return currentPath.value.startsWith('/calendario/')
+}
+
+const getCurrentAndNextMonthsHTML = () => {
+  const monthNames = [
+    'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+    'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
+  ];
+  
+  const monthDisplayNames = [
+    'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+    'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+  ];
+  
+  const now = new Date();
+  const currentMonth = now.getMonth(); // 0-11
+  let html = '';
+  
+  for (let i = 0; i < 4; i++) {
+    const monthIndex = (currentMonth + i) % 12;
+    const monthSlug = monthNames[monthIndex];
+    const monthDisplay = monthDisplayNames[monthIndex];
+    const isCurrent = i === 0;
+    
+    html += `<a href="/calendario/mes/${monthSlug}/" class="dropdown-link small${isCurrent ? ' current-month' : ''}">${monthDisplay}</a>`;
+  }
+  
+  return html;
 }
 </script>
 
@@ -339,6 +386,54 @@ const isDropdownActive = () => {
   height: 1px;
   background: #e5e7eb;
   margin: 0.5rem 0;
+}
+
+/* Calendar-specific dropdown styles */
+.calendar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.calendar-icon {
+  font-size: 1rem;
+}
+
+.dropdown--calendar {
+  min-width: 280px;
+}
+
+.dropdown-section {
+  padding: 0.5rem 0;
+}
+
+.dropdown-section-title {
+  display: block;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.dropdown-link.small {
+  padding: 0.5rem 1.5rem;
+  font-size: 0.875rem;
+}
+
+.dropdown-link.small:hover {
+  background: rgba(74, 124, 35, 0.08);
+}
+
+.dropdown-link.current-month {
+  background: rgba(74, 124, 35, 0.1);
+  color: #2d5016;
+  font-weight: 600;
+}
+
+.dropdown-link.current-month:hover {
+  background: rgba(74, 124, 35, 0.15);
 }
 
 /* Mobile Styles */

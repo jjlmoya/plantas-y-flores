@@ -2,10 +2,68 @@
   "key": "chocolate",
   "plant_info": {
     "common_names": [
-      "Chocolate"
+      "Cosmos Chocolate", "Chocolate Cosmos"
     ],
-    "scientific_name": "Plantar esta dulce",
-    "difficulty": "beginner"
+    "scientific_name": "Cosmos atrosanguineus",
+    "origin": "MX",
+    "type": "perennial",
+    "difficulty": "intermediate",
+    "family": "Asteraceae"
+  },
+  "flower_data": {
+    "fragrance": "chocolate",
+    "colors": ["dark_red", "maroon"],
+    "flower_shape": "daisy",
+    "size": "medium",
+    "bloom_duration": "16_weeks"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [4, 5],
+      "soil_temperature_min": 16
+    },
+    "flowering": {
+      "best_months": [7, 8, 9, 10],
+      "peak_months": [8, 9]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "4": ["planting", "prepare_beds"],
+        "5": ["planting", "water_moderately"],
+        "6": ["water_regularly", "fertilize"],
+        "7": ["deadhead", "water_regularly"],
+        "8": ["deadhead", "enjoy_fragrance"],
+        "9": ["deadhead", "collect_seeds"],
+        "10": ["reduce_watering", "prepare_winter"],
+        "11": ["lift_tubers", "store_dry"],
+        "12": ["store_tubers_cool_dry"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.5],
+    "spacing": {
+      "plant_distance": 40,
+      "row_distance": 60
+    },
+    "companion_plants": ["dalias", "zinias", "marigolds"],
+    "temperature_range": [15, 30],
+    "special_care": "Levantar tubérculos en invierno, fragancia chocolate intensa"
+  },
+  "tuber_care": {
+    "lifting_time": "after_first_frost",
+    "storage_method": "dry_cool_place",
+    "storage_temperature": [5, 10],
+    "replanting": "spring_after_frost"
+  },
+  "fragrance_data": {
+    "scent_type": "chocolate",
+    "intensity": "strong",
+    "best_time": "evening_night",
+    "notes": "Aroma intenso a chocolate negro"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/03/chocolate-flower-573299_1280-325x217.webp",

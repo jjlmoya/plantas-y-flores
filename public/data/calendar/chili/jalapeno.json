@@ -2,11 +2,83 @@
   "key": "jalapeno",
   "plant_info": {
     "common_names": [
-      "Jalapeño"
+      "Jalapeño", "Chile Jalapeño"
     ],
-    "scientific_name": "Uno de los",
-    "origin": "do",
-    "difficulty": "advanced"
+    "scientific_name": "Capsicum annuum",
+    "origin": "MX",
+    "type": "annual",
+    "difficulty": "intermediate",
+    "family": "Solanaceae"
+  },
+  "calendar_data": {
+    "sowing": {
+      "indoor": {
+        "best_months": [2, 3, 4],
+        "temperature_range": [21, 27],
+        "germination_days": [7, 14]
+      },
+      "outdoor": {
+        "best_months": [5, 6],
+        "temperature_range": [18, 24],
+        "soil_temperature_min": 16
+      }
+    },
+    "transplanting": {
+      "best_months": [5, 6],
+      "soil_temperature_min": 16,
+      "weeks_after_sowing": [6, 8]
+    },
+    "harvesting": {
+      "best_months": [7, 8, 9, 10],
+      "peak_months": [8, 9],
+      "days_to_harvest": [70, 80],
+      "harvest_indicators": "Frutos verdes firmes de 5-7cm"
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "2": ["sow_indoor", "prepare_seedbeds"],
+        "3": ["sow_indoor", "fertilize_seedlings"],
+        "4": ["sow_indoor", "harden_off"],
+        "5": ["transplant", "sow_outdoor", "stake_plants"],
+        "6": ["transplant", "water_regularly", "fertilize"],
+        "7": ["water_regularly", "harvest_early", "pest_control"],
+        "8": ["harvest_main", "water_regularly", "fertilize"],
+        "9": ["harvest_main", "reduce_watering"],
+        "10": ["harvest_late", "collect_seeds"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.0],
+    "spacing": {
+      "plant_distance": 45,
+      "row_distance": 60
+    },
+    "companion_plants": ["tomate", "albahaca", "oregano"],
+    "avoid_plants": ["hinojo"],
+    "temperature_range": [18, 35],
+    "special_care": "Necesita calor constante, proteger de vientos fríos"
+  },
+  "harvest_data": {
+    "days_to_harvest": [70, 80],
+    "weight_range": [10, 25],
+    "storage_life": 14,
+    "preservation_methods": ["refrigerate", "pickle", "dry", "freeze"],
+    "harvest_tips": "Cosechar cuando están verdes y firmes para máximo picor"
+  },
+  "nutritional_data": {
+    "calories_per_100g": 29,
+    "water_content": 92,
+    "scoville_rating": [2500, 8000],
+    "properties": ["vitamina_c", "capsaicina", "antioxidantes", "metabolismo"]
+  },
+  "culinary_data": {
+    "uses": ["salsas", "escabeches", "rellenos", "condimento"],
+    "flavor_profile": "picante_medio",
+    "heat_level": "medium"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/07/jalapeno-pepper-1012274_1280-325x217.webp",

@@ -2,13 +2,60 @@
   "key": "rosa-sinensis",
   "plant_info": {
     "common_names": [
-      "Rosa-Sinensis"
+      "Rosa-Sinensis", "Hibisco Chino", "Rosa de China"
     ],
-    "scientific_name": "Sobran las presentaciones",
-    "difficulty": "intermediate"
+    "scientific_name": "Hibiscus rosa-sinensis",
+    "origin": "CN",
+    "type": "perennial",
+    "difficulty": "intermediate",
+    "family": "Malvaceae"
   },
   "flower_data": {
-    "size": "large"
+    "size": "large",
+    "colors": ["red", "pink", "white", "yellow", "orange"],
+    "flower_shape": "trumpet",
+    "bloom_duration": "1_day"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [4, 5, 6],
+      "soil_temperature_min": 18
+    },
+    "flowering": {
+      "best_months": [5, 6, 7, 8, 9, 10],
+      "peak_months": [7, 8, 9]
+    },
+    "pruning": {
+      "best_months": [3, 4, 10]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["pruning", "fertilize"],
+        "4": ["planting", "fertilize"],
+        "5": ["planting", "water_regularly"],
+        "6": ["deadhead", "water_regularly", "fertilize"],
+        "7": ["deadhead", "water_regularly"],
+        "8": ["deadhead", "water_regularly"],
+        "9": ["deadhead", "reduce_watering"],
+        "10": ["pruning", "prepare_winter"],
+        "11": ["protect_frost"],
+        "12": ["protect_frost"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "high",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.5],
+    "spacing": {
+      "plant_distance": 150,
+      "row_distance": 200
+    },
+    "companion_plants": ["bougainvillea", "gardenia"],
+    "temperature_range": [15, 35],
+    "humidity_needs": "high",
+    "special_care": "Sensible a heladas, necesita protección en invierno"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/03/IMG_8599-325x244.webp",

@@ -2,18 +2,71 @@
   "key": "mutabilis",
   "plant_info": {
     "common_names": [
-      "Mutabilis"
+      "Hibisco Mutabile", "Rosa Confederada", "Cotton Rose"
     ],
-    "scientific_name": "Que es el",
-    "origin": "co",
-    "difficulty": "intermediate"
+    "scientific_name": "Hibiscus mutabilis",
+    "origin": "CN",
+    "type": "perennial",
+    "difficulty": "intermediate",
+    "family": "Malvaceae"
   },
   "flower_data": {
-    "size": "large"
+    "size": "large",
+    "colors": ["white", "pink", "red"],
+    "flower_shape": "hibiscus",
+    "color_change": true,
+    "bloom_duration": "3_days",
+    "daily_color_progression": "white_to_pink_to_red"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 5],
+      "soil_temperature_min": 15
+    },
+    "flowering": {
+      "best_months": [8, 9, 10, 11],
+      "peak_months": [9, 10]
+    },
+    "pruning": {
+      "best_months": [2, 3]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "2": ["pruning", "prepare_beds"],
+        "3": ["planting", "fertilize"],
+        "4": ["planting", "water_regularly"],
+        "5": ["water_regularly", "mulch"],
+        "6": ["water_regularly", "fertilize"],
+        "7": ["water_regularly"],
+        "8": ["water_regularly", "deadhead"],
+        "9": ["water_regularly", "enjoy_color_changes"],
+        "10": ["water_regularly", "deadhead"],
+        "11": ["reduce_watering", "prepare_winter"],
+        "12": ["protect_frost"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.0],
+    "spacing": {
+      "plant_distance": 200,
+      "row_distance": 250
+    },
+    "companion_plants": ["gardenia", "camellia", "azalea"],
+    "temperature_range": [10, 30],
+    "special_care": "Flores cambian de color diariamente, podar en invierno"
+  },
+  "unique_features": {
+    "color_changing": "Flores blancas al amanecer, rosadas al mediodía, rojas al atardecer",
+    "bloom_cycle": "3_days_per_flower",
+    "seasonal_interest": "Floración tardía muy vistosa"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/04/Hibiscus_mutabilis_changing_colors-325x303.webp",
     "article_date": "2018-04-11T10:43:07",
-    "excerpt": ". Que es el Hibiscus Mutabilis Es una planta arbustácea perenne de la familia de las malvaceas, de ramas leñosas y hojas verdes oscuras. Las ramas están coronadas por flores simples o dobles de una gr"
+    "excerpt": ". Que es el Hibiscus Mutabilis Es una planta arbustácea perenne de la familia de las malvaceas, de ramas leñosas y hojas verdes oscuras. Las ramas están coronadas por flores simples o dobles de una gr"
   }
 }

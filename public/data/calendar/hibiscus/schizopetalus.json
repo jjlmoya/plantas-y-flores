@@ -2,16 +2,86 @@
   "key": "schizopetalus",
   "plant_info": {
     "common_names": [
-      "Schizopetalus"
+      "Hibisco Japonés", "Farolillo Chino", "Coral Hibiscus", "Fringed Hibiscus"
     ],
-    "scientific_name": "Es una planta"
+    "scientific_name": "Hibiscus schizopetalus",
+    "origin": "AF",
+    "type": "perennial",
+    "difficulty": "intermediate",
+    "family": "Malvaceae"
   },
   "flower_data": {
-    "size": "large"
+    "size": "medium",
+    "colors": ["red", "orange", "pink"],
+    "flower_shape": "pendant_fringed",
+    "bloom_duration": "2_days",
+    "special_features": "Pétalos profundamente divididos y colgantes",
+    "stamen": "Muy prominente y decorativo"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [4, 5, 6],
+      "soil_temperature_min": 18
+    },
+    "flowering": {
+      "best_months": [6, 7, 8, 9, 10, 11],
+      "peak_months": [7, 8, 9],
+      "continuous_blooming": true
+    },
+    "pruning": {
+      "best_months": [3, 4],
+      "pinching_tips": [5, 6]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["pruning", "prepare_supports"],
+        "4": ["planting", "fertilize", "install_trellis"],
+        "5": ["planting", "pinch_tips", "water_regularly"],
+        "6": ["water_regularly", "train_climbing", "first_blooms"],
+        "7": ["water_regularly", "deadhead", "fertilize"],
+        "8": ["water_regularly", "deadhead", "peak_blooms"],
+        "9": ["water_regularly", "deadhead"],
+        "10": ["water_regularly", "deadhead"],
+        "11": ["reduce_watering", "protect_from_cold"],
+        "12": ["winter_protection", "minimal_water"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "partial_shade",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.0],
+    "spacing": {
+      "plant_distance": 180,
+      "row_distance": 200
+    },
+    "companion_plants": ["mandevilla", "bougainvillea", "passiflora"],
+    "temperature_range": [15, 30],
+    "support_needed": true,
+    "special_care": "Necesita soporte para trepar, proteger de vientos fuertes"
+  },
+  "unique_features": {
+    "flower_form": "Flores colgantes con pétalos profundamente laciniados",
+    "climbing_habit": "Hábito trepador o arbustivo flexible",
+    "exotic_appearance": "Aspecto muy exótico y ornamental",
+    "container_suitable": "Excelente para macetas grandes"
+  },
+  "cultivation_tips": {
+    "support": "Requiere enrejado o estructura de soporte",
+    "pruning": "Poda ligera para mantener forma compacta",
+    "propagation": "Fácil propagación por esquejes",
+    "winter_care": "Proteger de heladas, puede cultivarse en interior"
+  },
+  "design_uses": {
+    "hanging_baskets": "Ideal para cestas colgantes",
+    "pergolas": "Excelente para pérgolas y arcos",
+    "tropical_gardens": "Elemento clave en jardines tropicales",
+    "container_gardens": "Perfecto para jardines en macetas"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/03/Hibiscus_schizopetalus-325x217.webp",
     "article_date": "2018-03-21T07:00:18",
-    "excerpt": "La variedad Schizopetalus es una de las flores más exóticas por su forma y por sus características. Una flor trepadora de floración continua. Si estás en un clima cálido y buscas tener un jardín único"
+    "excerpt": "La variedad Schizopetalus es una de las flores más exóticas por su forma y por sus características. Una flor trepadora de floración continua. Si estás en un clima cálido y buscas tener un jardín único"
   }
 }

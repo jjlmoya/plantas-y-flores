@@ -2,14 +2,65 @@
   "key": "splendens",
   "plant_info": {
     "common_names": [
-      "Splendens"
+      "Hibisco Espléndido", "Turk's Turban", "Mexican Rose Mallow"
     ],
-    "scientific_name": "Su gran floraci",
-    "origin": "ia",
-    "difficulty": "beginner"
+    "scientific_name": "Hibiscus splendens",
+    "origin": "AU",
+    "type": "perennial",
+    "difficulty": "intermediate",
+    "family": "Malvaceae"
   },
   "flower_data": {
-    "size": "large"
+    "size": "extra_large",
+    "colors": ["pink", "white", "cream"],
+    "flower_shape": "hibiscus",
+    "bloom_duration": "1_day",
+    "petal_texture": "delicate_striped"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [4, 5, 6],
+      "soil_temperature_min": 18
+    },
+    "flowering": {
+      "best_months": [6, 7, 8, 9, 10],
+      "peak_months": [7, 8, 9]
+    },
+    "pruning": {
+      "best_months": [3, 4]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["pruning", "prepare_beds"],
+        "4": ["planting", "fertilize"],
+        "5": ["planting", "water_regularly"],
+        "6": ["water_regularly", "deadhead"],
+        "7": ["water_regularly", "deadhead", "fertilize"],
+        "8": ["water_regularly", "deadhead"],
+        "9": ["water_regularly", "deadhead"],
+        "10": ["reduce_watering", "collect_seeds"],
+        "11": ["prepare_winter", "mulch"],
+        "12": ["protect_frost"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.5],
+    "spacing": {
+      "plant_distance": 150,
+      "row_distance": 200
+    },
+    "companion_plants": ["gardenia", "plumeria", "ixora"],
+    "temperature_range": [15, 35],
+    "special_care": "Flores grandes y delicadas, necesita espacio y protección del viento"
+  },
+  "unique_features": {
+    "flower_size": "Flores extra grandes hasta 25cm de diámetro",
+    "petal_pattern": "Pétalos delicadamente estriados y ondulados",
+    "growth_habit": "Arbusto de crecimiento moderado"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/04/stock-rose-2505032__340-325x217.webp",

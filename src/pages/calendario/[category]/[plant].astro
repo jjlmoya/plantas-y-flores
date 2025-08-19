@@ -127,7 +127,7 @@ for (let month = 1; month <= 12; month++) {
   if (calendar.planting?.best_months?.includes(month)) {
     monthData.activities.push({
       type: 'planting',
-      label: 'Plantación',
+      label: 'Óptimo Plantar',
       color: ui.getActivityColor('planting'),
       icon: ui.getTaskIcon('transplant')
     });
@@ -181,10 +181,50 @@ console.log('plantExportData:', JSON.stringify(plantExportData));
 ---
 
 <BaseLayout 
-  title={`${plantName} - Calendario de Cultivo | Cuándo Plantar ${plantName}`}
-  description={`Guía completa de cultivo para ${plantName}. Calendario detallado de siembra, cuidados y cosecha. ${plantInfo.scientific_name ? `Nombre científico: ${plantInfo.scientific_name}` : ''}`}
+  title={`${plantName} - Calendario de Cultivo ${new Date().getFullYear()} | Cuándo Plantar ${plantName}`}
+  description={`🌱 Guía completa de cultivo para ${plantName}. Calendario detallado con fechas de siembra, trasplante y cosecha. ${plantInfo.scientific_name ? `${plantInfo.scientific_name}. ` : ''}Aprende cuándo y cómo cultivar ${plantName} paso a paso.`}
+  keywords={`${plantName}, cultivo ${plantName}, calendario ${plantName}, plantar ${plantName}, sembrar ${plantName}, ${plantInfo.scientific_name || ''}, ${categoryName}`}
+  type="article"
+  canonical={`/calendario/${category}/${plantSlug}/`}
+  category={categoryName}
+  publishedDate={new Date().toISOString()}
+  modifiedDate={new Date().toISOString()}
 >
   <link rel="stylesheet" href="/styles/calendar-theme.css">
+  
+  <!-- Structured Data for Plant -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": `Calendario de Cultivo para ${plantName}`,
+      "description": `Guía completa de cultivo para ${plantName} con calendario detallado de siembra, trasplante y cosecha`,
+      "author": {
+        "@type": "Organization",
+        "name": "Plantas y Flores"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Plantas y Flores",
+        "url": "https://plantasyflores.online"
+      },
+      "datePublished": "${new Date().toISOString()}",
+      "dateModified": "${new Date().toISOString()}",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `https://plantasyflores.online/calendario/${category}/${plantSlug}/`
+      },
+      "about": {
+        "@type": "Thing",
+        "name": "${plantName}",
+        ${plantInfo.scientific_name ? `"scientificName": "${plantInfo.scientific_name}",` : ''}
+        "category": "${categoryName}"
+      },
+      "keywords": "${plantName}, cultivo, calendario, plantación, siembra, trasplante, cosecha",
+      "articleSection": "Calendario de Cultivo"
+    }
+  </script>
+  
   <div class="plant-calendar-view">
     <!-- Header -->
     <header class="page-header">
@@ -256,47 +296,92 @@ console.log('plantExportData:', JSON.stringify(plantExportData));
       <section class="timeline-section">
         <h2>📅 Calendario Anual de {plantName}</h2>
         
-        <div class="yearly-timeline">
-          <div class="timeline-months">
-            {timelineData.map(monthData => (
-              <div 
-                class={`timeline-month ${monthData.activities.length > 0 ? 'has-activities' : ''}`}
-                key={monthData.month}
-              >
-                <div class="month-header">
-                  <h3>{monthData.monthName}</h3>
-                  <span class="month-number">{monthData.month}</span>
-                </div>
-                
-                <div class="month-activities">
-                  {monthData.activities.length > 0 ? (
-                    <div class="activities-list">
-                      {monthData.activities.map((activity, index) => (
-                        <div 
-                          class={`activity-item ${activity.priority || 'normal'}`}
-                          key={index}
-                          style={`border-left-color: ${activity.color}`}
-                        >
-                          <div class="activity-header">
-                            <span class="activity-icon">{activity.icon}</span>
-                            <span class="activity-label">{activity.label}</span>
-                          </div>
-                          {activity.details && (
-                            <div class="activity-details">
-                              {activity.details}
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div class="no-activities">
-                      <span>Mantenimiento general</span>
-                    </div>
-                  )}
-                </div>
+        <!-- Mobile Timeline -->
+        <div class="timeline-mobile">
+          {timelineData.map(monthData => (
+            <div 
+              class={`timeline-month-mobile ${monthData.activities.length > 0 ? 'has-activities' : ''}`}
+              key={`mobile-${monthData.month}`}
+            >
+              <div class="timeline-month-header-mobile">
+                <div class="timeline-month-name-mobile">{monthData.monthName}</div>
+                <div class="timeline-month-number-mobile">{monthData.month}</div>
               </div>
-            ))}
+              
+              {monthData.activities.length > 0 ? (
+                <div class="timeline-activities-mobile">
+                  {monthData.activities.map((activity, index) => (
+                    <div 
+                      class={`timeline-activity-mobile ${activity.type} ${activity.priority || 'normal'}`}
+                      key={`mobile-${index}`}
+                    >
+                      <div class="timeline-activity-icon-mobile">
+                        {activity.icon}
+                      </div>
+                      <div class="timeline-activity-content-mobile">
+                        <div class="timeline-activity-label-mobile">{activity.label}</div>
+                        {activity.details && (
+                          <div class="timeline-activity-details-mobile">
+                            {activity.details}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div class="timeline-no-activities-mobile">
+                  Mantenimiento general
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        <!-- Desktop Timeline -->
+        <div class="timeline-desktop">
+          <div class="yearly-timeline">
+            <div class="timeline-months">
+              {timelineData.map(monthData => (
+                <div 
+                  class={`timeline-month ${monthData.activities.length > 0 ? 'has-activities' : ''}`}
+                  key={monthData.month}
+                >
+                  <div class="month-header">
+                    <h3>{monthData.monthName}</h3>
+                    <span class="month-number">{monthData.month}</span>
+                  </div>
+                  
+                  <div class="month-activities">
+                    {monthData.activities.length > 0 ? (
+                      <div class="activities-list">
+                        {monthData.activities.map((activity, index) => (
+                          <div 
+                            class={`activity-item ${activity.priority || 'normal'}`}
+                            key={index}
+                            style={`border-left-color: ${activity.color}`}
+                          >
+                            <div class="activity-header">
+                              <span class="activity-icon">{activity.icon}</span>
+                              <span class="activity-label">{activity.label}</span>
+                            </div>
+                            {activity.details && (
+                              <div class="activity-details">
+                                {activity.details}
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div class="no-activities">
+                        <span>Mantenimiento general</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

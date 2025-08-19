@@ -575,7 +575,7 @@ export function getUIHelpers(globalConfig) {
         'transplanting': 'Trasplante', 
         'harvesting': 'Cosecha',
         'flowering': 'Floración',
-        'planting': 'Plantación',
+        'planting': 'Plantacióna',
         'pruning': 'Poda',
         'watering': 'Riego',
         'fertilizing': 'Fertilización',
@@ -590,6 +590,7 @@ export function getUIHelpers(globalConfig) {
         'prune_shoots': 'Podar Brotes',
         'prune_main': 'Poda Principal',
         'deadheading': 'Eliminar Flores Marchitas',
+        'deadhead': 'Eliminar Flores Marchitas',
         'fertilize': 'Fertilizar',
         'pest_monitoring': 'Monitoreo de Plagas',
         'harvest_early': 'Cosecha Temprana',
@@ -669,7 +670,14 @@ export function getUIHelpers(globalConfig) {
         'outdoor': 'Exterior',
         'container': 'Contenedor',
         'ground': 'Suelo',
-        'greenhouse': 'Invernadero'
+        'greenhouse': 'Invernadero',
+        'minimal_care': 'Cuidado Mínimo',
+        'windbreak_check': 'Revisión de Rompevientos',
+        'salt_tolerance_check': 'Revisión de Tolerancia a la Sal',
+        'prepare_coastal_beds': 'Preparar Parterres Costeros',
+        'water_establishment': 'Riego para Establecimiento',
+        'water_regularly': 'Riego Regular',
+        'reduce_watering': 'Reducir Riego',
       };
       
       // Return translation if available, otherwise format the original

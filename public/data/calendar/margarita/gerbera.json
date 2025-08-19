@@ -2,10 +2,62 @@
   "key": "gerbera",
   "plant_info": {
     "common_names": [
-      "Gerbera"
+      "Margarita Gerbera", "Gerbera", "Margarita Africana"
     ],
-    "scientific_name": "Gerbera Jamesonni",
-    "difficulty": "advanced"
+    "scientific_name": "Gerbera jamesonii",
+    "origin": "ZA",
+    "type": "perennial",
+    "difficulty": "intermediate",
+    "family": "Asteraceae"
+  },
+  "flower_data": {
+    "colors": ["red", "pink", "orange", "yellow", "white", "purple"],
+    "flower_shape": "daisy",
+    "size": "large",
+    "bloom_duration": "6_weeks"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 5],
+      "soil_temperature_min": 15
+    },
+    "flowering": {
+      "best_months": [5, 6, 7, 8, 9, 10],
+      "peak_months": [6, 7, 8]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["planting", "prepare_beds"],
+        "4": ["planting", "water_carefully"],
+        "5": ["water_regularly", "fertilize"],
+        "6": ["deadhead", "water_base_only"],
+        "7": ["deadhead", "water_base_only", "ventilate"],
+        "8": ["deadhead", "water_base_only"],
+        "9": ["reduce_watering", "remove_spent"],
+        "10": ["prepare_winter", "protect_frost"],
+        "11": ["protect_frost", "reduce_watering"],
+        "12": ["minimal_watering"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "bright_indirect",
+    "water_needs": "moderate",
+    "soil_type": "well_drained_organic",
+    "soil_ph": [6.0, 7.0],
+    "spacing": {
+      "plant_distance": 25,
+      "row_distance": 40
+    },
+    "companion_plants": ["petunias", "begonias", "impatiens"],
+    "temperature_range": [18, 25],
+    "humidity_needs": "moderate",
+    "special_care": "Evitar riego en hojas, necesita ventilación buena"
+  },
+  "care_notes": {
+    "watering": "Regar en la base, nunca sobre las hojas",
+    "fertilizing": "Fertilizante líquido cada 2 semanas durante floración",
+    "common_problems": ["hongos_por_humedad", "pudricion_corona", "trips"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/02/gerbera-757483_1280-325x244.webp",

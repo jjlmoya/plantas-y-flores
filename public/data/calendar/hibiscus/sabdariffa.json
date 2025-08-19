@@ -2,13 +2,85 @@
   "key": "sabdariffa",
   "plant_info": {
     "common_names": [
-      "Sabdariffa"
+      "Flor de Jamaica", "Hibisco Rojo", "Roselle", "Sorrel"
     ],
-    "scientific_name": "la relaci",
-    "difficulty": "advanced"
+    "scientific_name": "Hibiscus sabdariffa",
+    "origin": "AF",
+    "type": "annual",
+    "difficulty": "intermediate",
+    "family": "Malvaceae"
   },
   "flower_data": {
-    "size": "large"
+    "size": "medium",
+    "colors": ["red", "pink", "cream"],
+    "flower_shape": "hibiscus",
+    "bloom_duration": "1_day",
+    "calyx_color": "deep_red",
+    "edible_parts": "cálices"
+  },
+  "calendar_data": {
+    "sowing": {
+      "indoor": {
+        "best_months": [3, 4],
+        "temperature_range": [20, 25],
+        "germination_days": [7, 14]
+      },
+      "outdoor": {
+        "best_months": [5, 6],
+        "temperature_range": [20, 30],
+        "soil_temperature_min": 18
+      }
+    },
+    "transplanting": {
+      "best_months": [5, 6],
+      "soil_temperature_min": 18,
+      "weeks_after_sowing": [4, 6]
+    },
+    "flowering": {
+      "best_months": [7, 8, 9, 10],
+      "peak_months": [8, 9]
+    },
+    "harvest": {
+      "calyx_harvest": [9, 10, 11],
+      "leaf_harvest": [6, 7, 8, 9]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["sow_indoor", "prepare_beds"],
+        "4": ["sow_indoor", "fertilize_seedlings"],
+        "5": ["transplant", "sow_outdoor"],
+        "6": ["water_regularly", "harvest_young_leaves"],
+        "7": ["water_regularly", "fertilize", "harvest_leaves"],
+        "8": ["water_regularly", "deadhead", "monitor_flower_development"],
+        "9": ["water_regularly", "harvest_calyces"],
+        "10": ["harvest_calyces", "collect_seeds"],
+        "11": ["final_harvest", "prepare_winter"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.0],
+    "spacing": {
+      "plant_distance": 90,
+      "row_distance": 120
+    },
+    "companion_plants": ["basil", "marigold", "tomato"],
+    "temperature_range": [18, 35],
+    "special_care": "Planta comestible y medicinal, requiere calor para producir frutos"
+  },
+  "culinary_uses": {
+    "edible_parts": "Cálices rojos, hojas jóvenes",
+    "preparation": "Infusiones, mermeladas, bebidas refrescantes",
+    "flavor": "Ácido y refrescante, similar al arándano",
+    "nutrition": "Rico en vitamina C y antioxidantes"
+  },
+  "medicinal_properties": {
+    "benefits": "Antioxidante, reduce presión arterial, diurético",
+    "traditional_uses": "Té medicinal, tratamiento de hipertensión",
+    "preparation": "Infusión de cálices secos"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/04/garden-1037019_960_720-325x201.webp",

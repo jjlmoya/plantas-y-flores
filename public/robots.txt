@@ -4,6 +4,7 @@ Allow: /
 Sitemap: https://plantasyflores.online/sitemap-index.xml
 Sitemap: https://plantasyflores.online/page-sitemap.xml
 Sitemap: https://plantasyflores.online/post-sitemap.xml
+Sitemap: https://plantasyflores.online/calendar-sitemap.xml
 
 Disallow: /api/
 Disallow: /_astro/

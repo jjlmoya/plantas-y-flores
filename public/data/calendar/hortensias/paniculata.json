@@ -2,11 +2,65 @@
   "key": "paniculata",
   "plant_info": {
     "common_names": [
-      "Paniculata"
+      "Hortensia Paniculata", "Hydrangea Paniculata"
     ],
-    "scientific_name": "Es una planta",
-    "origin": "es",
-    "difficulty": "beginner"
+    "scientific_name": "Hydrangea paniculata",
+    "origin": "JP",
+    "type": "perennial",
+    "difficulty": "beginner",
+    "family": "Hydrangeaceae"
+  },
+  "flower_data": {
+    "colors": ["white", "pink", "cream"],
+    "flower_shape": "panicle",
+    "size": "large",
+    "bloom_duration": "12_weeks"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 5, 10, 11],
+      "soil_temperature_min": 10
+    },
+    "flowering": {
+      "best_months": [7, 8, 9, 10],
+      "peak_months": [8, 9]
+    },
+    "pruning": {
+      "best_months": [2, 3]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "2": ["pruning", "fertilize"],
+        "3": ["planting", "mulch"],
+        "4": ["planting", "water_regularly"],
+        "5": ["water_regularly", "fertilize"],
+        "6": ["water_regularly", "deadhead_spent"],
+        "7": ["water_regularly", "deadhead_spent"],
+        "8": ["water_regularly", "support_heavy_flowers"],
+        "9": ["reduce_watering", "enjoy_blooms"],
+        "10": ["planting", "prepare_winter"],
+        "11": ["planting", "protect_roots"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "partial_shade",
+    "water_needs": "high",
+    "soil_type": "rich_moist",
+    "soil_ph": [5.5, 7.0],
+    "spacing": {
+      "plant_distance": 150,
+      "row_distance": 200
+    },
+    "companion_plants": ["astilbe", "hosta", "helechos"],
+    "temperature_range": [-20, 30],
+    "humidity_needs": "high",
+    "special_care": "Necesita protección del viento fuerte y sol intenso"
+  },
+  "pruning_data": {
+    "pruning_type": "light",
+    "best_time": "late_winter",
+    "notes": "Florece en madera nueva, podar ligeramente"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/12/vintage-1029413_1280-325x325.webp",

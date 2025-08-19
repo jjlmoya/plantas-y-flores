@@ -2,17 +2,72 @@
   "key": "tiliaceus",
   "plant_info": {
     "common_names": [
-      "Tiliaceus"
+      "Hibisco del Mar", "Majagua", "Sea Hibiscus", "Beach Hibiscus"
     ],
-    "scientific_name": "Una planta r",
-    "origin": "lo"
+    "scientific_name": "Hibiscus tiliaceus",
+    "origin": "AS",
+    "type": "perennial",
+    "difficulty": "beginner",
+    "family": "Malvaceae"
   },
   "flower_data": {
-    "size": "large"
+    "size": "large",
+    "colors": ["yellow", "orange", "red"],
+    "flower_shape": "hibiscus",
+    "bloom_duration": "1_day",
+    "color_change": true,
+    "daily_color_progression": "yellow_to_orange_to_red"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [4, 5, 6, 7],
+      "soil_temperature_min": 18
+    },
+    "flowering": {
+      "best_months": [6, 7, 8, 9, 10, 11],
+      "peak_months": [7, 8, 9]
+    },
+    "pruning": {
+      "best_months": [3, 4]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["pruning", "prepare_coastal_beds"],
+        "4": ["planting", "salt_tolerance_check"],
+        "5": ["planting", "water_establishment"],
+        "6": ["water_regularly", "deadhead"],
+        "7": ["water_regularly", "deadhead", "fertilize"],
+        "8": ["water_regularly", "deadhead"],
+        "9": ["water_regularly", "deadhead"],
+        "10": ["water_regularly", "deadhead"],
+        "11": ["reduce_watering", "windbreak_check"],
+        "12": ["minimal_care"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "sandy_well_drained",
+    "soil_ph": [6.0, 8.0],
+    "salt_tolerance": "high",
+    "spacing": {
+      "plant_distance": 300,
+      "row_distance": 400
+    },
+    "companion_plants": ["coconut_palm", "pandanus", "casuarina"],
+    "temperature_range": [15, 35],
+    "special_care": "Tolerante a suelos salinos y vientos costeros, ideal para jardines marítimos"
+  },
+  "coastal_adaptations": {
+    "salt_spray_tolerance": "Excelente resistencia al spray salino",
+    "wind_resistance": "Muy resistente a vientos costeros",
+    "soil_adaptation": "Prospera en suelos arenosos y pobres",
+    "erosion_control": "Ayuda a estabilizar dunas costeras"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/04/hibiscus-3287660_1280-325x217.webp",
     "article_date": "2018-04-04T16:42:23",
-    "excerpt": "El Hibiscus Tiliaceus es la planta ideal para tener en jardines de costa y cerca del mar. Una planta resistente a la humedad y a la salinidad que tolera los suelos arenosos. Si quieres cultivar un peq"
+    "excerpt": "El Hibiscus Tiliaceus es la planta ideal para tener en jardines de costa y cerca del mar. Una planta resistente a la humedad y a la salinidad que tolera los suelos arenosos. Si quieres cultivar un peq"
   }
 }
