@@ -1,10 +1,17 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import CalendarFilters from '../../components/CalendarFilters.vue';
-import StatsCard from '../../components/StatsCard.vue';
-import CategoryGrid from '../../components/CategoryGrid.vue';
-import LoadingSpinner from '../../components/LoadingSpinner.vue';
-import { getMonthlyTasksWithUI, getAvailableCalendarCategories, getGlobalCalendarConfig, getAvailableActivities, getCategoryPlantsWithCalendar } from '../../utils/calendar-inheritance.js';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CalendarFilters from "../../components/CalendarFilters.vue";
+import StatsCard from "../../components/StatsCard.vue";
+import CategoryGrid from "../../components/CategoryGrid.vue";
+import LoadingSpinner from "../../components/LoadingSpinner.vue";
+import {
+  getMonthlyTasksWithUI,
+  getAvailableCalendarCategories,
+  getGlobalCalendarConfig,
+  getAvailableActivities,
+  getCategoryPlantsWithCalendar,
+  activityToSlug,
+} from "../../utils/calendar-inheritance.js";
 
 // Get current month data with UI helpers
 const currentMonth = new Date().getMonth() + 1; // 1-12
@@ -13,7 +20,12 @@ const categories = await getAvailableCalendarCategories();
 const activities = await getAvailableActivities();
 const globalConfig = await getGlobalCalendarConfig();
 
-const { tasks: monthlyTasks, ui, monthName: currentMonthName, seasonalTips } = monthlyData;
+const {
+  tasks: monthlyTasks,
+  ui,
+  monthName: currentMonthName,
+  seasonalTips,
+} = monthlyData;
 
 // Not using sample plants anymore as per user feedback
 
@@ -27,21 +39,19 @@ for (const category of categories) {
   allPlantsWithCalendar.push(...categoryPlants);
 }
 
-
-
 // Generate quick navigation months using dynamic month names
-const quickNavMonths = Array.from({length: 12}, (_, i) => ({
+const quickNavMonths = Array.from({ length: 12 }, (_, i) => ({
   number: i + 1,
   name: ui.getMonthName(i + 1),
-  isCurrent: i + 1 === currentMonth
+  isCurrent: i + 1 === currentMonth,
 }));
 ---
 
-<BaseLayout 
+<BaseLayout
   title="Calendario de Plantación | Guía Completa de Cultivo"
   description={`Calendario de plantación para ${currentMonthName}. Descubre qué plantar, cuándo sembrar y cómo cuidar tus plantas mes a mes.`}
 >
-  <link rel="stylesheet" href="/src/styles/calendar-theme.css">
+  <link rel="stylesheet" href="/styles/calendar-theme.css" />
   <div class="calendar-dashboard">
     <!-- Header -->
     <header class="page-header">
@@ -49,11 +59,11 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
         <!-- Navigation Header -->
         <div class="nav-header">
           <a href="/" class="home-link" title="Volver al inicio">🏠 Inicio</a>
-          
+
           <!-- Hemisphere Selector -->
           <div class="hemisphere-selector">
-            <button 
-              id="hemisphere-toggle" 
+            <button
+              id="hemisphere-toggle"
               class="hemisphere-toggle"
               title="Cambiar hemisferio"
             >
@@ -63,7 +73,9 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
         </div>
 
         <h1 class="page-title">Calendario de Plantación</h1>
-        <p class="page-subtitle">Planifica tu jardín y huerto siguiendo el calendario natural</p>
+        <p class="page-subtitle">
+          Planifica tu jardín y huerto siguiendo el calendario natural
+        </p>
       </div>
     </header>
 
@@ -71,10 +83,14 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
       <!-- Current Month Section -->
       <section class="current-month-section">
         <h2>🌱 Este Mes: {currentMonthName}</h2>
-        
+
         <div class="grid-responsive">
           <!-- Loading Skeleton for Initial Load -->
-          <div class="dashboard-skeleton" id="dashboard-skeleton" style="display: none;">
+          <div
+            class="dashboard-skeleton"
+            id="dashboard-skeleton"
+            style="display: none;"
+          >
             <div class="skeleton-stats-grid">
               <div class="skeleton-stats-card">
                 <div class="skeleton-card-header">
@@ -115,7 +131,7 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
               </div>
             </div>
           </div>
-          
+
           <!-- Actual Content -->
           <!-- Tasks Widget -->
           <StatsCard
@@ -126,37 +142,53 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
             footerLink={`/calendario/mes/${ui.getMonthSlug(currentMonth)}/`}
             footerText="Ver calendario del mes"
           >
-            {Object.keys(monthlyTasks).length > 0 ? (
-              <div class="tasks-list">
-                {Object.entries(monthlyTasks).map(([category, plants]) => (
-                  <div class="category-tasks collapsible" key={category}>
-                    <h4 class="category-header" onclick={`toggleCategory('${category}')`}>
-                      <span class="category-icon">{ui.getCategoryIcon(category)}</span>
-                      <span class="category-name">{ui.formatCategoryName(category)}</span>
-                      <span class="plants-count">({Object.keys(plants).length} plantas)</span>
-                      <span class="collapse-icon">▼</span>
-                    </h4>
-                    <div class="category-content" id={`category-${category}`}>
-                      {Object.entries(plants).map(([plantSlug, tasks]) => (
-                        <div class="plant-tasks" key={plantSlug}>
-                          <strong>{ui.formatPlantName(plantSlug)}</strong>
-                          <ul>
-                            {tasks.map(task => (
-                              <li key={task} class={`task-priority-${ui.getTaskPriority(task)}`}>
-                                <span class="task-icon">{ui.getTaskIcon(task)}</span>
-                                {ui.formatTaskName(task)}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
+            {
+              Object.keys(monthlyTasks).length > 0 ? (
+                <div class="tasks-list">
+                  {Object.entries(monthlyTasks).map(([category, plants]) => (
+                    <div class="category-tasks collapsible" key={category}>
+                      <h4
+                        class="category-header"
+                        onclick={`toggleCategory('${category}')`}
+                      >
+                        <span class="category-icon">
+                          {ui.getCategoryIcon(category)}
+                        </span>
+                        <span class="category-name">
+                          {ui.formatCategoryName(category)}
+                        </span>
+                        <span class="plants-count">
+                          ({Object.keys(plants).length} plantas)
+                        </span>
+                        <span class="collapse-icon">▼</span>
+                      </h4>
+                      <div class="category-content" id={`category-${category}`}>
+                        {Object.entries(plants).map(([plantSlug, tasks]) => (
+                          <div class="plant-tasks" key={plantSlug}>
+                            <strong>{ui.formatPlantName(plantSlug)}</strong>
+                            <ul>
+                              {tasks.map((task) => (
+                                <li
+                                  key={task}
+                                  class={`task-priority-${ui.getTaskPriority(task)}`}
+                                >
+                                  <span class="task-icon">
+                                    {ui.getTaskIcon(task)}
+                                  </span>
+                                  {ui.formatTaskName(task)}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <p class="no-tasks">No hay tareas específicas este mes</p>
-            )}
+                  ))}
+                </div>
+              ) : (
+                <p class="no-tasks">No hay tareas específicas este mes</p>
+              )
+            }
           </StatsCard>
 
           <!-- Next Month Preview -->
@@ -182,7 +214,7 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
           >
             <CategoryGrid
               client:visible
-              categories={categories.map(cat => ({ slug: cat, name: cat }))}
+              categories={categories.map((cat) => ({ slug: cat, name: cat }))}
               baseUrl="/calendario/categoria/"
               columns="3"
               minWidth="100px"
@@ -195,16 +227,18 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
       <section class="section-spacing">
         <h2>Navegar por Meses</h2>
         <div class="months-grid">
-          {quickNavMonths.map(month => (
-            <a 
-              href={`/calendario/mes/${ui.getMonthSlug(month.number)}/`} 
-              class={`month-link ${month.isCurrent ? 'current' : ''}`}
-              key={month.number}
-            >
-              <span class="month-number">{month.number}</span>
-              <span class="month-name">{month.name}</span>
-            </a>
-          ))}
+          {
+            quickNavMonths.map((month) => (
+              <a
+                href={`/calendario/mes/${ui.getMonthSlug(month.number)}/`}
+                class={`month-link ${month.isCurrent ? "current" : ""}`}
+                key={month.number}
+              >
+                <span class="month-number">{month.number}</span>
+                <span class="month-name">{month.name}</span>
+              </a>
+            ))
+          }
         </div>
       </section>
 
@@ -212,9 +246,9 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
       <section class="section-spacing">
         <h2>Explorar y Filtrar Plantas</h2>
         <p>Encuentra plantas específicas según tus necesidades y experiencia</p>
-        
+
         <div class="filters-container">
-          <CalendarFilters 
+          <CalendarFilters
             client:visible
             plants={allPlantsWithCalendar}
             availableCategories={categories}
@@ -227,18 +261,30 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
       <!-- Activities Section -->
       <section class="section-spacing">
         <h2>Explorar por Actividades</h2>
-        <p>Encuentra todas las plantas organizadas por tipo de actividad de jardinería</p>
-        
+        <p>
+          Encuentra todas las plantas organizadas por tipo de actividad de
+          jardinería
+        </p>
+
         <div class="activities-grid">
-          {activities.map(activity => (
-            <a href={`/calendario/actividad/${activity}/`} class="activity-card" key={activity}>
-              <div class="activity-header">
-                <span class="activity-icon">{ui.getTaskIcon(activity)}</span>
-                <h3>{ui.formatTaskName(activity)}</h3>
-              </div>
-              <p>Ver todas las plantas para {ui.formatTaskName(activity).toLowerCase()}</p>
-            </a>
-          ))}
+          {
+            activities.map((activity) => (
+              <a
+                href={`/calendario/actividad/${activityToSlug(activity)}/`}
+                class="activity-card"
+                key={activity}
+              >
+                <div class="activity-header">
+                  <span class="activity-icon">{ui.getTaskIcon(activity)}</span>
+                  <h3>{ui.formatTaskName(activity)}</h3>
+                </div>
+                <p>
+                  Ver todas las plantas para{" "}
+                  {ui.formatTaskName(activity).toLowerCase()}
+                </p>
+              </a>
+            ))
+          }
         </div>
       </section>
 
@@ -246,30 +292,35 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
       <section class="tips-section">
         <h2>💡 Consejos de {currentMonthName}</h2>
         <div class="tips-grid">
-          {seasonalTips.temperature && (
-            <div class="tip-card">
-              <h3>🌡️ Temperatura</h3>
-              <p>{seasonalTips.temperature}</p>
-            </div>
-          )}
-          
-          {seasonalTips.watering && (
-            <div class="tip-card">
-              <h3>💧 Riego</h3>
-              <p>{seasonalTips.watering}</p>
-            </div>
-          )}
+          {
+            seasonalTips.temperature && (
+              <div class="tip-card">
+                <h3>🌡️ Temperatura</h3>
+                <p>{seasonalTips.temperature}</p>
+              </div>
+            )
+          }
 
-          {seasonalTips.sunlight && (
-            <div class="tip-card">
-              <h3>☀️ Sol</h3>
-              <p>{seasonalTips.sunlight}</p>
-            </div>
-          )}
+          {
+            seasonalTips.watering && (
+              <div class="tip-card">
+                <h3>💧 Riego</h3>
+                <p>{seasonalTips.watering}</p>
+              </div>
+            )
+          }
+
+          {
+            seasonalTips.sunlight && (
+              <div class="tip-card">
+                <h3>☀️ Sol</h3>
+                <p>{seasonalTips.sunlight}</p>
+              </div>
+            )
+          }
         </div>
       </section>
     </div>
-
   </div>
 </BaseLayout>
 
@@ -394,7 +445,9 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
   .category-content {
     max-height: 1000px;
     overflow: hidden;
-    transition: max-height 0.3s ease, padding 0.3s ease;
+    transition:
+      max-height 0.3s ease,
+      padding 0.3s ease;
     padding: 0 var(--space-sm) var(--space-sm);
   }
 
@@ -480,7 +533,6 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
     background: var(--color-primary-light);
     transform: translateY(-1px);
   }
-
 
   .months-grid {
     display: grid;
@@ -645,21 +697,20 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
     font-size: var(--font-size-sm);
   }
 
-
   @media (max-width: 768px) {
     .dashboard-header h1 {
       font-size: 2rem;
     }
-    
+
     .grid-responsive {
       grid-template-columns: 1fr;
       gap: var(--space-md);
     }
-    
+
     .month-grid {
       grid-template-columns: 1fr;
     }
-    
+
     .months-grid {
       grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     }
@@ -678,21 +729,21 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
       height: 40px;
       font-size: 1.2rem;
     }
-    
+
     .nav-header {
       flex-direction: column;
       gap: var(--space-sm);
       align-items: stretch;
     }
-    
+
     .home-link {
       align-self: flex-start;
     }
-    
+
     .hemisphere-selector {
       align-self: flex-end;
     }
-    
+
     .current-month-section h2,
     section h2 {
       font-size: var(--font-size-2xl);
@@ -805,7 +856,7 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
     .skeleton-stats-grid {
       grid-template-columns: 1fr;
     }
-    
+
     .skeleton-grid {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -815,16 +866,16 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
     .grid-responsive {
       gap: var(--space-sm);
     }
-    
+
     .container {
       padding: 0 var(--space-xs);
     }
-    
+
     .months-grid {
       grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
       gap: var(--space-xs);
     }
-    
+
     .skeleton-stats-card {
       padding: var(--space-md, 1rem);
     }
@@ -833,51 +884,58 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
 
 <script>
   // Hemisphere selector functionality
-  let currentHemisphere = 'northern';
-  
+  let currentHemisphere = "northern";
+
   // Hemisphere utility functions (client-side versions)
   function getUserHemisphere() {
-    if (typeof localStorage === 'undefined') return 'northern';
-    
+    if (typeof localStorage === "undefined") return "northern";
+
     // Check localStorage first
-    const saved = localStorage.getItem('calendar-hemisphere');
-    if (saved && ['northern', 'southern'].includes(saved)) {
+    const saved = localStorage.getItem("calendar-hemisphere");
+    if (saved && ["northern", "southern"].includes(saved)) {
       return saved;
     }
-    
+
     // Try to detect from timezone (rough estimation)
     try {
       const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
       const southernZones = [
-        'Australia/', 'Pacific/Auckland', 'Pacific/Fiji', 
-        'America/Argentina', 'America/Sao_Paulo', 'America/Santiago',
-        'Africa/Johannesburg', 'Indian/Mauritius'
+        "Australia/",
+        "Pacific/Auckland",
+        "Pacific/Fiji",
+        "America/Argentina",
+        "America/Sao_Paulo",
+        "America/Santiago",
+        "Africa/Johannesburg",
+        "Indian/Mauritius",
       ];
-      
-      const isSouthern = southernZones.some(zone => timezone.includes(zone));
-      return isSouthern ? 'southern' : 'northern';
+
+      const isSouthern = southernZones.some((zone) => timezone.includes(zone));
+      return isSouthern ? "southern" : "northern";
     } catch (error) {
-      console.warn('Could not detect hemisphere from timezone:', error);
-      return 'northern';
+      console.warn("Could not detect hemisphere from timezone:", error);
+      return "northern";
     }
   }
-  
+
   function setUserHemisphere(hemisphere) {
-    if (typeof localStorage === 'undefined') return;
-    
-    if (!['northern', 'southern'].includes(hemisphere)) {
-      console.warn('Invalid hemisphere:', hemisphere);
+    if (typeof localStorage === "undefined") return;
+
+    if (!["northern", "southern"].includes(hemisphere)) {
+      console.warn("Invalid hemisphere:", hemisphere);
       return;
     }
-    
-    localStorage.setItem('calendar-hemisphere', hemisphere);
-    
+
+    localStorage.setItem("calendar-hemisphere", hemisphere);
+
     // Dispatch custom event for components to listen to
-    window.dispatchEvent(new CustomEvent('hemisphere-changed', {
-      detail: { hemisphere }
-    }));
+    window.dispatchEvent(
+      new CustomEvent("hemisphere-changed", {
+        detail: { hemisphere },
+      })
+    );
   }
-  
+
   // Load saved hemisphere preference
   function initializeHemisphere() {
     currentHemisphere = getUserHemisphere();
@@ -885,13 +943,14 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
   }
 
   function toggleHemisphere() {
-    currentHemisphere = currentHemisphere === 'northern' ? 'southern' : 'northern';
+    currentHemisphere =
+      currentHemisphere === "northern" ? "southern" : "northern";
     setUserHemisphere(currentHemisphere);
     updateHemisphereDisplay();
-    
+
     // Show notification and reload page to apply changes
     showHemisphereNotification();
-    
+
     // Reload page after a short delay to apply hemisphere changes
     setTimeout(() => {
       window.location.reload();
@@ -899,20 +958,20 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
   }
 
   function updateHemisphereDisplay() {
-    const icon = document.getElementById('hemisphere-icon');
-    const toggle = document.getElementById('hemisphere-toggle');
-    
-    if (currentHemisphere === 'northern') {
-      icon.textContent = '🌎';
-      toggle.title = 'Hemisferio Norte - Cambiar a Sur';
+    const icon = document.getElementById("hemisphere-icon");
+    const toggle = document.getElementById("hemisphere-toggle");
+
+    if (currentHemisphere === "northern") {
+      icon.textContent = "🌎";
+      toggle.title = "Hemisferio Norte - Cambiar a Sur";
     } else {
-      icon.textContent = '🌏';
-      toggle.title = 'Hemisferio Sur (+6 meses) - Cambiar a Norte';
+      icon.textContent = "🌏";
+      toggle.title = "Hemisferio Sur (+6 meses) - Cambiar a Norte";
     }
   }
 
   function showHemisphereNotification() {
-    const notification = document.createElement('div');
+    const notification = document.createElement("div");
     notification.style.cssText = `
       position: fixed;
       top: 20px;
@@ -925,17 +984,17 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
       z-index: 1000;
       animation: slideIn 0.3s ease;
     `;
-    
-    const hemisphere = currentHemisphere === 'northern' ? 'Norte' : 'Sur';
-    const adjustment = currentHemisphere === 'southern' ? ' (+6 meses)' : '';
+
+    const hemisphere = currentHemisphere === "northern" ? "Norte" : "Sur";
+    const adjustment = currentHemisphere === "southern" ? " (+6 meses)" : "";
     notification.innerHTML = `🌍 Hemisferio ${hemisphere}${adjustment}`;
-    
+
     document.body.appendChild(notification);
-    
+
     // Add animation keyframes
-    if (!document.querySelector('#notification-styles')) {
-      const style = document.createElement('style');
-      style.id = 'notification-styles';
+    if (!document.querySelector("#notification-styles")) {
+      const style = document.createElement("style");
+      style.id = "notification-styles";
       style.textContent = `
         @keyframes slideIn {
           from { transform: translateX(100%); opacity: 0; }
@@ -948,10 +1007,10 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
       `;
       document.head.appendChild(style);
     }
-    
+
     // Remove notification after 3 seconds
     setTimeout(() => {
-      notification.style.animation = 'slideOut 0.3s ease';
+      notification.style.animation = "slideOut 0.3s ease";
       setTimeout(() => {
         if (document.body.contains(notification)) {
           document.body.removeChild(notification);
@@ -962,39 +1021,47 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
 
   // Skeleton loading management
   function showSkeleton() {
-    const skeleton = document.getElementById('dashboard-skeleton');
-    const actualContent = document.querySelector('.grid-responsive > :not(.dashboard-skeleton)');
+    const skeleton = document.getElementById("dashboard-skeleton");
+    const actualContent = document.querySelector(
+      ".grid-responsive > :not(.dashboard-skeleton)"
+    );
     if (skeleton && actualContent) {
-      skeleton.style.display = 'block';
-      actualContent.style.display = 'none';
+      skeleton.style.display = "block";
+      actualContent.style.display = "none";
     }
   }
 
   function hideSkeleton() {
-    const skeleton = document.getElementById('dashboard-skeleton');
-    const actualContent = document.querySelector('.grid-responsive > :not(.dashboard-skeleton)');
+    const skeleton = document.getElementById("dashboard-skeleton");
+    const actualContent = document.querySelector(
+      ".grid-responsive > :not(.dashboard-skeleton)"
+    );
     if (skeleton && actualContent) {
-      skeleton.style.display = 'none';
-      actualContent.style.display = 'block';
+      skeleton.style.display = "none";
+      actualContent.style.display = "block";
     }
   }
 
   // Toggle category collapse/expand functionality
   function toggleCategory(categorySlug) {
-    const categoryElement = document.querySelector(`.category-tasks[key="${categorySlug}"]`);
+    const categoryElement = document.querySelector(
+      `.category-tasks[key="${categorySlug}"]`
+    );
     if (!categoryElement) {
       // Fallback: find by content id
-      const contentElement = document.getElementById(`category-${categorySlug}`);
+      const contentElement = document.getElementById(
+        `category-${categorySlug}`
+      );
       if (contentElement) {
-        const category = contentElement.closest('.category-tasks');
+        const category = contentElement.closest(".category-tasks");
         if (category) {
-          category.classList.toggle('collapsed');
+          category.classList.toggle("collapsed");
         }
       }
       return;
     }
-    
-    categoryElement.classList.toggle('collapsed');
+
+    categoryElement.classList.toggle("collapsed");
   }
 
   // Make toggle function globally available
@@ -1002,36 +1069,36 @@ const quickNavMonths = Array.from({length: 12}, (_, i) => ({
 
   // Initialize categories as collapsed by default (except first one)
   function initializeCollapsibleCategories() {
-    const categories = document.querySelectorAll('.category-tasks.collapsible');
+    const categories = document.querySelectorAll(".category-tasks.collapsible");
     categories.forEach((category, index) => {
       // Keep first category expanded, collapse others
       if (index > 0) {
-        category.classList.add('collapsed');
+        category.classList.add("collapsed");
       }
     });
   }
 
   // Initialize display on load
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener("DOMContentLoaded", function () {
     initializeHemisphere();
-    
+
     // Add click event listener
-    const toggle = document.getElementById('hemisphere-toggle');
+    const toggle = document.getElementById("hemisphere-toggle");
     if (toggle) {
-      toggle.addEventListener('click', toggleHemisphere);
+      toggle.addEventListener("click", toggleHemisphere);
     }
 
     // Show skeleton initially
     showSkeleton();
-    
+
     // Hide skeleton after components have likely loaded
     setTimeout(() => {
       hideSkeleton();
       initializeCollapsibleCategories();
     }, 1500);
-    
+
     // Also hide skeleton when all components are loaded
-    window.addEventListener('load', function() {
+    window.addEventListener("load", function () {
       setTimeout(() => {
         hideSkeleton();
         initializeCollapsibleCategories();

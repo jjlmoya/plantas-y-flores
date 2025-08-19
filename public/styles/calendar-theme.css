@@ -1,0 +1,389 @@
+/* Variables de colores principales del sitio */
+:root {
+  /* Colores principales - verdes naturales */
+  --color-primary: #2d5016;
+  --color-primary-light: #4a7c23;
+  --color-primary-lighter: #6a9b47;
+  --color-primary-dark: #1a3009;
+  
+  /* Backgrounds - gradientes verdes suaves */
+  --bg-primary-gradient: linear-gradient(135deg, #f8fffe 0%, #e8f5f0 100%);
+  --color-primary-gradient: linear-gradient(135deg, #4a7c23 0%, #2d5016 100%);
+  --bg-card: white;
+  --bg-subtle: rgba(74, 124, 35, 0.05);
+  
+  /* Grises del sitio */
+  --color-text-primary: #2c3e50;
+  --color-text-secondary: #4a5568;
+  --color-text-muted: #718096;
+  --color-border: rgba(74, 124, 35, 0.1);
+  --color-border-light: #e2e8f0;
+  
+  /* Shadows y efectos */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 20px rgba(0, 0, 0, 0.15);
+  
+  /* Border radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  
+  /* Spacing consistente */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  
+  /* Typography */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 2rem;
+  --font-size-4xl: 2.5rem;
+  
+  /* Estados de actividad */
+  --color-sowing: #48bb78;
+  --color-transplanting: #ed8936;
+  --color-harvesting: #ecc94b;
+  --color-tasks: #4299e1;
+  --color-flowering: #ed64a6;
+  --color-planting: #38b2ac;
+  --color-care: #9f7aea;
+  --color-pruning: #f6ad55;
+  
+  /* Estados de prioridad */
+  --color-success: #48bb78;
+  --color-success-dark: #38a169;
+  --color-warning: #ed8936;
+  --color-error: #f56565;
+  --color-info: #4299e1;
+}
+
+/* Utilidades de layout */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-sm);
+}
+
+.section-spacing {
+  margin-bottom: var(--space-xl);
+}
+
+/* Cards estándar */
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+}
+
+.card-header {
+  border-bottom: 2px solid var(--color-border-light);
+  padding-bottom: var(--space-xs);
+  margin-bottom: var(--space-sm);
+}
+
+.card-title {
+  font-size: var(--font-size-xl);
+  color: var(--color-text-primary);
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Headers estándar */
+.page-header {
+  background: var(--color-primary-gradient);
+  color: white;
+  text-align: center;
+  padding: var(--space-xl) 0;
+  margin-bottom: var(--space-lg);
+}
+
+.page-title {
+  font-size: var(--font-size-4xl);
+  font-weight: 700;
+  margin-bottom: var(--space-xs);
+}
+
+.page-subtitle {
+  font-size: var(--font-size-xl);
+  opacity: 0.9;
+  margin: 0;
+}
+
+/* Grids responsivos */
+.grid-responsive {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-md);
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+  .grid-2,
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+  
+  .page-title {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .container {
+    padding: 0 var(--space-xs);
+  }
+  
+  .card {
+    padding: var(--space-sm);
+  }
+  
+  .grid-responsive {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .page-subtitle {
+    font-size: var(--font-size-base);
+  }
+  
+  .page-header {
+    padding: var(--space-lg) 0;
+  }
+  
+  .card-title {
+    font-size: var(--font-size-lg);
+  }
+  
+  .btn {
+    padding: var(--space-sm);
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* Botones estándar */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:focus,
+.btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-light);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: var(--bg-subtle);
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+  background: var(--color-border);
+}
+
+/* Tags y badges */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: calc(var(--space-xs) * 0.5) var(--space-xs);
+  background: var(--bg-subtle);
+  color: var(--color-primary);
+  border-radius: var(--radius-xl);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.tag.sowing {
+  background: rgba(72, 187, 120, 0.1);
+  color: var(--color-sowing);
+}
+
+.tag.transplanting {
+  background: rgba(237, 137, 54, 0.1);
+  color: var(--color-transplanting);
+}
+
+.tag.harvesting {
+  background: rgba(236, 201, 75, 0.1);
+  color: var(--color-harvesting);
+}
+
+.tag.tasks {
+  background: rgba(66, 153, 225, 0.1);
+  color: var(--color-tasks);
+}
+
+.tag.flowering {
+  background: rgba(237, 100, 166, 0.1);
+  color: var(--color-flowering);
+}
+
+.tag.planting {
+  background: rgba(56, 178, 172, 0.1);
+  color: var(--color-planting);
+}
+
+.tag.care {
+  background: rgba(159, 122, 234, 0.1);
+  color: var(--color-care);
+}
+
+.tag.pruning {
+  background: rgba(246, 173, 85, 0.1);
+  color: var(--color-pruning);
+}
+
+/* Activity section styles */
+.activity-section {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.activity-section h3 {
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-md);
+  font-size: var(--font-size-xl);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+/* Loading states */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xl);
+  color: var(--color-text-muted);
+}
+
+.spinner {
+  border: 2px solid var(--color-border-light);
+  border-top: 2px solid var(--color-primary);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+  margin-right: var(--space-xs);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error states */
+.error-state {
+  background: rgba(245, 101, 101, 0.1);
+  border: 1px solid rgba(245, 101, 101, 0.2);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  text-align: center;
+  color: var(--color-error);
+}
+
+.error-state h3 {
+  margin-bottom: var(--space-sm);
+  color: var(--color-error);
+}
+
+/* Empty states */
+.empty-state {
+  text-align: center;
+  padding: var(--space-xl);
+  color: var(--color-text-muted);
+}
+
+.empty-state h3 {
+  margin-bottom: var(--space-sm);
+  color: var(--color-text-secondary);
+}
+
+/* Calendar specific utilities */
+.calendar-section {
+  margin-bottom: var(--space-xl);
+}
+
+.calendar-section h2 {
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-lg);
+  font-size: var(--font-size-2xl);
+  text-align: center;
+}
+
+/* Focus states for accessibility */
+a:focus-visible,
+button:focus-visible,
+select:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --color-border: #000;
+    --color-text-muted: #000;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

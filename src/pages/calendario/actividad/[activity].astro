@@ -1,21 +1,24 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import { findPlantsByActivity, getGlobalCalendarConfig, getUIHelpers, getAvailableActivities } from '../../../utils/calendar-inheritance.js';
+import { findPlantsByActivity, getGlobalCalendarConfig, getUIHelpers, getAvailableActivities, activityToSlug, slugToActivity } from '../../../utils/calendar-inheritance.js';
 
 // Generate static paths for all activities
 export async function getStaticPaths() {
   const activities = await getAvailableActivities();
   
   return activities.map(activity => ({
-    params: { activity }
+    params: { activity: activityToSlug(activity) }
   }));
 }
 
-const { activity } = Astro.params;
+const { activity: activitySlug } = Astro.params;
 
-if (!activity) {
+if (!activitySlug) {
   return Astro.redirect('/calendario/');
 }
+
+// Convert slug back to English activity name for internal use
+const activity = slugToActivity(activitySlug);
 
 // Get plants with this activity
 const plantsWithActivity = await findPlantsByActivity(activity);

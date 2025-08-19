@@ -942,3 +942,35 @@ export function getOriginFlag(localeCode) {
   
   return localeFlags[localeCode] || '📍';
 }
+
+/**
+ * Convert English activity names to Spanish slugs
+ */
+export function activityToSlug(activity) {
+  const activitySlugs = {
+    'sowing': 'siembra',
+    'transplanting': 'trasplante', 
+    'harvesting': 'cosecha',
+    'flowering': 'floracion',
+    'planting': 'plantacion',
+    'pruning': 'poda'
+  };
+  
+  return activitySlugs[activity] || activity;
+}
+
+/**
+ * Convert Spanish activity slugs back to English activity names
+ */
+export function slugToActivity(slug) {
+  const slugActivities = {
+    'siembra': 'sowing',
+    'trasplante': 'transplanting',
+    'cosecha': 'harvesting', 
+    'floracion': 'flowering',
+    'plantacion': 'planting',
+    'poda': 'pruning'
+  };
+  
+  return slugActivities[slug] || slug;
+}
