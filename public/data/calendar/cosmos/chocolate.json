@@ -33,7 +33,7 @@
         "6": ["water_regularly", "fertilize"],
         "7": ["deadhead", "water_regularly"],
         "8": ["deadhead", "enjoy_fragrance"],
-        "9": ["deadhead", "collect_seeds"],
+        "9": ["deadhead", "harvest_seeds"],
         "10": ["reduce_watering", "prepare_winter"],
         "11": ["lift_tubers", "store_dry"],
         "12": ["store_tubers_cool_dry"]

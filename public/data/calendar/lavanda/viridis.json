@@ -2,10 +2,89 @@
   "key": "viridis",
   "plant_info": {
     "common_names": [
-      "Viridis"
+      "Viridis", "Lavanda Verde", "Lavanda Amarilla", "Green Lavender"
     ],
     "scientific_name": "Lavandula viridis",
-    "difficulty": "beginner"
+    "origin": "EU",
+    "type": "perennial",
+    "difficulty": "intermediate",
+    "family": "Lamiaceae"
+  },
+  "flower_data": {
+    "fragrance": "mild_citrus",
+    "colors": ["green", "yellow_green", "white"],
+    "flower_shape": "dense_spike",
+    "bloom_duration": "10_weeks",
+    "distinctive_feature": "Flores de color verde-amarillento único"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [4, 5, 9, 10],
+      "soil_temperature_min": 15
+    },
+    "flowering": {
+      "best_months": [5, 6, 7, 8, 9],
+      "peak_months": [6, 7, 8]
+    },
+    "pruning": {
+      "best_months": [4, 10]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "4": ["planting", "pruning", "fertilize_light"],
+        "5": ["planting", "water_moderately", "mulch"],
+        "6": ["water_moderately"],
+        "7": ["deadhead", "water_moderately"],
+        "8": ["deadhead"],
+        "9": ["planting", "reduce_watering"],
+        "10": ["planting", "pruning", "prepare_winter"],
+        "11": ["prepare_winter", "minimal_care"],
+        "12": ["prepare_winter", "minimal_care"]
+      }
+    },
+    "harvesting": {
+      "best_months": [6, 7, 8, 9],
+      "peak_months": [7, 8],
+      "harvest_indicators": "Flores en pleno desarrollo antes de marchitarse"
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained_fertile",
+    "soil_ph": [6.5, 7.5],
+    "spacing": {
+      "plant_distance": 45,
+      "row_distance": 60
+    },
+    "companion_plants": ["salvia", "marigold", "cistus", "oleander"],
+    "avoid_plants": ["plantas_exceso_humedad"],
+    "drainage": "good",
+    "temperature_range": [-5, 35],
+    "drought_tolerance": "moderate",
+    "special_care": "Menos resistente al frío, necesita protección en inviernos severos"
+  },
+  "harvest_data": {
+    "storage_life": 180,
+    "preservation_methods": ["dry", "fresh_arrangements", "potpourri"],
+    "harvest_tips": "Cortar tallos largos cuando las flores estén completamente abiertas"
+  },
+  "aromatherapy_data": {
+    "properties": ["relajante", "citrus_fresh", "energizante"],
+    "uses": ["aromaterapia", "potpourri", "decoracion"],
+    "essential_oil_yield": "1-2%",
+    "aroma_profile": "Fresco y cítrico, menos medicinal que otras lavandas"
+  },
+  "ornamental_data": {
+    "garden_use": ["borders", "rock_gardens", "containers"],
+    "landscape_value": "Alta por su color único",
+    "seasonal_interest": "Primavera y verano",
+    "wildlife_attraction": ["abejas", "mariposas"]
+  },
+  "conservation_data": {
+    "rarity_status": "uncommon",
+    "native_habitat": "Mediterráneo occidental",
+    "conservation_notes": "Variedad menos común en cultivo, valiosa para diversidad genética"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/11/L.viridis-295x325.webp",

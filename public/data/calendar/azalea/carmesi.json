@@ -2,9 +2,76 @@
   "key": "carmesi",
   "plant_info": {
     "common_names": [
-      "Carmesí"
+      "Carmesí", "Azalea Roja", "Azalea Japonesa"
     ],
-    "scientific_name": "Rhododendron simsii"
+    "scientific_name": "Rhododendron simsii",
+    "origin": "AS",
+    "type": "perennial",
+    "difficulty": "intermediate",
+    "family": "Ericaceae"
+  },
+  "flower_data": {
+    "fragrance": "mild",
+    "colors": ["red"],
+    "flower_shape": "funnel_shaped",
+    "bloom_duration": "4_weeks",
+    "distinctive_feature": "Flores rojo intenso muy vistosas"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 10],
+      "soil_temperature_min": 10
+    },
+    "flowering": {
+      "best_months": [4, 5, 6],
+      "peak_months": [5]
+    },
+    "pruning": {
+      "best_months": [6, 7]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["planting", "pruning", "fertilize"],
+        "4": ["planting", "water_regularly", "mulch"],
+        "5": ["water_regularly", "deadheading"],
+        "6": ["pruning", "deadheading", "water_regularly"],
+        "7": ["pruning", "water_regularly"],
+        "8": ["water_regularly", "monitor_growth"],
+        "9": ["reduce_watering", "fertilize"],
+        "10": ["planting", "prepare_winter"],
+        "11": ["prepare_winter"],
+        "12": ["minimal_care"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "partial_shade",
+    "water_needs": "high",
+    "soil_type": "organic_rich",
+    "soil_ph": [4.5, 6.0],
+    "spacing": {
+      "plant_distance": 90,
+      "row_distance": 120
+    },
+    "companion_plants": ["helechos", "hostas", "camelias"],
+    "avoid_plants": ["plantas_alcalinas"],
+    "drainage": "good",
+    "temperature_range": [-10, 25],
+    "winter_hardiness": "high",
+    "special_care": "Muy resistente al frío, follaje perenne decorativo"
+  },
+  "ornamental_data": {
+    "garden_use": ["borders", "containers", "woodland_gardens"],
+    "landscape_value": "Excelente para jardines de sombra y como punto focal",
+    "seasonal_interest": "Floración roja espectacular + follaje perenne",
+    "wildlife_attraction": ["abejas", "mariposas"],
+    "evergreen_foliage": "Atractivo todo el año"
+  },
+  "care_tips": {
+    "cold_tolerance": "Muy resistente a heladas",
+    "watering": "Mantener suelo constantemente húmedo",
+    "feeding": "Fertilizante para plantas acidófilas",
+    "pruning_notes": "Podar solo después de floración para no perder brotes"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/11/red-azalea-cluster-2842259_1920-325x251.webp",

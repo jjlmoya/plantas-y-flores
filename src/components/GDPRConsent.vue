@@ -161,7 +161,6 @@ export default {
       }
       
       this.loadScripts()
-      console.log(`Auto-accepted cookies for ${this.userCountry}`)
     },
 
     applyStoredConsent() {
@@ -282,7 +281,6 @@ export default {
         }
         
         script.onload = () => {
-          console.log('AdSense script loaded successfully')
           window.adsenseLoaded = true
           
           // Notify all ad components that script is ready

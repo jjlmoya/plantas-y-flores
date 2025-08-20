@@ -2,11 +2,105 @@
   "key": "malagueta",
   "plant_info": {
     "common_names": [
-      "Malagueta"
+      "Malagueta", "Piri Piri", "Malaguetinha"
     ],
     "scientific_name": "Capsicum frutescens",
-    "origin": "co",
-    "difficulty": "beginner"
+    "origin": "BR",
+    "type": "perennial",
+    "difficulty": "beginner",
+    "family": "Solanaceae"
+  },
+  "flower_data": {
+    "fragrance": "none",
+    "colors": ["white"],
+    "flower_shape": "small_star",
+    "bloom_duration": "16_weeks"
+  },
+  "calendar_data": {
+    "sowing": {
+      "indoor": {
+        "best_months": [2, 3],
+        "temperature_range": [22, 26],
+        "germination_days": [12, 21]
+      },
+      "outdoor": {
+        "best_months": [5, 6],
+        "soil_temperature_min": 18
+      }
+    },
+    "transplanting": {
+      "best_months": [5, 6],
+      "soil_temperature_min": 18,
+      "weeks_after_sowing": [8, 10]
+    },
+    "flowering": {
+      "best_months": [6, 7, 8, 9, 10],
+      "peak_months": [7, 8, 9]
+    },
+    "harvesting": {
+      "best_months": [8, 9, 10, 11],
+      "peak_months": [9, 10],
+      "days_to_harvest": [80, 110],
+      "harvest_indicators": "Frutos rojos pequeños de 2-5cm"
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "2": ["sowing_indoor", "prepare_seedbeds"],
+        "3": ["sowing_indoor", "monitor_growth"],
+        "4": ["monitor_growth", "prepare_outdoor"],
+        "5": ["transplanting", "sowing_outdoor", "install_supports"],
+        "6": ["transplanting", "water_regularly", "fertilize"],
+        "7": ["water_regularly", "fertilize", "pest_monitoring"],
+        "8": ["water_regularly", "harvest_early"],
+        "9": ["harvest_main", "water_regularly"],
+        "10": ["harvest_main", "water_regularly"],
+        "11": ["harvest_late", "reduce_watering"],
+        "12": ["minimal_care", "plan_next_season"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained_fertile",
+    "soil_ph": [6.0, 7.0],
+    "spacing": {
+      "plant_distance": 50,
+      "row_distance": 60
+    },
+    "companion_plants": ["tomate", "albahaca", "oregano"],
+    "avoid_plants": ["hinojo"],
+    "drainage": "excellent",
+    "temperature_range": [18, 35],
+    "special_care": "Muy productivo, puede dar frutos todo el año en climas cálidos"
+  },
+  "harvest_data": {
+    "days_to_harvest": [80, 110],
+    "weight_range": [1, 4],
+    "storage_life": 14,
+    "preservation_methods": ["drying", "oil_infusion", "pickling", "fermentation"],
+    "harvest_tips": "Muy productivo, cosechar regularmente para estimular producción"
+  },
+  "nutritional_data": {
+    "calories_per_100g": 29,
+    "main_nutrients": ["vitamin_c", "capsaicin", "vitamin_a"],
+    "health_benefits": ["metabolism_boost", "pain_relief", "circulation_boost"]
+  },
+  "culinary_data": {
+    "uses": ["salsas", "aceites", "conservas", "condimento"],
+    "flavor_profile": "picante_intenso_frutal",
+    "preparation": "Famoso en la cocina brasileña y portuguesa"
+  },
+  "scoville_data": {
+    "scoville_units": 75000,
+    "scoville_range": [50000, 100000],
+    "heat_level": "very_hot",
+    "heat_description": "Muy picante, similar al habanero pero más pequeño"
+  },
+  "cultural_data": {
+    "origin_culture": "Muy popular en Brasil y Portugal",
+    "traditional_uses": ["Molho de pimenta", "Azeite de dendê", "Pratos brasileños"],
+    "cultural_importance": "Ingrediente esencial en la cocina afro-brasileña"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/10/laos-1929929_1920-325x244.webp",

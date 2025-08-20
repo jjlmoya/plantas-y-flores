@@ -81,9 +81,6 @@ export default {
     const exportToPDF = async () => {
       isExporting.value = 'pdf';
       
-      console.log('Export data received:', exportData.value);
-      console.log('Export type:', props.exportType);
-      
       try {
         // Dynamic import for better performance
         const { default: jsPDF } = await import('jspdf');

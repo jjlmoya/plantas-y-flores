@@ -33,13 +33,13 @@
         "3": ["planting", "pruning", "fertilize_light"],
         "4": ["planting", "water_lightly"],
         "5": ["water_lightly"],
-        "6": ["harvest_flowers", "deadhead"],
-        "7": ["harvest_peak", "deadhead"],
-        "8": ["harvest_flowers", "deadhead"],
+        "6": ["deadhead"],
+        "7": ["deadhead"],
+        "8": ["deadhead"],
         "9": ["planting", "pruning", "reduce_watering"],
         "10": ["planting", "prepare_winter"],
-        "11": ["protect_frost"],
-        "12": ["protect_frost"]
+        "11": ["prepare_winter"],
+        "12": ["prepare_winter"]
       }
     },
     "harvesting": {

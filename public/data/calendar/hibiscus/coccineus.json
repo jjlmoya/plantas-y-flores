@@ -38,7 +38,7 @@
         "5": ["planting", "water_establishment"],
         "6": ["water_regularly", "first_blooms"],
         "7": ["water_regularly", "deadhead", "fertilize"],
-        "8": ["water_regularly", "deadhead", "peak_blooms"],
+        "8": ["water_regularly", "deadhead"],
         "9": ["water_regularly", "deadhead"],
         "10": ["water_regularly", "late_blooms"],
         "11": ["cut_back_stems", "prepare_dormancy"],

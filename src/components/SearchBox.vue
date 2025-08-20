@@ -245,7 +245,6 @@ async function loadPlants() {
     }
     
     plants.value = allPlants;
-    console.log(`Loaded ${plants.value.length} plants for search`);
   } catch (error) {
     console.error('Error loading plants data:', error);
   }

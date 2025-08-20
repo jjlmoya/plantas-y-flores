@@ -65,7 +65,8 @@
       "Bash(del C:Users34677Desktopplantasyflroesdebug-task-icons.js)",
       "Bash(magick:*)",
       "Bash(where magick)",
-      "Bash(cwebp:*)"
+      "Bash(cwebp:*)",
+      "Bash(python:*)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits",

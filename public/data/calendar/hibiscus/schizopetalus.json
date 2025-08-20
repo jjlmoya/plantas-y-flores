@@ -39,7 +39,7 @@
         "5": ["planting", "pinch_tips", "water_regularly"],
         "6": ["water_regularly", "train_climbing", "first_blooms"],
         "7": ["water_regularly", "deadhead", "fertilize"],
-        "8": ["water_regularly", "deadhead", "peak_blooms"],
+        "8": ["water_regularly", "deadhead"],
         "9": ["water_regularly", "deadhead"],
         "10": ["water_regularly", "deadhead"],
         "11": ["reduce_watering", "protect_from_cold"],

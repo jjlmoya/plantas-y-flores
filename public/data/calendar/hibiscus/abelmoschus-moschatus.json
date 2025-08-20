@@ -48,7 +48,7 @@
         "7": ["water_regularly", "deadhead"],
         "8": ["water_regularly", "deadhead", "fertilize"],
         "9": ["water_regularly", "deadhead"],
-        "10": ["reduce_watering", "collect_seeds"]
+        "10": ["reduce_watering", "harvest_seeds"]
       }
     }
   },

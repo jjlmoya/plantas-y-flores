@@ -2,11 +2,99 @@
   "key": "cayena",
   "plant_info": {
     "common_names": [
-      "Cayena"
+      "Cayena", "Pimienta de Cayena", "Chile Cayena"
     ],
     "scientific_name": "Capsicum annuum",
-    "origin": "ia",
-    "difficulty": "beginner"
+    "origin": "SA",
+    "type": "annual",
+    "difficulty": "beginner",
+    "family": "Solanaceae"
+  },
+  "flower_data": {
+    "fragrance": "none",
+    "colors": ["white"],
+    "flower_shape": "small_star",
+    "bloom_duration": "12_weeks"
+  },
+  "calendar_data": {
+    "sowing": {
+      "indoor": {
+        "best_months": [2, 3],
+        "temperature_range": [20, 25],
+        "germination_days": [10, 14]
+      },
+      "outdoor": {
+        "best_months": [4, 5],
+        "soil_temperature_min": 15
+      }
+    },
+    "transplanting": {
+      "best_months": [4, 5, 6],
+      "weeks_after_sowing": [6, 8]
+    },
+    "flowering": {
+      "best_months": [6, 7, 8, 9],
+      "peak_months": [7, 8]
+    },
+    "harvesting": {
+      "best_months": [7, 8, 9, 10],
+      "peak_months": [8, 9],
+      "days_to_harvest": [70, 100],
+      "harvest_indicators": "Frutos rojos largos y delgados"
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "2": ["sowing_indoor", "prepare_seedbeds"],
+        "3": ["sowing_indoor", "monitor_growth"],
+        "4": ["sowing_outdoor", "transplanting", "water_moderately"],
+        "5": ["transplanting", "install_supports", "fertilize"],
+        "6": ["water_regularly", "fertilize"],
+        "7": ["water_regularly", "harvest_early"],
+        "8": ["harvest_main", "water_regularly"],
+        "9": ["harvest_main", "reduce_watering"],
+        "10": ["harvest_late", "harvest_seeds", "plant_cleanup"],
+        "11": ["plant_cleanup", "plan_next_season"],
+        "12": ["minimal_care"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained_fertile",
+    "soil_ph": [6.0, 7.0],
+    "spacing": {
+      "plant_distance": 40,
+      "row_distance": 50
+    },
+    "companion_plants": ["tomate", "albahaca", "oregano"],
+    "avoid_plants": ["hinojo"],
+    "drainage": "excellent",
+    "temperature_range": [15, 35],
+    "special_care": "Muy fácil de cultivar, ideal para principiantes"
+  },
+  "harvest_data": {
+    "days_to_harvest": [70, 100],
+    "weight_range": [2, 5],
+    "storage_life": 180,
+    "preservation_methods": ["drying", "oil_infusion", "pickling"],
+    "harvest_tips": "Perfecto para secar y hacer polvo de cayena"
+  },
+  "nutritional_data": {
+    "calories_per_100g": 30,
+    "main_nutrients": ["vitamin_c", "capsaicin", "vitamin_a"],
+    "health_benefits": ["metabolism_boost", "pain_relief", "antioxidant_rich"]
+  },
+  "culinary_data": {
+    "uses": ["condimento", "polvo", "aceites", "salsas"],
+    "flavor_profile": "picante_intenso",
+    "preparation": "Ideal para secar y moler como especia"
+  },
+  "scoville_data": {
+    "scoville_units": 40000,
+    "scoville_range": [30000, 50000],
+    "heat_level": "hot",
+    "heat_description": "Picante intenso, para uso como condimento"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/07/cayenne-pepper-1715925_1280-325x217.webp",

@@ -176,7 +176,7 @@ const quickNavMonths = Array.from({ length: 12 }, (_, i) => ({
           <!-- Tasks Widget -->
           <StatsCard
             client:visible
-            title="Tareas Urgentes"
+            title="En Este Mes"
             icon="🛠️"
             variant="warning"
             footerLink={`/calendario/mes/${ui.getMonthSlug(currentMonth)}/`}
@@ -232,18 +232,6 @@ const quickNavMonths = Array.from({ length: 12 }, (_, i) => ({
           </StatsCard>
 
           <!-- Next Month Preview -->
-          <StatsCard
-            client:visible
-            title={`Próximamente: ${nextMonthName}`}
-            icon="📅"
-            variant="info"
-            footerLink={`/calendario/mes/${ui.getMonthSlug(nextMonth)}/`}
-            footerText={`Ver tareas de ${nextMonthName}`}
-          >
-            <div class="coming-up">
-              <p>Prepárate para las actividades del próximo mes</p>
-            </div>
-          </StatsCard>
 
           <!-- Categories Overview -->
           <StatsCard
@@ -1107,14 +1095,11 @@ const quickNavMonths = Array.from({ length: 12 }, (_, i) => ({
   // Make toggle function globally available
   window.toggleCategory = toggleCategory;
 
-  // Initialize categories as collapsed by default (except first one)
+  // Initialize all categories as collapsed by default
   function initializeCollapsibleCategories() {
     const categories = document.querySelectorAll(".category-tasks.collapsible");
-    categories.forEach((category, index) => {
-      // Keep first category expanded, collapse others
-      if (index > 0) {
-        category.classList.add("collapsed");
-      }
+    categories.forEach((category) => {
+      category.classList.add("collapsed");
     });
   }
 

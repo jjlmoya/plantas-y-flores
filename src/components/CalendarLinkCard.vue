@@ -9,11 +9,11 @@
       <div class="calendar-text-section">
         <h3 class="calendar-title">Calendario de Cultivo</h3>
         <p class="calendar-description">
-          <strong>Guía completa {{ currentYear }}</strong>: Descubre las fechas exactas para sembrar, trasplantar y cosechar {{ plantName.toLowerCase() }} en España. Calendario adaptado a tu zona climática con consejos de experto.
+          <strong>Guía completa {{ currentYear }}</strong>: Descubre las <em>fechas exactas</em> para <em>sembrar</em>, <em>trasplantar</em> y <em>cosechar</em> {{ plantName.toLowerCase() }}. <strong>Calendario agrícola</strong> con <em>consejos de jardinería orgánica</em> y técnicas de cultivo sostenible adaptadas a tu zona.
         </p>
         <div class="calendar-features">
           <span class="feature-badge">🗓️ Fechas {{ currentYear }}</span>
-          <span class="feature-badge">🇪🇸 España</span>
+          <span class="feature-badge">🌍 Global</span>
           <span class="feature-badge">📈 Mejores cosechas</span>
         </div>
       </div>

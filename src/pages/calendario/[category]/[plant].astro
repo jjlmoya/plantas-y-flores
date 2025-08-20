@@ -6,9 +6,7 @@ import { getPlantCalendarWithUI, getGlobalCalendarConfig, getUIHelpers, generate
 // Generate static paths for all plants
 export async function getStaticPaths() {
   try {
-    console.log('Starting getStaticPaths for plants...');
     const plantPaths = await generatePlantPaths();
-    console.log(`Generated ${plantPaths.length} plant paths`);
     
     const result = plantPaths.map(({ params, props }) => ({
       params: { 
@@ -18,7 +16,6 @@ export async function getStaticPaths() {
       props
     }));
     
-    console.log('Finished mapping plant paths');
     return result;
   } catch (error) {
     console.error('Error in getStaticPaths for plants:', error);
@@ -42,8 +39,9 @@ if (!plantCalendar || !plantCalendar._inheritance.has_plant_specific && !plantCa
   return Astro.redirect('/calendario/');
 }
 
-const plantName = ui.formatPlantName(plantSlug);
 const categoryName = ui.formatCategoryName(category);
+const plantIndividualName = ui.formatPlantName(plantSlug);
+const plantName = `${categoryName} ${plantIndividualName}`;
 const categoryIcon = ui.getCategoryIcon(category);
 
 // Process calendar data for timeline view
@@ -134,15 +132,44 @@ for (let month = 1; month <= 12; month++) {
     });
   }
 
-  // Check monthly tasks (avoid duplicating planting if already added)
+  // Check monthly tasks (avoid duplicating planting, sowing if already added)
   const monthlyTasks = calendar.care_calendar?.monthly_tasks?.[month.toString()];
   if (monthlyTasks && monthlyTasks.length > 0) {
-    // Get already added activity types to avoid duplicates
+    // Get already added activity types and subtypes to avoid duplicates
     const existingTypes = monthData.activities.map(a => a.type);
+    const existingSubtypes = monthData.activities.map(a => a.subtype).filter(Boolean);
     
     monthlyTasks.forEach(task => {
       // Skip planting task if we already added a planting activity
       if (task === 'planting' && existingTypes.includes('planting')) {
+        return;
+      }
+      
+      // Skip sowing tasks if we already added the specific sowing type
+      if ((task === 'sowing_indoor' || task === 'sow_indoor') && existingSubtypes.includes('indoor')) {
+        return;
+      }
+      if ((task === 'sowing_outdoor' || task === 'sow_outdoor') && existingSubtypes.includes('outdoor')) {
+        return;
+      }
+      
+      // Skip general sowing if we already have any sowing activity
+      if (task === 'sowing' && existingTypes.includes('sowing')) {
+        return;
+      }
+      
+      // Skip harvesting tasks if we already have general harvesting
+      if ((task === 'harvest_winter' || task === 'harvest_summer' || task === 'harvest_early') && existingTypes.includes('harvesting')) {
+        return;
+      }
+      
+      // Skip transplanting task if we already added a transplanting activity
+      if (task === 'transplant' && existingTypes.includes('transplanting')) {
+        return;
+      }
+      
+      // Skip planting tasks if we already have sowing (they're similar)
+      if (task === 'planting' && existingTypes.includes('sowing')) {
         return;
       }
       
@@ -172,6 +199,7 @@ const plantInfo = {
 const growingConditions = plantCalendar.growing_conditions || {};
 const harvestData = plantCalendar.harvest_data || {};
 const nutritionalData = plantCalendar.nutritional_data || {};
+const flowerData = plantCalendar.flower_data || {};
 
 // Article link
 const articleLink = plantCalendar._article_links?.resolved_link;
@@ -207,8 +235,29 @@ function translateAndCheckCompanionPlants(companions) {
     'hibiscus': 'hibiscus',
     'lily': 'lirios',
     'mango': 'mango',
-    'banana': 'platano',
-    'pineapple': 'pina'
+    'banana': 'plátano',
+    'pineapple': 'piña',
+    // Traducciones faltantes para companions
+    'cotton': 'algodón',
+    'maize': 'maíz',
+    'corn': 'maíz', 
+    'legumes': 'leguminosas',
+    'rosemary': 'romero',
+    'sage': 'salvia',
+    'onion': 'cebolla',
+    'garlic': 'ajo',
+    'celery': 'apio',
+    'parsley': 'perejil',
+    'oregano': 'orégano',
+    'mint': 'menta',
+    'dill': 'eneldo',
+    'chives': 'cebollino',
+    'walnut': 'nogal',
+    'fennel': 'hinojo',
+    'borage': 'borraja',
+    'marigold': 'caléndula',
+    'petunia': 'petunia',
+    'nasturtium': 'capuchina'
   };
   
   if (!companions || !Array.isArray(companions)) return [];
@@ -388,7 +437,7 @@ const plantExportData = {
           <span class="separator">→</span>
           <span class="current">
             <span class="plant-icon-small">{categoryIcon}</span>
-            {plantName}
+            {plantIndividualName}
           </span>
         </div>
 
@@ -443,9 +492,10 @@ const plantExportData = {
       <section class="intro-section">
         <div class="intro-content">
           <p>
-            Este calendario de cultivo para <strong>{plantName}</strong> está adaptado específicamente para España, 
-            considerando las diferentes zonas climáticas de la península. Las fechas pueden variar ligeramente 
-            según tu ubicación geográfica: zona mediterránea, continental o atlántica.
+            Esta <strong>guía completa de cultivo de {plantName}</strong> te ayuda a planificar la <em>siembra</em>, 
+            <em>trasplante</em> y <em>cosecha</em> mes a mes. Este calendario agrícola incluye las mejores fechas 
+            para cultivar, cuidados específicos y consejos de jardinería orgánica adaptados a tu zona climática 
+            y condiciones locales.
           </p>
           <p>
             <strong>Cómo usar este calendario:</strong> Las actividades mostradas están organizadas por meses, 
@@ -608,7 +658,7 @@ const plantExportData = {
         </section>
 
         <!-- Harvest Information -->
-        {Object.keys(harvestData).length > 0 && (
+        {(harvestData.storage_life || harvestData.weight_range || harvestData.preservation_methods) && (
           <section class="details-card">
             <h3>🌾 Información de Cosecha</h3>
             <div class="harvest-info">
@@ -701,6 +751,266 @@ const plantExportData = {
                 )}
               </div>
             )}
+          </section>
+        )}
+
+        <!-- Plant Details -->
+        <section class="details-card">
+          <h3>🌿 Información de la Planta</h3>
+          <div class="plant-details-grid">
+            {plantInfo.family && (
+              <div class="plant-detail-item">
+                <span class="detail-icon">🏛️</span>
+                <div>
+                  <strong>Familia</strong>
+                  <p>{plantInfo.family}</p>
+                </div>
+              </div>
+            )}
+
+            {plantInfo.type && (
+              <div class="plant-detail-item">
+                <span class="detail-icon">🔄</span>
+                <div>
+                  <strong>Tipo</strong>
+                  <p>{ui.formatTaskName(plantInfo.type)}</p>
+                </div>
+              </div>
+            )}
+
+            {plantInfo.difficulty && (
+              <div class="plant-detail-item">
+                <span class="detail-icon">{plantInfo.difficulty === 'easy' ? '😊' : plantInfo.difficulty === 'intermediate' ? '🤔' : '😰'}</span>
+                <div>
+                  <strong>Dificultad</strong>
+                  <p>{ui.formatTaskName(plantInfo.difficulty)}</p>
+                </div>
+              </div>
+            )}
+
+            {plantInfo.origin && (
+              <div class="plant-detail-item">
+                <span class="detail-icon">{getOriginFlag(plantInfo.origin)}</span>
+                <div>
+                  <strong>Origen</strong>
+                  <p>{ui.formatOriginName(plantInfo.origin)}</p>
+                </div>
+              </div>
+            )}
+
+            {plantInfo.common_names && plantInfo.common_names.length > 0 && (
+              <div class="plant-detail-item">
+                <span class="detail-icon">📝</span>
+                <div>
+                  <strong>Otros Nombres</strong>
+                  <p>{plantInfo.common_names.join(', ')}</p>
+                </div>
+              </div>
+            )}
+
+            {growingConditions.special_care && (
+              <div class="plant-detail-item special-care">
+                <span class="detail-icon">⚠️</span>
+                <div>
+                  <strong>Cuidados Especiales</strong>
+                  <p>{growingConditions.special_care}</p>
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+
+        <!-- Flower Data (for flowering plants) -->
+        {Object.keys(flowerData).length > 0 && (
+          <section class="details-card">
+            <h3>🌸 Características de la Flor</h3>
+            <div class="flower-details-grid">
+              {flowerData.colors && flowerData.colors.length > 0 && (
+                <div class="flower-detail-item">
+                  <span class="detail-icon">🎨</span>
+                  <div>
+                    <strong>Colores</strong>
+                    <p>{flowerData.colors.map(color => ui.formatTaskName(color)).join(', ')}</p>
+                  </div>
+                </div>
+              )}
+
+              {flowerData.fragrance && (
+                <div class="flower-detail-item">
+                  <span class="detail-icon">👃</span>
+                  <div>
+                    <strong>Fragancia</strong>
+                    <p>{ui.formatTaskName(flowerData.fragrance)}</p>
+                  </div>
+                </div>
+              )}
+
+              {flowerData.size && (
+                <div class="flower-detail-item">
+                  <span class="detail-icon">📏</span>
+                  <div>
+                    <strong>Tamaño</strong>
+                    <p>{ui.formatTaskName(flowerData.size)}</p>
+                  </div>
+                </div>
+              )}
+
+              {flowerData.flower_shape && (
+                <div class="flower-detail-item">
+                  <span class="detail-icon">⭕</span>
+                  <div>
+                    <strong>Forma</strong>
+                    <p>{ui.formatTaskName(flowerData.flower_shape)}</p>
+                  </div>
+                </div>
+              )}
+
+              {flowerData.bloom_duration && (
+                <div class="flower-detail-item">
+                  <span class="detail-icon">⏰</span>
+                  <div>
+                    <strong>Duración de Floración</strong>
+                    <p>{ui.formatTaskName(flowerData.bloom_duration)}</p>
+                  </div>
+                </div>
+              )}
+            </div>
+          </section>
+        )}
+
+        <!-- Nutritional Data (for edible plants) -->
+        {Object.keys(nutritionalData).length > 0 && (
+          <section class="details-card">
+            <h3>🍎 Información Nutricional</h3>
+            <div class="nutrition-details-grid">
+              {nutritionalData.calories_per_100g && (
+                <div class="nutrition-item">
+                  <span class="nutrition-icon">⚡</span>
+                  <div>
+                    <strong>Calorías</strong>
+                    <p>{nutritionalData.calories_per_100g} kcal/100g</p>
+                  </div>
+                </div>
+              )}
+
+              {nutritionalData.main_nutrients && nutritionalData.main_nutrients.length > 0 && (
+                <div class="nutrition-item">
+                  <span class="nutrition-icon">🧬</span>
+                  <div>
+                    <strong>Nutrientes Principales</strong>
+                    <p>{nutritionalData.main_nutrients.map(nutrient => ui.formatTaskName(nutrient)).join(', ')}</p>
+                  </div>
+                </div>
+              )}
+
+              {nutritionalData.vitamin_content && nutritionalData.vitamin_content.length > 0 && (
+                <div class="nutrition-item">
+                  <span class="nutrition-icon">💊</span>
+                  <div>
+                    <strong>Vitaminas</strong>
+                    <p>{nutritionalData.vitamin_content.join(', ')}</p>
+                  </div>
+                </div>
+              )}
+
+              {nutritionalData.health_benefits && nutritionalData.health_benefits.length > 0 && (
+                <div class="nutrition-item">
+                  <span class="nutrition-icon">💪</span>
+                  <div>
+                    <strong>Beneficios</strong>
+                    <p>{nutritionalData.health_benefits.map(benefit => ui.formatTaskName(benefit)).join(', ')}</p>
+                  </div>
+                </div>
+              )}
+            </div>
+          </section>
+        )}
+
+        <!-- Additional Harvest Information -->
+        {(harvestData.harvest_indicators || harvestData.yield_per_plant || harvestData.best_harvest_time || harvestData.post_harvest_care || harvestData.fiber_yield || harvestData.seed_yield || harvestData.uses || harvestData.fiber_quality) && (
+          <section class="details-card">
+            <h3>📈 Detalles de Cosecha</h3>
+            <div class="harvest-details-grid">
+              {harvestData.harvest_indicators && harvestData.harvest_indicators.length > 0 && (
+                <div class="harvest-detail-item">
+                  <span class="detail-icon">🎯</span>
+                  <div>
+                    <strong>Indicadores de Cosecha</strong>
+                    <p>{harvestData.harvest_indicators.map(indicator => ui.formatTaskName(indicator)).join(', ')}</p>
+                  </div>
+                </div>
+              )}
+
+              {harvestData.yield_per_plant && (
+                <div class="harvest-detail-item">
+                  <span class="detail-icon">🌾</span>
+                  <div>
+                    <strong>Rendimiento por Planta</strong>
+                    <p>{harvestData.yield_per_plant}</p>
+                  </div>
+                </div>
+              )}
+
+              {harvestData.best_harvest_time && (
+                <div class="harvest-detail-item">
+                  <span class="detail-icon">🕐</span>
+                  <div>
+                    <strong>Mejor Hora de Cosecha</strong>
+                    <p>{ui.formatTaskName(harvestData.best_harvest_time)}</p>
+                  </div>
+                </div>
+              )}
+
+              {harvestData.post_harvest_care && (
+                <div class="harvest-detail-item">
+                  <span class="detail-icon">🧼</span>
+                  <div>
+                    <strong>Cuidado Post-Cosecha</strong>
+                    <p>{ui.formatTaskName(harvestData.post_harvest_care)}</p>
+                  </div>
+                </div>
+              )}
+
+              {harvestData.fiber_yield && (
+                <div class="harvest-detail-item">
+                  <span class="detail-icon">🧵</span>
+                  <div>
+                    <strong>Rendimiento de Fibra</strong>
+                    <p>{ui.formatTaskName(harvestData.fiber_yield)}</p>
+                  </div>
+                </div>
+              )}
+
+              {harvestData.seed_yield && (
+                <div class="harvest-detail-item">
+                  <span class="detail-icon">🌰</span>
+                  <div>
+                    <strong>Rendimiento de Semillas</strong>
+                    <p>{ui.formatTaskName(harvestData.seed_yield)}</p>
+                  </div>
+                </div>
+              )}
+
+              {harvestData.uses && harvestData.uses.length > 0 && (
+                <div class="harvest-detail-item">
+                  <span class="detail-icon">🔧</span>
+                  <div>
+                    <strong>Usos</strong>
+                    <p>{harvestData.uses.map(use => ui.formatTaskName(use)).join(', ')}</p>
+                  </div>
+                </div>
+              )}
+
+              {harvestData.fiber_quality && (
+                <div class="harvest-detail-item">
+                  <span class="detail-icon">💪</span>
+                  <div>
+                    <strong>Calidad de Fibra</strong>
+                    <p>{ui.formatTaskName(harvestData.fiber_quality)}</p>
+                  </div>
+                </div>
+              )}
+            </div>
           </section>
         )}
       </div>

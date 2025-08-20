@@ -53,7 +53,7 @@
         "7": ["water_regularly", "fertilize", "harvest_leaves"],
         "8": ["water_regularly", "deadhead", "monitor_flower_development"],
         "9": ["water_regularly", "harvest_calyces"],
-        "10": ["harvest_calyces", "collect_seeds"],
+        "10": ["harvest_calyces", "harvest_seeds"],
         "11": ["final_harvest", "prepare_winter"]
       }
     }

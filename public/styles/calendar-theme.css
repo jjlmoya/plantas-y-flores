@@ -949,3 +949,247 @@ body {
   background: #e53e3e;
   transform: translateY(-1px);
 }
+
+/* ===== PLANT DETAILS SECTIONS ===== */
+
+/* Details Grid Layout - Better spacing and organization */
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-6);
+  margin: var(--space-8) 0;
+}
+
+.details-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.details-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--color-primary-gradient);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.details-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary-light);
+}
+
+.details-card h3 {
+  color: var(--color-primary);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  margin: 0 0 var(--space-5) 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* Plant Details Grid */
+.plant-details-grid,
+.flower-details-grid,
+.nutrition-details-grid,
+.harvest-details-grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.plant-detail-item,
+.flower-detail-item,
+.nutrition-item,
+.harvest-detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: var(--bg-subtle);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--color-primary-light);
+  transition: all 0.3s ease;
+}
+
+.plant-detail-item:hover,
+.flower-detail-item:hover,
+.nutrition-item:hover,
+.harvest-detail-item:hover {
+  background: rgba(74, 124, 35, 0.08);
+  transform: translateX(2px);
+}
+
+.plant-detail-item.special-care {
+  border-left-color: #f56565;
+  background: rgba(245, 101, 101, 0.05);
+}
+
+.plant-detail-item.special-care:hover {
+  background: rgba(245, 101, 101, 0.08);
+}
+
+.detail-icon,
+.nutrition-icon {
+  font-size: var(--font-size-xl);
+  min-width: 28px;
+  text-align: center;
+  margin-top: var(--space-1);
+}
+
+.plant-detail-item strong,
+.flower-detail-item strong,
+.nutrition-item strong,
+.harvest-detail-item strong {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+  display: block;
+  margin-bottom: var(--space-1);
+}
+
+.plant-detail-item p,
+.flower-detail-item p,
+.nutrition-item p,
+.harvest-detail-item p {
+  color: var(--color-text-secondary);
+  margin: 0;
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+}
+
+/* Conditions Grid - Enhanced */
+.conditions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
+}
+
+.condition-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: linear-gradient(135deg, var(--bg-subtle) 0%, rgba(74, 124, 35, 0.02) 100%);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  transition: all 0.3s ease;
+}
+
+.condition-item:hover {
+  border-color: var(--color-primary-light);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.condition-icon {
+  font-size: var(--font-size-2xl);
+  min-width: 32px;
+  text-align: center;
+}
+
+.condition-item strong {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-base);
+  display: block;
+  margin-bottom: var(--space-2);
+}
+
+.condition-item p {
+  color: var(--color-text-secondary);
+  margin: 0;
+  font-size: var(--font-size-sm);
+  line-height: 1.4;
+}
+
+/* Harvest Info Grid */
+.harvest-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
+}
+
+.harvest-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: linear-gradient(135deg, rgba(236, 201, 75, 0.05) 0%, rgba(236, 201, 75, 0.02) 100%);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--color-harvesting);
+  transition: all 0.3s ease;
+}
+
+.harvest-item:hover {
+  background: rgba(236, 201, 75, 0.08);
+  transform: translateX(2px);
+}
+
+.harvest-icon {
+  font-size: var(--font-size-xl);
+  min-width: 28px;
+  text-align: center;
+}
+
+.harvest-item strong {
+  color: var(--color-harvesting);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+  display: block;
+  margin-bottom: var(--space-1);
+}
+
+.harvest-item p {
+  color: var(--color-text-secondary);
+  margin: 0;
+  font-size: var(--font-size-sm);
+}
+
+/* Responsive Design for Details */
+@media (max-width: 768px) {
+  .details-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    margin: var(--space-6) 0;
+  }
+  
+  .details-card {
+    padding: var(--space-4);
+  }
+  
+  .conditions-grid,
+  .harvest-info {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+  
+  .plant-details-grid,
+  .flower-details-grid,
+  .nutrition-details-grid,
+  .harvest-details-grid {
+    gap: var(--space-3);
+  }
+  
+  .plant-detail-item,
+  .flower-detail-item,
+  .nutrition-item,
+  .harvest-detail-item,
+  .condition-item,
+  .harvest-item {
+    padding: var(--space-3);
+  }
+  
+  .details-card h3 {
+    font-size: var(--font-size-lg);
+  }
+}

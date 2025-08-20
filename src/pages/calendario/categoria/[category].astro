@@ -15,15 +15,12 @@ import {
 // Generate static paths for all categories
 export async function getStaticPaths() {
   try {
-    console.log('Starting getStaticPaths for categories...');
     const categories = await getAvailableCalendarCategories();
-    console.log(`Generated ${categories.length} category paths:`, categories);
 
     const result = categories.map((category) => ({
       params: { category },
     }));
     
-    console.log('Finished mapping category paths');
     return result;
   } catch (error) {
     console.error('Error in getStaticPaths for categories:', error);

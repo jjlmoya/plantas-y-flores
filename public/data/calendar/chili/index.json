@@ -1,28 +1,93 @@
 {
   "plant_info": {
     "category": "chili",
+    "scientific_name": "Capsicum spp.",
+    "family": "Solanaceae",
     "type": "annual",
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "origin": "SA"
+  },
+  "flower_data": {
+    "fragrance": "none",
+    "colors": ["white"],
+    "flower_shape": "small_star",
+    "bloom_duration": "12_weeks"
   },
   "calendar_data": {
     "sowing": {
       "indoor": {
-        "best_months": [
-          2,
-          3
-        ]
+        "best_months": [2, 3],
+        "temperature_range": [20, 25],
+        "germination_days": [7, 14]
+      },
+      "outdoor": {
+        "best_months": [4, 5],
+        "soil_temperature_min": 15
       }
     },
+    "transplanting": {
+      "best_months": [4, 5, 6],
+      "weeks_after_sowing": [6, 8]
+    },
+    "flowering": {
+      "best_months": [6, 7, 8, 9],
+      "peak_months": [7, 8]
+    },
     "harvesting": {
-      "best_months": [
-        8,
-        9,
-        10
-      ]
+      "best_months": [7, 8, 9, 10],
+      "peak_months": [8, 9],
+      "days_to_harvest": [70, 120]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "2": ["sowing_indoor", "prepare_seedbeds"],
+        "3": ["sowing_indoor", "monitor_growth"],
+        "4": ["sowing_outdoor", "transplanting", "water_moderately"],
+        "5": ["transplanting", "install_supports", "water_moderately"],
+        "6": ["transplanting", "install_supports", "fertilize"],
+        "7": ["water_regularly", "fertilize", "harvest_early"],
+        "8": ["harvest_main", "water_regularly", "pest_monitoring"],
+        "9": ["harvest_main", "water_regularly", "harvest_seeds"],
+        "10": ["harvest_late", "plant_cleanup"],
+        "11": ["plant_cleanup", "plan_next_season"],
+        "12": ["minimal_care"]
+      }
     }
   },
   "growing_conditions": {
     "sun_requirements": "full_sun",
-    "water_needs": "moderate"
+    "water_needs": "moderate",
+    "soil_type": "well_drained_fertile",
+    "soil_ph": [6.0, 7.0],
+    "spacing": {
+      "plant_distance": 40,
+      "row_distance": 50
+    },
+    "companion_plants": ["tomate", "albahaca", "oregano"],
+    "avoid_plants": ["brócoli", "hinojo"],
+    "drainage": "excellent",
+    "temperature_range": [15, 35],
+    "special_care": "Sensible a heladas, necesita calor constante"
+  },
+  "harvest_data": {
+    "days_to_harvest": [70, 120],
+    "weight_range": [5, 200],
+    "storage_life": 14,
+    "preservation_methods": ["drying", "freezing", "pickling", "oil_infusion"],
+    "harvest_tips": "Cosechar con tijeras para no dañar la planta"
+  },
+  "nutritional_data": {
+    "calories_per_100g": 18,
+    "main_nutrients": ["vitamin_c", "vitamin_a", "capsaicin"],
+    "health_benefits": ["metabolism_boost", "pain_relief", "antioxidant_rich"]
+  },
+  "culinary_data": {
+    "uses": ["condimento", "salsas", "conservas", "aceites"],
+    "flavor_profile": "picante_variable",
+    "preparation": "Usar guantes al manipular variedades picantes"
+  },
+  "scoville_data": {
+    "range": [0, 3000000],
+    "description": "Escala variable según variedad, desde dulce hasta extremadamente picante"
   }
 }

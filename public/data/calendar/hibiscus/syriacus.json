@@ -41,7 +41,7 @@
         "7": ["water_regularly", "deadhead", "fertilize"],
         "8": ["water_regularly", "deadhead"],
         "9": ["planting", "water_regularly", "deadhead"],
-        "10": ["planting", "reduce_watering", "collect_seeds"],
+        "10": ["planting", "reduce_watering", "harvest_seeds"],
         "11": ["prepare_winter", "mulch"],
         "12": ["dormant_protection"]
       }

@@ -1,29 +1,78 @@
 {
   "plant_info": {
     "category": "amapola",
+    "scientific_name": "Papaver spp.",
+    "family": "Papaveraceae",
     "type": "annual",
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "origin": "EU"
+  },
+  "flower_data": {
+    "fragrance": "none",
+    "colors": ["red", "orange", "pink", "white", "purple", "yellow"],
+    "flower_shape": "cup_shaped",
+    "bloom_duration": "6_weeks",
+    "petal_texture": "papery_delicate"
   },
   "calendar_data": {
     "sowing": {
       "outdoor": {
-        "best_months": [
-          3,
-          4,
-          9
-        ]
+        "best_months": [3, 4, 9, 10],
+        "soil_temperature_min": 5
       }
     },
     "flowering": {
-      "best_months": [
-        5,
-        6,
-        7
-      ]
+      "best_months": [5, 6, 7, 8],
+      "peak_months": [6, 7]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["sowing_outdoor", "prepare_beds"],
+        "4": ["sowing_outdoor", "water_lightly"],
+        "5": ["water_lightly", "thin_seedlings"],
+        "6": ["deadheading"],
+        "7": ["deadheading"],
+        "8": ["harvest_seeds", "allow_self_seed"],
+        "9": ["sowing_outdoor", "prepare_beds"],
+        "10": ["sowing_outdoor", "minimal_care"],
+        "11": ["minimal_care"],
+        "12": ["plan_next_season"]
+      }
     }
   },
   "growing_conditions": {
     "sun_requirements": "full_sun",
-    "water_needs": "low"
+    "water_needs": "low",
+    "soil_type": "well_drained_poor",
+    "soil_ph": [6.0, 7.5],
+    "spacing": {
+      "plant_distance": 15,
+      "row_distance": 30
+    },
+    "companion_plants": ["centaurea", "nigella", "cosmos", "calendula"],
+    "avoid_plants": ["plantas_competitivas"],
+    "drainage": "excellent",
+    "temperature_range": [5, 30],
+    "drought_tolerance": "high",
+    "special_care": "Evitar trasplante, sembrar directamente. Suelo pobre favorece floración"
+  },
+  "seed_data": {
+    "germination_days": [10, 21],
+    "seed_viability": "2_years",
+    "collection_time": "Late summer when pods rattle",
+    "storage_method": "Cool, dry place",
+    "direct_sow_only": true
+  },
+  "ornamental_data": {
+    "garden_use": ["meadows", "borders", "wildflower_gardens", "cutting_gardens"],
+    "landscape_value": "Alta por naturalización y color vibrante",
+    "seasonal_interest": "Primavera tardía y verano",
+    "wildlife_attraction": ["abejas", "mariposas", "birds_seeds"],
+    "self_seeding": "prolific"
+  },
+  "cultural_data": {
+    "symbolism": ["remembrance", "peace", "sleep", "death"],
+    "historical_uses": ["ceremonial", "remembrance_day", "artistic_inspiration"],
+    "cultural_significance": "Símbolo de recuerdo en muchas culturas, especialmente en memorial de guerra"
   }
 }

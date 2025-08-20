@@ -23,7 +23,6 @@ export async function detectUserCountry() {
   // Debug: Allow manual country override
   const debugCountry = localStorage.getItem('debug-country');
   if (debugCountry) {
-    console.log('🚨 DEBUG: Using manual country override:', debugCountry);
     return debugCountry.toUpperCase();
   }
 
@@ -53,10 +52,8 @@ export async function detectUserCountry() {
         }
       }
     } catch (fetchError) {
-      console.log('IP geolocation service failed:', fetchError);
     }
   } catch (error) {
-    console.log('Geolocation detection failed, assuming non-EU:', error);
   }
 
   // Fallback: Assume non-EU (safer for user experience)
@@ -188,12 +185,10 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
   window.gdprDebug = {
     setCountry: (countryCode) => {
       localStorage.setItem('debug-country', countryCode.toUpperCase());
-      console.log('🚨 DEBUG: Country set to', countryCode.toUpperCase(), '- Reload page to test');
     },
     
     clearCountry: () => {
       localStorage.removeItem('debug-country');
-      console.log('✅ DEBUG: Country override cleared - Reload page');
     },
     
     testMexico: () => window.gdprDebug.setCountry('MX'),
@@ -204,14 +199,12 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
     reset: () => {
       cookieConsent.clearConsent();
       localStorage.removeItem('debug-country');
-      console.log('🔄 GDPR reset complete - Reloading...');
       setTimeout(() => window.location.reload(), 1000);
     },
     
     status: () => {
       const current = localStorage.getItem('debug-country') || 'auto-detected';
       const consent = cookieConsent.getConsent();
-      console.log('🔍 GDPR Debug Status:', { country: current, hasConsent: !!consent, details: consent });
     }
   };
 }

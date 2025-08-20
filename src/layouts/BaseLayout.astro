@@ -337,7 +337,6 @@ const autoKeywords = keywords || [
       const shouldLoadAnalytics = !isLocalhost || forceAnalytics;
       
       if (shouldLoadAnalytics) {
-        console.log('🔍 Analytics enabled', isLocalhost ? '(forced debug mode)' : '');
         
         // Initialize Google Analytics immediately with privacy-focused defaults
         window.dataLayer = window.dataLayer || [];
@@ -394,10 +393,8 @@ const autoKeywords = keywords || [
         }, 3000);
         
       } else {
-        console.log('🚫 Analytics disabled (localhost)');
         // Provide stub functions so code doesn't break
         window.updateAnalyticsConsent = function(granted) {
-          console.log('📊 Analytics consent would be:', granted ? 'granted' : 'denied');
         };
       }
       
@@ -410,12 +407,10 @@ const autoKeywords = keywords || [
       if (isLocalhost) {
         window.enableAnalyticsDebug = function() {
           localStorage.setItem('force-analytics', 'true');
-          console.log('🔧 Analytics debug enabled! Reload the page to start tracking.');
         };
         
         window.disableAnalyticsDebug = function() {
           localStorage.removeItem('force-analytics');
-          console.log('🔧 Analytics debug disabled! Reload the page to stop tracking.');
         };
       }
     </script>
@@ -466,7 +461,6 @@ const autoKeywords = keywords || [
               scope: '/'
             });
             
-            console.log('🌸 PWA: Service Worker registered successfully', registration.scope);
             
             // Handle updates
             registration.addEventListener('updatefound', () => {
@@ -474,7 +468,6 @@ const autoKeywords = keywords || [
               if (newWorker) {
                 newWorker.addEventListener('statechange', () => {
                   if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                    console.log('🌸 PWA: New version available');
                     // You could show a toast here to notify users of the update
                   }
                 });
@@ -484,7 +477,6 @@ const autoKeywords = keywords || [
             // Check for app install prompt
             let deferredPrompt;
             window.addEventListener('beforeinstallprompt', (e) => {
-              console.log('🌸 PWA: Install prompt available');
               e.preventDefault();
               deferredPrompt = e;
               
@@ -494,25 +486,20 @@ const autoKeywords = keywords || [
             
             // Handle app installation
             window.addEventListener('appinstalled', () => {
-              console.log('🌸 PWA: App was successfully installed');
               deferredPrompt = null;
             });
             
           } catch (error) {
-            console.log('🌸 PWA: Service Worker registration failed', error);
           }
         });
         
         // Handle offline/online status
         window.addEventListener('online', () => {
-          console.log('🌸 PWA: Back online');
         });
         
         window.addEventListener('offline', () => {
-          console.log('🌸 PWA: Gone offline');
         });
       } else {
-        console.log('🌸 PWA: Service Workers not supported');
       }
     </script>
 

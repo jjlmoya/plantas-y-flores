@@ -40,10 +40,10 @@
         "4": ["sow_indoor", "fertilize_seedlings"],
         "5": ["transplant", "sow_outdoor"],
         "6": ["transplant", "water_regularly", "pinch_flowers"],
-        "7": ["harvest", "water_regularly", "pinch_flowers"],
-        "8": ["harvest", "water_regularly"],
-        "9": ["harvest", "reduce_watering"],
-        "10": ["final_harvest", "collect_seeds"]
+        "7": ["harvest_main", "water_regularly", "pinch_flowers"],
+        "8": ["harvest_main", "water_regularly"],
+        "9": ["harvest_main", "reduce_watering"],
+        "10": ["final_harvest", "harvest_seeds"]
       }
     }
   },

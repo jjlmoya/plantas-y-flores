@@ -49,7 +49,7 @@
         "7": ["water_regularly", "deadhead_daily"],
         "8": ["water_regularly", "deadhead_daily"],
         "9": ["water_regularly", "deadhead_daily"],
-        "10": ["reduce_watering", "collect_seeds"]
+        "10": ["reduce_watering", "harvest_seeds"]
       }
     }
   },

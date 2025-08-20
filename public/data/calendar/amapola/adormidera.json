@@ -2,13 +2,90 @@
   "key": "adormidera",
   "plant_info": {
     "common_names": [
-      "Adormidera"
+      "Adormidera", "Amapola Real", "Opium Poppy"
     ],
-    "scientific_name": "Papaver Somniferum"
+    "scientific_name": "Papaver somniferum",
+    "origin": "AS",
+    "type": "annual",
+    "difficulty": "intermediate",
+    "family": "Papaveraceae"
+  },
+  "flower_data": {
+    "fragrance": "none",
+    "colors": ["white", "pink", "purple", "red"],
+    "flower_shape": "large_cup_shaped",
+    "bloom_duration": "4_weeks",
+    "flower_size": "8-12cm diameter",
+    "distinctive_feature": "Pétalos sedosos y cápsulas grandes distintivas"
+  },
+  "calendar_data": {
+    "sowing": {
+      "outdoor": {
+        "best_months": [3, 4],
+        "soil_temperature_min": 10,
+        "germination_days": [7, 14]
+      }
+    },
+    "flowering": {
+      "best_months": [6, 7, 8],
+      "peak_months": [7]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["sowing_outdoor", "prepare_beds"],
+        "4": ["sowing_outdoor", "water_lightly"],
+        "5": ["thin_seedlings", "water_moderately"],
+        "6": ["install_supports"],
+        "7": ["monitor_pods"],
+        "8": ["monitor_pods", "reduce_watering"],
+        "9": ["seed_collection_ornamental", "plant_cleanup", "plan_next_season"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained_fertile",
+    "soil_ph": [6.0, 7.5],
+    "spacing": {
+      "plant_distance": 30,
+      "row_distance": 40
+    },
+    "companion_plants": ["calendula", "nigella", "centaurea"],
+    "avoid_plants": ["plantas_agresivas"],
+    "drainage": "good",
+    "temperature_range": [5, 30],
+    "special_care": "Requiere espacio para desarrollo completo"
+  },
+  "ornamental_data": {
+    "garden_use": ["cottage_gardens", "cutting_gardens", "borders"],
+    "landscape_value": "Flores vistosas y pods ornamentales",
+    "seasonal_interest": "Floración verano y pods decorativos",
+    "wildlife_attraction": ["abejas", "beneficial_insects"],
+    "cut_flower_quality": "excellent_fresh",
+    "dried_pods": "decorative_value"
+  },
+  "seed_data": {
+    "germination_days": [7, 14],
+    "seed_viability": "3_years",
+    "ornamental_pods": "Large decorative seed pods",
+    "collection_notes": "Solo para uso ornamental y jardinería",
+    "storage_method": "Lugar seco y fresco"
+  },
+  "legal_notes": {
+    "cultivation_status": "Legal para uso ornamental en la mayoría de países",
+    "restrictions": "Verificar legislación local antes del cultivo",
+    "intended_use": "Exclusivamente ornamental y decorativo",
+    "safety_note": "No consumir ninguna parte de la planta"
+  },
+  "historical_data": {
+    "ancient_cultivation": "Cultivada desde la antigüedad en Mediterráneo",
+    "historical_uses": ["ornamental", "ceremonial", "artistic"],
+    "cultural_significance": "Presente en arte y literatura histórica"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/09/white-poppy-893080_1920-244x325.webp",
     "article_date": "2017-09-30T17:04:30",
-    "excerpt": "La adormidera, Papaver Somniferum o Amapola Real es una planta con grandes capacidades anestésicas y su cultivo prohibido en numerosos países por sus grandes propiedades de estupefacientes. Es de cará"
+    "excerpt": "La adormidera, Papaver Somniferum o Amapola Real es una planta con grandes capacidades anestésicas y su cultivo prohibido en numerosos países por sus grandes propiedades de estupefacientes. Es de cará"
   }
 }

@@ -2,10 +2,99 @@
   "key": "serrano",
   "plant_info": {
     "common_names": [
-      "Serrano"
+      "Serrano", "Chile Serrano", "Chile Verde"
     ],
     "scientific_name": "Capsicum annuum",
-    "origin": "ad"
+    "origin": "MX",
+    "type": "annual",
+    "difficulty": "beginner",
+    "family": "Solanaceae"
+  },
+  "flower_data": {
+    "fragrance": "none",
+    "colors": ["white"],
+    "flower_shape": "small_star",
+    "bloom_duration": "12_weeks"
+  },
+  "calendar_data": {
+    "sowing": {
+      "indoor": {
+        "best_months": [2, 3],
+        "temperature_range": [20, 25],
+        "germination_days": [7, 14]
+      },
+      "outdoor": {
+        "best_months": [4, 5],
+        "soil_temperature_min": 15
+      }
+    },
+    "transplanting": {
+      "best_months": [4, 5, 6],
+      "weeks_after_sowing": [6, 8]
+    },
+    "flowering": {
+      "best_months": [6, 7, 8, 9],
+      "peak_months": [7, 8]
+    },
+    "harvesting": {
+      "best_months": [7, 8, 9, 10],
+      "peak_months": [8, 9],
+      "days_to_harvest": [65, 85],
+      "harvest_indicators": "Frutos verdes pequeños y cilindricos"
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "2": ["sowing_indoor", "prepare_seedbeds"],
+        "3": ["sowing_indoor", "monitor_growth"],
+        "4": ["sowing_outdoor", "transplanting", "water_moderately"],
+        "5": ["transplanting", "install_supports", "fertilize"],
+        "6": ["water_regularly", "fertilize"],
+        "7": ["water_regularly", "harvest_early"],
+        "8": ["harvest_main", "water_regularly"],
+        "9": ["harvest_main", "reduce_watering"],
+        "10": ["harvest_late", "harvest_seeds", "plant_cleanup"],
+        "11": ["plant_cleanup", "plan_next_season"],
+        "12": ["minimal_care"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained_fertile",
+    "soil_ph": [6.0, 7.0],
+    "spacing": {
+      "plant_distance": 35,
+      "row_distance": 45
+    },
+    "companion_plants": ["tomate", "albahaca", "oregano"],
+    "avoid_plants": ["hinojo"],
+    "drainage": "excellent",
+    "temperature_range": [15, 35],
+    "special_care": "Compacto y productivo, ideal para espacios pequeños"
+  },
+  "harvest_data": {
+    "days_to_harvest": [65, 85],
+    "weight_range": [3, 8],
+    "storage_life": 10,
+    "preservation_methods": ["freezing", "pickling", "drying", "fermentation"],
+    "harvest_tips": "Cosechar verde para máximo sabor y textura crujiente"
+  },
+  "nutritional_data": {
+    "calories_per_100g": 27,
+    "main_nutrients": ["vitamin_c", "capsaicin", "vitamin_a"],
+    "health_benefits": ["metabolism_boost", "pain_relief", "immune_support"]
+  },
+  "culinary_data": {
+    "uses": ["salsas", "guisos", "fermentados", "conservas"],
+    "flavor_profile": "picante_fresco_verde",
+    "preparation": "Excelente fresco en salsas verdes"
+  },
+  "scoville_data": {
+    "scoville_units": 17500,
+    "scoville_range": [10000, 25000],
+    "heat_level": "hot",
+    "heat_description": "Picante notable pero manejable, sabor fresco"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/10/chilli-248555_1920-325x244.webp",

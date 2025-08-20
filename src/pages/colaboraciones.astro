@@ -1771,7 +1771,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
-    console.log('Formulario enviado - iniciando proceso...');
     
     // Validar campos requeridos manualmente
     const requiredFields = form.querySelectorAll('[required]');
@@ -1781,7 +1780,6 @@ document.addEventListener('DOMContentLoaded', function() {
       if (!field.value.trim()) {
         field.style.borderColor = '#dc3545';
         hasErrors = true;
-        console.log('Campo requerido vacío:', field.name);
       } else {
         field.style.borderColor = '#e5e7eb';
       }
@@ -1794,7 +1792,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Mostrar estado de carga
     showLoading();
-    console.log('Iniciando envío a Google Sheets...');
     
     // Recopilar datos del formulario
     const formData = new FormData(form);
@@ -1810,10 +1807,8 @@ document.addEventListener('DOMContentLoaded', function() {
       minute: '2-digit'
     });
     
-    console.log('Datos a enviar:', data);
     
     try {
-      console.log('Enviando a:', GOOGLE_SCRIPT_URL);
       
       // Intentar con URL params (método más compatible)
       const params = new URLSearchParams();
@@ -1821,7 +1816,6 @@ document.addEventListener('DOMContentLoaded', function() {
         params.append(key, data[key]);
       });
 
-      console.log('Parámetros a enviar:', params.toString());
 
       const response = await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
@@ -1832,7 +1826,6 @@ document.addEventListener('DOMContentLoaded', function() {
         mode: 'no-cors'
       });
       
-      console.log('Enviado con URLSearchParams');
       
       // Con no-cors no podemos leer la respuesta, asumimos éxito
       showSuccess('Recibido. Respondo en un máximo de 48 h.');

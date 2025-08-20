@@ -1,28 +1,86 @@
 {
   "plant_info": {
     "category": "lavanda",
+    "scientific_name": "Lavandula spp.",
+    "family": "Lamiaceae",
     "type": "perennial",
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "origin": "EU"
+  },
+  "flower_data": {
+    "fragrance": "strong",
+    "colors": ["purple", "blue", "white", "pink"],
+    "flower_shape": "spike",
+    "bloom_duration": "8_weeks"
   },
   "calendar_data": {
     "planting": {
-      "best_months": [
-        3,
-        4,
-        9
-      ]
+      "best_months": [3, 4, 5, 9, 10],
+      "soil_temperature_min": 10
     },
     "flowering": {
-      "best_months": [
-        6,
-        7,
-        8
-      ]
+      "best_months": [5, 6, 7, 8, 9],
+      "peak_months": [6, 7, 8]
+    },
+    "pruning": {
+      "best_months": [3, 4, 9, 10]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["planting", "pruning", "fertilize_light"],
+        "4": ["planting", "pruning", "water_lightly"],
+        "5": ["water_lightly", "mulch"],
+        "6": ["deadhead"],
+        "7": ["deadhead"],
+        "8": ["deadhead"],
+        "9": ["planting", "pruning", "reduce_watering"],
+        "10": ["planting", "prepare_winter"],
+        "11": ["prepare_winter"],
+        "12": ["minimal_care"]
+      }
+    },
+    "harvesting": {
+      "best_months": [6, 7, 8],
+      "peak_months": [7, 8],
+      "harvest_indicators": "Flores en plena floración antes de que se abran completamente"
     }
   },
   "growing_conditions": {
     "sun_requirements": "full_sun",
     "water_needs": "low",
-    "soil_type": "well_drained"
+    "soil_type": "well_drained_sandy",
+    "soil_ph": [6.5, 7.5],
+    "spacing": {
+      "plant_distance": 50,
+      "row_distance": 70
+    },
+    "companion_plants": ["romero", "tomillo", "salvia", "santolina"],
+    "avoid_plants": ["plantas_alta_humedad"],
+    "drainage": "excellent",
+    "temperature_range": [-15, 35],
+    "drought_tolerance": "high",
+    "special_care": "Requiere excelente drenaje, podar después de floración"
+  },
+  "harvest_data": {
+    "storage_life": 365,
+    "preservation_methods": ["dry", "oil_distillation", "sachets", "potpourri"],
+    "harvest_tips": "Cortar en las primeras horas de la mañana cuando el rocío se ha evaporado"
+  },
+  "aromatherapy_data": {
+    "properties": ["relajante", "antiseptico", "antiinflamatorio", "sedante"],
+    "uses": ["aceites_esenciales", "sachets", "infusiones", "baños_relajantes"],
+    "essential_oil_yield": "1-3%",
+    "therapeutic_benefits": ["reduce_estres", "mejora_sueño", "alivia_dolores"]
+  },
+  "culinary_data": {
+    "edible_parts": ["flores", "hojas_jovenes"],
+    "uses": ["condimento", "infusiones", "miel", "postres"],
+    "flavor_profile": "floral_herbal",
+    "culinary_notes": "Usar con moderación por su sabor intenso"
+  },
+  "medicinal_data": {
+    "traditional_uses": ["insomnio", "ansiedad", "heridas_menores", "dolores_cabeza"],
+    "active_compounds": ["linalool", "linalyl_acetate", "camphor"],
+    "preparation_methods": ["infusion", "aceite_esencial", "tintura"]
   }
 }

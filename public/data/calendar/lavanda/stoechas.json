@@ -2,10 +2,90 @@
   "key": "stoechas",
   "plant_info": {
     "common_names": [
-      "Stoechas"
+      "Stoechas", "Cantueso", "Tomillo Borriquero", "Lavanda Francesa"
     ],
     "scientific_name": "Lavandula stoechas",
-    "difficulty": "beginner"
+    "origin": "EU",
+    "type": "perennial",
+    "difficulty": "beginner",
+    "family": "Lamiaceae"
+  },
+  "flower_data": {
+    "fragrance": "strong",
+    "colors": ["purple", "pink", "white"],
+    "flower_shape": "pineapple_spike",
+    "bloom_duration": "12_weeks",
+    "distinctive_feature": "Brácteas superiores en forma de corona"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 5, 9, 10],
+      "soil_temperature_min": 12
+    },
+    "flowering": {
+      "best_months": [4, 5, 6, 7, 8, 9],
+      "peak_months": [5, 6, 7]
+    },
+    "pruning": {
+      "best_months": [3, 9, 10]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["planting", "pruning", "fertilize_light"],
+        "4": ["planting", "water_lightly", "mulch"],
+        "5": ["water_lightly"],
+        "6": ["deadhead", "water_lightly"],
+        "7": ["deadhead", "water_lightly"],
+        "8": ["deadhead"],
+        "9": ["planting", "pruning", "reduce_watering"],
+        "10": ["planting", "pruning", "prepare_winter"],
+        "11": ["prepare_winter", "minimal_care"],
+        "12": ["prepare_winter", "minimal_care"]
+      }
+    },
+    "harvesting": {
+      "best_months": [5, 6, 7, 8],
+      "peak_months": [6, 7],
+      "harvest_indicators": "Flores con brácteas completamente desarrolladas"
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "low",
+    "soil_type": "well_drained_rocky",
+    "soil_ph": [6.0, 8.0],
+    "spacing": {
+      "plant_distance": 50,
+      "row_distance": 70
+    },
+    "companion_plants": ["romero", "tomillo", "santolina", "cistus"],
+    "avoid_plants": ["plantas_alta_humedad"],
+    "drainage": "excellent",
+    "temperature_range": [-10, 40],
+    "drought_tolerance": "very_high",
+    "special_care": "Más resistente al calor que angustifolia, ideal para climas mediterráneos"
+  },
+  "harvest_data": {
+    "storage_life": 300,
+    "preservation_methods": ["dry", "oil_distillation", "potpourri"],
+    "harvest_tips": "Cortar cuando las brácteas están completamente coloreadas"
+  },
+  "aromatherapy_data": {
+    "properties": ["antiseptico", "expectorante", "antiinflamatorio"],
+    "uses": ["aceites_esenciales", "infusiones", "repelente_insectos"],
+    "essential_oil_yield": "2-4%",
+    "aroma_profile": "Más alcanforado y fuerte que angustifolia"
+  },
+  "medicinal_data": {
+    "traditional_uses": ["problemas_respiratorios", "heridas", "dolores_cabeza"],
+    "active_compounds": ["linalool", "camphor", "cineole"],
+    "preparation_methods": ["infusion", "aceite_esencial", "cataplasma"]
+  },
+  "culinary_data": {
+    "edible_parts": ["flores"],
+    "uses": ["condimento", "miel", "infusiones"],
+    "flavor_profile": "intenso_alcanforado",
+    "culinary_notes": "Menos usado en cocina que angustifolia por sabor más intenso"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/11/lavender-2176346-325x244.webp",

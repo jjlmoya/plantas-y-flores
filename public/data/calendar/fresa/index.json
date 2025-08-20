@@ -1,28 +1,90 @@
 {
   "plant_info": {
     "category": "fresa",
+    "scientific_name": "Fragaria × ananassa",
+    "family": "Rosaceae",
     "type": "perennial",
     "difficulty": "beginner"
   },
   "calendar_data": {
+    "sowing": {
+      "indoor": {
+        "best_months": [1, 2],
+        "temperature_range": [18, 22],
+        "germination_days": [7, 14]
+      },
+      "outdoor": {
+        "best_months": [3, 4, 8, 9],
+        "temperature_range": [15, 20],
+        "soil_temperature_min": 10
+      }
+    },
+    "transplanting": {
+      "best_months": [3, 4, 8, 9],
+      "soil_temperature_min": 12,
+      "weeks_after_sowing": [6, 8]
+    },
     "planting": {
-      "best_months": [
-        3,
-        4,
-        8,
-        9
-      ]
+      "best_months": [3, 4, 8, 9]
+    },
+    "flowering": {
+      "best_months": [4, 5, 6],
+      "peak_months": [5, 6]
     },
     "harvesting": {
-      "best_months": [
-        5,
-        6,
-        7
-      ]
+      "best_months": [5, 6, 7, 8],
+      "peak_months": [6, 7],
+      "days_to_harvest": [60, 90]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["sowing_indoor", "prepare_beds"],
+        "2": ["sowing_indoor", "prepare_outdoor"],
+        "3": ["transplanting", "planting", "fertilize"],
+        "4": ["planting", "water_regularly", "mulch"],
+        "5": ["water_regularly", "fertilize", "pest_monitoring"],
+        "6": ["harvest_main", "water_regularly", "remove_runners"],
+        "7": ["harvest_main", "water_regularly", "remove_runners"],
+        "8": ["planting", "water_regularly", "prepare_winter"],
+        "9": ["planting", "reduce_watering", "prepare_winter"],
+        "10": ["mulch_for_winter", "plant_cleanup"],
+        "11": ["prepare_winter", "minimal_care"],
+        "12": ["minimal_care", "plan_next_season"]
+      }
     }
   },
   "growing_conditions": {
     "sun_requirements": "full_sun",
-    "water_needs": "moderate"
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [5.5, 6.8],
+    "spacing": {
+      "plant_distance": 30,
+      "row_distance": 40
+    },
+    "companion_plants": ["ajo", "cebollino", "tomillo", "borraja"],
+    "avoid_plants": ["brócoli", "coliflor", "col"],
+    "temperature_range": [10, 25],
+    "special_care": "Proteger de heladas tardías, requiere renovación cada 3-4 años"
+  },
+  "harvest_data": {
+    "days_to_harvest": [60, 90],
+    "weight_range": [10, 30],
+    "storage_life": 3,
+    "preservation_methods": ["refrigerate", "freezing", "jam_making", "dehydrating"],
+    "harvest_tips": "Cosechar en las primeras horas de la mañana cuando están firmes"
+  },
+  "nutritional_data": {
+    "calories_per_100g": 32,
+    "water_content": 91,
+    "main_nutrients": ["vitamin_c", "folate", "potassium", "manganese"],
+    "vitamin_content": ["C", "K", "B9"],
+    "health_benefits": ["antioxidant_rich", "immune_support", "heart_healthy"],
+    "properties": ["vitamina_c", "folatos", "potasio", "manganeso", "antioxidantes", "fibra"]
+  },
+  "culinary_data": {
+    "uses": ["fresca", "mermeladas", "postres", "batidos", "ensaladas"],
+    "preparation": "Lavar suavemente justo antes de consumir",
+    "flavor_profile": "dulce_ligeramente_ácido"
   }
 }

@@ -2,11 +2,93 @@
   "key": "california",
   "plant_info": {
     "common_names": [
-      "California"
+      "California", "Amapola de California", "Copa de Oro", "California Poppy"
     ],
     "scientific_name": "Eschscholzia californica",
-    "origin": "ia",
-    "difficulty": "beginner"
+    "origin": "US",
+    "type": "annual",
+    "difficulty": "beginner",
+    "family": "Papaveraceae"
+  },
+  "flower_data": {
+    "fragrance": "none",
+    "colors": ["orange", "yellow", "red", "pink", "white"],
+    "flower_shape": "cup_shaped",
+    "bloom_duration": "16_weeks",
+    "petal_texture": "silky_smooth",
+    "distinctive_feature": "Flores que se cierran por la noche y en días nublados"
+  },
+  "calendar_data": {
+    "sowing": {
+      "outdoor": {
+        "best_months": [3, 4, 9, 10],
+        "soil_temperature_min": 10,
+        "germination_days": [10, 14]
+      }
+    },
+    "flowering": {
+      "best_months": [5, 6, 7, 8, 9, 10],
+      "peak_months": [6, 7, 8]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["sowing_outdoor", "prepare_beds"],
+        "4": ["sowing_outdoor", "water_lightly"],
+        "5": ["thin_seedlings", "water_lightly"],
+        "6": ["deadheading"],
+        "7": ["deadheading"],
+        "8": ["harvest_seeds"],
+        "9": ["sowing_outdoor", "allow_self_seed"],
+        "10": ["sowing_outdoor", "harvest_seeds"],
+        "11": ["minimal_care"],
+        "12": ["plan_next_season"]
+      }
+    },
+    "seed_production": {
+      "best_months": [8, 9, 10],
+      "seed_indicators": "Pods become brown and rattle when shaken"
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "very_low",
+    "soil_type": "well_drained_sandy",
+    "soil_ph": [6.0, 8.0],
+    "spacing": {
+      "plant_distance": 15,
+      "row_distance": 25
+    },
+    "companion_plants": ["lavanda", "salvia", "lupinus", "penstemon"],
+    "avoid_plants": ["plantas_riego_frecuente"],
+    "drainage": "excellent",
+    "temperature_range": [5, 35],
+    "drought_tolerance": "very_high",
+    "special_care": "Extremadamente resistente a sequía, prefiere suelos pobres"
+  },
+  "seed_data": {
+    "germination_days": [10, 14],
+    "seed_viability": "3_years",
+    "collection_notes": "Recolectar por la mañana cuando cápsulas estén secas",
+    "storage_method": "Lugar fresco y seco, en sobres de papel",
+    "direct_sow_preferred": true
+  },
+  "ornamental_data": {
+    "garden_use": ["xeriscaping", "rock_gardens", "meadows", "slopes"],
+    "landscape_value": "Excelente para jardines de bajo mantenimiento",
+    "seasonal_interest": "Floración prolongada primavera-otoño",
+    "wildlife_attraction": ["abejas", "hover_flies", "beneficial_insects"],
+    "naturalization": "high"
+  },
+  "medicinal_data": {
+    "traditional_uses": ["mild_sedative", "anxiety_relief", "sleep_aid"],
+    "active_compounds": ["alkaloids", "flavonoids"],
+    "preparation_methods": ["tea", "tincture"],
+    "safety_notes": "Usar solo bajo supervisión, puede causar somnolencia"
+  },
+  "state_flower_info": {
+    "official_flower": "California State Flower since 1903",
+    "cultural_importance": "Símbolo del espíritu libre de California",
+    "conservation_status": "No threatened"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/01/flower-895450_1920-325x244.webp",

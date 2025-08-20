@@ -2,15 +2,109 @@
   "key": "tabasco",
   "plant_info": {
     "common_names": [
-      "Tabasco"
+      "Tabasco", "Chile Tabasco", "Malagueta"
     ],
     "scientific_name": "Capsicum frutescens",
-    "origin": "sa",
-    "difficulty": "advanced"
+    "origin": "SA",
+    "type": "perennial",
+    "difficulty": "advanced",
+    "family": "Solanaceae"
+  },
+  "flower_data": {
+    "fragrance": "none",
+    "colors": ["white"],
+    "flower_shape": "small_star",
+    "bloom_duration": "16_weeks"
+  },
+  "calendar_data": {
+    "sowing": {
+      "indoor": {
+        "best_months": [2, 3],
+        "temperature_range": [22, 28],
+        "germination_days": [14, 28]
+      },
+      "outdoor": {
+        "best_months": [5, 6],
+        "soil_temperature_min": 20
+      }
+    },
+    "transplanting": {
+      "best_months": [5, 6],
+      "soil_temperature_min": 20,
+      "weeks_after_sowing": [10, 12]
+    },
+    "flowering": {
+      "best_months": [6, 7, 8, 9, 10],
+      "peak_months": [7, 8, 9]
+    },
+    "harvesting": {
+      "best_months": [8, 9, 10, 11],
+      "peak_months": [9, 10],
+      "days_to_harvest": [90, 120],
+      "harvest_indicators": "Frutos rojos pequeños muy picantes"
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "2": ["sowing_indoor", "prepare_seedbeds"],
+        "3": ["sowing_indoor", "monitor_growth"],
+        "4": ["monitor_growth", "prepare_outdoor"],
+        "5": ["transplanting", "sowing_outdoor", "install_supports"],
+        "6": ["transplanting", "water_regularly", "fertilize"],
+        "7": ["water_regularly", "fertilize", "pest_monitoring"],
+        "8": ["water_regularly", "harvest_early"],
+        "9": ["harvest_main", "water_regularly"],
+        "10": ["harvest_main", "water_regularly"],
+        "11": ["harvest_late", "reduce_watering", "prepare_winter"],
+        "12": ["prepare_winter", "minimal_care"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "high",
+    "soil_type": "well_drained_fertile",
+    "soil_ph": [6.0, 7.0],
+    "spacing": {
+      "plant_distance": 60,
+      "row_distance": 80
+    },
+    "companion_plants": ["tomate", "albahaca", "oregano"],
+    "avoid_plants": ["hinojo", "brócoli"],
+    "drainage": "excellent",
+    "temperature_range": [20, 35],
+    "special_care": "Necesita mucho calor, puede ser perenne en climas tropicales"
+  },
+  "harvest_data": {
+    "days_to_harvest": [90, 120],
+    "weight_range": [1, 3],
+    "storage_life": 30,
+    "preservation_methods": ["drying", "oil_infusion", "fermentation", "salsas"],
+    "harvest_tips": "Cosechar completamente rojo para máximo picor"
+  },
+  "nutritional_data": {
+    "calories_per_100g": 31,
+    "main_nutrients": ["vitamin_c", "capsaicin", "vitamin_a"],
+    "health_benefits": ["metabolism_boost", "pain_relief", "circulation_boost"]
+  },
+  "culinary_data": {
+    "uses": ["salsas", "fermentados", "aceites", "vinagres"],
+    "flavor_profile": "picante_extremo_avinagrado",
+    "preparation": "Base de la famosa salsa Tabasco"
+  },
+  "scoville_data": {
+    "scoville_units": 37500,
+    "scoville_range": [30000, 50000],
+    "heat_level": "hot",
+    "heat_description": "Picante intenso con sabor distintivo avinagrado"
+  },
+  "commercial_data": {
+    "famous_product": "Salsa Tabasco original",
+    "fermentation_time": "3 años en barricas de roble",
+    "commercial_importance": "Una de las salsas picantes más famosas del mundo"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/10/Tabasco_pepper_Nov_2010-325x244.webp",
     "article_date": "2017-10-23T18:14:52",
-    "excerpt": "El Tabasco, o Capsicum frutescens, es conocido mundialmente por la salsa con el mismo nombre, uno de los chilis naturales más picantes y famosos del planeta. Aprende cómo plantar este arbusto para ten"
+    "excerpt": "El Tabasco, o Capsicum frutescens, es conocido mundialmente por la salsa con el mismo nombre, uno de los chilis naturales más picantes y famosos del planeta. Aprende cómo plantar este arbusto para ten"
   }
 }

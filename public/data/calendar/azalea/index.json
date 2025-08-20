@@ -1,31 +1,69 @@
 {
   "plant_info": {
     "category": "azalea",
+    "scientific_name": "Rhododendron spp.",
+    "family": "Ericaceae",
     "type": "perennial",
-    "difficulty": "intermediate"
+    "difficulty": "intermediate",
+    "origin": "AS"
+  },
+  "flower_data": {
+    "fragrance": "mild",
+    "colors": ["red", "pink", "white", "purple", "orange"],
+    "flower_shape": "funnel_shaped",
+    "bloom_duration": "4_weeks"
   },
   "calendar_data": {
     "planting": {
-      "best_months": [
-        3,
-        4,
-        10
-      ]
+      "best_months": [3, 4, 10],
+      "soil_temperature_min": 10
     },
     "flowering": {
-      "best_months": [
-        4,
-        5,
-        6
-      ]
+      "best_months": [4, 5, 6],
+      "peak_months": [5]
+    },
+    "pruning": {
+      "best_months": [6, 7]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["planting", "pruning", "fertilize"],
+        "4": ["planting", "water_regularly", "mulch"],
+        "5": ["water_regularly", "deadheading"],
+        "6": ["pruning", "deadheading", "water_regularly"],
+        "7": ["pruning", "water_regularly"],
+        "8": ["water_regularly", "monitor_growth"],
+        "9": ["reduce_watering", "fertilize"],
+        "10": ["planting", "prepare_winter"],
+        "11": ["prepare_winter"],
+        "12": ["minimal_care"]
+      }
     }
   },
   "growing_conditions": {
     "sun_requirements": "partial_shade",
     "water_needs": "high",
-    "soil_ph": [
-      4.5,
-      6
-    ]
+    "soil_type": "organic_rich",
+    "soil_ph": [4.5, 6.0],
+    "spacing": {
+      "plant_distance": 90,
+      "row_distance": 120
+    },
+    "companion_plants": ["helechos", "hostas", "camelias"],
+    "avoid_plants": ["plantas_alcalinas"],
+    "drainage": "good",
+    "temperature_range": [-15, 25],
+    "special_care": "Requiere suelo ácido, protección de vientos fuertes"
+  },
+  "ornamental_data": {
+    "garden_use": ["borders", "containers", "woodland_gardens"],
+    "landscape_value": "Excelente para sombra parcial y suelos ácidos",
+    "seasonal_interest": "Floración espectacular primaveral",
+    "wildlife_attraction": ["abejas", "mariposas"]
+  },
+  "care_tips": {
+    "watering": "Mantener húmedo pero no encharcado",
+    "feeding": "Fertilizante específico para plantas ácidas",
+    "pruning_notes": "Podar inmediatamente después de floración"
   }
 }

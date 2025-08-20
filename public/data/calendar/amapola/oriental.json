@@ -2,14 +2,91 @@
   "key": "oriental",
   "plant_info": {
     "common_names": [
-      "Oriental"
+      "Oriental", "Amapola Oriental", "Oriental Poppy"
     ],
-    "scientific_name": "La flor de",
-    "difficulty": "beginner"
+    "scientific_name": "Papaver orientale",
+    "origin": "AS",
+    "type": "perennial",
+    "difficulty": "intermediate",
+    "family": "Papaveraceae"
+  },
+  "flower_data": {
+    "fragrance": "none",
+    "colors": ["red", "orange", "pink", "white", "salmon"],
+    "flower_shape": "large_cup_shaped",
+    "bloom_duration": "4_weeks",
+    "flower_size": "10-15cm diameter",
+    "distinctive_feature": "Flores enormes con centro negro característico"
+  },
+  "calendar_data": {
+    "sowing": {
+      "outdoor": {
+        "best_months": [8, 9],
+        "soil_temperature_max": 20,
+        "germination_days": [14, 21]
+      }
+    },
+    "flowering": {
+      "best_months": [5, 6],
+      "peak_months": [6]
+    },
+    "dormancy": {
+      "summer_months": [7, 8, 9],
+      "dormancy_notes": "Follaje desaparece después de floración"
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["monitor_growth", "fertilize_light"],
+        "4": ["water_moderately", "mulching"],
+        "5": ["install_supports"],
+        "6": ["deadheading"],
+        "7": ["reduce_watering", "minimal_care"],
+        "8": ["sowing", "minimal_care"],
+        "9": ["sowing", "prepare_winter"],
+        "10": ["prepare_winter", "mulch_protection"],
+        "11": ["prepare_winter"],
+        "12": ["minimal_care"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun_morning_shade",
+    "water_needs": "moderate_spring_low_summer",
+    "soil_type": "well_drained_fertile",
+    "soil_ph": [6.5, 7.5],
+    "spacing": {
+      "plant_distance": 45,
+      "row_distance": 60
+    },
+    "companion_plants": ["iris", "peonias", "delphinium", "campanula"],
+    "avoid_plants": ["plantas_competencia_raices"],
+    "drainage": "excellent",
+    "temperature_range": [-20, 30],
+    "winter_hardiness": "very_high",
+    "special_care": "Necesita frío invernal, entra en latencia estival natural"
+  },
+  "propagation_data": {
+    "methods": ["seed", "root_cuttings", "division"],
+    "best_propagation": "root_cuttings",
+    "division_time": "Late summer during dormancy",
+    "root_cutting_time": [8, 9],
+    "transplant_difficulty": "high"
+  },
+  "ornamental_data": {
+    "garden_use": ["perennial_borders", "cottage_gardens", "cutting_gardens"],
+    "landscape_value": "Flores espectaculares pero periodo corto",
+    "seasonal_interest": "Floración breve pero impactante en primavera",
+    "wildlife_attraction": ["abejas", "beetles"],
+    "cut_flower_quality": "excellent_short_lived"
+  },
+  "cultivation_challenges": {
+    "common_issues": ["summer_dormancy", "difficult_transplant", "short_bloom_time"],
+    "solutions": ["plant_companions_for_summer", "mark_locations", "enjoy_brief_display"],
+    "maintenance_level": "low_once_established"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/09/Amapola-Oriental-3-322x325.webp",
     "article_date": "2017-09-29T18:57:16",
-    "excerpt": "La flor de la Amapola Oriental es la más usada entre todas las variedades de Amapola para el uso de decoración de exteriores e interiorismo. La principal razón es la elegancia, el tamaño y la belleza "
+    "excerpt": "La flor de la Amapola Oriental es la más usada entre todas las variedades de Amapola para el uso de decoración de exteriores e interiorismo. La principal razón es la elegancia, el tamaño y la belleza "
   }
 }

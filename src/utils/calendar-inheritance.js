@@ -78,60 +78,6 @@ function getDefaultGlobalConfig() {
       category_icons: {
         tomate: "🍅", rosa: "🌹", albahaca: "🌿", default: "🌱"
       },
-      task_icons: {
-        // Iconos básicos existentes
-        prepare_seedbeds: "🌱", transplant: "🌿", moderate_watering: "💧",
-        fertilize: "🧪", harvest_main: "🌾", harvest_early: "🌾", harvest_late: "🌾",
-        pest_monitoring: "🔍", plant_cleanup: "🧹", sowing: "🌱", 
-        planting: "🌳", pruning: "✂️", watering: "💧", 
-        deadheading: "🌸", mulching: "🍃", flowering: "🌸",
-        // Iconos para todas las tareas nuevas
-        monitor_growth: "📈", remove_mulch: "🧹", fertilize_light: "💊",
-        water_moderately: "💧", enjoy_blooms: "🌺", deadhead_spent: "🥀",
-        allow_foliage_yellow: "🍂", lift_bulbs_optional: "⬆️", store_dry: "📦",
-        prepare_beds: "🌱", mulch_protection: "🛡️", reduce_watering: "💧",
-        fertilize_seedlings: "🧪", water_regularly: "💧", water_content: "📊",
-        enjoy_fragrance: "👃", lift_tubers: "⬆️", lifting_time: "⏰",
-        prepare_winter: "❄️", store_tubers_cool_dry: "🧊", mulch: "🍃",
-        remove_old_leaves: "🍂", remove_runners: "✂️", deadhead_daily: "🌸",
-        minimal_water: "💧", prepare_supports: "🏗️", mulch_for_winter: "❄️",
-        water_establishment: "💧", enjoy_color_changes: "🎨", 
-        monitor_flower_development: "🌸", prepare_coastal_beds: "🏖️",
-        prepare_wet_beds: "💧", water_garden: "🌊", water_lightly: "💧",
-        minimal_watering: "💧", remove_spent: "🗑️", water_base_only: "💧",
-        water_carefully: "⚠️", fertilize_orchid: "🌺", increase_watering: "💧",
-        monitor_pods: "🫘", prepare_soil: "🌱", store_cool_dark: "🧊",
-        store_properly: "📦", water_deeply: "💧", prepare_outdoor: "🌤️",
-        low_water_content: "📉", 
-        // Iconos por defecto
-        default: "•"
-      },
-      task_priorities: {
-        // Prioridades básicas existentes
-        harvest_main: "high", harvest_early: "high", harvest_late: "medium",
-        transplant: "high", prepare_seedbeds: "high",
-        fertilize: "medium", moderate_watering: "medium", 
-        pest_monitoring: "medium", watering: "medium",
-        plant_cleanup: "low", deadheading: "low", mulching: "low", flowering: "medium",
-        // Prioridades para todas las tareas nuevas
-        monitor_growth: "medium", remove_mulch: "medium", fertilize_light: "medium",
-        water_moderately: "medium", enjoy_blooms: "low", deadhead_spent: "medium",
-        allow_foliage_yellow: "low", lift_bulbs_optional: "low", store_dry: "high",
-        prepare_beds: "high", mulch_protection: "medium", reduce_watering: "medium",
-        fertilize_seedlings: "high", water_regularly: "medium", water_content: "low",
-        enjoy_fragrance: "low", lift_tubers: "high", lifting_time: "high",
-        prepare_winter: "high", store_tubers_cool_dry: "high", mulch: "medium",
-        remove_old_leaves: "low", remove_runners: "medium", deadhead_daily: "medium",
-        minimal_water: "low", prepare_supports: "high", mulch_for_winter: "high",
-        water_establishment: "high", enjoy_color_changes: "low", 
-        monitor_flower_development: "medium", prepare_coastal_beds: "high",
-        prepare_wet_beds: "high", water_garden: "high", water_lightly: "low",
-        minimal_watering: "low", remove_spent: "low", water_base_only: "medium",
-        water_carefully: "medium", fertilize_orchid: "medium", increase_watering: "medium",
-        monitor_pods: "medium", prepare_soil: "high", store_cool_dark: "high",
-        store_properly: "high", water_deeply: "medium", prepare_outdoor: "high",
-        low_water_content: "low"
-      },
       activity_colors: {
         sowing: "#48bb78", transplanting: "#4299e1", harvesting: "#ed8936",
         flowering: "#d53f8c", pruning: "#48bb78", planting: "#38b2ac", 
@@ -156,12 +102,6 @@ function getDefaultGlobalConfig() {
         store_properly: "#805ad5", water_deeply: "#4299e1", prepare_outdoor: "#48bb78",
         low_water_content: "#4299e1"
       },
-      translation_strings: {
-        es: {
-          full_sun: "Sol directo", moderate: "Moderado", beginner: "Principiante",
-          sowing: "Siembra", harvesting: "Cosecha", transplanting: "Trasplante"
-        }
-      }
     },
     hemispheres: {
       northern: { month_offset: 0 },
@@ -785,6 +725,245 @@ export function getUIHelpers(globalConfig) {
         'prepare_soil': 'Preparar Suelo',
         'store_cool_dark': 'Almacenar Fresco y Oscuro',
         'store_properly': 'Almacenar Adecuadamente',
+        
+        // Nuevas traducciones para lavandas y otras plantas
+        'well_drained_sandy': 'Bien Drenado Arenoso',
+        'well_drained_rocky': 'Bien Drenado Rocoso',
+        'well_drained_fertile': 'Bien Drenado y Fértil',
+        'excellent': 'Excelente',
+        'good': 'Bueno',
+        'very_high': 'Muy Alto',
+        'plants_alta_humedad': 'Plantas de Alta Humedad',
+        'plantas_exceso_humedad': 'Plantas de Exceso de Humedad',
+        
+        // Fragrance types
+        'strong': 'Fuerte',
+        'mild_citrus': 'Suave Cítrico',
+        
+        // Flower shapes
+        'spike': 'Espiga',
+        'pineapple_spike': 'Espiga de Piña',
+        'dense_spike': 'Espiga Densa',
+        'funnel_shaped': 'Forma de Embudo',
+        
+        // Colors
+        'purple': 'Púrpura',
+        'blue': 'Azul',
+        'white': 'Blanco',
+        'pink': 'Rosa',
+        'green': 'Verde',
+        'yellow_green': 'Verde Amarillento',
+        
+        // Bloom duration
+        '8_weeks': '8 semanas',
+        '10_weeks': '10 semanas',
+        '12_weeks': '12 semanas',
+        
+        // Preservation methods
+        'oil_distillation': 'Destilación de Aceite',
+        'sachets': 'Saquitos',
+        'potpourri': 'Popurrí',
+        'fresh_arrangements': 'Arreglos Frescos',
+        
+        // Aromatherapy properties
+        'relajante': 'Relajante',
+        'antiseptico': 'Antiséptico',
+        'antiinflamatorio': 'Antiinflamatorio',
+        'expectorante': 'Expectorante',
+        'sedante': 'Sedante',
+        'citrus_fresh': 'Fresco Cítrico',
+        'energizante': 'Energizante',
+        
+        // Uses
+        'aceites_esenciales': 'Aceites Esenciales',
+        'infusiones': 'Infusiones',
+        'repelente_insectos': 'Repelente de Insectos',
+        'banos_relajantes': 'Baños Relajantes',
+        'aromaterapia': 'Aromaterapia',
+        'decoracion': 'Decoración',
+        
+        // Therapeutic benefits
+        'reduce_estres': 'Reduce Estrés',
+        'mejora_sueno': 'Mejora Sueño',
+        'alivia_dolores': 'Alivia Dolores',
+        
+        // Culinary
+        'flores': 'Flores',
+        'hojas_jovenes': 'Hojas Jóvenes',
+        'condimento': 'Condimento',
+        'miel': 'Miel',
+        'postres': 'Postres',
+        'floral_herbal': 'Floral Herbal',
+        'intenso_alcanforado': 'Intenso Alcanforado',
+        
+        // Medicinal
+        'insomnio': 'Insomnio',
+        'ansiedad': 'Ansiedad',
+        'heridas_menores': 'Heridas Menores',
+        'dolores_cabeza': 'Dolores de Cabeza',
+        'problemas_respiratorios': 'Problemas Respiratorios',
+        'heridas': 'Heridas',
+        'linalool': 'Linalol',
+        'linalyl_acetate': 'Acetato de Linalilo',
+        'camphor': 'Alcanfor',
+        'cineole': 'Cineol',
+        'infusion': 'Infusión',
+        'aceite_esencial': 'Aceite Esencial',
+        'tintura': 'Tintura',
+        'cataplasma': 'Cataplasma',
+        
+        
+        // Garden/landscape
+        'borders': 'Bordes',
+        'rock_gardens': 'Jardines de Rocas',
+        'containers': 'Contenedores',
+        'abejas': 'Abejas',
+        'mariposas': 'Mariposas',
+        
+        // Conservation
+        'uncommon': 'Poco Común',
+        
+        // Nuevas traducciones para amapolas
+        'none': 'Ninguna',
+        'cup_shaped': 'Forma de Copa',
+        'large_cup_shaped': 'Copa Grande',
+        'papery_delicate': 'Papel Delicado',
+        'silky_smooth': 'Sedoso Suave',
+        '6_weeks': '6 semanas',
+        '4_weeks': '4 semanas',
+        '16_weeks': '16 semanas',
+        'well_drained_poor': 'Bien Drenado Pobre',
+        'very_low': 'Muy Bajo',
+        'plantas_competitivas': 'Plantas Competitivas',
+        'plantas_riego_frecuente': 'Plantas de Riego Frecuente',
+        'plantas_competencia_raices': 'Plantas de Competencia de Raíces',
+        'plantas_agresivas': 'Plantas Agresivas',
+        
+        // Soil and sun requirements
+        'full_sun_morning_shade': 'Pleno Sol con Sombra Matutina',
+        'moderate_spring_low_summer': 'Moderado Primavera, Bajo Verano',
+        'winter_hardiness': 'Resistencia Invernal',
+        'very_high': 'Muy Alto',
+        
+        // Flower colors
+        'red': 'Rojo',
+        'orange': 'Naranja',
+        'yellow': 'Amarillo',
+        'salmon': 'Salmón',
+        
+        // Seed and propagation
+        '2_years': '2 años',
+        '3_years': '3 años',
+        'seed_viability': 'Viabilidad de Semilla',
+        'direct_sow_only': 'Solo Siembra Directa',
+        'direct_sow_preferred': 'Preferible Siembra Directa',
+        'root_cuttings': 'Esquejes de Raíz',
+        'division': 'División',
+        'best_propagation': 'Mejor Propagación',
+        'transplant_difficulty': 'Dificultad de Trasplante',
+        
+        // Garden uses and wildlife
+        'meadows': 'Praderas',
+        'wildflower_gardens': 'Jardines de Flores Silvestres',
+        'cutting_gardens': 'Jardines de Corte',
+        'xeriscaping': 'Xerojardinería',
+        'slopes': 'Pendientes',
+        'perennial_borders': 'Bordes Perennes',
+        'cottage_gardens': 'Jardines Cottage',
+        'birds_seeds': 'Aves (Semillas)',
+        'hover_flies': 'Moscas Flotantes',
+        'beneficial_insects': 'Insectos Beneficiosos',
+        'beetles': 'Escarabajos',
+        
+        // Plant qualities
+        'naturalization': 'Naturalización',
+        'self_seeding': 'Autosiembra',
+        'prolific': 'Prolífico',
+        'cut_flower_quality': 'Calidad Flor Cortada',
+        'excellent_short_lived': 'Excelente Corta Duración',
+        'excellent_fresh': 'Excelente Fresca',
+        
+        // Specific tasks
+        'sowing_outdoor': 'Siembra Exterior',
+        'thin_seedlings': 'Aclarar Plántulas',
+        'deadhead_optional': 'Eliminar Flores Opcional',
+        'deadhead_for_more_flowers': 'Eliminar Flores para Más Floración',
+        'allow_self_seed': 'Permitir Autosiembra',
+        'new_growth_emergence': 'Emergencia Nuevo Crecimiento',
+        'mulch_around_plants': 'Acolchar Alrededor Plantas',
+        'stake_tall_varieties': 'Entutorar Variedades Altas',
+        'deadhead_after_bloom': 'Eliminar Flores Después Floración',
+        'allow_dormancy': 'Permitir Latencia',
+        'mark_plant_locations': 'Marcar Ubicaciones Plantas',
+        'winter_protection': 'Protección Invernal',
+        'stake_if_needed': 'Entutorar Si Necesario',
+        'pod_development': 'Desarrollo Cápsulas',
+        'seed_collection_ornamental': 'Recolección Semillas Ornamental',
+        
+        // Medicinal and safety
+        'mild_sedative': 'Sedante Suave',
+        'anxiety_relief': 'Alivio Ansiedad',
+        'sleep_aid': 'Ayuda Sueño',
+        'alkaloids': 'Alcaloides',
+        'flavonoids': 'Flavonoides',
+        'tea': 'Té',
+        'tincture': 'Tintura',
+        
+        // Ornamental pods
+        'dried_pods': 'Cápsulas Secas',
+        'decorative_value': 'Valor Decorativo',
+        'ornamental_pods': 'Cápsulas Ornamentales',
+        
+        // Cultural/symbolic
+        'remembrance': 'Recuerdo',
+        'peace': 'Paz',
+        'sleep': 'Sueño',
+        'death': 'Muerte',
+        'ceremonial': 'Ceremonial',
+        'remembrance_day': 'Día del Recuerdo',
+        'artistic_inspiration': 'Inspiración Artística',
+        'artistic': 'Artístico',
+        
+        // Challenges and maintenance
+        'summer_dormancy': 'Latencia Estival',
+        'difficult_transplant': 'Trasplante Difícil',
+        'short_bloom_time': 'Tiempo Floración Corto',
+        'plant_companions_for_summer': 'Plantar Compañeros para Verano',
+        'mark_locations': 'Marcar Ubicaciones',
+        'enjoy_brief_display': 'Disfrutar Exhibición Breve',
+        'low_once_established': 'Bajo Una Vez Establecido',
+        
+        // Specific tasks for vanilla
+        'cure_beans': 'Curar Vainas',
+        
+        // Heat levels for chilis
+        'mild': 'Suave',
+        'medium': 'Medio',
+        'hot': 'Picante',
+        'very_hot': 'Muy Picante',
+        'extreme': 'Extremo',
+        
+        // Flavor profiles for chilis
+        'picante_variable': 'Picante Variable',
+        'picante_medio': 'Picante Medio',
+        'picante_extremo_frutal': 'Picante Extremo Frutal',
+        'picante_intenso': 'Picante Intenso',
+        'picante_fresco_verde': 'Picante Fresco Verde',
+        'picante_extremo_avinagrado': 'Picante Extremo Avinagrado',
+        'picante_intenso_frutal': 'Picante Intenso Frutal',
+        
+        // Flower shapes
+        'small_star': 'Estrella Pequeña',
+        
+        // Health benefits
+        'metabolism_boost': 'Acelera Metabolismo',
+        'pain_relief': 'Alivio del Dolor',
+        'immune_support': 'Apoyo Inmune',
+        'circulation_boost': 'Mejora Circulación',
+        
+        // Nutrients
+        'capsaicin': 'Capsaicina',
+        'beta_carotene': 'Beta Caroteno',
         'water_deeply': 'Regar Profundamente',
         'prepare_outdoor': 'Preparar Exterior',
         'low_water_content': 'Bajo Contenido de Agua',
@@ -793,6 +972,87 @@ export function getUIHelpers(globalConfig) {
         'water_establishment': 'Riego para Establecimiento',
         'water_regularly': 'Riego Regular',
         'reduce_watering': 'Reducir Riego',
+        // Traduciones para harvest_data y flower_data
+        'fiber_yield': 'Rendimiento de Fibra',
+        'seed_yield': 'Rendimiento de Semillas',
+        'fiber_production': 'Producción de Fibra',
+        'ornamental': 'Ornamental',
+        'seeds': 'Semillas',
+        'seed_oil': 'Aceite de Semillas',
+        'strong_durable': 'Fuerte y Duradero',
+        'cut_stems_for_fiber': 'Cortar Tallos para Fibra',
+        'fiber_quality': 'Calidad de Fibra',
+        // Flower data
+        'large': 'Grande',
+        'yellow': 'Amarillo',
+        'red': 'Rojo',
+        'white': 'Blanco',
+        'pink': 'Rosa',
+        'hibiscus': 'Hibisco',
+        '1_day': '1',
+        'double': 'Doble',
+        'single': 'Simple',
+        // Plant types
+        'annual': 'Anual',
+        'perennial': 'Perenne',
+        'biennial': 'Bienal',
+        // Difficulty levels
+        'easy': 'Fácil',
+        'intermediate': 'Intermedio',
+        'advanced': 'Avanzado',
+        'difficult': 'Difícil',
+        // Soil types
+        'well_drained': 'Bien Drenado',
+        'clay': 'Arcilloso',
+        'sandy': 'Arenoso',
+        'loamy': 'Franco',
+        'chalky': 'Calcáreo',
+        // Sun requirements
+        'full_sun': 'Sol Directo',
+        'partial_shade': 'Sombra Parcial',
+        'full_shade': 'Sombra Total',
+        'morning_sun': 'Sol Matutino',
+        // Water needs already covered by 'moderate', 'low', 'high'
+        // Fragrance levels
+        'strong': 'Fuerte',
+        'mild': 'Suave',
+        'none': 'Sin Fragancia',
+        // Additional uses
+        'medicinal': 'Medicinal',
+        'culinary': 'Culinario',
+        'textile': 'Textil',
+        'industrial': 'Industrial',
+        // Traducciones faltantes para kale y otras plantas
+        'sow_indoor': 'Siembra Interior',
+        'sow_outdoor': 'Siembra Exterior', 
+        'harvest_winter': 'Cosecha de Invierno',
+        'harvest_summer': 'Cosecha de Verano',
+        'protect_cold': 'Proteger del Frío',
+        'rich_organic': 'Rico en Materia Orgánica',
+        // Preservation methods translations
+        'refrigerate': 'Refrigerar',
+        'blanch_freeze': 'Escaldar y Congelar',
+        'dehydrate': 'Deshidratar',
+        // Traducciones para hibiscus cannabinus
+        'thin_seedlings': 'Aclarar Plántulas',
+        'harvest_fiber': 'Cosechar Fibra',
+        'harvest_seeds': 'Cosechar Semillas',
+        'final_seed_harvest': 'Cosecha Final de Semillas',
+        'clear_beds': 'Limpiar Canteros',
+        // Traducciones para fresa
+        'remove_runners': 'Eliminar Estolones',
+        'plan_next_season': 'Planificar Próxima Temporada',
+        'minimal_care': 'Cuidado Mínimo',
+        'jam_making': 'Hacer Mermeladas',
+        'freezing': 'Congelación',
+        'vitamin_c': 'Vitamina C',
+        'folate': 'Folatos',
+        'potassium': 'Potasio',
+        'manganese': 'Manganeso',
+        'antioxidant_rich': 'Rico en Antioxidantes',
+        'immune_support': 'Apoyo Inmunológico',
+        'heart_healthy': 'Saludable para el Corazón',
+        'dulce_ligeramente_ácido': 'Dulce Ligeramente Ácido'
       };
       
       // Return translation if available, otherwise format the original
@@ -807,7 +1067,39 @@ export function getUIHelpers(globalConfig) {
       return category.charAt(0).toUpperCase() + category.slice(1).replace(/_/g, ' ');
     },
     formatPlantName: (plantSlug) => {
+      // Special case for albahaca-de-clavo to avoid "Albahaca Albahaca de clavo"
+      if (plantSlug === 'albahaca-de-clavo') {
+        return 'de clavo';
+      }
       return plantSlug.charAt(0).toUpperCase() + plantSlug.slice(1).replace(/-/g, ' ');
+    },
+    formatOriginName: (originCode) => {
+      if (!originCode || originCode.length < 2) {
+        return 'Origen desconocido';
+      }
+      
+      const originNames = {
+        'AF': 'África',
+        'EU': 'Europa',
+        'AS': 'Asia',
+        'NA': 'América del Norte',
+        'SA': 'América del Sur',  
+        'OC': 'Oceanía',
+        'FR': 'Francia',
+        'ES': 'España',
+        'IT': 'Italia',
+        'DE': 'Alemania',
+        'GB': 'Reino Unido',
+        'US': 'Estados Unidos',
+        'BR': 'Brasil',
+        'CN': 'China',
+        'JP': 'Japón',
+        'IN': 'India',
+        'MX': 'México'
+      };
+      
+      const upperCode = originCode.toUpperCase();
+      return originNames[upperCode] || 'Origen desconocido';
     }
   };
 }
@@ -1023,7 +1315,7 @@ export function validatePlantConfig(plantConfig, globalConfig) {
  * Convert locale codes (like "es-ES") to flag emojis
  */
 export function getOriginFlag(localeCode) {
-  if (!localeCode) return '📍';
+  if (!localeCode || localeCode.length < 2) return '📍';
   
   const localeFlags = {
     'es-ES': '🇪🇸', // España
@@ -1060,10 +1352,29 @@ export function getOriginFlag(localeCode) {
     'lv-LV': '🇱🇻', // Letonia
     'lt-LT': '🇱🇹', // Lituania
     'mt-MT': '🇲🇹', // Malta
-    'cy-GB': '🏴󠁧󠁢󠁷󠁬󠁳󠁿'  // Gales
+    'cy-GB': '🏴󠁧󠁢󠁷󠁬󠁳󠁿',  // Gales
+    // Códigos continentales/regionales
+    'AF': '🌍', // África
+    'EU': '🇪🇺', // Europa  
+    'AS': '🌏', // Asia
+    'NA': '🌎', // América del Norte
+    'SA': '🌎', // América del Sur
+    'OC': '🌏', // Oceanía
+    'FR': '🇫🇷', // Francia
+    'ES': '🇪🇸', // España
+    'IT': '🇮🇹', // Italia
+    'DE': '🇩🇪', // Alemania
+    'GB': '🇬🇧', // Reino Unido
+    'US': '🇺🇸', // Estados Unidos
+    'BR': '🇧🇷', // Brasil
+    'CN': '🇨🇳', // China
+    'JP': '🇯🇵', // Japón
+    'IN': '🇮🇳', // India
+    'MX': '🇲🇽'  // México
   };
   
-  return localeFlags[localeCode] || '📍';
+  const upperCode = localeCode.toUpperCase();
+  return localeFlags[upperCode] || '📍';
 }
 
 /**

@@ -2,11 +2,105 @@
   "key": "habanero",
   "plant_info": {
     "common_names": [
-      "Habanero"
+      "Habanero", "Chile Habanero", "Scotch Bonnet"
     ],
     "scientific_name": "Capsicum chinense",
-    "origin": "ia",
-    "difficulty": "beginner"
+    "origin": "SA",
+    "type": "annual",
+    "difficulty": "intermediate",
+    "family": "Solanaceae"
+  },
+  "flower_data": {
+    "fragrance": "none",
+    "colors": ["white"],
+    "flower_shape": "small_star",
+    "bloom_duration": "12_weeks"
+  },
+  "calendar_data": {
+    "sowing": {
+      "indoor": {
+        "best_months": [2, 3],
+        "temperature_range": [22, 28],
+        "germination_days": [14, 21]
+      },
+      "outdoor": {
+        "best_months": [5, 6],
+        "soil_temperature_min": 18
+      }
+    },
+    "transplanting": {
+      "best_months": [5, 6],
+      "soil_temperature_min": 18,
+      "weeks_after_sowing": [8, 10]
+    },
+    "flowering": {
+      "best_months": [6, 7, 8, 9],
+      "peak_months": [7, 8]
+    },
+    "harvesting": {
+      "best_months": [8, 9, 10],
+      "peak_months": [9],
+      "days_to_harvest": [90, 120],
+      "harvest_indicators": "Frutos naranjas brillantes de 2-5cm"
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "2": ["sowing_indoor", "prepare_seedbeds"],
+        "3": ["sowing_indoor", "monitor_growth"],
+        "4": ["monitor_growth", "prepare_outdoor"],
+        "5": ["transplanting", "sowing_outdoor", "install_supports"],
+        "6": ["transplanting", "water_regularly", "fertilize"],
+        "7": ["water_regularly", "fertilize", "pest_monitoring"],
+        "8": ["water_regularly", "harvest_early"],
+        "9": ["harvest_main", "water_regularly"],
+        "10": ["harvest_late", "harvest_seeds", "plant_cleanup"],
+        "11": ["plant_cleanup", "plan_next_season"],
+        "12": ["minimal_care"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained_fertile",
+    "soil_ph": [6.0, 7.0],
+    "spacing": {
+      "plant_distance": 50,
+      "row_distance": 60
+    },
+    "companion_plants": ["tomate", "albahaca", "oregano"],
+    "avoid_plants": ["hinojo", "brócoli"],
+    "drainage": "excellent",
+    "temperature_range": [20, 35],
+    "special_care": "Necesita más calor que otros chilis, sensible al frío"
+  },
+  "harvest_data": {
+    "days_to_harvest": [90, 120],
+    "weight_range": [2, 8],
+    "storage_life": 21,
+    "preservation_methods": ["drying", "freezing", "oil_infusion", "fermentation"],
+    "harvest_tips": "Usar guantes obligatorio, cosechar cuando estén completamente naranjas"
+  },
+  "nutritional_data": {
+    "calories_per_100g": 31,
+    "main_nutrients": ["vitamin_c", "capsaicin", "beta_carotene"],
+    "health_benefits": ["metabolism_boost", "pain_relief", "immune_support"]
+  },
+  "culinary_data": {
+    "uses": ["salsas", "aceites", "fermentados", "condimento"],
+    "flavor_profile": "picante_extremo_frutal",
+    "preparation": "OBLIGATORIO usar guantes y ventilación"
+  },
+  "scoville_data": {
+    "scoville_units": 225000,
+    "scoville_range": [100000, 350000],
+    "heat_level": "very_hot",
+    "heat_description": "Extremadamente picante, solo para expertos en picante"
+  },
+  "safety_data": {
+    "handling_precautions": "Usar guantes, evitar tocar ojos",
+    "ventilation_required": true,
+    "heat_warning": "Nivel de picor muy alto, usar con extrema precaución"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/07/habaneros-499057_1280-325x244.webp",

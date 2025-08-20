@@ -36,22 +36,23 @@
     },
     "care_calendar": {
       "monthly_tasks": {
-        "2": ["sow_indoor", "prepare_seedbeds"],
-        "3": ["sow_indoor", "fertilize_seedlings"],
-        "4": ["sow_indoor", "harden_off"],
-        "5": ["transplant", "sow_outdoor", "stake_plants"],
-        "6": ["transplant", "water_regularly", "fertilize"],
-        "7": ["water_regularly", "harvest_early", "pest_control"],
+        "2": ["sowing_indoor", "prepare_seedbeds"],
+        "3": ["sowing_indoor", "fertilize_seedlings"],
+        "4": ["sowing_indoor", "monitor_growth"],
+        "5": ["transplanting", "sowing_outdoor", "install_supports"],
+        "6": ["transplanting", "water_regularly", "fertilize"],
+        "7": ["water_regularly", "harvest_early", "pest_monitoring"],
         "8": ["harvest_main", "water_regularly", "fertilize"],
         "9": ["harvest_main", "reduce_watering"],
-        "10": ["harvest_late", "collect_seeds"]
+        "10": ["harvest_late", "harvest_seeds"],
+        "11": ["plant_cleanup", "plan_next_season"]
       }
     }
   },
   "growing_conditions": {
     "sun_requirements": "full_sun",
     "water_needs": "moderate",
-    "soil_type": "well_drained",
+    "soil_type": "well_drained_fertile",
     "soil_ph": [6.0, 7.0],
     "spacing": {
       "plant_distance": 45,
@@ -66,19 +67,31 @@
     "days_to_harvest": [70, 80],
     "weight_range": [10, 25],
     "storage_life": 14,
-    "preservation_methods": ["refrigerate", "pickle", "dry", "freeze"],
+    "preservation_methods": ["freezing", "pickling", "drying", "oil_infusion"],
     "harvest_tips": "Cosechar cuando están verdes y firmes para máximo picor"
   },
   "nutritional_data": {
     "calories_per_100g": 29,
     "water_content": 92,
-    "scoville_rating": [2500, 8000],
-    "properties": ["vitamina_c", "capsaicina", "antioxidantes", "metabolismo"]
+    "main_nutrients": ["vitamin_c", "capsaicin", "vitamin_a"],
+    "health_benefits": ["metabolism_boost", "pain_relief", "antioxidant_rich"]
   },
   "culinary_data": {
-    "uses": ["salsas", "escabeches", "rellenos", "condimento"],
+    "uses": ["salsas", "conservas", "condimento", "aceites"],
     "flavor_profile": "picante_medio",
-    "heat_level": "medium"
+    "preparation": "Ideal para salsas verdes y escabeches"
+  },
+  "scoville_data": {
+    "scoville_units": 5000,
+    "scoville_range": [2500, 8000],
+    "heat_level": "medium",
+    "heat_description": "Picante medio, tolerable para la mayoría"
+  },
+  "flower_data": {
+    "fragrance": "none",
+    "colors": ["white"],
+    "flower_shape": "small_star",
+    "bloom_duration": "12_weeks"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/07/jalapeno-pepper-1012274_1280-325x217.webp",
