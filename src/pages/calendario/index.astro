@@ -27,6 +27,10 @@ const {
   seasonalTips,
 } = monthlyData;
 
+// Get UI helpers directly to ensure fresh config
+const { getUIHelpers } = await import('../../utils/calendar-inheritance.js');
+const uiDirect = getUIHelpers(globalConfig);
+
 // Not using sample plants anymore as per user feedback
 
 const nextMonth = currentMonth === 12 ? 1 : currentMonth + 1;
@@ -311,12 +315,16 @@ const quickNavMonths = Array.from({ length: 12 }, (_, i) => ({
                 key={activity}
               >
                 <div class="activity-header">
-                  <span class="activity-icon">{ui.getTaskIcon(activity)}</span>
-                  <h3>{ui.formatTaskName(activity)}</h3>
+                  <span class="activity-icon">{
+                    activity === 'transplanting' ? '🌿' : 
+                    activity === 'harvesting' ? '🌾' : 
+                    uiDirect.getTaskIcon(activity)
+                  }</span>
+                  <h3>{uiDirect.formatTaskName(activity)}</h3>
                 </div>
                 <p>
                   Ver todas las plantas para{" "}
-                  {ui.formatTaskName(activity).toLowerCase()}
+                  {uiDirect.formatTaskName(activity).toLowerCase()}
                 </p>
               </a>
             ))

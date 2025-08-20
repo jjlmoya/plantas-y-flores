@@ -85,8 +85,6 @@ function getDefaultGlobalConfig() {
         pest_monitoring: "🔍", plant_cleanup: "🧹", sowing: "🌱", 
         planting: "🌳", pruning: "✂️", watering: "💧", 
         deadheading: "🌸", mulching: "🍃", flowering: "🌸",
-        // Iconos para actividades principales
-        transplanting: "🌿", harvesting: "🌾",
         // Iconos para todas las tareas nuevas
         monitor_growth: "📈", remove_mulch: "🧹", fertilize_light: "💊",
         water_moderately: "💧", enjoy_blooms: "🌺", deadhead_spent: "🥀",
@@ -104,7 +102,7 @@ function getDefaultGlobalConfig() {
         water_carefully: "⚠️", fertilize_orchid: "🌺", increase_watering: "💧",
         monitor_pods: "🫘", prepare_soil: "🌱", store_cool_dark: "🧊",
         store_properly: "📦", water_deeply: "💧", prepare_outdoor: "🌤️",
-        low_water_content: "📉", 
+        low_water_content: "📉", transplanting: "🌿", harvesting: "🌾",
         // Iconos por defecto
         default: "•"
       },
