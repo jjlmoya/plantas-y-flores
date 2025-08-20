@@ -255,6 +255,100 @@ console.log('plantExportData:', JSON.stringify(plantExportData));
 >
   <link rel="stylesheet" href="/styles/calendar-theme.css">
   
+  <!-- Structured Data for Plant Calendar -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": ["FAQPage", "HowTo"],
+    "name": `Cómo cultivar ${plantName}: calendario de siembra y cosecha`,
+    "description": `Guía paso a paso para cultivar ${plantName} con calendario detallado de siembra, trasplante y cosecha`,
+    "totalTime": "PT365D",
+    "estimatedCost": {
+      "@type": "MonetaryAmount",
+      "currency": "EUR",
+      "value": "5-15"
+    },
+    "tool": [
+      {
+        "@type": "HowToTool",
+        "name": `Semillas de ${plantName}`
+      },
+      {
+        "@type": "HowToTool", 
+        "name": "Tierra de cultivo"
+      },
+      {
+        "@type": "HowToTool",
+        "name": "Regadera"
+      }
+    ],
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Preparación y siembra",
+        "text": `Planifica la siembra según el calendario estacional específico para ${plantName}`,
+        "image": "https://plantasyflores.online/wp-content/uploads/semillas.webp"
+      },
+      {
+        "@type": "HowToStep", 
+        "name": "Trasplante",
+        "text": "Trasplanta las plántulas en el momento óptimo según las condiciones climáticas",
+        "image": "https://plantasyflores.online/wp-content/uploads/trasplante.webp"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Cuidados y mantenimiento", 
+        "text": "Proporciona los cuidados necesarios durante el ciclo de crecimiento",
+        "image": "https://plantasyflores.online/wp-content/uploads/cuidados.webp"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Cosecha",
+        "text": "Cosecha en el momento óptimo para obtener la mejor calidad",
+        "image": "https://plantasyflores.online/wp-content/uploads/cosecha.webp"
+      }
+    ],
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": `¿Cuándo sembrar ${plantName}?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `El mejor momento para sembrar ${plantName} varía según la región, pero generalmente se recomienda seguir el calendario estacional específico.`
+        }
+      },
+      {
+        "@type": "Question", 
+        "name": `¿Cuándo trasplantar ${plantName}?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "El trasplante debe realizarse cuando las plántulas tengan el tamaño adecuado y las condiciones climáticas sean favorables."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": `¿Cuándo cosechar ${plantName}?`,
+        "acceptedAnswer": {
+          "@type": "Answer", 
+          "text": "La cosecha se realiza según el calendario específico de cada variedad, respetando los tiempos de maduración."
+        }
+      }
+    ],
+    "about": {
+      "@type": "Thing",
+      "name": plantName,
+      ...(plantInfo.scientific_name ? { "scientificName": plantInfo.scientific_name } : {}),
+      "category": categoryName
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Plantas y Flores",
+      "url": "https://plantasyflores.online"
+    },
+    "datePublished": new Date().toISOString(),
+    "dateModified": new Date().toISOString()
+  })} />
+  </script>
+  
   <div class="plant-calendar-view">
     <!-- Header -->
     <header class="page-header">
@@ -326,9 +420,8 @@ console.log('plantExportData:', JSON.stringify(plantExportData));
       <section class="intro-section">
         <div class="intro-content">
           <p>
-            Este calendario de cultivo para <strong>{plantName}</strong> está adaptado específicamente para España, 
-            considerando las diferentes zonas climáticas de la península. Las fechas pueden variar ligeramente 
-            según tu ubicación geográfica: zona mediterránea, continental o atlántica.
+            Este calendario de cultivo para <strong>{plantName}</strong> está adaptado para diferentes zonas climáticas. 
+            Las fechas pueden variar ligeramente según tu ubicación geográfica y las condiciones climáticas locales.
           </p>
           <p>
             <strong>Cómo usar este calendario:</strong> Las actividades mostradas están organizadas por meses, 
@@ -599,104 +692,11 @@ console.log('plantExportData:', JSON.stringify(plantExportData));
       </div>
     </div>
   </div>
-
-  <!-- Structured Data for Plant Calendar -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": ["FAQPage", "HowTo"],
-    "name": `Cómo cultivar ${plantName}: calendario de siembra y cosecha`,
-    "description": `Guía paso a paso para cultivar ${plantName} con calendario detallado de siembra, trasplante y cosecha`,
-    "totalTime": "PT365D",
-    "estimatedCost": {
-      "@type": "MonetaryAmount",
-      "currency": "EUR",
-      "value": "5-15"
-    },
-    "tool": [
-      {
-        "@type": "HowToTool",
-        "name": `Semillas de ${plantName}`
-      },
-      {
-        "@type": "HowToTool", 
-        "name": "Tierra de cultivo"
-      },
-      {
-        "@type": "HowToTool",
-        "name": "Regadera"
-      }
-    ],
-    "step": [
-      {
-        "@type": "HowToStep",
-        "name": "Preparación y siembra",
-        "text": `Planifica la siembra según el calendario estacional específico para ${plantName}`,
-        "image": "https://plantasyflores.online/wp-content/uploads/semillas.webp"
-      },
-      {
-        "@type": "HowToStep", 
-        "name": "Trasplante",
-        "text": "Trasplanta las plántulas en el momento óptimo según las condiciones climáticas",
-        "image": "https://plantasyflores.online/wp-content/uploads/trasplante.webp"
-      },
-      {
-        "@type": "HowToStep",
-        "name": "Cuidados y mantenimiento", 
-        "text": "Proporciona los cuidados necesarios durante el ciclo de crecimiento",
-        "image": "https://plantasyflores.online/wp-content/uploads/cuidados.webp"
-      },
-      {
-        "@type": "HowToStep",
-        "name": "Cosecha",
-        "text": "Cosecha en el momento óptimo para obtener la mejor calidad",
-        "image": "https://plantasyflores.online/wp-content/uploads/cosecha.webp"
-      }
-    ],
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": `¿Cuándo sembrar ${plantName}?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `El mejor momento para sembrar ${plantName} varía según la región, pero generalmente se recomienda seguir el calendario estacional específico.`
-        }
-      },
-      {
-        "@type": "Question", 
-        "name": `¿Cuándo trasplantar ${plantName}?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "El trasplante debe realizarse cuando las plántulas tengan el tamaño adecuado y las condiciones climáticas sean favorables."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": `¿Cuándo cosechar ${plantName}?`,
-        "acceptedAnswer": {
-          "@type": "Answer", 
-          "text": "La cosecha se realiza según el calendario específico de cada variedad, respetando los tiempos de maduración."
-        }
-      }
-    ],
-    "about": {
-      "@type": "Thing",
-      "name": plantName,
-      ...(plantInfo.scientific_name ? { "scientificName": plantInfo.scientific_name } : {}),
-      "category": categoryName
-    },
-    "author": {
-      "@type": "Organization",
-      "name": "Plantas y Flores",
-      "url": "https://plantasyflores.online"
-    },
-    "datePublished": new Date().toISOString(),
-    "dateModified": new Date().toISOString()
-  })} />
-
 </BaseLayout>
 
 <style>
   .plant-calendar-view {
+    min-height: 100vh;
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   }
 

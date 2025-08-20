@@ -61,7 +61,11 @@
       "WebFetch(domain:localhost)",
       "Bash(del \"src\\components\\SimpleTest.vue\")",
       "Bash(timeout 60s npm run build)",
-      "Bash(touch:*)"
+      "Bash(touch:*)",
+      "Bash(del C:Users34677Desktopplantasyflroesdebug-task-icons.js)",
+      "Bash(magick:*)",
+      "Bash(where magick)",
+      "Bash(cwebp:*)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits",
