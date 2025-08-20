@@ -15,6 +15,10 @@ export async function GET() {
     <loc>https://plantasyflores.online/post-sitemap.xml</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
   </sitemap>
+  <sitemap>
+    <loc>https://plantasyflores.online/calendar-sitemap.xml</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </sitemap>
 </sitemapindex>`;
 
   return new Response(sitemapIndex, {
