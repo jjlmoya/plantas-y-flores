@@ -315,11 +315,7 @@ const quickNavMonths = Array.from({ length: 12 }, (_, i) => ({
                 key={activity}
               >
                 <div class="activity-header">
-                  <span class="activity-icon">{
-                    activity === 'transplanting' ? '🌿' : 
-                    activity === 'harvesting' ? '🌾' : 
-                    uiDirect.getTaskIcon(activity)
-                  }</span>
+                  <span class="activity-icon">{uiDirect.getTaskIcon(activity)}</span>
                   <h3>{uiDirect.formatTaskName(activity)}</h3>
                 </div>
                 <p>

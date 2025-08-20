@@ -337,6 +337,8 @@
       "water_deeply": "💧",
       "prepare_outdoor": "🌤️",
       "low_water_content": "📉",
+      "transplanting": "🌿",
+      "harvesting": "🌾",
       "default": "•"
     },
     "task_priorities": {

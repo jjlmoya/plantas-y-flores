@@ -102,7 +102,7 @@ function getDefaultGlobalConfig() {
         water_carefully: "⚠️", fertilize_orchid: "🌺", increase_watering: "💧",
         monitor_pods: "🫘", prepare_soil: "🌱", store_cool_dark: "🧊",
         store_properly: "📦", water_deeply: "💧", prepare_outdoor: "🌤️",
-        low_water_content: "📉", transplanting: "🌿", harvesting: "🌾",
+        low_water_content: "📉", 
         // Iconos por defecto
         default: "•"
       },
