@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import HeaderExport from '../../../components/HeaderExport.vue';
+import ScovilleCard from '../../../components/ScovilleCard.vue';
 import { getPlantCalendarWithUI, getGlobalCalendarConfig, getUIHelpers, generatePlantPaths, getOriginFlag, getAvailableCalendarCategories } from '../../../utils/calendar-inheritance.js';
 
 // Generate static paths for all plants
@@ -200,6 +201,7 @@ const growingConditions = plantCalendar.growing_conditions || {};
 const harvestData = plantCalendar.harvest_data || {};
 const nutritionalData = plantCalendar.nutritional_data || {};
 const flowerData = plantCalendar.flower_data || {};
+const scovilleData = plantCalendar.scoville_data || null;
 
 // Article link
 const articleLink = plantCalendar._article_links?.resolved_link;
@@ -598,6 +600,14 @@ const plantExportData = {
           </div>
         </div>
       </section>
+
+      <!-- Scoville Information (for chili plants) -->
+      {scovilleData && (
+        <ScovilleCard 
+          client:visible
+          scovilleData={scovilleData}
+        />
+      )}
 
       <!-- Plant Details Grid -->
       <div class="details-grid">
