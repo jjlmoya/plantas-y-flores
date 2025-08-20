@@ -1,9 +1,11 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import RelatedPlants from '../../components/RelatedPlants.vue';
+import CalendarLinkCard from '../../components/CalendarLinkCard.vue';
 import ArticleContent from '../../components/ads/ArticleContent.vue';
 import SidebarRectangle from '../../components/ads/SidebarRectangle.vue';
 import { generatePlantPaths, getPlants } from '../../utils/data.js';
+import { getAvailableCalendarCategories } from '../../utils/calendar-inheritance.js';
 
 export async function getStaticPaths() {
   return await generatePlantPaths();
@@ -33,6 +35,11 @@ const allPlantsData = allPlants.map(p => ({
 const category = plant.data.categories[0];
 const title = `${plant.data.title} - ${category?.name || 'Plantas'} - Plantas y Flores`;
 const description = plant.data.excerpt.replace(/<[^>]*>/g, '').substring(0, 160) + '...';
+
+// Check if this plant has a calendar available
+const availableCalendarCategories = await getAvailableCalendarCategories();
+const categorySlug = category?.slug?.toLowerCase();
+const hasCalendar = categorySlug && availableCalendarCategories.includes(categorySlug);
 const getImagePath = (imageUrl) => {
   if (!imageUrl) return null;
   
@@ -146,6 +153,16 @@ const structuredData = {
         </div>
       </div>
     </header>
+
+    <!-- Calendar Link Card -->
+    {hasCalendar && (
+      <CalendarLinkCard 
+        client:visible
+        plantName={plant.data.title}
+        categorySlug={categorySlug}
+        plantSlug={plant.slug}
+      />
+    )}
 
     <!-- Featured Image -->
     {imageUrl && (
