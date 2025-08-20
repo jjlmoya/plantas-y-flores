@@ -88,6 +88,18 @@ export async function GET() {
 
       const imageUrl = getImagePath(plant.data.main_image || plant.data.featured_image);
 
+      // XML escape function
+      const escapeXml = (str) => {
+        if (!str) return str;
+        return str
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#x27;')
+          .replace(/&nbsp;/g, ' ');
+      };
+
       return {
         url: `https://plantasyflores.online/${category}/${plant.slug}/`,
         lastmod: new Date(plant.data.date).toISOString(),
@@ -95,8 +107,8 @@ export async function GET() {
         priority: priority,
         image: imageUrl ? {
           loc: imageUrl,
-          title: plant.data.title,
-          caption: plant.data.excerpt?.replace(/<[^>]*>/g, '').substring(0, 200) || plant.data.title
+          title: escapeXml(plant.data.title),
+          caption: escapeXml(plant.data.excerpt?.replace(/<[^>]*>/g, '').substring(0, 200) || plant.data.title)
         } : null
       };
     })
