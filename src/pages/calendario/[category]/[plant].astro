@@ -229,17 +229,134 @@ function translateAndCheckCompanionPlants(companions) {
 const processedCompanions = translateAndCheckCompanionPlants(growingConditions.companion_plants);
 const processedAvoidPlants = translateAndCheckCompanionPlants(growingConditions.avoid_plants);
 
-// Prepare export data
-console.log('plantName:', plantName);
-console.log('timelineData length:', timelineData.length);
-console.log('timelineData:', JSON.stringify(timelineData));
+// Generate dynamic Schema FAQ based on plant data
+function generateSchemaFAQ() {
+  const faq = [];
+  const calendar = plantCalendar.calendar_data || {};
 
+  // Sowing question
+  if (calendar.sowing) {
+    const sowingMonths = [];
+    if (calendar.sowing.indoor?.best_months) {
+      sowingMonths.push(...calendar.sowing.indoor.best_months);
+    }
+    if (calendar.sowing.outdoor?.best_months) {
+      sowingMonths.push(...calendar.sowing.outdoor.best_months);
+    }
+    
+    if (sowingMonths.length > 0) {
+      const uniqueMonths = [...new Set(sowingMonths)].sort();
+      const monthNames = uniqueMonths.map(m => ui.getMonthName(m));
+      const tempInfo = calendar.sowing.indoor?.temperature_range || calendar.sowing.outdoor?.temperature_range;
+      
+      let answer = `${plantName} se siembra `;
+      if (monthNames.length <= 2) {
+        answer += `en ${monthNames.join(' y ')}`;
+      } else {
+        answer += `desde ${monthNames[0]} hasta ${monthNames[monthNames.length - 1]}`;
+      }
+      
+      if (tempInfo) {
+        answer += `, con temperatura óptima entre ${tempInfo[0]}-${tempInfo[1]}°C`;
+      }
+      
+      if (calendar.sowing.indoor?.best_months && calendar.sowing.outdoor?.best_months) {
+        answer += '. Se puede sembrar en interior y trasplantar después, o directamente en exterior según el clima.';
+      }
+      
+      faq.push({
+        question: `¿Cuándo sembrar ${plantName}?`,
+        answer: answer
+      });
+    }
+  }
+
+  // Transplanting question
+  if (calendar.transplanting?.best_months) {
+    const transplantMonths = calendar.transplanting.best_months.map(m => ui.getMonthName(m));
+    let answer = `El trasplante de ${plantName} se realiza `;
+    if (transplantMonths.length <= 2) {
+      answer += `en ${transplantMonths.join(' y ')}`;
+    } else {
+      answer += `desde ${transplantMonths[0]} hasta ${transplantMonths[transplantMonths.length - 1]}`;
+    }
+    
+    if (calendar.transplanting.soil_temperature_min) {
+      answer += `, cuando el suelo alcance al menos ${calendar.transplanting.soil_temperature_min}°C`;
+    }
+    
+    answer += '. Es importante esperar a que las plántulas tengan el tamaño adecuado y hayan pasado las últimas heladas.';
+    
+    faq.push({
+      question: `¿Cuándo trasplantar ${plantName}?`,
+      answer: answer
+    });
+  }
+
+  // Harvesting question
+  if (calendar.harvesting?.best_months) {
+    const harvestMonths = calendar.harvesting.best_months.map(m => ui.getMonthName(m));
+    let answer = `La cosecha de ${plantName} se realiza `;
+    if (harvestMonths.length <= 2) {
+      answer += `en ${harvestMonths.join(' y ')}`;
+    } else {
+      answer += `desde ${harvestMonths[0]} hasta ${harvestMonths[harvestMonths.length - 1]}`;
+    }
+    
+    if (calendar.harvesting.days_to_harvest) {
+      const days = calendar.harvesting.days_to_harvest;
+      answer += `, aproximadamente entre ${days[0]}-${days[1]} días después de la siembra`;
+    }
+    
+    if (harvestData.harvest_indicators?.length > 0) {
+      const indicators = harvestData.harvest_indicators.map(ind => ui.formatTaskName(ind));
+      answer += `. Indicadores de cosecha: ${indicators.join(', ')}.`;
+    }
+    
+    faq.push({
+      question: `¿Cuándo cosechar ${plantName}?`,
+      answer: answer
+    });
+  }
+
+  // Care/maintenance question if monthly tasks exist
+  const hasCareTasks = Object.values(calendar.care_calendar?.monthly_tasks || {}).some(tasks => tasks.length > 0);
+  if (hasCareTasks) {
+    let answer = `${plantName} requiere cuidados específicos según la época: `;
+    
+    const careByMonth = Object.entries(calendar.care_calendar?.monthly_tasks || {})
+      .filter(([_, tasks]) => tasks.length > 0)
+      .map(([month, tasks]) => ({
+        month: ui.getMonthName(parseInt(month)),
+        tasks: tasks.map(task => ui.formatTaskName(task)).join(', ')
+      }));
+    
+    if (careByMonth.length > 0) {
+      answer += careByMonth.slice(0, 3).map(care => 
+        `${care.month}: ${care.tasks}`
+      ).join('; ');
+      
+      if (careByMonth.length > 3) {
+        answer += '. Otros cuidados varían según el mes específico.';
+      }
+    }
+    
+    faq.push({
+      question: `¿Qué cuidados necesita ${plantName}?`,
+      answer: answer
+    });
+  }
+
+  return faq;
+}
+
+const schemaFAQ = generateSchemaFAQ();
+
+// Prepare export data
 const plantExportData = {
   plantName,
   timelineData
 };
-
-console.log('plantExportData:', JSON.stringify(plantExportData));
 ---
 
 <BaseLayout 
@@ -652,32 +769,14 @@ console.log('plantExportData:', JSON.stringify(plantExportData));
         "image": "https://plantasyflores.online/wp-content/uploads/cosecha.webp"
       }
     ],
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": `¿Cuándo sembrar ${plantName}?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `El mejor momento para sembrar ${plantName} varía según la región, pero generalmente se recomienda seguir el calendario estacional específico.`
-        }
-      },
-      {
-        "@type": "Question", 
-        "name": `¿Cuándo trasplantar ${plantName}?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "El trasplante debe realizarse cuando las plántulas tengan el tamaño adecuado y las condiciones climáticas sean favorables."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": `¿Cuándo cosechar ${plantName}?`,
-        "acceptedAnswer": {
-          "@type": "Answer", 
-          "text": "La cosecha se realiza según el calendario específico de cada variedad, respetando los tiempos de maduración."
-        }
+    "mainEntity": schemaFAQ.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
       }
-    ],
+    })),
     "about": {
       "@type": "Thing",
       "name": plantName,
