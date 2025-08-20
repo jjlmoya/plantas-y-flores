@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import HeaderExport from '../../../components/HeaderExport.vue';
-import { getPlantCalendarWithUI, getGlobalCalendarConfig, getUIHelpers, generatePlantPaths, getOriginFlag } from '../../../utils/calendar-inheritance.js';
+import { getPlantCalendarWithUI, getGlobalCalendarConfig, getUIHelpers, generatePlantPaths, getOriginFlag, getAvailableCalendarCategories } from '../../../utils/calendar-inheritance.js';
 
 // Generate static paths for all plants
 export async function getStaticPaths() {
@@ -36,6 +36,7 @@ if (!category || !plantSlug) {
 const plantCalendar = await getPlantCalendarWithUI(category, plantSlug);
 const globalConfig = await getGlobalCalendarConfig();
 const ui = getUIHelpers(globalConfig);
+const availableCategories = await getAvailableCalendarCategories();
 
 if (!plantCalendar || !plantCalendar._inheritance.has_plant_specific && !plantCalendar._inheritance.has_category) {
   return Astro.redirect('/calendario/');
@@ -118,7 +119,7 @@ for (let month = 1; month <= 12; month++) {
       type: 'flowering',
       label: isPeak ? 'Floración Principal' : 'Floración',
       color: ui.getActivityColor('flowering'),
-      icon: '🌸',
+      icon: ui.getTaskIcon('enjoy_blooms'),
       priority: isPeak ? 'high' : 'medium'
     });
   }
@@ -127,16 +128,24 @@ for (let month = 1; month <= 12; month++) {
   if (calendar.planting?.best_months?.includes(month)) {
     monthData.activities.push({
       type: 'planting',
-      label: 'Óptimo Plantar',
+      label: 'Plantación',
       color: ui.getActivityColor('planting'),
-      icon: ui.getTaskIcon('transplant')
+      icon: ui.getTaskIcon('prepare_beds')
     });
   }
 
-  // Check monthly tasks
+  // Check monthly tasks (avoid duplicating planting if already added)
   const monthlyTasks = calendar.care_calendar?.monthly_tasks?.[month.toString()];
   if (monthlyTasks && monthlyTasks.length > 0) {
+    // Get already added activity types to avoid duplicates
+    const existingTypes = monthData.activities.map(a => a.type);
+    
     monthlyTasks.forEach(task => {
+      // Skip planting task if we already added a planting activity
+      if (task === 'planting' && existingTypes.includes('planting')) {
+        return;
+      }
+      
       monthData.activities.push({
         type: 'care',
         label: ui.formatTaskName(task),
@@ -167,6 +176,59 @@ const nutritionalData = plantCalendar.nutritional_data || {};
 // Article link
 const articleLink = plantCalendar._article_links?.resolved_link;
 
+// Translate companion plant names from English to Spanish and check if they have categories
+function translateAndCheckCompanionPlants(companions) {
+  const translations = {
+    'muscari': 'Muscari',
+    'narcisos': 'Narcisos', 
+    'crocus': 'Crocus',
+    'daffodils': 'Narcisos',
+    'snowdrops': 'Campanillas de Invierno',
+    'allium': 'Allium',
+    'hyacinth': 'Jacinto',
+    'iris': 'Iris',
+    'fritillaria': 'Fritilaria',
+    'scilla': 'Escila',
+    'chionodoxa': 'Gloria de las Nieves',
+    'galanthus': 'Campanilla de Invierno',
+    'narcissus': 'Narciso',
+    'basil': 'albahaca',
+    'tomato': 'tomate',
+    'rose': 'rosa',
+    'lavender': 'lavanda',
+    'thyme': 'tomillo',
+    'chamomile': 'manzanilla',
+    'strawberry': 'fresa',
+    'chilli': 'chili',
+    'potato': 'patata',
+    'cabbage': 'col',
+    'orchid': 'orquidea',
+    'tulip': 'tulipan',
+    'hibiscus': 'hibiscus',
+    'lily': 'lirios',
+    'mango': 'mango',
+    'banana': 'platano',
+    'pineapple': 'pina'
+  };
+  
+  if (!companions || !Array.isArray(companions)) return [];
+  
+  return companions.map(companion => {
+    const translatedName = translations[companion.toLowerCase()] || companion;
+    const categoryExists = availableCategories.includes(translatedName.toLowerCase());
+    
+    return {
+      originalName: companion,
+      translatedName: translatedName,
+      hasCategory: categoryExists,
+      categorySlug: categoryExists ? translatedName.toLowerCase() : null
+    };
+  });
+}
+
+const processedCompanions = translateAndCheckCompanionPlants(growingConditions.companion_plants);
+const processedAvoidPlants = translateAndCheckCompanionPlants(growingConditions.avoid_plants);
+
 // Prepare export data
 console.log('plantName:', plantName);
 console.log('timelineData length:', timelineData.length);
@@ -181,47 +243,110 @@ console.log('plantExportData:', JSON.stringify(plantExportData));
 ---
 
 <BaseLayout 
-  title={`${plantName} - Calendario de Cultivo ${new Date().getFullYear()} | Cuándo Plantar ${plantName}`}
+  title={`Calendario de cultivo del ${plantName.toLowerCase()} ${new Date().getFullYear()} (España): siembra, trasplante y cosecha`}
   description={`🌱 Guía completa de cultivo para ${plantName}. Calendario detallado con fechas de siembra, trasplante y cosecha. ${plantInfo.scientific_name ? `${plantInfo.scientific_name}. ` : ''}Aprende cuándo y cómo cultivar ${plantName} paso a paso.`}
   keywords={`${plantName}, cultivo ${plantName}, calendario ${plantName}, plantar ${plantName}, sembrar ${plantName}, ${plantInfo.scientific_name || ''}, ${categoryName}`}
   type="article"
-  canonical={`/calendario/${category}/${plantSlug}/`}
+  canonical={`https://plantasyflores.online/calendario/${category}/${plantSlug}/`}
   category={categoryName}
   publishedDate={new Date().toISOString()}
   modifiedDate={new Date().toISOString()}
+  noAds={true}
 >
   <link rel="stylesheet" href="/styles/calendar-theme.css">
   
-  <!-- Structured Data for Plant -->
+  <!-- Structured Data for Plant Calendar -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": `Calendario de Cultivo para ${plantName}`,
-      "description": `Guía completa de cultivo para ${plantName} con calendario detallado de siembra, trasplante y cosecha`,
-      "author": {
-        "@type": "Organization",
-        "name": "Plantas y Flores"
+      "@type": ["FAQPage", "HowTo"],
+      "name": `Cómo cultivar ${plantName}: calendario de siembra y cosecha`,
+      "description": `Guía paso a paso para cultivar ${plantName} con calendario detallado de siembra, trasplante y cosecha`,
+      "totalTime": "PT365D",
+      "estimatedCost": {
+        "@type": "MonetaryAmount",
+        "currency": "EUR",
+        "value": "5-15"
       },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Plantas y Flores",
-        "url": "https://plantasyflores.online"
-      },
-      "datePublished": "${new Date().toISOString()}",
-      "dateModified": "${new Date().toISOString()}",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": `https://plantasyflores.online/calendario/${category}/${plantSlug}/`
-      },
+      "tool": [
+        {
+          "@type": "HowToTool",
+          "name": "Semillas de ${plantName}"
+        },
+        {
+          "@type": "HowToTool", 
+          "name": "Tierra de cultivo"
+        },
+        {
+          "@type": "HowToTool",
+          "name": "Regadera"
+        }
+      ],
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Preparación y siembra",
+          "text": "Planifica la siembra según el calendario estacional específico para ${plantName}",
+          "image": "https://plantasyflores.online/wp-content/uploads/semillas.webp"
+        },
+        {
+          "@type": "HowToStep", 
+          "name": "Trasplante",
+          "text": "Trasplanta las plántulas en el momento óptimo según las condiciones climáticas",
+          "image": "https://plantasyflores.online/wp-content/uploads/trasplante.webp"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Cuidados y mantenimiento", 
+          "text": "Proporciona los cuidados necesarios durante el ciclo de crecimiento",
+          "image": "https://plantasyflores.online/wp-content/uploads/cuidados.webp"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Cosecha",
+          "text": "Cosecha en el momento óptimo para obtener la mejor calidad",
+          "image": "https://plantasyflores.online/wp-content/uploads/cosecha.webp"
+        }
+      ],
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Cuándo sembrar ${plantName} en España?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El mejor momento para sembrar ${plantName} varía según la región, pero generalmente se recomienda seguir el calendario estacional específico."
+          }
+        },
+        {
+          "@type": "Question", 
+          "name": "¿Cuándo trasplantar ${plantName}?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El trasplante debe realizarse cuando las plántulas tengan el tamaño adecuado y las condiciones climáticas sean favorables."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuándo cosechar ${plantName}?",
+          "acceptedAnswer": {
+            "@type": "Answer", 
+            "text": "La cosecha se realiza según el calendario específico de cada variedad, respetando los tiempos de maduración."
+          }
+        }
+      ],
       "about": {
         "@type": "Thing",
         "name": "${plantName}",
         ${plantInfo.scientific_name ? `"scientificName": "${plantInfo.scientific_name}",` : ''}
         "category": "${categoryName}"
       },
-      "keywords": "${plantName}, cultivo, calendario, plantación, siembra, trasplante, cosecha",
-      "articleSection": "Calendario de Cultivo"
+      "author": {
+        "@type": "Organization",
+        "name": "Plantas y Flores",
+        "url": "https://plantasyflores.online"
+      },
+      "datePublished": "${new Date().toISOString()}",
+      "dateModified": "${new Date().toISOString()}"
     }
   </script>
   
@@ -248,7 +373,7 @@ console.log('plantExportData:', JSON.stringify(plantExportData));
         <div class="plant-title">
           <h1 class="page-title">
             <span class="plant-icon">{categoryIcon}</span>
-            {plantName}
+            Calendario de {plantName}
           </h1>
           {plantInfo.scientific_name && (
             <p class="scientific-name">{plantInfo.scientific_name}</p>
@@ -291,6 +416,22 @@ console.log('plantExportData:', JSON.stringify(plantExportData));
     </header>
 
     <div class="container">
+      
+      <!-- Introduction Section -->
+      <section class="intro-section">
+        <div class="intro-content">
+          <p>
+            Este calendario de cultivo para <strong>{plantName}</strong> está adaptado específicamente para España, 
+            considerando las diferentes zonas climáticas de la península. Las fechas pueden variar ligeramente 
+            según tu ubicación geográfica: zona mediterránea, continental o atlántica.
+          </p>
+          <p>
+            <strong>Cómo usar este calendario:</strong> Las actividades mostradas están organizadas por meses, 
+            indicando cuándo sembrar, trasplantar y cosechar. Los iconos de color indican la prioridad 
+            de cada tarea, y las temperaturas ayudan a determinar el momento exacto según tu zona.
+          </p>
+        </div>
+      </section>
 
       <!-- Timeline Section -->
       <section class="timeline-section">
@@ -483,39 +624,59 @@ console.log('plantExportData:', JSON.stringify(plantExportData));
         )}
 
         <!-- Companion Plants -->
-        {(growingConditions.companion_plants?.length > 0 || growingConditions.avoid_plants?.length > 0) && (
+        {(processedCompanions.length > 0 || processedAvoidPlants.length > 0) && (
           <section class="details-card">
             <h3>🤝 Plantas Compañeras</h3>
             
-            {growingConditions.companion_plants?.length > 0 && (
+            {processedCompanions.length > 0 && (
               <div class="companions-section">
                 <h4 class="companions-title good">✅ Buenas Compañeras</h4>
                 <div class="companions-list">
-                  {growingConditions.companion_plants.map(companion => (
-                    <a 
-                      href={`/calendario/categoria/${companion}/`}
-                      class="companion-tag good"
-                      key={companion}
-                    >
-                      <span class="companion-icon">{ui.getCategoryIcon(companion)}</span>
-                      {ui.formatCategoryName(companion)}
-                    </a>
-                  ))}
+                  {processedCompanions.map(companion => {
+                    const CompanionElement = companion.hasCategory ? 'a' : 'span';
+                    return (
+                      <CompanionElement 
+                        href={companion.hasCategory ? `/calendario/categoria/${companion.categorySlug}/` : undefined}
+                        class={`companion-tag good ${companion.hasCategory ? 'clickable' : 'no-link'}`}
+                        key={companion.originalName}
+                        title={companion.hasCategory ? `Ver calendario de ${companion.translatedName}` : `${companion.translatedName} (no disponible)`}
+                      >
+                        <span class="companion-icon">{ui.getCategoryIcon(companion.categorySlug || 'default')}</span>
+                        {companion.translatedName}
+                        {!companion.hasCategory && <span class="no-link-indicator">*</span>}
+                      </CompanionElement>
+                    );
+                  })}
                 </div>
+                {processedCompanions.some(c => !c.hasCategory) && (
+                  <p class="companions-note">* Estas plantas no tienen guía de cultivo disponible</p>
+                )}
               </div>
             )}
 
-            {growingConditions.avoid_plants?.length > 0 && (
+            {processedAvoidPlants.length > 0 && (
               <div class="companions-section">
                 <h4 class="companions-title bad">❌ Evitar Plantar Cerca</h4>
                 <div class="companions-list">
-                  {growingConditions.avoid_plants.map(avoid => (
-                    <span class="companion-tag bad" key={avoid}>
-                      <span class="companion-icon">{ui.getCategoryIcon(avoid)}</span>
-                      {ui.formatCategoryName(avoid)}
-                    </span>
-                  ))}
+                  {processedAvoidPlants.map(avoid => {
+                    const AvoidElement = avoid.hasCategory ? 'a' : 'span';
+                    return (
+                      <AvoidElement
+                        href={avoid.hasCategory ? `/calendario/categoria/${avoid.categorySlug}/` : undefined}
+                        class={`companion-tag bad ${avoid.hasCategory ? 'clickable' : 'no-link'}`}
+                        key={avoid.originalName}
+                        title={avoid.hasCategory ? `Ver calendario de ${avoid.translatedName}` : `${avoid.translatedName} (no disponible)`}
+                      >
+                        <span class="companion-icon">{ui.getCategoryIcon(avoid.categorySlug || 'default')}</span>
+                        {avoid.translatedName}
+                        {!avoid.hasCategory && <span class="no-link-indicator">*</span>}
+                      </AvoidElement>
+                    );
+                  })}
                 </div>
+                {processedAvoidPlants.some(a => !a.hasCategory) && (
+                  <p class="companions-note">* Estas plantas no tienen guía de cultivo disponible</p>
+                )}
               </div>
             )}
           </section>
@@ -539,6 +700,31 @@ console.log('plantExportData:', JSON.stringify(plantExportData));
   .plant-calendar-view {
     min-height: 100vh;
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  }
+
+  .intro-section {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #48bb78;
+  }
+
+  .intro-content p {
+    color: #4a5568;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+
+  .intro-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  .intro-content strong {
+    color: #2d3748;
+    font-weight: 600;
   }
 
   .breadcrumb {
@@ -581,7 +767,7 @@ console.log('plantExportData:', JSON.stringify(plantExportData));
   }
 
   .plant-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
     color: white;
     padding: 2rem 0 3rem 0;
     margin-bottom: 2rem;
@@ -676,7 +862,7 @@ console.log('plantExportData:', JSON.stringify(plantExportData));
 
   .main-article-btn {
     background: white;
-    color: #667eea;
+    color: #48bb78;
     padding: 0.75rem 2rem;
     border-radius: 8px;
     text-decoration: none;
@@ -947,7 +1133,7 @@ console.log('plantExportData:', JSON.stringify(plantExportData));
     border: 1px solid #9ae6b4;
   }
 
-  .companion-tag.good:hover {
+  .companion-tag.good.clickable:hover {
     background: #9ae6b4;
     transform: translateY(-1px);
   }
@@ -956,6 +1142,30 @@ console.log('plantExportData:', JSON.stringify(plantExportData));
     background: #fed7d7;
     color: #742a2a;
     border: 1px solid #feb2b2;
+  }
+
+  .companion-tag.bad.clickable:hover {
+    background: #feb2b2;
+    transform: translateY(-1px);
+  }
+
+  .companion-tag.no-link {
+    cursor: default;
+    opacity: 0.7;
+  }
+
+  .no-link-indicator {
+    font-size: 0.7rem;
+    opacity: 0.6;
+    margin-left: 0.25rem;
+  }
+
+  .companions-note {
+    font-size: 0.8rem;
+    color: #718096;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    font-style: italic;
   }
 
   .companion-icon {
@@ -970,7 +1180,7 @@ console.log('plantExportData:', JSON.stringify(plantExportData));
   }
 
   .back-link {
-    background: #667eea;
+    background: #48bb78;
     color: white;
     padding: 0.75rem 1.5rem;
     border-radius: 8px;

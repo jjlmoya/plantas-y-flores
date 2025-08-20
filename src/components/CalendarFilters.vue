@@ -112,14 +112,12 @@
         </div>
 
         <div class="card-activities">
-          <span v-if="getPlantActivity(plant, 'sowing').length > 0" class="activity-tag sowing">
-            🌱 {{ getPlantActivity(plant, 'sowing').map(m => getMonthName(m).slice(0,3)).join(', ') }}
-          </span>
-          <span v-if="getPlantActivity(plant, 'harvesting').length > 0" class="activity-tag harvesting">
-            🌾 {{ getPlantActivity(plant, 'harvesting').map(m => getMonthName(m).slice(0,3)).join(', ') }}
-          </span>
-          <span v-if="getPlantActivity(plant, 'transplanting').length > 0" class="activity-tag transplanting">
-            🌿 {{ getPlantActivity(plant, 'transplanting').map(m => getMonthName(m).slice(0,3)).join(', ') }}
+          <span 
+            v-for="activity in getPlantActivities(plant)" 
+            :key="activity.type"
+            :class="`activity-tag ${activity.type}`"
+          >
+            {{ activity.icon }} {{ activity.months }}
           </span>
         </div>
 
@@ -343,6 +341,32 @@ export default {
       }
       
       return [...new Set(months)]; // Remove duplicates
+    },
+    getPlantActivities(plant) {
+      const activities = [];
+      const activityTypes = ['sowing', 'transplanting', 'planting', 'flowering', 'harvesting', 'pruning'];
+      
+      const activityIcons = {
+        sowing: '🌱',
+        transplanting: '🌿', 
+        planting: '🌳',
+        flowering: '🌸',
+        harvesting: '🌾',
+        pruning: '✂️'
+      };
+      
+      activityTypes.forEach(activityType => {
+        const months = this.getPlantActivity(plant, activityType);
+        if (months.length > 0) {
+          activities.push({
+            type: activityType,
+            icon: activityIcons[activityType] || '•',
+            months: months.map(m => this.getMonthName(m).slice(0, 3)).join(', ')
+          });
+        }
+      });
+      
+      return activities;
     },
     hasActivityInMonth(plant, monthNum) {
       const calendar = plant.calendar?.calendar_data;
@@ -588,6 +612,21 @@ export default {
 .activity-tag.transplanting {
   background: #bee3f8;
   color: #2a69ac;
+}
+
+.activity-tag.planting {
+  background: #d4edda;
+  color: #155724;
+}
+
+.activity-tag.flowering {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.activity-tag.pruning {
+  background: #e2e3e5;
+  color: #383d41;
 }
 
 .card-actions {

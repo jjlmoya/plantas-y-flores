@@ -12,7 +12,8 @@
     }
   },
   "growing_conditions": {
-    "special_purposes": ["companion_benefit"]
+    "special_purposes": ["companion_benefit"],
+    "companion_plants": ["tomate", "pimientos", "orégano", "perejil"]
   },
   "harvest_data": {
     "storage_life": 10,

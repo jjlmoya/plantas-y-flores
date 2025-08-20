@@ -2,12 +2,14 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import StatsCard from "../../../components/StatsCard.vue";
 import FilterPlantCard from "../../../components/FilterPlantCard.vue";
+import CompanionPlants from "../../../components/CompanionPlants.vue";
 import {
   getCategoryPlantsWithCalendar,
   getGlobalCalendarConfig,
   getUIHelpers,
   getAvailableCalendarCategories,
   getAvailableActivities,
+  getCompanionPlantsWithDetails,
 } from "../../../utils/calendar-inheritance.js";
 
 // Generate static paths for all categories
@@ -48,6 +50,9 @@ if (categoryPlants.length === 0) {
 const categoryName = ui.formatCategoryName(category);
 const categoryIcon = ui.getCategoryIcon(category);
 const totalPlants = categoryPlants.length;
+
+// Get companion plants for this category
+const companionPlants = await getCompanionPlantsWithDetails(category);
 
 // Group plants by activities across all months
 const plantActivities = {};
@@ -182,8 +187,9 @@ const formattedCategoryPlants = categoryPlants.map(plant => {
   description={`🌿 Calendario completo de cultivo para ${categoryName.toLowerCase()}. ${totalPlants} variedades con fechas de siembra, trasplante y cosecha. Guía especializada para cultivar ${categoryName.toLowerCase()} en tu huerto y jardín.`}
   keywords={`${categoryName}, calendario ${categoryName}, cultivo ${categoryName}, plantar ${categoryName}, variedades ${categoryName}, huerto, jardín`}
   type="website"
-  canonical={`/calendario/categoria/${category}/`}
+  canonical={`https://plantasyflores.online/calendario/categoria/${category}/`}
   category={categoryName}
+  noAds={true}
 >
   <link rel="stylesheet" href="/styles/calendar-theme.css">
   
@@ -398,6 +404,14 @@ const formattedCategoryPlants = categoryPlants.map(plant => {
         </section>
       </section>
 
+      <!-- Companion Plants Section -->
+      <section class="companion-section">
+        <CompanionPlants 
+          client:visible
+          companions={companionPlants}
+        />
+      </section>
+
       <!-- Plants Grid -->
       <section class="plants-grid-section">
         <h2>🌱 Todas las Variedades de {categoryName}</h2>
@@ -471,6 +485,10 @@ const formattedCategoryPlants = categoryPlants.map(plant => {
 
   .category-icon {
     font-size: 2.5rem;
+  }
+
+  .companion-section {
+    margin-bottom: var(--space-xl);
   }
 
   .plants-grid-section {
@@ -669,7 +687,7 @@ const formattedCategoryPlants = categoryPlants.map(plant => {
   }
 
   .back-link {
-    background: #667eea;
+    background: #48bb78;
     color: white;
     padding: 0.75rem 2rem;
     border-radius: 8px;

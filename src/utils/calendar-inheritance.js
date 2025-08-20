@@ -79,16 +79,82 @@ function getDefaultGlobalConfig() {
         tomate: "🍅", rosa: "🌹", albahaca: "🌿", default: "🌱"
       },
       task_icons: {
+        // Iconos básicos existentes
         prepare_seedbeds: "🌱", transplant: "🌿", moderate_watering: "💧",
-        fertilize: "🌱", harvest_main: "🌾", default: "•"
+        fertilize: "🧪", harvest_main: "🌾", harvest_early: "🌾", harvest_late: "🌾",
+        pest_monitoring: "🔍", plant_cleanup: "🧹", sowing: "🌱", 
+        planting: "🌳", pruning: "✂️", watering: "💧", 
+        deadheading: "🌸", mulching: "🍃", flowering: "🌸",
+        // Iconos para todas las tareas nuevas
+        monitor_growth: "📈", remove_mulch: "🧹", fertilize_light: "💊",
+        water_moderately: "💧", enjoy_blooms: "🌺", deadhead_spent: "🥀",
+        allow_foliage_yellow: "🍂", lift_bulbs_optional: "⬆️", store_dry: "📦",
+        prepare_beds: "🌱", mulch_protection: "🛡️", reduce_watering: "💧",
+        fertilize_seedlings: "🧪", water_regularly: "💧", water_content: "📊",
+        enjoy_fragrance: "👃", lift_tubers: "⬆️", lifting_time: "⏰",
+        prepare_winter: "❄️", store_tubers_cool_dry: "🧊", mulch: "🍃",
+        remove_old_leaves: "🍂", remove_runners: "✂️", deadhead_daily: "🌸",
+        minimal_water: "💧", prepare_supports: "🏗️", mulch_for_winter: "❄️",
+        water_establishment: "💧", enjoy_color_changes: "🎨", 
+        monitor_flower_development: "🌸", prepare_coastal_beds: "🏖️",
+        prepare_wet_beds: "💧", water_garden: "🌊", water_lightly: "💧",
+        minimal_watering: "💧", remove_spent: "🗑️", water_base_only: "💧",
+        water_carefully: "⚠️", fertilize_orchid: "🌺", increase_watering: "💧",
+        monitor_pods: "🫘", prepare_soil: "🌱", store_cool_dark: "🧊",
+        store_properly: "📦", water_deeply: "💧", prepare_outdoor: "🌤️",
+        low_water_content: "📉", 
+        // Iconos por defecto
+        default: "•"
       },
       task_priorities: {
-        harvest_main: "high", transplant: "high", 
-        fertilize: "medium", moderate_watering: "medium"
+        // Prioridades básicas existentes
+        harvest_main: "high", harvest_early: "high", harvest_late: "medium",
+        transplant: "high", prepare_seedbeds: "high",
+        fertilize: "medium", moderate_watering: "medium", 
+        pest_monitoring: "medium", watering: "medium",
+        plant_cleanup: "low", deadheading: "low", mulching: "low", flowering: "medium",
+        // Prioridades para todas las tareas nuevas
+        monitor_growth: "medium", remove_mulch: "medium", fertilize_light: "medium",
+        water_moderately: "medium", enjoy_blooms: "low", deadhead_spent: "medium",
+        allow_foliage_yellow: "low", lift_bulbs_optional: "low", store_dry: "high",
+        prepare_beds: "high", mulch_protection: "medium", reduce_watering: "medium",
+        fertilize_seedlings: "high", water_regularly: "medium", water_content: "low",
+        enjoy_fragrance: "low", lift_tubers: "high", lifting_time: "high",
+        prepare_winter: "high", store_tubers_cool_dry: "high", mulch: "medium",
+        remove_old_leaves: "low", remove_runners: "medium", deadhead_daily: "medium",
+        minimal_water: "low", prepare_supports: "high", mulch_for_winter: "high",
+        water_establishment: "high", enjoy_color_changes: "low", 
+        monitor_flower_development: "medium", prepare_coastal_beds: "high",
+        prepare_wet_beds: "high", water_garden: "high", water_lightly: "low",
+        minimal_watering: "low", remove_spent: "low", water_base_only: "medium",
+        water_carefully: "medium", fertilize_orchid: "medium", increase_watering: "medium",
+        monitor_pods: "medium", prepare_soil: "high", store_cool_dark: "high",
+        store_properly: "high", water_deeply: "medium", prepare_outdoor: "high",
+        low_water_content: "low"
       },
       activity_colors: {
         sowing: "#48bb78", transplanting: "#4299e1", harvesting: "#ed8936",
-        flowering: "#d53f8c", pruning: "#805ad5", planting: "#38b2ac", care: "#9f7aea"
+        flowering: "#d53f8c", pruning: "#48bb78", planting: "#38b2ac", 
+        care: "#48bb78", watering: "#4299e1", fertilizing: "#48bb78",
+        pest_monitoring: "#f56565", maintenance: "#718096",
+        // Colores específicos para tareas nuevas
+        monitor_growth: "#48bb78", remove_mulch: "#f6ad55", fertilize_light: "#48bb78",
+        water_moderately: "#4299e1", enjoy_blooms: "#d53f8c", deadhead_spent: "#ed8936",
+        allow_foliage_yellow: "#f6ad55", lift_bulbs_optional: "#9f7aea", store_dry: "#805ad5",
+        prepare_beds: "#48bb78", mulch_protection: "#38b2ac", reduce_watering: "#4299e1",
+        fertilize_seedlings: "#48bb78", water_regularly: "#4299e1", water_content: "#4299e1",
+        enjoy_fragrance: "#d53f8c", lift_tubers: "#9f7aea", lifting_time: "#805ad5",
+        prepare_winter: "#38b2ac", store_tubers_cool_dry: "#805ad5", mulch: "#38b2ac",
+        remove_old_leaves: "#f6ad55", remove_runners: "#ed8936", deadhead_daily: "#ed8936",
+        minimal_water: "#4299e1", prepare_supports: "#48bb78", mulch_for_winter: "#38b2ac",
+        water_establishment: "#4299e1", enjoy_color_changes: "#d53f8c", 
+        monitor_flower_development: "#d53f8c", prepare_coastal_beds: "#48bb78",
+        prepare_wet_beds: "#4299e1", water_garden: "#4299e1", water_lightly: "#4299e1",
+        minimal_watering: "#4299e1", remove_spent: "#f6ad55", water_base_only: "#4299e1",
+        water_carefully: "#4299e1", fertilize_orchid: "#48bb78", increase_watering: "#4299e1",
+        monitor_pods: "#48bb78", prepare_soil: "#48bb78", store_cool_dark: "#805ad5",
+        store_properly: "#805ad5", water_deeply: "#4299e1", prepare_outdoor: "#48bb78",
+        low_water_content: "#4299e1"
       },
       translation_strings: {
         es: {
@@ -575,7 +641,7 @@ export function getUIHelpers(globalConfig) {
         'transplanting': 'Trasplante', 
         'harvesting': 'Cosecha',
         'flowering': 'Floración',
-        'planting': 'Plantacióna',
+        'planting': 'Plantación',
         'pruning': 'Poda',
         'watering': 'Riego',
         'fertilizing': 'Fertilización',
@@ -669,10 +735,59 @@ export function getUIHelpers(globalConfig) {
         'indoor': 'Interior',
         'outdoor': 'Exterior',
         'container': 'Contenedor',
+        // Nuevas traducciones faltantes
+        'monitor_growth': 'Monitorear Crecimiento',
+        'remove_mulch': 'Retirar Acolchado',
+        'fertilize_light': 'Fertilización Ligera',
+        'water_moderately': 'Regar Moderadamente',
+        'enjoy_blooms': 'Disfrutar Flores',
+        'deadhead_spent': 'Eliminar Flores Pasadas',
+        'allow_foliage_yellow': 'Permitir Amarilleo',
+        'lift_bulbs_optional': 'Levantar Bulbos (Opcional)',
+        'store_dry': 'Almacenar en Seco',
+        'prepare_beds': 'Preparar Canteros',
+        'mulch_protection': 'Protección con Acolchado',
+        'reduce_watering': 'Reducir Riego',
         'ground': 'Suelo',
         'greenhouse': 'Invernadero',
         'minimal_care': 'Cuidado Mínimo',
         'windbreak_check': 'Revisión de Rompevientos',
+        // Términos adicionales encontrados en JSONs
+        'fertilize_seedlings': 'Fertilizar Plántulas',
+        'water_regularly': 'Regar Regularmente',
+        'water_content': 'Contenido de Agua',
+        'enjoy_fragrance': 'Disfrutar Fragancia',
+        'lift_tubers': 'Levantar Tubérculos',
+        'lifting_time': 'Tiempo de Levantado',
+        'prepare_winter': 'Preparar Invierno',
+        'store_tubers_cool_dry': 'Almacenar Tubérculos Fresco y Seco',
+        'mulch': 'Acolchar',
+        'remove_old_leaves': 'Eliminar Hojas Viejas',
+        'remove_runners': 'Eliminar Estolones',
+        'deadhead_daily': 'Eliminar Flores Diariamente',
+        'minimal_water': 'Riego Mínimo',
+        'prepare_supports': 'Preparar Soportes',
+        'mulch_for_winter': 'Acolchar para Invierno',
+        'water_establishment': 'Riego de Establecimiento',
+        'enjoy_color_changes': 'Disfrutar Cambios de Color',
+        'monitor_flower_development': 'Monitorear Desarrollo Floral',
+        'prepare_coastal_beds': 'Preparar Canteros Costeros',
+        'prepare_wet_beds': 'Preparar Canteros Húmedos',
+        'water_garden': 'Jardín Acuático',
+        'water_lightly': 'Regar Ligeramente',
+        'minimal_watering': 'Riego Mínimo',
+        'remove_spent': 'Eliminar Gastadas',
+        'water_base_only': 'Regar Solo la Base',
+        'water_carefully': 'Regar Cuidadosamente',
+        'fertilize_orchid': 'Fertilizar Orquídea',
+        'increase_watering': 'Aumentar Riego',
+        'monitor_pods': 'Monitorear Vainas',
+        'prepare_soil': 'Preparar Suelo',
+        'store_cool_dark': 'Almacenar Fresco y Oscuro',
+        'store_properly': 'Almacenar Adecuadamente',
+        'water_deeply': 'Regar Profundamente',
+        'prepare_outdoor': 'Preparar Exterior',
+        'low_water_content': 'Bajo Contenido de Agua',
         'salt_tolerance_check': 'Revisión de Tolerancia a la Sal',
         'prepare_coastal_beds': 'Preparar Parterres Costeros',
         'water_establishment': 'Riego para Establecimiento',
@@ -981,4 +1096,141 @@ export function slugToActivity(slug) {
   };
   
   return slugActivities[slug] || slug;
+}
+
+/**
+ * Get companion plants for a specific category
+ * Returns plants organized by beneficial, neutral, and avoid
+ */
+export async function getCompanionPlants(category) {
+  const globalConfig = await getGlobalCalendarConfig();
+  const companionData = globalConfig.companion_plants?.[category];
+  
+  if (!companionData) {
+    return {
+      beneficial: [],
+      neutral: [],
+      avoid: []
+    };
+  }
+  
+  // Get available categories to filter out non-existent ones
+  const availableCategories = await getAvailableCalendarCategories();
+  
+  // Filter companion plants to only include existing categories (for linking)
+  const filterCompanions = (companions) => {
+    return companions.map(companion => {
+      const categoryMatch = availableCategories.find(cat => 
+        cat === companion || cat.includes(companion) || companion.includes(cat)
+      );
+      
+      return {
+        name: companion,
+        hasLink: !!categoryMatch,
+        categorySlug: categoryMatch || null
+      };
+    });
+  };
+  
+  return {
+    beneficial: filterCompanions(companionData.beneficial || []),
+    neutral: filterCompanions(companionData.neutral || []),
+    avoid: filterCompanions(companionData.avoid || [])
+  };
+}
+
+/**
+ * Get all companion relationships for multiple categories
+ * Useful for plant planning and garden layout
+ */
+export async function getBulkCompanionPlants(categories) {
+  const companionMap = {};
+  
+  for (const category of categories) {
+    companionMap[category] = await getCompanionPlants(category);
+  }
+  
+  return companionMap;
+}
+
+/**
+ * Find mutual beneficial companion relationships
+ * Returns plants that benefit each other mutually
+ */
+export async function findMutualCompanions(category) {
+  const globalConfig = await getGlobalCalendarConfig();
+  const allCompanions = globalConfig.companion_plants || {};
+  const categoryCompanions = allCompanions[category];
+  
+  if (!categoryCompanions) return [];
+  
+  const mutualBeneficial = [];
+  const beneficialPlants = categoryCompanions.beneficial || [];
+  
+  for (const companion of beneficialPlants) {
+    const companionData = allCompanions[companion];
+    if (companionData && companionData.beneficial?.includes(category)) {
+      mutualBeneficial.push(companion);
+    }
+  }
+  
+  return mutualBeneficial;
+}
+
+/**
+ * Get companion plant recommendations with detailed info
+ * Includes icons, descriptions, and linking logic
+ */
+export async function getCompanionPlantsWithDetails(category) {
+  const companions = await getCompanionPlants(category);
+  const globalConfig = await getGlobalCalendarConfig();
+  const uiHelpers = getUIHelpers(globalConfig);
+  
+  const addDetails = (companionList, type) => {
+    return companionList.map(companion => ({
+      ...companion,
+      icon: uiHelpers.getCategoryIcon(companion.categorySlug || companion.name),
+      type: type,
+      description: getCompanionDescription(companion.name, type),
+      link: companion.hasLink ? `/${companion.categorySlug}/` : null
+    }));
+  };
+  
+  return {
+    beneficial: addDetails(companions.beneficial, 'beneficial'),
+    neutral: addDetails(companions.neutral, 'neutral'),
+    avoid: addDetails(companions.avoid, 'avoid'),
+    totalCount: companions.beneficial.length + companions.neutral.length + companions.avoid.length
+  };
+}
+
+/**
+ * Get description for companion relationship
+ */
+function getCompanionDescription(plantName, relationshipType) {
+  const descriptions = {
+    beneficial: {
+      'albahaca': 'Repele insectos y mejora el sabor',
+      'manzanilla': 'Atrae insectos beneficiosos',
+      'lavanda': 'Repele plagas y atrae polinizadores',
+      'tomillo': 'Control natural de plagas',
+      'ajo': 'Repele áfidos y otros insectos',
+      'cebolla': 'Protege contra plagas del suelo'
+    },
+    neutral: {
+      'lechuga': 'No interfiere con el crecimiento',
+      'zanahoria': 'Uso eficiente del espacio',
+      'espinaca': 'Compatibilidad de cultivo'
+    },
+    avoid: {
+      'hinojo': 'Inhibe el crecimiento',
+      'nogal': 'Produce sustancias alelopáticas',
+      'brócoli': 'Compite por los mismos nutrientes'
+    }
+  };
+  
+  return descriptions[relationshipType]?.[plantName] || 
+         (relationshipType === 'beneficial' ? 'Relación beneficiosa' :
+          relationshipType === 'neutral' ? 'Relación neutral' : 
+          'Evitar plantar juntos');
 }

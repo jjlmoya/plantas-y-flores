@@ -32,7 +32,7 @@ const {
 const nextMonth = currentMonth === 12 ? 1 : currentMonth + 1;
 const nextMonthName = ui.getMonthName(nextMonth);
 
-// Get all plants with calendar data for filtering
+// Load plants data only when filters are needed - optimized with client:visible
 const allPlantsWithCalendar = [];
 for (const category of categories) {
   const categoryPlants = await getCategoryPlantsWithCalendar(category);
@@ -52,8 +52,9 @@ const quickNavMonths = Array.from({ length: 12 }, (_, i) => ({
   description={`📅 Calendario completo de plantación para ${currentMonthName} ${new Date().getFullYear()}. Descubre qué plantar cada mes, cuándo sembrar, trasplantar y cosechar. Guía práctica con 24 categorías de plantas y más de 100 variedades.`}
   keywords="calendario plantación, cuando plantar, sembrar, trasplantar, cosechar, huerto, jardín, agricultura, cultivo"
   type="website"
-  canonical="/calendario/"
+  canonical="https://plantasyflores.online/calendario/"
   image="/brand/calendar-og.webp"
+  noAds={true}
 >
   <link rel="stylesheet" href="/styles/calendar-theme.css" />
   
@@ -1011,7 +1012,7 @@ const quickNavMonths = Array.from({ length: 12 }, (_, i) => ({
       position: fixed;
       top: 20px;
       right: 20px;
-      background: #667eea;
+      background: #48bb78;
       color: white;
       padding: 1rem 1.5rem;
       border-radius: 8px;

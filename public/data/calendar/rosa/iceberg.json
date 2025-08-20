@@ -10,6 +10,9 @@
   "flower_data": {
     "fragrance": "moderate"
   },
+  "growing_conditions": {
+    "companion_plants": ["lavanda", "romero", "ajo", "cebollino", "manzanilla"]
+  },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/05/iceberg-roses-1759193_640-325x216.webp",
     "article_date": "2018-05-21T17:43:29",

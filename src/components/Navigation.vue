@@ -17,7 +17,7 @@
             <li class="nav-item">
               <a href="/" class="nav-link" :class="{ 'nav-link--active': isActive('/') }">Inicio</a>
             </li>
-            <li class="nav-item nav-item--dropdown" @mouseover="setDropdown('plantas')" @mouseleave="setDropdown(null)">
+            <li class="nav-item nav-item--dropdown" @mouseenter="activeDropdown = 'plantas'" @mouseleave="activeDropdown = null">
               <a href="/plantas/" class="nav-link" :class="{ 'nav-link--active': isDropdownActive() }">Plantas</a>
               <div class="dropdown" :class="{ 'dropdown--active': activeDropdown === 'plantas' }">
                 <div class="dropdown-content">
@@ -29,9 +29,8 @@
                 </div>
               </div>
             </li>
-            <li class="nav-item nav-item--dropdown" @mouseover="setDropdown('calendario')" @mouseleave="setDropdown(null)">
-              <a href="/calendario/" class="nav-link calendar-link" :class="{ 'nav-link--active': isCalendarActive() }">
-                <span class="calendar-icon">📅</span>
+            <li class="nav-item nav-item--dropdown" @mouseenter="activeDropdown = 'calendario'" @mouseleave="activeDropdown = null">
+              <a href="/calendario/" class="nav-link" :class="{ 'nav-link--active': isCalendarActive() }">
                 Calendario
               </a>
               <div class="dropdown dropdown--calendar" :class="{ 'dropdown--active': activeDropdown === 'calendario' }">
@@ -40,7 +39,16 @@
                   <div class="dropdown-divider"></div>
                   <div class="dropdown-section">
                     <span class="dropdown-section-title">Por Mes</span>
-                    <div v-html="getCurrentAndNextMonthsHTML()"></div>
+                    <div class="months-list">
+                      <a 
+                        v-for="(month, index) in getCurrentAndNextMonths()" 
+                        :key="month.slug"
+                        :href="`/calendario/mes/${month.slug}/`" 
+                        :class="['dropdown-link', 'small', { 'current-month': index === 0 }]"
+                      >
+                        {{ month.display }}
+                      </a>
+                    </div>
                   </div>
                   <div class="dropdown-divider"></div>
                   <div class="dropdown-section">
@@ -126,9 +134,6 @@ const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
 }
 
-const setDropdown = (dropdown) => {
-  activeDropdown.value = dropdown
-}
 
 const activateSearch = async () => {
   // Load SearchBox component dynamically
@@ -166,7 +171,7 @@ const isCalendarActive = () => {
   return currentPath.value.startsWith('/calendario/')
 }
 
-const getCurrentAndNextMonthsHTML = () => {
+const getCurrentAndNextMonths = () => {
   const monthNames = [
     'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
     'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
@@ -179,18 +184,17 @@ const getCurrentAndNextMonthsHTML = () => {
   
   const now = new Date();
   const currentMonth = now.getMonth(); // 0-11
-  let html = '';
+  const months = [];
   
   for (let i = 0; i < 4; i++) {
     const monthIndex = (currentMonth + i) % 12;
-    const monthSlug = monthNames[monthIndex];
-    const monthDisplay = monthDisplayNames[monthIndex];
-    const isCurrent = i === 0;
-    
-    html += `<a href="/calendario/mes/${monthSlug}/" class="dropdown-link small${isCurrent ? ' current-month' : ''}">${monthDisplay}</a>`;
+    months.push({
+      slug: monthNames[monthIndex],
+      display: monthDisplayNames[monthIndex]
+    });
   }
   
-  return html;
+  return months;
 }
 </script>
 
@@ -349,7 +353,7 @@ const getCurrentAndNextMonthsHTML = () => {
   visibility: hidden;
   transform: translateY(-10px);
   transition: all 0.3s ease;
-  z-index: 100;
+  z-index: 1100;
 }
 
 .dropdown--active {
@@ -389,15 +393,6 @@ const getCurrentAndNextMonthsHTML = () => {
 }
 
 /* Calendar-specific dropdown styles */
-.calendar-link {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.calendar-icon {
-  font-size: 1rem;
-}
 
 .dropdown--calendar {
   min-width: 280px;
@@ -420,20 +415,32 @@ const getCurrentAndNextMonthsHTML = () => {
 .dropdown-link.small {
   padding: 0.5rem 1.5rem;
   font-size: 0.875rem;
+  color: #4a5568;
+  border-left: 3px solid transparent;
+  margin: 0 0.75rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
 }
 
 .dropdown-link.small:hover {
   background: rgba(74, 124, 35, 0.08);
+  border-left-color: rgba(74, 124, 35, 0.3);
+  color: #2d5016;
+  transform: translateX(2px);
 }
 
 .dropdown-link.current-month {
   background: rgba(74, 124, 35, 0.1);
   color: #2d5016;
   font-weight: 600;
+  border-left-color: #4a7c23;
+  margin: 0 0.75rem;
+  border-radius: 4px;
 }
 
 .dropdown-link.current-month:hover {
   background: rgba(74, 124, 35, 0.15);
+  transform: translateX(2px);
 }
 
 /* Mobile Styles */
@@ -546,7 +553,7 @@ const getCurrentAndNextMonthsHTML = () => {
 /* Fake SearchBox styles - matches real SearchBox exactly */
 .search-section {
   position: relative;
-  z-index: 1000;
+  z-index: 500;
   height: 100%;
   width: 100%;
 }

@@ -73,6 +73,7 @@ const mostActiveMonth = monthlyDistribution.reduce((max, current) =>
 <BaseLayout 
   title={`${activityName} - Calendario de Actividades | Cuándo ${activityName}`}
   description={`Guía completa de ${activityName.toLowerCase()}. Descubre todas las plantas y el mejor momento para ${activityName.toLowerCase()}. ${totalPlants} plantas disponibles.`}
+  noAds={true}
 >
   <div class="activity-view">
     <!-- Header -->
@@ -365,7 +366,7 @@ const mostActiveMonth = monthlyDistribution.reduce((max, current) =>
   }
 
   .activity-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
     color: white;
     padding: 2rem 0 3rem 0;
     margin-bottom: 2rem;
@@ -618,7 +619,7 @@ const mostActiveMonth = monthlyDistribution.reduce((max, current) =>
   }
 
   .peak-month-tag {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 20px;
@@ -681,7 +682,7 @@ const mostActiveMonth = monthlyDistribution.reduce((max, current) =>
   }
 
   .view-category-btn {
-    color: #667eea;
+    color: #48bb78;
     text-decoration: none;
     font-weight: 500;
     padding: 0.5rem 1rem;
@@ -733,7 +734,7 @@ const mostActiveMonth = monthlyDistribution.reduce((max, current) =>
   }
 
   .card-header h4 a:hover {
-    color: #667eea;
+    color: #48bb78;
   }
 
   .plant-icon {
@@ -802,7 +803,7 @@ const mostActiveMonth = monthlyDistribution.reduce((max, current) =>
   }
 
   .month-tag.peak {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
     color: white;
   }
 
@@ -883,7 +884,7 @@ const mostActiveMonth = monthlyDistribution.reduce((max, current) =>
   }
 
   .back-link {
-    background: #667eea;
+    background: #48bb78;
     color: white;
     padding: 0.75rem 2rem;
     border-radius: 8px;

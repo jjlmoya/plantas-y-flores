@@ -1,7 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PlantGrid from '../../components/PlantGrid.vue';
+import CompanionPlants from '../../components/CompanionPlants.vue';
 import { getPlants } from '../../utils/data.js';
+import { getCompanionPlantsWithDetails } from '../../utils/calendar-inheritance.js';
 
 const plants = await getPlants();
 const sortedPlants = plants
@@ -56,6 +58,19 @@ if (searchQuery.trim()) {
     
     return a.title.localeCompare(b.title, 'es');
   });
+}
+
+// Get companion plants for the most popular categories
+const popularCategories = ['tomate', 'rosa', 'albahaca', 'fresa', 'lavanda'];
+const allCompanionPlants = {};
+
+for (const category of popularCategories) {
+  try {
+    allCompanionPlants[category] = await getCompanionPlantsWithDetails(category);
+  } catch (error) {
+    console.warn(`Error loading companion plants for ${category}:`, error);
+    allCompanionPlants[category] = { beneficial: [], neutral: [], avoid: [], totalCount: 0 };
+  }
 }
 ---
 
@@ -116,6 +131,47 @@ if (searchQuery.trim()) {
         plants={plantsData}
       />
     </section>
+
+    <!-- Companion Plants Information Section -->
+    {!searchQuery && (
+      <section class="companion-plants-overview">
+        <header class="section-header">
+          <h2>🌱 Guía de Plantas Compañeras</h2>
+          <p>Descubre qué plantas se benefician mutuamente y cuáles debes evitar plantar juntas</p>
+        </header>
+        
+        <div class="companion-categories">
+          {popularCategories.map(category => {
+            const companions = allCompanionPlants[category];
+            if (companions.totalCount === 0) return null;
+            
+            return (
+              <details class="companion-category-card" key={category}>
+                <summary class="category-summary">
+                  <span class="category-info">
+                    <span class="category-title">{category.charAt(0).toUpperCase() + category.slice(1)}</span>
+                    <span class="companion-count">{companions.totalCount} plantas compañeras</span>
+                  </span>
+                  <span class="expand-icon">▼</span>
+                </summary>
+                
+                <div class="companion-content">
+                  <CompanionPlants 
+                    client:visible
+                    companions={companions}
+                  />
+                  <div class="category-link">
+                    <a href={`/calendario/categoria/${category}/`} class="view-calendar-btn">
+                      Ver calendario completo de {category}
+                    </a>
+                  </div>
+                </div>
+              </details>
+            );
+          })}
+        </div>
+      </section>
+    )}
   </div>
 </BaseLayout>
 
@@ -208,6 +264,135 @@ if (searchQuery.trim()) {
   margin-bottom: 3rem;
 }
 
+.companion-plants-overview {
+  margin: 3rem 0;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border-radius: 16px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.section-header h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  color: #2d3748;
+}
+
+.section-header p {
+  font-size: 1.125rem;
+  color: #718096;
+  margin: 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.companion-categories {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.companion-category-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.companion-category-card:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.companion-category-card[open] {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.category-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  cursor: pointer;
+  background: #4a7c23;
+  color: white;
+  margin: 0;
+  list-style: none;
+  transition: all 0.3s ease;
+}
+
+.category-summary:hover {
+  background: #5a8f2a;
+}
+
+.category-summary::-webkit-details-marker {
+  display: none;
+}
+
+.category-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.category-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.companion-count {
+  font-size: 0.875rem;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+.expand-icon {
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.companion-category-card[open] .expand-icon {
+  transform: rotate(180deg);
+}
+
+.companion-content {
+  padding: 0;
+}
+
+.category-link {
+  padding: 1.5rem 2rem;
+  border-top: 1px solid #e2e8f0;
+  background: #f8fafc;
+  text-align: center;
+}
+
+.view-calendar-btn {
+  display: inline-block;
+  background: #4a7c23;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  text-transform: capitalize;
+}
+
+.view-calendar-btn:hover {
+  background: #5a8f2a;
+  transform: translateY(-1px);
+}
+
 @media (max-width: 768px) {
   .plants-header {
     padding: 2rem 1.5rem;
@@ -226,6 +411,27 @@ if (searchQuery.trim()) {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.75rem;
+  }
+
+  .companion-plants-overview {
+    margin: 2rem 0;
+    padding: 1.5rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .section-header p {
+    font-size: 1rem;
+  }
+
+  .category-summary {
+    padding: 1rem 1.5rem;
+  }
+
+  .category-title {
+    font-size: 1.125rem;
   }
 }
 
