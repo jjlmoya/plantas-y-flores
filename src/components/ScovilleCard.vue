@@ -32,9 +32,9 @@
         </div>
         <div class="heat-scale">
           <span>0</span>
-          <span>10K</span>
-          <span>50K</span>
-          <span>300K+</span>
+          <span>75K</span>
+          <span>150K</span>
+          <span>300K</span>
         </div>
       </div>
 
@@ -77,17 +77,9 @@ export default {
   computed: {
     heatPercentage() {
       const units = this.scovilleData.scoville_units || 0;
-      // Escala ajustada para que habanero (225K) llegue cerca del 100%
-      // 0-10K (25%), 10K-50K (50%), 50K-100K (75%), 100K-300K (100%)
-      if (units <= 10000) {
-        return (units / 10000) * 25;
-      } else if (units <= 50000) {
-        return 25 + ((units - 10000) / 40000) * 25;
-      } else if (units <= 100000) {
-        return 50 + ((units - 50000) / 50000) * 25;
-      } else {
-        return 75 + Math.min(((units - 100000) / 200000) * 25, 25);
-      }
+      // Escala simple y directa: 0 a 300K = 0% a 100%
+      const maxScoville = 300000;
+      return Math.min((units / maxScoville) * 100, 100);
     },
     isVeryHot() {
       return ['very_hot', 'extreme'].includes(this.scovilleData.heat_level);
