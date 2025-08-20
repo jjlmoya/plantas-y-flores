@@ -85,6 +85,8 @@ function getDefaultGlobalConfig() {
         pest_monitoring: "🔍", plant_cleanup: "🧹", sowing: "🌱", 
         planting: "🌳", pruning: "✂️", watering: "💧", 
         deadheading: "🌸", mulching: "🍃", flowering: "🌸",
+        // Iconos para actividades principales
+        transplanting: "🌿", harvesting: "🌾",
         // Iconos para todas las tareas nuevas
         monitor_growth: "📈", remove_mulch: "🧹", fertilize_light: "💊",
         water_moderately: "💧", enjoy_blooms: "🌺", deadhead_spent: "🥀",
