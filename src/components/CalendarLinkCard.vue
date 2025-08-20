@@ -9,12 +9,12 @@
       <div class="calendar-text-section">
         <h3 class="calendar-title">Calendario de Cultivo</h3>
         <p class="calendar-description">
-          Descubre cuándo sembrar, trasplantar y cosechar {{ plantName.toLowerCase() }} según tu zona climática
+          <strong>Guía completa {{ currentYear }}</strong>: Descubre las fechas exactas para sembrar, trasplantar y cosechar {{ plantName.toLowerCase() }} en España. Calendario adaptado a tu zona climática con consejos de experto.
         </p>
         <div class="calendar-features">
-          <span class="feature-badge">📱 Fechas precisas</span>
-          <span class="feature-badge">🌡️ Por zona climática</span>
-          <span class="feature-badge">🔔 Recordatorios</span>
+          <span class="feature-badge">🗓️ Fechas {{ currentYear }}</span>
+          <span class="feature-badge">🇪🇸 España</span>
+          <span class="feature-badge">📈 Mejores cosechas</span>
         </div>
       </div>
       
@@ -22,10 +22,12 @@
         <a 
           :href="calendarUrl" 
           class="calendar-button"
-          :title="`Ver calendario de cultivo de ${plantName}`"
+          :title="`Calendario de cultivo ${plantName} ${currentYear} - Fechas siembra, trasplante y cosecha`"
+          :aria-label="`Ver calendario completo de cultivo para ${plantName} con fechas de siembra, trasplante y cosecha`"
+          rel="nofollow"
         >
-          Ver Calendario
-          <svg class="calendar-arrow" viewBox="0 0 20 20" fill="currentColor">
+          📅 Calendario {{ plantName }} {{ currentYear }}
+          <svg class="calendar-arrow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
             <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
           </svg>
         </a>
@@ -73,6 +75,9 @@ export default {
   computed: {
     calendarUrl() {
       return `/calendario/${this.categorySlug}/${this.plantSlug}/`;
+    },
+    currentYear() {
+      return new Date().getFullYear();
     },
     showCalendarLink() {
       // Solo mostrar si tenemos los datos necesarios

@@ -68,6 +68,7 @@ const formatDate = (dateString) => {
 };
 
 // Schema.org estructurado
+const currentYear = new Date().getFullYear();
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -87,7 +88,33 @@ const structuredData = {
       "@type": "ImageObject",
       "url": "https://plantasyflores.online/logo.webp"
     }
-  }
+  },
+  "mainEntity": {
+    "@type": "Plant",
+    "name": plant.data.title,
+    "description": description,
+    ...(hasCalendar && {
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Calendario de Cultivo",
+          "value": `${currentYear}`,
+          "url": `https://plantasyflores.online/calendario/${categorySlug}/${plant.slug}/`
+        }
+      ]
+    })
+  },
+  ...(hasCalendar && {
+    "relatedLink": [
+      {
+        "@type": "Link",
+        "url": `https://plantasyflores.online/calendario/${categorySlug}/${plant.slug}/`,
+        "name": `Calendario de cultivo ${plant.data.title} ${currentYear}`,
+        "description": `Fechas exactas para sembrar, trasplantar y cosechar ${plant.data.title} en España`
+      }
+    ]
+  }),
+  "keywords": `${plant.data.title}, cultivo, calendario, siembra, trasplante, cosecha, ${currentYear}, España, jardinería, ${category?.name || 'plantas'}`
 };
 ---
 
