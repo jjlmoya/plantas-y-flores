@@ -2,13 +2,91 @@
   "key": "banksiae",
   "plant_info": {
     "common_names": [
-      "Banksiae"
+      "Rosa Banksiae", "Rosa de Lady Banks", "Rosa Trepadora Sin Espinas"
     ],
     "scientific_name": "Rosa banksiae",
-    "difficulty": "beginner"
+    "origin": "CN",
+    "type": "perennial",
+    "difficulty": "beginner",
+    "family": "Rosaceae",
+    "growth_habit": "climbing",
+    "mature_size": {
+      "height": [300, 600],
+      "width": [300, 500]
+    }
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 10, 11],
+      "soil_temperature_min": 10
+    },
+    "flowering": {
+      "best_months": [4, 5, 6],
+      "peak_months": [5],
+      "single_flowering": true,
+      "early_bloomer": true
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["dormant_protection"],
+        "2": ["structural_pruning", "install_supports"],
+        "3": ["planting", "fertilize", "mulching"],
+        "4": ["moderate_watering", "install_supports"],
+        "5": ["moderate_watering"],
+        "6": ["moderate_watering", "prune_shoots"],
+        "7": ["moderate_watering", "prune_shoots"],
+        "8": ["moderate_watering"],
+        "9": ["moderate_watering"],
+        "10": ["planting", "moderate_watering"],
+        "11": ["planting", "dormant_protection"],
+        "12": ["dormant_protection"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.5],
+    "spacing": {
+      "plant_distance": 300,
+      "support_distance": 200
+    },
+    "companion_plants": ["clematis", "madreselva", "glicinia"],
+    "avoid_plants": ["arboles_raices_superficiales"],
+    "temperature_range": [-10, 35],
+    "special_purposes": ["climbing", "pergolas", "walls", "large_structures"]
   },
   "flower_data": {
-    "fragrance": "moderate"
+    "fragrance": "mild_sweet",
+    "flower_color": ["blanco", "amarillo_palido"],
+    "flower_size": "small",
+    "flower_form": "double",
+    "flowers_per_cluster": [20, 50],
+    "thornless": true
+  },
+  "climbing_data": {
+    "support_required": true,
+    "climbing_method": "canes",
+    "growth_rate": "very_fast",
+    "maximum_height": "6_meters",
+    "spread": "5_meters",
+    "structure_recommendations": ["pergolas", "arches", "walls", "fences"]
+  },
+  "cultivation_data": {
+    "rose_type": "climbing_species",
+    "growth_rate": "very_fast",
+    "maintenance": "low",
+    "disease_resistance": "excellent",
+    "cold_hardiness": "zone_7",
+    "drought_tolerance": "good"
+  },
+  "care_notes": {
+    "watering": "Riego moderado una vez establecida",
+    "fertilizing": "Fertilizar en primavera antes de floración",
+    "pruning": "Poda después de floración, solo para dar forma",
+    "support": "Requiere estructura fuerte por su tamaño",
+    "common_problems": ["crecimiento_excesivo", "pulgones"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/05/roses-760028_1280-325x216.webp",

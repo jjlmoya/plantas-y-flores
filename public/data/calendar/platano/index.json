@@ -4,26 +4,92 @@
     "scientific_name": "Musa × paradisiaca",
     "family": "Musaceae",
     "type": "perennial",
-    "difficulty": "intermediate"
+    "difficulty": "intermediate",
+    "growth_habits": ["tall", "clumping"],
+    "origins": ["asia", "oceania"]
   },
   "calendar_data": {
     "planting": {
-      "best_months": [
-        4,
-        5,
-        6
-      ]
+      "best_months": [4, 5, 6, 7],
+      "alternative_months": [3, 8],
+      "soil_temperature_min": 18,
+      "planting_method": "sucker_rhizome",
+      "regional_variations": {
+        "tropical": [1, 2, 3, 4, 11, 12],
+        "subtropical": [4, 5, 6, 7, 8],
+        "mediterraneo": [5, 6, 7, 8]
+      }
     },
     "harvesting": {
-      "best_months": [
-        10,
-        11,
-        12
-      ]
+      "best_months": [9, 10, 11, 12, 1, 2],
+      "peak_months": [10, 11, 12],
+      "maturation_time_months": [9, 15],
+      "harvest_indicators": "full_size_yellow_color",
+      "regional_variations": {
+        "tropical": [8, 9, 10, 11, 12, 1, 2, 3],
+        "subtropical": [9, 10, 11, 12, 1],
+        "mediterraneo": [9, 10, 11, 12]
+      }
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["harvesting", "moderate_watering", "dormant_protection"],
+        "2": ["harvesting", "moderate_watering", "dormant_protection"],
+        "3": ["soil_preparation", "moderate_watering", "sucker_removal"],
+        "4": ["planting", "heavy_watering", "fertilize"],
+        "5": ["planting", "heavy_watering", "fertilize", "mulching"],
+        "6": ["heavy_watering", "fertilize", "sucker_removal"],
+        "7": ["heavy_watering", "fertilize", "pest_monitoring"],
+        "8": ["heavy_watering", "fertilize", "pest_monitoring"],
+        "9": ["harvesting", "heavy_watering", "plant_cleanup"],
+        "10": ["harvesting", "moderate_watering", "plant_cleanup"],
+        "11": ["harvesting", "moderate_watering", "sucker_removal"],
+        "12": ["harvesting", "moderate_watering", "dormant_protection"]
+      }
     }
   },
   "growing_conditions": {
     "sun_requirements": "full_sun",
-    "water_needs": "high"
+    "water_needs": "high",
+    "soil_types": ["well_drained", "organic_rich", "fertile"],
+    "soil_ph_range": [5.5, 7.0],
+    "spacing_guidelines": {
+      "between_plants": 200,
+      "between_rows": 300
+    },
+    "companion_plants": ["pina", "mango", "papaya", "coco"],
+    "avoid_plants": ["verduras_alto_consumo"],
+    "temperature_tolerance": [15, 35],
+    "special_requirements": {
+      "wind_protection": "essential",
+      "high_humidity": "preferred",
+      "frost_protection": "critical",
+      "good_drainage": "important"
+    }
+  },
+  "fruit_characteristics": {
+    "fruit_types": ["cooking", "dessert", "dual_purpose"],
+    "fruit_size": ["medium", "large"],
+    "bunch_weight_kg": [15, 60],
+    "harvest_maturity": ["green", "yellow", "spotted"],
+    "storage_life_days": [7, 21]
+  },
+  "cultivation_methods": {
+    "propagation": ["sucker", "rhizome", "tissue_culture"],
+    "planting_depth": "rhizome_level",
+    "container_growing": "difficult",
+    "greenhouse_cultivation": "possible_dwarf_varieties"
+  },
+  "uses_and_benefits": {
+    "culinary_uses": ["fresh", "cooked", "fried", "dried", "juice"],
+    "nutritional_benefits": ["potasio", "vitamina_b6", "vitamina_c", "fibra"],
+    "commercial_value": "very_high",
+    "ornamental_value": "good"
+  },
+  "cultivation_summary": {
+    "planting": "Plantar retoño o rizoma en suelo rico y bien drenado",
+    "care": "Riego abundante, fertilizar regularmente, proteger del viento",
+    "harvesting": "Cosechar racimo cuando esté lleno pero verde (9-15 meses)",
+    "climate": "Requiere clima tropical o subtropical, protección del frío"
   }
 }

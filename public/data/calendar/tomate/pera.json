@@ -1,24 +1,120 @@
 {
   "key": "pera",
   "plant_info": {
-    "common_names": [
-      "Pera"
-    ],
+    "common_names": ["Tomate Pera", "Tomate San Marzano", "Pear Tomato"],
     "scientific_name": "Solanum lycopersicum 'Pera'",
-    "difficulty": "advanced"
+    "origin": "IT",
+    "type": "annual",
+    "difficulty": "intermediate",
+    "family": "Solanaceae",
+    "growth_habit": "determinate",
+    "mature_size": {
+      "height": [80, 120],
+      "width": [50, 70]
+    }
   },
   "calendar_data": {
+    "sowing": {
+      "indoor": {
+        "best_months": [2, 3, 4],
+        "temperature_range": [18, 24]
+      },
+      "outdoor": {
+        "best_months": [4, 5],
+        "soil_temperature_min": 15
+      }
+    },
+    "transplanting": {
+      "best_months": [4, 5, 6],
+      "after_germination_weeks": [6, 8]
+    },
     "harvesting": {
+      "best_months": [7, 8, 9],
+      "peak_months": [8],
+      "days_to_harvest": [90, 100],
+      "harvest_method": "cluster_harvest",
       "best_use": "processing",
-      "days_to_harvest": [
-        90,
-        100
-      ]
+      "harvest_indicators": ["deep_color", "firmness", "easy_detachment"]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "2": ["sowing_indoor", "fertilize"],
+        "3": ["sowing_indoor", "prepare_outdoor"],
+        "4": ["transplant", "install_supports"],
+        "5": ["transplant", "moderate_watering", "mulching"],
+        "6": ["moderate_watering", "fertilize"],
+        "7": ["harvest_early", "moderate_watering"],
+        "8": ["harvest_main", "moderate_watering"],
+        "9": ["harvest_main", "plant_cleanup"],
+        "10": ["plant_cleanup"]
+      }
     }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.0],
+    "spacing": {
+      "plant_distance": 50,
+      "row_distance": 75
+    },
+    "companion_plants": ["albahaca", "oregano", "perejil"],
+    "avoid_plants": ["patata", "berenjena", "pimiento"],
+    "temperature_range": [15, 32],
+    "special_purposes": ["sauce", "gazpacho", "canning", "concentrate"]
+  },
+  "fruit_data": {
+    "days_to_harvest": [90, 100],
+    "fruit_size": "medium",
+    "fruit_weight_g": [80, 120],
+    "fruit_shape": "elongated_pear",
+    "fruit_color": "rojo_intenso",
+    "storage_life_days": [12, 16]
+  },
+  "processing_data": {
+    "flesh_texture": "dense_meaty",
+    "water_content": "low",
+    "seed_cavity": "minimal",
+    "cooking_qualities": "excellent",
+    "processing_yield": "very_high",
+    "concentrate_ratio": "8:1"
+  },
+  "nutritional_data": {
+    "calories_per_100g": 18,
+    "properties": ["vitamina_c", "licopeno", "potasio", "vitamina_k"],
+    "flavor_profile": "intense_concentrated",
+    "acidity": "balanced",
+    "sugar_content": "moderate"
+  },
+  "culinary_data": {
+    "uses": ["gazpacho", "sauce", "concentrate", "canning", "drying"],
+    "best_applications": ["traditional_gazpacho", "tomato_concentrate", "preserves"],
+    "cooking_methods": ["slow_cooking", "reduction", "dehydrating"],
+    "preservation": ["excellent_canning", "concentrate", "drying"]
+  },
+  "cultivation_data": {
+    "growth_type": "determinate",
+    "support_required": "light",
+    "productivity": "high",
+    "season_length": "concentrated",
+    "harvest_pattern": "cluster_ripening"
+  },
+  "care_notes": {
+    "watering": "Riego consistente pero reducir al madurar",
+    "fertilizing": "Fertilización equilibrada, potasio al fructificar",
+    "pruning": "Poda mínima, eliminar hojas inferiores",
+    "support": "Soporte ligero suficiente por crecimiento determinado",
+    "common_problems": ["blossom_end_rot", "cracking", "anthracnose"]
+  },
+  "harvest_data": {
+    "weight_range": [80, 120],
+    "storage_life": 14,
+    "processing_suitability": "excellent"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/08/seeds-2267092_1280-325x217.webp",
     "article_date": "2017-08-13T18:09:59",
-    "excerpt": "Qué es el Tomate Pera Es una de las variedades perfectas para las conservas, junto al Tomate Roma, es muy conocido en la cultura española por ser el ingrediente base del gazpacho andaluz, llena nuestr"
+    "excerpt": "Qué es el Tomate Pera Es una de las variedades perfectas para las conservas, junto al Tomate Roma, es muy conocido en la cultura española por ser el ingrediente base del gazpacho andaluz, llena nuestr"
   }
 }

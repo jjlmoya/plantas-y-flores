@@ -1,30 +1,84 @@
 {
   "plant_info": {
     "category": "margarita",
-    "type": "perennial",
-    "difficulty": "beginner"
+    "scientific_family": "Asteraceae",
+    "type": "varied",
+    "difficulty": "beginner",
+    "growth_habits": ["upright", "spreading", "clumping", "shrubby"],
+    "origins": ["europa", "norteamérica", "áfrica", "canarias"]
   },
   "calendar_data": {
     "planting": {
-      "best_months": [
-        3,
-        4,
-        9
-      ]
+      "best_months": [3, 4, 5, 9, 10],
+      "alternative_months": [2, 6, 11],
+      "regional_variations": {
+        "mediterranean": [3, 4, 5, 9, 10, 11],
+        "temperate": [4, 5, 9],
+        "subtropical": [2, 3, 4, 10, 11, 12]
+      }
     },
     "flowering": {
-      "best_months": [
-        4,
-        5,
-        6,
-        7,
-        8,
-        9
-      ]
+      "best_months": [4, 5, 6, 7, 8, 9, 10],
+      "peak_months": [6, 7, 8],
+      "extended_season": [4, 5, 6, 7, 8, 9, 10, 11],
+      "regional_variations": {
+        "mediterranean": [4, 5, 6, 7, 8, 9, 10, 11],
+        "temperate": [5, 6, 7, 8, 9],
+        "subtropical": [3, 4, 5, 6, 7, 8, 9, 10, 11]
+      }
+    },
+    "seed_collection": {
+      "best_months": [9, 10, 11]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["planting", "transplant", "prepare_seedbeds", "fertilize"],
+        "4": ["planting", "transplant", "moderate_watering"],
+        "5": ["moderate_watering", "fertilize", "install_supports"],
+        "6": ["deadhead", "moderate_watering", "pest_monitoring"],
+        "7": ["deadhead", "moderate_watering", "pest_monitoring"],
+        "8": ["deadhead", "moderate_watering"],
+        "9": ["transplant", "harvest_seeds", "reduce_watering"],
+        "10": ["harvest_seeds", "prepare_winter", "mulching"],
+        "11": ["plant_cleanup", "prepare_winter"],
+        "12": ["reduce_watering"]
+      }
     }
   },
   "growing_conditions": {
-    "sun_requirements": "full_sun",
-    "water_needs": "moderate"
+    "sun_requirements": "full_sun_partial_shade",
+    "water_needs": "moderate",
+    "soil_types": ["well_drained", "fertile", "sandy", "rocky"],
+    "soil_ph_range": [6.0, 7.5],
+    "spacing_guidelines": {
+      "small_varieties": {"plant_distance": 20, "row_distance": 30},
+      "medium_varieties": {"plant_distance": 35, "row_distance": 50},
+      "large_varieties": {"plant_distance": 50, "row_distance": 70}
+    },
+    "companion_plants": ["salvia", "lavanda", "equinácea", "espuela-de-caballero", "cosmos"],
+    "temperature_tolerance": [5, 30],
+    "special_requirements": {
+      "drainage": "essential",
+      "air_circulation": "good",
+      "mulching": "beneficial"
+    }
+  },
+  "flower_characteristics": {
+    "color_range": ["white", "yellow", "orange", "pink", "red", "purple", "blue"],
+    "flower_shapes": ["margarita_simple", "margarita_doble", "pompom"],
+    "size_categories": ["small", "medium", "large", "extra_large"],
+    "bloom_durations": ["1 día", "3 días", "1 semana", "2 semanas", "6 semanas"],
+    "center_colors": ["yellow", "dark_brown", "green"]
+  },
+  "uses_and_benefits": {
+    "garden_purposes": ["border_plant", "cut_flowers", "mass_planting", "containers", "rock_gardens"],
+    "ecological_benefits": ["attracts_pollinators", "butterfly_gardens", "bee_friendly"],
+    "special_uses": ["medicinal", "coastal_gardens", "drought_gardens", "wildflower_meadows"]
+  },
+  "care_summary": {
+    "watering": "Regular durante crecimiento, reducir en invierno",
+    "fertilizing": "Fertilizante equilibrado en primavera y durante floración",
+    "maintenance": "Deadheading regular para prolongar floración",
+    "winter_care": "Proteger variedades tiernas, mulching recomendado"
   }
 }

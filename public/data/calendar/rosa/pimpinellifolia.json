@@ -2,12 +2,94 @@
   "key": "pimpinellifolia",
   "plant_info": {
     "common_names": [
-      "Pimpinellifolia"
+      "Rosa Pimpinellifolia", "Rosa Escocesa", "Rosa de Duna"
     ],
-    "scientific_name": "Rosa pimpinellifolia"
+    "scientific_name": "Rosa pimpinellifolia",
+    "origin": "EU",
+    "type": "perennial",
+    "difficulty": "beginner",
+    "family": "Rosaceae",
+    "growth_habit": "low_spreading",
+    "mature_size": {
+      "height": [60, 120],
+      "width": [80, 150]
+    }
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 10, 11],
+      "soil_temperature_min": 5
+    },
+    "flowering": {
+      "best_months": [5, 6, 7],
+      "peak_months": [6],
+      "single_flowering": true,
+      "early_season": true
+    },
+    "harvesting": {
+      "best_months": [8, 9, 10],
+      "harvest_item": "small_hips"
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["dormant_protection"],
+        "2": ["prune_main"],
+        "3": ["planting", "soil_preparation"],
+        "4": ["moderate_watering"],
+        "5": ["moderate_watering"],
+        "6": ["moderate_watering"],
+        "7": ["moderate_watering", "prune_shoots"],
+        "8": ["harvesting"],
+        "9": ["harvesting"],
+        "10": ["harvesting", "planting"],
+        "11": ["planting", "dormant_protection"],
+        "12": ["dormant_protection"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "low",
+    "soil_type": "sandy",
+    "soil_ph": [5.0, 8.0],
+    "spacing": {
+      "plant_distance": 100,
+      "row_distance": 120
+    },
+    "companion_plants": ["lavanda", "romero", "santolina"],
+    "avoid_plants": ["verduras_alto_consumo"],
+    "temperature_range": [-25, 30],
+    "special_purposes": ["coastal", "ground_cover", "naturalized", "wildlife"]
   },
   "flower_data": {
-    "fragrance": "moderate"
+    "fragrance": "mild",
+    "flower_color": "blanco_crema",
+    "flower_size": "small",
+    "flower_form": "single",
+    "petals_per_flower": 5,
+    "early_bloomer": true
+  },
+  "environmental_data": {
+    "salt_tolerance": "excellent",
+    "wind_tolerance": "excellent",
+    "drought_tolerance": "very_high",
+    "cold_hardiness": "extreme",
+    "coastal_adaptation": "perfect"
+  },
+  "cultivation_data": {
+    "rose_type": "wild_species",
+    "growth_rate": "moderate",
+    "maintenance": "very_low",
+    "disease_resistance": "excellent",
+    "cold_hardiness": "zone_3",
+    "suckering": "moderate"
+  },
+  "care_notes": {
+    "watering": "Extremadamente tolerante a sequía y sal",
+    "fertilizing": "No requiere fertilización",
+    "pruning": "Poda mínima, solo para controlar expansión",
+    "coastal_conditions": "Ideal para jardines costeros",
+    "common_problems": ["expansion_via_chupones"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/05/frozen-3007607_640-325x325.webp",

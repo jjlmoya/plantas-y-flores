@@ -2,22 +2,114 @@
   "key": "roma",
   "plant_info": {
     "common_names": [
-      "Roma"
+      "Tomate Roma", "Tomate Italiano", "Tomate Pera"
     ],
     "scientific_name": "Solanum lycopersicum 'Roma'",
-    "difficulty": "advanced"
+    "origin": "IT",
+    "type": "annual",
+    "difficulty": "beginner",
+    "family": "Solanaceae",
+    "growth_habit": "determinate",
+    "mature_size": {
+      "height": [60, 100],
+      "width": [50, 70]
+    }
   },
   "calendar_data": {
+    "sowing": {
+      "indoor": {
+        "best_months": [2, 3, 4],
+        "temperature_range": [18, 24]
+      },
+      "outdoor": {
+        "best_months": [4, 5],
+        "soil_temperature_min": 15
+      }
+    },
+    "transplanting": {
+      "best_months": [4, 5, 6],
+      "after_germination_weeks": [6, 8]
+    },
     "harvesting": {
-      "best_use": "processing",
-      "characteristics": [
-        "thick_flesh",
-        "low_water_content"
-      ]
+      "best_months": [7, 8, 9],
+      "peak_months": [8],
+      "days_to_harvest": [75, 85],
+      "harvest_method": "cluster_harvest",
+      "best_use": "processing"
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "2": ["sowing_indoor", "fertilize"],
+        "3": ["sowing_indoor", "prepare_outdoor"],
+        "4": ["transplant", "install_supports"],
+        "5": ["transplant", "moderate_watering", "mulching"],
+        "6": ["moderate_watering", "fertilize"],
+        "7": ["harvest_early", "moderate_watering"],
+        "8": ["harvest_main", "moderate_watering"],
+        "9": ["harvest_main", "plant_cleanup"],
+        "10": ["plant_cleanup"]
+      }
     }
   },
   "growing_conditions": {
-    "growth_habit": "determinate"
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.0],
+    "spacing": {
+      "plant_distance": 45,
+      "row_distance": 75
+    },
+    "companion_plants": ["albahaca", "oregano", "perejil"],
+    "avoid_plants": ["patata", "berenjena", "pimiento"],
+    "temperature_range": [15, 32],
+    "special_purposes": ["processing", "canning", "sauce", "paste"]
+  },
+  "fruit_data": {
+    "days_to_harvest": [75, 85],
+    "fruit_size": "medium",
+    "fruit_weight_g": [60, 90],
+    "fruit_shape": "plum_elongated",
+    "fruit_color": "rojo_profundo",
+    "storage_life_days": [10, 14]
+  },
+  "processing_data": {
+    "flesh_texture": "thick_meaty",
+    "water_content": "low",
+    "seed_cavity": "small",
+    "cooking_qualities": "excellent",
+    "processing_yield": "high"
+  },
+  "nutritional_data": {
+    "calories_per_100g": 18,
+    "properties": ["vitamina_c", "licopeno", "potasio", "folato"],
+    "flavor_profile": "rich_concentrated",
+    "acidity": "balanced",
+    "sugar_content": "moderate"
+  },
+  "culinary_data": {
+    "uses": ["sauce", "paste", "canning", "drying", "roasting"],
+    "best_applications": ["tomato_sauce", "marinara", "pizza_sauce"],
+    "cooking_methods": ["slow_cooking", "roasting", "dehydrating"],
+    "preservation": ["excellent_canning", "freezing", "drying"]
+  },
+  "cultivation_data": {
+    "growth_type": "determinate",
+    "support_required": "minimal",
+    "productivity": "high",
+    "season_length": "concentrated",
+    "harvest_pattern": "all_at_once"
+  },
+  "care_notes": {
+    "watering": "Riego regular pero menos crítico que indeterminados",
+    "fertilizing": "Fertilización moderada, evitar exceso de nitrógeno",
+    "pruning": "Poda mínima necesaria, eliminar hojas inferiores",
+    "support": "Jaula o tutor ligero suficiente",
+    "common_problems": ["blossom_end_rot", "cracking", "late_blight"]
+  },
+  "harvest_data": {
+    "characteristics": ["thick_flesh", "low_water_content"],
+    "processing_suitability": "excellent"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/07/roma-tomatoes-2410500_1280-325x232.webp",

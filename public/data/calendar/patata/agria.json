@@ -2,10 +2,81 @@
   "key": "agria",
   "plant_info": {
     "common_names": [
-      "Agria"
+      "Patata Agria", "Agria", "Papa Agria"
     ],
     "scientific_name": "Solanum tuberosum 'Agria'",
-    "difficulty": "intermediate"
+    "origin": "EU",
+    "type": "annual",
+    "difficulty": "intermediate",
+    "family": "Solanaceae",
+    "growth_habit": "upright",
+    "mature_size": {
+      "height": [40, 70],
+      "width": [30, 50]
+    }
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 5],
+      "soil_temperature_min": 8,
+      "planting_depth": "10-15cm"
+    },
+    "harvesting": {
+      "best_months": [7, 8, 9, 10],
+      "peak_months": [8, 9],
+      "days_to_harvest": [100, 130],
+      "harvest_indicators": "Follaje amarillento, piel firme al raspar"
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["planting", "soil_preparation"],
+        "4": ["planting", "moderate_watering"],
+        "5": ["hill_soil", "moderate_watering"],
+        "6": ["hill_soil", "moderate_watering", "pest_monitoring"],
+        "7": ["moderate_watering", "pest_monitoring"],
+        "8": ["harvest_early", "reduce_watering"],
+        "9": ["harvest_main", "cure"],
+        "10": ["harvest_late", "plant_cleanup"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [5.0, 6.5],
+    "spacing": {
+      "plant_distance": 35,
+      "row_distance": 75
+    },
+    "companion_plants": ["judias", "maiz", "col"],
+    "avoid_plants": ["tomate", "berenjena", "pimiento"],
+    "temperature_range": [12, 24],
+    "special_purposes": ["culinary", "commercial_production"]
+  },
+  "harvest_data": {
+    "days_to_harvest": [100, 130],
+    "weight_range": [200, 400],
+    "storage_life": 240,
+    "preservation_methods": ["store_cool_dark", "freezing"],
+    "harvest_tips": "Ideal para fritura cuando está completamente madura"
+  },
+  "nutritional_data": {
+    "calories_per_100g": 82,
+    "water_content": 76,
+    "properties": ["potasio", "vitamina_c", "carbohidratos", "fibra"]
+  },
+  "culinary_data": {
+    "uses": ["papas_fritas", "patatas_bravas", "asado"],
+    "texture": "harinosa",
+    "flavor_profile": "intenso_cremoso",
+    "cooking_notes": "Excelente para fritura, absorbe bien los condimentos"
+  },
+  "care_notes": {
+    "watering": "Riego regular pero evitar encharcamiento",
+    "hilling": "Aporcar 2-3 veces durante el crecimiento",
+    "harvest": "Cosechar en días secos, curar al sol antes de almacenar",
+    "common_problems": ["mildiu", "escarabajo_patata", "podredumbre"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/01/bowl-1842294_1920-325x217.webp",

@@ -2,13 +2,100 @@
   "key": "rugosa",
   "plant_info": {
     "common_names": [
-      "Rugosa"
+      "Rosa Rugosa", "Rosa Japonesa", "Rosa de Playa"
     ],
     "scientific_name": "Rosa rugosa",
-    "difficulty": "beginner"
+    "origin": "CN",
+    "type": "perennial",
+    "difficulty": "beginner",
+    "family": "Rosaceae",
+    "growth_habit": "dense_shrub",
+    "mature_size": {
+      "height": [120, 200],
+      "width": [120, 180]
+    }
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 10, 11],
+      "soil_temperature_min": 5
+    },
+    "flowering": {
+      "best_months": [5, 6, 7, 8, 9, 10],
+      "peak_months": [6, 7, 8],
+      "repeat_flowering": true
+    },
+    "harvesting": {
+      "best_months": [8, 9, 10],
+      "harvest_item": "rose_hips"
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["dormant_protection"],
+        "2": ["prune_main", "soil_preparation"],
+        "3": ["planting", "fertilize"],
+        "4": ["moderate_watering"],
+        "5": ["moderate_watering"],
+        "6": ["moderate_watering", "deadhead"],
+        "7": ["moderate_watering", "deadhead"],
+        "8": ["moderate_watering", "harvesting"],
+        "9": ["harvesting", "moderate_watering"],
+        "10": ["harvesting", "planting"],
+        "11": ["planting", "dormant_protection"],
+        "12": ["dormant_protection"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "low",
+    "soil_type": "well_drained",
+    "soil_ph": [5.5, 8.0],
+    "spacing": {
+      "plant_distance": 120,
+      "row_distance": 150
+    },
+    "companion_plants": ["lavanda", "romero", "eleagno"],
+    "avoid_plants": ["verduras_alto_consumo"],
+    "temperature_range": [-30, 35],
+    "special_purposes": ["coastal", "windbreak", "low_maintenance", "wildlife"]
   },
   "flower_data": {
-    "fragrance": "moderate"
+    "fragrance": "strong",
+    "flower_color": ["rosa", "blanco", "rojo"],
+    "flower_size": "large",
+    "flower_form": "single",
+    "petals_per_flower": 5,
+    "continuous_bloom": true
+  },
+  "harvest_data": {
+    "hip_harvest_months": [8, 9, 10],
+    "hip_color": "bright_orange_red",
+    "hip_size": "large",
+    "vitamin_c_content": "extremely_high",
+    "culinary_uses": ["jam", "tea", "syrup", "vinegar"]
+  },
+  "environmental_data": {
+    "salt_tolerance": "excellent",
+    "wind_tolerance": "excellent",
+    "drought_tolerance": "very_high",
+    "pollution_tolerance": "good",
+    "wildlife_value": "very_high"
+  },
+  "cultivation_data": {
+    "rose_type": "species",
+    "growth_rate": "fast",
+    "maintenance": "very_low",
+    "disease_resistance": "excellent",
+    "cold_hardiness": "zone_2",
+    "invasive_potential": "moderate"
+  },
+  "care_notes": {
+    "watering": "Extremadamente tolerante a la sequía",
+    "fertilizing": "No requiere fertilización regular",
+    "pruning": "Poda mínima, solo para dar forma si es necesario",
+    "disease_resistance": "Prácticamente libre de enfermedades",
+    "common_problems": ["expansion_agresiva"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/05/white-rugosa-rose-1396607_640-325x211.webp",

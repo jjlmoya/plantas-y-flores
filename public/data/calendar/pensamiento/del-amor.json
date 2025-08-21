@@ -2,10 +2,91 @@
   "key": "del-amor",
   "plant_info": {
     "common_names": [
-      "Del Amor"
+      "Pensamiento del Amor", "Pensamiento Tricolor", "Pensamiento Silvestre", "Viola Tricolor"
     ],
-    "scientific_name": "Esta flor pertenece",
-    "difficulty": "beginner"
+    "scientific_name": "Viola tricolor",
+    "origin": "EU",
+    "type": "annual",
+    "difficulty": "beginner",
+    "family": "Violaceae",
+    "growth_habit": "low_growing",
+    "mature_size": {
+      "height": [10, 25],
+      "width": [15, 30]
+    }
+  },
+  "calendar_data": {
+    "sowing": {
+      "indoor": {
+        "best_months": [2, 3, 8, 9],
+        "soil_temperature_min": 15,
+        "germination_days": [7, 14]
+      },
+      "outdoor": {
+        "best_months": [3, 4, 9, 10],
+        "soil_temperature_min": 10,
+        "sowing_depth": "0.5cm"
+      }
+    },
+    "flowering": {
+      "best_months": [4, 5, 6, 9, 10, 11],
+      "peak_months": [5, 10],
+      "days_to_flower": [60, 80],
+      "bloom_duration": "continuous"
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "2": ["sowing_indoor", "soil_preparation"],
+        "3": ["sowing_indoor", "sowing_outdoor", "transplant"],
+        "4": ["transplant", "moderate_watering", "fertilize"],
+        "5": ["moderate_watering", "pinching", "fertilize"],
+        "6": ["moderate_watering", "pinching"],
+        "7": ["heavy_watering", "mulching"],
+        "8": ["sowing_indoor", "moderate_watering"],
+        "9": ["sowing_outdoor", "transplant", "moderate_watering"],
+        "10": ["moderate_watering", "fertilize", "pinching"],
+        "11": ["moderate_watering", "dormant_protection"],
+        "12": ["dormant_protection"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "partial_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.0],
+    "spacing": {
+      "plant_distance": 15,
+      "row_distance": 20
+    },
+    "companion_plants": ["primula", "narcisos", "muscari"],
+    "avoid_plants": ["vegetables_heavy_feeders"],
+    "temperature_range": [0, 20],
+    "special_purposes": ["wild_garden", "naturalized", "ground_cover"]
+  },
+  "flowering_data": {
+    "days_to_flower": [60, 80],
+    "flower_size": "small",
+    "flower_colors": ["morado", "amarillo", "blanco"],
+    "bloom_period": "spring_fall",
+    "fragrance": "mild",
+    "self_seeding": true
+  },
+  "nutritional_data": {
+    "edible_parts": ["flowers", "young_leaves"],
+    "properties": ["vitamina_c", "antioxidants", "minerals"],
+    "culinary_uses": ["salads", "garnish", "herbal_tea"]
+  },
+  "medicinal_data": {
+    "traditional_uses": ["respiratory", "skin_care", "anti_inflammatory"],
+    "active_compounds": ["saponinas", "mucilage", "flavonoids"],
+    "preparation_methods": ["infusion", "poultice", "tincture"]
+  },
+  "care_notes": {
+    "watering": "Riego moderado, evitar encharcamiento en verano",
+    "fertilizing": "Fertilización ligera cada 4-6 semanas",
+    "pruning": "Pinzar flores marchitas para prolongar floración",
+    "common_problems": ["pulgones", "babosas", "mildiu"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2023/03/pansy-flower.webp",

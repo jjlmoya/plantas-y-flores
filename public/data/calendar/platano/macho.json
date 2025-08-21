@@ -2,10 +2,94 @@
   "key": "macho",
   "plant_info": {
     "common_names": [
-      "Macho"
+      "Plátano Macho", "Banano de Cocinar", "Plátano Verde"
     ],
-    "scientific_name": "Musa × paradisiaca",
-    "difficulty": "beginner"
+    "scientific_name": "Musa × paradisiaca 'Macho'",
+    "origin": "MX",
+    "type": "perennial",
+    "difficulty": "intermediate",
+    "family": "Musaceae",
+    "growth_habit": "tall",
+    "mature_size": {
+      "height": [300, 600],
+      "width": [150, 300]
+    }
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [4, 5, 6, 7],
+      "soil_temperature_min": 20,
+      "planting_method": "sucker"
+    },
+    "harvesting": {
+      "best_months": [9, 10, 11, 12, 1],
+      "peak_months": [10, 11],
+      "maturation_time_months": [12, 15],
+      "harvest_indicators": "full_size_still_green"
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["harvesting", "moderate_watering", "dormant_protection"],
+        "2": ["moderate_watering", "dormant_protection"],
+        "3": ["soil_preparation", "moderate_watering"],
+        "4": ["planting", "heavy_watering", "fertilize"],
+        "5": ["planting", "heavy_watering", "fertilize"],
+        "6": ["heavy_watering", "fertilize", "sucker_removal"],
+        "7": ["heavy_watering", "fertilize", "pest_monitoring"],
+        "8": ["heavy_watering", "fertilize", "pest_monitoring"],
+        "9": ["harvesting", "heavy_watering"],
+        "10": ["harvesting", "moderate_watering"],
+        "11": ["harvesting", "moderate_watering"],
+        "12": ["harvesting", "moderate_watering", "dormant_protection"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "high",
+    "soil_type": "organic_rich",
+    "soil_ph": [5.5, 7.0],
+    "spacing": {
+      "plant_distance": 200,
+      "row_distance": 300
+    },
+    "companion_plants": ["pina", "mango", "coco"],
+    "avoid_plants": ["verduras_alto_consumo"],
+    "temperature_range": [18, 32],
+    "special_purposes": ["cooking", "frying", "commercial"]
+  },
+  "fruit_data": {
+    "maturation_time_months": [12, 15],
+    "fruit_size": "large",
+    "fruit_length_cm": [20, 35],
+    "bunch_weight_kg": [20, 40],
+    "harvest_stage": "green_mature",
+    "cooking_uses": ["fried", "boiled", "baked", "chips"]
+  },
+  "nutritional_data": {
+    "calories_per_100g": 122,
+    "starch_content": "high",
+    "properties": ["potasio", "vitamina_b6", "vitamina_c", "fibra", "carbohidratos"]
+  },
+  "culinary_data": {
+    "cooking_methods": ["frito", "hervido", "asado", "chips", "pure"],
+    "flavor_profile": "starchy_mild",
+    "texture": "firm_starchy",
+    "best_harvest_stage": "green_full_size"
+  },
+  "cultivation_data": {
+    "propagation_method": "sucker",
+    "first_harvest": "12-15 months",
+    "production_cycle": "continuous",
+    "yield_per_plant": "1-2 bunches/year",
+    "plant_lifespan": "3-6 years"
+  },
+  "care_notes": {
+    "watering": "Riego abundante y constante, especialmente en verano",
+    "fertilizing": "Fertilizar cada 2 meses con abono rico en potasio",
+    "pruning": "Eliminar retoños excepto uno para reemplazo",
+    "wind_protection": "Esencial, tutoreo cuando hay racimo",
+    "common_problems": ["nematodos", "sigatoka_negra", "viento_fuerte"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/09/turmeric-plant-2250837_1920-243x325.webp",

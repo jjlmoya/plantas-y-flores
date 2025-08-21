@@ -2,16 +2,92 @@
   "key": "iceberg",
   "plant_info": {
     "common_names": [
-      "Iceberg"
+      "Rosa Iceberg", "Rosa Blanca Iceberg", "Schneewittchen"
     ],
     "scientific_name": "Rosa 'Iceberg'",
-    "difficulty": "beginner"
+    "origin": "DE",
+    "type": "perennial",
+    "difficulty": "beginner",
+    "family": "Rosaceae",
+    "growth_habit": "shrub",
+    "mature_size": {
+      "height": [80, 150],
+      "width": [80, 120]
+    }
   },
-  "flower_data": {
-    "fragrance": "moderate"
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 10, 11],
+      "soil_temperature_min": 10
+    },
+    "flowering": {
+      "best_months": [5, 6, 7, 8, 9, 10],
+      "peak_months": [6, 7, 8],
+      "repeat_flowering": true,
+      "bloom_duration": "continuous"
+    },
+    "pruning": {
+      "best_months": [2, 3, 11]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["dormant_protection"],
+        "2": ["prune_main", "fertilize"],
+        "3": ["planting", "fertilize", "mulching"],
+        "4": ["moderate_watering", "pest_monitoring"],
+        "5": ["deadhead", "moderate_watering", "fertilize"],
+        "6": ["deadhead", "moderate_watering", "pest_monitoring"],
+        "7": ["deadhead", "moderate_watering"],
+        "8": ["deadhead", "moderate_watering"],
+        "9": ["deadhead", "moderate_watering"],
+        "10": ["planting", "moderate_watering"],
+        "11": ["planting", "prune_shoots", "dormant_protection"],
+        "12": ["dormant_protection"]
+      }
+    }
   },
   "growing_conditions": {
-    "companion_plants": ["lavanda", "romero", "ajo", "cebollino", "manzanilla"]
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.0],
+    "spacing": {
+      "plant_distance": 60,
+      "row_distance": 80
+    },
+    "companion_plants": ["lavanda", "romero", "ajo", "cebollino", "manzanilla"],
+    "avoid_plants": ["arboles_raices_superficiales"],
+    "temperature_range": [-18, 35],
+    "special_purposes": ["borders", "hedges", "cut_flowers", "mass_planting"]
+  },
+  "flower_data": {
+    "fragrance": "moderate",
+    "flower_color": "blanco",
+    "flower_size": "medium",
+    "flower_form": "double",
+    "bloom_period": "repeat_flowering",
+    "vase_life": 7
+  },
+  "ornamental_data": {
+    "flower_diameter_cm": [6, 8],
+    "flowers_per_cluster": [3, 7],
+    "disease_resistance": "excellent",
+    "cold_hardiness": "zone_4",
+    "heat_tolerance": "good"
+  },
+  "cultivation_data": {
+    "rose_type": "floribunda",
+    "growth_rate": "moderate",
+    "maintenance": "low",
+    "award_winner": "multiple_awards",
+    "year_introduced": "1958"
+  },
+  "care_notes": {
+    "watering": "Riego moderado, evitar mojar las hojas",
+    "fertilizing": "Fertilizar en primavera y verano cada 6-8 semanas",
+    "pruning": "Poda ligera, muy resistente a enfermedades",
+    "disease_resistance": "Excelente resistencia a mildiu y mancha negra",
+    "common_problems": ["pulgones", "thrips"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/05/iceberg-roses-1759193_640-325x216.webp",

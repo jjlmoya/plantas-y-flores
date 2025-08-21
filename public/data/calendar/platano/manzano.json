@@ -2,11 +2,95 @@
   "key": "manzano",
   "plant_info": {
     "common_names": [
-      "Manzano"
+      "Plátano Manzano", "Banano Manzano", "Plátano Ácido"
     ],
-    "scientific_name": "Musa acuminata",
-    "origin": "os",
-    "difficulty": "beginner"
+    "scientific_name": "Musa acuminata 'Manzano'",
+    "origin": "IN",
+    "type": "perennial",
+    "difficulty": "intermediate",
+    "family": "Musaceae",
+    "growth_habit": "medium_tall",
+    "mature_size": {
+      "height": [250, 400],
+      "width": [120, 200]
+    }
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [4, 5, 6, 7],
+      "soil_temperature_min": 18,
+      "planting_method": "sucker"
+    },
+    "harvesting": {
+      "best_months": [9, 10, 11, 12, 1],
+      "peak_months": [10, 11],
+      "maturation_time_months": [10, 14],
+      "harvest_indicators": "yellow_with_brown_spots"
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["harvesting", "moderate_watering", "dormant_protection"],
+        "2": ["moderate_watering", "dormant_protection"],
+        "3": ["soil_preparation", "moderate_watering"],
+        "4": ["planting", "heavy_watering", "fertilize"],
+        "5": ["planting", "heavy_watering", "fertilize"],
+        "6": ["heavy_watering", "fertilize", "sucker_removal"],
+        "7": ["heavy_watering", "fertilize", "pest_monitoring"],
+        "8": ["heavy_watering", "fertilize", "pest_monitoring"],
+        "9": ["harvesting", "heavy_watering"],
+        "10": ["harvesting", "moderate_watering"],
+        "11": ["harvesting", "moderate_watering"],
+        "12": ["harvesting", "moderate_watering", "dormant_protection"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "high",
+    "soil_type": "organic_rich",
+    "soil_ph": [5.5, 6.8],
+    "spacing": {
+      "plant_distance": 180,
+      "row_distance": 250
+    },
+    "companion_plants": ["pina", "mango", "papaya"],
+    "avoid_plants": ["verduras_alto_consumo"],
+    "temperature_range": [16, 30],
+    "special_purposes": ["fresh_eating", "dessert", "juice"]
+  },
+  "fruit_data": {
+    "maturation_time_months": [10, 14],
+    "fruit_size": "medium",
+    "fruit_length_cm": [10, 15],
+    "bunch_weight_kg": [12, 25],
+    "harvest_stage": "ripe_yellow",
+    "flavor_profile": "sweet_acidic"
+  },
+  "nutritional_data": {
+    "calories_per_100g": 89,
+    "sugar_content": "medium_high",
+    "acidity": "notable",
+    "properties": ["vitamina_c", "potasio", "vitamina_b6", "antioxidants", "fibra"]
+  },
+  "culinary_data": {
+    "eating_methods": ["fresh", "smoothies", "desserts", "juice"],
+    "flavor_profile": "sweet_tart_apple_like",
+    "texture": "creamy_firm",
+    "best_ripeness": "yellow_spotted"
+  },
+  "cultivation_data": {
+    "propagation_method": "sucker",
+    "first_harvest": "10-14 months",
+    "production_cycle": "continuous",
+    "yield_per_plant": "1-2 bunches/year",
+    "plant_lifespan": "4-7 years"
+  },
+  "care_notes": {
+    "watering": "Riego abundante pero bien drenado, sensible al encharcamiento",
+    "fertilizing": "Fertilizar mensualmente con abono equilibrado",
+    "pruning": "Eliminar retoños manteniendo solo el principal y uno de reemplazo",
+    "harvest": "Cosechar cuando esté amarillo con manchas marrones",
+    "common_problems": ["antracnosis", "trips", "nematodos"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/09/Captura-de-pantalla-2017-09-05-a-las-14.54.57-325x227.webp",

@@ -1,22 +1,119 @@
 {
   "key": "rosa",
   "plant_info": {
-    "common_names": [
-      "Rosa"
-    ],
+    "common_names": ["Tomate Rosa", "Pink Tomato", "Tomate Rosado"],
     "scientific_name": "Solanum lycopersicum 'Rosa'",
-    "difficulty": "beginner"
+    "origin": "ES",
+    "type": "annual",
+    "difficulty": "intermediate",
+    "family": "Solanaceae",
+    "growth_habit": "indeterminate",
+    "mature_size": {
+      "height": [150, 200],
+      "width": [60, 80]
+    }
+  },
+  "calendar_data": {
+    "sowing": {
+      "indoor": {
+        "best_months": [2, 3, 4],
+        "temperature_range": [18, 24]
+      },
+      "outdoor": {
+        "best_months": [4, 5],
+        "soil_temperature_min": 16
+      }
+    },
+    "transplanting": {
+      "best_months": [4, 5, 6],
+      "after_germination_weeks": [7, 9]
+    },
+    "harvesting": {
+      "best_months": [7, 8, 9, 10],
+      "peak_months": [8, 9],
+      "days_to_harvest": [85, 95],
+      "harvest_indicators": ["pink_color", "slight_give", "aroma"]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "2": ["sowing_indoor", "fertilize"],
+        "3": ["sowing_indoor", "prepare_outdoor"],
+        "4": ["transplant", "install_supports"],
+        "5": ["transplant", "moderate_watering", "mulching"],
+        "6": ["moderate_watering", "fertilize", "sucker_removal", "staking"],
+        "7": ["harvest_early", "moderate_watering", "sucker_removal"],
+        "8": ["harvest_main", "moderate_watering", "fertilize"],
+        "9": ["harvest_main", "moderate_watering"],
+        "10": ["harvest_late", "plant_cleanup"],
+        "11": ["plant_cleanup"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "fertile",
+    "soil_ph": [6.0, 7.0],
+    "spacing": {
+      "plant_distance": 70,
+      "row_distance": 90
+    },
+    "companion_plants": ["albahaca", "perejil", "ajo"],
+    "avoid_plants": ["patata", "berenjena", "pimiento"],
+    "temperature_range": [15, 30],
+    "special_purposes": ["fresh_eating", "slicing", "gourmet"]
+  },
+  "fruit_data": {
+    "days_to_harvest": [85, 95],
+    "fruit_size": "large",
+    "fruit_weight_g": [400, 1000],
+    "fruit_color": "rosa_rojizo",
+    "skin_characteristics": "thin_delicate",
+    "storage_life_days": [7, 10]
+  },
+  "flesh_data": {
+    "texture": "very_meaty",
+    "water_content": "moderate",
+    "seed_cavity": "small",
+    "flesh_color": "rosa_profundo",
+    "density": "high"
+  },
+  "nutritional_data": {
+    "calories_per_100g": 19,
+    "properties": ["vitamina_c", "licopeno", "potasio", "folato", "vitamina_k"],
+    "flavor_profile": "sweet_mild",
+    "acidity": "low",
+    "sugar_content": "high"
+  },
+  "culinary_data": {
+    "uses": ["fresh", "slicing", "sandwich", "salads"],
+    "best_eaten": "fresh_ripe",
+    "cooking_methods": ["raw", "stuffed", "grilled"],
+    "texture_advantage": "very_meaty",
+    "not_suitable": ["sauce", "canning"]
+  },
+  "cultivation_data": {
+    "growth_type": "indeterminate",
+    "support_required": "heavy_duty",
+    "productivity": "moderate",
+    "season_length": "long",
+    "fruit_size_priority": "large_over_quantity"
+  },
+  "care_notes": {
+    "watering": "Riego consistente crucial para evitar agrietamiento",
+    "fertilizing": "Fertilización rica en calcio y potasio",
+    "pruning": "Eliminar chupones, limitar frutos por racimo",
+    "support": "Soporte robusto necesario por peso de frutos",
+    "common_problems": ["cracking", "blossom_end_rot", "slow_ripening", "skin_splitting"]
   },
   "harvest_data": {
-    "weight_range": [
-      400,
-      1000
-    ],
-    "storage_life": 10
+    "weight_range": [400, 1000],
+    "storage_life": 10,
+    "handling": "delicate_skin"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/10/tomatoes-2280676_1920-325x218.webp",
     "article_date": "2017-10-19T15:51:39",
-    "excerpt": "Qué es el Tomate Rosa Es una variedad de tomate de gran tamaño y muy carnosa, de tono rojizo rosado. Debido a la excesiva carnosidad, tiene menos pulpa albergando menos semillas. Esta variedad puede l"
+    "excerpt": "Qué es el Tomate Rosa Es una variedad de tomate de gran tamaño y muy carnosa, de tono rojizo rosado. Debido a la excesiva carnosidad, tiene menos pulpa albergando menos semillas. Esta variedad puede l"
   }
 }

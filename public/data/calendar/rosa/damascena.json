@@ -2,13 +2,92 @@
   "key": "damascena",
   "plant_info": {
     "common_names": [
-      "Damascena"
+      "Rosa Damascena", "Rosa de Damasco", "Rosa Búlgara"
     ],
-    "scientific_name": "rosa x damascena",
-    "difficulty": "advanced"
+    "scientific_name": "Rosa × damascena",
+    "origin": "SY",
+    "type": "perennial",
+    "difficulty": "intermediate",
+    "family": "Rosaceae",
+    "growth_habit": "shrub",
+    "mature_size": {
+      "height": [120, 180],
+      "width": [100, 150]
+    }
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 10, 11],
+      "soil_temperature_min": 10
+    },
+    "flowering": {
+      "best_months": [5, 6, 7],
+      "peak_months": [6],
+      "single_flowering": true,
+      "harvest_time": "early_morning"
+    },
+    "pruning": {
+      "best_months": [2, 3, 8]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["dormant_protection"],
+        "2": ["prune_main", "fertilize"],
+        "3": ["planting", "fertilize", "mulching"],
+        "4": ["moderate_watering", "pest_monitoring"],
+        "5": ["moderate_watering", "fertilize", "harvest_petals"],
+        "6": ["harvest_petals", "moderate_watering"],
+        "7": ["harvest_petals", "moderate_watering"],
+        "8": ["prune_shoots", "moderate_watering"],
+        "9": ["moderate_watering"],
+        "10": ["planting", "moderate_watering"],
+        "11": ["planting", "dormant_protection"],
+        "12": ["dormant_protection"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.5],
+    "spacing": {
+      "plant_distance": 80,
+      "row_distance": 120
+    },
+    "companion_plants": ["lavanda", "romero", "albahaca"],
+    "avoid_plants": ["arboles_raices_superficiales"],
+    "temperature_range": [-15, 35],
+    "special_purposes": ["perfume", "essential_oil", "culinary", "medicinal"]
   },
   "flower_data": {
-    "fragrance": "moderate"
+    "fragrance": "very_strong",
+    "flower_color": "rosa_intenso",
+    "flower_size": "medium",
+    "flower_form": "double",
+    "petals_per_flower": [30, 40],
+    "essential_oil_content": "high"
+  },
+  "commercial_data": {
+    "essential_oil_yield": "0.02-0.05%",
+    "harvest_season": "dawn_hours",
+    "processing_method": "steam_distillation",
+    "main_uses": ["perfumery", "cosmetics", "aromatherapy", "culinary"],
+    "commercial_value": "very_high"
+  },
+  "cultivation_data": {
+    "rose_type": "damask",
+    "growth_rate": "moderate",
+    "maintenance": "moderate",
+    "historical_importance": "ancient_cultivation",
+    "main_regions": ["bulgaria", "turkey", "iran"]
+  },
+  "care_notes": {
+    "watering": "Riego moderado, crucial durante floración",
+    "fertilizing": "Fertilizar en primavera antes de floración",
+    "harvesting": "Cosechar pétalos al amanecer para máximo aceite esencial",
+    "pruning": "Poda ligera después de floración",
+    "common_problems": ["mildiu", "pulgones", "trips"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/05/essential-oils-1433694_640-325x216.webp",

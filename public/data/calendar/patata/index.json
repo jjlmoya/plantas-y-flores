@@ -4,28 +4,83 @@
     "scientific_name": "Solanum tuberosum",
     "family": "Solanaceae",
     "type": "annual",
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "growth_habits": ["upright", "compact"],
+    "origins": ["sudamerica", "europa", "norteamerica"]
   },
   "calendar_data": {
-    "sowing": {
-      "outdoor": {
-        "best_months": [
-          3,
-          4,
-          5
-        ]
+    "planting": {
+      "best_months": [3, 4, 5],
+      "alternative_months": [2, 6],
+      "soil_temperature_min": 8,
+      "regional_variations": {
+        "continental": [4, 5, 6],
+        "mediterraneo": [2, 3, 4, 5],
+        "atlantico": [3, 4, 5, 6]
       }
     },
     "harvesting": {
-      "best_months": [
-        7,
-        8,
-        9
-      ]
+      "best_months": [6, 7, 8, 9, 10],
+      "peak_months": [8, 9],
+      "early_varieties": [6, 7],
+      "main_crop": [8, 9, 10],
+      "regional_variations": {
+        "continental": [7, 8, 9, 10],
+        "mediterraneo": [6, 7, 8, 9],
+        "atlantico": [7, 8, 9, 10]
+      }
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "2": ["soil_preparation", "prepare_seedbeds"],
+        "3": ["planting", "soil_preparation"],
+        "4": ["planting", "moderate_watering"],
+        "5": ["hill_soil", "moderate_watering"],
+        "6": ["hill_soil", "moderate_watering", "pest_monitoring"],
+        "7": ["moderate_watering", "pest_monitoring", "harvest_early"],
+        "8": ["harvest_main", "cure"],
+        "9": ["harvest_main", "cure", "reduce_watering"],
+        "10": ["harvest_late", "plant_cleanup"],
+        "11": ["soil_preparation", "prepare_winter"]
+      }
     }
   },
   "growing_conditions": {
     "sun_requirements": "full_sun",
-    "water_needs": "moderate"
+    "water_needs": "moderate",
+    "soil_types": ["well_drained", "sandy_loam", "organic_rich"],
+    "soil_ph_range": [5.0, 6.8],
+    "spacing_guidelines": {
+      "early_varieties": {"plant_distance": 25, "row_distance": 60},
+      "main_crop": {"plant_distance": 35, "row_distance": 75},
+      "large_varieties": {"plant_distance": 40, "row_distance": 80}
+    },
+    "companion_plants": ["judias", "maiz", "col", "apio", "rabanos"],
+    "avoid_plants": ["tomate", "berenjena", "pimiento", "girasol"],
+    "temperature_tolerance": [8, 26],
+    "special_requirements": {
+      "hilling": "essential",
+      "darkness_for_tubers": "critical",
+      "soil_preparation": "important"
+    }
+  },
+  "tuber_characteristics": {
+    "skin_colors": ["blanca", "roja", "rosada", "morada", "amarilla"],
+    "flesh_colors": ["blanca", "amarilla", "morada"],
+    "size_categories": ["small", "medium", "large"],
+    "textures": ["cerosa", "harinosa", "equilibrada"],
+    "harvest_periods": ["temprana", "media_estacion", "tardia"]
+  },
+  "uses_and_benefits": {
+    "culinary_uses": ["papas_fritas", "pure", "asado", "hervido", "guisado", "ensalada"],
+    "preservation_methods": ["store_cool_dark", "freezing", "dehydrating"],
+    "nutritional_benefits": ["energia", "potasio", "vitamina_c", "fibra"],
+    "commercial_value": "high"
+  },
+  "cultivation_summary": {
+    "planting": "Plantar tubérculos semilla en suelo bien drenado",
+    "care": "Aporcar regularmente y riego moderado constante",
+    "harvesting": "Cosechar cuando el follaje amarillea, curar antes de almacenar",
+    "storage": "Almacenar en lugar fresco, oscuro y bien ventilado"
   }
 }

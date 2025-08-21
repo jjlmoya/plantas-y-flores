@@ -1,27 +1,70 @@
 {
   "plant_info": {
     "category": "orquidea",
-    "scientific_name": "Orchidaceae",
-    "family": "Orchidaceae",
+    "scientific_family": "Orchidaceae",
     "type": "perennial",
-    "difficulty": "advanced"
+    "difficulty": "advanced",
+    "growth_habits": ["upright", "climbing", "epiphytic"],
+    "origins": ["tropical", "subtropical", "asia", "america"]
   },
   "calendar_data": {
     "flowering": {
-      "best_months": [
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10
-      ]
+      "best_months": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "peak_months": [11, 12, 1, 2, 3, 4],
+      "notes": "Floración variable según especie y condiciones"
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["moderate_watering", "fertilize"],
+        "2": ["moderate_watering", "pest_monitoring"],
+        "3": ["moderate_watering", "fertilize"],
+        "4": ["moderate_watering"],
+        "5": ["moderate_watering", "fertilize"],
+        "6": ["moderate_watering", "pest_monitoring"],
+        "7": ["moderate_watering"],
+        "8": ["moderate_watering", "fertilize"],
+        "9": ["moderate_watering"],
+        "10": ["moderate_watering", "pest_monitoring"],
+        "11": ["moderate_watering", "fertilize"],
+        "12": ["moderate_watering"]
+      }
     }
   },
   "growing_conditions": {
-    "sun_requirements": "bright_indirect",
-    "water_needs": "low"
+    "sun_requirements": "partial_shade",
+    "water_needs": "moderate",
+    "soil_types": ["well_drained", "organic_rich"],
+    "soil_ph_range": [5.5, 7.0],
+    "spacing_guidelines": {
+      "small_varieties": {"plant_distance": 20, "row_distance": 30},
+      "medium_varieties": {"plant_distance": 40, "row_distance": 60},
+      "large_varieties": {"plant_distance": 60, "row_distance": 80}
+    },
+    "companion_plants": ["helechos", "bromelias", "anturios"],
+    "temperature_tolerance": [15, 30],
+    "humidity_requirements": "high",
+    "special_requirements": {
+      "drainage": "essential",
+      "air_circulation": "good",
+      "support": "may_be_needed"
+    }
+  },
+  "flower_characteristics": {
+    "color_range": ["white", "yellow", "pink", "purple", "blue", "green", "red", "multicolor"],
+    "flower_shapes": ["orchid", "slipper", "star", "butterfly"],
+    "size_categories": ["small", "medium", "large"],
+    "bloom_durations": ["1 día", "1 semana", "2 semanas", "4 semanas", "6 semanas"],
+    "fragrance_levels": ["none", "mild", "moderate", "strong"]
+  },
+  "uses_and_benefits": {
+    "garden_purposes": ["cut_flowers", "greenhouse_cultivation", "containers", "hanging_baskets"],
+    "special_uses": ["medicinal", "culinary", "perfumery", "ornamental"],
+    "ecological_benefits": ["attracts_pollinators", "air_purifying"]
+  },
+  "care_summary": {
+    "watering": "Riego moderado, evitar encharcamiento",
+    "fertilizing": "Fertilizante específico para orquídeas mensual",
+    "maintenance": "Requieren humedad ambiental alta y buena ventilación",
+    "winter_care": "Mantener temperatura estable, reducir ligeramente riego"
   }
 }

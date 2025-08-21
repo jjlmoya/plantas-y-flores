@@ -2,14 +2,89 @@
   "key": "gallica",
   "plant_info": {
     "common_names": [
-      "Gallica"
+      "Rosa Gallica", "Rosa Francesa", "Rosa de Provins"
     ],
     "scientific_name": "Rosa gallica",
-    "origin": "ia",
-    "difficulty": "beginner"
+    "origin": "FR",
+    "type": "perennial",
+    "difficulty": "beginner",
+    "family": "Rosaceae",
+    "growth_habit": "compact",
+    "mature_size": {
+      "height": [80, 120],
+      "width": [80, 100]
+    }
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 10, 11],
+      "soil_temperature_min": 8
+    },
+    "flowering": {
+      "best_months": [6, 7],
+      "peak_months": [6],
+      "single_flowering": true,
+      "intensive_bloom": true
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["dormant_protection"],
+        "2": ["prune_main", "soil_preparation"],
+        "3": ["planting", "fertilize", "mulching"],
+        "4": ["moderate_watering", "pest_monitoring"],
+        "5": ["moderate_watering", "fertilize"],
+        "6": ["moderate_watering"],
+        "7": ["moderate_watering", "deadhead"],
+        "8": ["moderate_watering", "prune_shoots"],
+        "9": ["moderate_watering"],
+        "10": ["planting", "moderate_watering"],
+        "11": ["planting", "dormant_protection"],
+        "12": ["dormant_protection"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.5],
+    "spacing": {
+      "plant_distance": 80,
+      "row_distance": 100
+    },
+    "companion_plants": ["lavanda", "santolina", "catananche"],
+    "avoid_plants": ["arboles_raices_superficiales"],
+    "temperature_range": [-20, 35],
+    "special_purposes": ["historical_garden", "medicinal", "perfume", "compact_space"]
   },
   "flower_data": {
-    "fragrance": "moderate"
+    "fragrance": "very_strong",
+    "flower_color": ["rosa_intenso", "rojo", "morado"],
+    "flower_size": "medium",
+    "flower_form": "semi_double",
+    "petals_per_flower": [12, 25],
+    "bloom_duration": "3_weeks"
+  },
+  "historical_data": {
+    "cultivation_period": "ancient_times",
+    "historical_uses": ["medicinal", "perfume", "culinary"],
+    "cultural_significance": "symbol_of_france",
+    "traditional_names": ["rosa_officinalis", "apothecary_rose"]
+  },
+  "cultivation_data": {
+    "rose_type": "old_garden",
+    "growth_rate": "moderate",
+    "maintenance": "low",
+    "disease_resistance": "good",
+    "cold_hardiness": "zone_4",
+    "sucker_production": "moderate"
+  },
+  "care_notes": {
+    "watering": "Riego moderado, tolera sequías ocasionales",
+    "fertilizing": "Fertilizar en primavera antes de floración",
+    "pruning": "Poda ligera después de floración, controlar chupones",
+    "disease_resistance": "Buena resistencia natural",
+    "common_problems": ["mildiu", "pulgones"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/05/rose-3163882_640-325x276.webp",

@@ -2,10 +2,91 @@
   "key": "peonia-sarah-bernhardt",
   "plant_info": {
     "common_names": [
-      "Sarah Bernhardt"
+      "Peonía Sarah Bernhardt", "Sarah Bernhardt", "Peonía Rosa Doble"
     ],
-    "scientific_name": "Paeonia lactiflora",
-    "origin": "ia"
+    "scientific_name": "Paeonia lactiflora 'Sarah Bernhardt'",
+    "origin": "CN",
+    "type": "perennial",
+    "difficulty": "intermediate",
+    "family": "Paeoniaceae",
+    "growth_habit": "clumping",
+    "mature_size": {
+      "height": [60, 90],
+      "width": [60, 90]
+    }
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [9, 10, 11],
+      "soil_temperature_max": 15,
+      "planting_depth": "5cm"
+    },
+    "flowering": {
+      "best_months": [5, 6],
+      "peak_months": [5],
+      "days_to_flower": [180, 210],
+      "bloom_duration": "2-3 semanas"
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["dormant_protection"],
+        "2": ["dormant_protection", "soil_preparation"],
+        "3": ["fertilize", "moderate_watering", "mulching"],
+        "4": ["moderate_watering", "fertilize", "staking"],
+        "5": ["moderate_watering", "staking", "pest_monitoring"],
+        "6": ["moderate_watering", "pinching"],
+        "7": ["moderate_watering"],
+        "8": ["moderate_watering", "fertilize"],
+        "9": ["planting", "soil_preparation"],
+        "10": ["planting", "moderate_watering", "mulching"],
+        "11": ["plant_cleanup", "dormant_protection"],
+        "12": ["dormant_protection"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "partial_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.0],
+    "spacing": {
+      "plant_distance": 90,
+      "row_distance": 120
+    },
+    "companion_plants": ["iris", "rosa", "hortensias"],
+    "avoid_plants": ["arboles_raices_superficiales"],
+    "temperature_range": [-20, 28],
+    "special_purposes": ["cut_flowers", "specimen", "borders"]
+  },
+  "flowering_data": {
+    "days_to_flower": [180, 210],
+    "flower_size": "extra_large",
+    "flower_color": "rosa_palido",
+    "flower_type": "double",
+    "fragrance": "strong",
+    "vase_life": 7,
+    "bloom_season": "late_spring"
+  },
+  "ornamental_data": {
+    "flower_diameter": [15, 20],
+    "petals_count": "multiple_layers",
+    "stem_strength": "medium",
+    "foliage_quality": "excellent",
+    "autumn_color": "bronze_red"
+  },
+  "cultivation_data": {
+    "establishment_time": "2-3 years",
+    "peak_performance": "4-5 years",
+    "lifespan": "50+ years",
+    "winter_hardiness": "zone_3",
+    "heat_tolerance": "moderate"
+  },
+  "care_notes": {
+    "watering": "Riego profundo pero espaciado, evitar encharcamiento",
+    "fertilizing": "Fertilizar a principios de primavera y después de floración",
+    "staking": "Requiere tutoreo por el peso de las flores dobles",
+    "pruning": "Cortar flores marchitas, no podar follaje hasta otoño",
+    "common_problems": ["botrytis", "hormigas_en_botones", "tallos_debiles"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2025/08/A_digital_photograph_captures_a_single_Sarah_Bernh.webp",

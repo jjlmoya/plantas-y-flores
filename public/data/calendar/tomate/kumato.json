@@ -1,44 +1,109 @@
 {
   "key": "kumato",
   "plant_info": {
-    "scientific_name": "Solanum lycopersicum var. kumato",
-    "common_names": ["Black tomato", "Kumato"],
-    "origin": "es-ES",
-    "is_heirloom": true
+    "common_names": ["Tomate Kumato", "Tomate Negro", "Black Tomato"],
+    "scientific_name": "Solanum lycopersicum 'Kumato'",
+    "origin": "ES",
+    "type": "annual",
+    "difficulty": "intermediate",
+    "family": "Solanaceae",
+    "growth_habit": "indeterminate",
+    "is_heirloom": false,
+    "mature_size": {
+      "height": [120, 180],
+      "width": [50, 70]
+    }
   },
   "calendar_data": {
+    "sowing": {
+      "indoor": {
+        "best_months": [2, 3, 4],
+        "temperature_range": [18, 24]
+      }
+    },
+    "transplanting": {
+      "best_months": [4, 5, 6],
+      "after_germination_weeks": [6, 8]
+    },
     "harvesting": {
       "best_months": [7, 8, 9, 10, 11],
       "peak_months": [8, 9, 10],
       "days_to_harvest": [80, 90],
-      "harvest_indicators": ["color_change", "firmness", "dark_color"]
+      "harvest_indicators": ["dark_color", "firmness", "slight_give"]
     },
     "care_calendar": {
       "monthly_tasks": {
+        "2": ["sowing_indoor"],
+        "3": ["sowing_indoor", "prepare_outdoor"],
+        "4": ["transplant", "install_supports"],
+        "5": ["moderate_watering", "mulching"],
+        "6": ["moderate_watering", "fertilize", "sucker_removal"],
+        "7": ["moderate_watering", "sucker_removal"],
         "8": ["harvest_early", "water_restriction"],
         "9": ["harvest_main", "water_restriction"],
-        "10": ["harvest_late"],
+        "10": ["harvest_main"],
         "11": ["harvest_late", "plant_cleanup"]
       }
     }
   },
   "growing_conditions": {
+    "sun_requirements": "full_sun",
     "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.0],
+    "spacing": {
+      "plant_distance": 60,
+      "row_distance": 80
+    },
+    "companion_plants": ["albahaca", "perejil"],
+    "avoid_plants": ["patata", "berenjena"],
+    "temperature_range": [15, 30],
     "special_care": {
       "water_restriction": {
         "months": [8, 9],
         "purpose": "flavor_intensification"
       }
-    }
+    },
+    "special_purposes": ["gourmet", "unique_appearance", "premium_market"]
+  },
+  "fruit_data": {
+    "days_to_harvest": [80, 90],
+    "fruit_size": "medium",
+    "fruit_weight_g": [60, 150],
+    "fruit_color": "dark_brown_black",
+    "storage_life_days": 14,
+    "can_harvest_unripe": true
+  },
+  "nutritional_data": {
+    "calories_per_100g": 20,
+    "properties": ["low_acidity", "antioxidant_rich", "vitamina_c", "licopeno"],
+    "flavor_profile": "sweet_smoky",
+    "acidity": "low"
+  },
+  "culinary_data": {
+    "uses": ["fresh", "salads", "gourmet", "specialty_dishes"],
+    "flavor_characteristics": ["sweet", "smoky", "complex"],
+    "best_applications": ["high_end_cuisine", "salads", "garnish"],
+    "unique_features": ["low_acidity", "distinctive_color"]
+  },
+  "cultivation_data": {
+    "growth_type": "indeterminate",
+    "support_required": true,
+    "productivity": "moderate",
+    "specialty_variety": true,
+    "market_value": "premium"
+  },
+  "care_notes": {
+    "watering": "Restringir riego al final para intensificar sabor",
+    "fertilizing": "Fertilización equilibrada",
+    "pruning": "Eliminar chupones regularmente",
+    "harvesting": "Cosechar cuando esté oscuro pero firme",
+    "common_problems": ["slow_ripening", "cracking", "sunscald"]
   },
   "harvest_data": {
     "weight_range": [60, 150],
     "storage_life": 14,
     "can_harvest_unripe": true
-  },
-  "nutritional_data": {
-    "calories_per_100g": 20,
-    "properties": ["low_acidity", "antioxidant_rich"]
   },
   "article_reference": {
     "has_article": true,

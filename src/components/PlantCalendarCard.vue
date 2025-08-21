@@ -248,6 +248,22 @@
               <span class="nutritional-label">Calorías:</span>
               <span class="nutritional-value">{{ plant.calendar.nutritional_data.calories_per_100g }} kcal</span>
             </div>
+            <div v-if="plant.calendar.nutritional_data.properties?.length" class="nutritional-vitamins">
+              <span class="nutritional-label">Vitaminas y Nutrientes:</span>
+              <div class="vitamin-tags">
+                <span 
+                  v-for="property in plant.calendar.nutritional_data.properties" 
+                  :key="property"
+                  class="vitamin-tag"
+                >
+                  {{ ui.formatTaskName(property) }}
+                </span>
+              </div>
+            </div>
+            <div v-if="plant.calendar.nutritional_data.flavor_profile" class="nutritional-item">
+              <span class="nutritional-label">Perfil de Sabor:</span>
+              <span class="nutritional-value">{{ ui.formatTaskName(plant.calendar.nutritional_data.flavor_profile) }}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -931,8 +947,8 @@ export default {
 
 .nutritional-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 0.5rem;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
 }
 
 .nutritional-item {
@@ -941,13 +957,37 @@ export default {
   font-size: 0.8rem;
 }
 
+.nutritional-vitamins {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+}
+
 .nutritional-label {
   color: #4a5568;
+  font-weight: 500;
 }
 
 .nutritional-value {
   color: #2d3748;
   font-weight: 500;
+}
+
+.vitamin-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.vitamin-tag {
+  background: #e6fffa;
+  color: #234e52;
+  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: capitalize;
 }
 
 @media (max-width: 768px) {

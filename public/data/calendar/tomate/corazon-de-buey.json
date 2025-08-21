@@ -2,43 +2,117 @@
   "key": "corazon-de-buey",
   "plant_info": {
     "common_names": [
-      "Corazón de Buey"
+      "Tomate Corazón de Buey", "Beefsteak", "Tomate Gigante"
     ],
     "scientific_name": "Solanum lycopersicum 'Corazón de Buey'",
-    "origin": "re",
-    "difficulty": "advanced"
-  },
-  "harvest_data": {
-    "weight_range": [
-      300,
-      500
-    ],
-    "storage_life": 7
+    "origin": "IT",
+    "type": "annual",
+    "difficulty": "intermediate",
+    "family": "Solanaceae",
+    "growth_habit": "indeterminate",
+    "mature_size": {
+      "height": [150, 250],
+      "width": [60, 80]
+    }
   },
   "calendar_data": {
+    "sowing": {
+      "indoor": {
+        "best_months": [2, 3, 4],
+        "temperature_range": [18, 24]
+      },
+      "outdoor": {
+        "best_months": [4, 5],
+        "soil_temperature_min": 16
+      }
+    },
+    "transplanting": {
+      "best_months": [4, 5, 6],
+      "after_germination_weeks": [7, 9]
+    },
     "harvesting": {
-      "best_months": [
-        7,
-        8,
-        9
-      ],
-      "harvest_indicators": [
-        "size",
-        "color_change"
-      ]
+      "best_months": [7, 8, 9, 10],
+      "peak_months": [8, 9],
+      "days_to_harvest": [85, 100],
+      "harvest_indicators": ["size", "color_change", "slight_give"]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "2": ["sowing_indoor", "fertilize"],
+        "3": ["sowing_indoor", "prepare_outdoor"],
+        "4": ["transplant", "install_supports"],
+        "5": ["transplant", "moderate_watering", "mulching"],
+        "6": ["moderate_watering", "fertilize", "sucker_removal", "staking"],
+        "7": ["harvest_early", "moderate_watering", "sucker_removal", "fruit_protection"],
+        "8": ["harvest_main", "moderate_watering", "fertilize"],
+        "9": ["harvest_main", "moderate_watering"],
+        "10": ["harvest_late", "plant_cleanup"],
+        "11": ["plant_cleanup"]
+      }
     }
   },
   "growing_conditions": {
-    "growth_habit": "indeterminate",
-    "support_required": true,
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "fertile",
+    "soil_ph": [6.0, 7.0],
     "spacing": {
-      "plant_distance": 60,
+      "plant_distance": 70,
       "row_distance": 100
-    }
+    },
+    "companion_plants": ["albahaca", "perejil", "ajo"],
+    "avoid_plants": ["patata", "berenjena", "pimiento"],
+    "temperature_range": [15, 30],
+    "special_purposes": ["fresh_eating", "slicing", "sandwich"]
+  },
+  "fruit_data": {
+    "days_to_harvest": [85, 100],
+    "fruit_size": "extra_large",
+    "fruit_weight_g": [300, 600],
+    "fruit_shape": "irregular_ribbed",
+    "fruit_color": "rojo_intenso",
+    "storage_life_days": [5, 10]
+  },
+  "flesh_data": {
+    "texture": "meaty",
+    "water_content": "high",
+    "seed_cavity": "small",
+    "density": "high"
+  },
+  "nutritional_data": {
+    "calories_per_100g": 20,
+    "properties": ["vitamina_c", "licopeno", "potasio", "folato"],
+    "flavor_profile": "rich_complex",
+    "acidity": "low",
+    "sugar_content": "moderate"
+  },
+  "culinary_data": {
+    "uses": ["fresh", "slicing", "sandwich", "stuffing"],
+    "best_eaten": "fresh_ripe",
+    "cooking_methods": ["raw", "stuffed", "grilled"],
+    "not_suitable": ["canning", "sauce"]
+  },
+  "cultivation_data": {
+    "growth_type": "indeterminate",
+    "support_required": "heavy_duty",
+    "productivity": "moderate",
+    "season_length": "long",
+    "fruit_size_priority": "large_over_quantity"
+  },
+  "care_notes": {
+    "watering": "Riego consistente crucial para evitar agrietamiento",
+    "fertilizing": "Fertilizar regularmente, especialmente calcio",
+    "pruning": "Eliminar chupones, limitar número de frutos por racimo",
+    "support": "Requiere soporte muy fuerte por el peso de los frutos",
+    "common_problems": ["agrietamiento", "blossom_end_rot", "slow_ripening"]
+  },
+  "harvest_data": {
+    "weight_range": [300, 500],
+    "storage_life": 7
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/08/tomatoes-2218963_1280-325x217.webp",
     "article_date": "2017-08-18T19:29:37",
-    "excerpt": "Qué es la variedad Corazón de Buey Es el fruto de una tomatera cuyos frutos son de gran tamaño y de formas irregulares, con multitud de pliegues y/ ondulaciones. Origen del nombre Recibe su nombre de "
+    "excerpt": "Qué es la variedad Corazón de Buey Es el fruto de una tomatera cuyos frutos son de gran tamaño y de formas irregulares, con multitud de pliegues y/ ondulaciones. Origen del nombre Recibe su nombre de "
   }
 }

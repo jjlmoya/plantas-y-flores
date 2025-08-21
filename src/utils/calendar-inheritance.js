@@ -617,6 +617,7 @@ export function getUIHelpers(globalConfig) {
         'annual': 'Anual',
         'perennial': 'Perenne',
         'biennial': 'Bienal',
+        'shrub': 'Arbusto',
         // Difficulty levels
         'beginner': 'Principiante',
         'intermediate': 'Intermedio',
@@ -664,12 +665,31 @@ export function getUIHelpers(globalConfig) {
         'dehydrating': 'Deshidratación',
         'pickling': 'Encurtido',
         'fermentation': 'Fermentación',
+        'cure': 'Curado',
+        'dry': 'Seco',
+        'extract': 'Extracto',
         // Harvest indicators
         'aroma': 'Aroma',
         'full_bloom': 'Floración Completa',
         'color_change': 'Cambio de Color',
         'size': 'Tamaño',
         'firmness': 'Firmeza',
+        // Avoid plants
+        'trees_shallow_roots': 'Árboles de Raíces Superficiales',
+        'arboles_raices_superficiales': 'Árboles de Raíces Superficiales',
+        'vegetables_heavy_feeders': 'Verduras de Alto Consumo de Nutrientes',
+        'verduras_alto_consumo': 'Verduras de Alto Consumo',
+        'aggressive_spreaders': 'Plantas Invasivas',
+        // Plant names for companion planting
+        'iris': 'Iris',
+        // Fragrance levels
+        'very_strong': 'Muy Fuerte',
+        'mild_sweet': 'Suave Dulce',
+        // Bloom duration
+        '3_weeks': '3 Semanas',
+        '4_weeks': '4 Semanas',
+        // Tasks
+        'harvest_petals': 'Cosechar Pétalos',
         // Special purposes
         'companion_benefit': 'Beneficio como Planta Compañera',
         'pest_control': 'Control de Plagas',
@@ -759,6 +779,7 @@ export function getUIHelpers(globalConfig) {
         'pineapple_spike': 'Espiga de Piña',
         'dense_spike': 'Espiga Densa',
         'funnel_shaped': 'Forma de Embudo',
+        'orchid': 'Orquídea',
         
         // Colors
         'purple': 'Púrpura',
@@ -945,8 +966,14 @@ export function getUIHelpers(globalConfig) {
         'enjoy_brief_display': 'Disfrutar Exhibición Breve',
         'low_once_established': 'Bajo Una Vez Establecido',
         
-        // Specific tasks for vanilla
+        // Specific tasks for vanilla and orchids
         'cure_beans': 'Curar Vainas',
+        'hand_pollinate': 'Polinización Manual',
+        'support_pods': 'Soportar Vainas',
+        'maintain_humidity': 'Mantener Humedad',
+        // Specific tasks for potatoes and root crops
+        'hill_soil': 'Aporcar',
+        'cure': 'Curar',
         
         // Heat levels for chilis
         'mild': 'Suave',
@@ -1093,12 +1120,20 @@ export function getUIHelpers(globalConfig) {
       return task.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
     },
     formatCategoryName: (category) => {
+      // Special case for pina to show with ñ
+      if (category === 'pina') {
+        return 'Piña';
+      }
       return category.charAt(0).toUpperCase() + category.slice(1).replace(/_/g, ' ');
     },
     formatPlantName: (plantSlug) => {
       // Special case for albahaca-de-clavo to avoid "Albahaca Albahaca de clavo"
       if (plantSlug === 'albahaca-de-clavo') {
         return 'de clavo';
+      }
+      // Special case for peonia-sarah-bernhardt to avoid "Peonia Peonia sarah bernhardt"
+      if (plantSlug === 'peonia-sarah-bernhardt') {
+        return 'Sarah Bernhardt';
       }
       return plantSlug.charAt(0).toUpperCase() + plantSlug.slice(1).replace(/-/g, ' ');
     },

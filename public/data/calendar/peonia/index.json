@@ -1,21 +1,88 @@
 {
   "plant_info": {
-    "type": "annual",
-    "difficulty": "beginner",
-    "category": "peonia"
+    "category": "peonia",
+    "scientific_name": "Paeonia",
+    "family": "Paeoniaceae",
+    "type": "perennial",
+    "difficulty": "intermediate",
+    "growth_habits": ["clumping", "upright"],
+    "origins": ["asia", "europa", "norteamerica"]
   },
   "calendar_data": {
-    "sowing": {
-      "outdoor": {
-        "best_months": [
-          4,
-          5
-        ]
+    "planting": {
+      "best_months": [9, 10, 11],
+      "alternative_months": [3, 4],
+      "soil_temperature_max": 15,
+      "planting_depth": "5cm",
+      "regional_variations": {
+        "continental": [9, 10],
+        "mediterraneo": [10, 11, 12],
+        "atlantico": [9, 10, 11]
+      }
+    },
+    "flowering": {
+      "best_months": [4, 5, 6],
+      "peak_months": [5],
+      "duration_weeks": [2, 4],
+      "regional_variations": {
+        "continental": [5, 6],
+        "mediterraneo": [4, 5],
+        "atlantico": [4, 5, 6]
+      }
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["dormant_protection", "soil_preparation"],
+        "2": ["dormant_protection", "soil_preparation"],
+        "3": ["fertilize", "moderate_watering", "mulching"],
+        "4": ["moderate_watering", "fertilize", "staking"],
+        "5": ["moderate_watering", "staking", "pest_monitoring"],
+        "6": ["moderate_watering", "pinching", "pest_monitoring"],
+        "7": ["moderate_watering", "pinching"],
+        "8": ["moderate_watering", "fertilize"],
+        "9": ["planting", "soil_preparation", "moderate_watering"],
+        "10": ["planting", "moderate_watering", "mulching"],
+        "11": ["planting", "plant_cleanup", "dormant_protection"],
+        "12": ["dormant_protection", "plant_cleanup"]
       }
     }
   },
   "growing_conditions": {
-    "sun_requirements": "full_sun",
-    "water_needs": "moderate"
+    "sun_requirements": "partial_sun",
+    "water_needs": "moderate",
+    "soil_types": ["well_drained", "fertile", "organic_rich"],
+    "soil_ph_range": [6.0, 7.0],
+    "spacing_guidelines": {
+      "between_plants": 90,
+      "between_rows": 120
+    },
+    "companion_plants": ["iris", "rosa", "hortensias", "tulipan"],
+    "avoid_plants": ["arboles_raices_superficiales", "aggressive_spreaders"],
+    "temperature_tolerance": [-25, 30],
+    "special_requirements": {
+      "winter_chill": "essential",
+      "good_drainage": "critical",
+      "air_circulation": "important",
+      "deep_planting_avoid": "critical"
+    }
+  },
+  "flowering_characteristics": {
+    "flower_colors": ["rosa", "blanco", "rojo", "coral", "amarillo"],
+    "flower_types": ["single", "semi_double", "double", "japanese", "anemone"],
+    "flower_size": ["large", "extra_large"],
+    "fragrance": ["strong", "mild", "none"],
+    "bloom_sequence": "early_to_late_season"
+  },
+  "uses_and_benefits": {
+    "ornamental_uses": ["borders", "specimen", "cut_flowers", "landscape_focal"],
+    "landscape_value": ["spring_interest", "foliage_texture", "autumn_color"],
+    "cut_flower_quality": "excellent",
+    "longevity": "decades"
+  },
+  "cultivation_summary": {
+    "planting": "Plantar en oto\u00f1o en suelo bien drenado, no muy profundo",
+    "care": "Riego moderado, tutoreo durante floraci\u00f3n, fertilizar en primavera",
+    "flowering": "Floraci\u00f3n espectacular en primavera, duraci\u00f3n limitada",
+    "dormancy": "Reposo invernal necesario, protecci\u00f3n en climas fr\u00edos"
   }
 }

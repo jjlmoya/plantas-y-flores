@@ -1,24 +1,121 @@
 {
   "key": "indigo",
   "plant_info": {
-    "common_names": [
-      "Índigo"
-    ],
+    "common_names": ["Tomate Índigo", "Blue Tomato", "Tomate Azul"],
     "scientific_name": "Solanum lycopersicum 'Indigo'",
-    "difficulty": "beginner",
+    "origin": "US",
+    "type": "annual",
+    "difficulty": "intermediate",
+    "family": "Solanaceae",
+    "growth_habit": "indeterminate",
+    "mature_size": {
+      "height": [120, 180],
+      "width": [50, 70]
+    },
     "special_characteristics": [
       "high_antioxidants",
-      "blue_pigmentation"
+      "blue_pigmentation",
+      "unique_color"
     ]
   },
   "calendar_data": {
+    "sowing": {
+      "indoor": {
+        "best_months": [2, 3, 4],
+        "temperature_range": [18, 24]
+      },
+      "outdoor": {
+        "best_months": [4, 5],
+        "soil_temperature_min": 16
+      }
+    },
+    "transplanting": {
+      "best_months": [4, 5, 6],
+      "after_germination_weeks": [6, 8]
+    },
     "harvesting": {
-      "harvest_indicators": [
-        "firmness",
-        "aroma",
-        "partial_color_change"
-      ]
+      "best_months": [7, 8, 9, 10],
+      "peak_months": [8, 9],
+      "days_to_harvest": [75, 85],
+      "continuous_harvest": true,
+      "harvest_indicators": ["firmness", "aroma", "partial_color_change", "purple_shoulders"]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "2": ["sowing_indoor", "fertilize"],
+        "3": ["sowing_indoor", "prepare_outdoor"],
+        "4": ["transplant", "install_supports"],
+        "5": ["transplant", "moderate_watering", "mulching"],
+        "6": ["moderate_watering", "fertilize", "sucker_removal"],
+        "7": ["harvest_early", "moderate_watering", "sucker_removal"],
+        "8": ["harvest_main", "moderate_watering", "fertilize"],
+        "9": ["harvest_main", "moderate_watering"],
+        "10": ["harvest_late", "plant_cleanup"],
+        "11": ["plant_cleanup"]
+      }
     }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.0],
+    "spacing": {
+      "plant_distance": 60,
+      "row_distance": 80
+    },
+    "companion_plants": ["albahaca", "perejil", "ajo"],
+    "avoid_plants": ["patata", "berenjena", "pimiento"],
+    "temperature_range": [15, 30],
+    "special_purposes": ["antioxidant", "unique_appearance", "gourmet", "novelty"]
+  },
+  "fruit_data": {
+    "days_to_harvest": [75, 85],
+    "fruit_size": "small_medium",
+    "fruit_weight_g": [50, 80],
+    "fruit_color": "purple_blue_shoulders",
+    "base_color": "rojo_negro",
+    "storage_life_days": [7, 12]
+  },
+  "anthocyanin_data": {
+    "pigmentation": "anthocyanin_rich",
+    "color_development": "sun_exposure_dependent",
+    "antioxidant_content": "very_high",
+    "health_benefits": ["cardiovascular", "anti_inflammatory", "cancer_protection"]
+  },
+  "nutritional_data": {
+    "calories_per_100g": 18,
+    "properties": ["vitamina_c", "licopeno", "antocianinas", "vitamina_k", "folato"],
+    "flavor_profile": "sweet_complex",
+    "acidity": "balanced",
+    "antioxidant_level": "very_high"
+  },
+  "culinary_data": {
+    "uses": ["fresh", "salads", "garnish", "specialty_dishes"],
+    "best_eaten": "fresh_ripe",
+    "cooking_methods": ["raw", "light_grilling"],
+    "unique_features": ["color_contrast", "conversation_starter"],
+    "pairing": ["cheese", "herbs", "olive_oil"]
+  },
+  "cultivation_data": {
+    "growth_type": "indeterminate",
+    "support_required": true,
+    "productivity": "moderate",
+    "season_length": "long",
+    "specialty_variety": true,
+    "market_value": "premium"
+  },
+  "care_notes": {
+    "watering": "Riego consistente para desarrollo uniforme del color",
+    "fertilizing": "Fertilización equilibrada, evitar exceso de nitrógeno",
+    "pruning": "Eliminar chupones regularmente para mejor coloración",
+    "sun_exposure": "Exposición solar directa necesaria para pigmentación azul",
+    "common_problems": ["slow_color_development", "uneven_ripening", "cracking"]
+  },
+  "harvest_data": {
+    "weight_range": [50, 80],
+    "storage_life": 10,
+    "color_indicators": ["purple_shoulders", "red_base"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/10/tomato-2737363_1920-325x312.webp",

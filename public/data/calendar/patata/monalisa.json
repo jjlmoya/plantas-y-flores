@@ -2,10 +2,80 @@
   "key": "monalisa",
   "plant_info": {
     "common_names": [
-      "Monalisa"
+      "Patata Monalisa", "Monalisa", "Papa Versátil"
     ],
     "scientific_name": "Solanum tuberosum 'Monalisa'",
-    "difficulty": "beginner"
+    "origin": "NL",
+    "type": "annual",
+    "difficulty": "beginner",
+    "family": "Solanaceae",
+    "growth_habit": "upright",
+    "mature_size": {
+      "height": [45, 65],
+      "width": [35, 55]
+    }
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 5],
+      "soil_temperature_min": 10,
+      "planting_depth": "10-15cm"
+    },
+    "harvesting": {
+      "best_months": [7, 8, 9],
+      "peak_months": [8],
+      "days_to_harvest": [85, 110],
+      "harvest_indicators": "Tubérculos firmes, piel lisa y dorada"
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["planting", "soil_preparation"],
+        "4": ["planting", "moderate_watering"],
+        "5": ["hill_soil", "moderate_watering"],
+        "6": ["hill_soil", "moderate_watering", "pest_monitoring"],
+        "7": ["moderate_watering", "harvest_early"],
+        "8": ["harvest_main", "cure"],
+        "9": ["harvest_late", "plant_cleanup"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [5.2, 6.8],
+    "spacing": {
+      "plant_distance": 32,
+      "row_distance": 70
+    },
+    "companion_plants": ["col", "judias", "rabanos"],
+    "avoid_plants": ["tomate", "berenjena", "pimiento"],
+    "temperature_range": [12, 26],
+    "special_purposes": ["culinary", "versatile_cooking", "commercial"]
+  },
+  "harvest_data": {
+    "days_to_harvest": [85, 110],
+    "weight_range": [120, 280],
+    "storage_life": 210,
+    "preservation_methods": ["store_cool_dark", "freezing"],
+    "harvest_tips": "Bajo contenido de agua, excelente para conservación"
+  },
+  "nutritional_data": {
+    "calories_per_100g": 85,
+    "water_content": 72,
+    "properties": ["potasio", "vitamina_c", "carbohidratos", "proteina", "fibra"]
+  },
+  "culinary_data": {
+    "uses": ["pure", "asado", "papas_fritas", "guisado", "hervido"],
+    "texture": "equilibrada",
+    "flavor_profile": "neutro_intenso",
+    "cooking_notes": "Versátil para cualquier preparación, bajo contenido de agua"
+  },
+  "care_notes": {
+    "watering": "Riego moderado, tolerante a sequía ligera",
+    "hilling": "Aporcar 2-3 veces para mejores tubérculos",
+    "harvest": "Excelente para almacenamiento a largo plazo",
+    "common_problems": ["mildiu", "gusano_alambre", "sarna_comun"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/01/potato-544073-325x228.webp",

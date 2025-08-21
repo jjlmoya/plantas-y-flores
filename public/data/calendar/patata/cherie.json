@@ -2,10 +2,79 @@
   "key": "cherie",
   "plant_info": {
     "common_names": [
-      "Chérie"
+      "Patata Chérie", "Chérie", "Papa Francesa Temprana"
     ],
     "scientific_name": "Solanum tuberosum 'Chérie'",
-    "difficulty": "beginner"
+    "origin": "FR",
+    "type": "annual",
+    "difficulty": "beginner",
+    "family": "Solanaceae",
+    "growth_habit": "compact",
+    "mature_size": {
+      "height": [30, 50],
+      "width": [25, 40]
+    }
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 5],
+      "soil_temperature_min": 8,
+      "planting_depth": "8-12cm"
+    },
+    "harvesting": {
+      "best_months": [6, 7, 8],
+      "peak_months": [7],
+      "days_to_harvest": [65, 85],
+      "harvest_indicators": "Patatas pequeñas, piel fina y tierna"
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["planting", "soil_preparation"],
+        "4": ["planting", "moderate_watering"],
+        "5": ["hill_soil", "moderate_watering"],
+        "6": ["moderate_watering", "harvest_early"],
+        "7": ["harvest_main", "moderate_watering"],
+        "8": ["harvest_late", "plant_cleanup"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [5.5, 6.8],
+    "spacing": {
+      "plant_distance": 30,
+      "row_distance": 60
+    },
+    "companion_plants": ["apio", "perejil", "cebollino"],
+    "avoid_plants": ["tomate", "berenjena", "pimiento"],
+    "temperature_range": [10, 22],
+    "special_purposes": ["early_harvest", "culinary", "container_growing"]
+  },
+  "harvest_data": {
+    "days_to_harvest": [65, 85],
+    "weight_range": [50, 150],
+    "storage_life": 90,
+    "preservation_methods": ["fresh", "refrigerate"],
+    "harvest_tips": "Cosechar joven para textura tierna, ideal patatas nuevas"
+  },
+  "nutritional_data": {
+    "calories_per_100g": 70,
+    "water_content": 82,
+    "properties": ["potasio", "vitamina_c", "antioxidants", "fibra"]
+  },
+  "culinary_data": {
+    "uses": ["hervido", "vapor", "ensaladas", "salteado"],
+    "texture": "cerosa",
+    "flavor_profile": "dulce_delicado",
+    "cooking_notes": "Perfecta para patatas nuevas, no se deshace al cocer"
+  },
+  "care_notes": {
+    "watering": "Riego constante pero moderado",
+    "hilling": "Aporcar ligeramente, es de ciclo corto",
+    "harvest": "Cosechar temprano para mejor sabor y textura",
+    "common_problems": ["mildiu_tardio", "pulgon"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/01/potatoes-1484807_1920-325x244.webp",

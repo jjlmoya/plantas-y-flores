@@ -1,21 +1,117 @@
 {
   "key": "rama",
   "plant_info": {
-    "common_names": [
-      "Rama"
-    ],
+    "common_names": ["Tomate en Rama", "Cluster Tomato", "Tomate Racimo"],
     "scientific_name": "Solanum lycopersicum 'Rama'",
-    "origin": "ci",
-    "difficulty": "beginner"
-  },
-  "harvest_data": {
-    "storage_life": 270
+    "origin": "NL",
+    "type": "annual",
+    "difficulty": "beginner",
+    "family": "Solanaceae",
+    "growth_habit": "indeterminate",
+    "mature_size": {
+      "height": [120, 180],
+      "width": [50, 70]
+    }
   },
   "calendar_data": {
+    "sowing": {
+      "indoor": {
+        "best_months": [2, 3, 4],
+        "temperature_range": [18, 24]
+      },
+      "outdoor": {
+        "best_months": [4, 5],
+        "soil_temperature_min": 15
+      }
+    },
+    "transplanting": {
+      "best_months": [4, 5, 6],
+      "after_germination_weeks": [6, 8]
+    },
     "harvesting": {
+      "best_months": [7, 8, 9, 10],
+      "peak_months": [8, 9],
+      "days_to_harvest": [70, 80],
       "harvest_method": "cluster",
-      "storage_method": "hanging"
+      "storage_method": "hanging",
+      "continuous_harvest": true
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "2": ["sowing_indoor", "fertilize"],
+        "3": ["sowing_indoor", "prepare_outdoor"],
+        "4": ["transplant", "install_supports"],
+        "5": ["transplant", "moderate_watering", "mulching"],
+        "6": ["moderate_watering", "fertilize", "sucker_removal"],
+        "7": ["harvest_early", "moderate_watering", "sucker_removal"],
+        "8": ["harvest_main", "moderate_watering", "fertilize"],
+        "9": ["harvest_main", "moderate_watering"],
+        "10": ["harvest_late", "plant_cleanup"],
+        "11": ["plant_cleanup"]
+      }
     }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.0],
+    "spacing": {
+      "plant_distance": 50,
+      "row_distance": 70
+    },
+    "companion_plants": ["albahaca", "perejil", "oregano"],
+    "avoid_plants": ["patata", "berenjena", "pimiento"],
+    "temperature_range": [15, 30],
+    "special_purposes": ["fresh_market", "long_storage", "cluster_harvest"]
+  },
+  "fruit_data": {
+    "days_to_harvest": [70, 80],
+    "fruit_size": "small_medium",
+    "fruit_weight_g": [80, 120],
+    "fruit_color": "naranja_rojizo",
+    "cluster_size": [4, 6],
+    "storage_life_days": 270
+  },
+  "storage_data": {
+    "method": "cluster_hanging",
+    "temperature": [12, 15],
+    "humidity": [85, 90],
+    "duration_days": 270,
+    "gradual_ripening": true
+  },
+  "nutritional_data": {
+    "calories_per_100g": 18,
+    "properties": ["vitamina_c", "licopeno", "potasio", "folato"],
+    "flavor_profile": "balanced_sweet",
+    "acidity": "moderate",
+    "sugar_content": "moderate"
+  },
+  "culinary_data": {
+    "uses": ["fresh", "salads", "cooking", "preserving"],
+    "best_eaten": "fresh_off_cluster",
+    "cooking_methods": ["raw", "sauteed", "roasted"],
+    "storage_advantage": "gradual_consumption"
+  },
+  "cultivation_data": {
+    "growth_type": "indeterminate",
+    "support_required": true,
+    "productivity": "high",
+    "season_length": "long",
+    "cluster_formation": "uniform"
+  },
+  "care_notes": {
+    "watering": "Riego regular y consistente",
+    "fertilizing": "Fertilización equilibrada cada 2-3 semanas",
+    "pruning": "Eliminar chupones para concentrar energía en racimos",
+    "cluster_care": "No separar tomates del racimo hasta consumo",
+    "common_problems": ["blossom_end_rot", "uneven_ripening", "cluster_drop"]
+  },
+  "harvest_data": {
+    "weight_range": [80, 120],
+    "storage_life": 270,
+    "cluster_harvest": true,
+    "hanging_storage": true
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/10/tomato-1744949_1920-216x325.webp",

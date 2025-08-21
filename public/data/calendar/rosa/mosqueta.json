@@ -2,13 +2,100 @@
   "key": "mosqueta",
   "plant_info": {
     "common_names": [
-      "Mosqueta"
+      "Rosa Mosqueta", "Escaramujo", "Rosa Silvestre"
     ],
     "scientific_name": "Rosa rubiginosa",
-    "difficulty": "beginner"
+    "origin": "EU",
+    "type": "perennial",
+    "difficulty": "beginner",
+    "family": "Rosaceae",
+    "growth_habit": "shrub",
+    "mature_size": {
+      "height": [200, 300],
+      "width": [150, 250]
+    }
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 10, 11],
+      "soil_temperature_min": 8
+    },
+    "flowering": {
+      "best_months": [5, 6, 7],
+      "peak_months": [6],
+      "single_flowering": true
+    },
+    "harvesting": {
+      "best_months": [9, 10, 11],
+      "peak_months": [10],
+      "harvest_item": "rose_hips"
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["dormant_protection"],
+        "2": ["prune_main", "soil_preparation"],
+        "3": ["planting", "fertilize"],
+        "4": ["moderate_watering", "pest_monitoring"],
+        "5": ["moderate_watering"],
+        "6": ["moderate_watering"],
+        "7": ["moderate_watering"],
+        "8": ["moderate_watering"],
+        "9": ["harvesting", "moderate_watering"],
+        "10": ["harvesting", "planting"],
+        "11": ["harvesting", "planting", "dormant_protection"],
+        "12": ["dormant_protection"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "low",
+    "soil_type": "well_drained",
+    "soil_ph": [5.5, 7.5],
+    "spacing": {
+      "plant_distance": 120,
+      "row_distance": 180
+    },
+    "companion_plants": ["lavanda", "romero", "tomillo"],
+    "avoid_plants": ["verduras_alto_consumo"],
+    "temperature_range": [-20, 35],
+    "special_purposes": ["medicinal", "cosmetic", "wildlife", "hedging"]
   },
   "flower_data": {
-    "fragrance": "moderate"
+    "fragrance": "mild",
+    "flower_color": "rosa_palido",
+    "flower_size": "small",
+    "flower_form": "single",
+    "petals_per_flower": 5,
+    "hip_production": "abundant"
+  },
+  "harvest_data": {
+    "hip_harvest_months": [9, 10, 11],
+    "hip_color": "bright_red",
+    "hip_size": "medium_large",
+    "vitamin_c_content": "very_high",
+    "processing_methods": ["oil_extraction", "tea", "jam", "powder"]
+  },
+  "medicinal_data": {
+    "active_compounds": ["vitamin_c", "antioxidants", "essential_fatty_acids", "carotenoids"],
+    "traditional_uses": ["skin_care", "anti_aging", "wound_healing", "immune_support"],
+    "oil_properties": ["regenerative", "moisturizing", "anti_inflammatory"],
+    "preparation_methods": ["cold_pressed_oil", "infusion", "decoction"]
+  },
+  "cultivation_data": {
+    "rose_type": "wild_species",
+    "growth_rate": "fast",
+    "maintenance": "very_low",
+    "disease_resistance": "excellent",
+    "drought_tolerance": "high",
+    "wildlife_value": "high"
+  },
+  "care_notes": {
+    "watering": "Muy resistente a la sequía, riego mínimo necesario",
+    "fertilizing": "No requiere fertilización regular",
+    "pruning": "Poda ligera para controlar tamaño",
+    "harvesting": "Cosechar escaramujos después de primera helada",
+    "common_problems": ["ninguno_significativo"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/05/rose-hip-1608938_1280-325x217.webp",

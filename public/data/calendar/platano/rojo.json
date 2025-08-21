@@ -2,9 +2,94 @@
   "key": "rojo",
   "plant_info": {
     "common_names": [
-      "Rojo"
+      "Plátano Rojo", "Banano Rojo", "Red Dacca"
     ],
-    "scientific_name": "Musa acuminata 'Red Dacca'"
+    "scientific_name": "Musa acuminata 'Red Dacca'",
+    "origin": "IN",
+    "type": "perennial",
+    "difficulty": "beginner",
+    "family": "Musaceae",
+    "growth_habit": "medium_tall",
+    "mature_size": {
+      "height": [200, 350],
+      "width": [100, 180]
+    }
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [4, 5, 6, 7],
+      "soil_temperature_min": 18,
+      "planting_method": "sucker"
+    },
+    "harvesting": {
+      "best_months": [9, 10, 11, 12, 1],
+      "peak_months": [10, 11],
+      "maturation_time_months": [9, 12],
+      "harvest_indicators": "reddish_purple_ripe"
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["harvesting", "moderate_watering", "dormant_protection"],
+        "2": ["moderate_watering", "dormant_protection"],
+        "3": ["soil_preparation", "moderate_watering"],
+        "4": ["planting", "heavy_watering", "fertilize"],
+        "5": ["planting", "heavy_watering", "fertilize"],
+        "6": ["heavy_watering", "fertilize", "sucker_removal"],
+        "7": ["heavy_watering", "fertilize", "pest_monitoring"],
+        "8": ["heavy_watering", "fertilize", "pest_monitoring"],
+        "9": ["harvesting", "heavy_watering"],
+        "10": ["harvesting", "moderate_watering"],
+        "11": ["harvesting", "moderate_watering"],
+        "12": ["harvesting", "moderate_watering", "dormant_protection"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "high",
+    "soil_type": "organic_rich",
+    "soil_ph": [5.8, 7.0],
+    "spacing": {
+      "plant_distance": 160,
+      "row_distance": 220
+    },
+    "companion_plants": ["pina", "mango", "coco"],
+    "avoid_plants": ["verduras_alto_consumo"],
+    "temperature_range": [18, 30],
+    "special_purposes": ["dual_purpose", "ornamental", "resistant"]
+  },
+  "fruit_data": {
+    "maturation_time_months": [9, 12],
+    "fruit_size": "medium",
+    "fruit_length_cm": [12, 18],
+    "bunch_weight_kg": [10, 20],
+    "skin_color": "reddish_purple",
+    "flesh_color": "cream_pink"
+  },
+  "nutritional_data": {
+    "calories_per_100g": 90,
+    "beta_carotene": "high",
+    "properties": ["vitamina_a", "potasio", "vitamina_c", "antioxidants", "fibra"]
+  },
+  "culinary_data": {
+    "eating_methods": ["fresh", "cooked", "baked", "fried"],
+    "flavor_profile": "sweet_creamy_raspberry_hint",
+    "texture": "creamy_soft",
+    "versatility": "dual_purpose"
+  },
+  "cultivation_data": {
+    "propagation_method": "sucker",
+    "first_harvest": "9-12 months",
+    "disease_resistance": "high",
+    "cold_tolerance": "better_than_average",
+    "plant_lifespan": "4-6 years"
+  },
+  "care_notes": {
+    "watering": "Riego abundante, tolerante a variaciones en el riego",
+    "fertilizing": "Fertilizar cada 6-8 semanas durante crecimiento",
+    "disease_resistance": "Resistente a muchas plagas y enfermedades comunes",
+    "cold_tolerance": "Tolera temperaturas más frías que otras variedades",
+    "common_problems": ["viento_fuerte", "encharcamiento"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/09/turmeric-plant-2250837_1920-243x325.webp",

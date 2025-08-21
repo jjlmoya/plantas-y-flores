@@ -2,9 +2,85 @@
   "key": "magarza",
   "plant_info": {
     "common_names": [
-      "Magarza"
+      "Magarza", "Margarita Canaria", "Margaritero"
     ],
-    "scientific_name": "Argyranthemum frutescens."
+    "scientific_name": "Argyranthemum frutescens",
+    "origin": "ES",
+    "type": "shrub",
+    "difficulty": "intermediate",
+    "family": "Asteraceae",
+    "growth_habit": "shrubby",
+    "mature_size": {
+      "height": [40, 80],
+      "width": [40, 70]
+    },
+    "conservation_status": "protected_species"
+  },
+  "flower_data": {
+    "colors": ["white", "yellow", "pink"],
+    "flower_shape": "margarita",
+    "size": "medium",
+    "bloom_duration": "1 semana",
+    "fragrance_level": "mild",
+    "center_color": "yellow"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 5, 9, 10],
+      "alternative_months": [2, 6, 11],
+      "soil_temperature_min": 12
+    },
+    "flowering": {
+      "best_months": [4, 5, 6, 7, 8, 9, 10, 11],
+      "peak_months": [5, 6, 7, 8]
+    },
+    "pruning": {
+      "light_pruning": [3, 4, 11],
+      "deadheading": [5, 6, 7, 8, 9, 10]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["planting", "pruning", "fertilize"],
+        "4": ["planting", "moderate_watering"],
+        "5": ["deadhead", "moderate_watering", "fertilize"],
+        "6": ["deadhead", "moderate_watering"],
+        "7": ["deadhead", "moderate_watering"],
+        "8": ["deadhead", "moderate_watering"],
+        "9": ["deadhead", "reduce_watering"],
+        "10": ["harvest_seeds", "prepare_winter"],
+        "11": ["pruning", "prepare_winter"],
+        "12": ["reduce_watering"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun_partial_shade",
+    "water_needs": "low",
+    "soil_type": "well_drained_rocky",
+    "soil_ph": [6.5, 7.5],
+    "spacing": {
+      "plant_distance": 50,
+      "row_distance": 70
+    },
+    "companion_plants": ["lavanda", "romero", "salvia"],
+    "temperature_range": [8, 28],
+    "humidity_needs": "low",
+    "drought_tolerance": "high",
+    "frost_tolerance": "low",
+    "wind_tolerance": "high",
+    "salt_tolerance": "high",
+    "special_purposes": ["coastal_gardens", "rock_gardens", "medicinal", "xerophytic"]
+  },
+  "medicinal_properties": {
+    "traditional_uses": ["digestive", "anti-inflammatory", "wound_healing"],
+    "preparation": "infusion",
+    "parts_used": ["flowers", "leaves"]
+  },
+  "care_notes": {
+    "watering": "Tolerante a la sequía, regar moderadamente",
+    "fertilizing": "Fertilizante pobre en nitrógeno en primavera",
+    "pruning": "Podar ligeramente para mantener forma compacta",
+    "common_problems": ["excess_moisture", "aphids"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/02/marguerite-7007_1280-325x244.webp",

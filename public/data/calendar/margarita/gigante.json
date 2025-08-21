@@ -2,10 +2,73 @@
   "key": "gigante",
   "plant_info": {
     "common_names": [
-      "Gigante"
+      "Margarita Gigante", "Shasta Daisy", "Margarita Shasta"
     ],
-    "scientific_name": "Chrysanthemum x superbum",
-    "difficulty": "beginner"
+    "scientific_name": "Leucanthemum x superbum",
+    "origin": "US",
+    "type": "perennial",
+    "difficulty": "beginner",
+    "family": "Asteraceae",
+    "growth_habit": "upright_clumping",
+    "mature_size": {
+      "height": [60, 100],
+      "width": [40, 60]
+    }
+  },
+  "flower_data": {
+    "colors": ["white", "cream"],
+    "flower_shape": "margarita",
+    "size": "large",
+    "bloom_duration": "2 semanas",
+    "fragrance_level": "none",
+    "center_color": "yellow"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 9, 10],
+      "alternative_months": [2, 5, 11],
+      "soil_temperature_min": 10
+    },
+    "flowering": {
+      "best_months": [5, 6, 7, 8, 9],
+      "peak_months": [6, 7],
+      "second_bloom": [9, 10]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["planting", "transplant", "fertilize"],
+        "4": ["planting", "moderate_watering"],
+        "5": ["moderate_watering", "install_supports"],
+        "6": ["deadhead", "moderate_watering"],
+        "7": ["deadhead", "moderate_watering"],
+        "8": ["deadhead", "moderate_watering"],
+        "9": ["transplant", "reduce_watering"],
+        "10": ["plant_cleanup", "mulching"],
+        "11": ["prepare_winter"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun_partial_shade",
+    "water_needs": "moderate",
+    "soil_type": "well_drained_fertile",
+    "soil_ph": [6.0, 7.5],
+    "spacing": {
+      "plant_distance": 45,
+      "row_distance": 60
+    },
+    "companion_plants": ["espuela-de-caballero", "salvia", "equinácea", "rudbeckia"],
+    "temperature_range": [5, 30],
+    "humidity_needs": "moderate",
+    "drought_tolerance": "moderate",
+    "frost_tolerance": "high",
+    "special_purposes": ["cut_flowers", "border_plant", "attracts_pollinators"]
+  },
+  "care_notes": {
+    "watering": "Riego regular pero evitar encharcamiento",
+    "fertilizing": "Compost en primavera, fertilizante líquido mensual",
+    "division": "Dividir cada 3-4 años para mantener vigor",
+    "common_problems": ["aphids", "leaf_spot", "powdery_mildew"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/02/marguerite-1109268_1280-325x216.webp",

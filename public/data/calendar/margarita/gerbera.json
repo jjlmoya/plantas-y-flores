@@ -5,14 +5,14 @@
       "Margarita Gerbera", "Gerbera", "Margarita Africana"
     ],
     "scientific_name": "Gerbera jamesonii",
-    "origin": "ZA",
+    "origin": "AF",
     "type": "perennial",
     "difficulty": "intermediate",
     "family": "Asteraceae"
   },
   "flower_data": {
     "colors": ["red", "pink", "orange", "yellow", "white", "purple"],
-    "flower_shape": "daisy",
+    "flower_shape": "margarita",
     "size": "large",
     "bloom_duration": "6_weeks"
   },
@@ -27,37 +27,55 @@
     },
     "care_calendar": {
       "monthly_tasks": {
-        "3": ["planting", "prepare_beds"],
-        "4": ["planting", "water_carefully"],
-        "5": ["water_regularly", "fertilize"],
-        "6": ["deadhead", "water_base_only"],
-        "7": ["deadhead", "water_base_only", "ventilate"],
-        "8": ["deadhead", "water_base_only"],
-        "9": ["reduce_watering", "remove_spent"],
-        "10": ["prepare_winter", "protect_frost"],
-        "11": ["protect_frost", "reduce_watering"],
-        "12": ["minimal_watering"]
+        "3": ["planting", "prepare_seedbeds"],
+        "4": ["planting", "moderate_watering"],
+        "5": ["moderate_watering", "fertilize"],
+        "6": ["deadhead", "moderate_watering"],
+        "7": ["deadhead", "moderate_watering", "pest_monitoring"],
+        "8": ["deadhead", "moderate_watering"],
+        "9": ["reduce_watering", "plant_cleanup"],
+        "10": ["prepare_winter"],
+        "11": ["prepare_winter", "reduce_watering"],
+        "12": ["reduce_watering"]
       }
     }
   },
   "growing_conditions": {
-    "sun_requirements": "bright_indirect",
+    "sun_requirements": "partial_sun",
     "water_needs": "moderate",
-    "soil_type": "well_drained_organic",
+    "soil_type": "well_drained_fertile",
     "soil_ph": [6.0, 7.0],
+    "drainage": "excellent",
     "spacing": {
       "plant_distance": 25,
       "row_distance": 40
     },
-    "companion_plants": ["petunias", "begonias", "impatiens"],
+    "companion_plants": ["petunias", "begonias", "alegrías"],
+    "avoid_plants": ["plantas_riego_aereo"],
     "temperature_range": [18, 25],
+    "minimum_temperature": 10,
     "humidity_needs": "moderate",
+    "air_circulation": "essential",
+    "frost_tolerance": "none",
+    "container_suitable": true,
+    "greenhouse_ideal": true,
+    "special_purposes": ["cut_flowers", "indoor_plants", "greenhouse_cultivation", "containers"],
     "special_care": "Evitar riego en hojas, necesita ventilación buena"
   },
   "care_notes": {
     "watering": "Regar en la base, nunca sobre las hojas",
     "fertilizing": "Fertilizante líquido cada 2 semanas durante floración",
-    "common_problems": ["hongos_por_humedad", "pudricion_corona", "trips"]
+    "deadheading": "Cortar tallos completos hasta la base",
+    "ventilation": "Asegurar buena circulación de aire",
+    "winter_care": "Reducir riego y proteger de frío",
+    "propagation": "División de mata en primavera",
+    "common_problems": ["hongos_por_humedad", "pudricion_corona", "trips", "aphids", "spider_mites"]
+  },
+  "seasonal_care": {
+    "spring": "Incrementar riego y fertilización, dividir plantas",
+    "summer": "Riego regular en base, deadheading constante",
+    "autumn": "Reducir gradualmente riego y fertilización",
+    "winter": "Mínimo riego, proteger de heladas"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/02/gerbera-757483_1280-325x244.webp",

@@ -2,13 +2,82 @@
   "key": "alba",
   "plant_info": {
     "common_names": [
-      "Alba"
+      "Rosa Alba", "Rosa Blanca Antigua", "Rosa de Yorkshire"
     ],
     "scientific_name": "Rosa × alba",
-    "difficulty": "advanced"
+    "origin": "EU",
+    "type": "perennial",
+    "difficulty": "beginner",
+    "family": "Rosaceae",
+    "growth_habit": "shrub",
+    "mature_size": {
+      "height": [150, 250],
+      "width": [120, 180]
+    }
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 10, 11],
+      "soil_temperature_min": 8
+    },
+    "flowering": {
+      "best_months": [5, 6, 7],
+      "peak_months": [6],
+      "single_flowering": true
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["dormant_protection"],
+        "2": ["prune_main", "soil_preparation"],
+        "3": ["planting", "fertilize", "mulching"],
+        "4": ["moderate_watering", "pest_monitoring"],
+        "5": ["moderate_watering"],
+        "6": ["moderate_watering"],
+        "7": ["moderate_watering", "prune_shoots"],
+        "8": ["moderate_watering"],
+        "9": ["moderate_watering"],
+        "10": ["planting", "moderate_watering"],
+        "11": ["planting", "dormant_protection"],
+        "12": ["dormant_protection"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "partial_sun",
+    "water_needs": "low",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 8.0],
+    "spacing": {
+      "plant_distance": 120,
+      "row_distance": 150
+    },
+    "companion_plants": ["lavanda", "romero", "perejil"],
+    "avoid_plants": ["arboles_raices_superficiales"],
+    "temperature_range": [-25, 35],
+    "special_purposes": ["historical_garden", "low_maintenance", "cold_climate"]
   },
   "flower_data": {
-    "fragrance": "moderate"
+    "fragrance": "strong",
+    "flower_color": "blanco",
+    "flower_size": "medium",
+    "flower_form": "semi_double",
+    "petals_per_flower": [8, 15],
+    "bloom_duration": "4_weeks"
+  },
+  "cultivation_data": {
+    "rose_type": "old_garden",
+    "growth_rate": "moderate",
+    "maintenance": "very_low",
+    "disease_resistance": "excellent",
+    "cold_hardiness": "zone_3",
+    "historical_importance": "medieval_cultivation"
+  },
+  "care_notes": {
+    "watering": "Muy tolerante a la sequía una vez establecida",
+    "fertilizing": "Fertilización mínima necesaria",
+    "pruning": "Poda ligera después de floración",
+    "disease_resistance": "Excelente resistencia natural a enfermedades",
+    "common_problems": ["ninguno_significativo"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/05/white-rose-966788_1280-325x217.webp",

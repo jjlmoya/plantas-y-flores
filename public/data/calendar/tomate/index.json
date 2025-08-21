@@ -4,104 +4,109 @@
     "scientific_name": "Solanum lycopersicum",
     "family": "Solanaceae",
     "type": "annual",
-    "difficulty": "beginner"
+    "difficulty": "intermediate",
+    "growth_habits": ["indeterminate", "determinate", "climbing"],
+    "origins": ["sudamerica", "centroamerica"]
   },
   "calendar_data": {
     "sowing": {
       "indoor": {
-        "best_months": [
-          1,
-          2,
-          3
-        ],
-        "temperature_range": [
-          18,
-          24
-        ]
+        "best_months": [1, 2, 3],
+        "alternative_months": [12, 4],
+        "temperature_range": [18, 24],
+        "germination_days": [5, 10],
+        "regional_variations": {
+          "continental": [2, 3, 4],
+          "mediterraneo": [1, 2, 3, 12],
+          "atlantico": [2, 3, 4]
+        }
       },
       "outdoor": {
-        "best_months": [
-          4,
-          5
-        ],
-        "temperature_range": [
-          15,
-          20
-        ]
+        "best_months": [4, 5],
+        "alternative_months": [6],
+        "soil_temperature_min": 15,
+        "regional_variations": {
+          "continental": [5, 6],
+          "mediterraneo": [3, 4, 5],
+          "atlantico": [4, 5, 6]
+        }
       }
     },
     "transplanting": {
-      "best_months": [
-        4,
-        5,
-        6
-      ]
+      "best_months": [4, 5, 6],
+      "soil_temperature_min": 15,
+      "after_germination_weeks": [6, 8],
+      "hardening_days": 7
     },
     "harvesting": {
-      "best_months": [
-        7,
-        8,
-        9,
-        10
-      ]
+      "best_months": [7, 8, 9, 10],
+      "peak_months": [8, 9],
+      "days_to_harvest": [75, 120],
+      "harvest_indicators": "color_change_firmness",
+      "regional_variations": {
+        "continental": [7, 8, 9, 10],
+        "mediterraneo": [6, 7, 8, 9, 10, 11],
+        "atlantico": [7, 8, 9, 10, 11]
+      }
     },
     "care_calendar": {
       "monthly_tasks": {
-        "1": [
-          "prepare_seedbeds",
-          "soil_preparation"
-        ],
-        "2": [
-          "sowing_indoor",
-          "fertilize"
-        ],
-        "3": [
-          "sowing_indoor",
-          "prepare_outdoor"
-        ],
-        "4": [
-          "transplant",
-          "install_supports"
-        ],
-        "5": [
-          "transplant",
-          "moderate_watering",
-          "mulching"
-        ],
-        "6": [
-          "moderate_watering",
-          "fertilize"
-        ],
-        "7": [
-          "harvest_early",
-          "moderate_watering"
-        ],
-        "8": [
-          "harvest_main",
-          "moderate_watering"
-        ],
-        "9": [
-          "harvest_main",
-          "moderate_watering"
-        ],
-        "10": [
-          "harvest_late",
-          "plant_cleanup"
-        ]
+        "1": ["prepare_seedbeds", "soil_preparation"],
+        "2": ["sowing_indoor", "fertilize"],
+        "3": ["sowing_indoor", "prepare_outdoor", "transplant"],
+        "4": ["transplant", "install_supports", "sowing_outdoor"],
+        "5": ["transplant", "moderate_watering", "mulching", "install_supports"],
+        "6": ["moderate_watering", "fertilize", "sucker_removal", "pest_monitoring"],
+        "7": ["harvest_early", "moderate_watering", "fertilize", "sucker_removal"],
+        "8": ["harvest_main", "moderate_watering", "sucker_removal", "pest_monitoring"],
+        "9": ["harvest_main", "moderate_watering", "disease_prevention"],
+        "10": ["harvest_late", "plant_cleanup", "disease_prevention"],
+        "11": ["plant_cleanup", "soil_preparation"],
+        "12": ["soil_preparation", "sowing_indoor"]
       }
     }
   },
   "growing_conditions": {
     "sun_requirements": "full_sun",
     "water_needs": "moderate",
-    "soil_ph": [
-      6,
-      7
-    ],
-    "soil_type": "well_drained_fertile",
-    "spacing": {
-      "plant_distance": 50,
-      "row_distance": 80
+    "soil_types": ["well_drained", "fertile", "organic_rich"],
+    "soil_ph_range": [6.0, 7.0],
+    "spacing_guidelines": {
+      "determinate": {"plant_distance": 45, "row_distance": 75},
+      "indeterminate": {"plant_distance": 60, "row_distance": 90},
+      "cherry_types": {"plant_distance": 40, "row_distance": 60}
+    },
+    "companion_plants": ["albahaca", "perejil", "manzanilla", "ajo", "cebolla"],
+    "avoid_plants": ["patata", "berenjena", "pimiento", "nogal"],
+    "temperature_tolerance": [10, 35],
+    "special_requirements": {
+      "support_essential": "indeterminate_varieties",
+      "consistent_watering": "critical",
+      "frost_protection": "essential",
+      "good_air_circulation": "disease_prevention"
     }
+  },
+  "fruit_characteristics": {
+    "fruit_types": ["cherry", "pera", "roma", "beef", "standard"],
+    "fruit_colors": ["rojo", "rosa", "amarillo", "verde", "morado", "negro"],
+    "size_categories": ["cherry", "small", "medium", "large", "beefsteak"],
+    "harvest_stages": ["green_mature", "breaker", "pink", "red_ripe"]
+  },
+  "cultivation_methods": {
+    "growing_systems": ["field", "greenhouse", "container", "hydroponic"],
+    "support_types": ["stakes", "cages", "trellises", "strings"],
+    "pruning_methods": ["sucker_removal", "lower_leaf_removal", "topping"]
+  },
+  "uses_and_benefits": {
+    "culinary_uses": ["fresh", "sauce", "paste", "canning", "drying"],
+    "nutritional_benefits": ["vitamina_c", "licopeno", "potasio", "folato"],
+    "commercial_value": "very_high",
+    "processing_potential": "excellent"
+  },
+  "cultivation_summary": {
+    "sowing": "Sembrar en interior 6-8 semanas antes de trasplante al exterior",
+    "care": "Riego constante, entutorado, eliminaci\u00f3n de chupones, fertilizar regularmente",
+    "harvesting": "Cosecha continua desde verano hasta heladas, cosechar en diferentes estados de madurez",
+    "season_extension": "Protecci\u00f3n de heladas puede extender temporada hasta noviembre"
   }
 }

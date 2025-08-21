@@ -2,12 +2,82 @@
   "key": "polyantha",
   "plant_info": {
     "common_names": [
-      "Polyantha"
+      "Rosa Polyantha", "Rosa de Racimo"
     ],
-    "scientific_name": "Rosa × polyantha"
+    "scientific_name": "Rosa × polyantha",
+    "origin": "FR",
+    "type": "perennial",
+    "difficulty": "beginner",
+    "family": "Rosaceae",
+    "growth_habit": "compact",
+    "mature_size": {
+      "height": [60, 120],
+      "width": [60, 100]
+    }
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 10, 11],
+      "soil_temperature_min": 8
+    },
+    "flowering": {
+      "best_months": [5, 6, 7, 8, 9, 10],
+      "peak_months": [6, 7, 8],
+      "repeat_flowering": true,
+      "continuous_bloom": true
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "2": ["prune_main", "fertilize"],
+        "3": ["planting", "mulching"],
+        "4": ["moderate_watering"],
+        "5": ["moderate_watering", "fertilize", "deadhead"],
+        "6": ["moderate_watering", "deadhead"],
+        "7": ["moderate_watering", "deadhead"],
+        "8": ["moderate_watering", "deadhead"],
+        "9": ["moderate_watering", "deadhead"],
+        "10": ["planting", "moderate_watering"],
+        "11": ["planting", "prune_shoots"],
+        "12": ["dormant_protection"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.0],
+    "spacing": {
+      "plant_distance": 50,
+      "row_distance": 70
+    },
+    "companion_plants": ["lavanda", "boj", "alyssum"],
+    "avoid_plants": ["arboles_raices_superficiales"],
+    "temperature_range": [-15, 35],
+    "special_purposes": ["borders", "mass_planting", "low_hedges"]
   },
   "flower_data": {
-    "fragrance": "moderate"
+    "fragrance": "mild",
+    "flower_color": ["rosa", "rojo", "blanco"],
+    "flower_size": "small",
+    "flower_form": "single_semi_double",
+    "flowers_per_cluster": [10, 50],
+    "abundant_blooms": true
+  },
+  "cultivation_data": {
+    "rose_type": "old_garden_modern",
+    "growth_rate": "moderate",
+    "maintenance": "low",
+    "disease_resistance": "excellent",
+    "cold_hardiness": "zone_4",
+    "heat_tolerance": "very_good"
+  },
+  "care_notes": {
+    "watering": "Riego moderado, muy tolerante",
+    "fertilizing": "Fertilización mínima necesaria",
+    "pruning": "Poda ligera, muy resistente",
+    "disease_resistance": "Excelente resistencia natural",
+    "common_problems": ["ninguno_significativo"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/05/12870489335_101db54e23_z-244x325.webp",

@@ -1,31 +1,106 @@
 {
   "key": "cherry",
   "plant_info": {
+    "common_names": ["Tomate Cherry", "Tomate Cereza", "Cherry Tomato"],
     "scientific_name": "Solanum lycopersicum var. cerasiforme",
-    "common_names": ["Cherry tomato", "Tomate cherry"],
-    "origin": "pt-BR"
+    "origin": "PE",
+    "type": "annual",
+    "difficulty": "beginner",
+    "family": "Solanaceae",
+    "growth_habit": "indeterminate",
+    "mature_size": {
+      "height": [150, 200],
+      "width": [50, 70]
+    }
   },
   "calendar_data": {
+    "sowing": {
+      "indoor": {
+        "best_months": [2, 3, 4],
+        "temperature_range": [18, 24]
+      },
+      "outdoor": {
+        "best_months": [4, 5, 6],
+        "soil_temperature_min": 15
+      }
+    },
+    "transplanting": {
+      "best_months": [4, 5, 6],
+      "after_germination_weeks": [6, 8]
+    },
     "harvesting": {
-      "days_to_harvest": [60, 70],
-      "continuous_harvest": true
+      "best_months": [7, 8, 9, 10, 11],
+      "peak_months": [8, 9, 10],
+      "days_to_harvest": [60, 75],
+      "continuous_harvest": true,
+      "harvest_indicators": "full_color_slight_give"
     },
     "care_calendar": {
       "monthly_tasks": {
-        "7": ["harvest_early", "moderate_watering"],
-        "8": ["harvest_main", "moderate_watering"],
+        "1": ["prepare_seedbeds"],
+        "2": ["sowing_indoor", "fertilize"],
+        "3": ["sowing_indoor", "prepare_outdoor"],
+        "4": ["transplant", "install_supports", "sowing_outdoor"],
+        "5": ["transplant", "moderate_watering", "mulching"],
+        "6": ["moderate_watering", "fertilize", "sucker_removal"],
+        "7": ["harvest_early", "moderate_watering", "sucker_removal"],
+        "8": ["harvest_main", "moderate_watering", "fertilize"],
         "9": ["harvest_main", "moderate_watering"],
-        "10": ["harvest_late", "plant_cleanup"]
+        "10": ["harvest_main", "moderate_watering"],
+        "11": ["harvest_late", "plant_cleanup"],
+        "12": ["plant_cleanup"]
       }
     }
   },
   "growing_conditions": {
-    "growth_habit": "indeterminate",
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.0],
     "spacing": {
       "plant_distance": 40,
       "row_distance": 60
     },
-    "companion_plants": ["albahaca", "manzanilla", "margarita", "ajo", "cebolla"]
+    "companion_plants": ["albahaca", "perejil", "manzanilla", "ajo", "cebolla"],
+    "avoid_plants": ["patata", "berenjena", "pimiento"],
+    "temperature_range": [15, 30],
+    "special_purposes": ["container", "hanging_baskets", "continuous_harvest"]
+  },
+  "fruit_data": {
+    "days_to_harvest": [60, 75],
+    "fruit_size": "very_small",
+    "fruit_weight_g": [10, 25],
+    "fruit_diameter_mm": [15, 25],
+    "fruit_colors": ["rojo", "amarillo", "rosa", "morado"],
+    "storage_life_days": [7, 10]
+  },
+  "nutritional_data": {
+    "calories_per_100g": 18,
+    "properties": ["vitamina_c", "licopeno", "antioxidants", "potasio"],
+    "flavor_profile": "sweet_intense",
+    "acidity": "low",
+    "sugar_content": "high",
+    "brix_level": [6, 9]
+  },
+  "culinary_data": {
+    "uses": ["fresh", "salads", "snacking", "garnish", "roasting"],
+    "best_eaten": "fresh_off_vine",
+    "cooking_methods": ["raw", "roasted", "grilled", "dried"],
+    "pairing": ["mozzarella", "basil", "olive_oil"]
+  },
+  "cultivation_data": {
+    "growth_type": "indeterminate",
+    "support_required": true,
+    "productivity": "very_high",
+    "season_length": "long",
+    "container_suitable": true
+  },
+  "care_notes": {
+    "watering": "Riego constante pero evitar encharcamiento",
+    "fertilizing": "Fertilizar cada 2-3 semanas durante producci\u00f3n",
+    "pruning": "Eliminar chupones regularmente, puede crecer muy alto",
+    "support": "Requiere tutor fuerte, puede alcanzar 2+ metros",
+    "common_problems": ["agrietamiento", "blossom_end_rot", "hornworm"]
   },
   "harvest_data": {
     "weight_range": [10, 25],

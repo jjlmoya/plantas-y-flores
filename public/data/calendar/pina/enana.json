@@ -2,14 +2,93 @@
   "key": "enana",
   "plant_info": {
     "common_names": [
-      "Enana"
+      "Piña Enana", "Piña Ornamental", "Ananas Enano"
     ],
     "scientific_name": "Ananas comosus var. bracteatus",
-    "difficulty": "beginner"
+    "origin": "BR",
+    "type": "perennial",
+    "difficulty": "intermediate",
+    "family": "Bromeliaceae",
+    "growth_habit": "rosette",
+    "mature_size": {
+      "height": [60, 90],
+      "width": [60, 80]
+    }
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [4, 5, 6, 7],
+      "soil_temperature_min": 18,
+      "planting_method": "crown_slip"
+    },
+    "harvesting": {
+      "best_months": [9, 10, 11, 12],
+      "peak_months": [10, 11],
+      "maturation_time_months": [12, 18],
+      "harvest_indicators": "pink_golden_coloration"
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["moderate_watering", "dormant_protection"],
+        "2": ["moderate_watering", "dormant_protection"],
+        "3": ["soil_preparation", "moderate_watering"],
+        "4": ["planting", "moderate_watering", "fertilize"],
+        "5": ["planting", "moderate_watering", "fertilize"],
+        "6": ["heavy_watering", "fertilize"],
+        "7": ["heavy_watering", "fertilize", "pest_monitoring"],
+        "8": ["heavy_watering", "fertilize", "pest_monitoring"],
+        "9": ["harvesting", "moderate_watering"],
+        "10": ["harvesting", "moderate_watering"],
+        "11": ["harvesting", "moderate_watering"],
+        "12": ["moderate_watering", "dormant_protection"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [5.5, 6.5],
+    "spacing": {
+      "plant_distance": 75,
+      "row_distance": 100
+    },
+    "companion_plants": ["platano", "papaya", "hibiscus"],
+    "avoid_plants": ["verduras_alto_consumo"],
+    "temperature_range": [15, 30],
+    "special_purposes": ["ornamental", "container", "tropical_garden"]
+  },
+  "fruit_data": {
+    "maturation_time_months": [12, 18],
+    "fruit_size": "small",
+    "fruit_weight_g": [200, 500],
+    "fruit_colors": ["rosa", "dorado", "rojizo"],
+    "edible_quality": "ornamental_mainly",
+    "ornamental_value": "high"
+  },
+  "ornamental_data": {
+    "foliage_color": ["verde", "rojizo", "variegado"],
+    "decorative_features": ["colorful_fruit", "attractive_leaves", "compact_size"],
+    "container_suitability": "excellent",
+    "indoor_growing": "possible"
+  },
+  "cultivation_data": {
+    "propagation_methods": ["crown", "slip", "offset"],
+    "establishment_time": "6-12 months",
+    "fruiting_age": "12-18 months",
+    "lifespan": "3-5 years",
+    "cold_hardiness": "zone_10"
+  },
+  "care_notes": {
+    "watering": "Riego moderado, evitar encharcamiento en la roseta central",
+    "fertilizing": "Fertilizar mensualmente durante crecimiento activo",
+    "temperature": "Mantener por encima de 15°C, protección invernal",
+    "pruning": "Remover hojas secas y brotes laterales si se desea",
+    "common_problems": ["pudrición_corona", "cochinillas", "ácaros"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/12/bromeliad-2607254_1920-244x325.webp",
     "article_date": "2017-12-28T18:45:49",
-    "excerpt": "Esta planta tropical coronada con una piña enana con tonos rosas y dorado es el complemento ideal para un jardín de ambiente tropical y de atmósfera exótica. Qué es la Piña Enana Es el fruto de una pl"
+    "excerpt": "Esta planta tropical coronada con una piña enana con tonos rosas y dorado es el complemento ideal para un jardín de ambiente tropical y de atmósfera exótica. Qué es la Piña Enana Es el fruto de una pl"
   }
 }

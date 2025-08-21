@@ -2,12 +2,90 @@
   "key": "pitimini",
   "plant_info": {
     "common_names": [
-      "Pitiminí"
+      "Rosa Pitiminí", "Rosa Miniatura", "Rosa Enana"
     ],
-    "scientific_name": "Rosa chinensis 'Minima'"
+    "scientific_name": "Rosa chinensis 'Minima'",
+    "origin": "CN",
+    "type": "perennial",
+    "difficulty": "beginner",
+    "family": "Rosaceae",
+    "growth_habit": "compact",
+    "mature_size": {
+      "height": [15, 40],
+      "width": [20, 35]
+    }
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 5, 9, 10],
+      "soil_temperature_min": 12
+    },
+    "flowering": {
+      "best_months": [4, 5, 6, 7, 8, 9, 10, 11],
+      "peak_months": [5, 6, 7, 8, 9],
+      "repeat_flowering": true,
+      "continuous_bloom": true
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["dormant_protection"],
+        "2": ["prune_main", "fertilize"],
+        "3": ["planting", "mulching"],
+        "4": ["moderate_watering", "fertilize"],
+        "5": ["moderate_watering", "deadhead"],
+        "6": ["moderate_watering", "deadhead"],
+        "7": ["moderate_watering", "deadhead"],
+        "8": ["moderate_watering", "deadhead", "fertilize"],
+        "9": ["moderate_watering", "deadhead", "planting"],
+        "10": ["planting", "moderate_watering"],
+        "11": ["moderate_watering"],
+        "12": ["dormant_protection"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.0],
+    "spacing": {
+      "plant_distance": 25,
+      "row_distance": 40
+    },
+    "companion_plants": ["alyssum", "lobelia", "viola"],
+    "avoid_plants": ["plantas_altas"],
+    "temperature_range": [-8, 35],
+    "special_purposes": ["containers", "borders", "indoor", "small_spaces"]
   },
   "flower_data": {
-    "fragrance": "moderate"
+    "fragrance": "mild",
+    "flower_color": ["rosa", "rojo", "blanco", "amarillo"],
+    "flower_size": "very_small",
+    "flower_form": "double",
+    "flowers_per_cluster": [5, 15],
+    "continuous_bloom": true
+  },
+  "container_data": {
+    "container_suitable": true,
+    "pot_size_min": "20cm",
+    "indoor_growing": "possible",
+    "balcony_suitable": true,
+    "drainage_critical": true
+  },
+  "cultivation_data": {
+    "rose_type": "miniature",
+    "growth_rate": "moderate",
+    "maintenance": "moderate",
+    "disease_resistance": "good",
+    "cold_hardiness": "zone_7",
+    "heat_tolerance": "good"
+  },
+  "care_notes": {
+    "watering": "Riego regular, especialmente en contenedores",
+    "fertilizing": "Fertilizar cada 4-6 semanas durante temporada",
+    "pruning": "Poda ligera para mantener forma compacta",
+    "container_care": "Requiere drenaje excelente en macetas",
+    "common_problems": ["araña_roja", "pulgones", "mildiu"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/05/rose-hip-809284_640-325x216.webp",

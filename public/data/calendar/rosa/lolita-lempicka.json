@@ -2,12 +2,81 @@
   "key": "lolita-lempicka",
   "plant_info": {
     "common_names": [
-      "Lolita Lempicka"
+      "Rosa Lolita Lempicka", "Lolita Lempicka"
     ],
-    "scientific_name": "Rosa 'Lolita Lempicka'"
+    "scientific_name": "Rosa 'Lolita Lempicka'",
+    "origin": "FR",
+    "type": "perennial",
+    "difficulty": "intermediate",
+    "family": "Rosaceae",
+    "growth_habit": "upright",
+    "mature_size": {
+      "height": [80, 120],
+      "width": [60, 80]
+    }
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 10, 11],
+      "soil_temperature_min": 10
+    },
+    "flowering": {
+      "best_months": [5, 6, 7, 8, 9, 10],
+      "peak_months": [6, 7, 8],
+      "repeat_flowering": true
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "2": ["prune_main", "fertilize"],
+        "3": ["planting", "mulching"],
+        "4": ["moderate_watering", "pest_monitoring"],
+        "5": ["moderate_watering", "fertilize", "deadhead"],
+        "6": ["moderate_watering", "deadhead"],
+        "7": ["moderate_watering", "deadhead"],
+        "8": ["moderate_watering", "deadhead", "fertilize"],
+        "9": ["moderate_watering", "deadhead"],
+        "10": ["planting", "moderate_watering"],
+        "11": ["planting", "prune_shoots"],
+        "12": ["dormant_protection"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "fertile",
+    "soil_ph": [6.0, 7.0],
+    "spacing": {
+      "plant_distance": 70,
+      "row_distance": 90
+    },
+    "companion_plants": ["lavanda", "clematis", "nepeta"],
+    "avoid_plants": ["arboles_raices_superficiales"],
+    "temperature_range": [-12, 35],
+    "special_purposes": ["cut_flowers", "specimen", "modern_garden"]
   },
   "flower_data": {
-    "fragrance": "moderate"
+    "fragrance": "strong",
+    "flower_color": "magenta_rosa",
+    "flower_size": "large",
+    "flower_form": "double",
+    "petals_per_flower": [25, 35],
+    "vase_life": 8
+  },
+  "cultivation_data": {
+    "rose_type": "hybrid_tea",
+    "growth_rate": "moderate",
+    "maintenance": "moderate",
+    "disease_resistance": "good",
+    "cold_hardiness": "zone_6",
+    "modern_variety": "2002"
+  },
+  "care_notes": {
+    "watering": "Riego regular y profundo",
+    "fertilizing": "Fertilizar regularmente durante temporada",
+    "pruning": "Poda anual, eliminar flores marchitas",
+    "disease_prevention": "Vigilar enfermedades fúngicas",
+    "common_problems": ["mancha_negra", "mildiu", "pulgones"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/04/TS152560-325x244.webp",

@@ -19,13 +19,13 @@
     "care_calendar": {
       "monthly_tasks": {
         "3": ["planting", "prepare_soil"],
-        "4": ["planting", "water_moderately"],
-        "5": ["hill_soil", "water_regularly"],
-        "6": ["hill_soil", "water_regularly", "pest_check"],
-        "7": ["water_regularly", "pest_check"],
+        "4": ["planting", "moderate_watering"],
+        "5": ["hill_soil", "moderate_watering"],
+        "6": ["hill_soil", "moderate_watering", "pest_monitoring"],
+        "7": ["moderate_watering", "pest_monitoring"],
         "8": ["harvest_early", "reduce_watering"],
-        "9": ["harvest_main", "cure_potatoes"],
-        "10": ["final_harvest", "store_properly"]
+        "9": ["harvest_main", "cure"],
+        "10": ["harvest_late", "store_properly"]
       }
     },
     "harvesting": {
@@ -38,7 +38,7 @@
   "growing_conditions": {
     "sun_requirements": "full_sun",
     "water_needs": "moderate",
-    "soil_type": "loose_well_drained",
+    "soil_type": "well_drained",
     "soil_ph": [5.5, 6.5],
     "spacing": {
       "plant_distance": 30,
@@ -53,7 +53,7 @@
     "days_to_harvest": [90, 120],
     "weight_range": [150, 300],
     "storage_life": 180,
-    "preservation_methods": ["store_cool_dark", "freeze_processed"],
+    "preservation_methods": ["store_cool_dark", "freezing"],
     "harvest_tips": "Cavar con cuidado, curar al sol 2 horas antes de almacenar"
   },
   "nutritional_data": {

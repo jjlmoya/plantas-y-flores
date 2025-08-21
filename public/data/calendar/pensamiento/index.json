@@ -4,20 +4,94 @@
     "scientific_name": "Viola × wittrockiana",
     "family": "Violaceae",
     "type": "annual",
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "growth_habits": ["compact", "low_growing"],
+    "origins": ["europa", "asia", "norteamerica"]
   },
   "calendar_data": {
     "sowing": {
+      "indoor": {
+        "best_months": [2, 3, 8, 9],
+        "soil_temperature_min": 15,
+        "germination_days": [10, 21]
+      },
       "outdoor": {
-        "best_months": [
-          4,
-          5
-        ]
+        "best_months": [3, 4, 5, 9, 10],
+        "alternative_months": [2, 6],
+        "soil_temperature_min": 10,
+        "regional_variations": {
+          "continental": [4, 5, 9],
+          "mediterraneo": [2, 3, 4, 10, 11],
+          "atlantico": [3, 4, 5, 9, 10]
+        }
+      }
+    },
+    "transplanting": {
+      "best_months": [3, 4, 5, 9, 10],
+      "spacing_cm": 15,
+      "after_germination_weeks": [6, 8]
+    },
+    "flowering": {
+      "best_months": [3, 4, 5, 6, 9, 10, 11, 12],
+      "peak_months": [4, 5, 10, 11],
+      "duration_months": [4, 8],
+      "regional_variations": {
+        "continental": [4, 5, 6, 9, 10],
+        "mediterraneo": [2, 3, 4, 5, 10, 11, 12, 1],
+        "atlantico": [3, 4, 5, 6, 9, 10, 11]
+      }
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "2": ["soil_preparation", "sowing_indoor"],
+        "3": ["sowing_indoor", "sowing_outdoor", "transplant"],
+        "4": ["sowing_outdoor", "transplant", "moderate_watering", "fertilize"],
+        "5": ["moderate_watering", "fertilize", "pinching"],
+        "6": ["moderate_watering", "pinching", "pest_monitoring"],
+        "7": ["heavy_watering", "mulching", "pest_monitoring"],
+        "8": ["sowing_indoor", "moderate_watering"],
+        "9": ["sowing_outdoor", "transplant", "moderate_watering"],
+        "10": ["transplant", "moderate_watering", "fertilize"],
+        "11": ["moderate_watering", "dormant_protection"],
+        "12": ["dormant_protection", "plant_cleanup"]
       }
     }
   },
   "growing_conditions": {
-    "sun_requirements": "full_sun",
-    "water_needs": "moderate"
+    "sun_requirements": "partial_sun",
+    "water_needs": "moderate",
+    "soil_types": ["well_drained", "fertile", "organic_rich"],
+    "soil_ph_range": [6.0, 7.5],
+    "spacing_guidelines": {
+      "between_plants": 15,
+      "between_rows": 20
+    },
+    "companion_plants": ["tulipan", "narcisos", "azalea", "primula"],
+    "avoid_plants": ["vegetables_heavy_feeders"],
+    "temperature_tolerance": [-5, 25],
+    "special_requirements": {
+      "cool_weather": "preferred",
+      "deadheading": "regular",
+      "winter_protection": "mild_climates"
+    }
+  },
+  "flowering_characteristics": {
+    "flower_colors": ["morado", "amarillo", "blanco", "azul", "rojo", "naranja", "bicolor"],
+    "flower_size": ["small", "medium"],
+    "bloom_pattern": "continuous",
+    "fragrance": "mild",
+    "flower_shape": "face_like"
+  },
+  "uses_and_benefits": {
+    "ornamental_uses": ["borders", "containers", "rock_gardens", "winter_color"],
+    "landscape_value": ["ground_cover", "mass_planting", "edging"],
+    "seasonal_interest": ["spring", "fall", "winter"],
+    "pollinator_friendly": true
+  },
+  "cultivation_summary": {
+    "sowing": "Sembrar en suelo fresco y bien drenado, interior o exterior según temporada",
+    "care": "Riego moderado, fertilizar regularmente, pinzar flores marchitas",
+    "flowering": "Floración prolongada en clima fresco, desde primavera hasta invierno",
+    "special_notes": "Prefiere temperaturas frescas, tolera heladas ligeras"
   }
 }

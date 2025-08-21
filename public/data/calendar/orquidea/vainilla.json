@@ -35,30 +35,30 @@
     "care_calendar": {
       "monthly_tasks": {
         "1": ["maintain_humidity", "minimal_watering"],
-        "2": ["increase_watering", "check_support"],
-        "3": ["water_regularly", "hand_pollinate"],
-        "4": ["hand_pollinate", "water_regularly"],
+        "2": ["increase_watering", "install_supports"],
+        "3": ["moderate_watering", "hand_pollinate"],
+        "4": ["hand_pollinate", "moderate_watering"],
         "5": ["hand_pollinate", "fertilize_orchid"],
-        "6": ["water_regularly", "monitor_pods"],
-        "7": ["water_regularly", "support_pods"],
+        "6": ["moderate_watering", "monitor_pods"],
+        "7": ["moderate_watering", "support_pods"],
         "8": ["harvest_early", "cure_beans"],
         "9": ["harvest_main", "cure_beans"],
-        "10": ["final_harvest", "cure_beans"],
+        "10": ["harvest_late", "cure_beans"],
         "11": ["reduce_watering"],
-        "12": ["minimal_watering", "maintain_warmth"]
+        "12": ["minimal_watering"]
       }
     }
   },
   "growing_conditions": {
-    "sun_requirements": "filtered_light",
+    "sun_requirements": "partial_shade",
     "water_needs": "high",
-    "soil_type": "orchid_bark_mix",
+    "soil_type": "well_drained",
     "soil_ph": [5.5, 6.5],
     "spacing": {
       "plant_distance": 200,
       "support_required": true
     },
-    "companion_plants": ["trees_for_support"],
+    "companion_plants": ["arboles_soporte"],
     "temperature_range": [20, 30],
     "humidity_needs": "very_high",
     "special_care": "Necesita soporte alto, polinización manual, humedad constante"

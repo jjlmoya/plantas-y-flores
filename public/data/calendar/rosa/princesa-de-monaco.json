@@ -31,16 +31,16 @@
     },
     "care_calendar": {
       "monthly_tasks": {
-        "2": ["pruning", "fertilize"],
-        "3": ["planting", "fertilize", "mulch"],
-        "4": ["water_deeply", "pest_check"],
-        "5": ["deadhead", "water_regularly"],
-        "6": ["deadhead", "water_regularly", "pest_check"],
-        "7": ["deadhead", "water_regularly"],
-        "8": ["deadhead", "water_regularly"],
-        "9": ["deadhead", "reduce_watering"],
-        "10": ["planting", "prepare_winter"],
-        "11": ["planting", "pruning", "prepare_winter"]
+        "2": ["prune_main", "fertilize"],
+        "3": ["planting", "fertilize", "mulching"],
+        "4": ["moderate_watering", "pest_monitoring"],
+        "5": ["deadhead", "moderate_watering"],
+        "6": ["deadhead", "moderate_watering", "pest_monitoring"],
+        "7": ["deadhead", "moderate_watering"],
+        "8": ["deadhead", "moderate_watering"],
+        "9": ["deadhead", "moderate_watering"],
+        "10": ["planting", "dormant_protection"],
+        "11": ["planting", "prune_shoots", "dormant_protection"]
       }
     }
   },
@@ -54,7 +54,7 @@
       "row_distance": 120
     },
     "companion_plants": ["lavanda", "romero", "salvia"],
-    "avoid_plants": ["nogal"],
+    "avoid_plants": ["arboles_raices_superficiales"],
     "special_care": "Necesita protección contra vientos fuertes"
   },
   "_meta": {

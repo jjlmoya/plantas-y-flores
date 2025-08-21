@@ -2,10 +2,69 @@
   "key": "felicia-amelloides",
   "plant_info": {
     "common_names": [
-      "Felicia Amelloides"
+      "Felicia Amelloides", "Margarita Azul", "Aster Azul"
     ],
-    "scientific_name": "Descubre y planta",
-    "difficulty": "beginner"
+    "scientific_name": "Felicia amelloides",
+    "origin": "AF",
+    "type": "annual",
+    "difficulty": "beginner",
+    "family": "Asteraceae",
+    "growth_habit": "spreading",
+    "mature_size": {
+      "height": [20, 40],
+      "width": [30, 50]
+    }
+  },
+  "flower_data": {
+    "colors": ["blue", "purple", "white"],
+    "flower_shape": "margarita",
+    "size": "small",
+    "bloom_duration": "3 días",
+    "fragrance_level": "none"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 5],
+      "alternative_months": [2, 6],
+      "soil_temperature_min": 12
+    },
+    "flowering": {
+      "best_months": [5, 6, 7, 8, 9, 10],
+      "peak_months": [6, 7, 8]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["planting", "prepare_seedbeds"],
+        "4": ["planting", "moderate_watering"],
+        "5": ["moderate_watering", "fertilize"],
+        "6": ["deadhead", "moderate_watering"],
+        "7": ["deadhead", "moderate_watering"],
+        "8": ["deadhead", "moderate_watering"],
+        "9": ["reduce_watering", "harvest_seeds"],
+        "10": ["plant_cleanup", "clear_beds"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "low",
+    "soil_type": "well_drained_sandy",
+    "soil_ph": [6.0, 7.5],
+    "spacing": {
+      "plant_distance": 20,
+      "row_distance": 30
+    },
+    "companion_plants": ["lobelia", "aliso", "nemesia"],
+    "temperature_range": [10, 25],
+    "humidity_needs": "low",
+    "drought_tolerance": "high",
+    "frost_tolerance": "none",
+    "special_purposes": ["border_plant", "rock_gardens", "containers"]
+  },
+  "care_notes": {
+    "watering": "Evitar exceso de riego, tolera sequía bien",
+    "fertilizing": "Fertilizante líquido mensual durante floración",
+    "common_problems": ["exceso_humedad", "aphids"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/02/flower-669574_1280-325x283.webp",

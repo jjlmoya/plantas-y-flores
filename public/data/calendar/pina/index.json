@@ -4,25 +4,92 @@
     "scientific_name": "Ananas comosus",
     "family": "Bromeliaceae",
     "type": "perennial",
-    "difficulty": "advanced"
+    "difficulty": "advanced",
+    "growth_habits": ["rosette", "clumping"],
+    "origins": ["sudamerica", "centroamerica"]
   },
   "calendar_data": {
     "planting": {
-      "best_months": [
-        5,
-        6
-      ]
+      "best_months": [4, 5, 6, 7],
+      "alternative_months": [3, 8],
+      "soil_temperature_min": 20,
+      "planting_method": "crown_slip",
+      "regional_variations": {
+        "tropical": [1, 2, 3, 4, 11, 12],
+        "subtropical": [4, 5, 6, 7],
+        "mediterraneo": [5, 6, 7, 8]
+      }
     },
     "harvesting": {
-      "best_months": [
-        10,
-        11,
-        12
-      ]
+      "best_months": [10, 11, 12, 1, 2],
+      "peak_months": [11, 12],
+      "maturation_time_months": [18, 24],
+      "harvest_indicators": "sweet_aroma_golden_color",
+      "regional_variations": {
+        "tropical": [10, 11, 12, 1, 2, 3],
+        "subtropical": [11, 12, 1],
+        "mediterraneo": [10, 11, 12]
+      }
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["harvesting", "moderate_watering", "dormant_protection"],
+        "2": ["harvesting", "moderate_watering", "dormant_protection"],
+        "3": ["soil_preparation", "moderate_watering"],
+        "4": ["planting", "moderate_watering", "fertilize"],
+        "5": ["planting", "moderate_watering", "fertilize"],
+        "6": ["planting", "heavy_watering", "fertilize"],
+        "7": ["heavy_watering", "fertilize", "pest_monitoring"],
+        "8": ["heavy_watering", "fertilize", "pest_monitoring"],
+        "9": ["heavy_watering", "fertilize", "pest_monitoring"],
+        "10": ["harvesting", "moderate_watering", "plant_cleanup"],
+        "11": ["harvesting", "moderate_watering"],
+        "12": ["harvesting", "moderate_watering", "dormant_protection"]
+      }
     }
   },
   "growing_conditions": {
     "sun_requirements": "full_sun",
-    "water_needs": "moderate"
+    "water_needs": "moderate",
+    "soil_types": ["well_drained", "sandy_loam", "organic_rich"],
+    "soil_ph_range": [5.5, 6.5],
+    "spacing_guidelines": {
+      "between_plants": 90,
+      "between_rows": 150
+    },
+    "companion_plants": ["platano", "mango", "papaya", "coco"],
+    "avoid_plants": ["verduras_alto_consumo"],
+    "temperature_tolerance": [18, 32],
+    "special_requirements": {
+      "high_humidity": "preferred",
+      "frost_protection": "essential",
+      "good_drainage": "critical",
+      "wind_protection": "important"
+    }
+  },
+  "fruit_characteristics": {
+    "fruit_size": ["medium", "large"],
+    "fruit_weight_kg": [1, 3],
+    "sweetness_brix": [12, 16],
+    "harvest_maturity": "golden_yellow",
+    "storage_life_days": [7, 14]
+  },
+  "cultivation_methods": {
+    "propagation": ["crown", "slip", "sucker", "ratoon"],
+    "planting_depth": "crown_level",
+    "container_growing": "possible",
+    "greenhouse_cultivation": "recommended_cold_climates"
+  },
+  "uses_and_benefits": {
+    "culinary_uses": ["fresh", "juice", "dried", "cooked", "preserves"],
+    "nutritional_benefits": ["vitamina_c", "bromelain", "antioxidants", "fibra"],
+    "commercial_value": "high",
+    "ornamental_value": "excellent"
+  },
+  "cultivation_summary": {
+    "planting": "Plantar corona o brote en suelo bien drenado y c\u00e1lido",
+    "care": "Riego abundante en verano, fertilizar regularmente, proteger del fr\u00edo",
+    "harvesting": "Cosechar cuando la pi\u00f1a est\u00e9 dorada y aromosa (18-24 meses)",
+    "climate": "Requiere clima tropical o subtropical, protecci\u00f3n en invierno"
   }
 }

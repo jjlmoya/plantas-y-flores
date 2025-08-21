@@ -2,14 +2,72 @@
   "key": "vanda",
   "plant_info": {
     "common_names": [
-      "Vanda"
+      "Orquídea Vanda", "Vanda", "Orquídea Azul"
     ],
-    "scientific_name": "Apreciada por su",
-    "difficulty": "advanced"
+    "scientific_name": "Vanda coerulea",
+    "origin": "AS",
+    "type": "perennial",
+    "difficulty": "advanced",
+    "family": "Orchidaceae",
+    "growth_habit": "upright",
+    "mature_size": {
+      "height": [50, 100],
+      "width": [30, 50]
+    }
+  },
+  "flower_data": {
+    "colors": ["blue", "purple", "white", "pink"],
+    "flower_shape": "orchid",
+    "size": "large",
+    "bloom_duration": "6_weeks",
+    "fragrance_level": "mild"
+  },
+  "calendar_data": {
+    "flowering": {
+      "best_months": [10, 11, 12, 1, 2],
+      "peak_months": [11, 12, 1]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["moderate_watering", "fertilize"],
+        "2": ["moderate_watering"],
+        "3": ["moderate_watering", "pest_monitoring"],
+        "4": ["moderate_watering"],
+        "5": ["moderate_watering", "fertilize"],
+        "6": ["moderate_watering"],
+        "7": ["moderate_watering"],
+        "8": ["moderate_watering", "pest_monitoring"],
+        "9": ["moderate_watering", "fertilize"],
+        "10": ["moderate_watering"],
+        "11": ["moderate_watering"],
+        "12": ["moderate_watering"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "partial_shade",
+    "water_needs": "high",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.0],
+    "spacing": {
+      "plant_distance": 40,
+      "row_distance": 60
+    },
+    "companion_plants": ["helechos", "bromelias"],
+    "temperature_range": [18, 28],
+    "humidity_needs": "very_high",
+    "special_purposes": ["cut_flowers", "greenhouse_cultivation", "containers"]
+  },
+  "care_notes": {
+    "watering": "Riego frecuente pero sin encharcamiento",
+    "fertilizing": "Fertilizante para orquídeas mensual",
+    "humidity": "Requiere humedad ambiental alta constante",
+    "light": "Luz brillante filtrada, evitar sol directo",
+    "common_problems": ["root_rot", "scale_insects", "fungal_infections"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/09/blue-vanda-orchid-53074_1920-244x325.webp",
     "article_date": "2017-09-23T19:27:05",
-    "excerpt": "La Orquídea Vanda es una de las flores más apreciadas y queridas por los diseñadores y decoradores. Apreciada por su bonita forma muy vistosa y muy elegante. Además de eso, tiene una variedad de color"
+    "excerpt": "La Orquídea Vanda es una de las flores más apreciadas y queridas por los diseñadores y decoradores. Apreciada por su bonita forma muy vistosa y muy elegante. Además de eso, tiene una variedad de color"
   }
 }

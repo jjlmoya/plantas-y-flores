@@ -2,9 +2,84 @@
   "key": "rudbeckia",
   "plant_info": {
     "common_names": [
-      "Rudbeckia"
+      "Rudbeckia", "Black-eyed Susan", "Margarita Amarilla", "Susana de Ojos Negros"
     ],
-    "scientific_name": "Estamos ante una"
+    "scientific_name": "Rudbeckia hirta",
+    "origin": "US",
+    "type": "annual_biennial",
+    "difficulty": "beginner",
+    "family": "Asteraceae",
+    "growth_habit": "upright",
+    "mature_size": {
+      "height": [30, 90],
+      "width": [20, 40]
+    }
+  },
+  "flower_data": {
+    "colors": ["yellow", "orange", "red", "bicolor"],
+    "flower_shape": "margarita",
+    "size": "medium",
+    "bloom_duration": "1 semana",
+    "fragrance_level": "none",
+    "center_color": "dark_brown"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 5],
+      "alternative_months": [2, 6],
+      "direct_sowing": [4, 5],
+      "soil_temperature_min": 15
+    },
+    "flowering": {
+      "best_months": [6, 7, 8, 9, 10],
+      "peak_months": [7, 8, 9]
+    },
+    "seed_collection": {
+      "best_months": [9, 10, 11]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["prepare_seedbeds", "sow_indoor"],
+        "4": ["planting", "sow_outdoor"],
+        "5": ["planting", "transplant"],
+        "6": ["water_regularly", "fertilize"],
+        "7": ["deadhead", "water_regularly"],
+        "8": ["deadhead", "water_regularly"],
+        "9": ["deadhead", "harvest_seeds"],
+        "10": ["harvest_seeds", "reduce_watering"],
+        "11": ["harvest_seeds", "clear_beds"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 8.0],
+    "spacing": {
+      "plant_distance": 30,
+      "row_distance": 45
+    },
+    "companion_plants": ["cosmos", "zinnia", "salvia", "equinácea"],
+    "temperature_range": [10, 30],
+    "humidity_needs": "moderate",
+    "drought_tolerance": "high",
+    "frost_tolerance": "moderate",
+    "self_seeding": true,
+    "special_purposes": ["cut_flowers", "wildflower_gardens", "attracts_pollinators", "prairie_gardens"]
+  },
+  "seed_data": {
+    "germination_time": "7-14 days",
+    "seed_viability": "2-3 years",
+    "stratification_needed": false,
+    "direct_sowing_depth": "0.5 cm"
+  },
+  "care_notes": {
+    "watering": "Resistente a la sequía una vez establecida",
+    "fertilizing": "Fertilizante general una vez al mes",
+    "deadheading": "Cortar flores marchitas para prolongar floración",
+    "self_seeding": "Se auto-siembra fácilmente si se dejan algunas semillas",
+    "common_problems": ["powdery_mildew", "aphids", "leaf_spot"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/02/rudbeckia-661244_1280-325x244.webp",

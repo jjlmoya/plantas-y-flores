@@ -2,14 +2,82 @@
   "key": "grandiflora",
   "plant_info": {
     "common_names": [
-      "Grandiflora"
+      "Rosa Grandiflora", "Rosa de Flor Grande"
     ],
     "scientific_name": "Rosa × grandiflora",
-    "origin": "re",
-    "difficulty": "advanced"
+    "origin": "US",
+    "type": "perennial",
+    "difficulty": "intermediate",
+    "family": "Rosaceae",
+    "growth_habit": "tall_shrub",
+    "mature_size": {
+      "height": [120, 200],
+      "width": [80, 120]
+    }
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 10, 11],
+      "soil_temperature_min": 10
+    },
+    "flowering": {
+      "best_months": [5, 6, 7, 8, 9, 10],
+      "peak_months": [6, 7, 8],
+      "repeat_flowering": true
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["dormant_protection"],
+        "2": ["prune_main", "fertilize"],
+        "3": ["planting", "mulching"],
+        "4": ["moderate_watering", "pest_monitoring"],
+        "5": ["moderate_watering", "fertilize", "deadhead"],
+        "6": ["moderate_watering", "deadhead"],
+        "7": ["moderate_watering", "deadhead"],
+        "8": ["moderate_watering", "deadhead", "fertilize"],
+        "9": ["moderate_watering", "deadhead"],
+        "10": ["planting", "moderate_watering"],
+        "11": ["planting", "prune_shoots"],
+        "12": ["dormant_protection"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "fertile",
+    "soil_ph": [6.0, 7.0],
+    "spacing": {
+      "plant_distance": 90,
+      "row_distance": 120
+    },
+    "companion_plants": ["lavanda", "clematis", "delphinium"],
+    "avoid_plants": ["arboles_raices_superficiales"],
+    "temperature_range": [-15, 35],
+    "special_purposes": ["cut_flowers", "back_border", "specimen"]
   },
   "flower_data": {
-    "fragrance": "moderate"
+    "fragrance": "moderate",
+    "flower_color": ["rosa", "rojo", "amarillo", "blanco"],
+    "flower_size": "large",
+    "flower_form": "double",
+    "flowers_per_cluster": [3, 7],
+    "vase_life": 10
+  },
+  "cultivation_data": {
+    "rose_type": "modern_hybrid",
+    "growth_rate": "fast",
+    "maintenance": "moderate",
+    "disease_resistance": "good",
+    "cold_hardiness": "zone_5",
+    "hybrid_vigor": true
+  },
+  "care_notes": {
+    "watering": "Riego regular y profundo",
+    "fertilizing": "Fertilizar regularmente durante temporada",
+    "pruning": "Poda anual en invierno, eliminar flores marchitas",
+    "disease_prevention": "Vigilar mancha negra y mildiu",
+    "common_problems": ["mancha_negra", "mildiu", "pulgones"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/05/Reina-Isabel-325x216.webp",

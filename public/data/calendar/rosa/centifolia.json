@@ -2,13 +2,82 @@
   "key": "centifolia",
   "plant_info": {
     "common_names": [
-      "Centifolia"
+      "Rosa Centifolia", "Rosa de los Cien Pétalos", "Rosa de Col"
     ],
     "scientific_name": "Rosa × centifolia",
-    "origin": "ia"
+    "origin": "NL",
+    "type": "perennial",
+    "difficulty": "intermediate",
+    "family": "Rosaceae",
+    "growth_habit": "shrub",
+    "mature_size": {
+      "height": [120, 180],
+      "width": [100, 150]
+    }
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 10, 11],
+      "soil_temperature_min": 8
+    },
+    "flowering": {
+      "best_months": [6, 7],
+      "peak_months": [6],
+      "single_flowering": true
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["dormant_protection"],
+        "2": ["prune_main", "fertilize"],
+        "3": ["planting", "mulching"],
+        "4": ["moderate_watering", "pest_monitoring"],
+        "5": ["moderate_watering", "fertilize"],
+        "6": ["moderate_watering"],
+        "7": ["moderate_watering", "prune_shoots"],
+        "8": ["moderate_watering"],
+        "9": ["moderate_watering"],
+        "10": ["planting"],
+        "11": ["planting", "dormant_protection"],
+        "12": ["dormant_protection"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "fertile",
+    "soil_ph": [6.0, 7.5],
+    "spacing": {
+      "plant_distance": 100,
+      "row_distance": 120
+    },
+    "companion_plants": ["lavanda", "boj", "santolina"],
+    "avoid_plants": ["arboles_raices_superficiales"],
+    "temperature_range": [-15, 30],
+    "special_purposes": ["perfume", "cut_flowers", "formal_garden"]
   },
   "flower_data": {
-    "fragrance": "moderate"
+    "fragrance": "very_strong",
+    "flower_color": "rosa_intenso",
+    "flower_size": "very_large",
+    "flower_form": "very_double",
+    "petals_per_flower": [100, 200],
+    "bloom_duration": "4_weeks"
+  },
+  "cultivation_data": {
+    "rose_type": "old_garden",
+    "growth_rate": "moderate",
+    "maintenance": "moderate",
+    "disease_resistance": "moderate",
+    "cold_hardiness": "zone_5",
+    "heavy_flowers": true
+  },
+  "care_notes": {
+    "watering": "Riego regular durante crecimiento y floración",
+    "fertilizing": "Fertilizar bien antes de floración",
+    "pruning": "Poda ligera después de floración",
+    "support": "Puede necesitar tutoreo por peso de flores",
+    "common_problems": ["mildiu", "peso_flores", "pulgones"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/06/flower-1232671_640-325x216.webp",

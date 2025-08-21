@@ -46,7 +46,13 @@
     "dormant_spray",
     "structural_pruning",
     "soil_amendment",
-    "irrigation_setup"
+    "irrigation_setup",
+    "hand_pollinate",
+    "support_pods",
+    "maintain_humidity",
+    "hill_soil",
+    "cure",
+    "harvest_petals"
   ],
   "soil_types": [
     "well_drained",
@@ -414,6 +420,12 @@
       "structural_pruning": "✂️",
       "soil_amendment": "🌱",
       "irrigation_setup": "💧",
+      "hand_pollinate": "🐝",
+      "support_pods": "🌱",
+      "maintain_humidity": "💨",
+      "hill_soil": "🏔️",
+      "cure": "☀️",
+      "harvest_petals": "🌹",
       "default": "•"
     },
     "task_priorities": {
@@ -519,7 +531,13 @@
       "dormant_spray": "medium",
       "structural_pruning": "high",
       "soil_amendment": "medium",
-      "irrigation_setup": "high"
+      "irrigation_setup": "high",
+      "hand_pollinate": "high",
+      "support_pods": "medium",
+      "maintain_humidity": "medium",
+      "hill_soil": "high",
+      "cure": "medium",
+      "harvest_petals": "high"
     },
     "activity_colors": {
       "sowing": "#48bb78",
@@ -624,7 +642,13 @@
       "dormant_spray": "#805ad5",
       "structural_pruning": "#48bb78",
       "soil_amendment": "#48bb78",
-      "irrigation_setup": "#4299e1"
+      "irrigation_setup": "#4299e1",
+      "hand_pollinate": "#d53f8c",
+      "support_pods": "#38b2ac",
+      "maintain_humidity": "#4299e1",
+      "hill_soil": "#d69e2e",
+      "cure": "#f6ad55",
+      "harvest_petals": "#d53f8c"
     },
     "translation_strings": {
       "es": {
@@ -658,6 +682,7 @@
         "annual": "Anual",
         "biennial": "Bienal",
         "perennial": "Perenne",
+        "shrub": "Arbusto",
         "sowing": "Siembra",
         "transplanting": "Trasplante",
         "harvesting": "Cosecha",

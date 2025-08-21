@@ -183,3 +183,27 @@ scripts/
 - **Lighthouse Score**: 95+ across all metrics
 - **Core Web Vitals**: Optimized for LCP, FID, CLS
 - **Bundle Size**: Minimal JavaScript footprint with island architecture
+
+## Calendar System Tasks
+
+### Specialized Orchid/Vanilla Tasks
+
+The following tasks have been added specifically for orchid cultivation, particularly vanilla:
+
+- **`hand_pollinate`** (🐝) - "Polinización Manual" - Essential for vanilla orchids that require manual pollination
+- **`support_pods`** (🌱) - "Soportar Vainas" - Support heavy vanilla pods during development  
+- **`maintain_humidity`** (💨) - "Mantener Humedad" - Maintain high humidity levels crucial for orchid health
+- **`cure_beans`** - "Curar Vainas" - Vanilla-specific curing process for pods
+
+### Specialized Potato Tasks
+
+The following tasks have been added specifically for potato cultivation:
+
+- **`hill_soil`** (🏔️) - "Aporcar" - Essential hilling/earthing up process to cover potato tubers and promote growth
+- **`cure`** (☀️) - "Curar" - Curing process for potatoes after harvest, allowing skin to harden for storage
+
+These specialized tasks are:
+- Defined in `public/data/calendar/global-config.json` in `task_definitions`
+- Translated in `src/utils/calendar-inheritance.js` in `formatTaskName`
+- Have assigned colors and icons in the UI configuration
+- Are essential for proper cultivation guidance across different plant families
