@@ -236,46 +236,69 @@ const formattedCategoryPlants = categoryPlants.map(plant => {
   </script>
   
   <div class="category-view">
-    <!-- Header -->
-    <header class="page-header">
-      <div class="container">
-        <!-- Breadcrumb Navigation -->
-        <div class="breadcrumb">
-          <a href="/">🏠 Inicio</a>
-          <span class="separator">→</span>
-          <a href="/calendario/">📅 Calendario</a>
-          <span class="separator">→</span>
-          <span class="current">
-            <span class="category-icon-small">{categoryIcon}</span>
-            {categoryName}
-          </span>
+    <!-- Modern Header -->
+    <div class="modern-header">
+      <!-- Breadcrumb Navigation -->
+      <nav class="breadcrumb-nav">
+        <div class="container">
+          <div class="breadcrumb-container">
+            <a href="/" class="breadcrumb-link">
+              <span class="breadcrumb-icon">🏠</span>
+              <span>Inicio</span>
+            </a>
+            <span class="breadcrumb-separator">→</span>
+            <a href="/calendario/" class="breadcrumb-link">
+              <span class="breadcrumb-icon">📅</span>
+              <span>Calendario</span>
+            </a>
+            <span class="breadcrumb-separator">→</span>
+            <span class="breadcrumb-current">
+              <span class="breadcrumb-icon">{categoryIcon}</span>
+              <span>{categoryName}</span>
+            </span>
+          </div>
         </div>
+      </nav>
 
-        <h1 class="page-title">
-          <span class="category-icon">{categoryIcon}</span>
-          Calendario de {categoryName}
-        </h1>
-        <p class="page-subtitle">
-          Guía completa de cultivo para todas las variedades de {
-            categoryName.toLowerCase()
-          }
-        </p>
-
-        <div class="category-stats">
-          <StatsCard
-            client:visible
-            title="Variedades Disponibles"
-            icon={categoryIcon}
-            number={categoryPlants.length}
-            label="variedades"
-            description={`Diferentes tipos de ${categoryName.toLowerCase()} para cultivar`}
-            variant="primary"
-          />
+      <!-- Hero Section -->
+      <header class="hero-header">
+        <div class="container">
+          <div class="hero-content">
+            <div class="category-badge">
+              <span class="category-badge-icon">{categoryIcon}</span>
+              <span>Categoría de Plantas</span>
+            </div>
+            <h1 class="category-title">
+              <span class="category-icon-large">{categoryIcon}</span>
+              <span class="title-text">Calendario de {categoryName}</span>
+            </h1>
+            <p class="category-description">
+              Guía completa de cultivo para todas las variedades de {categoryName.toLowerCase()}. 
+              Encuentra cuándo sembrar, trasplantar y cosechar cada variedad.
+            </p>
+            <div class="category-stats">
+              <div class="stat-card highlighted">
+                <span class="stat-number">{categoryPlants.length}</span>
+                <span class="stat-label">Variedades</span>
+                <span class="stat-description">Disponibles</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-number">12</span>
+                <span class="stat-label">Meses</span>
+                <span class="stat-description">De cultivo</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-number">3</span>
+                <span class="stat-label">Estaciones</span>
+                <span class="stat-description">Principales</span>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </div>
 
-    <div class="container">
+    <div class="container content-container">
       <!-- Timeline Overview -->
       <section class="timeline-section">
         <h2>📅 Vista Temporal de {categoryName}</h2>
@@ -435,42 +458,178 @@ const formattedCategoryPlants = categoryPlants.map(plant => {
 <style>
   .category-view {
     min-height: 100vh;
-    background: var(--bg-primary-gradient);
+    background: #fcfdfe;
   }
 
-  .breadcrumb {
+  /* Modern Header Styles */
+  .modern-header {
+    position: relative;
+  }
+
+  /* Breadcrumb Navigation */
+  .breadcrumb-nav {
+    background: #fcfdfe;
+    border-bottom: 1px solid #e2e8f0;
+    border-radius: 0 0 12px 12px;
+    padding: 1rem 0;
+  }
+
+  .breadcrumb-container {
     display: flex;
     align-items: center;
-    margin-bottom: var(--space-lg);
-    font-size: var(--font-size-sm);
-    opacity: 0.9;
+    gap: 0.75rem;
   }
 
-  .breadcrumb a {
-    color: white;
+  .breadcrumb-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #4a5568;
     text-decoration: none;
-    transition: opacity 0.3s ease;
-  }
-
-  .breadcrumb a:hover {
-    opacity: 0.8;
-  }
-
-  .breadcrumb .separator {
-    margin: 0 var(--space-xs);
-    opacity: 0.7;
-  }
-
-  .breadcrumb .current {
-    opacity: 0.7;
     font-weight: 500;
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+  }
+
+  .breadcrumb-link:hover {
+    background: #f7fafc;
+    color: #2d3748;
+  }
+
+  .breadcrumb-separator {
+    color: #a0aec0;
+    font-weight: 300;
+  }
+
+  .breadcrumb-current {
     display: flex;
     align-items: center;
-    gap: 0.25rem;
+    gap: 0.5rem;
+    color: #718096;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+    background: #f7fafc;
+    border-radius: 6px;
   }
 
-  .category-icon-small {
+  .breadcrumb-icon {
+    font-size: 0.9rem;
+  }
+
+  /* Hero Header */
+  .hero-header {
+    padding: 4rem 0 5rem 0;
+    position: relative;
+    border-bottom: 1px solid #e2e8f0;
+    background: linear-gradient(135deg, #48bb7820 0%, #48bb7840 100%);
+    border-radius: 16px;
+    margin: 16px;
+  }
+
+  .hero-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .category-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #f7fafc;
+    color: #4a5568;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    border: 1px solid #e2e8f0;
+  }
+
+  .category-badge-icon {
     font-size: 1rem;
+  }
+
+  .category-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #1a202c;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .category-icon-large {
+    font-size: 3.5rem;
+  }
+
+  .title-text {
+    color: #1a202c;
+    font-weight: 800;
+  }
+
+  .category-description {
+    font-size: 1.2rem;
+    color: #2d3748;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .category-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .stat-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  }
+
+  .stat-card.highlighted {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: #cbd5e0;
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1a202c;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.9rem;
+    color: #4a5568;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-description {
+    font-size: 0.8rem;
+    color: #718096;
+    font-weight: 400;
   }
 
 
@@ -478,6 +637,10 @@ const formattedCategoryPlants = categoryPlants.map(plant => {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 1rem;
+  }
+
+  .content-container {
+    background-color: #fcfdfe;
   }
 
   .category-icon {
@@ -505,31 +668,6 @@ const formattedCategoryPlants = categoryPlants.map(plant => {
   }
 
 
-  .category-stats {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-  }
-
-  .stat {
-    text-align: center;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 1rem 2rem;
-    border-radius: 8px;
-  }
-
-  .stat-number {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    line-height: 1;
-  }
-
-  .stat-label {
-    font-size: 0.9rem;
-    opacity: 0.8;
-    margin-top: 0.25rem;
-  }
 
   .timeline-section {
     background: var(--bg-card);
@@ -698,9 +836,40 @@ const formattedCategoryPlants = categoryPlants.map(plant => {
   }
 
   @media (max-width: 768px) {
-    .category-title h1 {
-      font-size: 2rem;
+    .hero-header {
+      padding: 3rem 0 4rem 0;
+    }
+
+    .category-title {
+      font-size: 2.5rem;
       flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .category-icon-large {
+      font-size: 2.5rem;
+    }
+
+    .category-description {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .category-stats {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .stat-card {
+      padding: 1rem 1.5rem;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+    }
+
+    .breadcrumb-container {
+      flex-wrap: wrap;
       gap: 0.5rem;
     }
 

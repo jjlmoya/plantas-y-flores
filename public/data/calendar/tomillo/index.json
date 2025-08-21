@@ -1,28 +1,101 @@
 {
   "plant_info": {
     "category": "tomillo",
+    "scientific_name": "Thymus vulgaris",
+    "family": "Lamiaceae",
     "type": "perennial",
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "origin": "ES",
+    "mature_size": {
+      "height": [25, 35],
+      "width": [30, 40]
+    }
   },
   "calendar_data": {
+    "sowing": {
+      "indoor": {
+        "best_months": [2, 3, 4],
+        "temperature_range": [18, 22],
+        "germination_days": [14, 28]
+      },
+      "outdoor": {
+        "best_months": [4, 5, 9, 10],
+        "temperature_range": [15, 20],
+        "soil_temperature_min": 12
+      }
+    },
     "planting": {
-      "best_months": [
-        3,
-        4,
-        9
-      ]
+      "best_months": [3, 4, 9]
+    },
+    "transplanting": {
+      "best_months": [4, 5, 9, 10],
+      "weeks_after_sowing": [8, 12],
+      "soil_temperature_min": 15
+    },
+    "flowering": {
+      "best_months": [5, 6, 7, 8],
+      "peak_months": [6, 7]
     },
     "harvesting": {
-      "best_months": [
-        6,
-        7,
-        8,
-        9
-      ]
+      "best_months": [4, 5, 6, 7, 8, 9, 10],
+      "peak_months": [5, 6, 7],
+      "days_to_harvest": [90, 120]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["prepare_seedbeds", "plan_next_season"],
+        "2": ["sowing_indoor", "prepare_outdoor"],
+        "3": ["sowing_indoor", "prepare_soil"],
+        "4": ["sowing_outdoor", "transplant", "pruning", "harvest_leaves"],
+        "5": ["transplant", "water_moderately", "harvest_main", "deadhead_spent"],
+        "6": ["water_moderately", "fertilize_light", "harvest_main", "pruning"],
+        "7": ["harvest_main", "water_lightly", "deadhead_spent"],
+        "8": ["harvest_leaves", "pruning", "water_lightly"],
+        "9": ["sowing_outdoor", "transplant", "harvest_leaves", "prepare_winter"],
+        "10": ["transplant", "final_harvest", "prepare_winter"],
+        "11": ["prepare_winter", "minimal_care"],
+        "12": ["prepare_winter", "minimal_care"]
+      }
     }
   },
   "growing_conditions": {
     "sun_requirements": "full_sun",
-    "water_needs": "low"
+    "water_needs": "low",
+    "soil_type": "well_drained",
+    "soil_ph": [6.5, 8.0],
+    "spacing": {
+      "plant_distance": 30,
+      "row_distance": 35
+    },
+    "companion_plants": ["tomate", "col", "rosa"],
+    "avoid_plants": ["menta"],
+    "temperature_range": [10, 35],
+    "drought_tolerance": "high",
+    "special_purposes": ["attracts_pollinators", "repels_insects"],
+    "special_care": "Requiere excelente drenaje, evitar exceso de humedad"
+  },
+  "harvest_data": {
+    "storage_life": 10,
+    "preservation_methods": ["drying", "oil_infusion", "vinegar_infusion", "sachets"],
+    "harvest_indicators": ["aroma", "full_bloom"],
+    "best_harvest_time": "Mañana temprano antes de la floración",
+    "yield_per_plant": "50-100g hojas frescas por temporada"
+  },
+  "nutritional_data": {
+    "properties": ["antioxidantes", "vitamina_c", "hierro", "calcio"],
+    "flavor_profile": "floral_herbal",
+    "health_benefits": ["antiseptico", "expectorante", "digestivo"]
+  },
+  "culinary_data": {
+    "uses": ["condimento", "infusiones", "asado", "sopas", "salsas"],
+    "flavor_profile": "floral_herbal",
+    "preparation": "Usar hojas frescas o secas, añadir al final de la cocción"
+  },
+  "flower_data": {
+    "colors": ["white", "pink", "purple"],
+    "fragrance": "strong",
+    "flower_shape": "spike",
+    "size": "small",
+    "bloom_duration": "8_weeks"
   }
 }

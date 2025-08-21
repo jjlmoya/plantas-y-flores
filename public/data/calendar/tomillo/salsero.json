@@ -2,10 +2,101 @@
   "key": "salsero",
   "plant_info": {
     "common_names": [
-      "Salsero"
+      "Tomillo Salsero", "Tomillo Aceitunero", "Tomillo Blanco", "Spanish Thyme"
     ],
     "scientific_name": "Thymus mastichina",
-    "difficulty": "beginner"
+    "family": "Lamiaceae",
+    "type": "perennial",
+    "difficulty": "beginner",
+    "origin": "ES",
+    "mature_size": {
+      "height": [25, 30],
+      "width": [30, 35]
+    }
+  },
+  "calendar_data": {
+    "sowing": {
+      "indoor": {
+        "best_months": [2, 3],
+        "temperature_range": [18, 22],
+        "germination_days": [21, 30]
+      },
+      "outdoor": {
+        "best_months": [9, 10],
+        "temperature_range": [15, 18],
+        "soil_temperature_min": 12
+      }
+    },
+    "transplanting": {
+      "best_months": [4, 5, 9, 10],
+      "weeks_after_sowing": [8, 12],
+      "soil_temperature_min": 15
+    },
+    "flowering": {
+      "best_months": [5, 6, 7],
+      "peak_months": [6]
+    },
+    "harvesting": {
+      "best_months": [4, 5, 6, 7, 8],
+      "peak_months": [5, 6],
+      "days_to_harvest": [90, 120]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["prepare_winter", "plan_next_season"],
+        "2": ["sowing_indoor", "prepare_seedbeds"],
+        "3": ["sowing_indoor", "prepare_outdoor"],
+        "4": ["transplant", "pruning", "harvest_leaves"],
+        "5": ["water_moderately", "harvest_main"],
+        "6": ["pruning", "harvest_main", "deadhead_spent"],
+        "7": ["harvest_leaves", "water_lightly"],
+        "8": ["pruning", "harvest_leaves"],
+        "9": ["sowing_outdoor", "transplant", "prepare_winter"],
+        "10": ["transplant", "final_harvest", "prepare_winter"],
+        "11": ["prepare_winter", "minimal_care"],
+        "12": ["prepare_winter", "minimal_care"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "low",
+    "soil_type": "well_drained",
+    "soil_ph": [7.0, 8.5],
+    "spacing": {
+      "plant_distance": 30,
+      "row_distance": 35
+    },
+    "companion_plants": ["rosa", "tomate"],
+    "temperature_range": [10, 35],
+    "drought_tolerance": "very_high",
+    "special_purposes": ["attracts_pollinators", "repels_insects"],
+    "special_care": "Resistente a sequía, requiere suelo calcáreo o arenoso"
+  },
+  "harvest_data": {
+    "storage_life": 14,
+    "preservation_methods": ["drying", "oil_distillation", "sachets"],
+    "harvest_indicators": ["aroma", "full_bloom"],
+    "best_harvest_time": "Mañana temprano antes de la floración",
+    "yield_per_plant": "60-120g hojas frescas por temporada",
+    "uses": ["adobo_aceitunas", "extraccion_aceites", "condimento_carnes"]
+  },
+  "nutritional_data": {
+    "properties": ["antioxidantes", "aceites_esenciales", "antiseptico"],
+    "flavor_profile": "intenso_alcanforado",
+    "health_benefits": ["antiseptico", "desinfectante", "desodorante"]
+  },
+  "culinary_data": {
+    "uses": ["condimento", "adobo_aceitunas", "extract", "sopas"],
+    "flavor_profile": "intenso_alcanforado",
+    "preparation": "Ideal para adobar aceitunas y condimentar carnes"
+  },
+  "flower_data": {
+    "colors": ["white"],
+    "fragrance": "strong",
+    "flower_shape": "spike",
+    "size": "small",
+    "bloom_duration": "6_weeks"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/11/olives-1586638_1920-325x244.webp",

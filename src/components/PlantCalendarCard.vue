@@ -241,29 +241,123 @@
           </div>
         </div>
         
-        <div class="expanded-section" v-if="plant.calendar.nutritional_data">
-          <h5>📊 Información Nutricional</h5>
-          <div class="nutritional-grid">
-            <div v-if="plant.calendar.nutritional_data.calories_per_100g" class="nutritional-item">
-              <span class="nutritional-label">Calorías:</span>
-              <span class="nutritional-value">{{ plant.calendar.nutritional_data.calories_per_100g }} kcal</span>
+        <div class="expanded-section" v-if="hasNutritionalData">
+          <h5>🍎 Información Nutricional</h5>
+          <div class="enhanced-nutritional-card">
+            
+            <!-- Basic Nutritional Info -->
+            <div class="nutrition-section basic-nutrition">
+              <div v-if="plant.calendar.nutritional_data?.calories_per_100g" class="nutrition-stat primary">
+                <div class="stat-icon">⚡</div>
+                <div class="stat-content">
+                  <div class="stat-value">{{ plant.calendar.nutritional_data.calories_per_100g }}</div>
+                  <div class="stat-label">kcal/100g</div>
+                </div>
+              </div>
+
+              <div v-if="plant.calendar.nutritional_data?.water_content" class="nutrition-stat secondary">
+                <div class="stat-icon">💧</div>
+                <div class="stat-content">
+                  <div class="stat-value">{{ plant.calendar.nutritional_data.water_content }}%</div>
+                  <div class="stat-label">agua</div>
+                </div>
+              </div>
+
+              <div v-if="plant.calendar.nutritional_data?.sugar_content" class="nutrition-stat secondary">
+                <div class="stat-icon">🍯</div>
+                <div class="stat-content">
+                  <div class="stat-value">{{ ui.formatTaskName(plant.calendar.nutritional_data.sugar_content) }}</div>
+                  <div class="stat-label">azúcares</div>
+                </div>
+              </div>
+
+              <div v-if="plant.calendar.nutritional_data?.acidity" class="nutrition-stat secondary">
+                <div class="stat-icon">🍋</div>
+                <div class="stat-content">
+                  <div class="stat-value">{{ ui.formatTaskName(plant.calendar.nutritional_data.acidity) }}</div>
+                  <div class="stat-label">acidez</div>
+                </div>
+              </div>
             </div>
-            <div v-if="plant.calendar.nutritional_data.properties?.length" class="nutritional-vitamins">
-              <span class="nutritional-label">Vitaminas y Nutrientes:</span>
-              <div class="vitamin-tags">
+
+            <!-- Flavor Profile -->
+            <div v-if="plant.calendar.nutritional_data?.flavor_profile" class="nutrition-section flavor-section">
+              <div class="section-title">
+                <span class="section-icon">👅</span>
+                <span>Perfil de Sabor</span>
+              </div>
+              <div class="flavor-badge">
+                {{ ui.formatTaskName(plant.calendar.nutritional_data.flavor_profile) }}
+              </div>
+            </div>
+
+            <!-- Main Nutrients & Vitamins -->
+            <div v-if="mainNutrientsList.length" class="nutrition-section nutrients-section">
+              <div class="section-title">
+                <span class="section-icon">🧬</span>
+                <span>Nutrientes Principales</span>
+              </div>
+              <div class="nutrients-grid">
+                <div 
+                  v-for="nutrient in mainNutrientsList" 
+                  :key="nutrient"
+                  class="nutrient-badge"
+                >
+                  <span class="nutrient-icon">{{ getNutrientIcon(nutrient) }}</span>
+                  <span class="nutrient-name">{{ ui.formatTaskName(nutrient) }}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Health Benefits -->
+            <div v-if="plant.calendar.nutritional_data?.health_benefits?.length" class="nutrition-section benefits-section">
+              <div class="section-title">
+                <span class="section-icon">💪</span>
+                <span>Beneficios para la Salud</span>
+              </div>
+              <div class="benefits-list">
+                <div 
+                  v-for="benefit in plant.calendar.nutritional_data.health_benefits" 
+                  :key="benefit"
+                  class="benefit-item"
+                >
+                  <span class="benefit-icon">✓</span>
+                  <span class="benefit-text">{{ ui.formatTaskName(benefit) }}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Additional Properties -->
+            <div v-if="additionalPropertiesList.length" class="nutrition-section properties-section">
+              <div class="section-title">
+                <span class="section-icon">⭐</span>
+                <span>Propiedades Adicionales</span>
+              </div>
+              <div class="properties-tags">
                 <span 
-                  v-for="property in plant.calendar.nutritional_data.properties" 
+                  v-for="property in additionalPropertiesList" 
                   :key="property"
-                  class="vitamin-tag"
+                  class="property-tag"
                 >
                   {{ ui.formatTaskName(property) }}
                 </span>
               </div>
             </div>
-            <div v-if="plant.calendar.nutritional_data.flavor_profile" class="nutritional-item">
-              <span class="nutritional-label">Perfil de Sabor:</span>
-              <span class="nutritional-value">{{ ui.formatTaskName(plant.calendar.nutritional_data.flavor_profile) }}</span>
+
+            <!-- Technical Details (for fruits) -->
+            <div v-if="hasTechnicalDetails" class="nutrition-section technical-section">
+              <div class="section-title">
+                <span class="section-icon">🔬</span>
+                <span>Detalles Técnicos</span>
+              </div>
+              <div class="technical-details">
+                <div v-if="plant.calendar.nutritional_data?.brix_level" class="technical-item">
+                  <span class="tech-label">Nivel Brix:</span>
+                  <span class="tech-value">{{ plant.calendar.nutritional_data.brix_level[0] }}-{{ plant.calendar.nutritional_data.brix_level[1] }}°</span>
+                </div>
+              </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -388,6 +482,55 @@ export default {
       return Object.keys(calendar).filter(key => 
         ['sowing', 'transplanting', 'harvesting', 'flowering', 'planting', 'pruning'].includes(key)
       ).length;
+    },
+    hasNutritionalData() {
+      const nutritionalData = this.plant.calendar?.nutritional_data;
+      const fruitData = this.plant.calendar?.fruit_data;
+      return nutritionalData && (
+        nutritionalData.calories_per_100g ||
+        nutritionalData.properties ||
+        nutritionalData.main_nutrients ||
+        nutritionalData.health_benefits ||
+        nutritionalData.flavor_profile ||
+        nutritionalData.water_content ||
+        nutritionalData.vitamin_content ||
+        nutritionalData.acidity ||
+        nutritionalData.sugar_content ||
+        nutritionalData.brix_level ||
+        fruitData?.nutritional_highlights
+      );
+    },
+    mainNutrientsList() {
+      const nutritional = this.plant.calendar?.nutritional_data || {};
+      const fruit = this.plant.calendar?.fruit_data || {};
+      const nutrients = [];
+      
+      if (nutritional.main_nutrients) {
+        nutrients.push(...nutritional.main_nutrients);
+      }
+      if (nutritional.vitamin_content) {
+        // Convert vitamin array to formatted strings
+        nutrients.push(...nutritional.vitamin_content.map(v => `vitamin_${v.toLowerCase()}`));
+      }
+      if (fruit.nutritional_highlights) {
+        nutrients.push(...fruit.nutritional_highlights);
+      }
+      
+      return [...new Set(nutrients)]; // Remove duplicates
+    },
+    additionalPropertiesList() {
+      const nutritional = this.plant.calendar?.nutritional_data || {};
+      const properties = nutritional.properties || [];
+      
+      // Filter out properties that are already shown in main nutrients
+      return properties.filter(prop => 
+        !this.mainNutrientsList.includes(prop) && 
+        !this.mainNutrientsList.some(nutrient => nutrient.includes(prop.replace('vitamina_', 'vitamin_')))
+      );
+    },
+    hasTechnicalDetails() {
+      const nutritional = this.plant.calendar?.nutritional_data || {};
+      return nutritional.brix_level;
     }
   },
   methods: {
@@ -472,6 +615,51 @@ export default {
       
       const activityNames = activities.map(activity => this.ui.formatTaskName(activity)).join(', ');
       return `${monthName}: ${activityNames}`;
+    },
+    getNutrientIcon(nutrient) {
+      const iconMap = {
+        // Vitamins
+        'vitamin_c': '🍊',
+        'vitamin_a': '🥕',
+        'vitamin_k': '🥬',
+        'vitamin_b9': '🌿',
+        'vitamin_d': '☀️',
+        'vitamin_e': '🌰',
+        'vitamin_b': '🌾',
+        'vitamina_c': '🍊',
+        'vitamina_k': '🥬',
+        'vitamina_a': '🥕',
+        
+        // Minerals
+        'potasio': '🍌',
+        'potassium': '🍌',
+        'iron': '🔨',
+        'calcium': '🦴',
+        'magnesium': '⚡',
+        'phosphorus': '🧠',
+        'zinc': '⚙️',
+        'manganese': '⚙️',
+        'manganeso': '⚙️',
+        
+        // Other nutrients
+        'fiber': '🌾',
+        'fibra': '🌾',
+        'protein': '🥩',
+        'proteina': '🥩',
+        'antioxidants': '🛡️',
+        'antioxidantes': '🛡️',
+        'folate': '🌿',
+        'folatos': '🌿',
+        'licopeno': '🍅',
+        'beta_carotene': '🥕',
+        'capsaicin': '🌶️',
+        
+        // Default
+        'default': '💊'
+      };
+      
+      const key = nutrient.toLowerCase().replace(/\s+/g, '_');
+      return iconMap[key] || iconMap.default;
     }
   }
 }
@@ -945,49 +1133,220 @@ export default {
   font-weight: 500;
 }
 
-.nutritional-grid {
+/* Enhanced Nutritional Card Styles */
+.enhanced-nutritional-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nutrition-section {
+  margin-bottom: 1.5rem;
+}
+
+.nutrition-section:last-child {
+  margin-bottom: 0;
+}
+
+.basic-nutrition {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.75rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-.nutritional-item {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.8rem;
-}
-
-.nutritional-vitamins {
+.nutrition-stat {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  background: white;
+  border-radius: 12px;
+  padding: 1rem 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.nutrition-stat:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nutrition-stat.primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.nutrition-stat.primary .stat-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.nutrition-stat.secondary .stat-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.stat-content {
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.nutrition-stat.primary .stat-value {
+  font-size: 1.5rem;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 0.25rem;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
   gap: 0.5rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.section-icon {
+  font-size: 1.1rem;
+}
+
+.flavor-badge {
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  color: #8b4513;
+  padding: 0.75rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  text-align: center;
+  font-size: 0.9rem;
+  text-transform: lowercase;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.flavor-badge::first-letter {
+  text-transform: uppercase;
+}
+
+.nutrients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.5rem;
+}
+
+.nutrient-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 20px;
+  border: 2px solid #e2e8f0;
+  transition: all 0.3s ease;
   font-size: 0.8rem;
 }
 
-.nutritional-label {
+.nutrient-badge:hover {
+  border-color: #48bb78;
+  transform: translateY(-1px);
+}
+
+.nutrient-icon {
+  font-size: 1rem;
+}
+
+.nutrient-name {
+  font-weight: 500;
+  color: #2d3748;
+  text-transform: capitalize;
+}
+
+.benefits-list {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border-left: 3px solid #48bb78;
+  font-size: 0.8rem;
+}
+
+.benefit-icon {
+  color: #48bb78;
+  font-weight: bold;
+}
+
+.benefit-text {
+  color: #2d3748;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.properties-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.property-tag {
+  background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
+  color: #234e52;
+  padding: 0.4rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  border: 1px solid #81e6d9;
+  transition: all 0.3s ease;
+}
+
+.property-tag:hover {
+  background: linear-gradient(135deg, #b2f5ea 0%, #81e6d9 100%);
+}
+
+.technical-details {
+  background: white;
+  border-radius: 8px;
+  padding: 0.75rem;
+  border-left: 3px solid #667eea;
+}
+
+.technical-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.tech-label {
   color: #4a5568;
   font-weight: 500;
 }
 
-.nutritional-value {
+.tech-value {
   color: #2d3748;
-  font-weight: 500;
-}
-
-.vitamin-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3rem;
-}
-
-.vitamin-tag {
-  background: #e6fffa;
-  color: #234e52;
-  padding: 0.2rem 0.5rem;
-  border-radius: 10px;
-  font-size: 0.7rem;
-  font-weight: 500;
-  text-transform: capitalize;
+  font-weight: 600;
+  background: #f7fafc;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
 }
 
 @media (max-width: 768px) {
@@ -1024,6 +1383,81 @@ export default {
     flex-direction: column;
     gap: 0.75rem;
     align-items: center;
+  }
+
+  /* Mobile styles for enhanced nutritional card */
+  .enhanced-nutritional-card {
+    padding: 1rem;
+  }
+
+  .basic-nutrition {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .nutrition-stat {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .nutrition-stat.primary .stat-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .nutrition-stat.secondary .stat-icon {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-value {
+    font-size: 1rem;
+  }
+
+  .nutrition-stat.primary .stat-value {
+    font-size: 1.25rem;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+  }
+
+  .nutrients-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 0.4rem;
+  }
+
+  .nutrient-badge {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.75rem;
+  }
+
+  .benefit-item {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.75rem;
+  }
+
+  .properties-tags {
+    gap: 0.3rem;
+  }
+
+  .property-tag {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.7rem;
+  }
+
+  .flavor-badge {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+    text-transform: lowercase;
+  }
+
+  .flavor-badge::first-letter {
+    text-transform: uppercase;
+  }
+
+  .nutrition-section {
+    margin-bottom: 1rem;
   }
 }
 </style>

@@ -73,7 +73,23 @@
       "fresh": "1-2 weeks",
       "processed": "6+ months"
     },
-    "culinary_uses": ["medicinal", "oil_extraction", "food_supplement", "traditional_medicine"]
+    "culinary_uses": ["medicinal", "oil_extraction", "food_supplement", "traditional_medicine"],
+    "nutritional_highlights": ["healthy_fats", "fiber", "protein", "minerals"]
+  },
+  "nutritional_data": {
+    "calories_per_100g": 45,
+    "water_content": 75,
+    "main_nutrients": ["fiber", "protein", "healthy_fats", "magnesium", "potassium"],
+    "vitamin_content": ["C", "B6", "E"],
+    "health_benefits": ["weight_management", "cholesterol_control", "diabetes_support", "metabolismo", "digestivo"],
+    "properties": ["fibra_soluble", "grasas_saludables", "proteina_vegetal", "minerales", "extracto_irvingia"],
+    "flavor_profile": "mild",
+    "special_compounds": ["irvingia_extract", "leptin_modulator"]
+  },
+  "culinary_data": {
+    "uses": ["extract", "medicinal", "oil_extraction", "traditional_medicine"],
+    "flavor_profile": "mild",
+    "preparation": "Principalmente utilizado como extracto de semilla para beneficios medicinales"
   },
   "variety_characteristics": {
     "tree_size": "large",

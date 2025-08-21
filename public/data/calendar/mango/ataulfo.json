@@ -72,7 +72,24 @@
       "ripe": "3-5 days",
       "unripe": "1-2 weeks"
     },
-    "culinary_uses": ["fresh_eating", "desserts", "smoothies", "baby_food"]
+    "culinary_uses": ["fresh_eating", "desserts", "smoothies", "baby_food"],
+    "nutritional_highlights": ["vitamin_c", "vitamin_a", "fiber", "beta_caroteno"]
+  },
+  "nutritional_data": {
+    "calories_per_100g": 65,
+    "water_content": 82,
+    "sugar_content": "very_high",
+    "main_nutrients": ["vitamin_c", "vitamin_a", "beta_caroteno", "folate", "potassium"],
+    "vitamin_content": ["C", "A", "B6", "E"],
+    "health_benefits": ["immune_support", "antioxidant_rich", "heart_healthy", "digestivo"],
+    "properties": ["fibra_minima", "beta_caroteno", "antioxidantes", "enzimas_digestivas", "dulzor_natural"],
+    "flavor_profile": "sweet_creamy_raspberry_hint",
+    "acidity": "low"
+  },
+  "culinary_data": {
+    "uses": ["fresco", "postres", "smoothies", "batidos"],
+    "flavor_profile": "sweet_creamy_raspberry_hint",
+    "preparation": "Ideal para consumir fresco, textura cremosa perfecta para postres"
   },
   "variety_characteristics": {
     "tree_size": "dwarf_to_semi_dwarf",

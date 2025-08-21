@@ -93,13 +93,22 @@ const quickNavMonths = Array.from({ length: 12 }, (_, i) => ({
   </script>
   
   <div class="calendar-dashboard">
-    <!-- Header -->
-    <header class="page-header">
-      <div class="container">
-        <!-- Navigation Header -->
-        <div class="nav-header">
-          <a href="/" class="home-link" title="Volver al inicio">🏠 Inicio</a>
-
+    <!-- Modern Header -->
+    <div class="modern-header">
+      <!-- Breadcrumb outside header -->
+      <nav class="breadcrumb-nav">
+        <div class="container">
+          <div class="breadcrumb-container">
+            <a href="/" class="breadcrumb-link">
+              <span class="breadcrumb-icon">🏠</span>
+              <span>Inicio</span>
+            </a>
+            <span class="breadcrumb-separator">→</span>
+            <span class="breadcrumb-current">
+              <span class="breadcrumb-icon">📅</span>
+              <span>Calendario</span>
+            </span>
+          </div>
           <!-- Hemisphere Selector -->
           <div class="hemisphere-selector">
             <button
@@ -111,15 +120,44 @@ const quickNavMonths = Array.from({ length: 12 }, (_, i) => ({
             </button>
           </div>
         </div>
+      </nav>
 
-        <h1 class="page-title">Calendario de Plantación</h1>
-        <p class="page-subtitle">
-          Planifica tu jardín y huerto siguiendo el calendario natural
-        </p>
-      </div>
-    </header>
+      <!-- Hero Section -->
+      <header class="hero-header">
+        <div class="container">
+          <div class="hero-content">
+            <div class="hero-badge">
+              <span class="hero-badge-icon">🌱</span>
+              <span>Guía de Cultivo {new Date().getFullYear()}</span>
+            </div>
+            <h1 class="hero-title">
+              <span class="title-main">Calendario de</span>
+              <span class="title-highlight">Plantación</span>
+            </h1>
+            <p class="hero-description">
+              Planifica tu jardín y huerto siguiendo el calendario natural. 
+              Descubre cuándo sembrar, trasplantar y cosechar más de 100 variedades de plantas.
+            </p>
+            <div class="hero-stats">
+              <div class="stat-item">
+                <span class="stat-number">24</span>
+                <span class="stat-label">Categorías</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">100+</span>
+                <span class="stat-label">Plantas</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">12</span>
+                <span class="stat-label">Meses</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
 
-    <div class="container">
+    <div class="container content-container">
       <!-- Current Month Section -->
       <section class="current-month-section">
         <h2>🌱 Este Mes: {currentMonthName}</h2>
@@ -355,43 +393,87 @@ const quickNavMonths = Array.from({ length: 12 }, (_, i) => ({
 <style>
   .calendar-dashboard {
     min-height: 100vh;
-    background: var(--bg-primary-gradient);
+    background: #fcfdfe;
   }
 
-  .nav-header {
+  /* Modern Header Styles */
+  .modern-header {
+    position: relative;
+  }
+
+  /* Breadcrumb Navigation */
+  .breadcrumb-nav {
+    background: #fcfdfe;
+    border-bottom: 1px solid #e2e8f0;
+    border-radius: 0 0 12px 12px;
+    padding: 1rem 0;
+  }
+
+  .breadcrumb-nav .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: var(--space-lg);
   }
 
-  .home-link {
-    color: white;
-    text-decoration: none;
+  .breadcrumb-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .breadcrumb-link {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    color: #4a5568;
+    text-decoration: none;
     font-weight: 500;
-    transition: opacity 0.3s ease;
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
   }
 
-  .home-link:hover {
-    opacity: 0.8;
+  .breadcrumb-link:hover {
+    background: #f7fafc;
+    color: #2d3748;
   }
 
+  .breadcrumb-separator {
+    color: #a0aec0;
+    font-weight: 300;
+  }
+
+  .breadcrumb-current {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #718096;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+    background: #f7fafc;
+    border-radius: 6px;
+  }
+
+  .breadcrumb-icon {
+    font-size: 0.9rem;
+  }
+
+  /* Hemisphere Selector */
   .hemisphere-selector {
     position: relative;
   }
 
   .hemisphere-toggle {
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: white;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
+    background: #f7fafc;
+    border: 1px solid #e2e8f0;
+    color: #4a5568;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
     cursor: pointer;
-    font-size: var(--font-size-xl);
+    font-size: 1.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -399,8 +481,110 @@ const quickNavMonths = Array.from({ length: 12 }, (_, i) => ({
   }
 
   .hemisphere-toggle:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: scale(1.05);
+    background: #edf2f7;
+    border-color: #cbd5e0;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Hero Header */
+  .hero-header {
+    padding: 4rem 0 5rem 0;
+    position: relative;
+    border-bottom: 1px solid #e2e8f0;
+    background: linear-gradient(135deg, #48bb7820 0%, #48bb7840 100%);
+    border-radius: 16px;
+    margin: 16px;
+    
+  }
+
+  .hero-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #f7fafc;
+    color: #4a5568;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    border: 1px solid #e2e8f0;
+  }
+
+  .hero-badge-icon {
+    font-size: 1rem;
+  }
+
+  .hero-title {
+    font-size: 4rem;
+    font-weight: 800;
+    color: #1a202c;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .title-main {
+    font-weight: 400;
+    color: #2d3748;
+    font-size: 0.7em;
+  }
+
+  .title-highlight {
+    color: #1a202c;
+    font-weight: 800;
+  }
+
+  .hero-description {
+    font-size: 1.2rem;
+    color: #2d3748;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+  }
+
+  .stat-item {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  }
+
+  .stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1a202c;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.9rem;
+    color: #4a5568;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
 
   .current-month-section {
@@ -726,8 +910,46 @@ const quickNavMonths = Array.from({ length: 12 }, (_, i) => ({
   }
 
   @media (max-width: 768px) {
-    .dashboard-header h1 {
+    .hero-header {
+      padding: 3rem 0 4rem 0;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+    }
+
+    .hero-description {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-stats {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .stat-number {
       font-size: 2rem;
+    }
+
+    .breadcrumb-nav .container {
+      flex-direction: column;
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .breadcrumb-container {
+      justify-content: center;
+    }
+
+    .hemisphere-selector {
+      align-self: center;
+    }
+
+    .hemisphere-toggle {
+      width: 40px;
+      height: 40px;
+      font-size: 1rem;
     }
 
     .grid-responsive {
@@ -745,31 +967,6 @@ const quickNavMonths = Array.from({ length: 12 }, (_, i) => ({
 
     .activities-grid {
       grid-template-columns: 1fr;
-    }
-
-    .hemisphere-selector {
-      top: 0.5rem;
-      right: 0.5rem;
-    }
-
-    .hemisphere-toggle {
-      width: 40px;
-      height: 40px;
-      font-size: 1.2rem;
-    }
-
-    .nav-header {
-      flex-direction: column;
-      gap: var(--space-sm);
-      align-items: stretch;
-    }
-
-    .home-link {
-      align-self: flex-start;
-    }
-
-    .hemisphere-selector {
-      align-self: flex-end;
     }
 
     .current-month-section h2,
@@ -890,6 +1087,10 @@ const quickNavMonths = Array.from({ length: 12 }, (_, i) => ({
     }
   }
 
+  .content-container {
+    background-color: #fcfdfe;
+  }
+
   @media (max-width: 480px) {
     .grid-responsive {
       gap: var(--space-sm);
@@ -897,6 +1098,7 @@ const quickNavMonths = Array.from({ length: 12 }, (_, i) => ({
 
     .container {
       padding: 0 var(--space-xs);
+      background-color: #fcfdfe;
     }
 
     .months-grid {

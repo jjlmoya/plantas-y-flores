@@ -2,10 +2,109 @@
   "key": "limon",
   "plant_info": {
     "common_names": [
-      "Limón"
+      "Tomillo Limón", "Lemon Thyme", "Thymus Citriodus Golden"
     ],
     "scientific_name": "Thymus × citriodorus",
-    "difficulty": "beginner"
+    "family": "Lamiaceae",
+    "type": "perennial",
+    "difficulty": "beginner",
+    "origin": "EU",
+    "mature_size": {
+      "height": [20, 30],
+      "width": [25, 35]
+    }
+  },
+  "calendar_data": {
+    "sowing": {
+      "indoor": {
+        "best_months": [2, 3, 4],
+        "temperature_range": [18, 22],
+        "germination_days": [14, 21]
+      },
+      "outdoor": {
+        "best_months": [4, 5, 6, 9, 10],
+        "temperature_range": [15, 20],
+        "soil_temperature_min": 12
+      }
+    },
+    "planting": {
+      "best_months": [3, 4, 5, 9, 10, 11, 12, 1, 2]
+    },
+    "transplanting": {
+      "best_months": [4, 5, 9, 10],
+      "weeks_after_sowing": [8, 12],
+      "soil_temperature_min": 15
+    },
+    "flowering": {
+      "best_months": [5, 6, 7, 8],
+      "peak_months": [6, 7]
+    },
+    "harvesting": {
+      "best_months": [4, 5, 6, 7, 8, 9, 10],
+      "peak_months": [5, 6],
+      "days_to_harvest": [90, 180]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["planting", "prepare_winter"],
+        "2": ["planting", "sowing_indoor", "prepare_seedbeds"],
+        "3": ["planting", "sowing_indoor", "prepare_outdoor"],
+        "4": ["planting", "sowing_outdoor", "transplant", "harvest_leaves"],
+        "5": ["planting", "water_moderately", "harvest_main", "deadhead_spent"],
+        "6": ["water_moderately", "harvest_main", "pruning"],
+        "7": ["harvest_main", "water_lightly", "deadhead_spent"],
+        "8": ["harvest_leaves", "pruning", "water_lightly"],
+        "9": ["planting", "sowing_outdoor", "transplant", "harvest_leaves"],
+        "10": ["planting", "transplant", "final_harvest", "prepare_winter"],
+        "11": ["planting", "prepare_winter", "minimal_care"],
+        "12": ["planting", "prepare_winter", "minimal_care"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "low",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 8.0],
+    "spacing": {
+      "plant_distance": 25,
+      "row_distance": 30
+    },
+    "companion_plants": ["tomate", "rosa"],
+    "temperature_range": [5, 30],
+    "drought_tolerance": "high",
+    "special_purposes": ["attracts_pollinators", "repels_insects"],
+    "special_care": "En climas fríos proteger en invierno, puede comportarse como anual"
+  },
+  "harvest_data": {
+    "storage_life": 7,
+    "preservation_methods": ["drying", "oil_infusion", "vinegar_infusion", "fresh"],
+    "harvest_indicators": ["aroma", "full_bloom"],
+    "best_harvest_time": "Mañana temprano antes de la floración para máximo aroma",
+    "yield_per_plant": "40-80g hojas frescas por temporada",
+    "uses": ["culinario_fresco", "atraccion_abejas", "repelente_mosquitos"]
+  },
+  "nutritional_data": {
+    "properties": ["antioxidantes", "aceites_esenciales", "vitamina_c"],
+    "flavor_profile": "dulce_especiado_intenso",
+    "health_benefits": ["digestivo", "relajante", "antiseptico"]
+  },
+  "culinary_data": {
+    "uses": ["condimento", "postres", "infusiones", "salsas", "ensaladas"],
+    "flavor_profile": "dulce_especiado_intenso",
+    "preparation": "Usar fresco recién recogido para máximo aroma cítrico"
+  },
+  "flower_data": {
+    "colors": ["purple", "pink", "white"],
+    "fragrance": "mild_citrus",
+    "flower_shape": "spike",
+    "size": "small",
+    "bloom_duration": "8_weeks"
+  },
+  "container_data": {
+    "min_pot_size": "20cm profundidad",
+    "suitable_for_containers": true,
+    "indoor_growing": true
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/11/thyme-341930-325x244.webp",

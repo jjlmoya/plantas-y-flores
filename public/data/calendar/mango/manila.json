@@ -72,7 +72,24 @@
       "ripe": "5-7 days",
       "unripe": "2-3 weeks"
     },
-    "culinary_uses": ["fresh_eating", "export", "processing", "drying"]
+    "culinary_uses": ["fresh_eating", "export", "processing", "drying"],
+    "nutritional_highlights": ["vitamin_c", "vitamin_a", "fiber", "potassium"]
+  },
+  "nutritional_data": {
+    "calories_per_100g": 58,
+    "water_content": 84,
+    "sugar_content": "high",
+    "main_nutrients": ["vitamin_c", "vitamin_a", "folate", "potassium", "magnesium"],
+    "vitamin_content": ["C", "A", "B6", "E", "K"],
+    "health_benefits": ["immune_support", "antioxidant_rich", "heart_healthy", "digestivo", "metabolismo"],
+    "properties": ["fibra", "beta_caroteno", "antioxidantes", "enzimas_digestivas", "minerales"],
+    "flavor_profile": "sweet_complex",
+    "acidity": "balanced"
+  },
+  "culinary_data": {
+    "uses": ["fresco", "postres", "smoothies", "conservas", "mermeladas"],
+    "flavor_profile": "sweet_complex",
+    "preparation": "Excelente para exportación, buena conservación y sabor balanceado"
   },
   "variety_characteristics": {
     "tree_size": "medium_to_large",
