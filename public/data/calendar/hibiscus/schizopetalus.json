@@ -14,7 +14,7 @@
     "size": "medium",
     "colors": ["red", "orange", "pink"],
     "flower_shape": "pendant_fringed",
-    "bloom_duration": "2_days",
+    "bloom_duration": "2 días",
     "special_features": "Pétalos profundamente divididos y colgantes",
     "stamen": "Muy prominente y decorativo"
   },
@@ -34,16 +34,18 @@
     },
     "care_calendar": {
       "monthly_tasks": {
-        "3": ["pruning", "prepare_supports"],
-        "4": ["planting", "fertilize", "install_trellis"],
-        "5": ["planting", "pinch_tips", "water_regularly"],
-        "6": ["water_regularly", "train_climbing", "first_blooms"],
+        "1": ["prepare_winter"],
+        "2": ["prepare_winter"],
+        "3": ["prune_main", "prepare_supports"],
+        "4": ["planting", "fertilize", "install_supports"],
+        "5": ["planting", "pinching", "water_regularly"],
+        "6": ["planting", "water_regularly", "staking"],
         "7": ["water_regularly", "deadhead", "fertilize"],
         "8": ["water_regularly", "deadhead"],
         "9": ["water_regularly", "deadhead"],
         "10": ["water_regularly", "deadhead"],
-        "11": ["reduce_watering", "protect_from_cold"],
-        "12": ["winter_protection", "minimal_water"]
+        "11": ["reduce_watering", "prepare_winter"],
+        "12": ["prepare_winter", "minimal_watering"]
       }
     }
   },
@@ -56,7 +58,7 @@
       "plant_distance": 180,
       "row_distance": 200
     },
-    "companion_plants": ["mandevilla", "bougainvillea", "passiflora"],
+    "companion_plants": ["mandevilla", "buganvilla", "pasiflora"],
     "temperature_range": [15, 30],
     "support_needed": true,
     "special_care": "Necesita soporte para trepar, proteger de vientos fuertes"

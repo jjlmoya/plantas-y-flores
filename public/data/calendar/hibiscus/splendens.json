@@ -14,7 +14,7 @@
     "size": "extra_large",
     "colors": ["pink", "white", "cream"],
     "flower_shape": "hibiscus",
-    "bloom_duration": "1_day",
+    "bloom_duration": "1 día",
     "petal_texture": "delicate_striped"
   },
   "calendar_data": {
@@ -40,7 +40,7 @@
         "9": ["water_regularly", "deadhead"],
         "10": ["reduce_watering", "harvest_seeds"],
         "11": ["prepare_winter", "mulch"],
-        "12": ["protect_frost"]
+        "12": ["prepare_winter"]
       }
     }
   },

@@ -33,8 +33,8 @@
       "monthly_tasks": {
         "3": ["planting", "pruning", "fertilize"],
         "4": ["planting", "water_regularly", "mulch"],
-        "5": ["water_regularly", "deadheading"],
-        "6": ["pruning", "deadheading", "water_regularly"],
+        "5": ["water_regularly", "deadhead"],
+        "6": ["pruning", "deadhead", "water_regularly"],
         "7": ["pruning", "water_regularly"],
         "8": ["water_regularly", "monitor_growth"],
         "9": ["reduce_watering", "fertilize"],

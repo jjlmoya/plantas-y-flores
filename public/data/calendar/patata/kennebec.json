@@ -44,7 +44,7 @@
       "plant_distance": 30,
       "row_distance": 75
     },
-    "companion_plants": ["frijol", "maíz", "caléndula"],
+    "companion_plants": ["frijol", "maíz", "margarita"],
     "avoid_plants": ["tomate", "pimiento", "berenjena"],
     "temperature_range": [15, 25],
     "special_care": "Aporcar tierra regularmente, evitar luz solar directa en tubérculos"

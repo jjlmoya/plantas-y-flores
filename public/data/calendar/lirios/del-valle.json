@@ -1,13 +1,57 @@
 {
   "key": "del-valle",
   "plant_info": {
-    "common_names": [
-      "Lirio del Valle"
-    ],
+    "common_names": ["Lirio del Valle", "Convalaria", "Lágrimas de Salomón"],
     "scientific_name": "Convallaria majalis",
-    "difficulty": "beginner"
+    "family": "Asparagaceae",
+    "type": "perennial",
+    "difficulty": "beginner",
+    "growth_habit": "spreading",
+    "origin": "EU"
   },
-  "flower_data": {},
+  "flower_data": {
+    "colors": ["white"],
+    "fragrance_level": "strong",
+    "flower_shape": "campana",
+    "size": "small",
+    "bloom_duration": "2_semanas"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [10, 11, 3, 4],
+      "soil_temperature_min": 5
+    },
+    "flowering": {
+      "best_months": [5, 6],
+      "peak_months": [5]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["planting", "fertilize"],
+        "4": ["planting", "water_regularly", "mulching"],
+        "5": ["water_regularly", "deadhead"],
+        "6": ["water_regularly", "deadhead"],
+        "7": ["reduce_watering"],
+        "8": ["reduce_watering"],
+        "9": ["prepare_winter"],
+        "10": ["planting", "mulching"],
+        "11": ["planting", "mulching"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "partial_shade",
+    "water_needs": "moderate",
+    "soil_type": "organic_rich",
+    "soil_ph": [6.0, 7.0],
+    "temperature_range": [-25, 25],
+    "spacing": {
+      "plant_distance": 15,
+      "row_distance": 20
+    },
+    "companion_plants": ["hosta", "astilbe", "helechos"],
+    "special_care": "Endémica de Europa, prefiere sombra parcial y suelo húmedo"
+  },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/11/plants-2539283_640.webp",
     "article_date": "2018-11-19T11:10:40",

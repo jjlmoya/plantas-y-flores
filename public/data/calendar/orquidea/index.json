@@ -1,6 +1,8 @@
 {
   "plant_info": {
     "category": "orquidea",
+    "scientific_name": "Orchidaceae",
+    "family": "Orchidaceae",
     "type": "perennial",
     "difficulty": "advanced"
   },

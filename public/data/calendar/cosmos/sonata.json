@@ -1,12 +1,62 @@
 {
   "key": "sonata",
   "plant_info": {
-    "common_names": [
-      "Sonata"
-    ],
-    "scientific_name": "Si tienes un",
-    "origin": "re",
-    "difficulty": "beginner"
+    "common_names": ["Sonata", "Cosmos Sonata"],
+    "scientific_name": "Cosmos bipinnatus",
+    "family": "Asteraceae",
+    "type": "annual",
+    "difficulty": "beginner",
+    "growth_habit": "upright",
+    "origin": "MX"
+  },
+  "flower_data": {
+    "colors": ["white", "pink", "purple", "red"],
+    "fragrance_level": "mild",
+    "flower_shape": "margarita",
+    "size": "medium",
+    "bloom_duration": "12_semanas"
+  },
+  "calendar_data": {
+    "sowing": {
+      "indoor": {
+        "best_months": [3, 4],
+        "soil_temperature_min": 18
+      },
+      "outdoor": {
+        "best_months": [4, 5],
+        "soil_temperature_min": 15
+      }
+    },
+    "flowering": {
+      "best_months": [7, 8, 9, 10],
+      "peak_months": [8, 9]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["sow_indoor", "prepare_seedbeds"],
+        "4": ["sow_outdoor", "transplant"],
+        "5": ["transplant", "moderate_watering"],
+        "6": ["moderate_watering", "deadhead"],
+        "7": ["moderate_watering", "deadhead"],
+        "8": ["deadhead", "harvest_seeds"],
+        "9": ["harvest_seeds"],
+        "10": ["plant_cleanup"],
+        "11": ["clear_beds"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "low",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.5],
+    "temperature_range": [15, 30],
+    "spacing": {
+      "plant_distance": 30,
+      "row_distance": 45
+    },
+    "companion_plants": ["margarita", "zinias", "girasoles"],
+    "special_purposes": ["attracts_pollinators", "companion_benefit"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/03/flower-1678770_1280-325x244.webp",

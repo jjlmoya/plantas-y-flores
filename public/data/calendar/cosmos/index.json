@@ -1,29 +1,58 @@
 {
   "plant_info": {
     "category": "cosmos",
+    "family": "Asteraceae",
     "type": "annual",
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "growth_habit": "upright",
+    "origin": "MX"
   },
   "calendar_data": {
     "sowing": {
+      "indoor": {
+        "best_months": [3, 4],
+        "soil_temperature_min": 18
+      },
       "outdoor": {
-        "best_months": [
-          4,
-          5
-        ]
+        "best_months": [4, 5],
+        "soil_temperature_min": 15
       }
     },
     "flowering": {
-      "best_months": [
-        7,
-        8,
-        9,
-        10
-      ]
+      "best_months": [7, 8, 9, 10],
+      "peak_months": [8, 9]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["sow_indoor", "prepare_seedbeds"],
+        "4": ["sow_outdoor", "transplant", "soil_preparation"],
+        "5": ["transplant", "moderate_watering", "thin_seedlings"],
+        "6": ["moderate_watering", "install_supports", "fertilize"],
+        "7": ["moderate_watering", "deadhead", "pest_monitoring"],
+        "8": ["moderate_watering", "deadhead", "harvest_seeds"],
+        "9": ["deadhead", "harvest_seeds"],
+        "10": ["harvest_late", "allow_self_seed", "plant_cleanup"],
+        "11": ["plant_cleanup", "clear_beds"]
+      }
     }
   },
   "growing_conditions": {
     "sun_requirements": "full_sun",
-    "water_needs": "low"
+    "water_needs": "low",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.5],
+    "temperature_range": [15, 30],
+    "spacing": {
+      "plant_distance": 30,
+      "row_distance": 45
+    },
+    "companion_plants": ["margarita", "zinias", "girasoles"],
+    "special_purposes": ["attracts_pollinators", "companion_benefit"]
+  },
+  "flower_data": {
+    "colors": ["white", "pink", "orange", "yellow", "red", "purple"],
+    "fragrance_level": "mild",
+    "flower_shape": "margarita",
+    "bloom_duration": "12_semanas"
   }
 }

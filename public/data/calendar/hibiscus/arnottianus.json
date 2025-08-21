@@ -14,7 +14,7 @@
     "size": "large",
     "colors": ["white", "cream"],
     "flower_shape": "hibiscus",
-    "bloom_duration": "1_day",
+    "bloom_duration": "1 día",
     "fragrance": "mild",
     "special_features": "Flor del estado de Hawaii"
   },
@@ -41,7 +41,7 @@
         "9": ["water_regularly", "deadhead"],
         "10": ["water_regularly", "deadhead"],
         "11": ["reduce_watering", "mulch"],
-        "12": ["protect_frost"]
+        "12": ["prepare_winter"]
       }
     }
   },

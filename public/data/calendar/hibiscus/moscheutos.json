@@ -13,8 +13,8 @@
   "flower_data": {
     "size": "extra_large",
     "colors": ["white", "pink", "red", "purple"],
-    "flower_shape": "hibiscus",
-    "bloom_duration": "1_day",
+    "flower_shape": "hibisco",
+    "bloom_duration": "1 día",
     "diameter": "20-25cm",
     "center_color": "contrasting"
   },
@@ -33,15 +33,17 @@
     },
     "care_calendar": {
       "monthly_tasks": {
-        "3": ["prepare_beds", "compost_application"],
+        "1": ["dormant_protection"],
+        "2": ["dormant_protection"],
+        "3": ["prepare_beds", "fertilize"],
         "4": ["planting", "fertilize", "mulch"],
         "5": ["planting", "water_establishment"],
-        "6": ["water_regularly", "first_growth_support"],
+        "6": ["planting", "water_regularly", "install_supports"],
         "7": ["water_regularly", "deadhead", "fertilize"],
-        "8": ["water_regularly", "deadhead", "enjoy_blooms"],
-        "9": ["water_regularly", "deadhead"],
-        "10": ["water_regularly", "deadhead"],
-        "11": ["cut_back_stems", "mulch_for_winter"],
+        "8": ["water_regularly", "deadhead
+        "9": ["water_regularly", "deadhead
+        "10": ["water_regularly", "deadhead
+        "11": ["prune_main", "mulching"],
         "12": ["dormant_protection"]
       }
     }
@@ -56,7 +58,7 @@
       "plant_distance": 120,
       "row_distance": 150
     },
-    "companion_plants": ["iris", "cattail", "cardinal_flower"],
+    "companion_plants": ["iris", "espadaña", "cardenal"],
     "temperature_range": [10, 35],
     "special_care": "Tolerante a suelos húmedos, ideal para jardines acuáticos"
   },

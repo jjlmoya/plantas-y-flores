@@ -14,7 +14,7 @@
     "fragrance": "strong",
     "colors": ["pink", "white", "red"],
     "size": "large",
-    "flower_shape": "star",
+    "flower_shape": "estrella",
     "flower_form": "upward_facing",
     "petals": "spotted"
   },
@@ -34,7 +34,7 @@
       "monthly_tasks": {
         "3": ["fertilize", "mulch"],
         "4": ["water_regularly"],
-        "5": ["water_regularly", "stake_tall_varieties"],
+        "5": ["water_regularly", "staking"],
         "6": ["water_regularly", "deadhead"],
         "7": ["water_regularly", "deadhead"],
         "8": ["water_regularly", "deadhead"],

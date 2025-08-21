@@ -1,16 +1,60 @@
 {
   "key": "journeys-end",
   "plant_info": {
-    "common_names": [
-      "Journeys End"
-    ],
-    "scientific_name": "Con una flor",
-    "origin": "ta"
+    "common_names": ["Journey's End", "Lirio Oriental"],
+    "scientific_name": "Lilium 'Journey's End'",
+    "family": "Liliaceae",
+    "type": "perennial",
+    "difficulty": "intermediate",
+    "growth_habit": "upright",
+    "origin": "AS"
   },
-  "flower_data": {},
+  "flower_data": {
+    "colors": ["yellow", "orange"],
+    "fragrance_level": "strong",
+    "flower_shape": "trompeta",
+    "size": "large",
+    "bloom_duration": "3_semanas"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [9, 10, 11],
+      "soil_temperature_min": 8
+    },
+    "flowering": {
+      "best_months": [7, 8, 9],
+      "peak_months": [8]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["fertilize", "mulching"],
+        "4": ["water_regularly"],
+        "5": ["water_regularly", "staking"],
+        "6": ["water_regularly", "fertilize"],
+        "7": ["water_regularly", "deadhead"],
+        "8": ["water_regularly", "deadhead"],
+        "9": ["planting", "deadhead", "reduce_watering"],
+        "10": ["planting", "prepare_winter"],
+        "11": ["planting", "mulching"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "partial_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.0],
+    "temperature_range": [-10, 30],
+    "spacing": {
+      "plant_distance": 35,
+      "row_distance": 50
+    },
+    "companion_plants": ["delphinium", "peonía", "rosa"],
+    "special_care": "Variedad oriental, floración tardía con tonos suaves y elegantes"
+  },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/10/lily-2032690_1920-325x211.webp",
     "article_date": "2017-10-16T19:09:27",
-    "excerpt": "La variedad Journey&#8217;s End es uno de los tipos de lirios más bonitos que podemos encontrar hoy en día para la decoración de nuestro hogar, dándole tonos suaves y elegantes a los espacios que quer"
+    "excerpt": "La variedad Journey&#8217;s End es uno de los tipos de lirios más bonitos que podemos encontrar hoy en día para la decoración de nuestro hogar, dándole tonos suaves y elegantes a los espacios que quer"
   }
 }

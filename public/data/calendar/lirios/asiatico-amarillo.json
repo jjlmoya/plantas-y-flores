@@ -1,13 +1,57 @@
 {
   "key": "asiatico-amarillo",
   "plant_info": {
-    "common_names": [
-      "Asiático Amarillo"
-    ],
-    "scientific_name": "Si tienes una",
-    "difficulty": "beginner"
+    "common_names": ["Asiático Amarillo", "Tiny Bee", "Lirio Enano"],
+    "scientific_name": "Lilium asiaticum 'Tiny Bee'",
+    "family": "Liliaceae",
+    "type": "perennial",
+    "difficulty": "beginner",
+    "growth_habit": "compact",
+    "origin": "AS"
   },
-  "flower_data": {},
+  "flower_data": {
+    "colors": ["yellow"],
+    "fragrance_level": "mild",
+    "flower_shape": "estrella",
+    "size": "small",
+    "bloom_duration": "3_semanas"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [9, 10, 11],
+      "soil_temperature_min": 5
+    },
+    "flowering": {
+      "best_months": [6, 7, 8],
+      "peak_months": [7]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["fertilize", "mulching"],
+        "4": ["water_regularly"],
+        "5": ["water_regularly", "fertilize"],
+        "6": ["water_regularly", "deadhead"],
+        "7": ["water_regularly", "deadhead"],
+        "8": ["water_regularly", "deadhead"],
+        "9": ["planting", "prepare_winter"],
+        "10": ["planting", "mulching"],
+        "11": ["planting", "mulching"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "low",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.0],
+    "temperature_range": [-15, 30],
+    "spacing": {
+      "plant_distance": 15,
+      "row_distance": 20
+    },
+    "companion_plants": ["lavanda", "tomillo", "romero"],
+    "special_care": "Variedad enana resistente a suelos pobres, ideal para macetas"
+  },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/03/yellow-1440709_1280-244x325.webp",
     "article_date": "2018-03-01T16:44:23",

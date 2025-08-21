@@ -4,78 +4,52 @@
     "scientific_name": "Lilium",
     "family": "Liliaceae",
     "type": "perennial",
-    "difficulty": "intermediate"
+    "difficulty": "intermediate",
+    "growth_habit": "upright",
+    "origin": "AS"
   },
   "calendar_data": {
     "planting": {
-      "best_months": [
-        9,
-        10,
-        11
-      ],
-      "alternative_months": [
-        3,
-        4
-      ]
+      "best_months": [9, 10, 11],
+      "alternative_months": [3, 4],
+      "soil_temperature_min": 8
     },
     "flowering": {
-      "best_months": [
-        5,
-        6,
-        7,
-        8
-      ],
-      "peak_months": [
-        6,
-        7
-      ]
+      "best_months": [5, 6, 7, 8],
+      "peak_months": [6, 7]
     },
     "care_calendar": {
       "monthly_tasks": {
-        "3": [
-          "fertilize"
-        ],
-        "4": [
-          "moderate_watering"
-        ],
-        "5": [
-          "moderate_watering",
-          "mulching"
-        ],
-        "6": [
-          "moderate_watering"
-        ],
-        "7": [
-          "moderate_watering"
-        ],
-        "8": [
-          "moderate_watering"
-        ],
-        "9": [
-          "planting",
-          "fertilize"
-        ],
-        "10": [
-          "planting"
-        ],
-        "11": [
-          "planting",
-          "mulching"
-        ]
+        "3": ["fertilize", "mulching"],
+        "4": ["water_regularly", "staking"],
+        "5": ["water_regularly", "mulching", "staking"],
+        "6": ["water_regularly", "deadhead"],
+        "7": ["water_regularly", "deadhead"],
+        "8": ["water_regularly", "deadhead"],
+        "9": ["planting", "fertilize", "prepare_winter"],
+        "10": ["planting", "mulching"],
+        "11": ["planting", "mulching", "prepare_winter"]
       }
     }
   },
   "growing_conditions": {
     "sun_requirements": "partial_sun",
     "water_needs": "moderate",
-    "soil_ph": [
-      6,
-      7
-    ],
+    "soil_ph": [6.0, 7.0],
     "soil_type": "well_drained",
+    "temperature_range": [-10, 30],
     "spacing": {
       "plant_distance": 30,
       "row_distance": 40
-    }
+    },
+    "companion_plants": ["hosta", "astilbe", "helechos"],
+    "special_purposes": ["attracts_pollinators", "cut_flower"]
+  },
+  "flower_data": {
+    "colors": ["white", "pink", "orange", "yellow", "red", "purple"],
+    "fragrance_level": "strong",
+    "flower_shape": "trompeta",
+    "size": "large",
+    "bloom_duration": "4_semanas"
   }
 }

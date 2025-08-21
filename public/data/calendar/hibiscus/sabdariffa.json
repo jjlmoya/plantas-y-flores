@@ -13,8 +13,8 @@
   "flower_data": {
     "size": "medium",
     "colors": ["red", "pink", "cream"],
-    "flower_shape": "hibiscus",
-    "bloom_duration": "1_day",
+    "flower_shape": "hibisco",
+    "bloom_duration": "1 día",
     "calyx_color": "deep_red",
     "edible_parts": "cálices"
   },
@@ -51,10 +51,10 @@
         "5": ["transplant", "sow_outdoor"],
         "6": ["water_regularly", "harvest_young_leaves"],
         "7": ["water_regularly", "fertilize", "harvest_leaves"],
-        "8": ["water_regularly", "deadhead", "monitor_flower_development"],
+        "8": ["water_regularly", "deadhead"pest_monitoring"],
         "9": ["water_regularly", "harvest_calyces"],
         "10": ["harvest_calyces", "harvest_seeds"],
-        "11": ["final_harvest", "prepare_winter"]
+        "11": ["harvest_main", "prepare_winter"]
       }
     }
   },
@@ -67,7 +67,7 @@
       "plant_distance": 90,
       "row_distance": 120
     },
-    "companion_plants": ["basil", "marigold", "tomato"],
+    "companion_plants": ["albahaca", "margarita", "tomate"],
     "temperature_range": [18, 35],
     "special_care": "Planta comestible y medicinal, requiere calor para producir frutos"
   },

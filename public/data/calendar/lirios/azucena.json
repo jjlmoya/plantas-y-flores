@@ -1,15 +1,56 @@
 {
   "key": "azucena",
   "plant_info": {
-    "common_names": [
-      "Azucena"
-    ],
+    "common_names": ["Azucena", "Lirio de San Antonio", "Lirio de la Madonna"],
     "scientific_name": "Lilium candidum",
-    "difficulty": "beginner"
+    "family": "Liliaceae",
+    "type": "perennial",
+    "difficulty": "beginner",
+    "growth_habit": "upright",
+    "origin": "EU"
   },
   "flower_data": {
-    "fragrance": "strong",
-    "color": "white"
+    "colors": ["white"],
+    "fragrance_level": "strong",
+    "flower_shape": "trompeta",
+    "size": "large",
+    "bloom_duration": "3_semanas"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [8, 9],
+      "soil_temperature_min": 8
+    },
+    "flowering": {
+      "best_months": [6, 7],
+      "peak_months": [6]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["fertilize", "mulching"],
+        "4": ["water_regularly"],
+        "5": ["water_regularly", "staking"],
+        "6": ["water_regularly", "deadhead"],
+        "7": ["water_regularly", "deadhead"],
+        "8": ["planting", "reduce_watering"],
+        "9": ["planting", "prepare_winter"],
+        "10": ["mulching"],
+        "11": ["mulching"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [7.0, 8.0],
+    "temperature_range": [-15, 30],
+    "spacing": {
+      "plant_distance": 30,
+      "row_distance": 45
+    },
+    "companion_plants": ["rosa", "delphinium", "peonía"],
+    "special_care": "Plantación temprana en agosto, prefiere suelo alcalino"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/10/lily-1159927_1920-325x217.webp",

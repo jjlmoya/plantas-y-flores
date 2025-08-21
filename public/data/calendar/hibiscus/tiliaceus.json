@@ -13,8 +13,8 @@
   "flower_data": {
     "size": "large",
     "colors": ["yellow", "orange", "red"],
-    "flower_shape": "hibiscus",
-    "bloom_duration": "1_day",
+    "flower_shape": "hibisco",
+    "bloom_duration": "1 día",
     "color_change": true,
     "daily_color_progression": "yellow_to_orange_to_red"
   },
@@ -32,16 +32,16 @@
     },
     "care_calendar": {
       "monthly_tasks": {
-        "3": ["pruning", "prepare_coastal_beds"],
-        "4": ["planting", "salt_tolerance_check"],
+        "3": ["prune_main", "prepare_coastal_beds"],
+        "4": ["planting", "pest_monitoring"],
         "5": ["planting", "water_establishment"],
         "6": ["water_regularly", "deadhead"],
         "7": ["water_regularly", "deadhead", "fertilize"],
         "8": ["water_regularly", "deadhead"],
         "9": ["water_regularly", "deadhead"],
         "10": ["water_regularly", "deadhead"],
-        "11": ["reduce_watering", "windbreak_check"],
-        "12": ["minimal_care"]
+        "11": ["reduce_watering", "prepare_winter"],
+        "12": ["prepare_winter"]
       }
     }
   },
@@ -55,7 +55,7 @@
       "plant_distance": 300,
       "row_distance": 400
     },
-    "companion_plants": ["coconut_palm", "pandanus", "casuarina"],
+    "companion_plants": ["palmera", "pandano", "casuarina"],
     "temperature_range": [15, 35],
     "special_care": "Tolerante a suelos salinos y vientos costeros, ideal para jardines marítimos"
   },

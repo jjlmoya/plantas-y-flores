@@ -1,11 +1,56 @@
 {
   "key": "martagon",
   "plant_info": {
+    "common_names": ["Martagón", "Lirio Martagón", "Turk's Cap Lily"],
     "scientific_name": "Lilium martagon",
-    "common_names": [
-      "Martagón"
-    ],
-    "difficulty": "beginner"
+    "family": "Liliaceae",
+    "type": "perennial",
+    "difficulty": "beginner",
+    "growth_habit": "upright",
+    "origin": "EU"
+  },
+  "flower_data": {
+    "colors": ["pink", "purple", "red", "white"],
+    "fragrance_level": "mild",
+    "flower_shape": "recurvado",
+    "size": "medium",
+    "bloom_duration": "4_semanas"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [9, 10, 11],
+      "soil_temperature_min": 5
+    },
+    "flowering": {
+      "best_months": [6, 7, 8],
+      "peak_months": [7]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["fertilize", "mulching"],
+        "4": ["water_regularly"],
+        "5": ["water_regularly", "staking"],
+        "6": ["water_regularly", "deadhead"],
+        "7": ["water_regularly", "deadhead"],
+        "8": ["water_regularly", "deadhead"],
+        "9": ["planting", "reduce_watering"],
+        "10": ["planting", "prepare_winter"],
+        "11": ["planting", "mulching"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "partial_shade",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.5],
+    "temperature_range": [-25, 25],
+    "spacing": {
+      "plant_distance": 25,
+      "row_distance": 35
+    },
+    "companion_plants": ["helechos", "astilbe", "hosta"],
+    "special_care": "Nativo de Europa, prefiere sombra parcial y suelos bien drenados"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/11/azucena-peruana.webp"

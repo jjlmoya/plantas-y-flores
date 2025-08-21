@@ -14,7 +14,7 @@
     "size": "large",
     "colors": ["yellow", "red"],
     "flower_shape": "hibiscus",
-    "bloom_duration": "1_day"
+    "bloom_duration": "1 día"
   },
   "calendar_data": {
     "sowing": {

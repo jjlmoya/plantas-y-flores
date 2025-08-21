@@ -4,7 +4,9 @@
     "scientific_name": "Hibiscus",
     "family": "Malvaceae",
     "type": "perennial",
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "growth_habit": "upright",
+    "origin": "various"
   },
   "calendar_data": {
     "planting": {
@@ -71,7 +73,8 @@
           "moderate_watering"
         ],
         "11": [
-          "prune_shoots"
+          "prune_shoots",
+          "prepare_winter"
         ]
       }
     }
@@ -87,6 +90,15 @@
     "spacing": {
       "plant_distance": 100,
       "row_distance": 120
-    }
+    },
+    "companion_plants": ["lantana", "pentas", "gardenia"],
+    "temperature_range": [15, 35],
+    "special_purposes": ["attracts_pollinators", "ground_cover"]
+  },
+  "flower_data": {
+    "colors": ["red", "pink", "white", "yellow", "orange", "purple"],
+    "fragrance_level": "mild",
+    "flower_shape": "trompeta",
+    "bloom_duration": "1 día"
   }
 }

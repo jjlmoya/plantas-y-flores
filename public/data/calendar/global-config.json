@@ -12,24 +12,26 @@
     "install_supports",
     "moderate_watering",
     "heavy_watering",
-    "light_watering",
     "mulching",
     "prune_shoots",
     "prune_main",
-    "deadheading",
     "fertilize",
     "pest_monitoring",
     "harvest_early",
     "harvest_main",
     "harvest_late",
     "plant_cleanup",
-    "seed_collection",
     "water_restriction",
     "thinning",
     "pinching",
     "staking",
     "weeding",
-    "soil_preparation"
+    "soil_preparation",
+    "shape_tree",
+    "dormant_protection",
+    "harvest_young_leaves",
+    "harvest_leaves",
+    "harvest_calyces"
   ],
   "soil_types": [
     "well_drained",
@@ -45,7 +47,9 @@
     "poor",
     "rocky",
     "moist",
-    "dry"
+    "dry",
+    "moist_well_drained",
+    "sandy_well_drained"
   ],
   "sun_requirements": [
     "full_sun",
@@ -53,7 +57,8 @@
     "partial_shade",
     "full_shade",
     "morning_sun",
-    "afternoon_shade"
+    "afternoon_shade",
+    "full_sun_partial_shade"
   ],
   "water_needs": [
     "very_low",
@@ -219,6 +224,12 @@
     "magenta",
     "burgundy"
   ],
+  "flower_sizes": [
+    "small",
+    "medium",
+    "large",
+    "extra_large"
+  ],
   "fragrance_levels": [
     "none",
     "mild",
@@ -287,7 +298,7 @@
       "planting": "🌳",
       "pruning": "✂️",
       "watering": "💧",
-      "deadheading": "🌸",
+      "deadhead": "🥀",
       "mulching": "🍃",
       "flowering": "🌸",
       "monitor_growth": "📈",
@@ -305,7 +316,6 @@
       "fertilize_seedlings": "🧪",
       "water_regularly": "💧",
       "water_content": "📊",
-      "enjoy_fragrance": "👃",
       "lift_tubers": "⬆️",
       "lifting_time": "⏰",
       "prepare_winter": "❄️",
@@ -355,15 +365,21 @@
       "final_seed_harvest": "🌾",
       "clear_beds": "🧹",
       "prune_main": "✂️",
-      "deadhead": "🥀",
+      "prune_shoots": "✂️",
       "remove_runners": "✂️",
       "plan_next_season": "📋",
       "allow_self_seed": "🌱",
       "water_sparingly": "💧",
-      "seed_collection_ornamental": "🌰",
       "cure_beans": "🌡️",
       "minimal_care": "🌿",
       "jam_making": "🍯",
+      "shape_tree": "✂️",
+      "staking": "🏗️",
+      "pinching": "✂️",
+      "dormant_protection": "🛡️",
+      "harvest_young_leaves": "🌱",
+      "harvest_leaves": "🍃",
+      "harvest_calyces": "🌺",
       "default": "•"
     },
     "task_priorities": {
@@ -377,7 +393,6 @@
       "pest_monitoring": "medium",
       "watering": "medium",
       "plant_cleanup": "low",
-      "deadheading": "low",
       "mulching": "low",
       "flowering": "medium",
       "monitor_growth": "medium",
@@ -395,7 +410,6 @@
       "fertilize_seedlings": "high",
       "water_regularly": "medium",
       "water_content": "low",
-      "enjoy_fragrance": "low",
       "lift_tubers": "high",
       "lifting_time": "high",
       "prepare_winter": "high",
@@ -442,7 +456,15 @@
       "final_seed_harvest": "high",
       "clear_beds": "medium",
       "prune_main": "high",
-      "deadhead": "medium"
+      "prune_shoots": "medium",
+      "deadhead": "medium",
+      "shape_tree": "high",
+      "staking": "medium",
+      "pinching": "medium",
+      "dormant_protection": "high",
+      "harvest_young_leaves": "medium",
+      "harvest_leaves": "medium",
+      "harvest_calyces": "high"
     },
     "activity_colors": {
       "sowing": "#48bb78",
@@ -471,7 +493,6 @@
       "fertilize_seedlings": "#48bb78",
       "water_regularly": "#4299e1",
       "water_content": "#4299e1",
-      "enjoy_fragrance": "#d53f8c",
       "lift_tubers": "#9f7aea",
       "lifting_time": "#805ad5",
       "prepare_winter": "#38b2ac",
@@ -518,7 +539,15 @@
       "final_seed_harvest": "#ed8936",
       "clear_beds": "#718096", 
       "prune_main": "#48bb78",
-      "deadhead": "#d53f8c"
+      "prune_shoots": "#48bb78",
+      "deadhead": "#d53f8c",
+      "shape_tree": "#48bb78",
+      "staking": "#48bb78",
+      "pinching": "#48bb78",
+      "dormant_protection": "#38b2ac",
+      "harvest_young_leaves": "#ed8936",
+      "harvest_leaves": "#ed8936",
+      "harvest_calyces": "#ed8936"
     },
     "translation_strings": {
       "es": {
@@ -528,16 +557,23 @@
         "full_shade": "Sombra completa",
         "morning_sun": "Sol matutino",
         "afternoon_shade": "Sombra vespertina",
+        "full_sun_partial_shade": "Sol directo/sombra parcial",
         "well_drained": "Bien drenado",
         "well_drained_fertile": "Bien drenado y fértil",
         "sandy": "Arenoso",
         "clay": "Arcilloso",
         "organic_rich": "Rico en materia orgánica",
+        "moist_well_drained": "Húmedo bien drenado",
+        "sandy_well_drained": "Arenoso bien drenado",
         "very_low": "Muy bajo",
         "low": "Bajo",
         "moderate": "Moderado",
         "high": "Alto",
         "very_high": "Muy alto",
+        "small": "Pequeña",
+        "medium": "Mediana",
+        "large": "Grande",
+        "extra_large": "Extra grande",
         "beginner": "Principiante",
         "intermediate": "Intermedio",
         "advanced": "Avanzado",
@@ -558,7 +594,7 @@
   },
   "companion_plants": {
     "tomate": {
-      "beneficial": ["albahaca", "manzanilla", "petunia", "caléndula", "ajo", "cebolla"],
+      "beneficial": ["albahaca", "manzanilla", "petunia", "margarita", "ajo", "cebolla"],
       "neutral": ["lechuga", "zanahoria", "rábano"],
       "avoid": ["hinojo", "nogal", "brócoli"]
     },
@@ -598,7 +634,7 @@
       "avoid": ["pepino", "plantas de crecimiento rápido"]
     },
     "patata": {
-      "beneficial": ["tomillo", "romero", "caléndula", "frijoles"],
+      "beneficial": ["tomillo", "romero", "margarita", "frijoles"],
       "neutral": ["maíz", "col"],
       "avoid": ["tomate", "girasol", "calabaza"]
     },

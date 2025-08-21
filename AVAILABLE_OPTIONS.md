@@ -67,7 +67,6 @@ Las siguientes 121 tareas únicas están disponibles para usar en `care_calendar
 - `light_pruning` - Poda ligera
 - `major_pruning` - Poda mayor
 - `deadhead` - Quitar flores muertas
-- `deadheading` - Quitando flores muertas
 - `deadhead_spent` - Quitar flores gastadas
 - `deadhead_daily` - Quitar flores muertas diariamente
 - `pinch_flowers` - Pellizcar flores
@@ -82,11 +81,12 @@ Las siguientes 121 tareas únicas están disponibles para usar en `care_calendar
 - `install_supports` - Instalar soportes
 - `install_trellis` - Instalar enrejado
 - `stake_plants` - Entutorar plantas
-- `stake_tall_varieties` - Entutorar variedades altas
 - `prepare_supports` - Preparar soportes
 - `support_heavy_flowers` - Soportar flores pesadas
 - `support_pods` - Soportar vainas
 - `train_climbing` - Entrenar trepadoras
+- `staking` - Entutorado
+- `pinching` - Despunte
 - `first_growth_support` - Primer soporte crecimiento
 - `check_support` - Revisar soporte
 
@@ -142,7 +142,6 @@ Las siguientes 121 tareas únicas están disponibles para usar en `care_calendar
 ### Tareas de Disfrute y Observación
 - `enjoy_blooms` - Disfrutar floraciones
 - `enjoy_color_changes` - Disfrutar cambios color
-- `enjoy_fragrance` - Disfrutar fragancia
 - `first_blooms` - Primeras floraciones
 - `late_blooms` - Floraciones tardías
 
@@ -150,7 +149,6 @@ Las siguientes 121 tareas únicas están disponibles para usar en `care_calendar
 - `plant_cleanup` - Limpieza planta
 - `clear_beds` - Limpiar camas
 - `plan_next_season` - Planificar próxima temporada
-- `seed_collection_ornamental` - Recolección semillas ornamentales
 - `minimal_care` - Cuidado mínimo
 
 ## Condiciones de Crecimiento (growing_conditions)

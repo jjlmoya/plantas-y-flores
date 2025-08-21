@@ -38,7 +38,7 @@
         "6": ["install_supports"],
         "7": ["monitor_pods"],
         "8": ["monitor_pods", "reduce_watering"],
-        "9": ["seed_collection_ornamental", "plant_cleanup", "plan_next_season"]
+        "9": ["harvest_seeds", "plant_cleanup", "plan_next_season"]
       }
     }
   },
@@ -51,7 +51,7 @@
       "plant_distance": 30,
       "row_distance": 40
     },
-    "companion_plants": ["calendula", "nigella", "centaurea"],
+    "companion_plants": ["margarita", "nigella", "centaurea"],
     "avoid_plants": ["plantas_agresivas"],
     "drainage": "good",
     "temperature_range": [5, 30],

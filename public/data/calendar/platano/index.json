@@ -1,6 +1,8 @@
 {
   "plant_info": {
     "category": "platano",
+    "scientific_name": "Musa × paradisiaca",
+    "family": "Musaceae",
     "type": "perennial",
     "difficulty": "intermediate"
   },

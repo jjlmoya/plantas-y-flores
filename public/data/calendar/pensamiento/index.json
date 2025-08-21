@@ -1,8 +1,10 @@
 {
   "plant_info": {
+    "category": "pensamiento",
+    "scientific_name": "Viola × wittrockiana",
+    "family": "Violaceae",
     "type": "annual",
-    "difficulty": "beginner",
-    "category": "pensamiento"
+    "difficulty": "beginner"
   },
   "calendar_data": {
     "sowing": {

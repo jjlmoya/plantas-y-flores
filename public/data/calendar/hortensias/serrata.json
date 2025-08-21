@@ -1,11 +1,62 @@
 {
   "key": "serrata",
   "plant_info": {
-    "common_names": [
-      "Serrata"
-    ],
-    "scientific_name": "Esta variedad es",
-    "difficulty": "beginner"
+    "common_names": ["Serrata", "Hortensia de Montaña", "Mountain Hydrangea"],
+    "scientific_name": "Hydrangea serrata",
+    "family": "Hydrangeaceae",
+    "type": "perennial",
+    "difficulty": "beginner",
+    "growth_habit": "compact",
+    "origin": "JP"
+  },
+  "flower_data": {
+    "colors": ["blue", "pink", "white", "purple"],
+    "fragrance_level": "mild",
+    "flower_shape": "plato",
+    "size": "small",
+    "bloom_duration": "8_semanas",
+    "ph_color_change": true
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 5, 10],
+      "soil_temperature_min": 8
+    },
+    "flowering": {
+      "best_months": [6, 7, 8, 9],
+      "peak_months": [7, 8]
+    },
+    "pruning": {
+      "best_months": [2, 3],
+      "light_only": true
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "2": ["prune_shoots", "fertilize"],
+        "3": ["planting", "mulching"],
+        "4": ["planting", "water_regularly"],
+        "5": ["water_regularly", "fertilize"],
+        "6": ["water_regularly", "deadhead"],
+        "7": ["water_regularly", "deadhead"],
+        "8": ["water_regularly", "deadhead"],
+        "9": ["reduce_watering"],
+        "10": ["planting", "prepare_winter"],
+        "11": ["mulching", "prepare_winter"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "partial_shade",
+    "water_needs": "high",
+    "soil_type": "organic_rich",
+    "soil_ph": [5.0, 7.0],
+    "temperature_range": [-15, 30],
+    "spacing": {
+      "plant_distance": 80,
+      "row_distance": 100
+    },
+    "companion_plants": ["astilbe", "hosta", "helechos"],
+    "special_care": "Variedad compacta, ideal para espacios pequeños"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/12/plate-hydrangea-397243_1920-325x244.webp",

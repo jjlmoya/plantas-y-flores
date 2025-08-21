@@ -1,18 +1,57 @@
 {
   "key": "paz",
   "plant_info": {
-    "common_names": [
-      "Paz"
-    ],
-    "scientific_name": "Spathiphyllum",
-    "origin": "al",
+    "common_names": ["Paz", "Lirio de la Paz", "Espatifilo"],
+    "scientific_name": "Spathiphyllum wallisii",
+    "family": "Araceae",
+    "type": "perennial",
     "difficulty": "beginner",
+    "growth_habit": "clumping",
+    "origin": "SA",
     "indoor_suitable": true
   },
-  "flower_data": {},
+  "flower_data": {
+    "colors": ["white"],
+    "fragrance_level": "none",
+    "flower_shape": "espata",
+    "size": "medium",
+    "bloom_duration": "6_semanas"
+  },
+  "calendar_data": {
+    "flowering": {
+      "best_months": [4, 5, 6, 7, 8, 9],
+      "peak_months": [5, 6, 7]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["water_regularly", "check_humidity"],
+        "2": ["water_regularly", "fertilize"],
+        "3": ["water_regularly", "fertilize"],
+        "4": ["water_regularly", "deadhead"],
+        "5": ["water_regularly", "deadhead"],
+        "6": ["water_regularly", "deadhead"],
+        "7": ["water_regularly", "deadhead"],
+        "8": ["water_regularly", "deadhead"],
+        "9": ["water_regularly", "deadhead"],
+        "10": ["reduce_watering"],
+        "11": ["reduce_watering"],
+        "12": ["water_regularly"]
+      }
+    }
+  },
   "growing_conditions": {
     "sun_requirements": "partial_shade",
-    "water_needs": "high"
+    "water_needs": "high",
+    "soil_type": "organic_rich",
+    "soil_ph": [5.5, 6.5],
+    "temperature_range": [18, 28],
+    "humidity": "high",
+    "spacing": {
+      "plant_distance": 40,
+      "row_distance": 50
+    },
+    "companion_plants": ["pothos", "filodendro", "anturio"],
+    "special_care": "Planta tropical de interior, necesita alta humedad y sombra"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/12/peace-lily-1240630_1920-217x325.webp",

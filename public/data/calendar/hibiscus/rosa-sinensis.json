@@ -13,8 +13,8 @@
   "flower_data": {
     "size": "large",
     "colors": ["red", "pink", "white", "yellow", "orange"],
-    "flower_shape": "trumpet",
-    "bloom_duration": "1_day"
+    "flower_shape": "trompeta",
+    "bloom_duration": "1 día"
   },
   "calendar_data": {
     "planting": {
@@ -30,16 +30,16 @@
     },
     "care_calendar": {
       "monthly_tasks": {
-        "3": ["pruning", "fertilize"],
+        "3": ["prune_main", "fertilize"],
         "4": ["planting", "fertilize"],
         "5": ["planting", "water_regularly"],
         "6": ["deadhead", "water_regularly", "fertilize"],
         "7": ["deadhead", "water_regularly"],
         "8": ["deadhead", "water_regularly"],
         "9": ["deadhead", "reduce_watering"],
-        "10": ["pruning", "prepare_winter"],
-        "11": ["protect_frost"],
-        "12": ["protect_frost"]
+        "10": ["prune_main", "prepare_winter"],
+        "11": ["prepare_winter"],
+        "12": ["prepare_winter"]
       }
     }
   },
@@ -52,7 +52,7 @@
       "plant_distance": 150,
       "row_distance": 200
     },
-    "companion_plants": ["bougainvillea", "gardenia"],
+    "companion_plants": ["buganvilla", "gardenia"],
     "temperature_range": [15, 35],
     "humidity_needs": "high",
     "special_care": "Sensible a heladas, necesita protección en invierno"

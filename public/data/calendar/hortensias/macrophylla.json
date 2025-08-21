@@ -4,8 +4,66 @@
     "common_names": [
       "Macrophylla"
     ],
-    "scientific_name": "Es una gran",
+    "scientific_name": "Hydrangea macrophylla",
+    "family": "Hydrangeaceae",
+    "type": "perennial",
+    "growth_habit": "bushy",
+    "origin": "JP"
     "difficulty": "beginner"
+  },
+  "flower_data": {
+    "colors": ["blue", "pink", "white", "purple"],
+    "fragrance_level": "mild",
+    "flower_shape": "globo",
+    "size": "large",
+    "bloom_duration": "8_semanas",
+    "ph_color_change": true
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 5, 10],
+      "soil_temperature_min": 10
+    },
+    "flowering": {
+      "best_months": [6, 7, 8, 9],
+      "peak_months": [7, 8]
+    },
+    "pruning": {
+      "best_months": [2, 3],
+      "light_only": true
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "2": ["prune_shoots", "fertilize"],
+        "3": ["planting", "mulching"],
+        "4": ["planting", "water_regularly"],
+        "5": ["water_regularly", "fertilize"],
+        "6": ["water_regularly", "deadhead"],
+        "7": ["water_regularly", "deadhead"],
+        "8": ["water_regularly", "deadhead"],
+        "9": ["reduce_watering"],
+        "10": ["planting", "prepare_winter"],
+        "11": ["mulching", "prepare_winter"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "partial_shade",
+    "water_needs": "high",
+    "soil_type": "organic_rich",
+    "soil_ph": [5.0, 7.0],
+    "temperature_range": [-10, 30],
+    "spacing": {
+      "plant_distance": 100,
+      "row_distance": 120
+    },
+    "companion_plants": ["astilbe", "hosta", "helechos"],
+    "special_care": "Color de flores cambia según pH del suelo"
+  },
+  "soil_ph_effects": {
+    "acidic": "Flores azules (pH 4.5-5.5)",
+    "neutral": "Flores rosas/rojas (pH 6.0-7.0)",
+    "alkaline": "Flores blancas (pH 7.0+)"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/12/hydrangeas-177317_1920-325x244.webp",

@@ -15,7 +15,7 @@
     "colors": ["white", "pink", "red"],
     "flower_shape": "hibiscus",
     "color_change": true,
-    "bloom_duration": "3_days",
+    "bloom_duration": "3 días",
     "daily_color_progression": "white_to_pink_to_red"
   },
   "calendar_data": {
@@ -42,7 +42,7 @@
         "9": ["water_regularly", "enjoy_color_changes"],
         "10": ["water_regularly", "deadhead"],
         "11": ["reduce_watering", "prepare_winter"],
-        "12": ["protect_frost"]
+        "12": ["prepare_winter"]
       }
     }
   },

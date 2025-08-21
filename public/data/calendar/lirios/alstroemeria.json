@@ -1,13 +1,57 @@
 {
   "key": "alstroemeria",
   "plant_info": {
-    "common_names": [
-      "Alstroemeria"
-    ],
-    "scientific_name": "Lirio de campo",
-    "difficulty": "beginner"
+    "common_names": ["Alstroemeria", "Lirio Peruano", "Lirio de los Incas"],
+    "scientific_name": "Alstroemeria aurea",
+    "family": "Alstroemeriaceae",
+    "type": "perennial",
+    "difficulty": "beginner",
+    "growth_habit": "clumping",
+    "origin": "SA"
   },
-  "flower_data": {},
+  "flower_data": {
+    "colors": ["yellow", "orange", "pink", "red", "purple", "white"],
+    "fragrance_level": "mild",
+    "flower_shape": "trompeta",
+    "size": "medium",
+    "bloom_duration": "8_semanas"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 9, 10],
+      "soil_temperature_min": 10
+    },
+    "flowering": {
+      "best_months": [5, 6, 7, 8, 9],
+      "peak_months": [6, 7, 8]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["planting", "fertilize"],
+        "4": ["planting", "water_regularly", "mulching"],
+        "5": ["water_regularly", "fertilize"],
+        "6": ["water_regularly", "deadhead"],
+        "7": ["water_regularly", "deadhead"],
+        "8": ["water_regularly", "deadhead"],
+        "9": ["planting", "deadhead", "reduce_watering"],
+        "10": ["planting", "prepare_winter"],
+        "11": ["mulching", "prepare_winter"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "partial_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.5],
+    "temperature_range": [-5, 28],
+    "spacing": {
+      "plant_distance": 30,
+      "row_distance": 45
+    },
+    "companion_plants": ["rosa", "peonía", "delphinium"],
+    "special_care": "Originaria de Sudamérica, excelente flor de corte"
+  },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/11/plants-2539283_640.webp",
     "article_date": "2018-11-20T19:01:37",

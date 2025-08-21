@@ -138,7 +138,7 @@ const categoryDefaults = {
             },
             pruning: {
                 main_pruning: [2, 3],
-                deadheading: [5, 6, 7, 8, 9],
+                deadhead: [5, 6, 7, 8, 9],
                 light_pruning: [11]
             },
             care_calendar: {
@@ -147,10 +147,10 @@ const categoryDefaults = {
                     "3": ["fertilize", "mulching"],
                     "4": ["moderate_watering"],
                     "5": ["pest_monitoring", "fertilize"],
-                    "6": ["moderate_watering", "deadheading"],
-                    "7": ["moderate_watering", "deadheading"],
-                    "8": ["moderate_watering", "deadheading"],
-                    "9": ["moderate_watering", "deadheading"],
+                    "6": ["moderate_watering", "deadhead"],
+                    "7": ["moderate_watering", "deadhead"],
+                    "8": ["moderate_watering", "deadhead"],
+                    "9": ["moderate_watering", "deadhead"],
                     "10": ["moderate_watering"],
                     "11": ["prune_shoots", "mulching"]
                 }

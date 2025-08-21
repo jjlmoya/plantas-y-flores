@@ -12,9 +12,9 @@
   },
   "flower_data": {
     "size": "large",
-    "colors": ["red", "scarlet"],
-    "flower_shape": "star",
-    "bloom_duration": "1_day",
+    "colors": ["red", "escarlata"],
+    "flower_shape": "estrella",
+    "bloom_duration": "1 día",
     "petal_count": 5,
     "unique_feature": "Pétalos muy separados en forma de estrella"
   },
@@ -33,15 +33,17 @@
     },
     "care_calendar": {
       "monthly_tasks": {
+        "1": ["dormant_protection"],
+        "2": ["dormant_protection"],
         "3": ["prepare_wet_beds", "soil_preparation"],
         "4": ["planting", "fertilize"],
         "5": ["planting", "water_establishment"],
-        "6": ["water_regularly", "first_blooms"],
+        "6": ["planting", "water_regularly", "deadhead
         "7": ["water_regularly", "deadhead", "fertilize"],
         "8": ["water_regularly", "deadhead"],
         "9": ["water_regularly", "deadhead"],
-        "10": ["water_regularly", "late_blooms"],
-        "11": ["cut_back_stems", "prepare_dormancy"],
+        "10": ["water_regularly", "deadhead
+        "11": ["prune_main", "prepare_winter"],
         "12": ["dormant_protection"]
       }
     }
@@ -56,7 +58,7 @@
       "plant_distance": 150,
       "row_distance": 200
     },
-    "companion_plants": ["cardinal_flower", "swamp_milkweed", "joe_pye_weed"],
+    "companion_plants": ["cardenal", "asclepias", "eupatorio"],
     "temperature_range": [15, 35],
     "special_care": "Requiere suelos constantemente húmedos, ideal para jardines acuáticos"
   },

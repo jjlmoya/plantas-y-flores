@@ -1,10 +1,60 @@
 {
   "key": "arborescens",
   "plant_info": {
-    "common_names": [
-      "Arborescens"
-    ],
-    "scientific_name": "Descubre una de"
+    "common_names": ["Arborescens", "Hortensia Suave", "Smooth Hydrangea"],
+    "scientific_name": "Hydrangea arborescens",
+    "family": "Hydrangeaceae",
+    "type": "perennial",
+    "difficulty": "beginner",
+    "growth_habit": "bushy",
+    "origin": "US"
+  },
+  "flower_data": {
+    "colors": ["white", "cream"],
+    "fragrance_level": "mild",
+    "flower_shape": "globo",
+    "size": "large",
+    "bloom_duration": "8_semanas"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 5, 10],
+      "soil_temperature_min": 10
+    },
+    "flowering": {
+      "best_months": [6, 7, 8, 9],
+      "peak_months": [7, 8]
+    },
+    "pruning": {
+      "best_months": [2, 3]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "2": ["prune_main", "fertilize"],
+        "3": ["planting", "mulching"],
+        "4": ["planting", "water_regularly"],
+        "5": ["water_regularly", "fertilize"],
+        "6": ["water_regularly", "deadhead"],
+        "7": ["water_regularly", "deadhead"],
+        "8": ["water_regularly", "deadhead"],
+        "9": ["reduce_watering"],
+        "10": ["planting", "prepare_winter"],
+        "11": ["mulching", "prepare_winter"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "partial_shade",
+    "water_needs": "high",
+    "soil_type": "organic_rich",
+    "soil_ph": [5.5, 7.0],
+    "temperature_range": [-25, 30],
+    "spacing": {
+      "plant_distance": 120,
+      "row_distance": 150
+    },
+    "companion_plants": ["astilbe", "hosta", "helechos"],
+    "special_care": "Nativa de Estados Unidos, muy resistente al frío"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/12/Hydrangea_arborescens-325x242.webp",

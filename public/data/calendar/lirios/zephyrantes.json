@@ -1,13 +1,59 @@
 {
   "key": "zephyrantes",
   "plant_info": {
-    "common_names": [
-      "Zephyrantes"
-    ],
-    "scientific_name": "Muchos de vosotros",
-    "difficulty": "advanced"
+    "common_names": ["Zephyrantes", "Lirio de Lluvia", "Rain Lily"],
+    "scientific_name": "Zephyranthes candida",
+    "family": "Amaryllidaceae",
+    "type": "perennial",
+    "difficulty": "advanced",
+    "growth_habit": "clumping",
+    "origin": "SA"
   },
-  "flower_data": {},
+  "flower_data": {
+    "colors": ["white", "pink", "yellow"],
+    "fragrance_level": "mild",
+    "flower_shape": "embudo",
+    "size": "small",
+    "bloom_duration": "1_semana"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 9, 10],
+      "soil_temperature_min": 15
+    },
+    "flowering": {
+      "best_months": [7, 8, 9, 10],
+      "peak_months": [8, 9],
+      "rain_triggered": true
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["planting", "fertilize"],
+        "4": ["planting", "water_regularly"],
+        "5": ["water_regularly", "fertilize"],
+        "6": ["water_regularly"],
+        "7": ["water_regularly", "deadhead"],
+        "8": ["water_regularly", "deadhead"],
+        "9": ["planting", "deadhead", "fertilize"],
+        "10": ["planting", "deadhead"],
+        "11": ["reduce_watering", "prepare_winter"],
+        "12": ["prepare_winter"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.0],
+    "temperature_range": [5, 35],
+    "spacing": {
+      "plant_distance": 10,
+      "row_distance": 15
+    },
+    "companion_plants": ["agapanto", "iris", "narciso"],
+    "special_care": "Floración después de lluvias, necesita espacio limitado"
+  },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/02/zephyranthes-1107346_1920-325x217.webp",
     "article_date": "2018-02-22T19:22:45",

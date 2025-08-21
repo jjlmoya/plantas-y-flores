@@ -184,7 +184,7 @@ All categorical values must exist in `global-config.json`:
 #### Perennial Plants (roses, trees, shrubs)  
 - **planting**: When to plant new specimens
 - **flowering**: Blooming periods
-- **pruning**: Pruning schedules (main, light, deadheading)
+- **pruning**: Pruning schedules (main, light, deadhead)
 - **care_calendar**: Monthly maintenance tasks
 
 ## Inheritance System

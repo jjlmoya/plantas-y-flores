@@ -25,7 +25,7 @@
       "plant_distance": 40,
       "row_distance": 60
     },
-    "companion_plants": ["albahaca", "manzanilla", "caléndula", "ajo", "cebolla"]
+    "companion_plants": ["albahaca", "manzanilla", "margarita", "ajo", "cebolla"]
   },
   "harvest_data": {
     "weight_range": [10, 25],

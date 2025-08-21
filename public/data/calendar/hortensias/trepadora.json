@@ -1,11 +1,61 @@
 {
   "key": "trepadora",
   "plant_info": {
-    "common_names": [
-      "Trepadora"
-    ],
-    "scientific_name": "La hortensia trepadora",
-    "origin": "os"
+    "common_names": ["Trepadora", "Hortensia Trepadora", "Climbing Hydrangea"],
+    "scientific_name": "Hydrangea anomala",
+    "family": "Hydrangeaceae",
+    "type": "perennial",
+    "difficulty": "intermediate",
+    "growth_habit": "climbing",
+    "origin": "JP"
+  },
+  "flower_data": {
+    "colors": ["white", "cream"],
+    "fragrance_level": "mild",
+    "flower_shape": "plano",
+    "size": "medium",
+    "bloom_duration": "6_semanas"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 5, 10],
+      "soil_temperature_min": 10
+    },
+    "flowering": {
+      "best_months": [6, 7, 8],
+      "peak_months": [7]
+    },
+    "pruning": {
+      "best_months": [2, 3],
+      "after_flowering": true
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "2": ["prune_shoots", "fertilize"],
+        "3": ["planting", "mulching", "staking"],
+        "4": ["planting", "water_regularly", "staking"],
+        "5": ["water_regularly", "fertilize", "staking"],
+        "6": ["water_regularly", "deadhead"],
+        "7": ["water_regularly", "deadhead"],
+        "8": ["water_regularly", "deadhead"],
+        "9": ["reduce_watering"],
+        "10": ["planting", "prepare_winter"],
+        "11": ["mulching", "prepare_winter"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "partial_shade",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.0],
+    "temperature_range": [-20, 30],
+    "spacing": {
+      "plant_distance": 200,
+      "row_distance": 250
+    },
+    "companion_plants": ["clematis", "hiedra", "madreselva"],
+    "special_care": "Variedad trepadora única, necesita soporte para crecer"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/12/hydrangea-1398818_1920.webp",

@@ -1,6 +1,8 @@
 {
   "plant_info": {
     "category": "pina",
+    "scientific_name": "Ananas comosus",
+    "family": "Bromeliaceae",
     "type": "perennial",
     "difficulty": "advanced"
   },

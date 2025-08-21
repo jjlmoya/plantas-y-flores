@@ -13,9 +13,9 @@
   "flower_data": {
     "size": "medium",
     "colors": ["yellow", "cream"],
-    "flower_shape": "hibiscus",
+    "flower_shape": "hibisco",
     "center_color": "purple",
-    "bloom_duration": "few_hours",
+    "bloom_duration": "pocas horas",
     "daily_bloomer": true
   },
   "calendar_data": {
@@ -46,9 +46,9 @@
         "4": ["sow_indoor", "sow_outdoor"],
         "5": ["transplant", "sow_outdoor"],
         "6": ["transplant", "water_regularly"],
-        "7": ["water_regularly", "deadhead_daily"],
-        "8": ["water_regularly", "deadhead_daily"],
-        "9": ["water_regularly", "deadhead_daily"],
+        "7": ["water_regularly", "deadhead
+        "8": ["water_regularly", "deadhead
+        "9": ["water_regularly", "deadhead
         "10": ["reduce_watering", "harvest_seeds"]
       }
     }
@@ -62,7 +62,7 @@
       "plant_distance": 30,
       "row_distance": 40
     },
-    "companion_plants": ["marigold", "nasturtium", "cosmos"],
+    "companion_plants": ["margarita", "capuchina", "cosmos"],
     "temperature_range": [15, 35],
     "drought_tolerance": "high",
     "special_care": "Flores duran pocas horas, auto-siembra fácilmente"

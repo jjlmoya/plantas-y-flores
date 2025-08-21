@@ -15,7 +15,7 @@
     "colors": ["pink", "red", "white", "yellow"],
     "flower_shape": "hibiscus",
     "fragrance": "strong",
-    "bloom_duration": "1_day"
+    "bloom_duration": "1 día"
   },
   "calendar_data": {
     "sowing": {

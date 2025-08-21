@@ -40,7 +40,7 @@
         2,
         3
       ],
-      "deadheading": [
+      "deadhead": [
         5,
         6,
         7,
@@ -69,19 +69,19 @@
         ],
         "6": [
           "moderate_watering",
-          "deadheading"
+          "deadhead"
         ],
         "7": [
           "moderate_watering",
-          "deadheading"
+          "deadhead"
         ],
         "8": [
           "moderate_watering",
-          "deadheading"
+          "deadhead"
         ],
         "9": [
           "moderate_watering",
-          "deadheading"
+          "deadhead"
         ],
         "10": [
           "moderate_watering"

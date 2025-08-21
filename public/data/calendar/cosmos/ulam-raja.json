@@ -1,11 +1,74 @@
 {
   "key": "ulam-raja",
   "plant_info": {
-    "common_names": [
-      "Ulam Raja"
-    ],
-    "scientific_name": "Si quieres una",
-    "difficulty": "beginner"
+    "common_names": ["Ulam Raja", "Cosmos Comestible"],
+    "scientific_name": "Cosmos caudatus",
+    "family": "Asteraceae",
+    "type": "annual",
+    "difficulty": "beginner",
+    "growth_habit": "upright",
+    "origin": "MX"
+  },
+  "flower_data": {
+    "colors": ["pink", "white", "purple"],
+    "fragrance_level": "mild",
+    "flower_shape": "margarita",
+    "size": "small",
+    "bloom_duration": "10_semanas"
+  },
+  "calendar_data": {
+    "sowing": {
+      "indoor": {
+        "best_months": [3, 4],
+        "soil_temperature_min": 18
+      },
+      "outdoor": {
+        "best_months": [4, 5],
+        "soil_temperature_min": 15
+      }
+    },
+    "flowering": {
+      "best_months": [7, 8, 9],
+      "peak_months": [8]
+    },
+    "harvesting": {
+      "leaves": {
+        "best_months": [6, 7, 8, 9],
+        "harvest_indicators": ["young_tender_leaves"]
+      }
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["sow_indoor", "prepare_seedbeds"],
+        "4": ["sow_outdoor", "transplant"],
+        "5": ["transplant", "moderate_watering"],
+        "6": ["moderate_watering", "harvest_early"],
+        "7": ["harvest_main", "moderate_watering"],
+        "8": ["harvest_main", "deadhead"],
+        "9": ["harvest_late", "harvest_seeds"],
+        "10": ["plant_cleanup"],
+        "11": ["clear_beds"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained_fertile",
+    "soil_ph": [6.0, 7.0],
+    "temperature_range": [20, 30],
+    "spacing": {
+      "plant_distance": 25,
+      "row_distance": 40
+    },
+    "companion_plants": ["lechuga", "espinaca", "rábanos"],
+    "special_purposes": ["plantas-comestibles", "attracts_pollinators"]
+  },
+  "nutritional_properties": ["high_vitamin_c", "antioxidant_rich", "low_calorie"],
+  "culinary_uses": {
+    "edible_parts": ["hojas", "brotes_jóvenes"],
+    "preparation": ["ensaladas", "salteados", "sopas"],
+    "flavor_profile": "fresco, ligeramente picante"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/03/Nature-Flora-Decor-Flower-Pink-Bee-Petal-Summer-2824877-325x244.webp",

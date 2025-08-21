@@ -1,8 +1,12 @@
 {
   "plant_info": {
     "category": "hortensias",
+    "scientific_name": "Hydrangea",
+    "family": "Hydrangeaceae",
     "type": "perennial",
-    "difficulty": "intermediate"
+    "difficulty": "intermediate",
+    "growth_habit": "bushy",
+    "origin": "JP"
   },
   "calendar_data": {
     "planting": {
@@ -13,16 +17,41 @@
       ]
     },
     "flowering": {
-      "best_months": [
-        6,
-        7,
-        8,
-        9
-      ]
+      "best_months": [6, 7, 8, 9],
+      "peak_months": [7, 8]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "2": ["prune_main", "fertilize"],
+        "3": ["planting", "mulching"],
+        "4": ["planting", "water_regularly"],
+        "5": ["water_regularly", "fertilize"],
+        "6": ["water_regularly", "deadhead"],
+        "7": ["water_regularly", "deadhead"],
+        "8": ["water_regularly", "deadhead"],
+        "9": ["reduce_watering", "deadhead"],
+        "10": ["planting", "prepare_winter"],
+        "11": ["mulching", "prepare_winter"]
+      }
     }
   },
   "growing_conditions": {
     "sun_requirements": "partial_shade",
-    "water_needs": "high"
+    "water_needs": "high",
+    "soil_type": "organic_rich",
+    "soil_ph": [5.5, 7.0],
+    "temperature_range": [-15, 30],
+    "spacing": {
+      "plant_distance": 120,
+      "row_distance": 150
+    },
+    "companion_plants": ["astilbe", "hosta", "helechos"],
+    "special_purposes": ["attracts_pollinators", "ground_cover"]
+  },
+  "flower_data": {
+    "colors": ["white", "pink", "blue", "purple", "red"],
+    "fragrance_level": "mild",
+    "flower_shape": "globo",
+    "bloom_duration": "10_semanas"
   }
 }

@@ -39,7 +39,7 @@
         "3": ["monitor_growth", "fertilize_light"],
         "4": ["water_moderately", "mulching"],
         "5": ["install_supports"],
-        "6": ["deadheading"],
+        "6": ["deadhead"],
         "7": ["reduce_watering", "minimal_care"],
         "8": ["sowing", "minimal_care"],
         "9": ["sowing", "prepare_winter"],
