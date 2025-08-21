@@ -2,10 +2,97 @@
   "key": "alemana",
   "plant_info": {
     "common_names": [
-      "Alemana"
+      "Alemana",
+      "Manzanilla Verdadera",
+      "German Chamomile"
     ],
-    "scientific_name": "Esta variedad es",
-    "difficulty": "beginner"
+    "scientific_name": "Matricaria chamomilla",
+    "family": "Asteraceae",
+    "type": "annual",
+    "difficulty": "beginner",
+    "origin": "eu",
+    "mature_size": {
+      "height": [30, 60],
+      "width": [20, 40]
+    },
+    "growth_habit": "upright_bushy"
+  },
+  "calendar_data": {
+    "sowing": {
+      "outdoor": {
+        "best_months": [3, 4, 9],
+        "alternative_months": [2, 5, 8]
+      },
+      "indoor": {
+        "best_months": [2, 3, 8],
+        "alternative_months": [1, 4]
+      }
+    },
+    "transplanting": {
+      "best_months": [4, 5, 9],
+      "peak_months": [4, 9]
+    },
+    "flowering": {
+      "best_months": [6, 7, 8, 9],
+      "peak_months": [7, 8]
+    },
+    "harvesting": {
+      "best_months": [6, 7, 8, 9],
+      "peak_months": [7, 8],
+      "harvest_time": "morning"
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_ph": [6.0, 7.5],
+    "soil_type": "well_drained",
+    "temperature_range": [10, 25],
+    "humidity_requirements": "low",
+    "wind_tolerance": "excellent",
+    "spacing": {
+      "plant_distance": 15,
+      "row_distance": 25
+    }
+  },
+  "flower_data": {
+    "size": "small",
+    "colors": ["white", "yellow"],
+    "fragrance_level": "very_strong",
+    "flower_shape": "daisy",
+    "bloom_duration": "8 semanas",
+    "harvest_indicators": [
+      "white_petals_fully_open",
+      "yellow_center_prominent",
+      "strong_apple_scent",
+      "morning_harvest_best"
+    ],
+    "preservation_methods": ["air_drying", "freeze_drying", "oil_infusion"]
+  },
+  "variety_characteristics": {
+    "flavor_profile": "sweet_apple_honey",
+    "medicinal_potency": "high",
+    "self_seeding": "excellent",
+    "disease_resistance": "very_good",
+    "cold_tolerance": "good",
+    "heat_tolerance": "moderate",
+    "unique_features": [
+      "highest_chamazulene_content",
+      "sweetest_flavor",
+      "most_medicinal_potent",
+      "true_chamomile"
+    ]
+  },
+  "medicinal_properties": {
+    "primary_compounds": ["chamazulene", "bisabolol", "apigenin"],
+    "therapeutic_uses": [
+      "digestive_disorders",
+      "anxiety_insomnia", 
+      "skin_inflammation",
+      "menstrual_cramps"
+    ],
+    "preparation_strength": "high_potency",
+    "contraindications": ["ragweed_allergy"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/01/chamomile-2711568_1920-325x217.webp",

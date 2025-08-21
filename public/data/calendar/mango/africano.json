@@ -2,10 +2,96 @@
   "key": "africano",
   "plant_info": {
     "common_names": [
-      "Africano"
+      "Africano",
+      "Wild Mango",
+      "African Mango",
+      "Bush Mango"
     ],
     "scientific_name": "Irvingia gabonensis",
-    "origin": "so"
+    "family": "Irvingiaceae",
+    "type": "perennial_tree",
+    "difficulty": "advanced",
+    "origin": "so",
+    "mature_size": {
+      "height": [1500, 4000],
+      "width": [800, 2000]
+    },
+    "growth_habit": "large_tree"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 5],
+      "regional_variations": {
+        "tropical": [1, 2, 3, 4, 5, 6, 10, 11, 12],
+        "subtropical": [3, 4, 5]
+      }
+    },
+    "flowering": {
+      "best_months": [12, 1, 2],
+      "peak_months": [1]
+    },
+    "harvesting": {
+      "best_months": [7, 8, 9, 10],
+      "peak_months": [8, 9],
+      "harvest_season": "late"
+    },
+    "pruning": {
+      "main_pruning": [11, 12],
+      "light_pruning": [10],
+      "selective_pruning": [6, 7]
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun_partial_shade",
+    "water_needs": "high",
+    "soil_ph": [5.0, 6.5],
+    "soil_type": "deep_fertile_well_drained",
+    "temperature_range": [22, 30],
+    "humidity_requirements": "very_high",
+    "wind_tolerance": "good",
+    "spacing": {
+      "plant_distance": 1200,
+      "row_distance": 1500
+    }
+  },
+  "fruit_data": {
+    "size": "large",
+    "weight_range": [200, 500],
+    "skin_color": "dark_green_brown",
+    "flesh_color": "white_yellow",
+    "texture": "firm",
+    "fiber_content": "low",
+    "sweetness_level": "mild",
+    "ripening_months": [7, 8, 9, 10],
+    "harvest_indicators": [
+      "fruit_drop",
+      "skin_color_change",
+      "slight_softening",
+      "natural_abscission"
+    ],
+    "storage_life": {
+      "fresh": "1-2 weeks",
+      "processed": "6+ months"
+    },
+    "culinary_uses": ["medicinal", "oil_extraction", "food_supplement", "traditional_medicine"]
+  },
+  "variety_characteristics": {
+    "tree_size": "large",
+    "productivity": "moderate",
+    "disease_resistance": "very_good",
+    "cold_tolerance": "very_poor",
+    "drought_tolerance": "poor",
+    "unique_features": [
+      "medicinal_properties",
+      "seed_oil_production",
+      "weight_management_benefits",
+      "traditional_african_use"
+    ]
+  },
+  "medicinal_properties": {
+    "primary_uses": ["weight_management", "cholesterol_control", "diabetes_support"],
+    "active_compounds": ["irvingia_extract", "fiber", "healthy_fats"],
+    "preparation_methods": ["seed_extract", "powder", "oil"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/07/herbal-tea-1410565-325x202.webp",

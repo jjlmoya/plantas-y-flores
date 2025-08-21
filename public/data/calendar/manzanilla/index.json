@@ -1,29 +1,166 @@
 {
   "plant_info": {
     "category": "manzanilla",
+    "scientific_name": "Matricaria chamomilla",
+    "family": "Asteraceae",
     "type": "annual",
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "growth_habit": "bushy",
+    "origin": "mediterranean",
+    "mature_size": {
+      "height": [30, 60],
+      "width": [20, 40]
+    }
   },
   "calendar_data": {
     "sowing": {
       "outdoor": {
-        "best_months": [
-          3,
-          4,
-          9
-        ]
+        "best_months": [3, 4, 9],
+        "alternative_months": [2, 5, 8, 10]
+      },
+      "indoor": {
+        "best_months": [2, 3, 8],
+        "alternative_months": [1, 4, 9]
       }
     },
+    "transplanting": {
+      "best_months": [4, 5, 9, 10],
+      "peak_months": [4, 9]
+    },
+    "flowering": {
+      "best_months": [5, 6, 7, 8, 9],
+      "peak_months": [6, 7]
+    },
     "harvesting": {
-      "best_months": [
-        6,
-        7,
-        8
-      ]
+      "best_months": [6, 7, 8, 9],
+      "peak_months": [7, 8],
+      "harvest_times": ["morning_after_dew"]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": [
+          "prepare_seedbeds",
+          "soil_preparation"
+        ],
+        "2": [
+          "sowing_indoor",
+          "prepare_beds"
+        ],
+        "3": [
+          "sowing_outdoor",
+          "moderate_watering",
+          "fertilize"
+        ],
+        "4": [
+          "sowing_outdoor", 
+          "moderate_watering",
+          "weeding"
+        ],
+        "5": [
+          "moderate_watering",
+          "thinning",
+          "monitor_growth"
+        ],
+        "6": [
+          "moderate_watering",
+          "harvest_early",
+          "deadhead",
+          "fertilize"
+        ],
+        "7": [
+          "moderate_watering",
+          "harvest_main",
+          "deadhead",
+          "pest_monitoring"
+        ],
+        "8": [
+          "moderate_watering",
+          "harvest_late",
+          "sowing_outdoor",
+          "prepare_beds"
+        ],
+        "9": [
+          "sowing_outdoor",
+          "transplanting",
+          "moderate_watering",
+          "harvest_late"
+        ],
+        "10": [
+          "transplanting",
+          "reduce_watering",
+          "plant_cleanup",
+          "prepare_winter"
+        ],
+        "11": [
+          "plant_cleanup",
+          "soil_preparation",
+          "prepare_winter"
+        ],
+        "12": [
+          "soil_preparation",
+          "dormant_protection"
+        ]
+      }
     }
   },
   "growing_conditions": {
     "sun_requirements": "full_sun",
-    "water_needs": "moderate"
+    "water_needs": "moderate",
+    "soil_ph": [6.0, 7.5],
+    "soil_type": "well_drained",
+    "drainage": "excellent",
+    "spacing": {
+      "plant_distance": 15,
+      "row_distance": 25
+    },
+    "companion_plants": ["tomate", "pepino", "cebolla", "brócoli"],
+    "temperature_range": [15, 25],
+    "minimum_temperature": 0,
+    "humidity_requirements": "low",
+    "wind_tolerance": "good",
+    "frost_tolerance": "moderate",
+    "special_purposes": ["companion_benefit", "attracts_pollinators", "pest_deterrent"]
+  },
+  "flower_data": {
+    "colors": ["white", "yellow"],
+    "fragrance_level": "strong",
+    "flower_shape": "daisy_like",
+    "bloom_duration": "6 semanas",
+    "harvest_indicators": [
+      "full_bloom",
+      "petals_flat",
+      "center_raised",
+      "morning_collection"
+    ],
+    "preservation_methods": ["drying", "oil_infusion", "fresh"]
+  },
+  "medicinal_properties": {
+    "primary_uses": ["digestive_aid", "sleep_aid", "anti_inflammatory", "skin_care"],
+    "active_compounds": ["chamazulene", "bisabolol", "flavonoids", "coumarins"],
+    "preparation_methods": ["tea", "oil_infusion", "tincture", "compress"],
+    "therapeutic_benefits": [
+      "calming_digestive",
+      "promotes_sleep",
+      "reduces_inflammation",
+      "soothes_skin"
+    ]
+  },
+  "culinary_uses": {
+    "parts_used": ["flowers", "leaves"],
+    "flavor_profile": "sweet_floral_honey",
+    "common_uses": ["herbal_tea", "dessert_garnish", "honey_infusion"],
+    "harvest_timing": "full_bloom_morning"
+  },
+  "cultivation_notes": {
+    "self_seeding": true,
+    "naturalization": "excellent",
+    "succession_planting": "every_4_weeks",
+    "container_suitable": true,
+    "indoor_growing": true,
+    "companion_benefits": [
+      "improves_tomato_flavor",
+      "attracts_beneficial_insects",
+      "repels_harmful_pests"
+    ]
   }
 }

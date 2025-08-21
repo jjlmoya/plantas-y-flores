@@ -71,7 +71,7 @@ function getDefaultGlobalConfig() {
       es: ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
     },
     task_definitions: [
-      "prepare_seedbeds", "transplant", "moderate_watering", "fertilize", "pest_monitoring", 
+      "prepare_seedbeds", "transplanting", "moderate_watering", "fertilize", "pest_monitoring", 
       "harvest_early", "harvest_main", "harvest_late", "plant_cleanup"
     ],
     ui_config: {
@@ -1064,7 +1064,24 @@ export function getUIHelpers(globalConfig) {
         'antioxidant_rich': 'Rico en Antioxidantes',
         'immune_support': 'Apoyo Inmunológico',
         'heart_healthy': 'Saludable para el Corazón',
-        'dulce_ligeramente_ácido': 'Dulce Ligeramente Ácido'
+        'dulce_ligeramente_ácido': 'Dulce Ligeramente Ácido',
+        'grafting': 'Injerto',
+        'flowering_support': 'Soporte de Floración',
+        'sucker_removal': 'Eliminación de Chupones',
+        'fruit_thinning': 'Aclareo de Frutos',
+        'pollination_support': 'Soporte de Polinización',
+        'fruit_development_care': 'Cuidado del Desarrollo de Frutos',
+        'early_harvest': 'Cosecha Temprana',
+        'fruit_protection': 'Protección de Frutos',
+        'post_harvest_care': 'Cuidado Post-Cosecha',
+        'late_harvest': 'Cosecha Tardía',
+        'tree_recovery': 'Recuperación del Árbol',
+        'fertilize_recovery': 'Fertilización de Recuperación',
+        'disease_prevention': 'Prevención de Enfermedades',
+        'dormant_spray': 'Fumigación en Reposo',
+        'structural_pruning': 'Poda Estructural',
+        'soil_amendment': 'Enmienda del Suelo',
+        'irrigation_setup': 'Configuración de Riego'
       };
       
       // Return translation if available, otherwise format the original

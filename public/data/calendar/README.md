@@ -241,7 +241,7 @@ findPlantsByMonth(3, 'sowing', 'southern')  // Adjusted to September
 "care_calendar": {
   "monthly_tasks": {
     "3": ["prepare_seedbeds", "soil_preparation"],
-    "4": ["transplant", "install_supports"],
+    "4": ["transplanting", "install_supports"],
     "5": ["moderate_watering", "mulching"]
   }
 }

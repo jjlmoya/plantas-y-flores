@@ -2,10 +2,90 @@
   "key": "ataulfo",
   "plant_info": {
     "common_names": [
-      "Ataúlfo"
+      "Ataúlfo",
+      "Champagne Mango",
+      "Honey Mango"
     ],
     "scientific_name": "Mangifera indica 'Ataúlfo'",
-    "origin": "mx"
+    "family": "Anacardiaceae",
+    "type": "perennial_tree",
+    "difficulty": "advanced",
+    "origin": "mx",
+    "mature_size": {
+      "height": [400, 800],
+      "width": [400, 600]
+    },
+    "growth_habit": "compact_tree"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 5],
+      "regional_variations": {
+        "tropical": [1, 2, 3, 4, 5, 6, 11, 12],
+        "subtropical": [3, 4, 5]
+      }
+    },
+    "flowering": {
+      "best_months": [2, 3],
+      "peak_months": [3]
+    },
+    "harvesting": {
+      "best_months": [5, 6, 7],
+      "peak_months": [6],
+      "harvest_season": "early"
+    },
+    "pruning": {
+      "main_pruning": [12, 1],
+      "light_pruning": [10],
+      "fruit_thinning": [4]
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "high",
+    "soil_ph": [6.0, 7.5],
+    "soil_type": "well_drained_fertile",
+    "temperature_range": [18, 32],
+    "humidity_requirements": "moderate_to_high",
+    "wind_tolerance": "good",
+    "spacing": {
+      "plant_distance": 600,
+      "row_distance": 800
+    }
+  },
+  "fruit_data": {
+    "size": "small_to_medium",
+    "weight_range": [200, 400],
+    "skin_color": "golden_yellow",
+    "flesh_color": "deep_orange",
+    "texture": "creamy_smooth",
+    "fiber_content": "minimal",
+    "sweetness_level": "very_high",
+    "ripening_months": [5, 6, 7],
+    "harvest_indicators": [
+      "golden_yellow_skin",
+      "slight_give_to_pressure",
+      "sweet_aroma",
+      "stem_end_yellowing"
+    ],
+    "storage_life": {
+      "ripe": "3-5 days",
+      "unripe": "1-2 weeks"
+    },
+    "culinary_uses": ["fresh_eating", "desserts", "smoothies", "baby_food"]
+  },
+  "variety_characteristics": {
+    "tree_size": "dwarf_to_semi_dwarf",
+    "productivity": "high",
+    "disease_resistance": "good",
+    "cold_tolerance": "poor",
+    "drought_tolerance": "moderate",
+    "unique_features": [
+      "creamy_texture",
+      "minimal_fiber",
+      "excellent_flavor",
+      "small_seed"
+    ]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/08/mangoes-1320111_1920-325x217.webp",

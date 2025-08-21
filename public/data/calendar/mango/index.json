@@ -1,26 +1,206 @@
 {
   "plant_info": {
     "category": "mango",
-    "type": "perennial",
-    "difficulty": "advanced"
+    "scientific_name": "Mangifera indica",
+    "family": "Anacardiaceae",
+    "type": "perennial_tree",
+    "difficulty": "advanced",
+    "growth_habit": "tree",
+    "origin": "tropical_asia",
+    "mature_size": {
+      "height": [800, 3000],
+      "width": [600, 2000]
+    }
   },
   "calendar_data": {
     "planting": {
       "best_months": [
+        3,
         4,
         5
-      ]
+      ],
+      "alternative_months": [
+        2,
+        6
+      ],
+      "regional_variations": {
+        "tropical": [1, 2, 3, 4, 5, 6, 11, 12],
+        "subtropical": [3, 4, 5, 6]
+      }
+    },
+    "flowering": {
+      "best_months": [
+        2,
+        3,
+        4
+      ],
+      "peak_months": [
+        3
+      ],
+      "regional_variations": {
+        "tropical": [12, 1, 2, 3, 4],
+        "subtropical": [2, 3, 4, 5]
+      }
     },
     "harvesting": {
       "best_months": [
         6,
         7,
+        8,
+        9
+      ],
+      "peak_months": [
+        7,
         8
-      ]
+      ],
+      "early_varieties": [5, 6, 7],
+      "late_varieties": [8, 9, 10],
+      "regional_variations": {
+        "tropical": [5, 6, 7, 8, 9, 10],
+        "subtropical": [6, 7, 8, 9]
+      }
+    },
+    "pruning": {
+      "main_pruning": [
+        11,
+        12,
+        1
+      ],
+      "light_pruning": [
+        10
+      ],
+      "fruit_thinning": [
+        4,
+        5
+      ],
+      "sucker_removal": [3, 4, 5, 6, 7, 8, 9]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": [
+          "prune_main",
+          "fertilize",
+          "pest_monitoring"
+        ],
+        "2": [
+          "fertilize",
+          "mulching",
+          "irrigation_setup"
+        ],
+        "3": [
+          "planting",
+          "grafting",
+          "flowering_support",
+          "sucker_removal"
+        ],
+        "4": [
+          "planting",
+          "moderate_watering",
+          "fruit_thinning",
+          "pollination_support"
+        ],
+        "5": [
+          "moderate_watering",
+          "fruit_development_care",
+          "pest_monitoring"
+        ],
+        "6": [
+          "heavy_watering",
+          "harvest_early",
+          "fruit_protection"
+        ],
+        "7": [
+          "heavy_watering",
+          "harvest_main",
+          "post_harvest_care"
+        ],
+        "8": [
+          "heavy_watering",
+          "harvest_late",
+          "tree_recovery"
+        ],
+        "9": [
+          "moderate_watering",
+          "fertilize_recovery",
+          "disease_prevention"
+        ],
+        "10": [
+          "water_restriction",
+          "prune_shoots",
+          "prepare_winter"
+        ],
+        "11": [
+          "prune_main",
+          "mulching",
+          "dormant_spray"
+        ],
+        "12": [
+          "water_restriction",
+          "structural_pruning",
+          "soil_amendment"
+        ]
+      }
     }
   },
   "growing_conditions": {
     "sun_requirements": "full_sun",
-    "water_needs": "moderate"
+    "water_needs": "high",
+    "soil_ph": [
+      5.5,
+      7.5
+    ],
+    "soil_type": "well_drained_fertile",
+    "drainage": "excellent",
+    "spacing": {
+      "plant_distance": 800,
+      "row_distance": 1000
+    },
+    "companion_plants": ["citrus", "avocado", "papaya", "banana"],
+    "temperature_range": [20, 35],
+    "minimum_temperature": 5,
+    "humidity_requirements": "high",
+    "wind_tolerance": "moderate",
+    "frost_tolerance": "none",
+    "special_purposes": ["fruit_production", "shade_tree", "ornamental"]
+  },
+  "fruit_data": {
+    "ripening_months": [6, 7, 8, 9],
+    "fruit_colors": ["green", "yellow", "orange", "red", "purple"],
+    "fruit_size_categories": ["small", "medium", "large", "extra_large"],
+    "harvest_indicators": [
+      "skin_color_change",
+      "slight_softness",
+      "sweet_aroma",
+      "stem_end_color"
+    ],
+    "storage_life": {
+      "ripe": "3-7 days",
+      "unripe": "2-3 weeks"
+    },
+    "nutritional_highlights": ["vitamin_c", "vitamin_a", "fiber", "antioxidants"]
+  },
+  "climate_zones": {
+    "tropical": {
+      "ideal": true,
+      "characteristics": ["year_round_growing", "multiple_harvests"],
+      "challenges": ["humidity_diseases", "intense_rainfall"]
+    },
+    "subtropical": {
+      "suitable": true,
+      "characteristics": ["single_harvest", "dormant_period"],
+      "challenges": ["frost_risk", "shorter_growing_season"]
+    },
+    "temperate": {
+      "greenhouse_only": true,
+      "characteristics": ["controlled_environment_needed"],
+      "challenges": ["heating_costs", "pollination_issues"]
+    }
+  },
+  "pollination_data": {
+    "type": "mostly_self_fertile",
+    "cross_pollination_benefits": true,
+    "pollinators": ["bees", "flies", "wind"],
+    "companion_varieties": ["multiple_cultivars_recommended"],
+    "flowering_synchronization": "important_for_yield"
   }
 }

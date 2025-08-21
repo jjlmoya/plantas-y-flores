@@ -2,11 +2,90 @@
   "key": "manila",
   "plant_info": {
     "common_names": [
-      "Manila"
+      "Manila",
+      "Carabao",
+      "Philippine Mango"
     ],
     "scientific_name": "Mangifera indica 'Manila'",
+    "family": "Anacardiaceae",
+    "type": "perennial_tree",
+    "difficulty": "advanced",
     "origin": "ar",
-    "difficulty": "advanced"
+    "mature_size": {
+      "height": [800, 1500],
+      "width": [600, 1200]
+    },
+    "growth_habit": "medium_tree"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 5],
+      "regional_variations": {
+        "tropical": [1, 2, 3, 4, 5, 6, 11, 12],
+        "subtropical": [3, 4, 5]
+      }
+    },
+    "flowering": {
+      "best_months": [1, 2, 3],
+      "peak_months": [2]
+    },
+    "harvesting": {
+      "best_months": [4, 5, 6],
+      "peak_months": [5],
+      "harvest_season": "early"
+    },
+    "pruning": {
+      "main_pruning": [11, 12],
+      "light_pruning": [9, 10],
+      "fruit_thinning": [3, 4]
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "high",
+    "soil_ph": [5.5, 7.0],
+    "soil_type": "well_drained_fertile",
+    "temperature_range": [20, 35],
+    "humidity_requirements": "high",
+    "wind_tolerance": "moderate",
+    "spacing": {
+      "plant_distance": 800,
+      "row_distance": 1000
+    }
+  },
+  "fruit_data": {
+    "size": "large",
+    "weight_range": [400, 800],
+    "skin_color": "yellow_green",
+    "flesh_color": "golden_yellow",
+    "texture": "smooth_firm",
+    "fiber_content": "minimal",
+    "sweetness_level": "high",
+    "ripening_months": [4, 5, 6],
+    "harvest_indicators": [
+      "skin_softening",
+      "color_change",
+      "aromatic_scent",
+      "easy_stem_separation"
+    ],
+    "storage_life": {
+      "ripe": "5-7 days",
+      "unripe": "2-3 weeks"
+    },
+    "culinary_uses": ["fresh_eating", "export", "processing", "drying"]
+  },
+  "variety_characteristics": {
+    "tree_size": "medium_to_large",
+    "productivity": "very_high",
+    "disease_resistance": "excellent",
+    "cold_tolerance": "poor",
+    "drought_tolerance": "good",
+    "unique_features": [
+      "excellent_keeping_quality",
+      "ideal_for_export",
+      "consistent_production",
+      "disease_resistant"
+    ]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/08/king-mango-214269_1280-325x244.webp",
