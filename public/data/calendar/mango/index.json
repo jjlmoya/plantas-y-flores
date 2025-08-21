@@ -182,7 +182,7 @@
   "nutritional_data": {
     "calories_per_100g": 60,
     "water_content": 83,
-    "main_nutrients": ["vitamin_c", "vitamin_a", "vitamin_b6", "folate", "potassium"],
+    "main_nutrients": ["folate", "potassium"],
     "vitamin_content": ["C", "A", "B6", "E", "K"],
     "health_benefits": ["immune_support", "antioxidant_rich", "heart_healthy", "digestivo"],
     "properties": ["fibra", "beta_caroteno", "antioxidantes", "enzimas_digestivas"],

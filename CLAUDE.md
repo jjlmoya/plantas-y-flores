@@ -28,11 +28,9 @@ This is a Spanish-language plant and flower encyclopedia website migrated from W
 
 #### Data Processing Pipeline
 1. **Data Utilities** (`src/utils/data.js`) - Functions to read and process pages.json directly
-2. **Image Extraction** (`scripts/extract-main-images.js`) - Extracts main images from article HTML  
-3. **Content Cleaning** (`scripts/clean-related-articles.js`) - Removes hardcoded related articles from HTML
+
 
 ### Component System
-
 **Modular Vue Components** (`src/components/`):
 - `PlantCard.vue` - Reusable plant preview cards with hover effects and image optimization
 - `PlantGrid.vue` - Responsive grid layout for plant collections  

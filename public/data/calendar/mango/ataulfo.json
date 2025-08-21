@@ -79,7 +79,7 @@
     "calories_per_100g": 65,
     "water_content": 82,
     "sugar_content": "very_high",
-    "main_nutrients": ["vitamin_c", "vitamin_a", "beta_caroteno", "folate", "potassium"],
+    "main_nutrients": ["beta_caroteno", "folate", "potassium"],
     "vitamin_content": ["C", "A", "B6", "E"],
     "health_benefits": ["immune_support", "antioxidant_rich", "heart_healthy", "digestivo"],
     "properties": ["fibra_minima", "beta_caroteno", "antioxidantes", "enzimas_digestivas", "dulzor_natural"],

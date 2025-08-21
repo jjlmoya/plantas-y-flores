@@ -77,7 +77,7 @@
   "nutritional_data": {
     "calories_per_100g": 32,
     "water_content": 91,
-    "main_nutrients": ["vitamin_c", "folate", "potassium", "manganese"],
+    "main_nutrients": [ "folate", "potassium", "manganese"],
     "vitamin_content": ["C", "K", "B9"],
     "health_benefits": ["antioxidant_rich", "immune_support", "heart_healthy"],
     "properties": ["vitamina_c", "folatos", "potasio", "manganeso", "antioxidantes", "fibra"]
