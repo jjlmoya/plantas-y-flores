@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CalendarBreadcrumb from '../../../components/calendar/CalendarBreadcrumb.vue';
 import { findPlantsByActivity, getGlobalCalendarConfig, getUIHelpers, getAvailableActivities, activityToSlug, slugToActivity } from '../../../utils/calendar-inheritance.js';
 
 // Generate static paths for all activities
@@ -79,31 +80,13 @@ const mostActiveMonth = monthlyDistribution.reduce((max, current) =>
     <!-- Modern Header -->
     <div class="modern-header">
       <!-- Breadcrumb Navigation -->
-      <nav class="breadcrumb-nav">
-        <div class="container">
-          <div class="breadcrumb-container">
-            <a href="/" class="breadcrumb-link">
-              <span class="breadcrumb-icon">🏠</span>
-              <span>Inicio</span>
-            </a>
-            <span class="breadcrumb-separator">→</span>
-            <a href="/calendario/" class="breadcrumb-link">
-              <span class="breadcrumb-icon">📅</span>
-              <span>Calendario</span>
-            </a>
-            <span class="breadcrumb-separator">→</span>
-            <a href="/calendario/#actividades" class="breadcrumb-link">
-              <span class="breadcrumb-icon">🛠️</span>
-              <span>Actividades</span>
-            </a>
-            <span class="breadcrumb-separator">→</span>
-            <span class="breadcrumb-current">
-              <span class="breadcrumb-icon" style={`color: ${activityColor}`}>{activityIcon}</span>
-              <span>{activityName}</span>
-            </span>
-          </div>
-        </div>
-      </nav>
+      <CalendarBreadcrumb 
+        client:load
+        additionalCrumbs={[
+          { href: "/calendario/#actividades", icon: "🛠️", text: "Actividades" },
+          { icon: activityIcon, text: activityName }
+        ]}
+      />
 
       <!-- Hero Section -->
       <header class="hero-header" style={`background: linear-gradient(135deg, ${activityColor}20 0%, ${activityColor}40 100%)`}>
