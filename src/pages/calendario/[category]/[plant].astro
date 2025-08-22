@@ -960,7 +960,26 @@ const plantExportData = {
                 <span class="detail-icon">⚠️</span>
                 <div>
                   <strong>Cuidados Especiales</strong>
-                  <p>{growingConditions.special_care}</p>
+                  {typeof growingConditions.special_care === 'string' ? (
+                    <p>{growingConditions.special_care}</p>
+                  ) : (
+                    <div class="special-care-details">
+                      {growingConditions.special_care.water_restriction && (
+                        <p>
+                          <strong>Restricción de riego:</strong> {
+                            growingConditions.special_care.water_restriction.months && 
+                            `Durante ${growingConditions.special_care.water_restriction.months.map(m => ui.getMonthName(m)).join(', ')} `
+                          }
+                          {growingConditions.special_care.water_restriction.purpose === 'flavor_intensification' && 
+                            'para intensificar el sabor'
+                          }
+                        </p>
+                      )}
+                      {Object.entries(growingConditions.special_care).filter(([key]) => key !== 'water_restriction').map(([key, value]) => (
+                        <p><strong>{ui.formatTaskName(key)}:</strong> {typeof value === 'string' ? value : JSON.stringify(value)}</p>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             )}
