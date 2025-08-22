@@ -46,9 +46,9 @@
         "4": ["sow_indoor", "sow_outdoor"],
         "5": ["transplant", "sow_outdoor"],
         "6": ["transplant", "water_regularly"],
-        "7": ["water_regularly", "deadhead
-        "8": ["water_regularly", "deadhead
-        "9": ["water_regularly", "deadhead
+        "7": ["water_regularly", "deadhead"],
+        "8": ["water_regularly", "deadhead"],
+        "9": ["water_regularly", "deadhead"],
         "10": ["reduce_watering", "harvest_seeds"]
       }
     }

@@ -40,9 +40,9 @@
         "5": ["planting", "water_establishment"],
         "6": ["planting", "water_regularly", "install_supports"],
         "7": ["water_regularly", "deadhead", "fertilize"],
-        "8": ["water_regularly", "deadhead
-        "9": ["water_regularly", "deadhead
-        "10": ["water_regularly", "deadhead
+        "8": ["water_regularly", "deadhead"],
+        "9": ["water_regularly", "deadhead"],
+        "10": ["water_regularly", "deadhead"],
         "11": ["prune_main", "mulching"],
         "12": ["dormant_protection"]
       }

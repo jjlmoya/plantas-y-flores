@@ -51,7 +51,7 @@
         "5": ["transplant", "sow_outdoor"],
         "6": ["water_regularly", "harvest_young_leaves"],
         "7": ["water_regularly", "fertilize", "harvest_leaves"],
-        "8": ["water_regularly", "deadhead"pest_monitoring"],
+        "8": ["water_regularly", "deadhead", "pest_monitoring"],
         "9": ["water_regularly", "harvest_calyces"],
         "10": ["harvest_calyces", "harvest_seeds"],
         "11": ["harvest_main", "prepare_winter"]

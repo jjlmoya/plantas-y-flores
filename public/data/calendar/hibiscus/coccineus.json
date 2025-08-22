@@ -38,11 +38,11 @@
         "3": ["prepare_wet_beds", "soil_preparation"],
         "4": ["planting", "fertilize"],
         "5": ["planting", "water_establishment"],
-        "6": ["planting", "water_regularly", "deadhead
+        "6": ["planting", "water_regularly", "deadhead"],
         "7": ["water_regularly", "deadhead", "fertilize"],
         "8": ["water_regularly", "deadhead"],
         "9": ["water_regularly", "deadhead"],
-        "10": ["water_regularly", "deadhead
+        "10": ["water_regularly", "deadhead"],
         "11": ["prune_main", "prepare_winter"],
         "12": ["dormant_protection"]
       }
