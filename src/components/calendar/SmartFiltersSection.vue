@@ -590,6 +590,7 @@ export default {
   border-radius: 12px;
   font-size: 1rem;
   transition: all 0.3s ease;
+  box-sizing: border-box;
 }
 
 .search-input:focus {
@@ -903,6 +904,13 @@ export default {
 
 @media (max-width: 768px) {
   .smart-filters-section {
+    padding: 0 1rem;
+    margin: 0 -1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .search-section {
     padding: 0 0.5rem;
   }
 

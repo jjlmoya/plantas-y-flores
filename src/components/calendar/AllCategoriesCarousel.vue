@@ -53,7 +53,7 @@
     </div>
 
     <!-- Mobile scroll dots -->
-    <div class="scroll-dots mobile-only">
+    <div v-if="isClient" class="scroll-dots mobile-only">
       <span 
         v-for="(dot, index) in scrollDots" 
         :key="index"
@@ -84,7 +84,8 @@ export default {
       activeDot: 0,
       touchStartX: 0,
       touchEndX: 0,
-      isScrolling: false
+      isScrolling: false,
+      isClient: false
     }
   },
   computed: {
@@ -100,12 +101,16 @@ export default {
       }).sort((a, b) => b.count - a.count); // Sort by popularity
     },
     scrollDots() {
-      // Calculate number of dots based on visible items
-      const itemsPerView = this.getItemsPerView();
+      // Only calculate on client-side to avoid hydration mismatch
+      if (!this.isClient) return 0;
+      
+      // Simple calculation without DOM queries
+      const itemsPerView = window.innerWidth < 768 ? 1 : window.innerWidth < 1200 ? 2 : 3;
       return Math.ceil(this.categoriesWithCounts.length / itemsPerView);
     }
   },
   mounted() {
+    this.isClient = true;
     this.updateScrollButtons();
     if (typeof window !== 'undefined') {
       window.addEventListener('resize', this.handleResize);
