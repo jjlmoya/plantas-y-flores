@@ -79,7 +79,11 @@
       "Bash(timeout 120s npm run build)",
       "Bash(timeout 180s npx astro build)",
       "Bash(del \"C:\\Users\\34677\\Desktop\\plantasyflroes\\src\\pages\\calendario\\[category]\\index.astro\")",
-      "Bash(rg:*)"
+      "Bash(rg:*)",
+      "Bash(del node_modules)",
+      "Bash(where node)",
+      "Bash(nvm list:*)",
+      "Bash(nvm use:*)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits",
