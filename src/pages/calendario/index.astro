@@ -1,14 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import CalendarFilters from "../../components/CalendarFilters.vue";
-import StatsCard from "../../components/StatsCard.vue";
-import CategoryGrid from "../../components/CategoryGrid.vue";
-import LoadingSpinner from "../../components/LoadingSpinner.vue";
 import CalendarMainBreadcrumb from "../../components/calendar/CalendarMainBreadcrumb.vue";
 import CalendarHeroHeader from "../../components/calendar/CalendarHeroHeader.vue";
-import CurrentMonthSection from "../../components/calendar/CurrentMonthSection.vue";
-import MonthNavigator from "../../components/calendar/MonthNavigator.vue";
-import ActivitiesGrid from "../../components/calendar/ActivitiesGrid.vue";
+import QuickActionCards from "../../components/calendar/QuickActionCards.vue";
+import AllCategoriesCarousel from "../../components/calendar/AllCategoriesCarousel.vue";
+import SmartFiltersSection from "../../components/calendar/SmartFiltersSection.vue";
+import MonthlyActivitiesSection from "../../components/calendar/MonthlyActivitiesSection.vue";
+import MonthNavigatorCarousel from "../../components/calendar/MonthNavigatorCarousel.vue";
 import SeasonalTips from "../../components/calendar/SeasonalTips.vue";
 import {
   getMonthlyTasksWithUI,
@@ -81,49 +79,48 @@ const quickNavMonths = Array.from({ length: 12 }, (_, i) => ({
     </div>
 
     <div class="container content-container">
-      <CurrentMonthSection 
+      <!-- Quick Action Cards -->
+      <QuickActionCards 
+        client:load
+        currentMonth={currentMonth}
+        allPlantsWithCalendar={allPlantsWithCalendar}
+      />
+
+      <!-- Categories Carousel -->
+      <AllCategoriesCarousel 
+        client:load
+        categories={categories}
+        allPlantsWithCalendar={allPlantsWithCalendar}
+      />
+
+      <!-- Smart Filters Section -->
+      <SmartFiltersSection 
+        client:visible
+        currentMonth={currentMonth}
+        categories={categories}
+        availableActivities={activities}
+        allPlantsWithCalendar={allPlantsWithCalendar}
+      />
+
+      <!-- Monthly Activities Section -->
+      <MonthlyActivitiesSection 
+        client:load
         currentMonthName={currentMonthName}
         currentMonth={currentMonth}
         monthlyTasks={monthlyTasks}
-        categories={categories}
-        formatCategoryName={ui.formatCategoryName}
-        formatPlantName={ui.formatPlantName}
-        formatTaskName={ui.formatTaskName}
-        getCategoryIcon={ui.getCategoryIcon}
-        getTaskIcon={ui.getTaskIcon}
-        getTaskPriority={ui.getTaskPriority}
-        getMonthSlug={ui.getMonthSlug}
       />
 
-      <MonthNavigator 
-        quickNavMonths={quickNavMonths}
-        getMonthSlug={ui.getMonthSlug}
+      <!-- Month Navigator Carousel -->
+      <MonthNavigatorCarousel 
+        client:load
+        currentMonth={currentMonth}
+        monthsData={quickNavMonths}
+        allPlantsWithCalendar={allPlantsWithCalendar}
       />
 
-      <!-- Filters Section -->
-      <section class="section-spacing">
-        <h2>Explorar y Filtrar Plantas</h2>
-        <p>Encuentra plantas específicas según tus necesidades y experiencia</p>
-
-        <div class="filters-container">
-          <CalendarFilters
-            client:visible
-            plants={allPlantsWithCalendar}
-            availableCategories={categories}
-            availableActivities={activities}
-            currentMonth={currentMonth}
-          />
-        </div>
-      </section>
-
-      <ActivitiesGrid 
-        activities={activities}
-        activityToSlug={activityToSlug}
-        getTaskIcon={uiDirect.getTaskIcon}
-        formatTaskName={uiDirect.formatTaskName}
-      />
-
+      <!-- Seasonal Tips -->
       <SeasonalTips 
+        client:load
         currentMonthName={currentMonthName}
         seasonalTips={seasonalTips}
       />
@@ -152,26 +149,26 @@ const quickNavMonths = Array.from({ length: 12 }, (_, i) => ({
     padding: 2rem 0;
   }
 
-  .filters-container {
-    margin-top: 2rem;
+  /* Modern layout improvements */
+  .content-container {
+    background-color: #fcfdfe;
+    padding: 0;
   }
 
-  .section-spacing {
-    margin-bottom: 4rem;
+  /* Add smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
   }
 
-  .section-spacing h2 {
-    color: #2d3748;
-    margin-bottom: 1rem;
-    font-size: 1.75rem;
-    text-align: center;
-  }
-
-  .section-spacing p {
-    color: #4a5568;
-    text-align: center;
-    margin-bottom: 2rem;
-    font-size: 1.1rem;
+  /* Responsive spacing adjustments */
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 0.5rem;
+    }
+    
+    .content-container {
+      padding: 0;
+    }
   }
 </style>
 

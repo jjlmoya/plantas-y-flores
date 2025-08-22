@@ -29,21 +29,21 @@
             <span class="info-icon">🔄</span>
             <div class="info-content">
               <span class="info-label">Tipo</span>
-              <span class="info-value">{{ plantInfo.type }}</span>
+              <span class="info-value">{{ formatTaskName(plantInfo.type) }}</span>
             </div>
           </div>
           <div v-if="plantInfo.difficulty" class="info-card">
             <span class="info-icon">{{ getDifficultyIcon(plantInfo.difficulty) }}</span>
             <div class="info-content">
               <span class="info-label">Dificultad</span>
-              <span class="info-value">{{ plantInfo.difficulty }}</span>
+              <span class="info-value">{{ formatTaskName(plantInfo.difficulty) }}</span>
             </div>
           </div>
           <div v-if="plantInfo.origin" class="info-card">
             <span class="info-icon">{{ originFlag }}</span>
             <div class="info-content">
               <span class="info-label">Origen</span>
-              <span class="info-value">{{ plantInfo.origin }}</span>
+              <span class="info-value">{{ formatOriginName(plantInfo.origin) }}</span>
             </div>
           </div>
         </div>
@@ -88,12 +88,22 @@ export default {
       type: String,
       default: null
     },
+    formatTaskName: {
+      type: Function,
+      required: true
+    },
+    formatOriginName: {
+      type: Function,
+      required: true
+    }
   },
   methods: {
     getDifficultyIcon(difficulty) {
       switch(difficulty) {
         case 'easy': return '😊';
+        case 'beginner': return '😊';
         case 'intermediate': return '🤔';
+        case 'advanced': return '😰';
         default: return '😰';
       }
     }
