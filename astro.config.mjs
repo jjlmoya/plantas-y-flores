@@ -18,6 +18,11 @@ export default defineConfig({
     watch: {
       usePolling: true,
       interval: 100
+    },
+    headers: {
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      'Pragma': 'no-cache',
+      'Expires': '0'
     }
   },
   vite: {
@@ -28,7 +33,15 @@ export default defineConfig({
       watch: {
         usePolling: true,
         interval: 100
+      },
+      headers: {
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0'
       }
+    },
+    css: {
+      devSourcemap: true
     },
     build: {
       sourcemap: true,
