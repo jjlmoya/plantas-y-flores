@@ -1,4 +1,5 @@
 <template>
+  <div class="plant-details-container">
     <!-- Growing Conditions -->
     <section class="details-card">
       <h3>🌱 Condiciones de Cultivo</h3>
@@ -210,9 +211,86 @@
         </div>
       </div>
     </section>
+  </div>
 </template>
 
 <script>
+// Client-side helper functions for Vue components
+function formatTaskName(task) {
+  const translations = {
+    'sowing': 'Siembra',
+    'transplanting': 'Trasplante', 
+    'harvesting': 'Cosecha',
+    'flowering': 'Floración',
+    'planting': 'Plantación',
+    'pruning': 'Poda',
+    'watering': 'Riego',
+    'fertilizing': 'Fertilización',
+    'weeding': 'Deshierbe',
+    'mulching': 'Acolchado',
+    'prepare_seedbeds': 'Preparar Semilleros',
+    'plant_protection': 'Protección',
+    'thinning': 'Aclareo',
+    'pest_control': 'Control de Plagas',
+    'disease_prevention': 'Prevención de Enfermedades',
+    'soil_preparation': 'Preparación del Suelo',
+    'companion_planting': 'Plantación Asociada',
+    'succession_planting': 'Siembra Escalonada',
+    'deadheading': 'Despunte',
+    'full_sun': 'Sol directo',
+    'partial_sun': 'Sol parcial',
+    'partial_shade': 'Sombra parcial',
+    'full_shade': 'Sombra total',
+    'high': 'Alto',
+    'moderate': 'Moderado',
+    'low': 'Bajo',
+    'well_drained': 'Bien drenado',
+    'moist': 'Húmedo',
+    'dry': 'Seco',
+    'acidic': 'Ácido',
+    'neutral': 'Neutro',
+    'alkaline': 'Alcalino',
+    'loamy': 'Franco',
+    'sandy': 'Arenoso',
+    'clay': 'Arcilloso'
+  };
+  return translations[task] || task;
+}
+
+function formatOriginName(origin) {
+  const origins = {
+    'mediterranean': 'Mediterráneo',
+    'tropical': 'Tropical',
+    'temperate': 'Templado',
+    'subtropical': 'Subtropical',
+    'europe': 'Europa',
+    'asia': 'Asia',
+    'americas': 'América',
+    'africa': 'África',
+    'oceania': 'Oceanía'
+  };
+  return origins[origin] || origin;
+}
+
+function getCategoryIcon(category) {
+  const icons = {
+    'rosa': '🌹',
+    'hibiscus': '🌺',
+    'lirios': '🌸',
+    'tomate': '🍅',
+    'patata': '🥔',
+    'albahaca': '🌿',
+    'default': '🌱'
+  };
+  return icons[category] || icons.default;
+}
+
+function getMonthName(monthNumber) {
+  const months = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+                  'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+  return months[monthNumber - 1] || '';
+}
+
 export default {
   name: 'PlantDetailsGrid',
   props: {
@@ -239,26 +317,13 @@ export default {
     originFlag: {
       type: String,
       default: '🌍'
-    },
-    // UI helper methods
-    formatTaskName: {
-      type: Function,
-      required: true
-    },
-    formatOriginName: {
-      type: Function,
-      required: true
-    },
-    getCategoryIcon: {
-      type: Function,
-      required: true
-    },
-    getMonthName: {
-      type: Function,
-      required: true
     }
   },
   methods: {
+    formatTaskName,
+    formatOriginName,
+    getCategoryIcon,
+    getMonthName,
     getDifficultyIcon(difficulty) {
       switch(difficulty) {
         case 'easy': return '😊';

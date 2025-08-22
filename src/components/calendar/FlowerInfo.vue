@@ -46,22 +46,52 @@
 </template>
 
 <script>
+// Client-side helper function for Vue components
+function formatTaskName(task) {
+  const translations = {
+    'red': 'Rojo',
+    'pink': 'Rosa',
+    'white': 'Blanco',
+    'yellow': 'Amarillo',
+    'purple': 'Morado',
+    'orange': 'Naranja',
+    'blue': 'Azul',
+    'strong': 'Fuerte',
+    'mild': 'Suave',
+    'sweet': 'Dulce',
+    'citrus': 'Cítrico',
+    'small': 'Pequeña',
+    'medium': 'Mediana',
+    'large': 'Grande',
+    'round': 'Redonda',
+    'trumpet': 'Trompeta',
+    'star': 'Estrella',
+    '1_day': '1 día',
+    '3_days': '3 días',
+    'few_hours': 'Pocas horas',
+    'several_days': 'Varios días',
+    'high': 'Alto',
+    'moderate': 'Moderado',
+    'low': 'Bajo'
+  };
+  return translations[task] || task;
+}
+
 export default {
   name: 'FlowerInfo',
   props: {
     flowerData: {
       type: Object,
       default: () => ({})
-    },
-    formatTaskName: {
-      type: Function,
-      required: true
     }
   },
   computed: {
     hasFlowerData() {
       return Object.keys(this.flowerData).length > 0;
     }
+  },
+  methods: {
+    formatTaskName
   }
 }
 </script>

@@ -148,6 +148,44 @@
 </template>
 
 <script>
+// Client-side helper function for Vue components
+function formatTaskName(task) {
+  const translations = {
+    'sowing': 'Siembra',
+    'transplanting': 'Trasplante', 
+    'harvesting': 'Cosecha',
+    'flowering': 'Floración',
+    'planting': 'Plantación',
+    'pruning': 'Poda',
+    'watering': 'Riego',
+    'fertilizing': 'Fertilización',
+    'weeding': 'Deshierbe',
+    'mulching': 'Acolchado',
+    'prepare_seedbeds': 'Preparar Semilleros',
+    'plant_protection': 'Protección',
+    'thinning': 'Aclareo',
+    'pest_control': 'Control de Plagas',
+    'disease_prevention': 'Prevención de Enfermedades',
+    'soil_preparation': 'Preparación del Suelo',
+    'companion_planting': 'Plantación Asociada',
+    'succession_planting': 'Siembra Escalonada',
+    'deadheading': 'Despunte',
+    'high': 'Alto',
+    'moderate': 'Moderado',
+    'low': 'Bajo',
+    'antioxidant': 'Antioxidante',
+    'anti_inflammatory': 'Antiinflamatorio',
+    'immune_boosting': 'Refuerza el sistema inmune',
+    'digestive': 'Digestivo',
+    'vitamin_rich': 'Rico en vitaminas',
+    'mineral_rich': 'Rico en minerales',
+    'fiber_rich': 'Rico en fibra',
+    'low_calorie': 'Bajo en calorías',
+    'heart_healthy': 'Beneficioso para el corazón'
+  };
+  return translations[task] || task;
+}
+
 export default {
   name: 'NutritionalInfo',
   props: {
@@ -158,10 +196,6 @@ export default {
     fruitNutritionalHighlights: {
       type: Array,
       default: () => []
-    },
-    formatTaskName: {
-      type: Function,
-      required: true
     }
   },
   computed: {
@@ -171,6 +205,7 @@ export default {
     }
   },
   methods: {
+    formatTaskName,
     getNutrientIcon(nutrient) {
       const iconMap = {
         // Vitamins

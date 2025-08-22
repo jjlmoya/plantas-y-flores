@@ -88,16 +88,44 @@ export default {
       type: String,
       default: null
     },
-    formatTaskName: {
-      type: Function,
-      required: true
-    },
-    formatOriginName: {
-      type: Function,
-      required: true
-    }
   },
   methods: {
+    formatTaskName(task) {
+      const translations = {
+        'annual': 'Anual',
+        'biennial': 'Bienal',
+        'perennial': 'Perenne',
+        'herb': 'Hierba',
+        'shrub': 'Arbusto',
+        'tree': 'Árbol',
+        'vine': 'Enredadera',
+        'easy': 'Fácil',
+        'beginner': 'Principiante',
+        'intermediate': 'Intermedio',
+        'advanced': 'Avanzado',
+        'difficult': 'Difícil'
+      };
+      return translations[task] || task;
+    },
+    formatOriginName(origin) {
+      const origins = {
+        'mediterranean': 'Mediterráneo',
+        'tropical': 'Tropical',
+        'temperate': 'Templado',
+        'subtropical': 'Subtropical',
+        'europe': 'Europa',
+        'asia': 'Asia',
+        'americas': 'América',
+        'africa': 'África',
+        'oceania': 'Oceanía',
+        'FR': 'Francia',
+        'ES': 'España',
+        'IT': 'Italia',
+        'GR': 'Grecia',
+        'US': 'Estados Unidos'
+      };
+      return origins[origin] || origin;
+    },
     getDifficultyIcon(difficulty) {
       switch(difficulty) {
         case 'easy': return '😊';

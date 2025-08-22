@@ -70,16 +70,39 @@
 </template>
 
 <script>
+// Client-side helper function for Vue components
+function formatTaskName(task) {
+  const translations = {
+    'yellow_leaves': 'Hojas amarillas',
+    'ripe_fruit': 'Fruto maduro',
+    'firm_texture': 'Textura firme',
+    'full_color': 'Color completo',
+    'morning': 'Mañana',
+    'afternoon': 'Tarde',
+    'evening': 'Noche',
+    'dry_storage': 'Almacenamiento seco',
+    'cool_storage': 'Almacenamiento fresco',
+    'immediate_use': 'Uso inmediato',
+    'high': 'Alto',
+    'moderate': 'Moderado',
+    'low': 'Bajo',
+    'food': 'Alimentario',
+    'medicinal': 'Medicinal',
+    'textile': 'Textil',
+    'ornamental': 'Ornamental',
+    'excellent': 'Excelente',
+    'good': 'Buena',
+    'fair': 'Regular'
+  };
+  return translations[task] || task;
+}
+
 export default {
   name: 'HarvestDetails',
   props: {
     harvestData: {
       type: Object,
       default: () => ({})
-    },
-    formatTaskName: {
-      type: Function,
-      required: true
     }
   },
   computed: {
@@ -93,6 +116,9 @@ export default {
              (this.harvestData.uses && this.harvestData.uses.length > 0) || 
              this.harvestData.fiber_quality;
     }
+  },
+  methods: {
+    formatTaskName
   }
 }
 </script>

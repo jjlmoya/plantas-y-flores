@@ -5,14 +5,12 @@
       <p>{{ description }}</p>
       <div class="export-buttons">
         <button @click="exportToPDF" class="export-btn pdf" :disabled="isExporting">
-          <span class="btn-icon">📄</span>
-          <span class="btn-text">Exportar PDF</span>
+          <span class="btn-text">.pdf</span>
           <span v-if="isExporting === 'pdf'" class="loading">...</span>
         </button>
         
         <button @click="exportToICS" class="export-btn ics" :disabled="isExporting">
-          <span class="btn-icon">📅</span>
-          <span class="btn-text">Exportar .ics</span>
+          <span class="btn-text">.ics</span>
           <span v-if="isExporting === 'ics'" class="loading">...</span>
         </button>
       </div>
@@ -20,12 +18,12 @@
     
     <div v-else class="export-icons">
       <button @click="exportToPDF" class="icon-btn pdf" :disabled="isExporting" title="Exportar PDF">
-        <span class="icon">📄</span>
+        <span class="icon">.pdf</span>
         <span v-if="isExporting === 'pdf'" class="loading-dot"></span>
       </button>
       
       <button @click="exportToICS" class="icon-btn ics" :disabled="isExporting" title="Exportar calendario">
-        <span class="icon">📅</span>
+        <span class="icon">.ics</span>
         <span v-if="isExporting === 'ics'" class="loading-dot"></span>
       </button>
     </div>
