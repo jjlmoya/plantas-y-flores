@@ -1,7 +1,10 @@
 {
   "name": "plantasyflores",
   "type": "module",
-  "version": "2.39.13",
+  "version": "2.39.14",
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "dev": "astro dev --host --verbose",
     "build": "astro build",
@@ -16,13 +19,10 @@
     "setup-hooks": "git config core.hooksPath .githooks && chmod +x .githooks/*",
     "postversion": "git add package.json"
   },
-  "engines": {
-    "node": "22.x"
-  },
   "dependencies": {
-    "@astrojs/vercel": "^7.8.2",
-    "@astrojs/vue": "^4.5.1",
-    "astro": "^4.15.0",
+    "@astrojs/vercel": "^8.2.6",
+    "@astrojs/vue": "^5.1.0",
+    "astro": "^5.13.3",
     "canvg": "^4.0.3",
     "html2canvas": "^1.4.1",
     "jspdf": "^3.0.1",
