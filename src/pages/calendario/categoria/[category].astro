@@ -224,7 +224,7 @@ const formattedCategoryPlants = categoryPlants.map(plant => {
               Encuentra cuándo sembrar, trasplantar y cosechar cada variedad.
             </p>
             <div class="category-stats">
-              <div class="stat-card highlighted">
+              <div class="stat-card">
                 <span class="stat-number">{categoryPlants.length}</span>
                 <span class="stat-label">Variedades</span>
                 <span class="stat-description">Disponibles</span>
@@ -606,6 +606,9 @@ const formattedCategoryPlants = categoryPlants.map(plant => {
     color: var(--color-text-primary);
     margin-bottom: var(--space-lg);
     font-size: var(--font-size-xl);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
 
   .plants-grid {
@@ -628,6 +631,9 @@ const formattedCategoryPlants = categoryPlants.map(plant => {
     color: var(--color-text-primary);
     margin-bottom: var(--space-md);
     font-size: var(--font-size-xl);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
 
   .timeline-container {
@@ -882,7 +888,20 @@ const formattedCategoryPlants = categoryPlants.map(plant => {
     }
 
     .container {
-      padding: 0 0.5rem;
+      padding: 0 1rem;
+    }
+    
+    .plants-grid-section,
+    .timeline-section {
+      margin: 1rem;
+      padding: 1.5rem 1rem;
+    }
+    
+    .plants-grid-section h2,
+    .timeline-section h2 {
+      font-size: 1.5rem;
+      line-height: 1.3;
+      margin-bottom: 1rem;
     }
   }
 
