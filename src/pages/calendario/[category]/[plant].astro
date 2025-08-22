@@ -332,66 +332,91 @@ function generateSchemaFAQ() {
   const faq = [];
   const calendar = plantCalendar.calendar_data || {};
 
-  // Sowing question
-  if (calendar.sowing) {
-    const sowingMonths = [];
-    if (calendar.sowing.indoor?.best_months) {
-      sowingMonths.push(...calendar.sowing.indoor.best_months);
-    }
-    if (calendar.sowing.outdoor?.best_months) {
-      sowingMonths.push(...calendar.sowing.outdoor.best_months);
+  // Universal planting/sowing question - adapts to any plant type
+  const hasPlanting = calendar.planting?.best_months;
+  const hasSowing = calendar.sowing?.indoor?.best_months || calendar.sowing?.outdoor?.best_months || calendar.sowing?.best_months;
+  
+  if (hasPlanting || hasSowing) {
+    let months = [];
+    let verb = "";
+    let details = "";
+    
+    if (hasPlanting) {
+      months = calendar.planting.best_months;
+      verb = "se planta";
+      if (calendar.planting.soil_temperature_max) {
+        details += `, cuando la temperatura del suelo esté por debajo de ${calendar.planting.soil_temperature_max}°C`;
+      }
+      if (calendar.planting.soil_temperature_min) {
+        details += `, cuando la temperatura del suelo esté por encima de ${calendar.planting.soil_temperature_min}°C`;
+      }
+      if (calendar.planting.planting_depth) {
+        details += `. Plantar a una profundidad de ${calendar.planting.planting_depth}`;
+      }
+    } else if (hasSowing) {
+      // Handle sowing (seeds)
+      if (calendar.sowing.indoor?.best_months) {
+        months.push(...calendar.sowing.indoor.best_months);
+      }
+      if (calendar.sowing.outdoor?.best_months) {
+        months.push(...calendar.sowing.outdoor.best_months);
+      }
+      if (calendar.sowing.best_months) {
+        months.push(...calendar.sowing.best_months);
+      }
+      verb = "se siembra";
+      
+      if (calendar.sowing.indoor?.temperature_range || calendar.sowing.outdoor?.temperature_range) {
+        const tempRange = calendar.sowing.indoor?.temperature_range || calendar.sowing.outdoor?.temperature_range;
+        details += `, con temperatura óptima entre ${tempRange[0]}-${tempRange[1]}°C`;
+      }
     }
     
-    if (sowingMonths.length > 0) {
-      const uniqueMonths = [...new Set(sowingMonths)].sort();
-      const monthNames = uniqueMonths.map(m => ui.getMonthName(m));
-      const tempInfo = calendar.sowing.indoor?.temperature_range || calendar.sowing.outdoor?.temperature_range;
-      
-      let answer = `${plantName} se siembra `;
-      if (monthNames.length <= 2) {
-        answer += `en ${monthNames.join(' y ')}`;
-      } else {
-        answer += `desde ${monthNames[0]} hasta ${monthNames[monthNames.length - 1]}`;
-      }
-      
-      if (tempInfo) {
-        answer += `, con temperatura óptima entre ${tempInfo[0]}-${tempInfo[1]}°C`;
-      }
-      
-      if (calendar.sowing.indoor?.best_months && calendar.sowing.outdoor?.best_months) {
-        answer += '. Se puede sembrar en interior y trasplantar después, o directamente en exterior según el clima.';
-      }
-      
-      faq.push({
-        question: `¿Cuándo sembrar ${plantName}?`,
-        answer: answer
-      });
-    }
-  }
-
-  // Transplanting question
-  if (calendar.transplanting?.best_months) {
-    const transplantMonths = calendar.transplanting.best_months.map(m => ui.getMonthName(m));
-    let answer = `El trasplante de ${plantName} se realiza `;
-    if (transplantMonths.length <= 2) {
-      answer += `en ${transplantMonths.join(' y ')}`;
+    const uniqueMonths = [...new Set(months)].sort();
+    const monthNames = uniqueMonths.map(m => ui.getMonthName(m));
+    
+    let answer = `${plantName} ${verb} `;
+    if (monthNames.length <= 2) {
+      answer += `en ${monthNames.join(' y ')}`;
     } else {
-      answer += `desde ${transplantMonths[0]} hasta ${transplantMonths[transplantMonths.length - 1]}`;
+      answer += `desde ${monthNames[0]} hasta ${monthNames[monthNames.length - 1]}`;
     }
     
-    if (calendar.transplanting.soil_temperature_min) {
-      answer += `, cuando el suelo alcance al menos ${calendar.transplanting.soil_temperature_min}°C`;
-    }
-    
-    answer += '. Es importante esperar a que las plántulas tengan el tamaño adecuado y hayan pasado las últimas heladas.';
+    answer += details;
     
     faq.push({
-      question: `¿Cuándo trasplantar ${plantName}?`,
+      question: `¿Cuándo ${hasPlanting ? 'plantar' : 'sembrar'} ${plantName}?`,
       answer: answer
     });
   }
 
-  // Harvesting question
+
+  // Universal flowering/harvesting question - adapts to any plant type
+  if (calendar.flowering?.best_months) {
+    const floweringMonths = calendar.flowering.best_months.map(m => ui.getMonthName(m));
+    let answer = `${plantName} florece `;
+    if (floweringMonths.length <= 2) {
+      answer += `en ${floweringMonths.join(' y ')}`;
+    } else {
+      answer += `desde ${floweringMonths[0]} hasta ${floweringMonths[floweringMonths.length - 1]}`;
+    }
+    
+    if (calendar.flowering.peak_months) {
+      const peakMonths = calendar.flowering.peak_months.map(m => ui.getMonthName(m));
+      answer += `, con floración más intensa en ${peakMonths.join(' y ')}`;
+    }
+    
+    if (flowerData?.bloom_duration) {
+      answer += `. La floración dura aproximadamente ${flowerData.bloom_duration}`;
+    }
+    
+    faq.push({
+      question: `¿Cuándo florece ${plantName}?`,
+      answer: answer
+    });
+  }
+
+  // Universal harvesting question - for any plant with harvest data
   if (calendar.harvesting?.best_months) {
     const harvestMonths = calendar.harvesting.best_months.map(m => ui.getMonthName(m));
     let answer = `La cosecha de ${plantName} se realiza `;
@@ -406,13 +431,35 @@ function generateSchemaFAQ() {
       answer += `, aproximadamente entre ${days[0]}-${days[1]} días después de la siembra`;
     }
     
-    if (harvestData.harvest_indicators?.length > 0) {
+    if (harvestData?.harvest_indicators?.length > 0) {
       const indicators = harvestData.harvest_indicators.map(ind => ui.formatTaskName(ind));
       answer += `. Indicadores de cosecha: ${indicators.join(', ')}.`;
     }
     
     faq.push({
       question: `¿Cuándo cosechar ${plantName}?`,
+      answer: answer
+    });
+  }
+
+  // Universal transplanting question - for any plant with transplant data  
+  if (calendar.transplanting?.best_months) {
+    const transplantMonths = calendar.transplanting.best_months.map(m => ui.getMonthName(m));
+    let answer = `${plantName} se trasplanta `;
+    if (transplantMonths.length <= 2) {
+      answer += `en ${transplantMonths.join(' y ')}`;
+    } else {
+      answer += `desde ${transplantMonths[0]} hasta ${transplantMonths[transplantMonths.length - 1]}`;
+    }
+    
+    if (calendar.transplanting.soil_temperature_min) {
+      answer += `, cuando el suelo alcance al menos ${calendar.transplanting.soil_temperature_min}°C`;
+    }
+    
+    answer += '. Es importante esperar a que las plántulas tengan el tamaño adecuado y hayan pasado las últimas heladas.';
+    
+    faq.push({
+      question: `¿Cuándo trasplantar ${plantName}?`,
       answer: answer
     });
   }

@@ -1,7 +1,7 @@
 {
   "name": "plantasyflores",
   "type": "module",
-  "version": "2.39.2",
+  "version": "2.39.3",
   "scripts": {
     "dev": "astro dev --host --verbose",
     "build": "astro build && node scripts/version-assets.js",
