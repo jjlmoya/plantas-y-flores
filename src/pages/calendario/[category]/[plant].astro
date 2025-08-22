@@ -10,7 +10,7 @@ import NutritionalInfo from '../../../components/calendar/NutritionalInfo.vue';
 import HarvestDetails from '../../../components/calendar/HarvestDetails.vue';
 import FlowerInfo from '../../../components/calendar/FlowerInfo.vue';
 import { getPlantCalendarWithUI, getGlobalCalendarConfig, getUIHelpers, generatePlantPaths, getOriginFlag, getAvailableCalendarCategories } from '../../../utils/calendar-inheritance.js';
-import { generatePlantCalendarSchema } from './plant.schema.js';
+import { generatePlantCalendarSchema } from '../../../schemas/calendar/calendar.plant.schema.js';
 
 // Generate static paths for all plants
 export async function getStaticPaths() {
