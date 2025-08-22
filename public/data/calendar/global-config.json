@@ -52,7 +52,9 @@
     "maintain_humidity",
     "hill_soil",
     "cure",
-    "harvest_petals"
+    "harvest_petals",
+    "divide_bulbs",
+    "remove_debris"
   ],
   "soil_types": [
     "well_drained",
@@ -426,6 +428,8 @@
       "hill_soil": "🏔️",
       "cure": "☀️",
       "harvest_petals": "🌹",
+      "divide_bulbs": "🧅",
+      "remove_debris": "🍂",
       "default": "•"
     },
     "task_priorities": {
@@ -537,7 +541,9 @@
       "maintain_humidity": "medium",
       "hill_soil": "high",
       "cure": "medium",
-      "harvest_petals": "high"
+      "harvest_petals": "high",
+      "divide_bulbs": "medium",
+      "remove_debris": "low"
     },
     "activity_colors": {
       "sowing": "#48bb78",
@@ -648,7 +654,9 @@
       "maintain_humidity": "#4299e1",
       "hill_soil": "#d69e2e",
       "cure": "#f6ad55",
-      "harvest_petals": "#d53f8c"
+      "harvest_petals": "#d53f8c",
+      "divide_bulbs": "#9f7aea",
+      "remove_debris": "#f6ad55"
     },
     "translation_strings": {
       "es": {

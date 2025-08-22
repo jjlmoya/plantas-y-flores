@@ -9,6 +9,9 @@ export default defineConfig({
   output: 'hybrid',
   adapter: vercel(),
   site: 'https://plantasyflores.online',
+  build: {
+    assets: 'assets'
+  },
   server: {
     port: 4321,
     host: true,
@@ -34,7 +37,11 @@ export default defineConfig({
         output: {
           manualChunks: {
             'search-chunk': ['./src/components/SearchBox.vue']
-          }
+          },
+          // Force cache busting with hash in filenames
+          entryFileNames: 'assets/[name].[hash].js',
+          chunkFileNames: 'assets/[name].[hash].js',
+          assetFileNames: 'assets/[name].[hash].[ext]'
         }
       }
     }

@@ -6,17 +6,22 @@
     ],
     "scientific_name": "Tulipa 'Ballerina'",
     "origin": "NL",
-    "type": "perennial",
+    "type": "perennial_bulb",
     "difficulty": "beginner",
     "family": "Liliaceae"
   },
   "flower_data": {
     "fragrance": "mild",
-    "colors": ["orange", "yellow"],
+    "colors": ["naranja", "amarillo"],
     "flower_shape": "lily_flowered",
     "size": "medium",
     "pointed_petals": true,
-    "bloom_duration": "3_weeks"
+    "bloom_duration": "3 semanas",
+    "petal_count": 6,
+    "flower_width": [8, 12],
+    "stem_length": [35, 45],
+    "cut_flower_life": "5-7 días",
+    "characteristics": ["pétalos_puntiagudos_elegantes", "base_amarilla", "puntas_naranjas", "forma_de_lirio"]
   },
   "calendar_data": {
     "planting": {
@@ -34,12 +39,12 @@
         "11": ["planting", "mulch_protection"],
         "12": ["mulch_protection"],
         "1": ["monitor_growth"],
-        "2": ["monitor_growth"],
+        "2": ["monitor_growth", "remove_debris"],
         "3": ["remove_mulch", "fertilize_light"],
         "4": ["water_moderately", "enjoy_blooms"],
         "5": ["water_moderately", "deadhead_spent"],
         "6": ["allow_foliage_yellow", "reduce_watering"],
-        "7": ["lift_bulbs_optional", "store_dry"]
+        "7": ["lift_bulbs_optional", "store_dry", "divide_bulbs"]
       }
     }
   },
@@ -61,7 +66,29 @@
     "planting_depth": "3_times_bulb_height",
     "storage_method": "cool_dry_ventilated",
     "lifting_time": "after_foliage_yellows",
-    "replanting": "autumn"
+    "replanting": "autumn",
+    "bulb_size": "large",
+    "storage_temperature": [15, 20],
+    "storage_humidity": "low",
+    "division_frequency": "every_4_years",
+    "pre_planting_treatment": "fungicide_optional"
+  },
+  "variety_characteristics": {
+    "classification": "lily_flowered",
+    "flowering_group": "mid_late",
+    "height_category": "medium",
+    "garden_use": ["bedding", "borders", "cut_flowers"],
+    "naturalizing_ability": "good",
+    "container_suitable": true,
+    "forcing_suitable": false
+  },
+  "performance_data": {
+    "bloom_reliability": "excellent",
+    "weather_tolerance": "good",
+    "pest_resistance": "good",
+    "disease_resistance": "moderate",
+    "longevity": "5-7 años",
+    "multiplication_rate": "moderate"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/10/tulip-748563_1920-325x218.webp",

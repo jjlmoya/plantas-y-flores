@@ -2,10 +2,98 @@
   "key": "reina-de-la-noche",
   "plant_info": {
     "common_names": [
-      "Reina de la Noche"
+      "Reina de la Noche", "Queen of Night", "Tulipán Negro"
     ],
     "scientific_name": "Tulipa 'Queen of Night'",
-    "difficulty": "beginner"
+    "origin": "NL",
+    "type": "perennial_bulb",
+    "difficulty": "beginner",
+    "family": "Liliaceae"
+  },
+  "flower_data": {
+    "fragrance": "mild",
+    "colors": ["púrpura_oscuro", "negro"],
+    "flower_shape": "single_late",
+    "size": "large",
+    "bloom_duration": "3 semanas",
+    "petal_count": 6,
+    "flower_width": [8, 12],
+    "stem_length": [45, 60],
+    "cut_flower_life": "7-10 días",
+    "characteristics": ["tulipán_más_oscuro", "casi_negro", "textura_aterciopelada", "contraste_dramático"]
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [10, 11, 12],
+      "soil_temperature_max": 10,
+      "planting_depth": "15-20cm"
+    },
+    "flowering": {
+      "best_months": [4, 5],
+      "peak_months": [5]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "10": ["planting", "prepare_beds"],
+        "11": ["planting", "mulch_protection"],
+        "12": ["mulch_protection"],
+        "1": ["monitor_growth"],
+        "2": ["monitor_growth", "remove_debris"],
+        "3": ["remove_mulch", "fertilize_light"],
+        "4": ["water_moderately", "pest_monitoring"],
+        "5": ["water_moderately", "enjoy_blooms"],
+        "6": ["allow_foliage_yellow", "reduce_watering"],
+        "7": ["lift_bulbs_optional", "store_dry", "divide_bulbs"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.5],
+    "spacing": {
+      "plant_distance": 12,
+      "row_distance": 18
+    },
+    "companion_plants": ["muscari", "narcisos", "allium", "primula"],
+    "temperature_range": [-20, 25],
+    "cold_requirements": "12_weeks_below_10c",
+    "special_care": "Necesita frío invernal, plantar bulbos en otoño"
+  },
+  "bulb_care": {
+    "planting_depth": "3_times_bulb_height",
+    "storage_method": "cool_dry_ventilated",
+    "lifting_time": "after_foliage_yellows",
+    "replanting": "autumn",
+    "bulb_size": "large",
+    "storage_temperature": [15, 20],
+    "storage_humidity": "low",
+    "division_frequency": "every_4_years",
+    "pre_planting_treatment": "fungicide_optional"
+  },
+  "variety_characteristics": {
+    "classification": "single_late",
+    "flowering_group": "late",
+    "height_category": "tall",
+    "garden_use": ["borders", "cut_flowers", "dramatic_displays", "contrast_planting"],
+    "naturalizing_ability": "good",
+    "container_suitable": true,
+    "forcing_suitable": false
+  },
+  "performance_data": {
+    "bloom_reliability": "excellent",
+    "weather_tolerance": "good",
+    "pest_resistance": "good",
+    "disease_resistance": "good",
+    "longevity": "5-7 años",
+    "multiplication_rate": "moderate"
+  },
+  "design_notes": {
+    "color_combinations": ["contrasta_bellamente_con_blanco", "llamativo_con_amarillo", "elegante_con_rosa"],
+    "garden_impact": "punto_focal_dramático",
+    "photography_favorite": true,
+    "awards": ["Award_of_Garden_Merit_RHS"]
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/10/tulip-2270953_1920-325x217.webp",

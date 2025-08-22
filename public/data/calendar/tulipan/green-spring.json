@@ -2,10 +2,92 @@
   "key": "green-spring",
   "plant_info": {
     "common_names": [
-      "Green Spring"
+      "Green Spring", "Tulipán Verde Primavera"
     ],
     "scientific_name": "Tulipa 'Green Spring'",
-    "difficulty": "beginner"
+    "origin": "NL",
+    "type": "perennial_bulb",
+    "difficulty": "beginner",
+    "family": "Liliaceae"
+  },
+  "flower_data": {
+    "fragrance": "none",
+    "colors": ["blanco", "verde"],
+    "flower_shape": "single",
+    "size": "medium",
+    "bloom_duration": "3 semanas",
+    "petal_count": 6,
+    "flower_width": [6, 10],
+    "stem_length": [30, 40],
+    "cut_flower_life": "5-7 días",
+    "characteristics": ["pétalos_blancos", "rayas_verdes", "base_verde", "forma_clásica_tulipán"]
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [10, 11, 12],
+      "soil_temperature_max": 10,
+      "planting_depth": "15-20cm"
+    },
+    "flowering": {
+      "best_months": [3, 4, 5],
+      "peak_months": [4]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "10": ["planting", "prepare_beds"],
+        "11": ["planting", "mulch_protection"],
+        "12": ["mulch_protection"],
+        "1": ["monitor_growth"],
+        "2": ["monitor_growth", "remove_debris"],
+        "3": ["remove_mulch", "fertilize_light"],
+        "4": ["water_moderately", "enjoy_blooms"],
+        "5": ["water_moderately", "deadhead_spent"],
+        "6": ["allow_foliage_yellow", "reduce_watering"],
+        "7": ["lift_bulbs_optional", "store_dry", "divide_bulbs"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.5],
+    "spacing": {
+      "plant_distance": 10,
+      "row_distance": 15
+    },
+    "companion_plants": ["muscari", "narcisos", "crocus"],
+    "temperature_range": [-20, 25],
+    "cold_requirements": "12_weeks_below_10c",
+    "special_care": "Necesita frío invernal, plantar bulbos en otoño"
+  },
+  "bulb_care": {
+    "planting_depth": "3_times_bulb_height",
+    "storage_method": "cool_dry_ventilated",
+    "lifting_time": "after_foliage_yellows",
+    "replanting": "autumn",
+    "bulb_size": "medium",
+    "storage_temperature": [15, 20],
+    "storage_humidity": "low",
+    "division_frequency": "every_3_years",
+    "pre_planting_treatment": "fungicide_optional"
+  },
+  "variety_characteristics": {
+    "classification": "single_early",
+    "flowering_group": "early",
+    "height_category": "medium",
+    "garden_use": ["bedding", "borders", "naturalizing", "containers"],
+    "naturalizing_ability": "excellent",
+    "container_suitable": true,
+    "forcing_suitable": true
+  },
+  "performance_data": {
+    "bloom_reliability": "excellent",
+    "weather_tolerance": "excellent",
+    "pest_resistance": "good",
+    "disease_resistance": "good",
+    "longevity": "4-6 años",
+    "multiplication_rate": "good"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/10/tulips-1331597_1920-325x216.webp",

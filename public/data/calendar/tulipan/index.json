@@ -1,27 +1,190 @@
 {
   "plant_info": {
     "category": "tulipan",
-    "type": "perennial",
-    "difficulty": "beginner"
+    "scientific_name": "Tulipa",
+    "family": "Liliaceae",
+    "type": "perennial_bulb",
+    "difficulty": "beginner",
+    "growth_habit": "upright",
+    "origin": "central_asia",
+    "mature_size": {
+      "height": [15, 60],
+      "width": [10, 15]
+    }
   },
   "calendar_data": {
     "planting": {
-      "best_months": [
-        10,
-        11,
-        12
-      ]
+      "best_months": [10, 11, 12],
+      "alternative_months": [9],
+      "soil_temperature_max": 10,
+      "planting_depth_range": [10, 20],
+      "regional_variations": {
+        "temperate": [10, 11, 12],
+        "cold": [9, 10, 11],
+        "warm": [11, 12, 1]
+      }
     },
     "flowering": {
-      "best_months": [
-        3,
-        4,
-        5
-      ]
+      "best_months": [3, 4, 5],
+      "peak_months": [4],
+      "early_varieties": [2, 3, 4],
+      "late_varieties": [4, 5, 6],
+      "regional_variations": {
+        "temperate": [3, 4, 5],
+        "cold": [4, 5, 6],
+        "warm": [2, 3, 4]
+      }
+    },
+    "dormancy": {
+      "best_months": [6, 7, 8, 9],
+      "lifting_optional": [6, 7],
+      "storage_period": [7, 8, 9]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "9": [
+          "prepare_beds",
+          "soil_preparation"
+        ],
+        "10": [
+          "planting",
+          "mulch_protection"
+        ],
+        "11": [
+          "planting",
+          "mulch_protection",
+          "pest_monitoring"
+        ],
+        "12": [
+          "mulch_protection",
+          "dormant_protection"
+        ],
+        "1": [
+          "monitor_growth",
+          "prepare_winter"
+        ],
+        "2": [
+          "monitor_growth",
+          "remove_debris"
+        ],
+        "3": [
+          "remove_mulch",
+          "fertilize_light",
+          "moderate_watering"
+        ],
+        "4": [
+          "moderate_watering",
+          "enjoy_blooms",
+          "pest_monitoring"
+        ],
+        "5": [
+          "moderate_watering",
+          "deadhead_spent",
+          "fertilize_light"
+        ],
+        "6": [
+          "allow_foliage_yellow",
+          "reduce_watering",
+          "lift_bulbs_optional"
+        ],
+        "7": [
+          "lift_bulbs_optional",
+          "store_dry",
+          "divide_bulbs"
+        ],
+        "8": [
+          "store_dry",
+          "plan_next_season"
+        ]
+      }
     }
   },
   "growing_conditions": {
     "sun_requirements": "full_sun",
-    "water_needs": "moderate"
+    "water_needs": "moderate",
+    "soil_ph": [6.0, 7.5],
+    "soil_type": "well_drained",
+    "drainage": "excellent",
+    "spacing": {
+      "plant_distance": 8,
+      "row_distance": 15
+    },
+    "companion_plants": ["muscari", "narcisos", "crocus", "primula", "viola"],
+    "temperature_range": [-25, 25],
+    "minimum_temperature": -30,
+    "humidity_requirements": "low",
+    "wind_tolerance": "good",
+    "frost_tolerance": "excellent",
+    "cold_requirements": "12_weeks_below_10c",
+    "special_purposes": ["spring_color", "cut_flowers", "naturalizing", "rock_gardens"]
+  },
+  "flower_data": {
+    "colors": ["rojo", "rosa", "amarillo", "blanco", "púrpura", "naranja", "negro", "multicolor"],
+    "flower_shapes": ["simple", "doble", "flor_de_lirio", "loro", "flecos", "triunfo"],
+    "bloom_duration_range": ["2 semanas", "4 semanas"],
+    "fragrance_levels": ["ninguno", "suave", "moderado"],
+    "size_categories": ["mini", "pequeño", "mediano", "grande"],
+    "petal_characteristics": ["liso", "flecos", "puntiagudo", "redondeado"]
+  },
+  "bulb_data": {
+    "planting_depth_rule": "3_times_bulb_height",
+    "bulb_sizes": ["small", "medium", "large"],
+    "storage_requirements": {
+      "temperature": [15, 20],
+      "humidity": "low",
+      "ventilation": "good",
+      "location": "cool_dry_dark"
+    },
+    "lifecycle": {
+      "lifting_time": "after_foliage_yellows",
+      "division_frequency": "every_3_5_years",
+      "replacement_cycle": "5_7_years"
+    }
+  },
+  "variety_classifications": {
+    "by_flowering_time": {
+      "early": ["especies_botanicas", "simples_tempranos"],
+      "mid": ["triunfo", "darwin_hibridos"],
+      "late": ["simples_tardios", "lily_flowered", "parrot"]
+    },
+    "by_height": {
+      "dwarf": [10, 25],
+      "medium": [25, 45],
+      "tall": [45, 75]
+    },
+    "by_use": {
+      "bedding": ["triunfo", "darwin_hibridos"],
+      "naturalizing": ["especies_botanicas", "darwin_hibridos"],
+      "cut_flowers": ["simples_tardios", "lily_flowered"],
+      "containers": ["dwarf_varieties", "species"]
+    }
+  },
+  "climate_adaptations": {
+    "temperate": {
+      "ideal": true,
+      "characteristics": ["natural_chilling", "spring_emergence"],
+      "challenges": ["wet_summers"]
+    },
+    "cold": {
+      "excellent": true,
+      "characteristics": ["extended_chilling", "later_emergence"],
+      "challenges": ["short_growing_season"]
+    },
+    "warm": {
+      "challenging": true,
+      "characteristics": ["requires_pre_chilling", "annual_treatment"],
+      "challenges": ["insufficient_chilling", "heat_stress"]
+    }
+  },
+  "cultivation_notes": {
+    "naturalization_potential": "excellent",
+    "deer_resistance": "excellent",
+    "pest_resistance": "good",
+    "disease_susceptibility": ["tulip_fire", "bulb_rot"],
+    "companion_benefits": [
+      "early_spring_color",
+      "attracts_early_pollinators",
+      "fills_gap_before_perennials"
+    ]
   }
 }

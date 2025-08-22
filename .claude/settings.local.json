@@ -71,7 +71,11 @@
       "Bash(do sed -i 's/\"\"bloom_duration\"\": \"\"1_day\"\"/\"\"bloom_duration\"\": \"\"1 día\"\"/g' \"$file\")",
       "Bash(do sed -i 's/\"\"bloom_duration\"\": \"\"3_days\"\"/\"\"bloom_duration\"\": \"\"3 días\"\"/g' \"$file\")",
       "Bash(do sed -i 's/\"\"bloom_duration\"\": \"\"few_hours\"\"/\"\"bloom_duration\"\": \"\"pocas horas\"\"/g' \"$file\")",
-      "Bash(do sed -i 's/\"\"deadheading\"\"/\"\"deadhead\"\"/g' \"$file\")"
+      "Bash(do sed -i 's/\"\"deadheading\"\"/\"\"deadhead\"\"/g' \"$file\")",
+      "Bash(git log:*)",
+      "Bash(move:*)",
+      "Bash(del \"C:\\Users\\34677\\Desktop\\plantasyflroes\\src\\styles\\*.css\")",
+      "Bash(del nul)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits",

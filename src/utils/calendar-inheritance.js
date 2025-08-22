@@ -616,6 +616,7 @@ export function getUIHelpers(globalConfig) {
         // Plant types
         'annual': 'Anual',
         'perennial': 'Perenne',
+        'perennial_bulb': 'Bulbo Perenne',
         'biennial': 'Bienal',
         'shrub': 'Arbusto',
         // Difficulty levels
@@ -974,6 +975,11 @@ export function getUIHelpers(globalConfig) {
         // Specific tasks for potatoes and root crops
         'hill_soil': 'Aporcar',
         'cure': 'Curar',
+        // Specific tasks for bulbs
+        'divide_bulbs': 'Dividir Bulbos',
+        'remove_debris': 'Limpiar Restos',
+        // Flower shapes
+        'lily_flowered': 'Flor de Lirio',
         
         // Heat levels for chilis
         'mild': 'Suave',
@@ -1245,7 +1251,8 @@ export function getUIHelpers(globalConfig) {
         'CN': 'China',
         'JP': 'Japón',
         'IN': 'India',
-        'MX': 'México'
+        'MX': 'México',
+        'NL': 'Países Bajos'
       };
       
       const upperCode = originCode.toUpperCase();
