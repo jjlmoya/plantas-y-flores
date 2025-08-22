@@ -75,7 +75,9 @@
       "Bash(git log:*)",
       "Bash(move:*)",
       "Bash(del \"C:\\Users\\34677\\Desktop\\plantasyflroes\\src\\styles\\*.css\")",
-      "Bash(del nul)"
+      "Bash(del nul)",
+      "Bash(timeout 120s npm run build)",
+      "Bash(timeout 180s npx astro build)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits",

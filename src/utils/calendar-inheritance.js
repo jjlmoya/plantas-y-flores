@@ -2,6 +2,14 @@ import fs from 'fs';
 import path from 'path';
 import { getPlants, getCategoryPages } from './data.js';
 
+// Simple in-memory cache to avoid repeated file reads during build
+const cache = {
+  globalConfig: null,
+  categoryPlants: new Map(),
+  plantCalendars: new Map(),
+  allCategories: null
+};
+
 /**
  * Deep merge utility for combining configurations
  * Later objects override earlier ones
@@ -33,11 +41,17 @@ function isObject(item) {
  * Contains all available options and enums
  */
 export async function getGlobalCalendarConfig() {
+  // Return cached config if available
+  if (cache.globalConfig) {
+    return cache.globalConfig;
+  }
+
   const globalPath = path.join(process.cwd(), 'public', 'data', 'calendar', 'global-config.json');
   
   if (!fs.existsSync(globalPath)) {
     console.warn(`Global calendar configuration not found at: ${globalPath}, using defaults`);
-    return getDefaultGlobalConfig();
+    cache.globalConfig = getDefaultGlobalConfig();
+    return cache.globalConfig;
   }
   
   try {
@@ -47,13 +61,16 @@ export async function getGlobalCalendarConfig() {
     // Validate required fields
     if (!config.ui_config || !config.month_names || !config.task_definitions) {
       console.warn('Global config missing required fields, merging with defaults');
-      return { ...getDefaultGlobalConfig(), ...config };
+      cache.globalConfig = { ...getDefaultGlobalConfig(), ...config };
+      return cache.globalConfig;
     }
     
+    cache.globalConfig = config;
     return config;
   } catch (error) {
     console.error(`Error parsing global calendar config: ${error.message}, using defaults`);
-    return getDefaultGlobalConfig();
+    cache.globalConfig = getDefaultGlobalConfig();
+    return cache.globalConfig;
   }
 }
 
@@ -193,6 +210,12 @@ export async function getPlantCalendarWithInheritance(category, plantSlug) {
       throw new Error(`Invalid parameters: category="${category}", plantSlug="${plantSlug}"`);
     }
 
+    // Check cache first
+    const cacheKey = `${category}/${plantSlug}`;
+    if (cache.plantCalendars.has(cacheKey)) {
+      return cache.plantCalendars.get(cacheKey);
+    }
+
     // 1. Load global configuration (contains all available options)
     const globalConfig = await getGlobalCalendarConfig();
     
@@ -221,7 +244,7 @@ export async function getPlantCalendarWithInheritance(category, plantSlug) {
     // 5. Resolve article links automatically
     const articleLinks = await resolveArticleLinks(category, plantSlug, plantConfig);
     
-    return {
+    const result = {
       ...inheritedConfig,
       _inheritance: {
         has_global: Object.keys(globalConfig).length > 0,
@@ -233,6 +256,10 @@ export async function getPlantCalendarWithInheritance(category, plantSlug) {
       _global_config: globalConfig, // Keep reference for validation
       _article_links: articleLinks // Auto-resolved article links
     };
+
+    // Cache the result
+    cache.plantCalendars.set(cacheKey, result);
+    return result;
   } catch (error) {
     console.error(`Error in getPlantCalendarWithInheritance for ${category}/${plantSlug}:`, error.message);
     
@@ -260,9 +287,15 @@ export async function getPlantCalendarWithInheritance(category, plantSlug) {
  * Get all plants in a category with their inherited configurations
  */
 export async function getCategoryPlantsWithCalendar(category) {
+  // Return cached category plants if available
+  if (cache.categoryPlants.has(category)) {
+    return cache.categoryPlants.get(category);
+  }
+
   const categoryDir = path.join(process.cwd(), 'public', 'data', 'calendar', category);
   
   if (!fs.existsSync(categoryDir)) {
+    cache.categoryPlants.set(category, []);
     return [];
   }
   
@@ -281,6 +314,8 @@ export async function getCategoryPlantsWithCalendar(category) {
     });
   }
   
+  // Cache the result
+  cache.categoryPlants.set(category, plants);
   return plants;
 }
 
@@ -293,16 +328,25 @@ export async function findPlantsByMonth(month, activity = 'sowing', hemisphere =
   const monthOffset = globalConfig.hemispheres[hemisphere].month_offset;
   const adjustedMonth = ((month - 1 + monthOffset) % 12) + 1;
   
-  const calendarDir = path.join(process.cwd(), 'public', 'data', 'calendar');
-  
-  if (!fs.existsSync(calendarDir)) {
-    return [];
+  // Get cached categories list or read from filesystem
+  let categories;
+  if (cache.allCategories) {
+    categories = cache.allCategories;
+  } else {
+    const calendarDir = path.join(process.cwd(), 'public', 'data', 'calendar');
+    
+    if (!fs.existsSync(calendarDir)) {
+      return [];
+    }
+    
+    categories = fs.readdirSync(calendarDir).filter(dir => {
+      const dirPath = path.join(calendarDir, dir);
+      return fs.statSync(dirPath).isDirectory();
+    });
+    
+    // Cache the categories list
+    cache.allCategories = categories;
   }
-  
-  const categories = fs.readdirSync(calendarDir).filter(dir => {
-    const dirPath = path.join(calendarDir, dir);
-    return fs.statSync(dirPath).isDirectory();
-  });
   
   const matchingPlants = [];
   
