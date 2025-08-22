@@ -682,6 +682,8 @@ export function getUIHelpers(globalConfig) {
         'rocky': 'Rocoso',
         'moist': 'Húmedo',
         'dry': 'Seco',
+        'fertile': 'Fértil',
+        'rich_organic': 'Rico en Materia Orgánica',
         'moist_well_drained': 'Húmedo Bien Drenado',
         'sandy_well_drained': 'Arenoso Bien Drenado',
         // Sun requirements
@@ -693,7 +695,20 @@ export function getUIHelpers(globalConfig) {
         // Water needs
         'low': 'Bajo',
         'moderate': 'Moderado',
+        'moderate_high': 'Moderado a alto',
+        'moderate_to_high': 'Moderado a alto',
         'high': 'Alto',
+        // Nutrientes específicos
+        'vitamina_k': 'Vitamina K',
+        'vitamina_c': 'Vitamina C',
+        'vitamina_a': 'Vitamina A',
+        'hierro': 'Hierro',
+        'calcio': 'Calcio',
+        'antioxidantes': 'Antioxidantes',
+        'fibra': 'Fibra',
+        'folato': 'Folato',
+        'potasio': 'Potasio',
+        'antocianinas': 'Antocianinas',
         // Flower sizes
         'small': 'Pequeña',
         'medium': 'Mediana',

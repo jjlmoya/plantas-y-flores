@@ -139,11 +139,13 @@ export default {
       const soilMap = {
         'well_drained': 'Bien drenado',
         'well_drained_fertile': 'Bien drenado y fértil',
+        'fertile': 'Fértil',
         'sandy': 'Arenoso',
         'sandy_loam': 'Franco arenoso',
         'clay': 'Arcilloso',
         'clay_loam': 'Franco arcilloso',
         'organic_rich': 'Rico en materia orgánica',
+        'rich_organic': 'Rico en materia orgánica',
         'acidic': 'Ácido',
         'alkaline': 'Alcalino',
         'neutral': 'Neutro',

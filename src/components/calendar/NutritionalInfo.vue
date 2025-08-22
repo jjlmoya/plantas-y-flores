@@ -62,7 +62,7 @@
       </div>
       <div class="nutrients-grid">
         <div 
-          v-for="nutrient in nutritionalData.main_nutrients || []" 
+          v-for="nutrient in (nutritionalData.properties || nutritionalData.main_nutrients || [])" 
           :key="nutrient" 
           class="nutrient-badge"
         >
@@ -181,7 +181,28 @@ function formatTaskName(task) {
     'mineral_rich': 'Rico en minerales',
     'fiber_rich': 'Rico en fibra',
     'low_calorie': 'Bajo en calorías',
-    'heart_healthy': 'Beneficioso para el corazón'
+    'heart_healthy': 'Beneficioso para el corazón',
+    'sweet_mild': 'Dulce suave',
+    'sweet_tart': 'Dulce ácido',
+    'tart': 'Ácido',
+    'bitter': 'Amargo',
+    'spicy': 'Picante',
+    'mild': 'Suave',
+    'earthy': 'Terroso',
+    // Nutrientes específicos
+    'vitamina_k': 'Vitamina K',
+    'vitamina_c': 'Vitamina C',
+    'vitamina_a': 'Vitamina A',
+    'hierro': 'Hierro',
+    'calcio': 'Calcio',
+    'antioxidantes': 'Antioxidantes',
+    'fibra': 'Fibra',
+    'folato': 'Folato',
+    'potasio': 'Potasio',
+    'antocianinas': 'Antocianinas',
+    // Niveles de agua
+    'moderate_high': 'Moderado a alto',
+    'moderate_to_high': 'Moderado a alto'
   };
   return translations[task] || task;
 }
@@ -259,7 +280,7 @@ export default {
 .enhanced-nutrition-section {
   background: #fcfdfe;
   border-radius: 12px;
-  padding: 2rem;
+  padding: 1.5rem;
   border: 1px solid #e2e8f0;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }

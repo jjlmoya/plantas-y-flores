@@ -2,14 +2,90 @@
   "key": "lombarda",
   "plant_info": {
     "common_names": [
-      "Lombarda"
+      "Lombarda", "Col Lombarda", "Col Morada", "Repollo Rojo"
     ],
     "scientific_name": "Brassica oleracea var. capitata f. rubra",
-    "difficulty": "beginner"
+    "origin": "EU",
+    "type": "biennial",
+    "difficulty": "beginner",
+    "family": "Brassicaceae"
+  },
+  "calendar_data": {
+    "sowing": {
+      "indoor": {
+        "best_months": [2, 3, 7, 8],
+        "temperature_range": [15, 20],
+        "germination_days": [5, 10]
+      },
+      "outdoor": {
+        "best_months": [3, 4, 8, 9],
+        "temperature_range": [10, 18],
+        "soil_temperature_min": 8
+      }
+    },
+    "transplanting": {
+      "best_months": [4, 5, 9, 10],
+      "soil_temperature_min": 10,
+      "weeks_after_sowing": [5, 7]
+    },
+    "harvesting": {
+      "best_months": [6, 7, 11, 12, 1, 2],
+      "peak_months": [11, 12, 1],
+      "days_to_harvest": [80, 110],
+      "harvest_indicators": "Cabezas firmes y compactas, color morado intenso"
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "2": ["sow_indoor"],
+        "3": ["sow_indoor", "sow_outdoor"],
+        "4": ["transplant", "sow_outdoor"],
+        "5": ["transplant", "water_regularly"],
+        "6": ["harvest_summer", "water_regularly"],
+        "7": ["sow_indoor", "harvest_summer"],
+        "8": ["sow_indoor", "sow_outdoor"],
+        "9": ["transplant", "sow_outdoor"],
+        "10": ["transplant", "protect_cold"],
+        "11": ["harvest_main", "protect_cold"],
+        "12": ["harvest_winter"],
+        "1": ["harvest_winter"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "rich_organic",
+    "soil_ph": [6.0, 7.5],
+    "spacing": {
+      "plant_distance": 50,
+      "row_distance": 70
+    },
+    "companion_plants": ["cebolla", "ajo", "apio", "zanahoria", "lechuga"],
+    "avoid_plants": ["tomate", "fresa", "rábano"],
+    "temperature_range": [-5, 25],
+    "cold_tolerance": "-5°C",
+    "special_care": "El frío intensifica el color morado, resistente a heladas ligeras"
+  },
+  "harvest_data": {
+    "days_to_harvest": [80, 110],
+    "weight_range": [1000, 2500],
+    "storage_life": 60,
+    "preservation_methods": ["refrigerate", "ferment", "pickle", "dehydrate"],
+    "harvest_tips": "Cortar cuando la cabeza esté firme, dejar raíz para rebrotes"
+  },
+  "nutritional_data": {
+    "calories_per_100g": 31,
+    "water_content": 90,
+    "properties": ["vitamina_c", "vitamina_k", "antioxidantes", "fibra", "folato", "potasio", "antocianinas"]
+  },
+  "culinary_data": {
+    "uses": ["ensaladas", "fermentados", "guisos", "encurtidos", "salteados"],
+    "preparation": "Cortar fino para ensaladas crudas, cocer poco tiempo para mantener color",
+    "flavor_profile": "dulce_ligeramente_picante"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/08/col-747603_1920-325x218.webp",
     "article_date": "2017-08-29T17:49:11",
-    "excerpt": "La Lombarda es otra de las variedades de Col más famosas y, como de costumbre, aprenderemos todo lo necesario para plantarla, cuidarla y por qué debemos hacerlo a través de sus beneficios y usos. Qué "
+    "excerpt": "La Lombarda es otra de las variedades de Col más famosas y, como de costumbre, aprenderemos todo lo necesario para plantarla, cuidarla y por qué debemos hacerlo a través de sus beneficios y usos. Qué "
   }
 }

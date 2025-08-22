@@ -2,10 +2,86 @@
   "key": "bruselas",
   "plant_info": {
     "common_names": [
-      "Bruselas"
+      "Coles de Bruselas", "Brussels Sprouts", "Repollitos de Bruselas"
     ],
     "scientific_name": "Brassica oleracea var. gemmifera",
-    "difficulty": "beginner"
+    "origin": "EU",
+    "type": "biennial",
+    "difficulty": "intermediate",
+    "family": "Brassicaceae"
+  },
+  "calendar_data": {
+    "sowing": {
+      "indoor": {
+        "best_months": [3, 4, 5],
+        "temperature_range": [15, 20],
+        "germination_days": [7, 12]
+      },
+      "outdoor": {
+        "best_months": [4, 5, 6],
+        "temperature_range": [12, 18],
+        "soil_temperature_min": 8
+      }
+    },
+    "transplanting": {
+      "best_months": [5, 6, 7],
+      "soil_temperature_min": 10,
+      "weeks_after_sowing": [6, 8]
+    },
+    "harvesting": {
+      "best_months": [10, 11, 12, 1, 2],
+      "peak_months": [11, 12, 1],
+      "days_to_harvest": [90, 120],
+      "harvest_indicators": "Brotes firmes de 2-4 cm, de abajo hacia arriba"
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "3": ["sow_indoor"],
+        "4": ["sow_indoor", "sow_outdoor"],
+        "5": ["transplant", "sow_outdoor"],
+        "6": ["transplant", "water_regularly"],
+        "7": ["transplant", "water_regularly", "fertilize"],
+        "8": ["water_regularly", "fertilize", "hill_soil"],
+        "9": ["hill_soil", "protect_pests"],
+        "10": ["harvest_early", "protect_cold"],
+        "11": ["harvest_main", "protect_cold"],
+        "12": ["harvest_main"],
+        "1": ["harvest_winter"],
+        "2": ["harvest_winter"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate_high",
+    "soil_type": "rich_organic",
+    "soil_ph": [6.0, 7.0],
+    "spacing": {
+      "plant_distance": 60,
+      "row_distance": 80
+    },
+    "companion_plants": ["cebolla", "ajo", "apio", "zanahoria"],
+    "avoid_plants": ["tomate", "fresa", "rábano"],
+    "temperature_range": [-8, 20],
+    "cold_tolerance": "-8°C",
+    "special_care": "Necesita temperaturas frías para formar brotes compactos, muy tolerante a heladas"
+  },
+  "harvest_data": {
+    "days_to_harvest": [90, 120],
+    "weight_range": [500, 800],
+    "storage_life": 14,
+    "preservation_methods": ["refrigerate", "blanch_freeze", "ferment"],
+    "harvest_tips": "Cosechar brotes de abajo hacia arriba cuando estén firmes"
+  },
+  "nutritional_data": {
+    "calories_per_100g": 43,
+    "water_content": 86,
+    "properties": ["vitamina_k", "vitamina_c", "folato", "fibra", "antioxidantes", "potasio"]
+  },
+  "culinary_data": {
+    "uses": ["asados", "salteados", "gratinados", "sopas", "guisos"],
+    "preparation": "Quitar hojas externas y cortar base antes de cocinar",
+    "flavor_profile": "dulce_ligeramente_amargo"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/08/brussels-sprouts-463378_1920-325x216.webp",

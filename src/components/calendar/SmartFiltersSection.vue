@@ -295,7 +295,18 @@ export default {
       const translations = {
         'sowing': 'Siembra', 'transplanting': 'Trasplante', 'harvesting': 'Cosecha',
         'flowering': 'Floración', 'planting': 'Plantación', 'pruning': 'Poda',
-        'beginner': 'Fácil', 'intermediate': 'Medio', 'advanced': 'Difícil'
+        // Difficulty levels
+        'beginner': 'Fácil', 'intermediate': 'Medio', 'advanced': 'Difícil',
+        // Plant types
+        'annual': 'Anual', 'perennial': 'Perenne', 'biennial': 'Bienal',
+        'shrub': 'Arbusto', 'tree': 'Árbol',
+        // Soil types
+        'fertile': 'Fértil', 'well_drained_fertile': 'Bien drenado y fértil',
+        'rich_organic': 'Rico en materia orgánica', 'well_drained': 'Bien drenado',
+        // Sun requirements
+        'full_sun': 'Sol directo', 'partial_sun': 'Sol parcial', 'partial_shade': 'Sombra parcial',
+        // Water needs
+        'low': 'Bajo', 'moderate': 'Moderado', 'high': 'Alto'
       };
       return translations[task] || task.charAt(0).toUpperCase() + task.slice(1).replace(/_/g, ' ');
     },

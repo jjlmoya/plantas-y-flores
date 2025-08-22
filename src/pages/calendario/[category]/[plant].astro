@@ -546,15 +546,100 @@ const plantExportData = {
 
       <!-- Plant Details Grid -->
       <div class="details-grid">
-        <PlantDetailsGrid 
-          client:visible
-          growingConditions={growingConditions}
-          harvestData={harvestData}
-          plantInfo={plantInfo}
-          processedCompanions={processedCompanions}
-          processedAvoidPlants={processedAvoidPlants}
-          originFlag={getOriginFlag(plantInfo.origin)}
-        />
+        <!-- Growing Conditions -->
+        <section class="details-card">
+          <h3>🌱 Condiciones de Cultivo</h3>
+          <div class="conditions-grid">
+            {growingConditions.sun_requirements && (
+              <div class="condition-item">
+                <span class="condition-icon">☀️</span>
+                <div>
+                  <strong>Luz</strong>
+                  <p>{ui.formatTaskName(growingConditions.sun_requirements)}</p>
+                </div>
+              </div>
+            )}
+            {growingConditions.water_needs && (
+              <div class="condition-item">
+                <span class="condition-icon">💧</span>
+                <div>
+                  <strong>Agua</strong>
+                  <p>{ui.formatTaskName(growingConditions.water_needs)}</p>
+                </div>
+              </div>
+            )}
+            {growingConditions.soil_type && (
+              <div class="condition-item">
+                <span class="condition-icon">🌍</span>
+                <div>
+                  <strong>Suelo</strong>
+                  <p>{ui.formatTaskName(growingConditions.soil_type)}</p>
+                </div>
+              </div>
+            )}
+            {growingConditions.soil_ph && (
+              <div class="condition-item">
+                <span class="condition-icon">⚗️</span>
+                <div>
+                  <strong>pH</strong>
+                  <p>{growingConditions.soil_ph[0]} - {growingConditions.soil_ph[1]}</p>
+                </div>
+              </div>
+            )}
+            {growingConditions.spacing && (
+              <div class="condition-item">
+                <span class="condition-icon">📏</span>
+                <div>
+                  <strong>Espaciado</strong>
+                  <p>{growingConditions.spacing.plant_distance}cm entre plantas</p>
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+
+        <!-- Plant Information -->
+        <section class="details-card">
+          <h3>🌿 Información de la Planta</h3>
+          <div class="plant-details-grid">
+            {plantInfo.family && (
+              <div class="plant-detail-item">
+                <span class="detail-icon">🏛️</span>
+                <div>
+                  <strong>Familia</strong>
+                  <p>{plantInfo.family}</p>
+                </div>
+              </div>
+            )}
+            {plantInfo.type && (
+              <div class="plant-detail-item">
+                <span class="detail-icon">🔄</span>
+                <div>
+                  <strong>Tipo</strong>
+                  <p>{ui.formatTaskName(plantInfo.type)}</p>
+                </div>
+              </div>
+            )}
+            {plantInfo.difficulty && (
+              <div class="plant-detail-item">
+                <span class="detail-icon">🤔</span>
+                <div>
+                  <strong>Dificultad</strong>
+                  <p>{ui.formatTaskName(plantInfo.difficulty)}</p>
+                </div>
+              </div>
+            )}
+            {plantInfo.origin && (
+              <div class="plant-detail-item">
+                <span class="detail-icon">{getOriginFlag(plantInfo.origin)}</span>
+                <div>
+                  <strong>Origen</strong>
+                  <p>{ui.formatOriginName(plantInfo.origin)}</p>
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
 
         <!-- Flower Information -->
         <FlowerInfo 
@@ -786,9 +871,84 @@ const plantExportData = {
 
   .details-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 2rem;
     margin-bottom: 3rem;
+  }
+
+  .details-card {
+    background: var(--bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .details-card h3 {
+    margin-bottom: var(--space-md);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  .conditions-grid {
+    display: grid;
+    gap: var(--space-md);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .condition-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+
+  .condition-icon {
+    font-size: var(--font-size-xl);
+    flex-shrink: 0;
+  }
+
+  .condition-item strong {
+    color: var(--color-text-primary);
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+    display: block;
+  }
+
+  .condition-item p {
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  .plant-details-grid {
+    display: grid;
+    gap: var(--space-md);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .plant-detail-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+
+  .detail-icon {
+    font-size: var(--font-size-xl);
+    flex-shrink: 0;
+  }
+
+  .plant-detail-item strong {
+    color: var(--color-text-primary);
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+    display: block;
+  }
+
+  .plant-detail-item p {
+    color: var(--color-text-secondary);
+    margin: 0;
   }
   
   @media (max-width: 768px) {

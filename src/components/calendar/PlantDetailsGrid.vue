@@ -1,5 +1,5 @@
 <template>
-  <div class="plant-details-container">
+  <div>
     <!-- Growing Conditions -->
     <section class="details-card">
       <h3>🌱 Condiciones de Cultivo</h3>
@@ -252,7 +252,21 @@ function formatTaskName(task) {
     'alkaline': 'Alcalino',
     'loamy': 'Franco',
     'sandy': 'Arenoso',
-    'clay': 'Arcilloso'
+    'clay': 'Arcilloso',
+    'fertile': 'Fértil',
+    'rich_organic': 'Rico en materia orgánica',
+    'well_drained_fertile': 'Bien drenado y fértil',
+    // Plant types
+    'annual': 'Anual',
+    'perennial': 'Perenne',
+    'biennial': 'Bienal',
+    'shrub': 'Arbusto',
+    'tree': 'Árbol',
+    // Difficulty levels
+    'beginner': 'Principiante',
+    'intermediate': 'Intermedio',
+    'advanced': 'Avanzado',
+    'expert': 'Experto'
   };
   return translations[task] || task;
 }
