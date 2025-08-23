@@ -59,6 +59,7 @@
   "flower_data": {
     "fragrance": "strong",
     "flower_color": "blanco",
+    "colors": ["white"],
     "flower_size": "medium",
     "flower_form": "semi_double",
     "petals_per_flower": [8, 15],

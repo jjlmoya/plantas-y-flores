@@ -60,6 +60,7 @@
   "flower_data": {
     "fragrance": "mild_sweet",
     "flower_color": ["blanco", "amarillo_palido"],
+    "colors": ["white", "yellow"],
     "flower_size": "small",
     "flower_form": "double",
     "flowers_per_cluster": [20, 50],

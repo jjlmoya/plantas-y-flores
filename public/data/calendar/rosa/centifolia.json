@@ -59,6 +59,7 @@
   "flower_data": {
     "fragrance": "very_strong",
     "flower_color": "rosa_intenso",
+    "colors": ["pink", "red"],
     "flower_size": "very_large",
     "flower_form": "very_double",
     "petals_per_flower": [100, 200],

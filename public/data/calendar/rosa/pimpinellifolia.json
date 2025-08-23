@@ -64,6 +64,7 @@
   "flower_data": {
     "fragrance": "mild",
     "flower_color": "blanco_crema",
+    "colors": ["white", "cream"],
     "flower_size": "small",
     "flower_form": "single",
     "petals_per_flower": 5,

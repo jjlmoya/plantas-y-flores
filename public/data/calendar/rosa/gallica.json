@@ -60,6 +60,7 @@
   "flower_data": {
     "fragrance": "very_strong",
     "flower_color": ["rosa_intenso", "rojo", "morado"],
+    "colors": ["pink", "red", "purple"],
     "flower_size": "medium",
     "flower_form": "semi_double",
     "petals_per_flower": [12, 25],

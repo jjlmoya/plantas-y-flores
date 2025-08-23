@@ -59,6 +59,7 @@
   "flower_data": {
     "fragrance": "mild",
     "flower_color": ["rosa", "rojo", "blanco"],
+    "colors": ["pink", "red", "white"],
     "flower_size": "small",
     "flower_form": "single_semi_double",
     "flowers_per_cluster": [10, 50],

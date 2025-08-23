@@ -58,6 +58,7 @@
   "flower_data": {
     "fragrance": "strong",
     "flower_color": "magenta_rosa",
+    "colors": ["pink", "magenta"],
     "flower_size": "large",
     "flower_form": "double",
     "petals_per_flower": [25, 35],

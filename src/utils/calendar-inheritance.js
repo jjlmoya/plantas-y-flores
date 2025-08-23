@@ -667,6 +667,7 @@ export function getUIHelpers(globalConfig) {
         'beginner': 'Principiante',
         'intermediate': 'Intermedio',
         'advanced': 'Avanzado',
+        'expert': 'Experto',
         // Soil types
         'well_drained': 'Bien Drenado',
         'well_drained_fertile': 'Bien Drenado y Fértil',
@@ -698,6 +699,37 @@ export function getUIHelpers(globalConfig) {
         'moderate_high': 'Moderado a alto',
         'moderate_to_high': 'Moderado a alto',
         'high': 'Alto',
+        'very_low': 'Muy Bajo',
+        'very_high': 'Muy Alto',
+        // Special purposes and characteristics
+        'container': 'Cultivo en Maceta',
+        'hanging_baskets': 'Cestas Colgantes',
+        'continuous_harvest': 'Cosecha Continua',
+        'companion_benefit': 'Planta Compañera',
+        'culinary': 'Culinario',
+        'versatile_cooking': 'Cocina Versátil',
+        'commercial': 'Cultivo Comercial',
+        'attracts_pollinators': 'Atrae Polinizadores',
+        'repels_insects': 'Repele Insectos',
+        'ground_cover': 'Cubresuelos',
+        'windbreak': 'Cortavientos',
+        'privacy_screen': 'Pantalla de Privacidad',
+        'nitrogen_fixing': 'Fija Nitrógeno',
+        'pest_deterrent': 'Disuasivo de Plagas',
+        'color_enhancement': 'Mejora el Color',
+        'flavor_intensification': 'Intensifica el Sabor',
+        // Growth habits
+        'indeterminate': 'Crecimiento Indeterminado',
+        'determinate': 'Crecimiento Determinado',
+        'bushy': 'Arbustivo',
+        'climbing': 'Trepador',
+        'trailing': 'Rastrero',
+        'upright': 'Vertical',
+        'spreading': 'Extendido',
+        'compact': 'Compacto',
+        'dense_shrub': 'Arbusto Denso',
+        'low_spreading': 'Rastrero Extendido',
+        'clumping': 'En Macolla',
         // Nutrientes específicos
         'vitamina_k': 'Vitamina K',
         'vitamina_c': 'Vitamina C',
@@ -748,6 +780,14 @@ export function getUIHelpers(globalConfig) {
         // Bloom duration
         '3_weeks': '3 Semanas',
         '4_weeks': '4 Semanas',
+        // Special purposes
+        'fresh_eating': 'Consumo Fresco',
+        'slicing': 'Para Cortar',
+        'gourmet': 'Gourmet',
+        // Uses
+        'fiber_production': 'Producción de Fibra',
+        'ornamental': 'Ornamental',
+        'seeds': 'Semillas',
         // Tasks
         'harvest_petals': 'Cosechar Pétalos',
         // Special purposes
@@ -924,6 +964,7 @@ export function getUIHelpers(globalConfig) {
         'large_cup_shaped': 'Copa Grande',
         'papery_delicate': 'Papel Delicado',
         'silky_smooth': 'Sedoso Suave',
+        'delicate_striped': 'Delicada Rayada',
         '6_weeks': '6 semanas',
         '4_weeks': '4 semanas',
         '16_weeks': '16 semanas',
@@ -1311,7 +1352,11 @@ export function getUIHelpers(globalConfig) {
         'JP': 'Japón',
         'IN': 'India',
         'MX': 'México',
-        'NL': 'Países Bajos'
+        'NL': 'Países Bajos',
+        'SY': 'Siria',
+        'BG': 'Bulgaria',
+        'IR': 'Irán',
+        'AU': 'Australia'
       };
       
       const upperCode = originCode.toUpperCase();
