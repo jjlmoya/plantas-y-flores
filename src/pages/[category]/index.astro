@@ -14,24 +14,23 @@ export async function getStaticPaths() {
     const categoryPlants = await getPlantsByCategory(categoryPath.props.categorySlug);
     
     // Solo generar página de categoría si tiene plantas (variedades)
-    if (categoryPlants.length > 0) {
-      paths.push({
-        params: categoryPath.params,
-        props: {
-          category: categoryPath.props.category,
-          plants: categoryPlants.map(plant => ({
-            id: plant.data.id,
-            slug: plant.slug,
-            title: plant.data.title,
-            excerpt: plant.data.excerpt,
-            date: plant.data.date,
-            featured_image: plant.data.featured_image,
-            main_image: plant.data.main_image,
-            categories: plant.data.categories
-          }))
-        }
-      });
-    }
+    paths.push({
+      params: categoryPath.params,
+      props: {
+        category: categoryPath.props.category,
+        plants: categoryPlants.map(plant => ({
+          id: plant.data.id,
+          slug: plant.slug,
+          title: plant.data.title,
+          excerpt: plant.data.excerpt,
+          date: plant.data.date,
+          featured_image: plant.data.featured_image,
+          main_image: plant.data.main_image,
+          categories: plant.data.categories
+        }))
+      }
+    });
+  
   }
   
   return paths;
@@ -109,14 +108,7 @@ const stats = {
         />
       </section>
     ) : (
-      <section class="no-plants-section">
-        <div class="no-plants">
-          <div class="no-plants-icon">🌱</div>
-          <h3>Próximamente</h3>
-          <p>Estamos preparando contenido sobre {category.name.toLowerCase()}.</p>
-          <a href="/" class="back-home">Explorar otras categorías</a>
-        </div>
-      </section>
+      <div></div>
     )}
 
     <!-- Category Content -->
