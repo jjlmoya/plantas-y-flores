@@ -130,7 +130,12 @@ export default {
         'hortensias': '💙', 'azalea': '🌺', 'tomillo': '🌿', 'tulipan': '🌷',
         'orquidea': '🌺', 'platano': '🍌', 'col': '🥬', 'mango': '🥭',
         'pensamiento': '💜', 'peonia': '🌸', 'pina': '🍍',
-        'plantas-comestibles': '🥗', 'manzanilla': '🌼'
+        'plantas-comestibles': '🥗', 'manzanilla': '🌼',
+        'poinsettia': '⭐', 'aguacate': '🥑', 'azafran': '🌼', 'azuki': '🟤',
+        'cilantro': '🌿', 'coco': '🥥', 'curcuma': '🟨', 'girasol': '🌻',
+        'goji': '🔴', 'kiri': '🌳', 'kiwi': '🥝', 'laurel': '🍃',
+        'menta': '🌿', 'narciso': '🤍', 'oregano': '🌿', 'romero': '🌿',
+        'salvia': '🌿', 'zanahoria': '🥕', 'jacinto': '💙', 'martagon': '🏵️'
       };
       return icons[category] || '🌱';
     },

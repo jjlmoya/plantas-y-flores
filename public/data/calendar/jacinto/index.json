@@ -1,0 +1,108 @@
+{
+  "plant_info": {
+    "category": "jacinto",
+    "scientific_name": "Hyacinthus orientalis",
+    "family": "Asparagaceae",
+    "type": "perennial_bulb",
+    "difficulty": "beginner",
+    "origin": "Eastern_Mediterranean",
+    "growth_habit": "bulbous",
+    "mature_size": {
+      "height": [15, 30],
+      "width": [8, 15]
+    }
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [9, 10, 11],
+      "alternative_months": [8, 12],
+      "soil_temperature_max": 15
+    },
+    "flowering": {
+      "best_months": [3, 4, 5],
+      "peak_months": [4, 5]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["minimal_care", "check_mulch"],
+        "2": ["minimal_care", "monitor_emergence"],
+        "3": ["flowering_support", "water_regularly"],
+        "4": ["flowering_support", "fertilize", "deadhead"],
+        "5": ["deadhead", "allow_foliage_mature"],
+        "6": ["reduce_watering", "allow_dormancy"],
+        "7": ["dormant_period", "minimal_care"],
+        "8": ["soil_preparation", "planting"],
+        "9": ["planting", "water_establishment"],
+        "10": ["planting", "water_regularly"],
+        "11": ["planting", "mulch", "winter_protection"],
+        "12": ["dormant_care", "protection"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun_partial_shade",
+    "water_needs": "moderate",
+    "soil_type": "well_drained_fertile",
+    "soil_ph": [6.0, 7.5],
+    "spacing": {
+      "plant_distance": 10,
+      "row_distance": 15
+    },
+    "drainage": "excellent",
+    "temperature_range": [-20, 25],
+    "minimum_temperature": -25,
+    "frost_tolerance": "excellent",
+    "special_care": "Requiere período frío para florecer, no cortar follaje hasta amarillear"
+  },
+  "flower_data": {
+    "colors": ["blue", "pink", "white", "purple", "yellow", "red", "orange"],
+    "fragrance_level": "very_strong",
+    "flower_shape": "dense_spikes",
+    "bloom_duration": "2_3_weeks",
+    "flower_count": "20_50_per_spike",
+    "cut_flower": "excellent",
+    "vase_life": "7_10_days",
+    "seasonal_interest": "Floración primaveral temprana muy fragante"
+  },
+  "ornamental_data": {
+    "garden_use": ["borders", "containers", "forcing_indoors", "rock_gardens", "naturalized"],
+    "landscape_value": "Floración temprana con fragancia intensa",
+    "seasonal_interest": "Color y fragancia cuando pocas plantas florecen",
+    "wildlife_attraction": ["abejas_tempranas", "mariposas"],
+    "companion_plants": ["tulipanes", "narcisos", "crocus", "muscari"]
+  },
+  "varieties_info": {
+    "common_types": [
+      "orientalis_standard",
+      "city_of_haarlem_yellow",
+      "delft_blue",
+      "pink_pearl",
+      "carnegie_white"
+    ],
+    "colors": ["blue", "pink", "white", "purple", "yellow", "red", "salmon"],
+    "size_categories": ["standard", "multiflora", "prepared_forcing"]
+  },
+  "cultivation_notes": {
+    "propagation": ["bulb_offsets", "bulb_scales"],
+    "bulb_planting_depth": "3_times_bulb_height",
+    "establishment_time": "immediate_first_year",
+    "forcing_suitable": true,
+    "container_suitable": true,
+    "naturalization": "good_in_appropriate_climate"
+  },
+  "pest_and_disease": {
+    "common_pests": ["bulb_mites", "aphids", "slugs"],
+    "common_diseases": ["bulb_rot", "grey_mould", "viral_diseases"],
+    "prevention_methods": ["proper_drainage", "healthy_bulbs", "adequate_spacing"],
+    "organic_controls": ["good_sanitation", "beneficial_insects", "copper_fungicide"],
+    "resistance_notes": "Bulbos de calidad reducen problemas significativamente"
+  },
+  "care_tips": {
+    "watering": "Riego regular durante crecimiento, seco en dormancia",
+    "feeding": "Fertilizante equilibrado tras floración",
+    "planting_depth": "Plantar 3 veces la altura del bulbo",
+    "aftercare": "Permitir que follaje madure naturalmente",
+    "forcing_notes": "Requiere 12-16 semanas de frío para forzado",
+    "storage": "Almacenar bulbos en lugar fresco y seco"
+  }
+}

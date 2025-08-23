@@ -85,7 +85,15 @@
       "Bash(nvm list:*)",
       "Bash(nvm use:*)",
       "Bash(del \"C:\\Users\\34677\\Desktop\\plantasyflroes\\debug-pina.js\")",
-      "Bash(dir:*)"
+      "Bash(dir:*)",
+      "Bash(for dir in C:/Users/34677/Desktop/plantasyflroes/public/data/calendar/*/)",
+      "Bash(for category in poinsettia aguacate azafran azuki cilantro coco curcuma girasol goji kiri kiwi laurel menta narciso oregano romero salvia zanahoria jacinto martagon)",
+      "Bash(do if [ ! -d \"public/data/calendar/$category\" ])",
+      "Bash(fi)",
+      "Bash(for:*)",
+      "Bash(do echo \"Creando directorio para $category\")",
+      "Bash(do echo \"- $category\")",
+      "Bash(do echo \"Creando $category\")"
     ],
     "deny": [],
     "defaultMode": "acceptEdits",

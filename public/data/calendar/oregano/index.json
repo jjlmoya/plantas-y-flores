@@ -1,0 +1,118 @@
+{
+  "plant_info": {
+    "category": "oregano",
+    "scientific_name": "Origanum vulgare",
+    "family": "Lamiaceae",
+    "type": "perennial",
+    "difficulty": "beginner",
+    "origin": "Mediterranean",
+    "growth_habit": "spreading",
+    "mature_size": {
+      "height": [20, 80],
+      "width": [30, 60]
+    }
+  },
+  "calendar_data": {
+    "sowing": {
+      "outdoor": {
+        "best_months": [3, 4, 5, 9],
+        "alternative_months": [2, 6, 8, 10]
+      },
+      "indoor": {
+        "best_months": [2, 3, 8, 9],
+        "alternative_months": [1, 4, 7, 10]
+      }
+    },
+    "planting": {
+      "best_months": [3, 4, 5, 9, 10],
+      "alternative_months": [2, 6, 11]
+    },
+    "flowering": {
+      "best_months": [6, 7, 8, 9],
+      "peak_months": [7, 8]
+    },
+    "harvesting": {
+      "best_months": [5, 6, 7, 8, 9, 10],
+      "peak_months": [6, 7, 8],
+      "harvest_times": ["morning_after_dew"]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["minimal_care", "planning"],
+        "2": ["sowing_indoor", "soil_preparation"],
+        "3": ["sowing_outdoor", "planting", "division"],
+        "4": ["planting", "fertilize", "water_regularly"],
+        "5": ["harvesting", "water_regularly", "pinching_flowers"],
+        "6": ["harvesting", "flowering_support", "water_regularly"],
+        "7": ["harvesting", "pest_monitoring", "deadhead"],
+        "8": ["harvesting", "water_regularly", "cutting_back"],
+        "9": ["sowing_outdoor", "planting", "harvesting"],
+        "10": ["planting", "harvesting", "reduce_watering"],
+        "11": ["minimal_care", "mulch", "protection"],
+        "12": ["dormant_care", "planning"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "low_moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 8.0],
+    "spacing": {
+      "plant_distance": 25,
+      "row_distance": 30
+    },
+    "drainage": "excellent",
+    "temperature_range": [-20, 35],
+    "minimum_temperature": -25,
+    "humidity_requirements": "low",
+    "wind_tolerance": "good",
+    "frost_tolerance": "excellent",
+    "drought_tolerance": "excellent",
+    "special_care": "Prefiere suelos pobres, exceso de nutrientes reduce aroma"
+  },
+  "flower_data": {
+    "colors": ["white", "pink", "purple"],
+    "fragrance_level": "strong",
+    "flower_shape": "small_clusters",
+    "bloom_duration": "8_weeks",
+    "edible_flowers": true,
+    "attracts_pollinators": true
+  },
+  "culinary_uses": {
+    "parts_used": ["leaves", "flowers"],
+    "flavor_profile": "pungent_aromatic",
+    "intensity": "strong",
+    "common_uses": ["pizza", "pasta", "mediterranean_dishes", "marinades", "herb_oils"],
+    "harvest_timing": "before_flowering_peak_flavor",
+    "preservation_methods": ["drying", "oil_infusion", "freezing", "fresh"]
+  },
+  "medicinal_properties": {
+    "primary_uses": ["digestive_aid", "respiratory_support", "antimicrobial", "antioxidant"],
+    "active_compounds": ["carvacrol", "thymol", "rosmarinic_acid"],
+    "preparation_methods": ["tea", "oil_infusion", "fresh_consumption", "dried_herb"],
+    "traditional_uses": ["stomach_ailments", "coughs", "wound_healing"]
+  },
+  "ornamental_data": {
+    "garden_use": ["herb_gardens", "borders", "containers", "ground_cover"],
+    "landscape_value": "Atractivo follaje aromático y flores pequeñas",
+    "seasonal_interest": "Follaje perenne en climas suaves",
+    "wildlife_attraction": ["abejas", "mariposas", "insectos_beneficiosos"],
+    "companion_plants": ["tomate", "berenjena", "pimiento", "albahaca"]
+  },
+  "cultivation_notes": {
+    "propagation": ["seeds", "division", "cuttings"],
+    "self_seeding": true,
+    "container_suitable": true,
+    "succession_planting": "not_necessary_perennial",
+    "companion_benefits": ["pest_deterrent", "flavor_enhancer", "pollinator_magnet"]
+  },
+  "care_tips": {
+    "watering": "Riego escaso, tolera sequía una vez establecido",
+    "feeding": "Fertilización mínima, prefiere suelos pobres",
+    "pruning_notes": "Cortar flores para mantener sabor de hojas",
+    "harvesting": "Cosechar antes de floración para máximo sabor",
+    "winter_care": "Mulch ligero en zonas muy frías",
+    "pest_management": "Muy resistente, raramente necesita tratamiento"
+  }
+}

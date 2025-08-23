@@ -218,6 +218,8 @@ function formatTaskName(task) {
     'single': 'Simple',
     'double': 'Doble',
     'cup_shaped': 'Copa',
+    // Duration
+    '2_3_weeks': '2-3 Semanas',
     'large_cup_shaped': 'Copa Grande',
     'trumpet': 'Trompeta',
     'hibisco': 'Hibisco',
@@ -228,6 +230,7 @@ function formatTaskName(task) {
     'funnel_shaped': 'embudo',
     'spike': 'espiga',
     'orchid': 'orquídea',
+    'bract_display': 'Brácteas Coloridas',
     'lily_flowered': 'lirio',
     'single_late': 'simple tardía',
     'pineapple_spike': 'espiga de piña',

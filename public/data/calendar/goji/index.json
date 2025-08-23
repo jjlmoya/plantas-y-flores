@@ -1,0 +1,51 @@
+{
+  "plant_info": {
+    "category": "goji",
+    "scientific_name": "Lycium barbarum",
+    "family": "Solanaceae",
+    "type": "perennial_shrub",
+    "difficulty": "intermediate",
+    "origin": "China"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 10, 11],
+      "alternative_months": [2, 5, 9]
+    },
+    "flowering": {
+      "best_months": [5, 6, 7, 8, 9],
+      "peak_months": [6, 7]
+    },
+    "harvesting": {
+      "best_months": [8, 9, 10],
+      "peak_months": [9]
+    },
+    "pruning": {
+      "best_months": [12, 1, 2],
+      "peak_months": [1]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["pruning", "dormant_care"],
+        "2": ["pruning", "soil_preparation"],
+        "3": ["planting", "fertilize"],
+        "4": ["planting", "water_regularly"],
+        "5": ["water_regularly", "support_install"],
+        "6": ["water_regularly", "flowering_support"],
+        "7": ["water_regularly", "pest_monitoring"],
+        "8": ["harvesting", "water_regularly"],
+        "9": ["harvesting", "reduce_watering"],
+        "10": ["harvesting", "planting"],
+        "11": ["planting", "prepare_winter"],
+        "12": ["pruning", "dormant_protection"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "temperature_range": [-15, 35],
+    "special_care": "Muy resistente al frío"
+  }
+}

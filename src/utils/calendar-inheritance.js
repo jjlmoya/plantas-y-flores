@@ -304,6 +304,29 @@ export async function getCategoryPlantsWithCalendar(category) {
   
   const plants = [];
   
+  // Siempre agregar la variedad "común" usando index.json
+  const indexPath = path.join(categoryDir, 'index.json');
+  if (fs.existsSync(indexPath)) {
+    try {
+      const rawData = fs.readFileSync(indexPath, 'utf8');
+      const categoryData = JSON.parse(rawData);
+      
+      plants.push({
+        slug: 'comun', // Variedad común disponible para todas las categorías
+        category: category,
+        calendar: {
+          ...categoryData,
+          _article_links: {
+            resolved_link: `/${category}/`
+          }
+        }
+      });
+    } catch (error) {
+      console.error(`Error reading category index for ${category}:`, error.message);
+    }
+  }
+  
+  // Además, procesar plantas hijas específicas si existen
   for (const file of files) {
     const plantSlug = file.replace('.json', '');
     const plantCalendar = await getPlantCalendarWithInheritance(category, plantSlug);
@@ -664,6 +687,7 @@ export function getUIHelpers(globalConfig) {
         'perennial': 'Perenne',
         'perennial_bulb': 'Bulbo Perenne',
         'perennial_tree': 'Árbol Perenne',
+        'deciduous_tree': 'Árbol Caducifolio',
         'biennial': 'Bienal',
         'shrub': 'Arbusto',
         // Difficulty levels
@@ -764,6 +788,53 @@ export function getUIHelpers(globalConfig) {
         'folato': 'Folato',
         'potasio': 'Potasio',
         'antocianinas': 'Antocianinas',
+        // Nutritional data
+        'healthy_fats': 'Grasas Saludables',
+        'fiber': 'Fibra',
+        'vitamin_K': 'Vitamina K',
+        'vitamin_E': 'Vitamina E',
+        'vitamin_C': 'Vitamina C',
+        'vitamin_A': 'Vitamina A',
+        'folate': 'Folato',
+        'magnesium': 'Magnesio',
+        'beta_carotene': 'Beta-caroteno',
+        'extremely_high': 'Extremadamente Alto',
+        'very_high': 'Muy Alto',
+        'high': 'Alto',
+        'moderate': 'Moderado',
+        'low': 'Bajo',
+        'potassium': 'Potasio',
+        // Health benefits
+        'heart_health': 'Salud Cardiovascular',
+        'weight_management': 'Control de Peso',
+        'nutrient_absorption': 'Absorción de Nutrientes',
+        'eye_health': 'Salud Ocular',
+        'anti_inflammatory': 'Antiinflamatorio',
+        'cholesterol_reduction': 'Reducción del Colesterol',
+        'immune_system': 'Sistema Inmunológico',
+        'skin_health': 'Salud de la Piel',
+        'antioxidant_properties': 'Propiedades Antioxidantes',
+        // Flavor profiles
+        'creamy_mild_nutty': 'Cremoso, Suave y Avellanado',
+        'sweet_earthy': 'Dulce y Terroso',
+        'sweet_metallic_hay_like': 'Dulce, Metálico y Herbáceo',
+        'sweet_nutty_earthy': 'Dulce, Avellanado y Terroso',
+        'citrusy_fresh_pungent': 'Cítrico, Fresco y Picante',
+        // Missing nutritional translations
+        'potassium': 'Potasio',
+        'healthy_fats': 'Grasas Saludables',
+        'fiber': 'Fibra',
+        'vitamin_K': 'Vitamina K', 
+        'vitamin_E': 'Vitamina E',
+        'vitamin_C': 'Vitamina C',
+        'folate': 'Folato',
+        'magnesium': 'Magnesio',
+        'heart_health': 'Salud Cardiovascular',
+        'weight_management': 'Control de Peso', 
+        'nutrient_absorption': 'Absorción de Nutrientes',
+        'eye_health': 'Salud Ocular',
+        'anti_inflammatory': 'Antiinflamatorio',
+        'cholesterol_reduction': 'Reducción del Colesterol',
         // Flower sizes
         'small': 'Pequeña',
         'medium': 'Mediana',
@@ -1133,6 +1204,10 @@ export function getUIHelpers(globalConfig) {
         // Specific tasks for bulbs
         'divide_bulbs': 'Dividir Bulbos',
         'remove_debris': 'Limpiar Restos',
+        // Specific tasks for poinsettias and photoperiod plants
+        'maintain_darkness': 'Mantener Oscuridad',
+        'reduce_light': 'Reducir Luz',
+        'prepare_flowering': 'Preparar Floración',
         // Flower shapes
         'lily_flowered': 'Flor de Lirio',
         
@@ -1417,11 +1492,18 @@ export function getUIHelpers(globalConfig) {
         'IT': 'Italia',
         'TH': 'Tailandia',
         'PH': 'Filipinas',
-        'AR': 'Argentina'
+        'AR': 'Argentina',
+        'Central_America': 'América Central',
+        'Mediterranean': 'Mediterráneo',
+        'Mediterranean_Europe': 'Europa Mediterránea',
+        'Eastern_Mediterranean': 'Mediterráneo Oriental',
+        'Europe_Asia': 'Europa y Asia',
+        'North_America': 'América del Norte',
+        'East_Asia': 'Asia Oriental'
       };
       
       const upperCode = originCode.toUpperCase();
-      return originNames[upperCode] || 'Origen desconocido';
+      return originNames[upperCode] || originNames[originCode] || 'Origen desconocido';
     }
   };
 }
@@ -1697,11 +1779,18 @@ export function getOriginFlag(localeCode) {
     'DA': '🇩🇰', // Dinamarca (alias)
     'AU': '🇦🇺', // Australia
     'PH': '🇵🇭', // Filipinas
-    'AR': '🇦🇷'  // Argentina
+    'AR': '🇦🇷', // Argentina
+    'Central_America': '🌎', // América Central
+    'Mediterranean': '🌊', // Mediterráneo
+    'Mediterranean_Europe': '🌊', // Europa Mediterránea
+    'Eastern_Mediterranean': '🌊', // Mediterráneo Oriental
+    'Europe_Asia': '🌍', // Europa y Asia
+    'North_America': '🌎', // América del Norte
+    'East_Asia': '🌏'  // Asia Oriental
   };
   
   const upperCode = localeCode.toUpperCase();
-  return localeFlags[upperCode] || '📍';
+  return localeFlags[upperCode] || localeFlags[localeCode] || '📍';
 }
 
 /**

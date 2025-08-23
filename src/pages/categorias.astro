@@ -66,9 +66,11 @@ const stats = {
               <div class="category-card__content">
                 <div class="category-card__header">
                   <h2 class="category-card__title">{category.data.name}</h2>
-                  <div class="category-card__count">
-                    {category.data.posts_count} {category.data.posts_count === 1 ? 'artículo' : 'artículos'}
-                  </div>
+                  {category.data.posts_count > 0 && (
+                    <div class="category-card__count">
+                      {category.data.posts_count} {category.data.posts_count === 1 ? 'artículo' : 'artículos'}
+                    </div>
+                  )}
                 </div>
                 <div class="category-card__description">
                   {category.data.description}

@@ -97,6 +97,7 @@ export default {
         'perennial': 'Perenne',
         'perennial_bulb': 'Bulbo Perenne',
         'perennial_tree': 'Árbol Perenne',
+        'deciduous_tree': 'Árbol Caducifolio',
         'herb': 'Hierba',
         'shrub': 'Arbusto',
         'tree': 'Árbol',
@@ -124,9 +125,16 @@ export default {
         'ES': 'España',
         'IT': 'Italia',
         'GR': 'Grecia',
-        'US': 'Estados Unidos'
+        'US': 'Estados Unidos',
+        'Central_America': 'América Central',
+        'Mediterranean': 'Mediterráneo',
+        'Mediterranean_Europe': 'Europa Mediterránea',
+        'Eastern_Mediterranean': 'Mediterráneo Oriental',
+        'Europe_Asia': 'Europa y Asia',
+        'North_America': 'América del Norte',
+        'East_Asia': 'Asia Oriental'
       };
-      return origins[origin] || origin;
+      return origins[origin] || origin.replace(/_/g, ' ');
     },
     getDifficultyIcon(difficulty) {
       switch(difficulty) {

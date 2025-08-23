@@ -1,0 +1,79 @@
+{
+  "plant_info": {
+    "category": "girasol",
+    "scientific_name": "Helianthus annuus",
+    "family": "Asteraceae",
+    "type": "annual",
+    "difficulty": "beginner",
+    "origin": "North_America",
+    "mature_size": {
+      "height": [150, 400],
+      "width": [30, 60]
+    }
+  },
+  "calendar_data": {
+    "sowing": {
+      "outdoor": {
+        "best_months": [3, 4, 5, 6],
+        "alternative_months": [7]
+      },
+      "indoor": {
+        "best_months": [2, 3, 4],
+        "alternative_months": [5]
+      }
+    },
+    "transplanting": {
+      "best_months": [4, 5, 6],
+      "peak_months": [5]
+    },
+    "flowering": {
+      "best_months": [7, 8, 9],
+      "peak_months": [8]
+    },
+    "harvesting": {
+      "best_months": [9, 10, 11],
+      "peak_months": [10]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["soil_preparation", "plan_location"],
+        "2": ["sowing_indoor", "prepare_beds"],
+        "3": ["sowing_outdoor", "fertilize"],
+        "4": ["sowing_outdoor", "transplanting", "water_regularly"],
+        "5": ["transplanting", "water_regularly", "support_stakes"],
+        "6": ["water_regularly", "fertilize", "pest_monitoring"],
+        "7": ["water_regularly", "support_stakes", "monitor_growth"],
+        "8": ["water_regularly", "pest_monitoring"],
+        "9": ["reduce_watering", "harvest_early"],
+        "10": ["harvesting", "seed_collection"],
+        "11": ["harvesting", "plant_cleanup"],
+        "12": ["plant_cleanup", "soil_preparation"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate_high",
+    "soil_type": "fertile_well_drained",
+    "soil_ph": [6.0, 7.5],
+    "spacing": {
+      "plant_distance": 45,
+      "row_distance": 75
+    },
+    "temperature_range": [18, 30],
+    "minimum_temperature": 8,
+    "special_care": "Requiere tutores para variedades altas"
+  },
+  "ornamental_data": {
+    "garden_use": ["borders", "cut_flowers", "bird_garden"],
+    "landscape_value": "Flores grandes y vistosas, atrae polinizadores",
+    "seasonal_interest": "Floración estival espectacular",
+    "wildlife_attraction": ["abejas", "mariposas", "pájaros"]
+  },
+  "care_tips": {
+    "watering": "Riego profundo y regular, especialmente durante floración",
+    "feeding": "Fertilizante rico en fósforo para buena floración",
+    "support": "Instalar tutores antes de que alcance 1 metro",
+    "harvesting": "Cosechar semillas cuando la parte posterior esté marrón"
+  }
+}

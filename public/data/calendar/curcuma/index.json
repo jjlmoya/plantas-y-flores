@@ -1,0 +1,43 @@
+{
+  "plant_info": {
+    "category": "curcuma",
+    "scientific_name": "Curcuma longa",
+    "family": "Zingiberaceae",
+    "type": "perennial_rhizome",
+    "difficulty": "intermediate",
+    "origin": "Southeast_Asia"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 5],
+      "alternative_months": [2, 6]
+    },
+    "harvesting": {
+      "best_months": [10, 11, 12],
+      "peak_months": [11]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["dormant_protection", "minimal_care"],
+        "2": ["soil_preparation", "planting"],
+        "3": ["planting", "water_regularly"],
+        "4": ["planting", "water_regularly", "fertilize"],
+        "5": ["water_regularly", "mulch"],
+        "6": ["water_regularly", "monitor_growth"],
+        "7": ["water_regularly", "fertilize"],
+        "8": ["water_regularly", "pest_monitoring"],
+        "9": ["reduce_watering", "prepare_harvest"],
+        "10": ["harvesting", "curing"],
+        "11": ["harvesting", "curing", "storage"],
+        "12": ["storage", "minimal_care"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "partial_shade",
+    "water_needs": "high",
+    "soil_type": "organic_rich",
+    "temperature_range": [20, 30],
+    "special_care": "Requiere alta humedad"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "plant_info": {
+    "category": "kiri",
+    "scientific_name": "Paulownia tomentosa",
+    "family": "Paulowniaceae",
+    "type": "deciduous_tree",
+    "difficulty": "beginner",
+    "origin": "CN",
+    "mature_size": {
+      "height": [1000, 2500],
+      "width": [800, 2000]
+    }
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 5],
+      "alternative_months": [9, 10]
+    },
+    "flowering": {
+      "best_months": [4, 5],
+      "peak_months": [4]
+    },
+    "pruning": {
+      "best_months": [11, 12, 1, 2]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["pruning", "dormant_protection"],
+        "2": ["pruning", "soil_preparation"],
+        "3": ["planting", "fertilize", "water_regularly"],
+        "4": ["planting", "water_regularly", "monitor_growth"],
+        "5": ["planting", "water_regularly", "fertilize"],
+        "6": ["water_regularly", "monitor_growth"],
+        "7": ["water_regularly", "pest_monitoring"],
+        "8": ["water_regularly", "monitor_growth"],
+        "9": ["reduce_watering", "dormant_protection"],
+        "10": ["reduce_watering", "plant_cleanup"],
+        "11": ["pruning", "minimal_care"],
+        "12": ["pruning", "dormant_protection"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "adaptable",
+    "soil_ph": [5.5, 8.0],
+    "spacing": {
+      "plant_distance": 800,
+      "row_distance": 1000
+    },
+    "temperature_range": [-15, 35],
+    "minimum_temperature": -20,
+    "humidity_requirements": "adaptable",
+    "special_care": "Crecimiento muy rápido, puede ser invasivo"
+  },
+  "ornamental_data": {
+    "garden_use": ["specimen", "shade_tree", "fast_screen"],
+    "landscape_value": "Sombra rápida, flores vistosas en primavera",
+    "seasonal_interest": "Floración primaveral morada/rosa",
+    "wildlife_attraction": ["abejas", "mariposas"]
+  },
+  "care_tips": {
+    "watering": "Tolerante a sequía una vez establecido",
+    "feeding": "Fertilizante balanceado en primavera",
+    "pruning_notes": "Podar en dormancia, rebrota vigorosamente",
+    "special_notes": "Verificar legalidad local, puede ser especie invasora"
+  }
+}

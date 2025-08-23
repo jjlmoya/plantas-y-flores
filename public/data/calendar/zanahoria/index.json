@@ -1,0 +1,136 @@
+{
+  "plant_info": {
+    "category": "zanahoria",
+    "scientific_name": "Daucus carota",
+    "family": "Apiaceae",
+    "type": "annual_biennial",
+    "difficulty": "intermediate",
+    "origin": "Central_Asia",
+    "growth_habit": "taproot",
+    "mature_size": {
+      "height": [20, 40],
+      "width": [15, 25]
+    }
+  },
+  "calendar_data": {
+    "sowing": {
+      "outdoor": {
+        "best_months": [3, 4, 5, 6, 7, 8],
+        "alternative_months": [2, 9]
+      },
+      "indoor": {
+        "best_months": [2, 3, 7, 8],
+        "alternative_months": [1, 4, 9]
+      }
+    },
+    "transplanting": {
+      "best_months": [],
+      "notes": "No recomendado, siembra directa preferible"
+    },
+    "harvesting": {
+      "best_months": [6, 7, 8, 9, 10, 11, 12],
+      "peak_months": [8, 9, 10],
+      "harvest_indicators": ["size_mature", "color_developed"]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["soil_preparation", "cold_frame_sowing"],
+        "2": ["sowing_outdoor", "soil_amendment"],
+        "3": ["sowing_outdoor", "thinning", "weeding"],
+        "4": ["sowing_outdoor", "thinning", "water_regularly"],
+        "5": ["sowing_outdoor", "thinning", "mulching"],
+        "6": ["harvest_early", "succession_sowing", "pest_monitoring"],
+        "7": ["sowing_outdoor", "harvesting", "water_regularly"],
+        "8": ["sowing_outdoor", "harvesting", "storage_prep"],
+        "9": ["harvesting", "root_storage", "pest_monitoring"],
+        "10": ["harvesting", "storage", "soil_preparation"],
+        "11": ["harvesting", "storage", "winter_protection"],
+        "12": ["harvesting", "storage", "planning_next_season"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate_consistent",
+    "soil_type": "deep_loose_sandy",
+    "soil_ph": [6.0, 7.0],
+    "spacing": {
+      "plant_distance": 5,
+      "row_distance": 30
+    },
+    "drainage": "excellent",
+    "temperature_range": [15, 25],
+    "minimum_temperature": -2,
+    "soil_depth_required": 25,
+    "frost_tolerance": "moderate",
+    "special_care": "Requiere suelo profundo sin piedras para raíces rectas"
+  },
+  "nutritional_data": {
+    "calories_per_100g": 41,
+    "main_nutrients": {
+      "beta_carotene": "very_high",
+      "vitamin_A": "extremely_high",
+      "vitamin_K": "high",
+      "potassium": "moderate",
+      "fiber": "moderate"
+    },
+    "health_benefits": [
+      "eye_health",
+      "immune_system",
+      "skin_health", 
+      "antioxidant_properties",
+      "heart_health"
+    ],
+    "nutritional_notes": "Una de las mejores fuentes de beta-caroteno"
+  },
+  "culinary_uses": {
+    "parts_used": ["roots", "leaves_young"],
+    "flavor_profile": "sweet_earthy",
+    "texture": "crisp_when_raw_tender_when_cooked",
+    "common_uses": ["raw_salads", "cooked_dishes", "juicing", "soups", "stews", "roasted"],
+    "storage_methods": ["fresh_refrigerated", "root_cellar", "blanched_frozen", "dehydrated"],
+    "harvest_timing": "various_sizes_different_uses",
+    "baby_carrots": "harvest_45_60_days",
+    "full_size": "harvest_70_80_days"
+  },
+  "varieties_info": {
+    "common_types": [
+      "nantes_sweet_tender",
+      "chantenay_short_broad", 
+      "imperator_long_tapered",
+      "paris_market_round",
+      "purple_haze_colorful"
+    ],
+    "color_varieties": ["orange", "purple", "white", "yellow", "red"],
+    "size_categories": ["baby", "medium", "large", "giant"]
+  },
+  "cultivation_notes": {
+    "succession_planting": "every_2_3_weeks",
+    "companion_plants": ["tomatoes", "leeks", "rosemary", "sage", "chives"],
+    "avoid_plants": ["dill", "anise"],
+    "soil_preparation": "deep_tilling_organic_matter",
+    "thinning_required": "essential_for_proper_root_development",
+    "container_suitable": "deep_containers_only"
+  },
+  "pest_and_disease": {
+    "common_pests": ["carrot_fly", "aphids", "nematodes"],
+    "common_diseases": ["leaf_blight", "root_rot", "cavity_spot"],
+    "prevention_methods": ["crop_rotation", "proper_spacing", "companion_planting"],
+    "organic_controls": ["row_covers", "beneficial_insects", "proper_sanitation"]
+  },
+  "storage_preservation": {
+    "fresh_storage": "refrigerated_2_4_weeks",
+    "root_cellar": "sand_storage_6_months", 
+    "freezing": "blanch_before_freezing",
+    "dehydrating": "chips_powder",
+    "optimal_harvest": "after_light_frost_sweeter"
+  },
+  "care_tips": {
+    "watering": "Riego consistente, evitar encharcamiento y sequía",
+    "feeding": "Fertilizante bajo en nitrógeno, alto en fósforo y potasio",
+    "soil_prep": "Suelo profundo y suelto, sin piedras ni terrones",
+    "thinning": "Aclarar a 5cm entre plantas para desarrollo óptimo",
+    "harvesting": "Cosechar antes de que se vuelvan fibrosas",
+    "pest_prevention": "Mallas anti-insectos contra mosca de zanahoria"
+  }
+}

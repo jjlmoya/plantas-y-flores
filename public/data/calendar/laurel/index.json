@@ -1,0 +1,47 @@
+{
+  "plant_info": {
+    "category": "laurel",
+    "scientific_name": "Laurus nobilis",
+    "family": "Lauraceae",
+    "type": "perennial_tree",
+    "difficulty": "beginner",
+    "origin": "Mediterranean"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 9, 10],
+      "alternative_months": [2, 5, 11]
+    },
+    "pruning": {
+      "best_months": [3, 4, 8, 9],
+      "peak_months": [4, 9]
+    },
+    "harvesting": {
+      "best_months": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "peak_months": [6, 7, 8]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["harvesting", "minimal_care"],
+        "2": ["harvesting", "soil_preparation"],
+        "3": ["planting", "pruning", "harvesting"],
+        "4": ["planting", "pruning", "fertilize"],
+        "5": ["water_regularly", "harvesting"],
+        "6": ["harvesting", "water_regularly"],
+        "7": ["harvesting", "water_regularly"],
+        "8": ["pruning", "harvesting"],
+        "9": ["planting", "pruning"],
+        "10": ["planting", "reduce_watering"],
+        "11": ["minimal_care", "protection"],
+        "12": ["minimal_care", "harvesting"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun_partial_shade",
+    "water_needs": "low_moderate",
+    "soil_type": "well_drained",
+    "temperature_range": [-10, 35],
+    "special_care": "Muy resistente, tolera poda intensa"
+  }
+}

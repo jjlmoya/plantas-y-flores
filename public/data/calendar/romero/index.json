@@ -1,0 +1,139 @@
+{
+  "plant_info": {
+    "category": "romero",
+    "scientific_name": "Rosmarinus officinalis",
+    "family": "Lamiaceae",
+    "type": "perennial_evergreen_shrub",
+    "difficulty": "beginner",
+    "origin": "Mediterranean",
+    "growth_habit": "upright_spreading",
+    "mature_size": {
+      "height": [60, 180],
+      "width": [60, 120]
+    }
+  },
+  "calendar_data": {
+    "sowing": {
+      "outdoor": {
+        "best_months": [3, 4, 5, 9],
+        "alternative_months": [2, 6, 8, 10]
+      },
+      "indoor": {
+        "best_months": [2, 3, 8, 9],
+        "alternative_months": [1, 4, 7, 10]
+      }
+    },
+    "planting": {
+      "best_months": [3, 4, 5, 9, 10],
+      "alternative_months": [2, 6, 11]
+    },
+    "flowering": {
+      "best_months": [3, 4, 5, 6, 7, 8, 9, 10],
+      "peak_months": [5, 6, 7, 8]
+    },
+    "harvesting": {
+      "best_months": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "peak_months": [5, 6, 7, 8, 9],
+      "harvest_times": ["morning_after_dew_dries"]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["harvesting", "minimal_watering"],
+        "2": ["soil_preparation", "harvesting"],
+        "3": ["sowing_outdoor", "planting", "fertilize", "harvesting"],
+        "4": ["planting", "water_regularly", "harvesting"],
+        "5": ["flowering_support", "water_regularly", "harvesting"],
+        "6": ["harvesting", "water_regularly", "pest_monitoring"],
+        "7": ["harvesting", "pruning_light", "water_regularly"],
+        "8": ["harvesting", "water_regularly", "monitor_growth"],
+        "9": ["sowing_outdoor", "planting", "harvesting", "reduce_watering"],
+        "10": ["planting", "harvesting", "prepare_winter"],
+        "11": ["minimal_care", "harvesting", "mulch"],
+        "12": ["dormant_care", "harvesting", "pruning"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "low",
+    "soil_type": "well_drained_sandy",
+    "soil_ph": [6.0, 8.0],
+    "spacing": {
+      "plant_distance": 60,
+      "row_distance": 90
+    },
+    "drainage": "excellent",
+    "temperature_range": [-15, 40],
+    "minimum_temperature": -20,
+    "humidity_requirements": "low",
+    "wind_tolerance": "excellent",
+    "frost_tolerance": "excellent",
+    "drought_tolerance": "excellent",
+    "salt_tolerance": "good",
+    "special_care": "Muy resistente a sequía, exceso de agua puede causar pudrición"
+  },
+  "flower_data": {
+    "colors": ["blue", "purple", "white", "pink"],
+    "fragrance_level": "strong",
+    "flower_shape": "small_clusters",
+    "bloom_duration": "6_months",
+    "edible_flowers": true,
+    "attracts_pollinators": true,
+    "seasonal_interest": "Floración prolongada desde primavera hasta otoño"
+  },
+  "culinary_uses": {
+    "parts_used": ["leaves", "flowers", "young_shoots"],
+    "flavor_profile": "piney_aromatic_slightly_bitter",
+    "intensity": "very_strong",
+    "common_uses": ["mediterranean_dishes", "roasted_meats", "potatoes", "bread", "herb_oils", "marinades"],
+    "harvest_timing": "best_before_flowering",
+    "preservation_methods": ["drying", "oil_infusion", "freezing", "fresh"],
+    "culinary_notes": "Usar con moderación por su sabor intenso"
+  },
+  "medicinal_properties": {
+    "primary_uses": ["memory_enhancement", "circulation_improvement", "digestive_aid", "antimicrobial", "antioxidant"],
+    "active_compounds": ["rosmarinic_acid", "camphor", "cineole", "carnosic_acid"],
+    "preparation_methods": ["tea", "essential_oil", "fresh_consumption", "tincture"],
+    "traditional_uses": ["memory_boost", "hair_care", "muscle_pain", "mental_clarity"]
+  },
+  "ornamental_data": {
+    "garden_use": ["herb_gardens", "borders", "hedges", "containers", "Mediterranean_gardens"],
+    "landscape_value": "Follaje perenne aromático con floración prolongada",
+    "seasonal_interest": "Atractivo todo el año",
+    "wildlife_attraction": ["abejas", "mariposas", "insectos_beneficiosos"],
+    "companion_plants": ["lavanda", "tomillo", "salvia", "olivo"]
+  },
+  "varieties_info": {
+    "common_types": [
+      "officinalis_common",
+      "prostrate_groundcover",
+      "arp_cold_hardy",
+      "tuscan_blue_upright",
+      "barbecue_culinary"
+    ],
+    "leaf_colors": ["green", "variegated", "golden"],
+    "growth_habits": ["upright", "prostrate", "semi_prostrate"]
+  },
+  "cultivation_notes": {
+    "propagation": ["cuttings", "seeds", "layering"],
+    "germination_time": "14_21_days",
+    "container_suitable": true,
+    "pruning_requirements": "annual_pruning_recommended",
+    "companion_benefits": ["pest_deterrent", "pollinator_magnet", "aromatic_barrier"]
+  },
+  "pest_and_disease": {
+    "common_pests": ["spider_mites", "aphids", "scale_insects"],
+    "common_diseases": ["root_rot", "powdery_mildew"],
+    "prevention_methods": ["proper_drainage", "good_air_circulation", "avoid_overwatering"],
+    "organic_controls": ["neem_oil", "insecticidal_soap", "beneficial_insects"],
+    "resistance_notes": "Generalmente muy resistente, problemas por exceso de humedad"
+  },
+  "care_tips": {
+    "watering": "Riego muy escaso, solo cuando suelo esté completamente seco",
+    "feeding": "Fertilización mínima, prefiere suelos pobres",
+    "pruning_notes": "Podar después de floración para mantener forma compacta",
+    "harvesting": "Cosechar temprano en la mañana cuando aceites están concentrados",
+    "winter_care": "Muy resistente, proteger solo en zonas extremadamente frías",
+    "pest_management": "Raramente necesita tratamiento, muy resistente naturalmente"
+  }
+}

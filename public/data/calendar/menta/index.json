@@ -1,0 +1,43 @@
+{
+  "plant_info": {
+    "category": "menta",
+    "scientific_name": "Mentha spp.",
+    "family": "Lamiaceae",
+    "type": "perennial",
+    "difficulty": "beginner",
+    "origin": "Mediterranean_Europe"
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 5, 9, 10],
+      "alternative_months": [2, 6, 11]
+    },
+    "harvesting": {
+      "best_months": [5, 6, 7, 8, 9, 10],
+      "peak_months": [6, 7, 8]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["dormant_care", "division_prep"],
+        "2": ["soil_preparation", "division"],
+        "3": ["planting", "division", "fertilize"],
+        "4": ["planting", "water_regularly"],
+        "5": ["harvesting", "water_regularly"],
+        "6": ["harvesting", "regular_cutting"],
+        "7": ["harvesting", "water_regularly"],
+        "8": ["harvesting", "pest_monitoring"],
+        "9": ["planting", "harvesting"],
+        "10": ["planting", "harvesting", "division"],
+        "11": ["reduce_watering", "prepare_winter"],
+        "12": ["minimal_care", "protection"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "partial_shade",
+    "water_needs": "high",
+    "soil_type": "moist_fertile",
+    "temperature_range": [-10, 30],
+    "special_care": "Puede ser invasiva, contener en maceta"
+  }
+}

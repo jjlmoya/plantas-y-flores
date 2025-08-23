@@ -1,0 +1,98 @@
+{
+  "plant_info": {
+    "category": "aguacate",
+    "scientific_name": "Persea americana",
+    "family": "Lauraceae",
+    "type": "perennial_tree",
+    "difficulty": "intermediate",
+    "origin": "Central_America",
+    "mature_size": {
+      "height": [400, 2000],
+      "width": [300, 1500]
+    }
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 5],
+      "alternative_months": [9, 10]
+    },
+    "flowering": {
+      "best_months": [2, 3, 4, 5],
+      "peak_months": [3, 4]
+    },
+    "harvesting": {
+      "best_months": [8, 9, 10, 11, 12],
+      "peak_months": [9, 10]
+    },
+    "pruning": {
+      "best_months": [2, 3, 8]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["water_regularly", "fertilize", "pest_monitoring"],
+        "2": ["pruning", "fertilize", "water_regularly"],
+        "3": ["planting", "pruning", "fertilize", "water_regularly"],
+        "4": ["planting", "water_regularly", "monitor_growth"],
+        "5": ["planting", "water_regularly", "fertilize"],
+        "6": ["water_regularly", "pest_monitoring"],
+        "7": ["water_regularly", "monitor_growth"],
+        "8": ["pruning", "water_regularly", "fertilize"],
+        "9": ["harvesting", "water_regularly"],
+        "10": ["harvesting", "water_regularly"],
+        "11": ["harvesting", "reduce_watering"],
+        "12": ["harvesting", "reduce_watering", "prepare_winter"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "high",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.0],
+    "spacing": {
+      "plant_distance": 600,
+      "row_distance": 800
+    },
+    "temperature_range": [15, 30],
+    "minimum_temperature": 4,
+    "humidity_requirements": "moderate",
+    "special_care": "Requiere clima subtropical, sensible a heladas"
+  },
+  "nutritional_data": {
+    "calories_per_100g": 160,
+    "main_nutrients": ["healthy_fats", "fiber", "potassium", "vitamin_K", "vitamin_E", "vitamin_C", "folate", "magnesium"],
+    "health_benefits": [
+      "heart_health",
+      "weight_management",
+      "nutrient_absorption",
+      "eye_health",
+      "anti_inflammatory",
+      "cholesterol_reduction"
+    ],
+    "flavor_profile": "creamy_mild_nutty",
+    "nutritional_notes": "Rico en grasas monoinsaturadas saludables y fibra"
+  },
+  "culinary_uses": {
+    "parts_used": ["fruit"],
+    "flavor_profile": "creamy_mild_nutty",
+    "texture": "smooth_buttery",
+    "common_uses": ["guacamole", "salads", "smoothies", "toast", "salsas", "desserts"],
+    "storage_methods": ["fresh_refrigerated", "frozen_puree"],
+    "harvest_timing": "when_fruit_yields_to_pressure",
+    "ripening_notes": "Madura después de la cosecha, almacenar a temperatura ambiente"
+  },
+  "fruit_data": {
+    "harvest_season": "autumn_winter",
+    "fruit_size": "large",
+    "harvest_indicators": ["fruit_softens", "skin_darkens"],
+    "storage_life": "5_10_days",
+    "varieties": ["hass", "fuerte", "pinkerton", "bacon", "zutano"],
+    "oil_content": "15_30_percent"
+  },
+  "care_tips": {
+    "watering": "Riego abundante pero sin encharcamiento",
+    "feeding": "Fertilizante rico en potasio durante fructificación",
+    "pruning_notes": "Podar para mantener altura manejable y ventilación",
+    "pollination": "Algunos cultivares requieren polinización cruzada"
+  }
+}

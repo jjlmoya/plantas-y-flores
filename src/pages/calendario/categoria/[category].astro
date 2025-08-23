@@ -11,14 +11,22 @@ import {
 } from "../../../utils/calendar-inheritance.js";
 import { generateCategorySchema } from "../../../schemas/calendar/calendar.category.schema.js";
 
-// Generate static paths for all categories
+// Generate static paths for categories that have plants (variedades)
 export async function getStaticPaths() {
   try {
     const categories = await getAvailableCalendarCategories();
-
-    const result = categories.map((category) => ({
-      params: { category },
-    }));
+    const result = [];
+    
+    for (const category of categories) {
+      const categoryPlants = await getCategoryPlantsWithCalendar(category);
+      
+      // Ahora todas las categorías tendrán al menos la variedad "común"
+      if (categoryPlants.length > 0) {
+        result.push({
+          params: { category },
+        });
+      }
+    }
     
     return result;
   } catch (error) {

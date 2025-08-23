@@ -1,0 +1,104 @@
+{
+  "plant_info": {
+    "category": "azafran",
+    "scientific_name": "Crocus sativus",
+    "family": "Iridaceae",
+    "type": "perennial_bulb",
+    "difficulty": "intermediate",
+    "origin": "Mediterranean",
+    "mature_size": {
+      "height": [10, 15],
+      "width": [5, 8]
+    }
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [7, 8, 9],
+      "alternative_months": [10]
+    },
+    "flowering": {
+      "best_months": [10, 11],
+      "peak_months": [10]
+    },
+    "harvesting": {
+      "best_months": [10, 11],
+      "peak_months": [10],
+      "harvest_times": ["morning"]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["dormant_protection", "minimal_care"],
+        "2": ["dormant_protection", "soil_preparation"],
+        "3": ["monitor_growth", "weeding"],
+        "4": ["water_regularly", "fertilize"],
+        "5": ["water_regularly", "monitor_growth"],
+        "6": ["reduce_watering", "dormant_protection"],
+        "7": ["planting", "soil_preparation"],
+        "8": ["planting", "water_lightly"],
+        "9": ["planting", "water_regularly"],
+        "10": ["harvesting", "harvest_main"],
+        "11": ["harvesting", "reduce_watering"],
+        "12": ["minimal_care", "dormant_protection"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "low",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 8.0],
+    "spacing": {
+      "plant_distance": 10,
+      "row_distance": 15
+    },
+    "temperature_range": [-10, 30],
+    "minimum_temperature": -15,
+    "special_care": "Requiere veranos secos y calurosos, inviernos fríos"
+  },
+  "flower_data": {
+    "colors": ["purple", "violet"],
+    "fragrance_level": "mild",
+    "flower_shape": "cup_shaped",
+    "bloom_duration": "2_3_weeks",
+    "petals": 6,
+    "stigmas": 3,
+    "seasonal_interest": "Floración otoñal espectacular con estigmas rojos",
+    "ornamental_value": "high"
+  },
+  "nutritional_data": {
+    "calories_per_100g": 310,
+    "main_nutrients": ["vitamin_C", "vitamin_A", "iron", "manganese", "potassium", "magnesium"],
+    "health_benefits": [
+      "antioxidant_properties",
+      "anti_inflammatory",
+      "mood_enhancement",
+      "eye_health",
+      "heart_health",
+      "digestive_health"
+    ],
+    "flavor_profile": "sweet_metallic_hay_like",
+    "nutritional_notes": "Rica en carotenoides, especialmente crocina y crocetina"
+  },
+  "culinary_uses": {
+    "parts_used": ["stigmas"],
+    "flavor_profile": "sweet_metallic_hay_like",
+    "intensity": "very_strong",
+    "common_uses": ["paella", "rice_dishes", "desserts", "bread", "sauces", "teas"],
+    "preparation_methods": ["soak_in_warm_liquid", "grind_to_powder"],
+    "storage_methods": ["dried", "airtight_container"],
+    "culinary_notes": "Una pizca es suficiente, demasiado puede amargar el plato"
+  },
+  "spice_data": {
+    "harvest_part": "stigmas",
+    "processing": "dried_immediately",
+    "yield": "3_stigmas_per_flower",
+    "market_value": "very_high",
+    "active_compounds": ["crocin", "crocetin", "safranal", "picrocrocin"]
+  },
+  "care_tips": {
+    "watering": "Riego mínimo, evitar encharcamiento",
+    "feeding": "Fertilizante bajo en nitrógeno",
+    "harvesting": "Recoger estigmas en las primeras horas del día",
+    "storage": "Secar inmediatamente, almacenar en lugar fresco y seco"
+  }
+}

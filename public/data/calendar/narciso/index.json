@@ -1,0 +1,79 @@
+{
+  "plant_info": {
+    "category": "narciso",
+    "scientific_name": "Narcissus spp.",
+    "family": "Amaryllidaceae",
+    "type": "perennial_bulb",
+    "difficulty": "beginner",
+    "origin": "Mediterranean_Europe",
+    "growth_habit": "bulbous",
+    "mature_size": {
+      "height": [15, 50],
+      "width": [10, 20]
+    }
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [9, 10, 11],
+      "alternative_months": [8, 12],
+      "soil_temperature_min": 10
+    },
+    "flowering": {
+      "best_months": [2, 3, 4, 5],
+      "peak_months": [3, 4]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["water_lightly", "monitor_growth"],
+        "2": ["flowering_support", "water_regularly"],
+        "3": ["flowering_support", "deadhead", "fertilize"],
+        "4": ["deadhead", "water_regularly"],
+        "5": ["allow_foliage_mature", "reduce_fertilizer"],
+        "6": ["stop_watering", "allow_dormancy"],
+        "7": ["dormant_period", "minimal_care"],
+        "8": ["soil_preparation", "planting"],
+        "9": ["planting", "water_establishment"],
+        "10": ["planting", "water_regularly"],
+        "11": ["planting", "mulch", "protect_cold"],
+        "12": ["dormant_protection", "minimal_care"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun_partial_shade",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.5],
+    "spacing": {
+      "plant_distance": 10,
+      "row_distance": 15
+    },
+    "drainage": "excellent",
+    "temperature_range": [-15, 25],
+    "minimum_temperature": -20,
+    "frost_tolerance": "excellent",
+    "special_care": "Requiere período frío para florecer, no cortar follaje hasta amarillear"
+  },
+  "flower_data": {
+    "fragrance_level": "strong",
+    "colors": ["white", "yellow", "orange", "pink", "bicolor"],
+    "flower_shape": "trumpet_cup",
+    "bloom_duration": "3_weeks",
+    "seasonal_interest": "Floración temprana primaveral",
+    "cut_flower": "excellent",
+    "vase_life": "7_10_days"
+  },
+  "ornamental_data": {
+    "garden_use": ["borders", "naturalized", "containers", "rock_gardens"],
+    "landscape_value": "Floración temprana cuando pocas plantas florecen",
+    "wildlife_attraction": ["abejas_tempranas", "mariposas"],
+    "companion_plants": ["tulipanes", "jacintos", "crocus"]
+  },
+  "care_tips": {
+    "watering": "Riego regular durante crecimiento, seco en dormancia",
+    "feeding": "Fertilizante bajo en nitrógeno tras floración",
+    "planting_depth": "3 veces el alto del bulbo",
+    "aftercare": "No cortar follaje hasta que amarillee naturalmente",
+    "toxicity": "Bulbos tóxicos si se ingieren"
+  }
+}

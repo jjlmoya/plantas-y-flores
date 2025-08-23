@@ -149,9 +149,10 @@ export async function getCategories() {
     });
   }
   
-  // Agregar contenido de las páginas de categoría
+  // Agregar todas las páginas de categoría (incluso las que no tienen posts)
   categoryPages.forEach(page => {
     if (categoryMap.has(page.slug)) {
+      // Actualizar categoría existente con contenido de página
       categoryMap.get(page.slug).data.content = page.data.seo_html;
       categoryMap.get(page.slug).data.main_image = page.data.main_image;
       // Limpiar HTML del excerpt para usar como descripción
@@ -159,6 +160,24 @@ export async function getCategories() {
         ? page.data.excerpt.replace(/<[^>]*>/g, '').replace(/&[^;]+;/g, '').trim()
         : categoryMap.get(page.slug).data.description;
       categoryMap.get(page.slug).data.description = cleanDescription;
+    } else {
+      // Agregar nueva categoría sin posts
+      const categoryName = page.data.title || page.slug.charAt(0).toUpperCase() + page.slug.slice(1);
+      const cleanDescription = page.data.excerpt 
+        ? page.data.excerpt.replace(/<[^>]*>/g, '').replace(/&[^;]+;/g, '').trim()
+        : `Descubre todo sobre ${categoryName.toLowerCase()}. Guías completas de cultivo, cuidados y consejos.`;
+      
+      categoryMap.set(page.slug, {
+        id: page.slug,
+        data: {
+          slug: page.slug,
+          name: categoryName,
+          posts_count: 0,
+          description: cleanDescription,
+          content: page.data.seo_html,
+          main_image: page.data.main_image
+        }
+      });
     }
   });
   
@@ -181,18 +200,54 @@ export async function getCategoryStats() {
 // Función para generar rutas estáticas de plantas
 export async function generatePlantPaths() {
   const allPlants = await getPlants();
+  const categories = await getCategories();
+  const paths = [];
   
-  return allPlants.map(plant => {
+  // Generar rutas para plantas normales (con variedades)
+  allPlants.forEach(plant => {
     const category = plant.data.categories[0]?.slug || 'plantas';
-    
-    return {
+    paths.push({
       params: { 
         category: category,
         plant: plant.slug 
       },
       props: { plant }
-    };
+    });
   });
+  
+  // Generar rutas para categorías sin variedades (como páginas de planta individual)
+  categories.forEach(category => {
+    if (category.data.posts_count === 0) {
+      // Crear una "planta" ficticia usando los datos de la categoría
+      const categoryAsPlant = {
+        slug: category.id,
+        data: {
+          id: category.id,
+          title: category.data.name,
+          date: new Date().toISOString(),
+          excerpt: category.data.description,
+          featured_image: category.data.main_image || null,
+          main_image: category.data.main_image || null,
+          categories: [{
+            slug: category.id,
+            name: category.data.name
+          }],
+          tags: [],
+          seo_html: category.data.content || `<h2>Todo sobre ${category.data.name}</h2><p>${category.data.description}</p>`
+        }
+      };
+      
+      paths.push({
+        params: { 
+          category: category.id,
+          plant: 'comun'
+        },
+        props: { plant: categoryAsPlant }
+      });
+    }
+  });
+  
+  return paths;
 }
 
 // Función para generar rutas estáticas de categorías

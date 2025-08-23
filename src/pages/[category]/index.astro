@@ -8,26 +8,31 @@ import { generateCategoryPaths, getPlantsByCategory } from '../../utils/data.js'
 export async function getStaticPaths() {
   const categoryPaths = await generateCategoryPaths();
   
-  const paths = await Promise.all(categoryPaths.map(async (categoryPath) => {
+  const paths = [];
+  
+  for (const categoryPath of categoryPaths) {
     const categoryPlants = await getPlantsByCategory(categoryPath.props.categorySlug);
     
-    return {
-      params: categoryPath.params,
-      props: {
-        category: categoryPath.props.category,
-        plants: categoryPlants.map(plant => ({
-          id: plant.data.id,
-          slug: plant.slug,
-          title: plant.data.title,
-          excerpt: plant.data.excerpt,
-          date: plant.data.date,
-          featured_image: plant.data.featured_image,
-          main_image: plant.data.main_image,
-          categories: plant.data.categories
-        }))
-      }
-    };
-  }));
+    // Solo generar página de categoría si tiene plantas (variedades)
+    if (categoryPlants.length > 0) {
+      paths.push({
+        params: categoryPath.params,
+        props: {
+          category: categoryPath.props.category,
+          plants: categoryPlants.map(plant => ({
+            id: plant.data.id,
+            slug: plant.slug,
+            title: plant.data.title,
+            excerpt: plant.data.excerpt,
+            date: plant.data.date,
+            featured_image: plant.data.featured_image,
+            main_image: plant.data.main_image,
+            categories: plant.data.categories
+          }))
+        }
+      });
+    }
+  }
   
   return paths;
 }
@@ -36,7 +41,7 @@ const { category, plants } = Astro.props;
 const sortedPlants = plants.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 const title = `${category.name} - Plantas y Flores`;
-const description = `Descubre todo sobre ${category.name.toLowerCase()}. Guías completas de cultivo, cuidados y consejos para ${category.name.toLowerCase()}. ${category.posts_count} artículos disponibles.`;
+const description = `Descubre todo sobre ${category.name.toLowerCase()}. Guías completas de cultivo, cuidados y consejos para ${category.name.toLowerCase()}.${category.posts_count > 0 ? ` ${category.posts_count} artículos disponibles.` : ''}`;
 
 const breadcrumbs = [
   { text: 'Inicio', href: '/' },

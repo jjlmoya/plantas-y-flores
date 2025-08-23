@@ -1,0 +1,88 @@
+{
+  "plant_info": {
+    "category": "cilantro",
+    "scientific_name": "Coriandrum sativum",
+    "family": "Apiaceae",
+    "type": "annual",
+    "difficulty": "beginner",
+    "origin": "Mediterranean",
+    "mature_size": {
+      "height": [30, 60],
+      "width": [20, 30]
+    }
+  },
+  "calendar_data": {
+    "sowing": {
+      "outdoor": {
+        "best_months": [3, 4, 5, 8, 9],
+        "alternative_months": [2, 6, 10]
+      },
+      "indoor": {
+        "best_months": [2, 3, 8, 9],
+        "alternative_months": [1, 4, 7, 10]
+      }
+    },
+    "transplanting": {
+      "best_months": [4, 5, 9, 10],
+      "peak_months": [4, 9]
+    },
+    "harvesting": {
+      "best_months": [5, 6, 7, 8, 9, 10, 11],
+      "peak_months": [6, 7, 10, 11]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["sowing_indoor", "soil_preparation"],
+        "2": ["sowing_outdoor", "sowing_indoor"],
+        "3": ["sowing_outdoor", "water_regularly"],
+        "4": ["transplanting", "sowing_outdoor", "harvest_leaves"],
+        "5": ["harvesting", "sowing_outdoor"],
+        "6": ["harvesting", "harvest_late"],
+        "7": ["harvesting", "soil_preparation"],
+        "8": ["sowing_outdoor", "sowing_outdoor"],
+        "9": ["sowing_outdoor", "transplanting"],
+        "10": ["transplanting", "harvesting"],
+        "11": ["harvesting", "plant_cleanup"],
+        "12": ["minimal_care", "soil_preparation"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun_partial_shade",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.5],
+    "spacing": {
+      "plant_distance": 10,
+      "row_distance": 20
+    },
+    "temperature_range": [15, 25],
+    "special_care": "Cosecha sucesiva, siembra cada 2-3 semanas"
+  },
+  "nutritional_data": {
+    "calories_per_100g": 23,
+    "main_nutrients": ["vitamin_C", "vitamin_K", "vitamin_A", "folate", "potassium", "manganese"],
+    "health_benefits": [
+      "antioxidant_properties",
+      "digestive_health",
+      "heart_health",
+      "anti_inflammatory",
+      "detoxification"
+    ],
+    "flavor_profile": "citrusy_fresh_pungent",
+    "nutritional_notes": "Rico en vitaminas y antioxidantes, bajo en calorías"
+  },
+  "culinary_uses": {
+    "parts_used": ["leaves", "seeds", "roots"],
+    "flavor_profile": "citrusy_fresh_pungent",
+    "intensity": "strong",
+    "common_uses": ["salsas", "guacamole", "curries", "sopas", "garnish", "marinades"],
+    "preservation_methods": ["fresh", "dried", "frozen", "oil_infusion"],
+    "culinary_notes": "Las hojas se usan frescas, las semillas secas como especia (coriandro)"
+  },
+  "care_tips": {
+    "watering": "Riego regular, evitar sequía prolongada",
+    "harvesting": "Cortar hojas exteriores, permitir regeneración",
+    "succession": "Sembrar cada 2-3 semanas para cosecha continua"
+  }
+}

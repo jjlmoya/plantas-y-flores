@@ -1,0 +1,140 @@
+{
+  "plant_info": {
+    "category": "salvia",
+    "scientific_name": "Salvia officinalis",
+    "family": "Lamiaceae",
+    "type": "perennial_evergreen_shrub",
+    "difficulty": "beginner",
+    "origin": "Mediterranean",
+    "growth_habit": "upright_bushy",
+    "mature_size": {
+      "height": [30, 80],
+      "width": [40, 60]
+    }
+  },
+  "calendar_data": {
+    "sowing": {
+      "outdoor": {
+        "best_months": [3, 4, 5, 9],
+        "alternative_months": [2, 6, 8, 10]
+      },
+      "indoor": {
+        "best_months": [2, 3, 8, 9],
+        "alternative_months": [1, 4, 7, 10]
+      }
+    },
+    "planting": {
+      "best_months": [3, 4, 5, 9, 10],
+      "alternative_months": [2, 6, 11]
+    },
+    "flowering": {
+      "best_months": [5, 6, 7, 8, 9],
+      "peak_months": [6, 7, 8]
+    },
+    "harvesting": {
+      "best_months": [4, 5, 6, 7, 8, 9, 10],
+      "peak_months": [6, 7, 8],
+      "harvest_times": ["morning_before_flowering"]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["minimal_care", "pruning_light"],
+        "2": ["soil_preparation", "sowing_indoor"],
+        "3": ["sowing_outdoor", "planting", "fertilize"],
+        "4": ["planting", "water_regularly", "harvesting"],
+        "5": ["flowering_support", "water_regularly", "harvesting"],
+        "6": ["harvesting", "deadhead", "water_regularly"],
+        "7": ["harvesting", "water_regularly", "pest_monitoring"],
+        "8": ["harvesting", "deadhead", "water_regularly"],
+        "9": ["sowing_outdoor", "planting", "harvesting", "reduce_watering"],
+        "10": ["planting", "harvesting", "prepare_winter"],
+        "11": ["minimal_care", "mulch", "protection"],
+        "12": ["dormant_care", "planning"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "low_moderate",
+    "soil_type": "well_drained_sandy",
+    "soil_ph": [6.0, 8.0],
+    "spacing": {
+      "plant_distance": 45,
+      "row_distance": 60
+    },
+    "drainage": "excellent",
+    "temperature_range": [-20, 35],
+    "minimum_temperature": -25,
+    "humidity_requirements": "low_moderate",
+    "wind_tolerance": "good",
+    "frost_tolerance": "excellent",
+    "drought_tolerance": "very_good",
+    "special_care": "Evitar encharcamiento, poda regular mantiene vigor"
+  },
+  "flower_data": {
+    "colors": ["purple", "blue", "white", "pink"],
+    "fragrance_level": "moderate",
+    "flower_shape": "spikes",
+    "bloom_duration": "4_months",
+    "edible_flowers": true,
+    "attracts_pollinators": true,
+    "seasonal_interest": "Espigas florales vistosas en verano"
+  },
+  "culinary_uses": {
+    "parts_used": ["leaves", "flowers"],
+    "flavor_profile": "earthy_slightly_bitter_camphor",
+    "intensity": "strong",
+    "common_uses": ["stuffing", "pasta", "meat_dishes", "butter_herb", "tea", "seasoning_blends"],
+    "harvest_timing": "before_flowering_peak_oils",
+    "preservation_methods": ["drying", "oil_infusion", "freezing", "fresh"],
+    "culinary_notes": "Combina especialmente bien con cerdo y aves"
+  },
+  "medicinal_properties": {
+    "primary_uses": ["digestive_aid", "antimicrobial", "anti_inflammatory", "memory_enhancement", "throat_soothing"],
+    "active_compounds": ["thujone", "camphor", "rosmarinic_acid", "salvianolic_acids"],
+    "preparation_methods": ["tea", "gargle", "fresh_consumption", "tincture"],
+    "traditional_uses": ["sore_throat", "digestive_problems", "memory_improvement", "wound_healing"],
+    "cautions": "Evitar dosis altas durante embarazo"
+  },
+  "ornamental_data": {
+    "garden_use": ["herb_gardens", "borders", "containers", "cottage_gardens", "Mediterranean_gardens"],
+    "landscape_value": "Follaje plateado atractivo con espigas florales",
+    "seasonal_interest": "Follaje perenne y floración estival",
+    "wildlife_attraction": ["abejas", "mariposas", "colibríes"],
+    "companion_plants": ["romero", "lavanda", "tomillo", "rosas"]
+  },
+  "varieties_info": {
+    "common_types": [
+      "officinalis_common",
+      "purpurascens_purple_leaf",
+      "icterina_golden_variegated",
+      "tricolor_multi_colored",
+      "berggarten_compact"
+    ],
+    "leaf_colors": ["grey_green", "purple", "variegated", "golden"],
+    "growth_habits": ["upright", "compact", "spreading"]
+  },
+  "cultivation_notes": {
+    "propagation": ["cuttings", "seeds", "division"],
+    "germination_time": "10_21_days",
+    "container_suitable": true,
+    "pruning_requirements": "regular_pruning_prevents_woodiness",
+    "companion_benefits": ["pest_deterrent", "pollinator_magnet", "aromatic_companion"],
+    "succession_planting": "not_necessary_perennial"
+  },
+  "pest_and_disease": {
+    "common_pests": ["aphids", "spider_mites", "slugs"],
+    "common_diseases": ["root_rot", "powdery_mildew", "leaf_spot"],
+    "prevention_methods": ["proper_drainage", "good_air_circulation", "avoid_overcrowding"],
+    "organic_controls": ["insecticidal_soap", "neem_oil", "copper_fungicide"],
+    "resistance_notes": "Generalmente resistente, problemas por exceso de humedad"
+  },
+  "care_tips": {
+    "watering": "Riego moderado, dejar secar entre riegos",
+    "feeding": "Fertilización ligera, exceso reduce aroma",
+    "pruning_notes": "Podar regularmente para evitar que se vuelva leñosa",
+    "harvesting": "Cosechar antes de floración para mejor sabor",
+    "winter_care": "Muy resistente, mulch ligero en zonas frías",
+    "pest_management": "Resistente naturalmente, vigilar humedad excesiva"
+  }
+}

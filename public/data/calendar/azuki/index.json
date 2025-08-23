@@ -1,0 +1,95 @@
+{
+  "plant_info": {
+    "category": "azuki",
+    "scientific_name": "Vigna angularis",
+    "family": "Fabaceae",
+    "type": "annual",
+    "difficulty": "beginner",
+    "origin": "East_Asia",
+    "mature_size": {
+      "height": [30, 60],
+      "width": [20, 30]
+    }
+  },
+  "calendar_data": {
+    "sowing": {
+      "outdoor": {
+        "best_months": [4, 5, 6],
+        "alternative_months": [3, 7]
+      },
+      "indoor": {
+        "best_months": [3, 4],
+        "alternative_months": [2, 5]
+      }
+    },
+    "transplanting": {
+      "best_months": [5, 6, 7],
+      "peak_months": [5, 6]
+    },
+    "flowering": {
+      "best_months": [7, 8, 9],
+      "peak_months": [8]
+    },
+    "harvesting": {
+      "best_months": [9, 10, 11],
+      "peak_months": [10]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["soil_preparation", "minimal_care"],
+        "2": ["sowing_indoor", "prepare_seedbeds"],
+        "3": ["sowing_outdoor", "fertilize"],
+        "4": ["sowing_outdoor", "water_regularly", "install_supports"],
+        "5": ["transplanting", "water_regularly", "mulching"],
+        "6": ["transplanting", "water_regularly", "pest_monitoring"],
+        "7": ["water_regularly", "monitor_growth", "staking"],
+        "8": ["water_regularly", "flowering_support"],
+        "9": ["reduce_watering", "harvest_early", "pest_monitoring"],
+        "10": ["harvesting", "harvest_late"],
+        "11": ["harvesting", "plant_cleanup"],
+        "12": ["plant_cleanup", "soil_preparation"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.0],
+    "spacing": {
+      "plant_distance": 15,
+      "row_distance": 30
+    },
+    "temperature_range": [18, 28],
+    "minimum_temperature": 10,
+    "special_care": "Fija nitrógeno en el suelo, mejora la fertilidad"
+  },
+  "nutritional_data": {
+    "calories_per_100g": 329,
+    "main_nutrients": ["protein", "fiber", "iron", "potassium", "magnesium", "folate", "phosphorus"],
+    "health_benefits": [
+      "heart_health",
+      "digestive_health",
+      "weight_management",
+      "blood_sugar_control",
+      "antioxidant_properties"
+    ],
+    "flavor_profile": "sweet_nutty_earthy",
+    "nutritional_notes": "Excelente fuente de proteína vegetal y fibra"
+  },
+  "culinary_uses": {
+    "parts_used": ["seeds"],
+    "flavor_profile": "sweet_nutty_earthy",
+    "texture": "creamy_when_cooked",
+    "common_uses": ["dulces_japoneses", "pasta_roja_dulce", "postres", "sopas", "guisos", "helados"],
+    "preparation_methods": ["soak_overnight", "boil_until_tender", "mash_to_paste"],
+    "storage_methods": ["dried", "cooked_paste", "frozen"],
+    "culinary_notes": "Base fundamental de la repostería japonesa (anko)"
+  },
+  "care_tips": {
+    "watering": "Riego regular pero sin encharcamiento",
+    "feeding": "Requiere poco fertilizante por ser leguminosa",
+    "support": "Puede necesitar tutores en variedades trepadoras",
+    "harvesting": "Cosechar cuando las vainas estén secas y marrones"
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "plant_info": {
+    "category": "martagon",
+    "scientific_name": "Lilium martagon",
+    "family": "Liliaceae",
+    "type": "perennial_bulb",
+    "difficulty": "intermediate",
+    "origin": "Europe_Asia",
+    "growth_habit": "bulbous_tall",
+    "mature_size": {
+      "height": [90, 150],
+      "width": [20, 40]
+    }
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [9, 10, 11],
+      "alternative_months": [8, 12],
+      "soil_temperature_max": 15
+    },
+    "flowering": {
+      "best_months": [6, 7],
+      "peak_months": [6, 7]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["dormant_protection", "minimal_care"],
+        "2": ["minimal_care", "check_mulch"],
+        "3": ["remove_mulch", "fertilize_light"],
+        "4": ["water_regularly", "monitor_emergence"],
+        "5": ["water_regularly", "support_stakes"],
+        "6": ["flowering_support", "water_regularly"],
+        "7": ["flowering_support", "deadhead", "water_regularly"],
+        "8": ["allow_foliage_mature", "reduce_watering"],
+        "9": ["planting", "soil_preparation"],
+        "10": ["planting", "mulch_heavy"],
+        "11": ["planting", "winter_protection"],
+        "12": ["dormant_care", "protection"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "partial_shade",
+    "water_needs": "moderate_consistent",
+    "soil_type": "well_drained_humus_rich",
+    "soil_ph": [6.0, 7.5],
+    "spacing": {
+      "plant_distance": 25,
+      "row_distance": 40
+    },
+    "drainage": "excellent",
+    "temperature_range": [-25, 25],
+    "minimum_temperature": -30,
+    "humidity_requirements": "moderate",
+    "frost_tolerance": "excellent",
+    "heat_tolerance": "moderate",
+    "special_care": "Requiere suelo bien drenado y fresco, odia el calor excesivo"
+  },
+  "flower_data": {
+    "colors": ["pink", "purple", "white", "yellow", "orange"],
+    "fragrance_level": "moderate",
+    "flower_shape": "turban_reflexed_petals",
+    "bloom_duration": "3_4_weeks",
+    "flower_count": "10_50_per_stem",
+    "cut_flower": "excellent",
+    "vase_life": "7_10_days",
+    "seasonal_interest": "Floración espectacular en verano"
+  },
+  "ornamental_data": {
+    "garden_use": ["woodland_gardens", "borders", "naturalized", "cottage_gardens"],
+    "landscape_value": "Flores distintivas con pétalos recurvados",
+    "seasonal_interest": "Follaje atractivo y floración dramática",
+    "wildlife_attraction": ["mariposas", "abejas", "insectos_polinizadores"],
+    "companion_plants": ["hostas", "helechos", "astilbe", "rodgersia"]
+  },
+  "varieties_info": {
+    "common_types": [
+      "martagon_species",
+      "album_white_form",
+      "cattaniae_wine_red",
+      "pilosiusculum_hairy",
+      "dalmaticum_purple_spotted"
+    ],
+    "colors": ["pink", "purple", "white", "wine_red", "yellow"],
+    "height_categories": ["dwarf_60cm", "medium_100cm", "tall_150cm"]
+  },
+  "cultivation_notes": {
+    "propagation": ["bulb_scales", "bulblets", "seeds"],
+    "germination_time": "erratic_2_years",
+    "bulb_planting_depth": "3_times_bulb_height",
+    "establishment_time": "2_3_years_flowering",
+    "longevity": "very_long_lived_decades",
+    "container_suitable": "large_deep_containers_only"
+  },
+  "pest_and_disease": {
+    "common_pests": ["lily_beetle", "aphids", "slugs", "snails"],
+    "common_diseases": ["botrytis", "basal_rot", "virus"],
+    "prevention_methods": ["good_drainage", "air_circulation", "mulching"],
+    "organic_controls": ["beneficial_insects", "copper_fungicide", "neem_oil"],
+    "resistance_notes": "Más resistente que otros lirios, evitar suelos húmedos"
+  },
+  "care_tips": {
+    "watering": "Riego consistente durante crecimiento, reducir tras floración",
+    "feeding": "Fertilizante bajo en nitrógeno, rico en fósforo y potasio",
+    "planting_depth": "Plantar 3 veces la altura del bulbo",
+    "aftercare": "No cortar follaje hasta que amarillee naturalmente",
+    "winter_care": "Mulch pesado en zonas muy frías",
+    "pest_management": "Vigilar escarabajo del lirio, inspección regular"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "plant_info": {
+    "category": "coco",
+    "scientific_name": "Cocos nucifera",
+    "family": "Arecaceae",
+    "type": "perennial_palm",
+    "difficulty": "advanced",
+    "origin": "Tropical_Pacific",
+    "mature_size": {
+      "height": [1500, 3000],
+      "width": [400, 600]
+    }
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [4, 5, 6],
+      "alternative_months": [3, 7]
+    },
+    "flowering": {
+      "best_months": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "peak_months": [4, 5, 6]
+    },
+    "harvesting": {
+      "best_months": [8, 9, 10, 11, 12, 1],
+      "peak_months": [10, 11, 12]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["harvesting", "water_regularly", "fertilize"],
+        "2": ["water_regularly", "pest_monitoring"],
+        "3": ["water_regularly", "fertilize"],
+        "4": ["planting", "water_regularly", "fertilize"],
+        "5": ["planting", "water_regularly"],
+        "6": ["planting", "water_regularly"],
+        "7": ["water_regularly", "pest_monitoring"],
+        "8": ["harvesting", "water_regularly"],
+        "9": ["harvesting", "water_regularly", "fertilize"],
+        "10": ["harvesting", "water_regularly"],
+        "11": ["harvesting", "reduce_watering"],
+        "12": ["harvesting", "minimal_care"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "high",
+    "soil_type": "sandy_well_drained",
+    "soil_ph": [5.5, 7.0],
+    "temperature_range": [20, 32],
+    "minimum_temperature": 18,
+    "special_care": "Requiere clima tropical húmedo"
+  },
+  "fruit_data": {
+    "harvest_season": "year_round",
+    "uses": ["agua_de_coco", "copra", "aceite", "fibra"]
+  }
+}

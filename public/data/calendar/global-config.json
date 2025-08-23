@@ -54,7 +54,10 @@
     "cure",
     "harvest_petals",
     "divide_bulbs",
-    "remove_debris"
+    "remove_debris",
+    "maintain_darkness",
+    "reduce_light",
+    "prepare_flowering"
   ],
   "soil_types": [
     "well_drained",
@@ -185,7 +188,12 @@
     "lv-LV",
     "lt-LT",
     "mt-MT",
-    "cy-GB"
+    "cy-GB",
+    "Central_America",
+    "Mediterranean",
+    "Mediterranean_Europe",
+    "Eastern_Mediterranean",
+    "Europe_Asia"
   ],
   "families": [
     "Solanaceae",
@@ -228,7 +236,17 @@
     "mineral_rich",
     "iron_rich",
     "calcium_rich",
-    "potassium_rich"
+    "potassium_rich",
+    "healthy_fats",
+    "vitamin_K",
+    "vitamin_E",
+    "folate",
+    "magnesium",
+    "beta_carotene",
+    "very_high",
+    "high",
+    "moderate",
+    "low"
   ],
   "flower_colors": [
     "white",
@@ -305,6 +323,26 @@
       "pina": "🍍",
       "plantas-comestibles": "🥗",
       "manzanilla": "🌼",
+      "poinsettia": "⭐",
+      "aguacate": "🥑",
+      "azafran": "🌼",
+      "azuki": "🟤",
+      "cilantro": "🌿",
+      "coco": "🥥",
+      "curcuma": "🟨",
+      "girasol": "🌻",
+      "goji": "🔴",
+      "kiri": "🌳",
+      "kiwi": "🥝",
+      "laurel": "🍃",
+      "menta": "🌿",
+      "narciso": "🤍",
+      "oregano": "🌿",
+      "romero": "🌿",
+      "salvia": "🌿",
+      "zanahoria": "🥕",
+      "jacinto": "💙",
+      "martagon": "🏵️",
       "default": "🌱"
     },
     "task_icons": {
@@ -430,6 +468,9 @@
       "harvest_petals": "🌹",
       "divide_bulbs": "🧅",
       "remove_debris": "🍂",
+      "maintain_darkness": "🌑",
+      "reduce_light": "🌘",
+      "prepare_flowering": "🌸",
       "default": "•"
     },
     "task_priorities": {
@@ -543,7 +584,10 @@
       "cure": "medium",
       "harvest_petals": "high",
       "divide_bulbs": "medium",
-      "remove_debris": "low"
+      "remove_debris": "low",
+      "maintain_darkness": "high",
+      "reduce_light": "high",
+      "prepare_flowering": "medium"
     },
     "activity_colors": {
       "sowing": "#48bb78",
@@ -656,7 +700,10 @@
       "cure": "#f6ad55",
       "harvest_petals": "#d53f8c",
       "divide_bulbs": "#9f7aea",
-      "remove_debris": "#f6ad55"
+      "remove_debris": "#f6ad55",
+      "maintain_darkness": "#2d3748",
+      "reduce_light": "#4a5568",
+      "prepare_flowering": "#d53f8c"
     },
     "translation_strings": {
       "es": {

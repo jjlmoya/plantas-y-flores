@@ -1,0 +1,69 @@
+{
+  "plant_info": {
+    "category": "poinsettia",
+    "scientific_name": "Euphorbia pulcherrima",
+    "family": "Euphorbiaceae",
+    "type": "perennial",
+    "difficulty": "intermediate",
+    "origin": "MX",
+    "mature_size": {
+      "height": [30, 200],
+      "width": [30, 150]
+    }
+  },
+  "calendar_data": {
+    "planting": {
+      "best_months": [3, 4, 5],
+      "alternative_months": [6]
+    },
+    "flowering": {
+      "best_months": [11, 12, 1],
+      "peak_months": [12]
+    },
+    "pruning": {
+      "best_months": [2, 3, 8]
+    },
+    "care_calendar": {
+      "monthly_tasks": {
+        "1": ["water_regularly", "dormant_protection"],
+        "2": ["pruning", "reduce_watering"],
+        "3": ["planting", "pruning", "fertilize"],
+        "4": ["planting", "fertilize", "water_regularly"],
+        "5": ["planting", "water_regularly", "monitor_growth"],
+        "6": ["water_regularly", "fertilize"],
+        "7": ["water_regularly", "monitor_growth"],
+        "8": ["pruning", "water_restriction"],
+        "9": ["reduce_watering", "prepare_flowering"],
+        "10": ["minimal_watering", "reduce_light"],
+        "11": ["minimal_watering", "maintain_darkness"],
+        "12": ["minimal_watering", "minimal_care"]
+      }
+    }
+  },
+  "growing_conditions": {
+    "sun_requirements": "partial_shade",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.0],
+    "spacing": {
+      "plant_distance": 40,
+      "row_distance": 60
+    },
+    "temperature_range": [15, 24],
+    "minimum_temperature": 12,
+    "humidity_requirements": "moderate",
+    "special_care": "Requiere período de oscuridad para florecer en Navidad"
+  },
+  "flower_data": {
+    "colors": ["red", "white", "pink", "cream", "yellow"],
+    "flower_shape": "bract_display",
+    "bloom_duration": "8_weeks",
+    "seasonal_interest": "Floración invernal decorativa"
+  },
+  "care_tips": {
+    "watering": "Riego moderado, evitar encharcamiento",
+    "feeding": "Fertilizar durante crecimiento activo",
+    "pruning_notes": "Podar para mantener forma compacta",
+    "winter_care": "Requiere período de oscuridad 12-14 horas diarias desde octubre"
+  }
+}

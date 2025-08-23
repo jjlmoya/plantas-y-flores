@@ -145,9 +145,11 @@ const plantsData = sortedPlants.map(plant => ({
         {popularCategories.map(category => (
           <a href={`/${category.data.slug}/`} class="popular-card">
             <h3 class="popular-card__title">{category.data.name}</h3>
-            <p class="popular-card__count">
-              {category.data.posts_count} {category.data.posts_count === 1 ? 'artículo' : 'artículos'}
-            </p>
+            {category.data.posts_count > 0 && (
+              <p class="popular-card__count">
+                {category.data.posts_count} {category.data.posts_count === 1 ? 'artículo' : 'artículos'}
+              </p>
+            )}
           </a>
         ))}
       </div>
