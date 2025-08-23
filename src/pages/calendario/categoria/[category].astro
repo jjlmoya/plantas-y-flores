@@ -1,9 +1,6 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import CalendarBreadcrumb from "../../../components/calendar/CalendarBreadcrumb.vue";
-import StatsCard from "../../../components/StatsCard.vue";
-import FilterPlantCard from "../../../components/FilterPlantCard.vue";
-import CompanionPlants from "../../../components/CompanionPlants.vue";
 import {
   getCategoryPlantsWithCalendar,
   getGlobalCalendarConfig,
@@ -211,12 +208,7 @@ const formattedCategoryPlants = categoryPlants.map(plant => {
       <header class="hero-header">
         <div class="container">
           <div class="hero-content">
-            <div class="category-badge">
-              <span class="category-badge-icon">{categoryIcon}</span>
-              <span>Categoría de Plantas</span>
-            </div>
             <h1 class="category-title">
-              <span class="category-icon-large">{categoryIcon}</span>
               <span class="title-text">Calendario de {categoryName}</span>
             </h1>
             <p class="category-description">
@@ -246,9 +238,11 @@ const formattedCategoryPlants = categoryPlants.map(plant => {
     </div>
 
     <div class="container content-container">
-      <!-- Timeline Overview -->
+     
       <section class="timeline-section">
-        <h2>📅 Vista Temporal de {categoryName}</h2>
+        <h2>
+          Calendario mes por mes para todas las variedades de <strong>{categoryName}</strong>
+        </h2>
 
         <div class="timeline-container">
           <div class="timeline-header">
@@ -268,17 +262,9 @@ const formattedCategoryPlants = categoryPlants.map(plant => {
                 <div class="timeline-row" key={plant.slug}>
                   <div class="plant-name">
                     <a href={`/calendario/${category}/${plant.slug}/`}>
-                      {plant.plantName}
+                      {category} {plant.plantName}
                     </a>
-                    {plant.calendar._article_links?.resolved_link && (
-                      <a
-                        href={plant.calendar._article_links.resolved_link}
-                        class="article-link"
-                        title="Ver artículo completo"
-                      >
-                        📖
-                      </a>
-                    )}
+                  
                   </div>
 
                   {plant.monthsData.map((monthData) => (
@@ -370,30 +356,6 @@ const formattedCategoryPlants = categoryPlants.map(plant => {
           </div>
         </section>
       </section>
-
-      <!-- Companion Plants Section -->
-      <section class="companion-section">
-        <CompanionPlants 
-          client:visible
-          companions={companionPlants}
-        />
-      </section>
-
-      <!-- Plants Grid -->
-      <section class="plants-grid-section">
-        <h2>🌱 Todas las Variedades de {categoryName}</h2>
-        
-        <div class="plants-grid">
-          {categoryPlants.map(plant => (
-            <FilterPlantCard
-              client:visible
-              key={`${plant.category}-${plant.slug}`}
-              plant={plant}
-            />
-          ))}
-        </div>
-      </section>
-
       <!-- Back Navigation -->
       <div class="back-navigation">
         <a href="/calendario/" class="back-link">← Volver al Calendario</a>
@@ -634,6 +596,7 @@ const formattedCategoryPlants = categoryPlants.map(plant => {
     word-wrap: break-word;
     overflow-wrap: break-word;
     hyphens: auto;
+    padding: 16px 0;
   }
 
   .timeline-container {
@@ -684,11 +647,11 @@ const formattedCategoryPlants = categoryPlants.map(plant => {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    text-transform: capitalize;
   }
 
   .plant-name a {
-    color: var(--color-text-primary);
-    text-decoration: none;
+    color: var(--color-primary);
     font-weight: 500;
   }
 
