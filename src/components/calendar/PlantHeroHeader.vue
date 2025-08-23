@@ -95,6 +95,8 @@ export default {
         'annual': 'Anual',
         'biennial': 'Bienal',
         'perennial': 'Perenne',
+        'perennial_bulb': 'Bulbo Perenne',
+        'perennial_tree': 'Árbol Perenne',
         'herb': 'Hierba',
         'shrub': 'Arbusto',
         'tree': 'Árbol',

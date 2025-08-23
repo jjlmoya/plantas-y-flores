@@ -350,6 +350,29 @@ export default {
     formatOriginName,
     getCategoryIcon,
     getMonthName,
+    formatSpecialCare(specialCare) {
+      if (!specialCare) return '';
+      
+      if (typeof specialCare === 'string') {
+        return specialCare;
+      }
+      
+      if (typeof specialCare === 'object') {
+        if (specialCare.water_restriction) {
+          const months = specialCare.water_restriction.months || [];
+          const monthNames = months.map(m => this.getMonthName(m)).join(' y ');
+          const purpose = specialCare.water_restriction.purpose || '';
+          const purposeText = purpose === 'flavor_intensification' ? 'intensificar el sabor' : purpose;
+          return `Restricción de riego en ${monthNames} para ${purposeText}`;
+        }
+        
+        return Object.entries(specialCare).map(([key, value]) => {
+          return `${formatTaskName(key)}: ${JSON.stringify(value)}`;
+        }).join('. ');
+      }
+      
+      return String(specialCare);
+    },
     getDifficultyIcon(difficulty) {
       switch(difficulty) {
         case 'easy':

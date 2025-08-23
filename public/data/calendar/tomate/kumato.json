@@ -58,12 +58,7 @@
     "companion_plants": ["albahaca", "perejil"],
     "avoid_plants": ["patata", "berenjena"],
     "temperature_range": [15, 30],
-    "special_care": {
-      "water_restriction": {
-        "months": [8, 9],
-        "purpose": "flavor_intensification"
-      }
-    },
+    "special_care": "Restricción de riego en agosto y septiembre para intensificar el sabor",
     "special_purposes": ["gourmet", "unique_appearance", "premium_market"]
   },
   "fruit_data": {

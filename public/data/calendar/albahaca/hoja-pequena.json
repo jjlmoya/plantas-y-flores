@@ -2,10 +2,56 @@
   "key": "hoja-pequena",
   "plant_info": {
     "common_names": [
-      "Hoja Pequeña"
+      "Albahaca Hoja Pequeña", "Basil Minimum", "Greek Basil"
     ],
-    "scientific_name": "Ocimum basilicum minimum.",
-    "difficulty": "beginner"
+    "scientific_name": "Ocimum basilicum var. minimum",
+    "origin": "EU",
+    "type": "annual",
+    "difficulty": "beginner",
+    "family": "Lamiaceae",
+    "growth_habit": "compact"
+  },
+  "calendar_data": {
+    "sowing": {
+      "indoor": {
+        "best_months": [3, 4, 5],
+        "temperature_range": [18, 22]
+      },
+      "outdoor": {
+        "best_months": [5, 6],
+        "soil_temperature_min": 15
+      }
+    },
+    "harvesting": {
+      "best_months": [6, 7, 8, 9],
+      "peak_months": [7, 8],
+      "harvest_indicators": ["aroma", "full_bloom"]
+    }
+  },
+  "flower_data": {
+    "colors": ["white", "light_pink"],
+    "fragrance": "moderate",
+    "flower_shape": "spike",
+    "size": "small",
+    "bloom_duration": "4_weeks"
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.0],
+    "special_purposes": ["container", "companion_benefit"],
+    "companion_plants": ["tomate", "pimientos"]
+  },
+  "nutritional_data": {
+    "properties": ["essential_oils", "vitamin_k", "antioxidants"],
+    "health_benefits": ["digestive_health", "immune_support"],
+    "flavor_profile": "mild_sweet"
+  },
+  "culinary_data": {
+    "uses": ["guarnicion", "ensaladas", "salsas_ligeras", "infusiones"],
+    "flavor_profile": "mild_sweet",
+    "special_notes": "Hojas pequeñas perfectas para decoración y sabor suave"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/01/healthy-1284252_1920-325x217.webp",

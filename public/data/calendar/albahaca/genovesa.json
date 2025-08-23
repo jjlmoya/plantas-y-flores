@@ -3,24 +3,59 @@
   "plant_info": {
     "scientific_name": "Ocimum basilicum 'Genovese'",
     "common_names": ["Genovese basil", "Albahaca genovesa"],
-    "origin": "it-IT"
+    "origin": "IT",
+    "type": "annual",
+    "difficulty": "beginner",
+    "family": "Lamiaceae"
   },
   "calendar_data": {
+    "sowing": {
+      "indoor": {
+        "best_months": [3, 4, 5],
+        "temperature_range": [18, 24]
+      },
+      "outdoor": {
+        "best_months": [5, 6],
+        "soil_temperature_min": 15
+      }
+    },
     "harvesting": {
+      "best_months": [6, 7, 8, 9],
       "peak_months": [7, 8],
       "harvest_indicators": ["aroma", "full_bloom"]
     }
   },
+  "flower_data": {
+    "colors": ["white"],
+    "fragrance": "strong",
+    "flower_shape": "spike",
+    "size": "small",
+    "bloom_duration": "4_weeks"
+  },
   "growing_conditions": {
-    "special_purposes": ["companion_benefit"],
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained_fertile",
+    "soil_ph": [6.0, 7.5],
+    "special_purposes": ["companion_benefit", "culinary"],
     "companion_plants": ["tomate", "pimientos", "orégano", "perejil"]
   },
   "harvest_data": {
     "storage_life": 10,
     "preservation_methods": ["oil_infusion", "drying", "freezing"]
   },
+  "nutritional_data": {
+    "properties": ["vitamin_k", "vitamin_a", "antioxidants", "essential_oils"],
+    "health_benefits": ["anti_inflammatory", "digestive_health", "immune_support"]
+  },
   "culinary_data": {
     "primary_use": "pesto",
-    "flavor_profile": "sweet"
+    "flavor_profile": "sweet_aromatic",
+    "uses": ["pesto", "salsas", "ensaladas", "pizza"]
+  },
+  "_meta": {
+    "main_image": "/wp-content/uploads/2017/11/basil-932079-325x218.webp",
+    "article_date": "2017-11-20T10:15:30",
+    "excerpt": "La albahaca genovesa es la variedad clásica para hacer pesto auténtico. Sus hojas grandes y aromáticas con fragancia dulce e intensa son perfectas para la cocina italiana tradicional."
   }
 }

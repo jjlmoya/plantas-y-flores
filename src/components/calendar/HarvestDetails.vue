@@ -105,8 +105,8 @@
           <div v-if="harvestData.best_harvest_time" class="timing-item">
             <div class="timing-icon">🕐</div>
             <div class="timing-text">
-              <strong>Mejor Momento:</strong> 
-              <span class="timing-value">{{ formatTaskName(harvestData.best_harvest_time) }}</span>
+              <strong>Mejor Momento: </strong> 
+              <span class="timing-value"> {{ formatTaskName(harvestData.best_harvest_time) }}</span>
             </div>
           </div>
 
@@ -167,7 +167,15 @@ function formatTaskName(task) {
     'seeds': 'Semillas',
     'textile': 'Textil',
     'food': 'Alimentario',
-    'medicinal': 'Medicinal'
+    'medicinal': 'Medicinal',
+    'adobo_aceitunas': 'Adobo de Aceitunas',
+    'extraccion_aceites': 'Extracción de Aceites',
+    'condimento_carnes': 'Condimento de Carnes',
+    'aroma': 'Aroma',
+    'full_bloom': 'Floración Completa',
+    'culinario_fresco': 'Culinario Fresco',
+    'atraccion_abejas': 'Atracción de Abejas',
+    'repelente_mosquitos': 'Repelente de Mosquitos'
   };
   return translations[task] || task;
 }

@@ -2,13 +2,60 @@
   "key": "morada",
   "plant_info": {
     "common_names": [
-      "Morada"
+      "Albahaca Morada", "Purple Basil", "Dark Opal Basil"
     ],
-    "scientific_name": "Ocimum basilicum purpurascens"
+    "scientific_name": "Ocimum basilicum 'Purpurascens'",
+    "origin": "IT",
+    "type": "annual",
+    "difficulty": "beginner",
+    "family": "Lamiaceae",
+    "growth_habit": "bushy"
+  },
+  "calendar_data": {
+    "sowing": {
+      "indoor": {
+        "best_months": [3, 4, 5],
+        "temperature_range": [20, 24]
+      },
+      "outdoor": {
+        "best_months": [5, 6],
+        "soil_temperature_min": 18
+      }
+    },
+    "harvesting": {
+      "best_months": [6, 7, 8, 9],
+      "peak_months": [7, 8],
+      "harvest_indicators": ["aroma", "full_bloom"]
+    }
+  },
+  "flower_data": {
+    "colors": ["purple", "pink"],
+    "fragrance": "strong",
+    "flower_shape": "spike",
+    "size": "small",
+    "bloom_duration": "6_weeks"
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained_fertile",
+    "soil_ph": [6.0, 7.0],
+    "special_purposes": ["ornamental", "culinary", "attracts_pollinators"],
+    "companion_plants": ["tomate", "pimientos", "berenjenas"]
+  },
+  "nutritional_data": {
+    "properties": ["anthocyanins", "essential_oils", "vitamin_k", "antioxidants"],
+    "health_benefits": ["anti_inflammatory", "immune_support", "antioxidant_rich"],
+    "flavor_profile": "spicy_clove"
+  },
+  "culinary_data": {
+    "uses": ["garnish", "vinagres", "aceites", "ensaladas", "decoracion"],
+    "flavor_profile": "spicy_clove",
+    "special_notes": "Hojas moradas decorativas con sabor más intenso que la albahaca verde"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/01/basil-2541581_1920-325x244.webp",
     "article_date": "2018-01-02T17:33:53",
-    "excerpt": "&nbsp; Qué es la Albahaca Morada Ésta es una variedad híbrida de Albahaca con grandes hojas rizadas con forma de dientes de sierra de tonos morados oscuros e intensos. Su nombre científico es: Ocimum "
+    "excerpt": "Qué es la Albahaca Morada Ésta es una variedad híbrida de Albahaca con grandes hojas rizadas con forma de dientes de sierra de tonos morados oscuros e intensos. Su nombre científico es: Ocimum basilicum purpurascens"
   }
 }

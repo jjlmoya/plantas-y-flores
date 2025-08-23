@@ -655,12 +655,15 @@ export function getUIHelpers(globalConfig) {
         'harvest_young_leaves': 'Cosechar Hojas Jóvenes',
         'harvest_leaves': 'Cosechar Hojas',
         'harvest_calyces': 'Cosechar Cálices',
+        'adobo_aceitunas': 'Adobo de Aceitunas',
+        'extraccion_aceites': 'Extracción de Aceites',
         'staking': 'Entutorado',
         'pinching': 'Despunte',
         // Plant types
         'annual': 'Anual',
         'perennial': 'Perenne',
         'perennial_bulb': 'Bulbo Perenne',
+        'perennial_tree': 'Árbol Perenne',
         'biennial': 'Bienal',
         'shrub': 'Arbusto',
         // Difficulty levels
@@ -730,6 +733,26 @@ export function getUIHelpers(globalConfig) {
         'dense_shrub': 'Arbusto Denso',
         'low_spreading': 'Rastrero Extendido',
         'clumping': 'En Macolla',
+        'rosette': 'En Roseta',
+        'Low Growing': 'Crecimiento Bajo',
+        'low_growing': 'Crecimiento Bajo',
+        'Upright Bushy': 'Arbustivo Vertical',
+        'upright_bushy': 'Arbustivo Vertical',
+        'Upright Clumping': 'En Macolla Vertical',
+        'upright_clumping': 'En Macolla Vertical',
+        'Shrubby': 'Arbustivo',
+        'shrubby': 'Arbustivo',
+        'Medium Tall': 'Altura Media',
+        'medium_tall': 'Altura Media',
+        'Tall': 'Alto',
+        'tall': 'Alto',
+        'Compact Tree': 'Árbol Compacto',
+        'compact_tree': 'Árbol Compacto',
+        'Large Tree': 'Árbol Grande',
+        'large_tree': 'Árbol Grande',
+        'Medium Tree': 'Árbol Mediano',
+        'medium_tree': 'Árbol Mediano',
+        'medium_high': 'Altura Media',
         // Nutrientes específicos
         'vitamina_k': 'Vitamina K',
         'vitamina_c': 'Vitamina C',
@@ -749,6 +772,15 @@ export function getUIHelpers(globalConfig) {
         // Flower colors
         'cream': 'Crema',
         'pendant_fringed': 'Colgante Flecos',
+        // Flower shapes
+        'daisy': 'Margarita',
+        'funnel_shaped': 'Embudo',
+        'spike': 'Espiga',
+        'orchid': 'Orquídea',
+        'lily_flowered': 'Forma de Lirio',
+        'single_late': 'Simple Tardía',
+        'pineapple_spike': 'Espiga de Piña',
+        'dense_spike': 'Espiga Densa',
         // Preservation methods
         'oil_infusion': 'Infusión en Aceite',
         'drying': 'Secado',
@@ -777,6 +809,8 @@ export function getUIHelpers(globalConfig) {
         // Fragrance levels
         'very_strong': 'Muy Fuerte',
         'mild_sweet': 'Suave Dulce',
+        'mild_citrus': 'Cítrico Suave',
+        'chocolate': 'Chocolate',
         // Bloom duration
         '3_weeks': '3 Semanas',
         '4_weeks': '4 Semanas',
@@ -878,7 +912,7 @@ export function getUIHelpers(globalConfig) {
         'spike': 'Espiga',
         'pineapple_spike': 'Espiga de Piña',
         'dense_spike': 'Espiga Densa',
-        'funnel_shaped': 'Forma de Embudo',
+        'funnel_shaped': 'Embudo',
         'orchid': 'Orquídea',
         
         // Colors
@@ -986,6 +1020,27 @@ export function getUIHelpers(globalConfig) {
         'orange': 'Naranja',
         'yellow': 'Amarillo',
         'salmon': 'Salmón',
+        // Flavor profiles
+        'sweet_smoky': 'Dulce Ahumado',
+        'rich_concentrated': 'Rico Concentrado',
+        'sweet_concentrated': 'Dulce Concentrado',
+        // Nutritional properties
+        'low_acidity': 'Baja Acidez',
+        'antioxidant_rich': 'Rico en Antioxidantes',
+        'antioxidants': 'Antioxidantes',
+        'minerals': 'Minerales',
+        'minerales': 'Minerales',
+        'medium_high': 'Medio Alto',
+        'beta_caroteno': 'Beta Caroteno',
+        'balanced': 'Equilibrada',
+        'sweet_complex': 'Dulce Complejo',
+        'fibra_soluble': 'Fibra Soluble',
+        'grasas_saludables': 'Grasas Saludables',
+        'proteina_vegetal': 'Proteína Vegetal',
+        'extracto_irvingia': 'Extracto de Irvingia',
+        'vitamin_e': 'Vitamina E',
+        'cholesterol_control': 'Control de Colesterol',
+        'diabetes_support': 'Apoyo para Diabetes',
         
         // Seed and propagation
         '2_years': '2 años',
@@ -1356,7 +1411,13 @@ export function getUIHelpers(globalConfig) {
         'SY': 'Siria',
         'BG': 'Bulgaria',
         'IR': 'Irán',
-        'AU': 'Australia'
+        'AU': 'Australia',
+        'DK': 'Dinamarca',
+        'DA': 'Dinamarca',
+        'IT': 'Italia',
+        'TH': 'Tailandia',
+        'PH': 'Filipinas',
+        'AR': 'Argentina'
       };
       
       const upperCode = originCode.toUpperCase();
@@ -1631,7 +1692,12 @@ export function getOriginFlag(localeCode) {
     'CN': '🇨🇳', // China
     'JP': '🇯🇵', // Japón
     'IN': '🇮🇳', // India
-    'MX': '🇲🇽'  // México
+    'MX': '🇲🇽', // México
+    'DK': '🇩🇰', // Dinamarca
+    'DA': '🇩🇰', // Dinamarca (alias)
+    'AU': '🇦🇺', // Australia
+    'PH': '🇵🇭', // Filipinas
+    'AR': '🇦🇷'  // Argentina
   };
   
   const upperCode = localeCode.toUpperCase();

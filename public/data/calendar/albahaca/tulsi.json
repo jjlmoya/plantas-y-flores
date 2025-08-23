@@ -2,9 +2,58 @@
   "key": "tulsi",
   "plant_info": {
     "common_names": [
-      "Tulsi"
+      "Tulsi", "Holy Basil", "Sacred Basil", "Albahaca Sagrada"
     ],
-    "scientific_name": "Ocimum tenuiflorum"
+    "scientific_name": "Ocimum tenuiflorum",
+    "origin": "IN",
+    "type": "annual",
+    "difficulty": "intermediate",
+    "family": "Lamiaceae",
+    "growth_habit": "bushy"
+  },
+  "calendar_data": {
+    "sowing": {
+      "indoor": {
+        "best_months": [3, 4, 5],
+        "temperature_range": [22, 26]
+      },
+      "outdoor": {
+        "best_months": [5, 6],
+        "soil_temperature_min": 18
+      }
+    },
+    "harvesting": {
+      "best_months": [6, 7, 8, 9, 10],
+      "peak_months": [7, 8, 9],
+      "harvest_indicators": ["aroma", "before_flowering"]
+    }
+  },
+  "flower_data": {
+    "colors": ["purple", "pink", "white"],
+    "fragrance": "very_strong",
+    "flower_shape": "spike",
+    "size": "small",
+    "bloom_duration": "8_weeks"
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained",
+    "soil_ph": [6.0, 7.0],
+    "temperature_range": [18, 35],
+    "special_purposes": ["medicinal", "religious", "attracts_pollinators"],
+    "companion_plants": ["tomate", "pimientos"],
+    "special_care": "Planta sagrada en la cultura hindú, requiere respeto especial en su cultivo"
+  },
+  "nutritional_data": {
+    "properties": ["adaptogenic_compounds", "essential_oils", "antioxidants", "vitamin_a"],
+    "health_benefits": ["stress_relief", "immune_support", "anti_inflammatory", "respiratory_health"],
+    "flavor_profile": "spicy_medicinal"
+  },
+  "culinary_data": {
+    "uses": ["medicinal_teas", "ayurvedic_medicine", "religious_ceremonies", "aromatherapy"],
+    "flavor_profile": "spicy_medicinal",
+    "special_notes": "Principalmente medicinal, no culinaria como otras albahacas"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2018/01/basil-2875980_1920-325x244.webp",

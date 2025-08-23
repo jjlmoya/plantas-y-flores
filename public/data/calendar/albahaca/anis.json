@@ -2,11 +2,55 @@
   "key": "anis",
   "plant_info": {
     "common_names": [
-      "Albahaca Anís"
+      "Albahaca Anís", "Anise Basil", "Licorice Basil"
     ],
     "scientific_name": "Ocimum basilicum 'Anise'",
-    "origin": "da",
-    "difficulty": "beginner"
+    "origin": "AS",
+    "type": "annual",
+    "difficulty": "beginner",
+    "family": "Lamiaceae"
+  },
+  "calendar_data": {
+    "sowing": {
+      "indoor": {
+        "best_months": [3, 4, 5],
+        "temperature_range": [20, 25]
+      },
+      "outdoor": {
+        "best_months": [5, 6],
+        "soil_temperature_min": 18
+      }
+    },
+    "harvesting": {
+      "best_months": [6, 7, 8, 9, 10],
+      "peak_months": [7, 8, 9],
+      "harvest_indicators": ["aroma", "full_bloom"]
+    }
+  },
+  "flower_data": {
+    "colors": ["purple", "white"],
+    "fragrance": "very_strong",
+    "flower_shape": "spike",
+    "size": "small",
+    "bloom_duration": "6_weeks"
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained_fertile",
+    "soil_ph": [6.0, 7.0],
+    "special_purposes": ["culinary", "attracts_pollinators"],
+    "companion_plants": ["tomate", "pimientos", "berenjenas"]
+  },
+  "nutritional_data": {
+    "properties": ["essential_oils", "antioxidants", "vitamin_a"],
+    "health_benefits": ["digestive_health", "anti_inflammatory"],
+    "flavor_profile": "sweet_licorice"
+  },
+  "culinary_data": {
+    "uses": ["postres", "bebidas", "ensaladas", "aromaterapia"],
+    "flavor_profile": "sweet_licorice",
+    "special_notes": "Sabor intenso a regaliz, ideal para cócteles y postres"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2019/01/Manjericao_Ocimum_gratissimum-Resized.webp",

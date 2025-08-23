@@ -93,7 +93,7 @@
           </div>
           <div class="char-content">
             <div class="char-label">Forma</div>
-            <div class="char-value">{{ formatTaskName(flowerData.flower_shape) }}</div>
+            <div class="char-value capitalize-first">{{ formatTaskName(flowerData.flower_shape) }}</div>
             <div class="char-description">{{ getShapeDescription(flowerData.flower_shape) }}</div>
           </div>
         </div>
@@ -193,6 +193,10 @@ function formatTaskName(task) {
     'deep_red': 'Rojo Intenso',
     'light_pink': 'Rosa Claro',
     'dark_purple': 'Morado Oscuro',
+    'dark_red': 'Rojo Oscuro',
+    'maroon': 'Granate',
+    'yellow_green': 'Amarillo Verde',
+    'bicolor': 'Bicolor',
     // Fragrance
     'none': 'Sin Fragancia',
     'light': 'Ligera',
@@ -201,6 +205,7 @@ function formatTaskName(task) {
     'strong': 'Intensa',
     'very_strong': 'Muy Intensa',
     'mild_sweet': 'Suave Dulce',
+    'mild_citrus': 'Cítrico suave',
     // Size
     'tiny': 'Diminuta',
     'very_small': 'Muy Pequeña',
@@ -220,6 +225,13 @@ function formatTaskName(task) {
     'star_shaped': 'Estrella',
     'small_star': 'Estrella Pequeña',
     'tubular': 'Tubular',
+    'funnel_shaped': 'embudo',
+    'spike': 'espiga',
+    'orchid': 'orquídea',
+    'lily_flowered': 'lirio',
+    'single_late': 'simple tardía',
+    'pineapple_spike': 'espiga de piña',
+    'dense_spike': 'espiga densa',
     // Duration
     '1_day': '1 Día',
     '1 día': '1 Día',
@@ -330,7 +342,16 @@ export default {
         'cream': 'linear-gradient(135deg, #fffbeb 0%, #fde68a 100%)',
         'salmon': 'linear-gradient(135deg, #fed7d7 0%, #fb7185 100%)',
         'deep_red': 'linear-gradient(135deg, #dc2626 0%, #991b1b 100%)',
-        'light_pink': 'linear-gradient(135deg, #fce7f3 0%, #f3e8ff 100%)'
+        'light_pink': 'linear-gradient(135deg, #fce7f3 0%, #f3e8ff 100%)',
+        'dark_red': 'linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%)',
+        'maroon': 'linear-gradient(135deg, #881337 0%, #4c1d95 100%)',
+        'yellow_green': 'linear-gradient(135deg, #ecfccb 0%, #a3e635 100%)',
+        'bicolor': 'linear-gradient(135deg, #fce7f3 0%, #fed7aa 50%, #a78bfa 100%)',
+        // Spanish color names
+        'naranja': 'linear-gradient(135deg, #fed7aa 0%, #fb923c 100%)',
+        'amarillo': 'linear-gradient(135deg, #fef3c7 0%, #fbbf24 100%)',
+        'púrpura_oscuro': 'linear-gradient(135deg, #581c87 0%, #3b0764 100%)',
+        'negro': 'linear-gradient(135deg, #374151 0%, #111827 100%)'
       };
       return colorMap[color] || 'linear-gradient(135deg, #f3f4f6 0%, #d1d5db 100%)';
     },
@@ -350,6 +371,8 @@ export default {
         'light': 'Aroma sutil y delicado',
         'mild': 'Aroma suave y agradable',
         'mild_sweet': 'Aroma suave con notas dulces',
+        'mild_citrus': 'Aroma cítrico suave y fresco',
+        'chocolate': 'Aroma a chocolate dulce y rico',
         'moderate': 'Aroma claramente perceptible',
         'strong': 'Aroma intenso y duradero',
         'very_strong': 'Aroma muy potente'
@@ -362,6 +385,8 @@ export default {
         'light': 25,
         'mild': 35,
         'mild_sweet': 40,
+        'mild_citrus': 40,
+        'chocolate': 50,
         'moderate': 50,
         'strong': 75,
         'very_strong': 100
@@ -690,6 +715,10 @@ export default {
   color: #1f2937;
   font-weight: 700;
   margin-bottom: 0.25rem;
+}
+
+.char-value.capitalize-first {
+  text-transform: capitalize;
 }
 
 .char-description {

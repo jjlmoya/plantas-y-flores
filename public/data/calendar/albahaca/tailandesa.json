@@ -80,7 +80,9 @@
   "flower_data": {
     "colors": ["purple", "white"],
     "flower_shape": "spike",
-    "fragrance": "strong"
+    "fragrance": "strong",
+    "size": "small",
+    "bloom_duration": "8_weeks"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2017/12/tibetan-basil-flowers-1699008_1920-325x206.webp",

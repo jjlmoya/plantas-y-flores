@@ -79,6 +79,12 @@
     "lifespan": "3-5 years",
     "cold_hardiness": "zone_10"
   },
+  "nutritional_data": {
+    "calories_per_100g": 50,
+    "properties": ["vitamin_c", "bromelain", "potasio", "folate"],
+    "flavor_profile": "sweet_tart",
+    "sugar_content": "moderate"
+  },
   "care_notes": {
     "watering": "Riego moderado, evitar encharcamiento en la roseta central",
     "fertilizing": "Fertilizar mensualmente durante crecimiento activo",

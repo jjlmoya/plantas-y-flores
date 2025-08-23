@@ -83,7 +83,9 @@
       "Bash(del node_modules)",
       "Bash(where node)",
       "Bash(nvm list:*)",
-      "Bash(nvm use:*)"
+      "Bash(nvm use:*)",
+      "Bash(del \"C:\\Users\\34677\\Desktop\\plantasyflroes\\debug-pina.js\")",
+      "Bash(dir:*)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits",

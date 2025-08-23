@@ -2,9 +2,58 @@
   "key": "albahaca-de-clavo",
   "plant_info": {
     "common_names": [
-      "de clavo"
+      "Albahaca de Clavo", "African Basil", "Tree Basil", "Clove Basil"
     ],
-    "scientific_name": "Ocimum gratissimum"
+    "scientific_name": "Ocimum gratissimum",
+    "origin": "AF",
+    "type": "perennial",
+    "difficulty": "intermediate",
+    "family": "Lamiaceae",
+    "growth_habit": "tall"
+  },
+  "calendar_data": {
+    "sowing": {
+      "indoor": {
+        "best_months": [2, 3, 4],
+        "temperature_range": [22, 26]
+      },
+      "outdoor": {
+        "best_months": [5, 6],
+        "soil_temperature_min": 20
+      }
+    },
+    "harvesting": {
+      "best_months": [6, 7, 8, 9, 10],
+      "peak_months": [7, 8, 9],
+      "harvest_indicators": ["aroma", "full_bloom"]
+    }
+  },
+  "flower_data": {
+    "colors": ["white", "cream"],
+    "fragrance": "very_strong",
+    "flower_shape": "spike",
+    "size": "medium",
+    "bloom_duration": "10_weeks"
+  },
+  "growing_conditions": {
+    "sun_requirements": "full_sun",
+    "water_needs": "moderate",
+    "soil_type": "well_drained_fertile",
+    "soil_ph": [6.0, 7.5],
+    "temperature_range": [18, 35],
+    "special_purposes": ["medicinal", "culinary", "attracts_pollinators"],
+    "companion_plants": ["tomate", "pimientos"],
+    "special_care": "Puede alcanzar 3 metros de altura, necesita espacio y soporte"
+  },
+  "nutritional_data": {
+    "properties": ["eugenol", "essential_oils", "antioxidants", "vitamin_a"],
+    "health_benefits": ["antibacterial", "anti_inflammatory", "digestive_health"],
+    "flavor_profile": "clove_spicy"
+  },
+  "culinary_data": {
+    "uses": ["medicinal_teas", "condimento", "aceites_esenciales", "repelente_natural"],
+    "flavor_profile": "clove_spicy",
+    "special_notes": "Sabor intenso a clavo, usar con moderación en cocina"
   },
   "_meta": {
     "main_image": "/wp-content/uploads/2019/02/Thai_basil_with_flowers-1.webp",
