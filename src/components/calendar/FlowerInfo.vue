@@ -246,7 +246,26 @@ function formatTaskName(task) {
     '2_semanas': '2 Semanas',
     '3_weeks': '3 Semanas',
     '3_semanas': '3 Semanas',
+    '3_4_weeks': '3-4 Semanas',
     'few_hours': 'Pocas Horas',
+    // Martagon específico
+    'turban_reflexed_petals': 'Pétalos Recurvados en Turbante',
+    // Narciso específico
+    'trumpet_cup': 'Copa de Trompeta',
+    '3_weeks': '3 Semanas',
+    // Orégano específico
+    'small_clusters': 'Racimos Pequeños',
+    '8_weeks': '8 Semanas',
+    'pungent_aromatic': 'Punzante Aromático',
+    'morning_after_dew': 'Mañana Después del Rocío',
+    // Romero específico
+    '6_months': '6 Meses',
+    'piney_aromatic_slightly_bitter': 'Aromático a Pino y Ligeramente Amargo',
+    'morning_after_dew_dries': 'Mañana Después de que se Seque el Rocío',
+    // Salvia específico
+    'spikes': 'Espigas',
+    '4_months': '4 Meses',
+    'morning_before_flowering': 'Mañana Antes de Floración',
     '4_weeks': '4 Semanas',
     '4_semanas': '4 Semanas',
     '6_weeks': '6 Semanas',

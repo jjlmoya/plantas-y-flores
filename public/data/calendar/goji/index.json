@@ -26,11 +26,11 @@
     },
     "care_calendar": {
       "monthly_tasks": {
-        "1": ["pruning", "dormant_care"],
+        "1": ["pruning", "dormant_protection"],
         "2": ["pruning", "soil_preparation"],
         "3": ["planting", "fertilize"],
         "4": ["planting", "water_regularly"],
-        "5": ["water_regularly", "support_install"],
+        "5": ["water_regularly", "install_supports"],
         "6": ["water_regularly", "flowering_support"],
         "7": ["water_regularly", "pest_monitoring"],
         "8": ["harvesting", "water_regularly"],
@@ -47,5 +47,33 @@
     "soil_type": "well_drained",
     "temperature_range": [-15, 35],
     "special_care": "Muy resistente al frío"
+  },
+  "nutritional_data": {
+    "calories_per_100g": 349,
+    "main_nutrients": ["vitamin_c", "vitamin_a", "iron", "antioxidants", "protein", "fiber"],
+    "health_benefits": [
+      "immune_support",
+      "eye_health", 
+      "antioxidant_properties",
+      "anti_inflammatory",
+      "energy_boost"
+    ],
+    "flavor_profile": "sweet_tart_slightly_salty",
+    "nutritional_notes": "Superfruta rica en antioxidantes y aminoácidos esenciales"
+  },
+  "culinary_uses": {
+    "parts_used": ["berries", "dried_fruit"],
+    "flavor_profile": "sweet_tart_slightly_salty",
+    "texture": "chewy_dried_soft_fresh",
+    "common_uses": ["snacks", "smoothies", "tea", "granola", "trail_mix"],
+    "preservation_methods": ["drying", "freezing", "juice_extraction"],
+    "harvest_indicators": ["bright_red_color", "firm_berries", "easy_picking"]
+  },
+  "berry_data": {
+    "harvest_season": "late_summer_autumn",
+    "uses": ["culinary", "medicinal", "nutritional_supplement"],
+    "storage_methods": ["fresh_refrigerated", "dried_room_temp", "frozen"],
+    "harvest_timing": "when_fully_red_ripe",
+    "ripening_notes": "Cosechar cuando las bayas están completamente rojas y se desprenden fácilmente"
   }
 }

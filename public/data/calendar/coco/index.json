@@ -50,8 +50,32 @@
     "minimum_temperature": 18,
     "special_care": "Requiere clima tropical húmedo"
   },
+  "nutritional_data": {
+    "calories_per_100g": 354,
+    "main_nutrients": ["healthy_fats", "fiber", "potassium", "vitamin_c", "magnesium", "manganese"],
+    "health_benefits": [
+      "heart_health",
+      "cholesterol_reduction", 
+      "weight_management",
+      "immune_support",
+      "anti_inflammatory"
+    ],
+    "flavor_profile": "sweet_nutty_tropical",
+    "nutritional_notes": "Rico en grasas saturadas de cadena media y electrolitos naturales"
+  },
+  "culinary_uses": {
+    "parts_used": ["fruit", "water", "meat", "oil"],
+    "flavor_profile": "sweet_nutty_tropical",
+    "texture": "creamy_fibrous",
+    "common_uses": ["agua_fresca", "leche_de_coco", "aceite_cocinar", "copra", "reposteria", "curry"],
+    "preservation_methods": ["drying", "oil_extraction", "freezing"],
+    "harvest_indicators": ["brown_husk", "water_sound_test", "size_maturity"]
+  },
   "fruit_data": {
     "harvest_season": "year_round",
-    "uses": ["agua_de_coco", "copra", "aceite", "fibra"]
+    "uses": ["agua_de_coco", "copra", "aceite", "fibra"],
+    "storage_methods": ["fresh_room_temp", "refrigerated_water", "dried_copra"],
+    "harvest_timing": "when_husk_browns_water_sounds",
+    "ripening_notes": "Se puede cosechar en diferentes estadios según el uso deseado"
   }
 }

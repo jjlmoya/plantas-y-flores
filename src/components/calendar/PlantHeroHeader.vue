@@ -94,9 +94,15 @@ export default {
       const translations = {
         'annual': 'Anual',
         'biennial': 'Bienal',
+        'annual_biennial': 'Anual/Bienal',
         'perennial': 'Perenne',
         'perennial_bulb': 'Bulbo Perenne',
         'perennial_tree': 'Árbol Perenne',
+        'perennial_palm': 'Palmera Perenne',
+        'perennial_rhizome': 'Rizoma Perenne',
+        'perennial_shrub': 'Arbusto Perenne',
+        'perennial_evergreen_shrub': 'Arbusto Perenne de Hoja Perenne',
+        'upright_spreading': 'Erecto Expandido',
         'deciduous_tree': 'Árbol Caducifolio',
         'herb': 'Hierba',
         'shrub': 'Arbusto',
@@ -132,7 +138,11 @@ export default {
         'Eastern_Mediterranean': 'Mediterráneo Oriental',
         'Europe_Asia': 'Europa y Asia',
         'North_America': 'América del Norte',
-        'East_Asia': 'Asia Oriental'
+        'East_Asia': 'Asia Oriental',
+        'Tropical_Pacific': 'Pacífico Tropical',
+        'Southeast_Asia': 'Sudeste Asiático',
+        'China': 'China',
+        'CN': 'China'
       };
       return origins[origin] || origin.replace(/_/g, ' ');
     },

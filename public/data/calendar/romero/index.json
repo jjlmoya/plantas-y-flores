@@ -44,12 +44,12 @@
         "4": ["planting", "water_regularly", "harvesting"],
         "5": ["flowering_support", "water_regularly", "harvesting"],
         "6": ["harvesting", "water_regularly", "pest_monitoring"],
-        "7": ["harvesting", "pruning_light", "water_regularly"],
+        "7": ["harvesting", "pruning", "water_regularly"],
         "8": ["harvesting", "water_regularly", "monitor_growth"],
         "9": ["sowing_outdoor", "planting", "harvesting", "reduce_watering"],
         "10": ["planting", "harvesting", "prepare_winter"],
         "11": ["minimal_care", "harvesting", "mulch"],
-        "12": ["dormant_care", "harvesting", "pruning"]
+        "12": ["dormant_protection", "harvesting", "pruning"]
       }
     }
   },
@@ -127,6 +127,34 @@
     "prevention_methods": ["proper_drainage", "good_air_circulation", "avoid_overwatering"],
     "organic_controls": ["neem_oil", "insecticidal_soap", "beneficial_insects"],
     "resistance_notes": "Generalmente muy resistente, problemas por exceso de humedad"
+  },
+  "nutritional_data": {
+    "calories_per_100g": 131,
+    "main_nutrients": ["vitamin_k", "iron", "calcium", "manganese", "vitamin_a", "antioxidants"],
+    "health_benefits": [
+      "memory_enhancement",
+      "anti_inflammatory", 
+      "antimicrobial",
+      "antioxidant_properties",
+      "circulation_improvement",
+      "digestive_health"
+    ],
+    "flavor_profile": "piney_aromatic_slightly_bitter",
+    "nutritional_notes": "Rico en ácido rosmarínico y carnosol con potentes propiedades antioxidantes y neuroprotectoras"
+  },
+  "culinary_uses_extended": {
+    "flavor_profile": "piney_aromatic_slightly_bitter", 
+    "texture": "needle_like_leaves",
+    "common_uses": ["mediterranean_dishes", "roasted_meats", "potatoes", "bread", "herb_oils", "marinades", "roasted_vegetables"],
+    "preservation_methods": ["drying", "oil_infusion", "freezing", "fresh_storage"],
+    "harvest_indicators": ["morning_harvest", "before_flowering", "dry_conditions"]
+  },
+  "herb_data": {
+    "harvest_season": "year_round",
+    "uses": ["culinary", "medicinal", "aromatherapy", "ornamental"],
+    "storage_methods": ["dried_airtight", "frozen_cubes", "oil_preserved", "fresh_refrigerated"],
+    "harvest_timing": "morning_after_dew_dries",
+    "ripening_notes": "Mejor sabor antes de floración, cosechar en mañana seca cuando aceites están concentrados"
   },
   "care_tips": {
     "watering": "Riego muy escaso, solo cuando suelo esté completamente seco",

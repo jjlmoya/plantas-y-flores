@@ -209,6 +209,7 @@ function formatTaskName(task) {
     'folate': 'Folato',
     'potasio': 'Potasio',
     'potassium': 'Potasio',
+    'calcium': 'Calcio',
     'antocianinas': 'Antocianinas',
     'anthocyanins': 'Antocianinas',
     'healthy_fats': 'Grasas Saludables',
@@ -226,6 +227,18 @@ function formatTaskName(task) {
     'iron': 'Hierro',
     'manganese': 'Manganeso',
     'sweet_nutty_earthy': 'Dulce, Avellanado y Terroso',
+    'sweet_nutty_tropical': 'Dulce, Avellanado y Tropical',
+    'earthy_spicy_bitter': 'Terroso, Especiado y Amargo',
+    'sweet_tart_slightly_salty': 'Dulce, Ácido y Ligeramente Salado',
+    'curcumin': 'Curcumina',
+    'energy_boost': 'Aumento de Energía',
+    'aromatic_slightly_bitter_pungent': 'Aromático, Ligeramente Amargo y Picante',
+    'fresh_minty_cooling': 'Fresco, Mentolado y Refrescante',
+    'menthol': 'Mentol',
+    'cooling_effect': 'Efecto Refrescante',
+    'antimicrobial': 'Antimicrobiano',
+    'pungent_aromatic_earthy': 'Picante, Aromático y Terroso',
+    'respiratory_health': 'Salud Respiratoria',
     'blood_sugar_control': 'Control de Azúcar en Sangre',
     'protein': 'Proteína',
     'phosphorus': 'Fósforo',
@@ -292,7 +305,17 @@ function formatTaskName(task) {
     'capsaicin': 'Capsaicina',
     'fibra_minima': 'Fibra Mínima',
     'dulzor_natural': 'Dulzor Natural',
-    'dulce_especiado_intenso': 'Dulce Especiado Intenso'
+    'dulce_especiado_intenso': 'Dulce Especiado Intenso',
+    // Romero específico
+    'piney_aromatic_slightly_bitter': 'Aromático a Pino y Ligeramente Amargo',
+    // Salvia específico
+    'earthy_slightly_bitter_camphor': 'Terroso, Ligeramente Amargo y Alcanforado',
+    'memory_enhancement': 'Mejora de la Memoria',
+    'throat_soothing': 'Alivio de Garganta',
+    // Zanahoria específico
+    'sweet_earthy': 'Dulce y Terroso',
+    'immune_system': 'Sistema Inmunitario',
+    'skin_health': 'Salud de la Piel'
   };
   return translations[task] || task;
 }

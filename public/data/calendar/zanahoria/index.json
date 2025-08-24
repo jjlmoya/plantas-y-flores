@@ -34,18 +34,18 @@
     },
     "care_calendar": {
       "monthly_tasks": {
-        "1": ["soil_preparation", "cold_frame_sowing"],
+        "1": ["soil_preparation", "minimal_care"],
         "2": ["sowing_outdoor", "soil_amendment"],
         "3": ["sowing_outdoor", "thinning", "weeding"],
         "4": ["sowing_outdoor", "thinning", "water_regularly"],
         "5": ["sowing_outdoor", "thinning", "mulching"],
-        "6": ["harvest_early", "succession_sowing", "pest_monitoring"],
+        "6": ["harvest_early", "sowing_outdoor", "pest_monitoring"],
         "7": ["sowing_outdoor", "harvesting", "water_regularly"],
-        "8": ["sowing_outdoor", "harvesting", "storage_prep"],
-        "9": ["harvesting", "root_storage", "pest_monitoring"],
-        "10": ["harvesting", "storage", "soil_preparation"],
-        "11": ["harvesting", "storage", "winter_protection"],
-        "12": ["harvesting", "storage", "planning_next_season"]
+        "8": ["sowing_outdoor", "harvesting", "prepare_storage"],
+        "9": ["harvesting", "store_properly", "pest_monitoring"],
+        "10": ["harvesting", "store_properly", "soil_preparation"],
+        "11": ["harvesting", "store_properly", "dormant_protection"],
+        "12": ["harvesting", "store_properly", "minimal_care"]
       }
     }
   },
@@ -67,13 +67,7 @@
   },
   "nutritional_data": {
     "calories_per_100g": 41,
-    "main_nutrients": {
-      "beta_carotene": "very_high",
-      "vitamin_A": "extremely_high",
-      "vitamin_K": "high",
-      "potassium": "moderate",
-      "fiber": "moderate"
-    },
+    "main_nutrients": ["beta_carotene", "vitamin_a", "vitamin_k", "potassium", "fiber", "antioxidants"],
     "health_benefits": [
       "eye_health",
       "immune_system",
@@ -81,7 +75,8 @@
       "antioxidant_properties",
       "heart_health"
     ],
-    "nutritional_notes": "Una de las mejores fuentes de beta-caroteno"
+    "flavor_profile": "sweet_earthy",
+    "nutritional_notes": "Una de las mejores fuentes de beta-caroteno y vitamina A"
   },
   "culinary_uses": {
     "parts_used": ["roots", "leaves_young"],

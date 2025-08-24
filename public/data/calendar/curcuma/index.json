@@ -26,10 +26,10 @@
         "6": ["water_regularly", "monitor_growth"],
         "7": ["water_regularly", "fertilize"],
         "8": ["water_regularly", "pest_monitoring"],
-        "9": ["reduce_watering", "prepare_harvest"],
-        "10": ["harvesting", "curing"],
-        "11": ["harvesting", "curing", "storage"],
-        "12": ["storage", "minimal_care"]
+        "9": ["reduce_watering"],
+        "10": ["harvesting", "cure"],
+        "11": ["harvesting", "cure", "store_properly"],
+        "12": ["store_properly", "minimal_care"]
       }
     }
   },
@@ -39,5 +39,33 @@
     "soil_type": "organic_rich",
     "temperature_range": [20, 30],
     "special_care": "Requiere alta humedad"
+  },
+  "nutritional_data": {
+    "calories_per_100g": 312,
+    "main_nutrients": ["curcumin", "manganese", "iron", "vitamin_c", "potassium", "fiber"],
+    "health_benefits": [
+      "anti_inflammatory",
+      "antioxidant_properties",
+      "immune_support",
+      "digestive_health",
+      "heart_health"
+    ],
+    "flavor_profile": "earthy_spicy_bitter",
+    "nutritional_notes": "Rico en curcumina, potente compuesto antiinflamatorio"
+  },
+  "culinary_uses": {
+    "parts_used": ["rhizome", "powder"],
+    "flavor_profile": "earthy_spicy_bitter",
+    "texture": "fibrous_fresh_powdery_dry",
+    "common_uses": ["curry", "golden_milk", "seasoning", "tea", "medicinal_paste"],
+    "preservation_methods": ["drying", "grinding", "freezing", "pickling"],
+    "harvest_indicators": ["mature_size", "yellow_interior", "firm_rhizomes"]
+  },
+  "rhizome_data": {
+    "harvest_season": "autumn_winter", 
+    "uses": ["culinary", "medicinal", "cosmetic", "dye"],
+    "storage_methods": ["fresh_refrigerated", "dried_powder", "frozen_whole"],
+    "harvest_timing": "after_foliage_yellows",
+    "ripening_notes": "Cosechar cuando las hojas amarillean y se secan naturalmente"
   }
 }

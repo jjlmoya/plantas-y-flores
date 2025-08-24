@@ -25,17 +25,17 @@
     "care_calendar": {
       "monthly_tasks": {
         "1": ["dormant_protection", "minimal_care"],
-        "2": ["minimal_care", "check_mulch"],
+        "2": ["minimal_care", "mulching"],
         "3": ["remove_mulch", "fertilize_light"],
-        "4": ["water_regularly", "monitor_emergence"],
-        "5": ["water_regularly", "support_stakes"],
+        "4": ["water_regularly", "monitor_growth"],
+        "5": ["water_regularly", "install_supports"],
         "6": ["flowering_support", "water_regularly"],
         "7": ["flowering_support", "deadhead", "water_regularly"],
-        "8": ["allow_foliage_mature", "reduce_watering"],
+        "8": ["allow_foliage_yellow", "reduce_watering"],
         "9": ["planting", "soil_preparation"],
-        "10": ["planting", "mulch_heavy"],
-        "11": ["planting", "winter_protection"],
-        "12": ["dormant_care", "protection"]
+        "10": ["planting", "mulch_protection"],
+        "11": ["planting", "prepare_winter"],
+        "12": ["dormant_protection", "minimal_care"]
       }
     }
   },

@@ -32,7 +32,7 @@
         "8": ["pruning", "harvesting"],
         "9": ["planting", "pruning"],
         "10": ["planting", "reduce_watering"],
-        "11": ["minimal_care", "protection"],
+        "11": ["minimal_care", "dormant_protection"],
         "12": ["minimal_care", "harvesting"]
       }
     }
@@ -43,5 +43,33 @@
     "soil_type": "well_drained",
     "temperature_range": [-10, 35],
     "special_care": "Muy resistente, tolera poda intensa"
+  },
+  "nutritional_data": {
+    "calories_per_100g": 313,
+    "main_nutrients": ["vitamin_a", "vitamin_c", "calcium", "iron", "manganese", "antioxidants"],
+    "health_benefits": [
+      "digestive_health",
+      "anti_inflammatory",
+      "antioxidant_properties",
+      "immune_support",
+      "respiratory_health"
+    ],
+    "flavor_profile": "aromatic_slightly_bitter_pungent",
+    "nutritional_notes": "Rico en aceites esenciales con propiedades medicinales"
+  },
+  "culinary_uses": {
+    "parts_used": ["leaves", "fresh_leaves", "dried_leaves"],
+    "flavor_profile": "aromatic_slightly_bitter_pungent",
+    "texture": "tough_aromatic",
+    "common_uses": ["stews", "soups", "marinades", "rice_dishes", "meat_cooking"],
+    "preservation_methods": ["drying", "oil_infusion", "freezing"],
+    "harvest_indicators": ["mature_leaves", "dark_green_color", "strong_aroma"]
+  },
+  "leaf_data": {
+    "harvest_season": "year_round",
+    "uses": ["culinary", "medicinal", "aromatherapy"],
+    "storage_methods": ["fresh_refrigerated", "dried_airtight", "oil_preserved"],
+    "harvest_timing": "mature_leaves_preferred",
+    "ripening_notes": "Las hojas maduras tienen más sabor y aroma que las jóvenes"
   }
 }

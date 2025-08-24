@@ -38,18 +38,18 @@
     },
     "care_calendar": {
       "monthly_tasks": {
-        "1": ["minimal_care", "planning"],
+        "1": ["minimal_care", "soil_preparation"],
         "2": ["sowing_indoor", "soil_preparation"],
-        "3": ["sowing_outdoor", "planting", "division"],
+        "3": ["sowing_outdoor", "planting", "divide_plants"],
         "4": ["planting", "fertilize", "water_regularly"],
-        "5": ["harvesting", "water_regularly", "pinching_flowers"],
+        "5": ["harvesting", "water_regularly", "pinching"],
         "6": ["harvesting", "flowering_support", "water_regularly"],
         "7": ["harvesting", "pest_monitoring", "deadhead"],
-        "8": ["harvesting", "water_regularly", "cutting_back"],
+        "8": ["harvesting", "water_regularly", "pruning"],
         "9": ["sowing_outdoor", "planting", "harvesting"],
         "10": ["planting", "harvesting", "reduce_watering"],
-        "11": ["minimal_care", "mulch", "protection"],
-        "12": ["dormant_care", "planning"]
+        "11": ["minimal_care", "mulch", "dormant_protection"],
+        "12": ["dormant_protection", "minimal_care"]
       }
     }
   },
@@ -106,6 +106,33 @@
     "container_suitable": true,
     "succession_planting": "not_necessary_perennial",
     "companion_benefits": ["pest_deterrent", "flavor_enhancer", "pollinator_magnet"]
+  },
+  "nutritional_data": {
+    "calories_per_100g": 265,
+    "main_nutrients": ["vitamin_k", "iron", "manganese", "calcium", "vitamin_e", "antioxidants"],
+    "health_benefits": [
+      "digestive_health",
+      "respiratory_health", 
+      "anti_inflammatory",
+      "antimicrobial",
+      "antioxidant_properties"
+    ],
+    "flavor_profile": "pungent_aromatic_earthy",
+    "nutritional_notes": "Rico en carvacrol y timol con potentes propiedades antimicrobianas"
+  },
+  "culinary_uses_extended": {
+    "flavor_profile": "pungent_aromatic_earthy",
+    "texture": "small_dried_leaves",
+    "common_uses": ["pizza", "pasta", "mediterranean_dishes", "marinades", "herb_oils", "meat_seasoning"],
+    "preservation_methods": ["drying", "oil_infusion", "freezing", "fresh_storage"],
+    "harvest_indicators": ["before_flowering", "morning_harvest", "dry_conditions"]
+  },
+  "herb_data": {
+    "harvest_season": "spring_summer_autumn",
+    "uses": ["culinary", "medicinal", "aromatherapy"],
+    "storage_methods": ["dried_airtight", "frozen_cubes", "oil_preserved"],
+    "harvest_timing": "morning_after_dew_evaporated",
+    "ripening_notes": "Mejor sabor antes de la floración, cosechar en mañana seca"
   },
   "care_tips": {
     "watering": "Riego escaso, tolera sequía una vez establecido",
