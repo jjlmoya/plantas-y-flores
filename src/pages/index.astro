@@ -4,6 +4,7 @@ import PlantGrid from '../components/PlantGrid.vue';
 import HomepageHeroBanner from '../components/ads/HomepageHeroBanner.vue';
 import HomepageCategoryBanner from '../components/ads/HomepageCategoryBanner.vue';
 import SectionDividerNative from '../components/ads/SectionDividerNative.vue';
+import NovedadesRecientes from '../components/NovedadesRecientes.vue';
 import { getPlants, getCategories } from '../utils/data.js';
 
 // Obtener todas las plantas y ordenarlas por fecha
@@ -154,6 +155,9 @@ const plantsData = sortedPlants.map(plant => ({
         ))}
       </div>
     </section>
+
+    <!-- Novedades Recientes Section -->
+    <NovedadesRecientes client:load />
 
     <!-- Section Divider Ad -->
     <SectionDividerNative client:load />

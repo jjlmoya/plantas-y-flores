@@ -29,6 +29,7 @@
           <h3 class="footer-title">Recursos</h3>
           <ul class="footer-links">
             <li><a href="/plantas/" class="footer-link">Todas las Plantas</a></li>
+            <li><a href="/novedades/" class="footer-link">Novedades</a></li>
             <li><a href="/tienda-de-semillas/" class="footer-link">Tienda de Semillas</a></li>
             <li><a href="/colaboraciones/" class="footer-link">Colaboraciones</a></li>
             <li><a href="/contacto/" class="footer-link">Contacto</a></li>

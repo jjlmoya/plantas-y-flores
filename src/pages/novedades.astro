@@ -1,0 +1,416 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Load news data statically
+let novedades = [];
+try {
+  // Import the JSON file statically for build
+  const newsModule = await import('../../public/data/novedades.json');
+  novedades = newsModule.default || [];
+} catch (error) {
+  console.warn('Could not load novedades.json:', error);
+  novedades = [];
+}
+
+---
+
+<BaseLayout 
+  title="Novedades - PlantasyFlores.online"
+  description="Descubre las últimas mejoras y novedades de PlantasyFlores. Nuevas funciones, plantas y mejoras pensadas para ti."
+  canonical="/novedades/"
+>
+  <div class="novedades-container">
+    <div class="content-wrapper">
+      <!-- Header -->
+      <header class="page-header">
+        <h1 class="page-title">
+          🌟 Novedades
+        </h1>
+        <p class="page-description">
+          Descubre las últimas mejoras y nuevas funciones que hemos creado para hacer tu experiencia aún mejor. 
+          ¡Seguimos creciendo contigo!
+        </p>
+      </header>
+
+
+      <!-- Lista de novedades estilo blog -->
+      <div class="novedades-list">
+        {novedades.map((novedad, index) => (
+          <article 
+            class={`novedad-item ${novedad.destacado ? 'destacada' : ''} ${index === 0 ? 'first' : ''}`}
+          >
+            <div class="novedad-content">
+              <div class="novedad-header">
+                <time class="fecha-grande" datetime={novedad.fecha}>
+                  {new Date(novedad.fecha).toLocaleDateString('es-ES', { 
+                    day: 'numeric', 
+                    month: 'long',
+                    year: 'numeric'
+                  })}
+                </time>
+              </div>
+
+              <h2 class="novedad-titulo-grande">
+                {novedad.titulo}
+              </h2>
+
+              <div class="novedad-descripcion">
+                <p>{novedad.texto}</p>
+              </div>
+
+              {novedad.boton && (
+                <a href={novedad.boton.url} class="novedad-link">
+                  {novedad.boton.texto} →
+                </a>
+              )}
+            </div>
+
+            {novedad.destacado && (
+              <div class="destacado-indicator">
+                <span>✨ Destacado</span>
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+
+      <!-- Mensaje si no hay novedades -->
+      {novedades.length === 0 && (
+        <div class="no-novedades">
+          <div class="no-novedades-icon">🌱</div>
+          <h2 class="no-novedades-title">¡Pronto habrá novedades!</h2>
+          <p class="no-novedades-text">Estamos trabajando en nuevas mejoras para ti.</p>
+        </div>
+      )}
+
+      <!-- Call to action -->
+      <div class="cta-section">
+        <h3 class="cta-title">
+          ¿Te gusta lo que ves? 
+        </h3>
+        <p class="cta-description">
+          Estas mejoras son posibles gracias a tu apoyo. Sigue explorando nuestra enciclopedia 
+          de plantas y descubre todo lo que tenemos para ofrecerte.
+        </p>
+        <div class="cta-buttons">
+          <a href="/plantas" class="cta-btn primary">
+            Explorar plantas
+          </a>
+          <a href="/favoritos" class="cta-btn secondary">
+            Ver favoritos
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+
+<style>
+.novedades-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.content-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Header */
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.page-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #2d5016;
+  margin: 0 0 1rem 0;
+}
+
+.page-description {
+  font-size: 1.125rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+
+/* News List - Blog Style */
+.novedades-list {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+.novedad-item {
+  background: white;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 3rem 0;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.novedad-item:hover {
+  background: #fafbfc;
+}
+
+.novedad-item.first {
+  padding-top: 2rem;
+}
+
+.novedad-item:last-child {
+  border-bottom: none;
+  padding-bottom: 2rem;
+}
+
+.novedad-item.destacada {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border-radius: 12px;
+  border: 2px solid #10b981;
+  margin-bottom: 2rem;
+  padding: 3rem 2rem;
+}
+
+.novedad-item.destacada:hover {
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.1);
+}
+
+.novedad-content {
+  max-width: 700px;
+}
+
+/* Header with date and category */
+.novedad-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.fecha-grande {
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+}
+
+
+/* Title */
+.novedad-titulo-grande {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1f2937;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+.novedad-item.destacada .novedad-titulo-grande {
+  color: #065f46;
+}
+
+/* Description */
+.novedad-descripcion {
+  margin-bottom: 1.5rem;
+}
+
+.novedad-descripcion p {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: #4b5563;
+  margin: 0;
+}
+
+.novedad-item.destacada .novedad-descripcion p {
+  color: #374151;
+}
+
+/* Link */
+.novedad-link {
+  display: inline-flex;
+  align-items: center;
+  color: #4a7c23;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.novedad-link:hover {
+  color: #2d5016;
+  transform: translateX(4px);
+}
+
+.novedad-item.destacada .novedad-link {
+  color: #047857;
+  font-weight: 700;
+}
+
+.novedad-item.destacada .novedad-link:hover {
+  color: #065f46;
+}
+
+/* Featured indicator */
+.destacado-indicator {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.destacado-indicator span {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* No News Message */
+.no-novedades {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.no-novedades-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.no-novedades-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #4b5563;
+  margin: 0 0 0.5rem 0;
+}
+
+.no-novedades-text {
+  color: #6b7280;
+}
+
+/* Call to Action */
+.cta-section {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.cta-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 1rem 0;
+}
+
+.cta-description {
+  color: #6b7280;
+  margin: 0 0 1.5rem 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.cta-btn.primary {
+  background: #4a7c23;
+  color: white;
+}
+
+.cta-btn.primary:hover {
+  background: #2d5016;
+}
+
+.cta-btn.secondary {
+  background: #3b82f6;
+  color: white;
+}
+
+.cta-btn.secondary:hover {
+  background: #1d4ed8;
+}
+
+/* Animation */
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .novedades-container {
+    padding: 1rem;
+  }
+  
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  
+  .novedad-item {
+    padding: 2rem 0;
+  }
+  
+  .novedad-item.destacada {
+    padding: 2rem 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .novedad-titulo-grande {
+    font-size: 1.5rem;
+  }
+  
+  .novedad-descripcion p {
+    font-size: 1rem;
+  }
+  
+  .destacado-indicator {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-bottom: 1rem;
+    display: inline-block;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+</style>
+</BaseLayout>

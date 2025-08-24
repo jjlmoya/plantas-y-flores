@@ -94,7 +94,12 @@
       "Bash(do echo \"Creando directorio para $category\")",
       "Bash(do echo \"- $category\")",
       "Bash(do echo \"Creando $category\")",
-      "Bash(timeout 30s npx playwright test tests/favorites.spec.js --headed)"
+      "Bash(timeout 30s npx playwright test tests/favorites.spec.js --headed)",
+      "Bash(timeout:*)",
+      "Bash(copy:*)",
+      "Bash(git rev-list:*)",
+      "Bash(del fix-hydrangea-filename.js)",
+      "Bash(del final-image-check.js)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits",

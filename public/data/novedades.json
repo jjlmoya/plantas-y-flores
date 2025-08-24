@@ -1,0 +1,35 @@
+[
+  {
+    "id": "1",
+    "titulo": "¡Lanzamos el sistema de favoritos! 💚",
+    "texto": "La función más esperada ya está aquí. Guarda tus plantas favoritas con un simple clic en el corazón y accede a tu colección personal desde cualquier página. Nunca más perderás de vista esas plantas que tanto te interesan.",
+    "fecha": "2025-08-24",
+    "boton": {
+      "texto": "Empezar mi colección",
+      "url": "/favoritos/"
+    },
+    "destacado": true
+  },
+  {
+    "id": "2",
+    "titulo": "¡Nuevo! Calendario de Jardinería Completo 📅",
+    "texto": "Presentamos nuestro calendario interactivo con fechas exactas de siembra, trasplante y cosecha para cada planta. Planifica tu jardín mes a mes con información detallada sobre cuidados específicos, temperaturas ideales y consejos de temporada.",
+    "fecha": "2025-08-19",
+    "boton": {
+      "texto": "Explorar el calendario",
+      "url": "/calendario/"
+    },
+    "destacado": false
+  },
+  {
+    "id": "3",
+    "titulo": "¡Estrenamos web completamente rediseñada! ✨",
+    "texto": "Después de meses de trabajo, presentamos la nueva Plantas y Flores. Diseño moderno, navegación intuitiva, búsqueda mejorada y experiencia móvil optimizada. Todo pensado para que encuentres la información que necesitas de forma rápida y sencilla.",
+    "fecha": "2025-08-10",
+    "boton": {
+      "texto": "Descubrir la nueva web",
+      "url": "/"
+    },
+    "destacado": false
+  }
+]
