@@ -23,8 +23,11 @@ try {
     <div class="content-wrapper">
       <!-- Header -->
       <header class="page-header">
+        <div class="jardinera-avatar">
+          <img src="/icons/jardinera-amable/celebrando.png" alt="Jardinera Amable celebrando" class="avatar-img">
+        </div>
         <h1 class="page-title">
-          🌟 Novedades
+          Novedades
         </h1>
         <p class="page-description">
           Descubre las últimas mejoras y nuevas funciones que hemos creado para hacer tu experiencia aún mejor. 
@@ -122,6 +125,29 @@ try {
 .page-header {
   text-align: center;
   margin-bottom: 3rem;
+}
+
+.jardinera-avatar {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.jardinera-avatar::after {
+  content: '';
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, #4a7c23 20%, #2d5016 80%, transparent 100%);
+  margin-top: 0;
+  border-radius: 2px;
+}
+
+.avatar-img {
+  width: 120px;
+  height: auto;
+  filter: drop-shadow(0 8px 16px rgba(74, 124, 35, 0.3));
 }
 
 .page-title {
@@ -379,6 +405,10 @@ try {
   
   .page-title {
     font-size: 2rem;
+  }
+  
+  .avatar-img {
+    width: 80px;
   }
   
   
