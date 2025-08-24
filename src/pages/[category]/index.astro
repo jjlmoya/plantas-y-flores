@@ -48,10 +48,10 @@ const breadcrumbs = [
   { text: category.name, href: `/${Astro.params.category}/` }
 ];
 
-const stats = {
+const stats = category.posts_count > 0 ? {
   number: category.posts_count,
   label: category.posts_count === 1 ? 'variedad disponible' : 'variedades disponibles'
-};
+} : null;
 ---
 
 <BaseLayout 
