@@ -1,5 +1,11 @@
 <template>
   <header class="hero-header">
+    <FavoriteButton 
+      v-if="plantSlug && !isCommonPlant" 
+      :plantSlug="plantSlug" 
+      :large="true"
+      class="hero-favorite-btn" 
+    />
     <div class="container">
       <div class="hero-content">
         <div class="category-badge">
@@ -61,8 +67,13 @@
 </template>
 
 <script>
+import FavoriteButton from '../FavoriteButton.vue';
+
 export default {
   name: 'PlantHeroHeader',
+  components: {
+    FavoriteButton
+  },
   props: {
     plantName: {
       type: String,
@@ -88,6 +99,15 @@ export default {
       type: String,
       default: null
     },
+    plantSlug: {
+      type: String,
+      default: null
+    },
+  },
+  computed: {
+    isCommonPlant() {
+      return this.plantSlug === 'comun';
+    }
   },
   methods: {
     formatTaskName(task) {
@@ -167,6 +187,13 @@ export default {
   background: linear-gradient(135deg, #48bb7820 0%, #48bb7840 100%);
   border-radius: 16px;
   margin: 16px;
+}
+
+.hero-favorite-btn {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  z-index: 20;
 }
 
 .hero-content {

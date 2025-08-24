@@ -1587,6 +1587,10 @@ export function getUIHelpers(globalConfig) {
       return category.charAt(0).toUpperCase() + category.slice(1).replace(/_/g, ' ');
     },
     formatPlantName: (plantSlug) => {
+      // Special case for comun to show with tilde
+      if (plantSlug === 'comun') {
+        return 'común';
+      }
       // Special case for albahaca-de-clavo to avoid "Albahaca Albahaca de clavo"
       if (plantSlug === 'albahaca-de-clavo') {
         return 'de clavo';

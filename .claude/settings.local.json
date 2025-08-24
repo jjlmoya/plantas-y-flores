@@ -93,7 +93,8 @@
       "Bash(for:*)",
       "Bash(do echo \"Creando directorio para $category\")",
       "Bash(do echo \"- $category\")",
-      "Bash(do echo \"Creando $category\")"
+      "Bash(do echo \"Creando $category\")",
+      "Bash(timeout 30s npx playwright test tests/favorites.spec.js --headed)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits",

@@ -1,0 +1,778 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getPlants } from '../utils/data.js';
+
+// Solo obtener todas las plantas para el filtrado client-side
+const allPlants = await getPlants();
+
+// Preparar datos para el componente Vue
+const plantsData = allPlants.map(plant => ({
+  id: plant.data.id,
+  slug: plant.slug,
+  title: plant.data.title,
+  excerpt: plant.data.excerpt,
+  date: plant.data.date,
+  featured_image: plant.data.featured_image,
+  main_image: plant.data.main_image,
+  categories: plant.data.categories,
+  tags: plant.data.tags || []
+}));
+---
+
+<BaseLayout 
+  title="Mis Plantas Favoritas - Plantas y Flores"
+  description="Tus plantas guardadas y favoritas. Accede rápidamente a la información de las plantas que más te interesan para tu jardín."
+  canonical="https://plantasyflores.online/favoritos/"
+  noAds={false}
+>
+  <!-- Breadcrumbs Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://plantasyflores.online/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Favoritos",
+        "item": "https://plantasyflores.online/favoritos/"
+      }
+    ]
+  })}></script>
+
+  <div class="favorites-page">
+    <!-- Header -->
+    <header class="favorites-header">
+      <nav class="breadcrumb">
+        <a href="/">Inicio</a>
+        <span class="breadcrumb__separator">›</span>
+        <span class="breadcrumb__current">Favoritos</span>
+      </nav>
+      
+      <div class="favorites-hero">
+        <h1 class="favorites-title">Mis Plantas Favoritas</h1>
+        <p class="favorites-description">
+          Tu colección personal de plantas guardadas
+        </p>
+      </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <section class="favorites-content">
+      <div id="favorites-container">
+        <!-- Estado vacío inicial -->
+        <div class="favorites-loading">
+          <div class="loading-spinner"></div>
+          <p>Cargando tus plantas favoritas...</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+.favorites-page {
+  min-height: 60vh;
+  overflow: visible;
+}
+
+.favorites-header {
+  margin-bottom: 3rem;
+  overflow: visible;
+}
+
+.favorites-content {
+  overflow: visible;
+}
+
+#favorites-container {
+  overflow: visible;
+}
+
+.breadcrumb {
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.breadcrumb a {
+  color: #4a7c23;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.breadcrumb a:hover {
+  opacity: 0.8;
+}
+
+.breadcrumb__separator {
+  margin: 0 0.5rem;
+}
+
+.breadcrumb__current {
+  color: #374151;
+}
+
+.favorites-hero {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.favorites-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.2;
+}
+
+.favorites-description {
+  font-size: 1rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+.favorites-loading {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e7eb;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 1.5rem auto;
+  border: 3px solid #f3f4f6;
+  border-top: 3px solid #4a7c23;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.favorites-stats {
+  margin-bottom: 2rem;
+  padding: 1rem 1.5rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid #4a7c23;
+}
+
+.stats-text {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #2d5016;
+}
+
+.stats-limit {
+  color: #6b7280;
+  font-size: 0.9rem;
+  font-weight: normal;
+  margin-left: 0.5rem;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .favorites-title {
+    font-size: 2rem;
+  }
+  
+  .favorites-hero {
+    padding: 1.5rem 1rem;
+  }
+  
+  .favorites-guide {
+    padding: 2rem 1.5rem;
+    margin: 0 1rem;
+  }
+  
+  .guide-title {
+    font-size: 2rem;
+  }
+  
+  .guide-subtitle {
+    font-size: 1.125rem;
+  }
+  
+  .step {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .step-number {
+    align-self: center;
+  }
+  
+  .step-description {
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+  }
+  
+  .guide-features {
+    grid-template-columns: 1fr;
+  }
+  
+  .cta-button-large {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.25rem 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .favorites-title {
+    font-size: 1.75rem;
+  }
+  
+  .favorites-description {
+    font-size: 1rem;
+  }
+  
+  .favorites-loading {
+    padding: 3rem 1.5rem;
+  }
+  
+  .favorites-guide {
+    padding: 1.5rem 1rem;
+    margin: 0 0.5rem;
+    border-radius: 16px;
+  }
+  
+  .guide-title {
+    font-size: 1.75rem;
+  }
+  
+  .heart-demo {
+    padding: 1rem;
+  }
+  
+  .heart-svg {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .step {
+    padding: 1.25rem;
+  }
+  
+  .step-title {
+    font-size: 1.25rem;
+  }
+  
+  .step-description {
+    font-size: 1rem;
+  }
+  
+  .feature {
+    padding: 1.5rem 1rem;
+  }
+  
+  .feature-icon {
+    font-size: 2rem;
+  }
+}
+</style>
+
+<!-- Script para manejar la funcionalidad de favoritos -->
+<script>
+  import { loadFavorites } from '../favorites-mvp/storage.js';
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const container = document.getElementById('favorites-container');
+    if (!container) return;
+
+    // Cargar favoritos desde localStorage
+    const favoriteIds = loadFavorites();
+    const allPlants = JSON.parse(document.getElementById('plants-data').textContent);
+    
+    if (favoriteIds.length === 0) {
+      // Mostrar página educativa con animaciones
+      container.innerHTML = `
+        <div class="favorites-guide">
+          <div class="guide-hero">
+            <div class="guide-icon">
+              <div class="heart-demo">
+                <svg class="heart-svg" viewBox="0 0 24 24" width="80" height="80">
+                  <path class="heart-path" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </div>
+            </div>
+            <h2 class="guide-title">¡Guarda tus plantas favoritas!</h2>
+            <p class="guide-subtitle">Crea tu jardín personal con las plantas que más te gusten</p>
+          </div>
+
+          <div class="guide-steps">
+            <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h3 class="step-title">Explora las plantas</h3>
+                <p class="step-description">Navega por nuestra colección de más de 100 plantas y flores diferentes</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h3 class="step-title">Haz clic en el corazón</h3>
+                <p class="step-description">Cuando encuentres una planta que te guste, haz clic en el corazón 
+                  <span class="heart-inline">
+                    <svg viewBox="0 0 24 24" width="20" height="20">
+                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                  </span>
+                  para guardarla
+                </p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h3 class="step-title">Vuelve aquí siempre</h3>
+                <p class="step-description">Todas tus plantas favoritas aparecerán aquí para que puedas volver a consultarlas cuando quieras</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="guide-features">
+            <div class="feature">
+              <div class="feature-icon">📱</div>
+              <h4>Se guarda en tu dispositivo</h4>
+              <p>No necesitas registrarte, se guarda automáticamente en tu navegador</p>
+            </div>
+            
+            <div class="feature">
+              <div class="feature-icon">🌿</div>
+              <h4>Hasta 200 plantas</h4>
+              <p>Puedes guardar hasta 200 plantas diferentes en tu colección personal</p>
+            </div>
+            
+            <div class="feature">
+              <div class="feature-icon">💚</div>
+              <h4>Acceso rápido</h4>
+              <p>Consulta rápidamente la información de tus plantas preferidas</p>
+            </div>
+          </div>
+
+          <div class="guide-cta">
+            <a href="/plantas/" class="cta-button-large">
+              <span class="cta-text">Empezar a explorar plantas</span>
+              <span class="cta-arrow">→</span>
+            </a>
+            <p class="cta-help">¡Es muy fácil! Solo haz clic en los corazones de las plantas que te gusten</p>
+          </div>
+        </div>
+      `;
+    } else {
+      // Filtrar plantas favoritas
+      const favoritePlants = allPlants.filter(plant => 
+        favoriteIds.includes(plant.slug)
+      );
+
+      // Mostrar estadísticas
+      const statsHtml = `
+        <div class="favorites-stats">
+          <p class="stats-text">
+            <strong>${favoriteIds.length}</strong> plantas guardadas
+            <span class="stats-limit">de 200 máximo</span>
+          </p>
+        </div>
+      `;
+
+      // Generar HTML de plantas
+      const plantsHtml = favoritePlants.map(plant => {
+        const category = plant.categories[0] || { slug: 'plantas', name: 'Plantas' };
+        const imageUrl = plant.main_image || plant.featured_image || '';
+        const plantUrl = `/${category.slug}/${plant.slug}/`;
+        
+        return `
+          <article class="plant-card-simple">
+            <a href="${plantUrl}" class="plant-card-simple__link">
+              ${imageUrl ? 
+                `<img src="${imageUrl}" alt="${plant.title}" class="plant-card-simple__image" loading="lazy">` :
+                `<div class="plant-card-simple__placeholder">🌿</div>`
+              }
+              <div class="plant-card-simple__content">
+                <h3 class="plant-card-simple__title">${plant.title}</h3>
+                <span class="plant-card-simple__category">${category.name}</span>
+              </div>
+            </a>
+          </article>
+        `;
+      }).join('');
+
+      container.innerHTML = statsHtml + `
+        <div class="plants-grid-simple">
+          ${plantsHtml}
+        </div>
+      `;
+    }
+  });
+</script>
+
+<!-- Datos para JavaScript -->
+<script type="application/json" id="plants-data" set:html={JSON.stringify(plantsData)}></script>
+
+<!-- Estilos para la página de favoritos -->
+<style is:global>
+/* Asegurar overflow visible globalmente */
+body, html {
+  overflow-x: visible !important;
+}
+
+.container, main {
+  overflow: visible !important;
+}
+
+/* Página de guía de favoritos */
+.favorites-guide {
+  max-width: 800px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #f8fdf8 0%, #ecfdf5 100%);
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(74, 124, 35, 0.1);
+  overflow: visible;
+}
+
+.guide-hero {
+  text-align: center;
+  margin-bottom: 3rem;
+  overflow: visible;
+}
+
+.guide-icon {
+  margin: 6rem 0;
+  padding: 1rem;
+  position: relative;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heart-demo {
+  display: inline-block;
+  padding: 1rem;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  animation: containerPulse 4s ease-in-out infinite;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.heart-svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  z-index: 999;
+}
+
+.heart-path {
+  fill: #e5e7eb;
+  stroke: #9ca3af;
+  stroke-width: 2;
+  transform-origin: center center;
+  animation: heartExplode 4s ease-in-out infinite;
+}
+
+.heart-svg {
+  animation: heartFloat 4s ease-in-out infinite;
+}
+
+@keyframes containerPulse {
+  0%, 20%, 70%, 100% { 
+    transform: scale(1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+  35%, 55% { 
+    transform: scale(1.1);
+    box-shadow: 0 20px 60px rgba(220, 38, 38, 0.4);
+  }
+}
+
+@keyframes heartFloat {
+  0%, 30%, 100% { 
+    transform: translate(-50%, -50%) scale(1);
+  }
+  40% { 
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+}
+
+@keyframes heartExplode {
+  0%, 30%, 100% { 
+    fill: #e5e7eb;
+    stroke: #9ca3af;
+  }
+  40% { 
+    fill: #dc2626;
+    stroke: #dc2626;
+  }
+}
+
+.guide-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a5511;
+  margin: 0 0 1rem 0;
+  line-height: 1.2;
+}
+
+.guide-subtitle {
+  font-size: 1.25rem;
+  color: #4a7c23;
+  margin: 0;
+  font-weight: 400;
+}
+
+.guide-steps {
+  margin-bottom: 3rem;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.step:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.step-number {
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  background: linear-gradient(135deg, #4a7c23, #2d5016);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.step-content {
+  flex: 1;
+}
+
+.step-title {
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: #1a5511;
+  margin: 0 0 0.5rem 0;
+}
+
+.step-description {
+  font-size: 1.125rem;
+  color: #4b5563;
+  line-height: 1.6;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.heart-inline {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem;
+  background: #fee2e2;
+  border-radius: 6px;
+  margin: 0 0.25rem;
+}
+
+.heart-inline svg {
+  fill: #dc2626;
+  stroke: none;
+}
+
+.guide-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.feature {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease;
+}
+
+.feature:hover {
+  transform: translateY(-4px);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.feature h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1a5511;
+  margin: 0 0 0.75rem 0;
+}
+
+.feature p {
+  font-size: 1rem;
+  color: #6b7280;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.guide-cta {
+  text-align: center;
+  padding: 2rem 0 0 0;
+  border-top: 2px solid rgba(74, 124, 35, 0.1);
+}
+
+.cta-button-large {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2.5rem;
+  background: linear-gradient(135deg, #4a7c23, #2d5016);
+  color: white;
+  text-decoration: none;
+  border-radius: 12px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  box-shadow: 0 8px 25px rgba(74, 124, 35, 0.3);
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.cta-button-large:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(74, 124, 35, 0.4);
+}
+
+.cta-arrow {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.cta-button-large:hover .cta-arrow {
+  transform: translateX(4px);
+}
+
+.cta-help {
+  font-size: 1rem;
+  color: #6b7280;
+  margin: 0;
+  font-style: italic;
+}
+
+.plants-grid-simple {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.plant-card-simple {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plant-card-simple:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.plant-card-simple__link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.plant-card-simple__image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.plant-card-simple__placeholder {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f8fdf8 0%, #ecfdf5 100%);
+  font-size: 3rem;
+  color: #166534;
+}
+
+.plant-card-simple__content {
+  padding: 1.5rem;
+}
+
+.plant-card-simple__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1a5511;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+}
+
+.plant-card-simple__category {
+  background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+  color: #166534;
+  padding: 0.4rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .plants-grid-simple {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .plants-grid-simple {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

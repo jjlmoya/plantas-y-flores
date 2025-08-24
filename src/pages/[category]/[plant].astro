@@ -4,6 +4,7 @@ import RelatedPlants from '../../components/RelatedPlants.vue';
 import CalendarLinkCard from '../../components/CalendarLinkCard.vue';
 import ArticleContent from '../../components/ads/ArticleContent.vue';
 import SidebarRectangle from '../../components/ads/SidebarRectangle.vue';
+import FavoriteButton from '../../components/FavoriteButton.vue';
 import { generatePlantPaths, getPlants } from '../../utils/data.js';
 import { getAvailableCalendarCategories } from '../../utils/calendar-inheritance.js';
 
@@ -164,7 +165,10 @@ const structuredData = {
         <span class="breadcrumb__current">{plant.data.title}</span>
       </nav>
       
-      <h1 class="plant-article__title">{plant.data.title}</h1>
+      <div class="plant-article__title-wrapper" data-plant-slug={plant.slug}>
+        <h1 class="plant-article__title">{plant.data.title}</h1>
+        <FavoriteButton client:load plantSlug={plant.slug} large={true} />
+      </div>
       
       <div class="plant-article__meta">
         <time datetime={plant.data.date} class="plant-article__date">
@@ -435,14 +439,23 @@ const structuredData = {
   color: #999;
 }
 
+.plant-article__title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
 .plant-article__title {
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 700;
   color: #1a5511;
-  margin: 0 0 2rem 0;
+  margin: 0;
   line-height: 1.2;
   letter-spacing: -0.02em;
   text-shadow: 0 2px 4px rgba(26, 85, 17, 0.1);
+  flex: 1;
 }
 
 .plant-article__meta {

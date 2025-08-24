@@ -69,6 +69,12 @@
             <li class="nav-item">
               <a href="/contacto/" class="nav-link" :class="{ 'nav-link--active': isActive('/contacto/') }">Contacto</a>
             </li>
+            <li class="nav-item nav-item--favorites">
+              <a href="/favoritos/" class="nav-link nav-link--favorites" :class="{ 'nav-link--active': isActive('/favoritos/') }">
+                <span class="favorites-text">Favoritos</span>
+                <span v-if="favoritesCount > 0" class="favorites-badge">{{ favoritesCount }}</span>
+              </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -106,7 +112,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted, nextTick } from 'vue'
+import { ref, computed, onMounted, nextTick } from 'vue'
+import { useFavorites } from '../favorites-mvp/composable.js'
 
 const isMenuOpen = ref(false)
 const activeDropdown = ref(null)
@@ -114,6 +121,10 @@ const currentPath = ref('')
 const isSearchActive = ref(false)
 const searchBoxRef = ref(null)
 const SearchBoxComponent = ref(null)
+
+// Sistema de favoritos
+const { stats } = useFavorites()
+const favoritesCount = computed(() => stats.value.count)
 
 // Lazy import SearchBox
 const loadSearchBox = async () => {
@@ -337,6 +348,39 @@ const getCurrentAndNextMonths = () => {
   font-weight: 600;
 }
 
+/* Enlace de favoritos */
+.nav-link--favorites {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.favorites-icon {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.favorites-text {
+  line-height: 1;
+}
+
+.favorites-badge {
+  background: #ef4444;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  margin-left: 0.25rem;
+}
+
 .nav-item--dropdown {
   position: relative;
 }
@@ -526,6 +570,15 @@ const getCurrentAndNextMonths = () => {
     padding: 0.75rem 2rem;
     font-size: 0.9rem;
   }
+  
+  /* Favoritos en móvil */
+  .nav-link--favorites {
+    justify-content: space-between;
+  }
+  
+  .favorites-badge {
+    margin-left: auto;
+  }
 }
 
 @media (max-width: 480px) {
@@ -547,6 +600,16 @@ const getCurrentAndNextMonths = () => {
   
   .navigation {
     margin-bottom: 1.5rem;
+  }
+  
+  /* Favoritos en móvil pequeño */
+  .favorites-text {
+    display: none;
+  }
+  
+  .nav-link--favorites {
+    justify-content: center;
+    gap: 0.25rem;
   }
 }
 

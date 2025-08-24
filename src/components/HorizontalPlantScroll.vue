@@ -41,82 +41,83 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'HorizontalPlantScroll',
-  props: {
-    plants: {
-      type: Array,
-      default: () => []
-    }
-  },
-  data() {
-    return {
-      canScrollLeft: false,
-      canScrollRight: true
-    }
-  },
-  mounted() {
-    this.updateScrollButtons();
-    if (this.$refs.plantsTrack) {
-      this.$refs.plantsTrack.addEventListener('scroll', this.updateScrollButtons);
-    }
-  },
-  beforeUnmount() {
-    if (this.$refs.plantsTrack) {
-      this.$refs.plantsTrack.removeEventListener('scroll', this.updateScrollButtons);
-    }
-  },
-  methods: {
-    navigateToPlant(plant) {
-      const categorySlug = plant.categories && plant.categories[0] ? plant.categories[0].slug : 'plantas';
-      window.location.href = `/${categorySlug}/${plant.slug}/`;
-    },
-    
-    getImageUrl(imagePath) {
-      if (!imagePath) return '/wp-content/uploads/2017/07/watering-can-1506750_1280-300x169.webp';
-      if (imagePath.startsWith('http')) {
-        return imagePath.replace('https://plantasyflores.online', '').replace('https://www.plantasyflores.online', '');
-      }
-      return imagePath;
-    },
-    
-    handleImageError(event) {
-      event.target.src = '/wp-content/uploads/2017/07/watering-can-1506750_1280-300x169.webp';
-    },
-    
-    getCleanExcerpt(excerpt) {
-      if (!excerpt) return '';
-      return excerpt.replace(/<[^>]*>/g, '').replace(/&[^;]+;/g, ' ').trim().substring(0, 80) + '...';
-    },
-    
-    scrollLeft() {
-      if (this.$refs.plantsTrack) {
-        this.$refs.plantsTrack.scrollBy({
-          left: -300,
-          behavior: 'smooth'
-        });
-      }
-    },
-    
-    scrollRight() {
-      if (this.$refs.plantsTrack) {
-        this.$refs.plantsTrack.scrollBy({
-          left: 300,
-          behavior: 'smooth'
-        });
-      }
-    },
-    
-    updateScrollButtons() {
-      if (!this.$refs.plantsTrack) return;
-      
-      const track = this.$refs.plantsTrack;
-      this.canScrollLeft = track.scrollLeft > 0;
-      this.canScrollRight = track.scrollLeft < (track.scrollWidth - track.clientWidth - 10);
-    }
+<script setup>
+import { ref, onMounted, onBeforeUnmount } from 'vue'
+
+const props = defineProps({
+  plants: {
+    type: Array,
+    default: () => []
+  }
+})
+
+// Refs
+const plantsTrack = ref(null)
+const canScrollLeft = ref(false)
+const canScrollRight = ref(true)
+
+
+// Métodos
+const navigateToPlant = (plant) => {
+  const categorySlug = plant.categories && plant.categories[0] ? plant.categories[0].slug : 'plantas'
+  window.location.href = `/${categorySlug}/${plant.slug}/`
+}
+
+const getImageUrl = (imagePath) => {
+  if (!imagePath) return '/wp-content/uploads/2017/07/watering-can-1506750_1280-300x169.webp'
+  if (imagePath.startsWith('http')) {
+    return imagePath.replace('https://plantasyflores.online', '').replace('https://www.plantasyflores.online', '')
+  }
+  return imagePath
+}
+
+const handleImageError = (event) => {
+  event.target.src = '/wp-content/uploads/2017/07/watering-can-1506750_1280-300x169.webp'
+}
+
+const getCleanExcerpt = (excerpt) => {
+  if (!excerpt) return ''
+  return excerpt.replace(/<[^>]*>/g, '').replace(/&[^;]+;/g, ' ').trim().substring(0, 80) + '...'
+}
+
+const scrollLeft = () => {
+  if (plantsTrack.value) {
+    plantsTrack.value.scrollBy({
+      left: -300,
+      behavior: 'smooth'
+    })
   }
 }
+
+const scrollRight = () => {
+  if (plantsTrack.value) {
+    plantsTrack.value.scrollBy({
+      left: 300,
+      behavior: 'smooth'
+    })
+  }
+}
+
+const updateScrollButtons = () => {
+  if (!plantsTrack.value) return
+  
+  const track = plantsTrack.value
+  canScrollLeft.value = track.scrollLeft > 0
+  canScrollRight.value = track.scrollLeft < (track.scrollWidth - track.clientWidth - 10)
+}
+
+onMounted(() => {
+  updateScrollButtons()
+  if (plantsTrack.value) {
+    plantsTrack.value.addEventListener('scroll', updateScrollButtons)
+  }
+})
+
+onBeforeUnmount(() => {
+  if (plantsTrack.value) {
+    plantsTrack.value.removeEventListener('scroll', updateScrollButtons)
+  }
+})
 </script>
 
 <style scoped>
@@ -203,6 +204,56 @@ export default {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+/* Botón favorito */
+.plant-card__favorite-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  border: none;
+  border-radius: 8px;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 0;
+}
+
+.plant-card__favorite-btn:hover {
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.plant-card__favorite-btn:active {
+  transform: scale(0.9);
+}
+
+.plant-card__favorite-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.plant-card__favorite-btn[aria-pressed="true"] {
+  background: rgba(254, 242, 242, 0.9);
+  color: #dc2626;
+}
+
+.plant-card__favorite-btn[aria-pressed="false"] {
+  color: #6b7280;
+}
+
+.plant-card__favorite-btn svg {
+  width: 14px;
+  height: 14px;
+  transition: all 0.2s ease;
 }
 
 .scroll-btn {

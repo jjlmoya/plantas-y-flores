@@ -205,3 +205,30 @@ These specialized tasks are:
 - Translated in `src/utils/calendar-inheritance.js` in `formatTaskName`
 - Have assigned colors and icons in the UI configuration
 - Are essential for proper cultivation guidance across different plant families
+
+## Sistema de Favoritos - SPEC FÉRREA
+
+⚠️ **IMPORTANTE**: Consultar `FAVORITES_SPEC.md` antes de cualquier cambio al sistema de favoritos.
+
+### Restricciones MVP:
+- **MÁXIMO 3 archivos** para todo el sistema
+- **Solo localStorage** (NO IndexedDB en MVP)
+- **NO EventBus propio** (usar composables Vue)
+- **Bundle <5KB** adicional gzipped
+- **NO colecciones/carpetas** en V1
+- **NO export PDF** en MVP
+
+### Archivos permitidos únicamente:
+```
+src/favorites-mvp/storage.js     # localStorage únicamente
+src/favorites-mvp/composable.js  # Estado Vue reactivo
+src/pages/favoritos.astro        # Página nueva
+```
+
+### Validación antes de cambios:
+1. ¿Respeta límite 3 archivos?
+2. ¿Usa solo localStorage?
+3. ¿No añade EventBus?
+4. ¿Bundle <5KB?
+
+**Si alguna respuesta es NO → consultar FAVORITES_SPEC.md y validar con usuario**
