@@ -34,7 +34,56 @@ const allPlantsData = allPlants.map(p => ({
 }));
 
 const category = plant.data.categories[0];
-const title = `${plant.data.title} - ${category?.name || 'Plantas'} - Plantas y Flores`;
+
+// Smart H1 title logic: add category if plant name doesn't contain it
+const createSmartTitle = (plantTitle, categoryName) => {
+  if (!categoryName) return plantTitle;
+  
+  const plantLower = plantTitle.toLowerCase().trim();
+  const categoryLower = categoryName.toLowerCase().trim();
+  
+  // Check if plant name already contains the category name
+  const containsCategory = plantLower.includes(categoryLower);
+  
+  // Special cases: some category names have different forms
+  const categoryVariations = {
+    'rosa': ['rosa', 'rosal'],
+    'tomate': ['tomate', 'tomatera'],
+    'hibiscus': ['hibisco', 'hibiscus'],
+    'lirios': ['lirio'],
+    'hortensias': ['hortensia'],
+    'azalea': ['azalea'],
+    'orquídea': ['orquídea', 'orquidea'],
+    'tulipán': ['tulipán', 'tulipan'],
+    'margarita': ['margarita'],
+    'amapola': ['amapola'],
+    'cosmos': ['cosmos'],
+    'pensamiento': ['pensamiento'],
+    'albahaca': ['albahaca'],
+    'tomillo': ['tomillo'],
+    'lavanda': ['lavanda', 'espliego'],
+    'manzanilla': ['manzanilla', 'camomila'],
+    'col': ['col', 'repollo'],
+    'patata': ['patata', 'papa'],
+    'chili': ['chile', 'chili', 'picante', 'guindilla'],
+    'fresa': ['fresa', 'fresón'],
+    'piña': ['piña', 'ananás'],
+    'plátano': ['plátano', 'banana'],
+    'mango': ['mango']
+  };
+  
+  const variations = categoryVariations[categoryLower] || [categoryLower];
+  const hasVariation = variations.some(variation => plantLower.includes(variation));
+  
+  if (containsCategory || hasVariation) {
+    return plantTitle;
+  } else {
+    return `${categoryName} ${plantTitle}`;
+  }
+};
+
+const smartTitle = createSmartTitle(plant.data.title, category?.name);
+const title = `${smartTitle} - Plantas y Flores`;
 const description = plant.data.excerpt.replace(/<[^>]*>/g, '').substring(0, 160) + '...';
 
 // Check if this plant has a calendar available
@@ -68,32 +117,55 @@ const formatDate = (dateString) => {
   });
 };
 
-// Schema.org estructurado
+// Enhanced SEO description
+const enhancedDescription = plant.data.excerpt.replace(/<[^>]*>/g, '').substring(0, 155) + '...';
+
+// Schema.org estructurado mejorado
 const currentYear = new Date().getFullYear();
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": plant.data.title,
-  "description": description,
-  "image": imageUrl ? `https://plantasyflores.online${imageUrl}` : null,
+  "headline": smartTitle,
+  "alternativeHeadline": plant.data.title,
+  "description": enhancedDescription,
+  "image": imageUrl ? [{
+    "@type": "ImageObject", 
+    "url": `https://plantasyflores.online${imageUrl}`,
+    "width": 800,
+    "height": 500,
+    "caption": smartTitle
+  }] : null,
   "datePublished": plant.data.date,
   "dateModified": plant.data.date,
   "author": {
     "@type": "Organization",
-    "name": "Plantas y Flores"
+    "name": "PlantasyFlores.online",
+    "url": "https://plantasyflores.online/"
   },
   "publisher": {
     "@type": "Organization",
-    "name": "Plantas y Flores",
+    "name": "PlantasyFlores.online",
+    "url": "https://plantasyflores.online/",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://plantasyflores.online/logo.webp"
+      "url": "https://plantasyflores.online/logo.webp",
+      "width": 300,
+      "height": 60
     }
   },
   "mainEntity": {
     "@type": "Plant",
-    "name": plant.data.title,
-    "description": description,
+    "name": smartTitle,
+    "alternateName": plant.data.title,
+    "description": enhancedDescription,
+    "image": imageUrl ? `https://plantasyflores.online${imageUrl}` : null,
+    ...(category && {
+      "category": category.name,
+      "additionalType": `https://schema.org/${category.name.replace(/\s+/g, '')}`
+    }),
+    ...(plant.data.tags && plant.data.tags.length > 0 && {
+      "keywords": plant.data.tags.map(tag => tag.name).join(", ")
+    }),
     ...(hasCalendar && {
       "additionalProperty": [
         {
@@ -101,29 +173,54 @@ const structuredData = {
           "name": "Calendario de Cultivo",
           "value": `${currentYear}`,
           "url": `https://plantasyflores.online/calendario/${categorySlug}/${plant.slug}/`
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Categoría",
+          "value": category?.name || 'Plantas'
         }
       ]
     })
   },
+  "about": {
+    "@type": "Thing",
+    "name": `Cultivo de ${smartTitle}`,
+    "description": `Guía completa para cultivar, cuidar y mantener ${smartTitle}`
+  },
+  "mentions": plant.data.tags ? plant.data.tags.map(tag => ({
+    "@type": "Thing",
+    "name": tag.name
+  })) : [],
   ...(hasCalendar && {
     "relatedLink": [
       {
         "@type": "Link",
         "url": `https://plantasyflores.online/calendario/${categorySlug}/${plant.slug}/`,
-        "name": `Calendario de cultivo ${plant.data.title} ${currentYear}`,
-        "description": `Fechas exactas para sembrar, trasplantar y cosechar ${plant.data.title} en España`
+        "name": `Calendario de cultivo ${smartTitle} ${currentYear}`,
+        "description": `Fechas exactas para sembrar, trasplantar y cosechar ${smartTitle} en España`
       }
     ]
   }),
-  "keywords": `${plant.data.title}, cultivo, calendario, siembra, trasplante, cosecha, ${currentYear}, España, jardinería, ${category?.name || 'plantas'}`
+  "inLanguage": "es-ES",
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Jardineros, aficionados a las plantas, cultivo doméstico"
+  },
+  "keywords": `${smartTitle}, ${plant.data.title}, cultivo, ${category?.name || 'plantas'}, jardinería, siembra, cuidados, España, ${currentYear}${plant.data.tags && plant.data.tags.length > 0 ? ', ' + plant.data.tags.map(tag => tag.name).join(', ') : ''}`
 };
 ---
 
 <BaseLayout 
   title={title}
-  description={description}
+  description={enhancedDescription}
   image={imageUrl ? `https://plantasyflores.online${imageUrl}` : null}
   canonical={`https://plantasyflores.online/${category?.slug || 'plantas'}/${plant.slug}/`}
+  type="article"
+  keywords={`${smartTitle}, ${plant.data.title}, cultivo, ${category?.name || 'plantas'}, jardinería, siembra, cuidados, España`}
+  publishedDate={plant.data.date}
+  modifiedDate={plant.data.date}
+  category={category?.name}
+  tags={plant.data.tags ? plant.data.tags.map(tag => tag.name) : []}
 >
   <!-- Schema.org estructurado -->
   <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
@@ -148,7 +245,7 @@ const structuredData = {
       {
         "@type": "ListItem",
         "position": 3,
-        "name": plant.data.title,
+        "name": smartTitle,
         "item": `https://plantasyflores.online/${category?.slug || 'plantas'}/${plant.slug}/`
       }
     ]
@@ -166,7 +263,7 @@ const structuredData = {
       </nav>
       
       <div class="plant-article__title-wrapper" data-plant-slug={plant.slug}>
-        <h1 class="plant-article__title">{plant.data.title}</h1>
+        <h1 class="plant-article__title">{smartTitle}</h1>
         <FavoriteButton client:load plantSlug={plant.slug} large={true} />
       </div>
       
