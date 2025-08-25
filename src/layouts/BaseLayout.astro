@@ -52,9 +52,22 @@ const autoKeywords = keywords || [
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/favicon.webp" />
-    <link rel="apple-touch-icon" href="/favicon.webp" />
+    <!-- Favicon - Multiple sizes for better compatibility -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.webp" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.webp" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.webp" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.webp" />
+    <link rel="icon" type="image/png" sizes="144x144" href="/favicon-144.webp" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.webp" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.webp" />
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" sizes="144x144" href="/favicon-144.webp" />
+    <link rel="apple-touch-icon" sizes="192x192" href="/favicon-192.webp" />
+    
+    <!-- Shortcut icon for legacy browsers -->
+    <link rel="shortcut icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     
     <!-- PWA Manifest -->
@@ -124,6 +137,11 @@ const autoKeywords = keywords || [
     
     <!-- Windows Tiles -->
     <meta name="msapplication-TileColor" content="#10b981" />
+    <meta name="msapplication-TileImage" content="/favicon-144.webp" />
+    
+    <!-- Google Favicon Hints -->
+    <meta name="image" content="https://plantasyflores.online/favicon-32.webp" />
+    <meta name="thumbnail" content="https://plantasyflores.online/favicon-96.webp" />
     
     <!-- Advanced SEO Meta Tags -->
     <meta name="author" content="jardineraamable" />
