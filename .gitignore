@@ -53,3 +53,6 @@ coverage/
 
 # Legacy scripts dependencies (optional - keep for maintenance)
 _scripts/node_modules/
+
+# Generated QR plant cards (build-time generated)
+public/plant-cards/

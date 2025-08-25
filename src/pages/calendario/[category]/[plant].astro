@@ -11,6 +11,7 @@ import HarvestDetails from '../../../components/calendar/HarvestDetails.vue';
 import FlowerInfo from '../../../components/calendar/FlowerInfo.vue';
 import { getPlantCalendarWithUI, getGlobalCalendarConfig, getUIHelpers, generatePlantPaths, getOriginFlag, getAvailableCalendarCategories } from '../../../utils/calendar-inheritance.js';
 import { generatePlantCalendarSchema } from '../../../schemas/calendar/calendar.plant.schema.js';
+import QRLabelGenerator from '../../../components/QRLabelGenerator.vue';
 
 // Generate static paths for all plants
 export async function getStaticPaths() {
@@ -472,6 +473,7 @@ const plantExportData = {
   keywords={`${plantName}, cultivo ${plantName}, calendario ${plantName}, plantar ${plantName}, sembrar ${plantName}, ${plantInfo.scientific_name || ''}, ${categoryName}`}
   type="article"
   canonical={`https://plantasyflores.online/calendario/${category}/${plantSlug}/`}
+  image={`/plant-cards/${plantSlug === 'comun' ? `${category}-comun` : plantSlug.startsWith(category + '-') ? plantSlug : `${category}-${plantSlug}`}.webp`}
   category={categoryName}
   publishedDate={new Date().toISOString()}
   modifiedDate={new Date().toISOString()}
@@ -509,6 +511,12 @@ const plantExportData = {
           exportData={plantExportData}
           exportType="plant"
           title={`Calendario ${plantName}`}
+        />
+        <QRLabelGenerator 
+          client:load
+          plantName={plantName}
+          categorySlug={category}
+          plantSlug={plantSlug}
         />
       </div>
     </div>
@@ -877,8 +885,11 @@ const plantExportData = {
   .export-button-container {
     display: flex;
     justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
     margin: 1.5rem 0;
     padding: 0 1rem;
+    flex-wrap: wrap;
   }
 
   .export-button-container :global(.header-export) {
@@ -957,6 +968,36 @@ const plantExportData = {
 
   .export-button-container :global(.export-option:last-child) {
     border-bottom: none;
+  }
+
+  /* QR Label Generator Styles */
+  .export-button-container :global(.qr-label-generator) {
+    display: flex;
+    align-items: center;
+  }
+
+  .export-button-container :global(.qr-download-btn) {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: 1px solid #5a67d8;
+    border-radius: 12px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 1rem 1.5rem;
+    min-width: 140px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .export-button-container :global(.qr-download-btn:hover:not(:disabled)) {
+    background: linear-gradient(135deg, #5a67d8 0%, #667eea 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+  }
+
+  .export-button-container :global(.qr-download-btn:disabled) {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
   }
 
   /* Breadcrumb Navigation */
@@ -1182,6 +1223,17 @@ const plantExportData = {
     .breadcrumb-link, .breadcrumb-current {
       font-size: 0.8rem;
       padding: 0.5rem;
+    }
+
+    .export-button-container {
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .export-button-container :global(.qr-download-btn) {
+      min-width: 200px;
+      text-align: center;
     }
   }
 

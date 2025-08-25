@@ -100,7 +100,10 @@
       "Bash(git rev-list:*)",
       "Bash(del fix-hydrangea-filename.js)",
       "Bash(del final-image-check.js)",
-      "Bash(gh issue create:*)"
+      "Bash(gh issue create:*)",
+      "Bash(where convert)",
+      "Bash(gh issue:*)",
+      "Bash(del /Q \"C:\\Users\\34677\\Desktop\\plantasyflroes\\public\\plant-cards\\*\")"
     ],
     "deny": [],
     "defaultMode": "acceptEdits",

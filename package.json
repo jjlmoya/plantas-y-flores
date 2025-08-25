@@ -7,7 +7,8 @@
   },
   "scripts": {
     "dev": "astro dev --host --verbose",
-    "build": "astro build",
+    "build": "npm run generate-cards && astro build",
+    "generate-cards": "node scripts/generate-plant-cards.js",
     "preview": "astro preview",
     "astro": "astro",
     "test": "playwright test",
@@ -31,6 +32,9 @@
   "devDependencies": {
     "@playwright/test": "^1.40.0",
     "@types/node": "^20.19.10",
+    "canvas": "^3.2.0",
+    "qrcode": "^1.5.4",
+    "sharp": "^0.34.3",
     "typescript": "^5.9.2"
   }
 }

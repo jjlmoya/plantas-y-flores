@@ -2,10 +2,28 @@
 import { defineConfig } from 'astro/config';
 import vue from '@astrojs/vue';
 import vercel from '@astrojs/vercel';
+import { generateAllCards } from './scripts/generate-plant-cards.js';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [vue()],
+  integrations: [
+    vue(),
+    {
+      name: 'plant-cards-generator',
+      hooks: {
+        'astro:build:start': async () => {
+          console.log('🌱 Generando tarjetas de plantas...')
+          try {
+            await generateAllCards()
+            console.log('✅ Tarjetas de plantas generadas exitosamente')
+          } catch (error) {
+            console.error('❌ Error generando tarjetas de plantas:', error)
+            // No fallar el build, solo avisar
+          }
+        }
+      }
+    }
+  ],
   output: 'static',
   adapter: vercel(),
   site: 'https://plantasyflores.online',

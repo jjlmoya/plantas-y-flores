@@ -1,5 +1,16 @@
 [
   {
+    "id": "4",
+    "titulo": "¡Etiquetas QR para tu jardín! 🏷️",
+    "texto": "Ahora puedes descargar etiquetas QR personalizadas para cada planta de tu jardín. Imprime las tarjetas desde casa y tendrás acceso instantáneo al calendario de cuidados escaneando el código con tu móvil. Perfecto para no olvidar cuándo regar, podar o cosechar cada planta.",
+    "fecha": "2025-08-25",
+    "boton": {
+      "texto": "Ver ejemplo de etiqueta",
+      "url": "/calendario/tomate/cherry/"
+    },
+    "destacado": true
+  },
+  {
     "id": "1",
     "titulo": "¡Lanzamos el sistema de favoritos! 💚",
     "texto": "La función más esperada ya está aquí. Guarda tus plantas favoritas con un simple clic en el corazón y accede a tu colección personal desde cualquier página. Nunca más perderás de vista esas plantas que tanto te interesan.",
@@ -8,7 +19,7 @@
       "texto": "Empezar mi colección",
       "url": "/favoritos/"
     },
-    "destacado": true
+    "destacado": false
   },
   {
     "id": "2",

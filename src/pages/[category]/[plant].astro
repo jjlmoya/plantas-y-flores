@@ -5,6 +5,7 @@ import CalendarLinkCard from '../../components/CalendarLinkCard.vue';
 import ArticleContent from '../../components/ads/ArticleContent.vue';
 import SidebarRectangle from '../../components/ads/SidebarRectangle.vue';
 import FavoriteButton from '../../components/FavoriteButton.vue';
+import QRLabelGenerator from '../../components/QRLabelGenerator.vue';
 import { generatePlantPaths, getPlants } from '../../utils/data.js';
 import { getAvailableCalendarCategories } from '../../utils/calendar-inheritance.js';
 
@@ -290,6 +291,32 @@ const structuredData = {
         categorySlug={categorySlug}
         plantSlug={plant.slug}
       />
+    )}
+
+    <!-- QR Label Generator - Solo para plantas con calendario -->
+    {hasCalendar && (
+      <div class="qr-label-section">
+        <div class="qr-label-card">
+          <div class="qr-label-content">
+            <div class="qr-label-info">
+              <h3 class="qr-label-title">Etiqueta QR para tu planta</h3>
+              <p class="qr-label-description">
+                Descarga una etiqueta imprimible con QR que lleva directo al calendario de esta planta.
+                Perfecta para identificar tus plantas en el jardín.
+              </p>
+            </div>
+            <div class="qr-label-action">
+              <QRLabelGenerator 
+                client:load
+                plantName={smartTitle}
+                categorySlug={categorySlug}
+                plantSlug={plant.slug}
+                showConfig={false}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     )}
 
     <!-- Featured Image -->
@@ -824,6 +851,93 @@ const structuredData = {
     padding: 1rem 1.2rem;
     border-radius: 0 8px 8px 0;
     font-size: 0.95rem;
+  }
+}
+
+/* QR Label Section */
+.qr-label-section {
+  margin: 2rem 0;
+}
+
+.qr-label-card {
+  background: linear-gradient(135deg, #f8fdf8 0%, #ecfdf5 100%);
+  border: 2px solid rgba(74, 124, 35, 0.2);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(74, 124, 35, 0.1);
+  transition: all 0.3s ease;
+}
+
+.qr-label-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(74, 124, 35, 0.15);
+}
+
+.qr-label-content {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.qr-label-info {
+  flex: 1;
+}
+
+.qr-label-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2d5016;
+  margin: 0 0 0.75rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.qr-label-title::before {
+  content: '🏷️';
+  font-size: 1.2em;
+}
+
+.qr-label-description {
+  color: #4a7c23;
+  line-height: 1.6;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.qr-label-action {
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .qr-label-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  
+  .qr-label-card {
+    padding: 1.5rem;
+  }
+  
+  .qr-label-title {
+    font-size: 1.25rem;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .qr-label-card {
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+  }
+  
+  .qr-label-title {
+    font-size: 1.125rem;
+  }
+  
+  .qr-label-description {
+    font-size: 0.9rem;
   }
 }
 </style>
