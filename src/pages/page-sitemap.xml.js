@@ -46,13 +46,13 @@ export async function GET() {
       priority: 0.6    // 16 vistas (0.63%)
     },
     {
-      url: 'https://plantasyflores.online/plantas-interior/',
+      url: 'https://plantasyflores.online/plantas-de-interior/',
       lastmod: new Date().toISOString(),
       changefreq: 'monthly',
       priority: 0.5    // 19 vistas (0.74%)
     },
     {
-      url: 'https://plantasyflores.online/plantas-exterior/',
+      url: 'https://plantasyflores.online/plantas-de-exterior/',
       lastmod: new Date().toISOString(),
       changefreq: 'monthly',
       priority: 0.45   // 8 vistas (0.31%) - menos popular

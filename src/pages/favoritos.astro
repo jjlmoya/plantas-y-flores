@@ -184,106 +184,70 @@ const plantsData = allPlants.map(plant => ({
 }
 
 
-/* Responsive */
+/* Main Header Responsive */
 @media (max-width: 768px) {
-  .favorites-title {
-    font-size: 2rem;
+  .favorites-header {
+    margin-bottom: 2rem;
+  }
+  
+  .breadcrumb {
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
   }
   
   .favorites-hero {
-    padding: 1.5rem 1rem;
+    margin-bottom: 1.5rem;
   }
   
-  .favorites-guide {
-    padding: 2rem 1.5rem;
-    margin: 0 1rem;
-  }
-  
-  .guide-title {
-    font-size: 2rem;
-  }
-  
-  .guide-subtitle {
-    font-size: 1.125rem;
-  }
-  
-  .step {
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
-  }
-  
-  .step-number {
-    align-self: center;
-  }
-  
-  .step-description {
-    flex-direction: column;
-    gap: 0.75rem;
-    text-align: center;
-  }
-  
-  .guide-features {
-    grid-template-columns: 1fr;
-  }
-  
-  .cta-button-large {
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 1.25rem 2rem;
-  }
-}
-
-@media (max-width: 480px) {
   .favorites-title {
-    font-size: 1.75rem;
+    font-size: 1.875rem;
   }
   
   .favorites-description {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
   
   .favorites-loading {
     padding: 3rem 1.5rem;
-  }
-  
-  .favorites-guide {
-    padding: 1.5rem 1rem;
     margin: 0 0.5rem;
-    border-radius: 16px;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .favorites-header {
+    margin-bottom: 1.5rem;
   }
   
-  .guide-title {
-    font-size: 1.75rem;
+  .breadcrumb {
+    margin-bottom: 0.75rem;
+    font-size: 0.75rem;
   }
   
-  .heart-demo {
-    padding: 1rem;
+  .favorites-hero {
+    margin-bottom: 1rem;
   }
   
-  .heart-svg {
-    width: 60px;
-    height: 60px;
+  .favorites-title {
+    font-size: 1.625rem;
+    line-height: 1.1;
   }
   
-  .step {
-    padding: 1.25rem;
+  .favorites-description {
+    font-size: 0.9rem;
+    line-height: 1.4;
   }
   
-  .step-title {
-    font-size: 1.25rem;
+  .favorites-loading {
+    padding: 2.5rem 1rem;
+    margin: 0 0.25rem;
+    border-radius: 10px;
   }
   
-  .step-description {
-    font-size: 1rem;
-  }
-  
-  .feature {
-    padding: 1.5rem 1rem;
-  }
-  
-  .feature-icon {
-    font-size: 2rem;
+  .loading-spinner {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 1rem;
   }
 }
 </style>
@@ -461,10 +425,40 @@ body, html {
   overflow: visible;
 }
 
+/* Mobile fixes for favorites guide */
+@media (max-width: 768px) {
+  .favorites-guide {
+    margin: 0 1rem;
+    padding: 2rem 1.5rem;
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .favorites-guide {
+    margin: 0 0.5rem;
+    padding: 1.5rem 1rem;
+    border-radius: 12px;
+  }
+}
+
 .guide-hero {
   text-align: center;
   margin-bottom: 3rem;
   overflow: visible;
+}
+
+/* Mobile fixes for guide hero */
+@media (max-width: 768px) {
+  .guide-hero {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .guide-hero {
+    margin-bottom: 1.5rem;
+  }
 }
 
 .guide-icon {
@@ -475,6 +469,21 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Mobile fixes for guide icon */
+@media (max-width: 768px) {
+  .guide-icon {
+    margin: 3rem 0 2rem 0;
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .guide-icon {
+    margin: 2rem 0 1.5rem 0;
+    height: 120px;
+  }
 }
 
 .heart-demo {
@@ -557,8 +566,45 @@ body, html {
   font-weight: 400;
 }
 
+/* Mobile typography fixes */
+@media (max-width: 768px) {
+  .guide-title {
+    font-size: 2rem;
+    line-height: 1.1;
+  }
+  
+  .guide-subtitle {
+    font-size: 1.125rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .guide-title {
+    font-size: 1.75rem;
+    margin: 0 0 0.75rem 0;
+  }
+  
+  .guide-subtitle {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+}
+
 .guide-steps {
   margin-bottom: 3rem;
+}
+
+/* Mobile spacing fixes for guide steps */
+@media (max-width: 768px) {
+  .guide-steps {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .guide-steps {
+    margin-bottom: 1.5rem;
+  }
 }
 
 .step {
@@ -571,6 +617,27 @@ body, html {
   border-radius: 16px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
+}
+
+/* Mobile fixes for steps */
+@media (max-width: 768px) {
+  .step {
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .step {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    padding: 1rem;
+    border-radius: 10px;
+  }
 }
 
 .step:hover {
@@ -590,6 +657,16 @@ body, html {
   justify-content: center;
   font-size: 1.25rem;
   font-weight: 600;
+}
+
+/* Mobile fixes for step number */
+@media (max-width: 480px) {
+  .step-number {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.125rem;
+    align-self: center;
+  }
 }
 
 .step-content {
@@ -613,6 +690,32 @@ body, html {
   gap: 0.5rem;
 }
 
+/* Mobile typography fixes for step content */
+@media (max-width: 768px) {
+  .step-title {
+    font-size: 1.25rem;
+  }
+  
+  .step-description {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .step-title {
+    font-size: 1.125rem;
+    margin: 0 0 0.75rem 0;
+  }
+  
+  .step-description {
+    font-size: 0.95rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+    line-height: 1.5;
+  }
+}
+
 .heart-inline {
   display: inline-flex;
   align-items: center;
@@ -634,6 +737,21 @@ body, html {
   margin-bottom: 3rem;
 }
 
+/* Mobile fixes for guide features */
+@media (max-width: 768px) {
+  .guide-features {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .guide-features {
+    margin-bottom: 1.5rem;
+  }
+}
+
 .feature {
   text-align: center;
   padding: 2rem 1.5rem;
@@ -641,6 +759,20 @@ body, html {
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
   transition: transform 0.3s ease;
+}
+
+/* Mobile fixes for features */
+@media (max-width: 768px) {
+  .feature {
+    padding: 1.5rem 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .feature {
+    padding: 1.25rem 1rem;
+    border-radius: 10px;
+  }
 }
 
 .feature:hover {
@@ -666,10 +798,56 @@ body, html {
   margin: 0;
 }
 
+/* Mobile typography fixes for features */
+@media (max-width: 768px) {
+  .feature-icon {
+    font-size: 2.25rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .feature h4 {
+    font-size: 1.075rem;
+  }
+  
+  .feature p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .feature-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .feature h4 {
+    font-size: 1rem;
+    margin: 0 0 0.5rem 0;
+  }
+  
+  .feature p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+}
+
 .guide-cta {
   text-align: center;
   padding: 2rem 0 0 0;
   border-top: 2px solid rgba(74, 124, 35, 0.1);
+}
+
+/* Mobile fixes for guide CTA */
+@media (max-width: 768px) {
+  .guide-cta {
+    padding: 1.5rem 0 0 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .guide-cta {
+    padding: 1.25rem 0 0 0;
+  }
 }
 
 .cta-button-large {
@@ -686,6 +864,24 @@ body, html {
   box-shadow: 0 8px 25px rgba(74, 124, 35, 0.3);
   transition: all 0.3s ease;
   margin-bottom: 1rem;
+}
+
+/* Mobile fixes for CTA button */
+@media (max-width: 768px) {
+  .cta-button-large {
+    font-size: 1.125rem;
+    padding: 0.9rem 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-button-large {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 10px;
+  }
 }
 
 .cta-button-large:hover {
@@ -707,6 +903,21 @@ body, html {
   color: #6b7280;
   margin: 0;
   font-style: italic;
+}
+
+/* Mobile fixes for CTA help text */
+@media (max-width: 768px) {
+  .cta-help {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-help {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    padding: 0 0.5rem;
+  }
 }
 
 .plants-grid-simple {

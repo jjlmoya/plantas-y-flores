@@ -1,0 +1,848 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PlantGrid from '../components/PlantGrid.vue';
+import AdSenseAd from '../components/ads/AdSenseAd.vue';
+import { getPlants } from '../utils/data.js';
+
+// Filtrar plantas de exterior por tags
+const allPlants = await getPlants();
+const exteriorPlants = allPlants.filter(plant => 
+  plant.data.tags && plant.data.tags.some(tag => {
+    const slug = tag.slug || tag;
+    return slug === 'exterior';
+  })
+);
+
+const plantsData = exteriorPlants.map(plant => ({
+  id: plant.data.id,
+  slug: plant.slug,
+  title: plant.data.title,
+  excerpt: plant.data.excerpt,
+  date: plant.data.date,
+  featured_image: plant.data.featured_image,
+  main_image: plant.data.main_image,
+  categories: plant.data.categories
+}));
+
+// Obtener categorías únicas de las plantas filtradas
+const availableCategories = [...new Set(
+  exteriorPlants.flatMap(plant => 
+    plant.data.categories.map(cat => ({
+      slug: cat.slug || cat,
+      name: cat.name || cat
+    }))
+  )
+)].sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<BaseLayout 
+  title="Plantas de Exterior - Jardín y Terrazas | Plantas y Flores"
+  description="Descubre las mejores plantas para tu jardín, terraza y balcón. Guías de plantas resistentes al sol, sombra, frío y calor. Flores, árboles, arbustos y plantas trepadoras para exterior."
+  type="website"
+  canonical="https://plantasyflores.online/plantas-de-exterior/"
+  keywords="plantas de exterior, plantas jardín, plantas terraza, plantas balcón, flores exterior, árboles, arbustos, plantas resistentes, jardinería exterior"
+  category="Plantas de Exterior"
+  tags={["plantas de exterior", "jardín", "terraza", "balcón", "jardinería", "flores"]}
+  image="/brand/logo-200.webp"
+>
+  <!-- Breadcrumbs Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://plantasyflores.online/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Plantas de Exterior",
+        "item": "https://plantasyflores.online/plantas-de-exterior/"
+      }
+    ]
+  })}></script>
+  <div class="category-page">
+    <!-- Hero Section -->
+    <section class="category-hero">
+      <div class="hero-content">
+        <div class="hero-icon">🌳</div>
+        <h1 class="hero-title">Plantas de Exterior</h1>
+        <p class="hero-subtitle">Crea tu paraíso natural al aire libre</p>
+        <p class="hero-description">
+          Transforma tu jardín, terraza o balcón en un espacio lleno de vida y color. 
+          Descubre plantas resistentes, flores espectaculares y especies perfectas 
+          para cada clima y condición de tu espacio exterior.
+        </p>
+      </div>
+    </section>
+
+    <!-- Banner Ad después del hero -->
+    <AdSenseAd 
+      client:load
+      ad-slot="7632831361"
+      ad-type="hero"
+      container-class="hero-banner-ad"
+    />
+
+    <!-- Plants Grid -->
+    <section class="plants-section">
+      {plantsData.length > 0 ? (
+        <PlantGrid 
+          client:load
+          plants={plantsData}
+          title={`Plantas de Exterior (${plantsData.length})`}
+          description="Todas nuestras guías para plantas de exterior"
+        />
+      ) : (
+        <div class="no-plants">
+          <h2 class="section-title">Plantas de Exterior</h2>
+          <p class="no-plants-message">
+            Estamos preparando guías específicas para plantas de exterior. 
+            ¡Vuelve pronto para descubrir las mejores opciones para tu jardín!
+          </p>
+        </div>
+      )}
+    </section>
+    
+    <!-- Ad nativo entre plantas y categorías -->
+    <AdSenseAd 
+      client:load
+      ad-slot="7538264929"
+      ad-type="native"
+      container-class="section-divider-ad"
+    />
+    
+    <!-- Categories Section -->
+    <section class="exterior-categories">
+      <h2 class="section-title">Tipos de Plantas de Exterior</h2>
+      <div class="categories-grid">
+        <div class="category-card flowering">
+          <div class="category-icon">🌸</div>
+          <h3>Plantas con Flor</h3>
+          <p>Aportan color y belleza durante sus épocas de floración.</p>
+          <ul class="plant-examples">
+            <li>Rosas</li>
+            <li>Geranios</li>
+            <li>Petunias</li>
+            <li>Lavanda</li>
+          </ul>
+        </div>
+        
+        <div class="category-card trees">
+          <div class="category-icon">🌲</div>
+          <h3>Árboles</h3>
+          <p>Proporcionan sombra, estructura y valor a largo plazo.</p>
+          <ul class="plant-examples">
+            <li>Olivo</li>
+            <li>Limonero</li>
+            <li>Jacaranda</li>
+            <li>Arce</li>
+          </ul>
+        </div>
+        
+        <div class="category-card shrubs">
+          <div class="category-icon">🌿</div>
+          <h3>Arbustos</h3>
+          <p>Perfectos para crear setos, borduras y puntos focales.</p>
+          <ul class="plant-examples">
+            <li>Boj</li>
+            <li>Hortensia</li>
+            <li>Azalea</li>
+            <li>Romero</li>
+          </ul>
+        </div>
+        
+        <div class="category-card climbers">
+          <div class="category-icon">🌱</div>
+          <h3>Trepadoras</h3>
+          <p>Ideales para cubrir muros, pérgolas y crear privacidad.</p>
+          <ul class="plant-examples">
+            <li>Hiedra</li>
+            <li>Jazmín</li>
+            <li>Buganvilla</li>
+            <li>Madreselva</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sidebar Ad para desktop -->
+    <AdSenseAd 
+      client:load
+      ad-slot="8980721998"
+      ad-type="sidebar"
+      :width="300"
+      :height="250"
+      is-responsive="false"
+      container-class="sidebar-ad"
+    />
+
+    <!-- Climate Conditions -->
+    <section class="climate-conditions">
+      <h2 class="section-title">Plantas por Condiciones Climáticas</h2>
+      <div class="conditions-grid">
+        <div class="condition-card sun">
+          <div class="condition-icon">☀️</div>
+          <h3>Pleno Sol</h3>
+          <p><strong>6+ horas de sol directo</strong></p>
+          <ul>
+            <li>Cactus y suculentas</li>
+            <li>Lavanda</li>
+            <li>Geranios</li>
+            <li>Romero</li>
+          </ul>
+        </div>
+
+        <div class="condition-card partial-shade">
+          <div class="condition-icon">⛅</div>
+          <h3>Sol Parcial</h3>
+          <p><strong>4-6 horas de sol</strong></p>
+          <ul>
+            <li>Hortensias</li>
+            <li>Begonias</li>
+            <li>Impatiens</li>
+            <li>Helechos</li>
+          </ul>
+        </div>
+
+        <div class="condition-card shade">
+          <div class="condition-icon">🌑</div>
+          <h3>Sombra</h3>
+          <p><strong>Menos de 4 horas de sol</strong></p>
+          <ul>
+            <li>Hostas</li>
+            <li>Caladiums</li>
+            <li>Heucheras</li>
+            <li>Astilbe</li>
+          </ul>
+        </div>
+
+        <div class="condition-card drought">
+          <div class="condition-icon">🏜️</div>
+          <h3>Resistentes Sequía</h3>
+          <p><strong>Poco riego</strong></p>
+          <ul>
+            <li>Adelfa</li>
+            <li>Palmito</li>
+            <li>Santolina</li>
+            <li>Sedum</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seasonal Calendar -->
+    <section class="seasonal-calendar">
+      <h2 class="section-title">Calendario de Plantación</h2>
+      <div class="seasons-grid">
+        <div class="season-card spring">
+          <div class="season-icon">🌱</div>
+          <h3>Primavera</h3>
+          <p class="season-months">Marzo - Mayo</p>
+          <h4>Plantar:</h4>
+          <ul>
+            <li>Anuales de verano</li>
+            <li>Hortalizas</li>
+            <li>Árboles frutales</li>
+          </ul>
+          <h4>Tareas:</h4>
+          <ul>
+            <li>Poda de rosales</li>
+            <li>Preparar el suelo</li>
+            <li>Fertilizar</li>
+          </ul>
+        </div>
+
+        <div class="season-card summer">
+          <div class="season-icon">☀️</div>
+          <h3>Verano</h3>
+          <p class="season-months">Junio - Agosto</p>
+          <h4>Plantar:</h4>
+          <ul>
+            <li>Plantas resistentes al calor</li>
+            <li>Suculentas</li>
+            <li>Hierbas aromáticas</li>
+          </ul>
+          <h4>Tareas:</h4>
+          <ul>
+            <li>Riego regular</li>
+            <li>Mulching</li>
+            <li>Control de plagas</li>
+          </ul>
+        </div>
+
+        <div class="season-card autumn">
+          <div class="season-icon">🍂</div>
+          <h3>Otoño</h3>
+          <p class="season-months">Septiembre - Noviembre</p>
+          <h4>Plantar:</h4>
+          <ul>
+            <li>Bulbos de primavera</li>
+            <li>Árboles y arbustos</li>
+            <li>Plantas perennes</li>
+          </ul>
+          <h4>Tareas:</h4>
+          <ul>
+            <li>Limpiar hojas caídas</li>
+            <li>Podar plantas secas</li>
+            <li>Preparar para invierno</li>
+          </ul>
+        </div>
+
+        <div class="season-card winter">
+          <div class="season-icon">❄️</div>
+          <h3>Invierno</h3>
+          <p class="season-months">Diciembre - Febrero</p>
+          <h4>Plantar:</h4>
+          <ul>
+            <li>Árboles de hoja caduca</li>
+            <li>Rosales a raíz desnuda</li>
+            <li>Plantas resistentes al frío</li>
+          </ul>
+          <h4>Tareas:</h4>
+          <ul>
+            <li>Proteger del frío</li>
+            <li>Planificar el jardín</li>
+            <li>Mantenimiento de herramientas</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- In-article Ad -->
+    <AdSenseAd 
+      client:load
+      ad-slot="6785803497"
+      ad-type="in-article"
+      container-class="in-article-ad"
+    />
+
+    <!-- Garden Care Tips -->
+    <section class="garden-care">
+      <h2 class="section-title">Consejos de Jardinería</h2>
+      <div class="care-grid">
+        <div class="care-tip">
+          <div class="care-icon">🌱</div>
+          <h4>Preparación del Suelo</h4>
+          <p>Un buen suelo es la base del éxito. Mejora con compost y verifica el drenaje antes de plantar.</p>
+        </div>
+
+        <div class="care-tip">
+          <div class="care-icon">💧</div>
+          <h4>Riego Eficiente</h4>
+          <p>Riega profundamente pero con menor frecuencia. Mejor temprano por la mañana o al atardecer.</p>
+        </div>
+
+        <div class="care-tip">
+          <div class="care-icon">✂️</div>
+          <h4>Poda Regular</h4>
+          <p>Poda en la época adecuada para cada especie. Promueve crecimiento sano y mejor floración.</p>
+        </div>
+
+        <div class="care-tip">
+          <div class="care-icon">🐛</div>
+          <h4>Control Natural</h4>
+          <p>Fomenta insectos beneficiosos y usa métodos ecológicos para controlar plagas y enfermedades.</p>
+        </div>
+
+        <div class="care-tip">
+          <div class="care-icon">🍃</div>
+          <h4>Mulching</h4>
+          <p>Usa mantillo para conservar humedad, controlar malas hierbas y mejorar el suelo.</p>
+        </div>
+
+        <div class="care-tip">
+          <div class="care-icon">🌿</div>
+          <h4>Rotación de Cultivos</h4>
+          <p>En huertos, rota las plantas para mantener la fertilidad del suelo y prevenir enfermedades.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Container Gardening -->
+    <section class="container-gardening">
+      <h2 class="section-title">Jardinería en Contenedores</h2>
+      <div class="container-types">
+        <div class="container-card">
+          <div class="container-icon">🏺</div>
+          <h3>Macetas Grandes</h3>
+          <p><strong>Para:</strong> Arbustos pequeños, árboles frutales</p>
+          <p><strong>Tamaño:</strong> Mínimo 40cm de diámetro</p>
+          <p><strong>Ejemplos:</strong> Limoneros, rosales, hortensias</p>
+        </div>
+
+        <div class="container-card">
+          <div class="container-icon">🪴</div>
+          <h3>Macetas Medianas</h3>
+          <p><strong>Para:</strong> Plantas perennes, hierbas</p>
+          <p><strong>Tamaño:</strong> 20-40cm de diámetro</p>
+          <p><strong>Ejemplos:</strong> Geranios, lavanda, romero</p>
+        </div>
+
+        <div class="container-card">
+          <div class="container-icon">🥕</div>
+          <h3>Jardineras</h3>
+          <p><strong>Para:</strong> Hortalizas, anuales</p>
+          <p><strong>Tamaño:</strong> Rectangulares, 30cm profundidad</p>
+          <p><strong>Ejemplos:</strong> Lechugas, petunias, begonias</p>
+        </div>
+
+        <div class="container-card">
+          <div class="container-icon">📦</div>
+          <h3>Huertos Verticales</h3>
+          <p><strong>Para:</strong> Espacios pequeños</p>
+          <p><strong>Tamaño:</strong> Múltiples niveles</p>
+          <p><strong>Ejemplos:</strong> Fresas, hierbas, flores colgantes</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="cta-content">
+        <h2 class="cta-title">¡Haz Realidad tu Jardín Soñado!</h2>
+        <p class="cta-description">
+          Ya sea un gran jardín o una pequeña terraza, siempre hay espacio para plantas. 
+          Empieza con especies fáciles y ve ampliando tu conocimiento y tu colección.
+        </p>
+        <div class="cta-buttons">
+          <a href="/tienda-de-semillas/" class="cta-button primary">Ver Semillas</a>
+          <a href="/contacto/" class="cta-button secondary">Consultar</a>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+.category-hero {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  color: white;
+  padding: 4rem 2rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  border-radius: 16px;
+}
+
+.hero-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  line-height: 1.1;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin: 0 0 1.5rem 0;
+  opacity: 0.9;
+}
+
+.hero-description {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2d5016;
+  text-align: center;
+  margin: 0 0 3rem 0;
+}
+
+/* Exterior Categories */
+.exterior-categories {
+  margin-bottom: 4rem;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.category-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+}
+
+.category-card.flowering { border-top: 4px solid #e74c3c; }
+.category-card.trees { border-top: 4px solid #27ae60; }
+.category-card.shrubs { border-top: 4px solid #f39c12; }
+.category-card.climbers { border-top: 4px solid #9b59b6; }
+
+.category-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.category-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #2d5016;
+  margin: 0 0 1rem 0;
+}
+
+.category-card p {
+  color: #666;
+  line-height: 1.6;
+  margin: 0 0 1.5rem 0;
+}
+
+.plant-examples {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.plant-examples li {
+  padding: 0.5rem 0;
+  color: #4a7c23;
+  font-weight: 500;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 0.9rem;
+}
+
+.plant-examples li:last-child {
+  border-bottom: none;
+}
+
+/* Climate Conditions */
+.climate-conditions {
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  margin-bottom: 4rem;
+}
+
+.conditions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.condition-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.condition-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.condition-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2d5016;
+  margin: 0 0 0.5rem 0;
+}
+
+.condition-card p {
+  color: #666;
+  margin: 0 0 1rem 0;
+  font-size: 0.9rem;
+}
+
+.condition-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.condition-card li {
+  color: #4a7c23;
+  padding: 0.25rem 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Seasonal Calendar */
+.seasonal-calendar {
+  margin-bottom: 4rem;
+}
+
+.seasons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.season-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.season-card:hover {
+  transform: translateY(-4px);
+}
+
+.season-card.spring { border-top: 4px solid #27ae60; }
+.season-card.summer { border-top: 4px solid #f1c40f; }
+.season-card.autumn { border-top: 4px solid #e67e22; }
+.season-card.winter { border-top: 4px solid #3498db; }
+
+.season-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.season-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #2d5016;
+  margin: 0 0 0.5rem 0;
+  text-align: center;
+}
+
+.season-months {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  margin: 0 0 1.5rem 0;
+}
+
+.season-card h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #4a7c23;
+  margin: 0 0 0.5rem 0;
+}
+
+.season-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+}
+
+.season-card li {
+  color: #666;
+  padding: 0.25rem 0;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.season-card li:last-child {
+  border-bottom: none;
+}
+
+/* Garden Care */
+.garden-care {
+  margin-bottom: 4rem;
+}
+
+.care-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.care-tip {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.care-tip:hover {
+  transform: translateY(-4px);
+}
+
+.care-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.care-tip h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2d5016;
+  margin: 0 0 1rem 0;
+}
+
+.care-tip p {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Container Gardening */
+.container-gardening {
+  background: linear-gradient(135deg, #e8f5e8 0%, #d4e5d4 100%);
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  margin-bottom: 4rem;
+}
+
+.container-types {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.container-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.container-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.container-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2d5016;
+  margin: 0 0 1rem 0;
+}
+
+.container-card p {
+  color: #666;
+  line-height: 1.6;
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+/* Plants Section */
+.plants-section {
+  margin-bottom: 4rem;
+}
+
+.no-plants {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.no-plants-message {
+  font-size: 1.2rem;
+  color: #666;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* CTA Section */
+.cta-section {
+  background: linear-gradient(135deg, #2d5016 0%, #4a7c23 100%);
+  color: white;
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.cta-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 1.5rem 0;
+}
+
+.cta-description {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto 2.5rem auto;
+  opacity: 0.9;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1.25rem 2.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.cta-button.primary {
+  background: white;
+  color: #2d5016;
+}
+
+.cta-button.primary:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+.cta-button.secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.cta-button.secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .categories-grid,
+  .conditions-grid,
+  .seasons-grid,
+  .care-grid,
+  .container-types {
+    grid-template-columns: 1fr;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cta-button {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+</style>

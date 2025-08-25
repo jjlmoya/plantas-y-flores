@@ -99,7 +99,8 @@
       "Bash(copy:*)",
       "Bash(git rev-list:*)",
       "Bash(del fix-hydrangea-filename.js)",
-      "Bash(del final-image-check.js)"
+      "Bash(del final-image-check.js)",
+      "Bash(gh issue create:*)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits",

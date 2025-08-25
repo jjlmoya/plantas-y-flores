@@ -17,6 +17,12 @@
             <li class="nav-item">
               <a href="/" class="nav-link" :class="{ 'nav-link--active': isActive('/') }">Inicio</a>
             </li>
+            <li class="nav-item nav-item--favorites">
+              <a href="/favoritos/" class="nav-link nav-link--favorites" :class="{ 'nav-link--active': isActive('/favoritos/') }">
+                <span class="favorites-text">Favoritos</span>
+                <span v-if="favoritesCount > 0" class="favorites-badge">{{ favoritesCount }}</span>
+              </a>
+            </li>
             <li class="nav-item nav-item--dropdown" @mouseenter="activeDropdown = 'plantas'" @mouseleave="activeDropdown = null">
               <a href="/plantas/" class="nav-link" :class="{ 'nav-link--active': isDropdownActive() }">Plantas</a>
               <div class="dropdown" :class="{ 'dropdown--active': activeDropdown === 'plantas' }">
@@ -26,6 +32,8 @@
                   <a href="/plantas-medicinales/" class="dropdown-link" :class="{ 'dropdown-link--active': isActive('/plantas-medicinales/') }">Plantas Medicinales</a>
                   <a href="/plantas-aromaticas/" class="dropdown-link" :class="{ 'dropdown-link--active': isActive('/plantas-aromaticas/') }">Plantas Aromáticas</a>
                   <a href="/plantas-comestibles/" class="dropdown-link" :class="{ 'dropdown-link--active': isActive('/plantas-comestibles/') }">Plantas Comestibles</a>
+                  <a href="/plantas-de-interior/" class="dropdown-link" :class="{ 'dropdown-link--active': isActive('/plantas-de-interior/') }">Plantas de Interior</a>
+                  <a href="/plantas-de-exterior/" class="dropdown-link" :class="{ 'dropdown-link--active': isActive('/plantas-de-exterior/') }">Plantas de Exterior</a>
                 </div>
               </div>
             </li>
@@ -68,12 +76,6 @@
             </li>
             <li class="nav-item">
               <a href="/contacto/" class="nav-link" :class="{ 'nav-link--active': isActive('/contacto/') }">Contacto</a>
-            </li>
-            <li class="nav-item nav-item--favorites">
-              <a href="/favoritos/" class="nav-link nav-link--favorites" :class="{ 'nav-link--active': isActive('/favoritos/') }">
-                <span class="favorites-text">Favoritos</span>
-                <span v-if="favoritesCount > 0" class="favorites-badge">{{ favoritesCount }}</span>
-              </a>
             </li>
           </ul>
         </div>
@@ -359,6 +361,8 @@ const getCurrentAndNextMonths = () => {
 .favorites-icon {
   font-size: 1.1rem;
   line-height: 1;
+  color: #dc2626;
+  display: inline;
 }
 
 .favorites-text {
@@ -579,6 +583,10 @@ const getCurrentAndNextMonths = () => {
   .favorites-badge {
     margin-left: auto;
   }
+  
+  .favorites-icon {
+    font-size: 1.15rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -602,11 +610,7 @@ const getCurrentAndNextMonths = () => {
     margin-bottom: 1.5rem;
   }
   
-  /* Favoritos en móvil pequeño */
-  .favorites-text {
-    display: none;
-  }
-  
+  /* Favoritos en móvil pequeño - mantener texto visible */
   .nav-link--favorites {
     justify-content: center;
     gap: 0.25rem;
