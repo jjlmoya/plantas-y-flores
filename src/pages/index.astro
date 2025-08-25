@@ -6,6 +6,7 @@ import HomepageCategoryBanner from '../components/ads/HomepageCategoryBanner.vue
 import SectionDividerNative from '../components/ads/SectionDividerNative.vue';
 import NovedadesRecientes from '../components/NovedadesRecientes.vue';
 import { getPlants, getCategories } from '../utils/data.js';
+import { getAllCollections } from '../utils/collections.js';
 
 // Obtener todas las plantas y ordenarlas por fecha
 const plants = await getPlants();
@@ -29,6 +30,9 @@ const plantsData = sortedPlants.map(plant => ({
   main_image: plant.data.main_image,
   categories: plant.data.categories
 }));
+
+// Obtener colecciones para la nueva sección
+const collections = await getAllCollections();
 ---
 
 <BaseLayout 
@@ -138,6 +142,31 @@ const plantsData = sortedPlants.map(plant => ({
 
     <!-- Homepage Category Banner Ad -->
     <HomepageCategoryBanner client:load />
+
+    <!-- Collections Section -->
+    <section class="collections-section">
+      <h2 class="section-title">Colecciones Especiales</h2>
+      <p class="collections-subtitle">Descubre plantas organizadas por características específicas</p>
+      
+      <div class="collections-grid">
+        {collections.map(collection => (
+          <article class="collection-card">
+            <a href={`/colecciones/${collection.slug}/`} class="collection-link">
+              <h3 class="collection-title">{collection.h1}</h3>
+              <p class="collection-excerpt">{collection.excerpt}</p>
+              <div class="collection-footer">
+                <span class="collection-cta">
+                  Explorar colección
+                  <svg class="cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m9 18 6-6-6-6"/>
+                  </svg>
+                </span>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
 
     <!-- Popular Categories Section -->
     <section class="popular-section">
@@ -372,6 +401,129 @@ const plantsData = sortedPlants.map(plant => ({
   background: #2d5016;
 }
 
+/* Collections Section */
+.collections-section {
+  margin-bottom: 4rem;
+  background: linear-gradient(135deg, #fef7e0 0%, #f7f3e6 100%);
+  padding: 4rem 2rem;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.collections-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -30%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(74, 124, 35, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.collections-subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+  margin: -1rem 0 3rem 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.collections-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.collection-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(74, 124, 35, 0.1);
+  position: relative;
+}
+
+.collection-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #4a7c23, #2d5016);
+}
+
+.collection-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(74, 124, 35, 0.25);
+}
+
+.collection-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding: 2.5rem 2rem 2.5rem;
+}
+
+
+.collection-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #2d5016;
+  margin: 0 0 1.2rem 0;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.collection-excerpt {
+  color: #555;
+  line-height: 1.7;
+  margin: 0 0 2rem 0;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.collection-footer {
+  text-align: center;
+}
+
+.collection-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.8rem;
+  background: linear-gradient(135deg, #4a7c23 0%, #2d5016 100%);
+  color: white;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(74, 124, 35, 0.3);
+}
+
+.collection-card:hover .collection-cta {
+  background: linear-gradient(135deg, #2d5016 0%, #1a2e0c 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(74, 124, 35, 0.4);
+}
+
+.cta-arrow {
+  transition: transform 0.3s ease;
+  margin-left: 0.2rem;
+}
+
+.collection-card:hover .cta-arrow {
+  transform: translateX(3px);
+}
+
+
 /* Popular Categories Section */
 .popular-section {
   margin-bottom: 4rem;
@@ -530,6 +682,23 @@ const plantsData = sortedPlants.map(plant => ({
   
   .social-links {
     flex-wrap: wrap;
+  }
+  
+  .collections-section {
+    padding: 3rem 1.5rem;
+  }
+  
+  .collections-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .collection-link {
+    padding: 2rem 1.5rem 2rem;
+  }
+  
+  .collection-title {
+    font-size: 1.2rem;
   }
 }
 

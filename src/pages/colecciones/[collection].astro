@@ -1,0 +1,283 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PlantCard from '../../components/PlantCard.vue';
+import { getCollectionConfig, getPlantsByFilters, getAllCollections } from '../../utils/collections.js';
+
+export async function getStaticPaths() {
+  const collections = await getAllCollections();
+  
+  return collections.map(collection => ({
+    params: { collection: collection.slug },
+    props: { collectionConfig: collection }
+  }));
+}
+
+const { collection } = Astro.params;
+const { collectionConfig } = Astro.props;
+
+// Obtener plantas filtradas según la configuración
+const plants = await getPlantsByFilters(collectionConfig.filters);
+
+// Actualizar estadísticas dinámicamente
+collectionConfig.hero.stats[0].number = `${plants.length}+`;
+---
+
+<BaseLayout 
+  title={collectionConfig.title}
+  description={collectionConfig.description}
+  canonical={collectionConfig.canonical}
+  image={collectionConfig.og_image}
+>
+  <main class="collection-page">
+    <!-- Hero Section -->
+    <section class="hero" style={`background: ${collectionConfig.hero.background}`}>
+      <div class="container">
+        <h1>{collectionConfig.h1}</h1>
+        <p class="hero-subtitle">{collectionConfig.hero.subtitle}</p>
+        
+        <div class="hero-stats">
+          {collectionConfig.hero.stats.map(stat => (
+            <span class="stat">
+              <strong>{stat.number}</strong> {stat.label}
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Introduction -->
+    {collectionConfig.content.intro && (
+      <section class="intro">
+        <div class="container">
+          <p class="intro-text">{collectionConfig.content.intro}</p>
+        </div>
+      </section>
+    )}
+
+    <!-- Plants Grid -->
+    <section class="plants-grid">
+      <div class="container">
+        <div class="grid">
+          {plants.map(plant => (
+            <PlantCard
+              client:load
+              plant={{
+                slug: plant.slug,
+                title: plant.name,
+                excerpt: plant.description,
+                main_image: plant.image,
+                date: plant.plantData?.date || new Date().toISOString(),
+                categories: [{ 
+                  name: plant.category.charAt(0).toUpperCase() + plant.category.slice(1), 
+                  slug: plant.category 
+                }],
+                customUrl: plant.link
+              }}
+            />
+          ))}
+        </div>
+
+        {plants.length === 0 && (
+          <div class="no-plants">
+            <p>No se encontraron plantas que coincidan con los criterios de esta colección.</p>
+          </div>
+        )}
+      </div>
+    </section>
+
+    <!-- Tips Section -->
+    {collectionConfig.content.tips && collectionConfig.content.tips.length > 0 && (
+      <section class="tips">
+        <div class="container">
+          <h2>Consejos para Esta Colección</h2>
+          <div class="tips-grid">
+            {collectionConfig.content.tips.map(tip => (
+              <div class="tip">
+                <h3>{tip.title}</h3>
+                <p>{tip.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+  </main>
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": collectionConfig.schema.type,
+    "name": collectionConfig.h1,
+    "description": collectionConfig.description,
+    "url": collectionConfig.canonical,
+    "about": collectionConfig.schema.about,
+    "mentions": collectionConfig.schema.mentions,
+    "numberOfItems": plants.length,
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": plants.slice(0, 10).map((plant, index) => ({
+        "@type": "Thing",
+        "position": index + 1,
+        "name": plant.name,
+        "url": `https://plantasyflores.online${plant.link}`,
+        "description": plant.description
+      }))
+    }
+  })}></script>
+
+  <style>
+    .collection-page {
+      min-height: 100vh;
+    }
+
+    .hero {
+      padding: 4rem 0;
+      text-align: center;
+      color: #2d3748;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+      opacity: 0.8;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 0.75rem 1.5rem;
+      border-radius: 25px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      font-size: 0.9rem;
+      color: #2d3748;
+      backdrop-filter: blur(10px);
+    }
+
+    .stat strong {
+      color: #38a169;
+      font-weight: 600;
+    }
+
+    .intro {
+      padding: 3rem 0;
+      background: #f7fafc;
+    }
+
+    .intro-text {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #4a5568;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .plants-grid {
+      padding: 4rem 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .no-plants {
+      text-align: center;
+      padding: 4rem;
+      background: #f7fafc;
+      border-radius: 12px;
+      color: #4a5568;
+      font-size: 1.1rem;
+    }
+
+    .tips {
+      background: #f7fafc;
+      padding: 4rem 0;
+    }
+
+    .tips h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #2d3748;
+      margin-bottom: 3rem;
+      font-weight: 600;
+    }
+
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .tip {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .tip h3 {
+      font-size: 1.5rem;
+      color: #2d3748;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .tip p {
+      color: #4a5568;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .hero-stats {
+        gap: 1rem;
+      }
+      
+      .stat {
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
+      }
+      
+      .grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+      }
+      
+      .tips h2 {
+        font-size: 2rem;
+      }
+
+      .intro-text {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</BaseLayout>

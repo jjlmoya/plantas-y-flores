@@ -152,6 +152,12 @@ const getImagePath = (imageUrl) => {
 };
 
 const getPlantUrl = (plant) => {
+  // Si hay una URL personalizada, usarla
+  if (plant.customUrl) {
+    return plant.customUrl;
+  }
+  
+  // URL por defecto
   const category = plant.categories[0]?.slug || 'plantas';
   return `/${category}/${plant.slug}/`;
 };

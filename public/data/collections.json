@@ -1,0 +1,136 @@
+[
+  {
+    "slug": "plantas-faciles-de-cultivar",
+    "h1": "Plantas Fáciles de Cultivar en Casa",
+    "title": "Plantas Fáciles de Cultivar en Casa - Guía Completa 2025 | Plantas y Flores",
+    "description": "Descubre las plantas más resistentes y fáciles de cultivar en casa. Especies que perdonan errores de principiante, requieren poco riego y te recompensarán con belleza durante todo el año.",
+    "excerpt": "Si eres nuevo en el mundo de las plantas o tienes poco tiempo, esta selección te encantará. Especies resistentes que perdonan errores y te recompensarán con su belleza.",
+    "canonical": "https://plantasyflores.online/colecciones/plantas-faciles-de-cultivar/",
+    "og_image": "/collections/images/plantas-faciles-de-cultivar-og.webp",
+    "filters": {
+      "difficulty": ["beginner"],
+      "water_needs": ["low", "moderate"],
+      "limit": 30
+    },
+    "hero": {
+      "subtitle": "Si eres nuevo en el mundo de las plantas o tienes poco tiempo, esta selección te encantará. Especies resistentes que perdonan errores y te recompensarán con su belleza.",
+      "background": "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
+      "stats": [
+        { "number": "30+", "label": "plantas seleccionadas" },
+        { "number": "Bajo", "label": "mantenimiento" },
+        { "number": "Alta", "label": "supervivencia" }
+      ]
+    },
+    "content": {
+      "intro": "Cuando empiezas en el mundo de las plantas, la clave está en elegir especies que perdonen tus primeros errores y te recompensen con su belleza. He seleccionado para ti las plantas más resistentes y generosas, aquellas que florecerán incluso si olvidas regarlas de vez en cuando o no tienes el espacio más luminoso.",
+      "tips": [
+        {
+          "title": "Comienza con Generosas",
+          "description": "Las plantas que he seleccionado para ti son verdaderas supervivientes. Toleran olvidos ocasionales y te perdonarán mientras aprendes a cuidarlas."
+        },
+        {
+          "title": "El Secreto del Riego", 
+          "description": "Más plantas mueren por exceso de amor que por abandono. Deja que la tierra se seque entre riegos - ellas te lo agradecerán."
+        },
+        {
+          "title": "Observa antes de Plantar",
+          "description": "Pasa unos días observando la luz que entra en cada rincón de tu casa. Cada planta tiene sus preferencias, y conocerlas es la clave del éxito."
+        }
+      ]
+    },
+    "schema": {
+      "type": "CollectionPage",
+      "about": "Colección de plantas fáciles de cultivar para jardineros principiantes",
+      "mentions": ["jardinería", "plantas resistentes", "cuidados básicos", "principiantes"]
+    }
+  },
+  {
+    "slug": "plantas-resistentes-al-calor",
+    "h1": "Plantas Resistentes al Calor Intenso",
+    "title": "Plantas Resistentes al Calor - Las Mejores para Veranos Extremos 2025",
+    "description": "Descubre las plantas más resistentes al calor y la sequía. Especies que prosperan con altas temperaturas, perfectas para jardines mediterráneos y veranos cada vez más intensos.",
+    "excerpt": "Para esos veranos que cada año son más intensos, estas plantas son tus mejores aliadas. Resistentes al calor extremo y la sequía, te darán belleza sin sufrir.",
+    "canonical": "https://plantasyflores.online/colecciones/plantas-resistentes-al-calor/",
+    "og_image": "/collections/images/plantas-resistentes-calor-og.webp",
+    "filters": {
+      "temperature_max": 30,
+      "drought_tolerance": ["high", "very_high"],
+      "limit": 25
+    },
+    "hero": {
+      "subtitle": "Para esos veranos que cada año son más intensos, estas plantas son tus mejores aliadas. Resistentes al calor extremo y la sequía, te darán belleza sin sufrir.",
+      "background": "linear-gradient(135deg, #ff9a56 0%, #ff6b35 100%)",
+      "stats": [
+        { "number": "25+", "label": "especies resistentes" },
+        { "number": "+35°C", "label": "temperaturas" },
+        { "number": "Mínimo", "label": "riego" }
+      ]
+    },
+    "content": {
+      "intro": "El cambio climático es una realidad y nuestros jardines deben adaptarse. He seleccionado para ti las plantas más valientes, aquellas que no solo sobreviven sino que prosperan cuando el termómetro se dispara. Estas guerreras del calor te recompensarán con flores y aromas incluso en los días más tórridos.",
+      "tips": [
+        {
+          "title": "Abraza el Calor",
+          "description": "Estas plantas aman el sol y el calor. Colócalas en los lugares más soleados de tu jardín - allí donde otras plantas sufrirían, ellas brillarán."
+        },
+        {
+          "title": "Menos Agua, Más Belleza", 
+          "description": "Paradójicamente, muchas plantas resistentes al calor prefieren sequía moderada. Un riego profundo pero espaciado las mantendrá más felices que riegos frecuentes."
+        },
+        {
+          "title": "Suelo que Drene",
+          "description": "El secreto está en el drenaje. Estas plantas odian los encharcamientos más que el calor. Un suelo que drene bien es tu mejor inversión."
+        }
+      ]
+    },
+    "schema": {
+      "type": "CollectionPage",
+      "about": "Colección de plantas resistentes al calor extremo y la sequía",
+      "mentions": ["plantas calor", "resistentes sequía", "jardín mediterráneo", "veranos intensos"]
+    }
+  },
+  {
+    "slug": "plantas-para-balcones",
+    "h1": "Plantas Perfectas para Balcones y Terrazas",
+    "title": "Plantas para Balcones - Las Mejores para Espacios Pequeños 2025",
+    "description": "Descubre las plantas más hermosas y resistentes para cultivar en balcones y terrazas. Especies adaptadas a macetas que transformarán tu espacio urbano en un oasis verde.",
+    "excerpt": "Tu balcón puede convertirse en tu refugio verde favorito. He seleccionado plantas que aman las macetas y prosperan en espacios reducidos, llenándolos de vida y color.",
+    "canonical": "https://plantasyflores.online/colecciones/plantas-para-balcones/",
+    "og_image": "/collections/images/plantas-balcones-og.webp",
+    "filters": {
+      "container_suitable": true,
+      "limit": 25
+    },
+    "hero": {
+      "subtitle": "Tu balcón puede convertirse en tu refugio verde favorito. He seleccionado plantas que aman las macetas y prosperan en espacios reducidos, llenándolos de vida y color.",
+      "background": "linear-gradient(135deg, #48bb78 0%, #38a169 100%)",
+      "stats": [
+        { "number": "25+", "label": "plantas seleccionadas" },
+        { "number": "Macetas", "label": "espacios pequeños" },
+        { "number": "Fácil", "label": "adaptación" }
+      ]
+    },
+    "content": {
+      "intro": "Vivir en la ciudad no significa renunciar a la belleza de las plantas. Durante años he cultivado jardines en balcones de todos los tamaños y he aprendido que el secreto no está en el espacio, sino en elegir las compañeras adecuadas. Estas plantas han conquistado mi corazón porque entienden la vida en macetas y te recompensarán generosamente por cada cuidado.",
+      "tips": [
+        {
+          "title": "El Arte de las Macetas",
+          "description": "No todas las plantas entienden la vida en contenedores, pero estas sí. Han aprendido a prosperar con raíces contenidas y a darte toda su belleza en espacios reducidos."
+        },
+        {
+          "title": "Aprovecha las Alturas", 
+          "description": "Un balcón es un escenario tridimensional. Juega con plantas colgantes, trepadoras y de diferentes alturas para crear tu propio jardín vertical lleno de textura."
+        },
+        {
+          "title": "Riegos Inteligentes",
+          "description": "Las macetas se secan más rápido que el suelo, pero esto puede ser tu ventaja. Un drenaje perfecto significa raíces sanas y plantas que te perdonarán los despistes ocasionales."
+        }
+      ]
+    },
+    "schema": {
+      "type": "CollectionPage",
+      "about": "Colección de plantas ideales para balcones, terrazas y espacios pequeños",
+      "mentions": ["plantas balcón", "jardinería urbana", "macetas", "espacios pequeños"]
+    }
+  }
+]
