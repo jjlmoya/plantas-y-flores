@@ -1,7 +1,7 @@
 {
   "name": "plantasyflores",
   "type": "module",
-  "version": "2.48.0",
+  "version": "2.50.0",
   "engines": {
     "node": "22.x"
   },

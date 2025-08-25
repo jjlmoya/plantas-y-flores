@@ -26,6 +26,22 @@ export async function GET() {
       priority: 0.9
     },
     
+    // Favorites page
+    {
+      url: 'https://plantasyflores.online/favoritos/',
+      lastmod: new Date().toISOString(),
+      changefreq: 'weekly',
+      priority: 0.8
+    },
+    
+    // News page
+    {
+      url: 'https://plantasyflores.online/novedades/',
+      lastmod: new Date().toISOString(),
+      changefreq: 'weekly',
+      priority: 0.7
+    },
+    
     // Static plant category pages (basado en analytics reales)
     {
       url: 'https://plantasyflores.online/plantas-comestibles/',
@@ -82,6 +98,18 @@ export async function GET() {
       lastmod: new Date().toISOString(),
       changefreq: 'weekly',
       priority: 0.45   // 7 vistas (0.27%) - menos popular de lo esperado
+    },
+    {
+      url: 'https://plantasyflores.online/colaboraciones/',
+      lastmod: new Date().toISOString(),
+      changefreq: 'monthly',
+      priority: 0.4
+    },
+    {
+      url: 'https://plantasyflores.online/politica-de-cookies/',
+      lastmod: new Date().toISOString(),
+      changefreq: 'yearly',
+      priority: 0.3
     },
     
     // Dynamic category pages

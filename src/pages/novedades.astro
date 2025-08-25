@@ -19,6 +19,49 @@ try {
   description="Descubre las últimas mejoras y novedades de PlantasyFlores. Nuevas funciones, plantas y mejoras pensadas para ti."
   canonical="/novedades/"
 >
+  <!-- Breadcrumbs Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://plantasyflores.online/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Novedades",
+        "item": "https://plantasyflores.online/novedades/"
+      }
+    ]
+  })}></script>
+
+  <!-- WebPage Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Novedades - PlantasyFlores.online",
+    "description": "Descubre las últimas mejoras y novedades de PlantasyFlores. Nuevas funciones, plantas y mejoras pensadas para ti.",
+    "url": "https://plantasyflores.online/novedades/",
+    "mainEntity": {
+      "@type": "Blog",
+      "name": "Novedades PlantasyFlores",
+      "description": "Actualizaciones y mejoras del sitio web de plantas y flores",
+      "author": {
+        "@type": "Organization",
+        "name": "PlantasyFlores.online"
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "PlantasyFlores.online",
+      "url": "https://plantasyflores.online/"
+    }
+  })}></script>
+
   <div class="novedades-container">
     <div class="content-wrapper">
       <!-- Header -->
