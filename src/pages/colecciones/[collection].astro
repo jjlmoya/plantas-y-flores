@@ -30,7 +30,7 @@ collectionConfig.hero.stats[0].number = `${plants.length}+`;
 >
   <main class="collection-page">
     <!-- Hero Section -->
-    <section class="hero" style={`background: ${collectionConfig.hero.background}`}>
+    <section class="hero" style={`background: ${collectionConfig.hero.background}`} data-bg={collectionConfig.hero.background}>
       <div class="container">
         <h1>{collectionConfig.h1}</h1>
         <p class="hero-subtitle">{collectionConfig.hero.subtitle}</p>
@@ -133,7 +133,7 @@ collectionConfig.hero.stats[0].number = `${plants.length}+`;
     .hero {
       padding: 4rem 0;
       text-align: center;
-      color: #2d3748;
+      color: #2d3748; /* fallback color */
     }
 
     .hero h1 {
@@ -250,6 +250,36 @@ collectionConfig.hero.stats[0].number = `${plants.length}+`;
     .tip p {
       color: #4a5568;
       line-height: 1.6;
+    }
+
+    /* Dynamic text color based on background */
+    .hero {
+      color: #ffffff; /* Default to white for better readability on gradients */
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3); /* Add subtle text shadow for better contrast */
+    }
+
+    /* Light backgrounds override */
+    .hero[data-bg*="#f5f7fa"], 
+    .hero[data-bg*="#fef7e0"],
+    .hero[data-bg*="#ffffff"],
+    .hero[data-bg*="white"] {
+      color: #2d3748;
+      text-shadow: none;
+    }
+
+    .hero .stat {
+      background: rgba(255, 255, 255, 0.95);
+      color: #2d3748;
+      backdrop-filter: blur(10px);
+    }
+
+    /* Ensure stats are readable regardless of hero text color */
+    .hero[data-bg*="#f5f7fa"] .stat,
+    .hero[data-bg*="#fef7e0"] .stat,
+    .hero[data-bg*="#ffffff"] .stat,
+    .hero[data-bg*="white"] .stat {
+      background: rgba(255, 255, 255, 0.9);
+      color: #2d3748;
     }
 
     @media (max-width: 768px) {
